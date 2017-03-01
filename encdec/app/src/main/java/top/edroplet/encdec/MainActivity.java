@@ -21,6 +21,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+
 public class MainActivity extends Activity {
 	private static final String TAG="MainUI";
 	private static Context mContext;
@@ -33,6 +34,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 		mContext = getApplicationContext();
         setContentView(R.layout.main);
+
 		spinnerFrom = (Spinner) findViewById(R.id.mainSpinnerFrom);
         spinnerFrom.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,formats));
         spinnerFrom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

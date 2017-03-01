@@ -1,0 +1,154 @@
+[
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main_item.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\main_item.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\applationinstall_item.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\applationinstall_item.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\setup3config.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\setup3config.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\first_entry_dialog.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\first_entry_dialog.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\blacknumber_item.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\blacknumber_item.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\traffic_manager_item.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\traffic_manager_item.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\address_query.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\address_query.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\drag_view.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\drag_view.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\main.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\app_lock_manager.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\app_lock_manager.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\app_lock_manager_item.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\app_lock_manager_item.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\change_name.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\change_name.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\common_number.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\common_number.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\contact_list.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\contact_list.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\my_toast.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\my_toast.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\add_blacknumber_dialog.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\add_blacknumber_dialog.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popup_window.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\popup_window.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\enter_password.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\enter_password.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\task_manager_item.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\task_manager_item.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\task_manager.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\task_manager.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\contact_item.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\contact_item.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\lost_protected_setting.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\lost_protected_setting.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\add_ipcall.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\add_ipcall.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\applationinstall.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\applationinstall.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\process_widget.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\process_widget.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\setup2config.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\setup2config.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\atools.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\atools.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\show_address.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\show_address.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\normal_entry_dialog.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\normal_entry_dialog.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\blacknumber_list.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\blacknumber_list.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\task_manager_setting.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\task_manager_setting.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\divide_line.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\divide_line.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\setting_center.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\setting_center.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\splash.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\splash.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\setup1config.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\setup1config.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\setup4config.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\setup4config.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\traffic_manager.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\traffic_manager.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\line.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\layout\\line.xml"
+    }
+]

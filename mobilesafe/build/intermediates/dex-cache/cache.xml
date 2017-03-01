@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="D:\project\StudioProjects\mobilesafe\app\libs\youmi-android_v3.07_2012-05-04.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="2f2c53e406e39e0eb7959c7156343e30bae9fc7b">
+        <dex dex="D:\project\StudioProjects\mobilesafe\app\build\intermediates\pre-dexed\debug\youmi-android_v3.07_2012-05-04_81eef6192802f6a878771e9fbbc896315727c315.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\project\StudioProjects\mobilesafe\app\libs\youmi-android_v3.07_2012-05-04.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="2f2c53e406e39e0eb7959c7156343e30bae9fc7b">
+        <dex dex="D:\project\StudioProjects\mobilesafe\app\build\intermediates\pre-dexed\debug\youmi-android_v3.07_2012-05-04_81eef6192802f6a878771e9fbbc896315727c315.jar" />
+    </item>
+
+</items>

@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\anim\\tran_enter.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\anim\\tran_enter.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\anim\\tran_exit.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\anim\\tran_exit.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\anim\\alpha_enter.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\anim\\alpha_enter.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\mobilesafe\\app\\build\\intermediates\\res\\merged\\debug\\anim\\alpha_exit.xml",
+        "source": "D:\\project\\StudioProjects\\mobilesafe\\app\\src\\main\\res\\anim\\alpha_exit.xml"
+    }
+]

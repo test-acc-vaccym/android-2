@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main.xml",
+        "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\main.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\floatview.xml",
+        "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\floatview.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\listview.xml",
+        "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\listview.xml"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item.xml",
+        "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\item.xml"
+    }
+]

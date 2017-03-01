@@ -1,0 +1,394 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:2:1-205:12
+	package
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:3:5-35
+		INJECTED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml
+		INJECTED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:5:5-30
+		INJECTED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml
+		INJECTED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml
+	android:versionCode
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:4:5-28
+		INJECTED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml
+		INJECTED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:2:11-69
+uses-sdk
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:7:5-43
+	android:targetSdkVersion
+		INJECTED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml
+		INJECTED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:7:15-40
+		INJECTED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml
+		INJECTED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:9:5-67
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:9:22-64
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:10:5-84
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:10:22-81
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:11:22-78
+uses-permission#android.permission.INSTALL_PACKAGES
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:12:5-75
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:12:22-72
+uses-permission#android.permission.READ_CONTACTS
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:13:5-72
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:13:22-69
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:14:5-75
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:14:22-72
+uses-permission#android.permission.PROCESS_OUTGOING_CALLS
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:15:5-81
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:15:22-78
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:17:5-81
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:17:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:19:5-79
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:19:22-76
+uses-permission#android.permission.ACCESS_MOCK_LOCATION
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:21:5-79
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:21:22-76
+uses-permission#android.permission.RECEIVE_SMS
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:22:5-70
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:22:22-67
+uses-permission#android.permission.SEND_SMS
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:23:5-67
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:23:22-64
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:24:5-81
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:24:22-78
+uses-permission#android.permission.CALL_PHONE
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:25:5-69
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:25:22-66
+uses-permission#android.permission.WRITE_CONTACTS
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:26:5-73
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:26:22-70
+uses-permission#android.permission.READ_SMS
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:27:5-67
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:27:22-64
+uses-permission#android.permission.WRITE_SMS
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:28:5-68
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:28:22-65
+uses-permission#android.permission.GET_TASKS
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:29:5-68
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:29:22-65
+uses-permission#android.permission.KILL_BACKGROUND_PROCESSES
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:30:5-84
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:30:22-81
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:32:5-33:23
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:32:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:34:5-35:23
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:34:22-73
+uses-permission#com.android.launcher.permission.INSTALL_SHORTCUT
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:36:5-37:23
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:36:22-85
+application
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:39:5-198:19
+	android:label
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:41:9-41
+	android:icon
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:40:9-45
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:42:9-45
+uses-library#android.test.runner
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:43:9-60
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:43:23-57
+activity#cn.itcast.mobilesafe.activity.SplashActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:45:9-54:20
+	android:label
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:46:13-45
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:48:13-77
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:47:13-52
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:49:13-53:29
+action#android.intent.action.MAIN
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:50:17-69
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:50:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:52:17-77
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:52:27-74
+activity#cn.itcast.mobilesafe.activity.MainActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:55:9-58:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:57:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:56:13-50
+activity#cn.itcast.mobilesafe.activity.SettingCenterActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:59:9-62:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:61:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:60:13-59
+activity#cn.itcast.mobilesafe.activity.LostProtectedActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:63:9-66:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:65:13-61
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:64:13-59
+activity#cn.itcast.mobilesafe.activity.Setup1ConfigActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:67:9-70:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:69:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:68:13-58
+activity#cn.itcast.mobilesafe.activity.Setup2ConfigActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:71:9-74:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:73:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:72:13-58
+activity#cn.itcast.mobilesafe.activity.Setup3ConfigActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:75:9-78:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:77:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:76:13-58
+activity#cn.itcast.mobilesafe.activity.ContactListActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:79:9-82:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:81:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:80:13-57
+activity#cn.itcast.mobilesafe.activity.Setup4ConfigActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:83:9-86:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:85:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:84:13-58
+activity#cn.itcast.mobilesafe.activity.LostProtectedSettingActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:87:9-90:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:89:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:88:13-66
+activity#cn.itcast.mobilesafe.activity.AtoolsActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:91:9-94:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:93:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:92:13-52
+activity#cn.itcast.mobilesafe.activity.AddIpCallActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:95:9-98:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:97:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:96:13-55
+activity#cn.itcast.mobilesafe.activity.AddressQueryActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:99:9-102:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:101:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:100:13-58
+activity#cn.itcast.mobilesafe.activity.DragViewActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:103:9-106:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:105:13-77
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:104:13-54
+activity#cn.itcast.mobilesafe.activity.BlackNumberListActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:107:9-111:20
+	android:launchMode
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:108:13-43
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:110:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:109:13-61
+activity#cn.itcast.mobilesafe.activity.AppManagerActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:112:9-115:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:114:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:113:13-56
+activity#cn.itcast.mobilesafe.activity.AppLockManagerActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:116:9-119:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:118:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:117:13-60
+activity#cn.itcast.mobilesafe.activity.EnterPasswordActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:120:9-124:20
+	android:launchMode
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:121:13-48
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:123:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:122:13-59
+activity#cn.itcast.mobilesafe.activity.TaskManagerActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:125:9-128:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:127:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:126:13-57
+activity#cn.itcast.mobilesafe.activity.TaskManagerSettingActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:129:9-132:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:131:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:130:13-64
+activity#cn.itcast.mobilesafe.activity.TrafficManagerActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:133:9-136:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:135:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:134:13-60
+activity#cn.itcast.mobilesafe.activity.CommonNumberActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:137:9-140:20
+	android:theme
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:139:13-66
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:138:13-58
+activity#net.youmi.android.AdActivity
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:141:9-124
+	android:configChanges
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:141:63-122
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:141:19-62
+receiver#cn.itcast.mobilesafe.receiver.PhoneReceiver
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:142:9-146:20
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:142:19-57
+intent-filter#android.intent.action.NEW_OUTGOING_CALL
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:143:13-145:29
+	android:priority
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:143:28-51
+action#android.intent.action.NEW_OUTGOING_CALL
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:144:17-82
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:144:25-79
+receiver#cn.itcast.mobilesafe.receiver.SmsRecevier
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:147:9-151:20
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:147:19-55
+intent-filter#android.provider.Telephony.SMS_RECEIVED
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:148:13-150:29
+	android:priority
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:148:28-51
+action#android.provider.Telephony.SMS_RECEIVED
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:149:17-82
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:149:25-79
+receiver#cn.itcast.mobilesafe.receiver.MyAdmin
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:152:9-160:20
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:152:19-51
+meta-data#android.app.device_admin
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:153:13-155:52
+	android:resource
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:155:17-49
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:154:17-56
+intent-filter#android.app.action.DEVICE_ADMIN_ENABLED
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:157:13-159:29
+action#android.app.action.DEVICE_ADMIN_ENABLED
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:158:17-82
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:158:25-79
+receiver#cn.itcast.mobilesafe.receiver.BootCompleteReceiver
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:161:9-165:20
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:161:19-64
+intent-filter#android.intent.action.BOOT_COMPLETED
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:162:13-164:29
+	android:priority
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:162:28-51
+action#android.intent.action.BOOT_COMPLETED
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:163:17-79
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:163:25-76
+receiver#cn.itcast.mobilesafe.receiver.ProcessReceiver
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:166:9-174:20
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:166:19-59
+intent-filter#android.appwidget.action.APPWIDGET_UPDATE
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:167:13-169:29
+action#android.appwidget.action.APPWIDGET_UPDATE
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:168:17-84
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:168:25-81
+meta-data#android.appwidget.provider
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:171:13-173:66
+	android:resource
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:173:17-63
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:172:17-58
+receiver#cn.itcast.mobilesafe.receiver.KillProcessReceiver
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:175:9-179:20
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:175:19-63
+intent-filter#cn.itcast.action.killprocess
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:176:13-178:29
+action#cn.itcast.action.killprocess
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:177:17-71
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:177:25-68
+service#cn.itcast.mobilesafe.service.ShowAddressService
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:181:9-182:19
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:181:18-60
+service#cn.itcast.mobilesafe.service.BlackNumberService
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:183:9-184:19
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:183:18-60
+service#cn.itcast.mobilesafe.service.BackupSmsService
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:185:9-186:19
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:185:18-58
+service#cn.itcast.mobilesafe.service.AppLockService
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:187:9-188:19
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:187:18-56
+service#cn.itcast.mobilesafe.service.AutoClearService
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:189:9-190:19
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:189:18-58
+service#cn.itcast.mobilesafe.service.ProcessWidgetService
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:191:9-192:19
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:191:18-62
+provider#cn.itcast.mobilesafe.provider.AppLockProvider
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:194:9-197:20
+	android:authorities
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:195:13-42
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:196:13-53
+instrumentation
+ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:200:5-203:23
+	android:targetPackage
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:202:9-53
+	android:name
+		ADDED from D:\project\StudioProjects\mobilesafe\app\src\main\AndroidManifest.xml:201:9-62

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lemonchiffon">#223344</color>
+    <string name="app_name">批量转换编码</string>
+    <string name="btn_transfer">转换</string>
+    <string name="button_find_string">查找</string>
+    <string name="button_replace_string">替换</string>
+    <string name="cb_multi">允许多个目录</string>
+    <string name="check_box_expand">扩展(\\n,\\r,\\t,\\0,……)</string>
+    <string name="check_box_regex">使用正则</string>
+    <string name="dialog_read_from_dir">文件管理器</string>
+    <string name="edit_hint_find_string">输入您要查找的字符串</string>
+    <string name="edit_hint_replace_string">输入您要替换的字符串或者正则表达式</string>
+    <string name="find_result">查找结果</string>
+    <string name="ignore_case">不区分大小写</string>
+    <string name="reserve_text">保留内容</string>
+    <string name="show_all">显示所有文件</string>
+    <string name="show_detail">显示详细信息</string>
+    <string name="spinner_from">从</string>
+    <string name="spinner_to">到</string>
+    <string name="text_file_path">输入文件路径或者按键选择文件</string>
+    <string name="text_select">请选择要转换的文件或者路径:</string>
+    <style name="AppTheme" parent="@android:style/Theme.Holo.Light"/>
+</resources>

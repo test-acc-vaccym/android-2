@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon.png",
+        "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\drawable\\icon.png"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ex_doc.png",
+        "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\drawable\\ex_doc.png"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ex_folder.png",
+        "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\drawable\\ex_folder.png"
+    }
+]

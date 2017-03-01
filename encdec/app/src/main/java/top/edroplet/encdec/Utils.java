@@ -1,8 +1,10 @@
 package top.edroplet.encdec;
+
 import android.content.Context;
 import android.util.Log;
 import android.util.LruCache;
 import android.widget.Toast;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -14,9 +16,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.security.Key;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -25,7 +27,36 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Utils {
+	/**
+	 * 7位ASCII字符，也叫作ISO646-US、Unicode字符集的基本拉丁块
+	 */
+	public static final String US_ASCII = "US-ASCII";
+	/**
+	 * ISO 拉丁字母表 No.1，也叫作 ISO-LATIN-1
+	 */
+	public static final String ISO_8859_1 = "ISO-8859-1";
+	/**
+	 * 8 位 UCS 转换格式
+	 */
+	public static final String UTF_8 = "UTF-8";
+	/**
+	 * 16 位 UCS 转换格式，Big Endian（最低地址存放高位字节）字节顺序
+	 */
+	public static final String UTF_16BE = "UTF-16BE";
+	/**
+	 * 16 位 UCS 转换格式，Little-endian（最高地址存放低位字节）字节顺序
+	 */
+	public static final String UTF_16LE = "UTF-16LE";
+	/**
+	 * 16 位 UCS 转换格式，字节顺序由可选的字节顺序标记来标识
+	 */
+	public static final String UTF_16 = "UTF-16";
+	/**
+	 * 中文超大字符集
+	 */
+	public static final String GBK = "GBK";
 	private static final String TAG="Utils";
+
 	public static void TranferToUTF8(Context context, String files) {
 		if ( files.length() == 0 ) {
 			Toast.makeText(context, "您没有选择文件!", Toast.LENGTH_LONG).show();
@@ -53,8 +84,8 @@ public class Utils {
 			}
 		}
 	}
-	
-	public static void TranferTo(Context context, String files, String encodingFrom,String encodingTo) {
+
+	public static void TransferTo(Context context, String files, String encodingFrom,String encodingTo) {
 		if ( files.length() == 0 ) {
 			Toast.makeText(context, "您没有选择文件!", Toast.LENGTH_LONG).show();
 			return;
@@ -82,68 +113,12 @@ public class Utils {
 			}
 		}
 	}
-	
-	/** 7位ASCII字符，也叫作ISO646-US、Unicode字符集的基本拉丁块 */
-	public static final String US_ASCII = "US-ASCII";
 
-	/** ISO 拉丁字母表 No.1，也叫作 ISO-LATIN-1 */
-	public static final String ISO_8859_1 = "ISO-8859-1";
-
-	/** 8 位 UCS 转换格式 */
-	public static final String UTF_8 = "UTF-8";
-
-	/** 16 位 UCS 转换格式，Big Endian（最低地址存放高位字节）字节顺序 */
-	public static final String UTF_16BE = "UTF-16BE";
-
-	/** 16 位 UCS 转换格式，Little-endian（最高地址存放低位字节）字节顺序 */
-	public static final String UTF_16LE = "UTF-16LE";
-
-	/** 16 位 UCS 转换格式，字节顺序由可选的字节顺序标记来标识 */
-	public static final String UTF_16 = "UTF-16";
-
-	/** 中文超大字符集 */
-	public static final String GBK = "GBK";
-	/**
-	 * 将字符编码转换成US-ASCII码
-	 */
-	public String toASCII(String str) throws UnsupportedEncodingException {
-		return this.Utils(str, US_ASCII);
-	}
-	/**
-	 * 将字符编码转换成ISO-8859-1码
-	 */
-	public String toISO_8859_1(String str) throws UnsupportedEncodingException {
-		return this.Utils(str, ISO_8859_1);
-	}
 	/**
 	 * 将字符编码转换成UTF-8码
 	 */
 	public static String toUTF_8(String str) throws UnsupportedEncodingException {
 		return Utils(str, UTF_8);
-	}
-	/**
-	 * 将字符编码转换成UTF-16BE码
-	 */
-	public String toUTF_16BE(String str) throws UnsupportedEncodingException {
-		return this.Utils(str, UTF_16BE);
-	}
-	/**
-	 * 将字符编码转换成UTF-16LE码
-	 */
-	public String toUTF_16LE(String str) throws UnsupportedEncodingException {
-		return this.Utils(str, UTF_16LE);
-	}
-	/**
-	 * 将字符编码转换成UTF-16码
-	 */
-	public String toUTF_16(String str) throws UnsupportedEncodingException {
-		return this.Utils(str, UTF_16);
-	}
-	/**
-	 * 将字符编码转换成GBK码
-	 */
-	public String toGBK(String str) throws UnsupportedEncodingException {
-		return this.Utils(str, GBK);
 	}
 
 	/**
@@ -163,6 +138,7 @@ public class Utils {
 		}
 		return null;
 	}
+
 	/**
 	 * 字符串编码转换的实现方法
 	 * @param str  待转换编码的字符串
@@ -181,6 +157,7 @@ public class Utils {
 		}
 		return null;
 	}
+
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		Utils test = new Utils();
 		String str = "This is a 中文的 String!";
@@ -221,14 +198,13 @@ public class Utils {
 		System.out.println(s);
 	}
 
-
 	//参数string为你的文件名
 	public static String readFileContent(Context context, String fileName) throws IOException {
 
 		fileName = URLDecoder.decode(fileName,UTF_8);
 		Log.d("read",fileName);
 		File file = new File(fileName);
-		
+
 		if ( !file.exists() ) {
 			Toast.makeText(context, "文件不存在，请检查!"+fileName, Toast.LENGTH_LONG).show();
 			return null;
@@ -253,9 +229,8 @@ public class Utils {
 		return sb.toString();
 	}
 
-
 	public static void writeContent(Context context, String fileName, String json) {
-		
+
 		try {
 			fileName = URLDecoder.decode(fileName, UTF_8);
 		} catch (UnsupportedEncodingException e) {
@@ -289,7 +264,6 @@ public class Utils {
 		}
 	}
 
-
 	public static String getMD5Data(String str) {
 		try {
 			MessageDigest digest = MessageDigest.getInstance("md5");
@@ -312,22 +286,7 @@ public class Utils {
 		}
 		return null;
 	}
-	public void getS() {
-		int count = 0;
-		String regEx = "[\\u4e00-\\u9fa5]";
-		// System.out.println(regEx);
-		String str = "字符串";
-		// System.out.println(str);
-		Pattern p = Pattern.compile(regEx);
-		Matcher m = p.matcher(str);
-		System.out.print("提取出来的中文有：");
-		while ( m.find() ) {
-			System.out.print(m.group(0) + " ");
-		}
-		System.out.println();
-		System.out.println(p.matches(regEx, str));
-	}
-	
+
 	private static String getMsgString(Object ...msgs){
 		StringBuffer sb = new StringBuffer();
 		for (Object msg : msgs){
@@ -337,32 +296,34 @@ public class Utils {
 		}
 		return sb.toString();
 	}
-	public static void logd(String flag, Object ...msgs){
+
+	public static void logd(String flag, Object ...msgs) {
 		Log.d(flag, getMsgString(msgs));
 	}
-	public static void loge(String flag, Object ...msgs){
+
+	public static void loge(String flag, Object... msgs) {
 		Log.e(flag, getMsgString(msgs));
 	}
 
-	public static textCache findInFiles(final Context context, textCache tc, final String filePath, final String strPattern, final boolean isRegex, final boolean showDetail, boolean ignoreCase){
+	public static void findInFiles(final Context context, textCache tc, ArrayList keyList, final String filePath, final String strPattern, final boolean isRegex, final boolean showDetail, boolean ignoreCase){
 
 		if ( filePath.length() == 0 ) {
 			Toast.makeText(context, "您没有选择文件!", Toast.LENGTH_LONG).show();
-			return null;
+			return;
 		}
 
-		if (strPattern.isEmpty()){
-			Toast.makeText(context,"Nothing to find!",Toast.LENGTH_LONG);
-			return null;
+		if (strPattern.isEmpty()) {
+			Toast.makeText(context, "Nothing to find!",Toast.LENGTH_LONG);
+			return;
 		}
 
 		try {
 			//StringBuffer sb = new StringBuffer();
-			
+
 			File f = new File(filePath);
-			if (!f.exists()){
-				Toast.makeText(context,"Nothing to find!",Toast.LENGTH_SHORT);
-				return null;
+			if (!f.exists()) {
+				Toast.makeText(context, "Nothing to find!", Toast.LENGTH_SHORT);
+				return;
 			}
 			Log.e(TAG,filePath);
 			if (f.isDirectory()) {
@@ -370,21 +331,129 @@ public class Utils {
 				Utils ut = new Utils();
 						// 创建一个线程池
 						ExecutorService pool = Executors.newFixedThreadPool(files.length);
-						// 创建两个有返回值的任务
-						Callable c1 = ut.new FindCallable(context, tc, files, strPattern, isRegex, showDetail, ignoreCase);
+				// 创建两个有返回值的任务
+				Callable c1 = ut.new FindCallable(context, tc, keyList, files, strPattern, isRegex, showDetail, ignoreCase);
 						// 执行任务并获取Future对象
 						Future f1 = pool.submit(c1);
 						// 从Future对象上获取任务的返回值，并添加到sb
-						// sb.append(f1.get().toString());
-						tc = f1.get();
-						// return sb.append(findInFiles(context, fi.getPath(),strPattern,isRegex));
+				// sb.append(f1.get().toString());
+				// return sb.append(findInFiles(context, fi.getPath(),strPattern,isRegex));
+			} else {
+				find(tc, keyList, f, strPattern, isRegex, showDetail, ignoreCase);
 			}
-			return tc;
 		}catch (Exception e) {
 			Log.e(TAG,e.toString());
 			Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
-			return tc;
 		}
+	}
+
+	public static textCache find(textCache tc, ArrayList keyList, File fi, String strPattern, boolean isRegex, boolean showDetail, boolean ignoreCase) {
+		StringBuffer sb = new StringBuffer();
+		BufferedReader br;
+		try {
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(fi)));
+			String filePath = fi.getPath();
+			int lineNo = 0;
+			for (String line = br.readLine(); line != null; line = br.readLine()) {
+				lineNo++;
+				if (isRegex) {
+					Pattern p = Pattern.compile(strPattern);
+					Matcher m = p.matcher(line);
+					if (ignoreCase) {
+						// 不区分大小写
+						p = Pattern.compile(strPattern.toUpperCase());
+						m = p.matcher(line.toUpperCase());
+					}
+					if (m.matches()) {
+						if (showDetail) {
+							// 显示详细文本
+							sb.append(filePath + " " + lineNo + ":" + line);
+						} else {
+							sb.append(filePath + " " + lineNo);
+						}
+					}
+				} else {
+					boolean isExists = line.contains(strPattern);
+					if (ignoreCase) {
+						// 不区分大小写
+						isExists = line.toUpperCase().contains(strPattern.toUpperCase());
+					}
+					if (isExists) {
+						if (showDetail) {
+							// 显示详细文本
+							sb.append(filePath + " " + lineNo + ":" + line);
+						} else {
+							sb.append(filePath + " " + lineNo);
+						}
+					}
+				}
+			}
+			br.close();
+			String key = MD5.getMD5(filePath);
+			keyList.add(key);
+			tc.put(key, sb.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return tc;
+	}
+
+	/**
+	 * 将字符编码转换成US-ASCII码
+	 */
+	public String toASCII(String str) throws UnsupportedEncodingException {
+		return this.Utils(str, US_ASCII);
+	}
+
+	/**
+	 * 将字符编码转换成ISO-8859-1码
+	 */
+	public String toISO_8859_1(String str) throws UnsupportedEncodingException {
+		return this.Utils(str, ISO_8859_1);
+	}
+
+	/**
+	 * 将字符编码转换成UTF-16BE码
+	 */
+	public String toUTF_16BE(String str) throws UnsupportedEncodingException {
+		return this.Utils(str, UTF_16BE);
+	}
+
+	/**
+	 * 将字符编码转换成UTF-16LE码
+	 */
+	public String toUTF_16LE(String str) throws UnsupportedEncodingException {
+		return this.Utils(str, UTF_16LE);
+	}
+
+	/**
+	 * 将字符编码转换成UTF-16码
+	 */
+	public String toUTF_16(String str) throws UnsupportedEncodingException {
+		return this.Utils(str, UTF_16);
+	}
+
+	/**
+	 * 将字符编码转换成GBK码
+	 */
+	public String toGBK(String str) throws UnsupportedEncodingException {
+		return this.Utils(str, GBK);
+	}
+
+	public void getS() {
+		int count = 0;
+		String regEx = "[\\u4e00-\\u9fa5]";
+		// System.out.println(regEx);
+		String str = "字符串";
+		// System.out.println(str);
+		Pattern p = Pattern.compile(regEx);
+		Matcher m = p.matcher(str);
+		System.out.print("提取出来的中文有：");
+		while (m.find()) {
+			System.out.print(m.group(0) + " ");
+		}
+		System.out.println();
+		System.out.println(p.matches(regEx, str));
 	}
 
 	class FindCallable implements Callable{
@@ -392,77 +461,37 @@ public class Utils {
 		private boolean isRegex, showDetail, ignoreCase;
 		private Context context;
 		private textCache tc;
-		private File [] files;
+		private File[] files;
+		private ArrayList keyList;
 
-		FindCallable(Context context, textCache tc, File [] files, String strPattern, boolean isRegex, boolean showDetail, boolean ignoreCase) {
+		FindCallable(Context context, textCache tc, ArrayList keyList, File[] files, String strPattern, boolean isRegex, boolean showDetail, boolean ignoreCase) {
 			this.context = context;
 			this.tc = tc;
+			this.keyList = keyList;
 			this.strPattern = strPattern;
 			this.files = files;
 			this.isRegex = isRegex;
 			this.showDetail = showDetail;
 			this.ignoreCase = ignoreCase;
 		}
-		
+
 		public textCache call() {
 			try {
 				for (File fi : files) {
 					String filePath = fi.getPath();
 					if (fi.isDirectory()) {
 						// sb.append(findInFiles(context, fi.getPath(), strPattern, isRegex, showDetail, ignoreCase));
-						findInFiles(context, tc, filePath, strPattern, isRegex, showDetail, ignoreCase);
+						findInFiles(context, tc, keyList, filePath, strPattern, isRegex, showDetail, ignoreCase);
 					} else {
-				StringBuffer sb = new StringBuffer();
-				BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fi)));
-				int lineNo = 0;
-				for (String line = br.readLine(); line != null; line = br.readLine()) {
-					lineNo++;
-					if (isRegex) {
-						Pattern p = Pattern.compile(strPattern);
-						Matcher m = p.matcher(line);
-						if (ignoreCase){
-							// 不区分大小写
-							p = Pattern.compile(strPattern.toUpperCase());
-							m = p.matcher(line.toUpperCase());
-						}
-						if (m.matches()) {
-							if (showDetail) {
-								// 显示详细文本
-								sb.append(filePath + " " + lineNo + ":" + line);
-							}else {
-								sb.append(filePath + " " + lineNo );
-							}
-						}
-					} else {
-						boolean isExists = line.contains(strPattern);
-						if (ignoreCase){
-							// 不区分大小写
-							isExists = line.toUpperCase().contains(strPattern.toUpperCase());
-						}
-						if (isExists) {
-							if (showDetail) {
-								// 显示详细文本
-								sb.append(filePath + " " + lineNo + ":" + line);
-							}else {
-								sb.append(filePath + " " + lineNo );
-							}
-						}
+						find(tc, keyList, fi, strPattern, isRegex, showDetail, ignoreCase);
 					}
-				}
-				br.close();
-						String key = MD5.getMD5(filePath);
-				tc.put(key,sb.toString());
-				}
 				}
 			} catch (Exception e) {
 				Toast.makeText(context, "Error", Toast.LENGTH_LONG).show();
 			}
 			return tc;
 		}
-
 	}
-	
-	
 }
 
 class textCache extends LruCache <String, String>{

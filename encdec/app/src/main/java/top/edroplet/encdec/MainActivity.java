@@ -15,19 +15,18 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.io.DataOutputStream;
 import java.io.File;
-import top.edroplet.encdec.MainActivity;
-import top.edroplet.encdec.Utils;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class MainActivity extends Activity {
 	private static final String TAG="MainUI";
-    private final int REQUEST_EX = 10;
-
-	Spinner spinnerFrom, spinnerTo;
-	public String encodingFrom = null, encodingTo = null;
 	private static Context mContext;
-	
+	private final int REQUEST_EX = 10;
+	public String encodingFrom = null, encodingTo = null;
+	Spinner spinnerFrom, spinnerTo;
 	String[] formats = new String[]{Utils.GBK, Utils.UTF_8,Utils.US_ASCII,Utils.UTF_16,Utils.ISO_8859_1,Utils.UTF_16BE,Utils.UTF_16LE};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +98,7 @@ public class MainActivity extends Activity {
 			Utils.TranferToUTF8(ctx, et_main_filepath.getText().toString());
 		}
 		*/
-		Utils.TranferTo(mContext,et_main_filepath.getText().toString(),encodingFrom,encodingTo);
+		Utils.TransferTo(mContext, et_main_filepath.getText().toString(), encodingFrom, encodingTo);
 	}
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -188,12 +187,13 @@ public class MainActivity extends Activity {
 		// 使用lru
 		int maxMemory = (int) Runtime.getRuntime().maxMemory();
 		int memorySize = maxMemory / 16;
+		ArrayList<String> keyList = new ArrayList();
 		textCache tc = new textCache(memorySize);
 		
 		String [] files = path.split(";");
 		for (String file:files){
-			asyncTask at = new asyncTask(text_find_result);
-			asyncInput ai = new asyncInput(mContext, tc, file, toFind, isRegex,showDetail,ignoreCase);
+			asyncTask at = new asyncTask(text_find_result, keyList);
+			asyncInput ai = new asyncInput(mContext, tc, keyList, file, toFind, isRegex, showDetail, ignoreCase);
 			at.execute(ai);
 		}
 	}
@@ -203,9 +203,12 @@ public class MainActivity extends Activity {
 		String filePath,toFind;
 		Context ctx;
 		textCache tc;
-		public asyncInput(Context ctx, textCache tc, String filePath,String toFind, boolean isRegex, boolean showDetail, boolean ignoreCase){
+		ArrayList keyList;
+
+		public asyncInput(Context ctx, textCache tc, ArrayList keyList, String filePath, String toFind, boolean isRegex, boolean showDetail, boolean ignoreCase) {
 			this.ctx = ctx;
 			this.tc = tc;
+			this.keyList = keyList;
 			this.filePath = filePath;
 			this.toFind = toFind;
 			this.isRegex = isRegex;
@@ -216,19 +219,22 @@ public class MainActivity extends Activity {
 	
 	class asyncTask extends AsyncTask<asyncInput, TextView, textCache>{
 		TextView tv = null;
+		ArrayList<String> keyList;
 		//private StringBuffer sb = new StringBuffer();
 		private textCache tc;
-		public asyncTask(TextView tv){
+
+		public asyncTask(TextView tv, ArrayList keyList) {
 			super();
 			this.tv=tv;
+			this.keyList = keyList;
 		}
 
 		@Override
 		protected textCache doInBackground(asyncInput[] p1) {
 			// TODO: Implement this method
-			textCache result = Utils.findInFiles(mContext,p1[0].tc, p1[0].filePath, p1[0].toFind, p1[0].isRegex, p1[0].showDetail, p1[0].ignoreCase);
+			Utils.findInFiles(mContext, p1[0].tc, p1[0].keyList, p1[0].filePath, p1[0].toFind, p1[0].isRegex, p1[0].showDetail, p1[0].ignoreCase);
 			//tv.append(result.toString());
-			return result;
+			return tc;
 		}
 
 		@Override
@@ -243,6 +249,11 @@ public class MainActivity extends Activity {
 			// TODO: Implement this method
 			// values[0].append(sb.toString());
 			values[0].setText(tc.toString());
+			for (Iterator it2 = keyList.iterator(); it2.hasNext(); ) {
+				String msg = it2.next().toString();
+				Log.e(TAG, "onProgressUpdate: " + msg);
+				values[0].append(msg);
+			}
 			super.onProgressUpdate(values);
 		}
 
@@ -250,10 +261,9 @@ public class MainActivity extends Activity {
 		protected void onPreExecute() {
 			// TODO: Implement this method
 			tv.setEnabled(true);
+			tv.setText("hello world!");
 			super.onPreExecute();
 		}
 
-		
-		
 	}
 }

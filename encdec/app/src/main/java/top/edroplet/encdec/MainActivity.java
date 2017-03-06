@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -153,6 +154,7 @@ public class MainActivity extends Activity {
 		EditText et_main_filepath = (EditText) findViewById(R.id.et_main_filepath);
 		// 结果保存
 		TextView text_find_result = (TextView) findViewById(R.id.text_find_result);
+		text_find_result.setMovementMethod(ScrollingMovementMethod.getInstance());
 		// 是否保留原来的文本
 		CheckBox cb_reserve_text = (CheckBox) findViewById(R.id.cb_reserve_text);
 		// 是否显示详细信息
@@ -198,6 +200,7 @@ public class MainActivity extends Activity {
 			asyncInput ai = new asyncInput(mContext, tc, keyList, file, toFind, isRegex, showDetail, ignoreCase);
 			at.execute(ai);
 		}
+		Log.i(TAG, "findInFiles: Done!");
 	}
 	
 	class asyncInput {
@@ -218,11 +221,10 @@ public class MainActivity extends Activity {
 			this.ignoreCase = ignoreCase;
 		}
 	}
-	
-	class asyncTask extends AsyncTask<asyncInput, TextView, textCache>{
-		TextView tv = null;
-		ArrayList<String> keyList;
-		//private StringBuffer sb = new StringBuffer();
+
+	class asyncTask extends AsyncTask<asyncInput, TextView, syncTaskResponseData> {
+		private TextView tv = null;
+		private ArrayList<String> keyList;
 		private textCache tc;
 
 		public asyncTask(TextView tv, ArrayList keyList) {
@@ -232,29 +234,41 @@ public class MainActivity extends Activity {
 		}
 
 		@Override
-		protected textCache doInBackground(asyncInput[] p1) {
+		protected syncTaskResponseData doInBackground(asyncInput[] p1) {
 			// TODO: Implement this method
-			Utils.findInFiles(mContext, p1[0].tc, p1[0].keyList, p1[0].filePath, p1[0].toFind, p1[0].isRegex, p1[0].showDetail, p1[0].ignoreCase);
-			//tv.append(result.toString());
-			return tc;
+			syncTaskResponseData srd = new syncTaskResponseData(p1[0].keyList, p1[0].tc);
+			srd = Utils.findInFiles(mContext, p1[0].tc, p1[0].keyList, p1[0].filePath, p1[0].toFind, p1[0].isRegex, p1[0].showDetail, p1[0].ignoreCase);
+			return srd;
 		}
 
 		@Override
-		protected void onPostExecute(textCache result) {
+		protected void onPostExecute(syncTaskResponseData result) {
 			// TODO: Implement this method
 			super.onPostExecute(result);
-			this.tc = result;
+			tc = result.getTc();
+			keyList = result.getKeyList();
+
+			StringBuffer sb = new StringBuffer();
+			for (Iterator it2 = keyList.iterator(); it2.hasNext(); ) {
+				String msg = it2.next().toString();
+				// Log.e(TAG, "onPostExecute: " + msg);
+				String txt = tc.get(msg);
+				Log.e(TAG, "txt: " + txt);
+				sb.append(txt + "\n");
+			}
+			tv.setEnabled(true);
+			tv.setText(sb.toString());
+			Log.e(TAG, "onPostExecute Done ");
 		}
 
 		@Override
 		protected void onProgressUpdate(TextView[] values) {
 			// TODO: Implement this method
-			// values[0].append(sb.toString());
 			values[0].setText(tc.toString());
 			for (Iterator it2 = keyList.iterator(); it2.hasNext(); ) {
 				String msg = it2.next().toString();
 				Log.e(TAG, "onProgressUpdate: " + msg);
-				values[0].append(msg);
+				tv.append(msg);
 			}
 			super.onProgressUpdate(values);
 		}
@@ -262,6 +276,7 @@ public class MainActivity extends Activity {
 		@Override
 		protected void onPreExecute() {
 			// TODO: Implement this method
+			tv.setVisibility(View.VISIBLE);
 			tv.setEnabled(true);
 			tv.setText("hello world!");
 			super.onPreExecute();

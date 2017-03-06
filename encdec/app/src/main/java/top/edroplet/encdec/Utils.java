@@ -2,7 +2,6 @@ package top.edroplet.encdec;
 
 import android.content.Context;
 import android.util.Log;
-import android.util.LruCache;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -17,7 +16,6 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -80,6 +78,7 @@ public class Utils {
 				fis.close();
 				fos.close();
 			} catch (Exception e) {
+				e.printStackTrace();
 				Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
 			}
 		}
@@ -87,6 +86,7 @@ public class Utils {
 
 	public static void TransferTo(Context context, String files, String encodingFrom,String encodingTo) {
 		if ( files.length() == 0 ) {
+			loge(TAG, "您没有选择文件!");
 			Toast.makeText(context, "您没有选择文件!", Toast.LENGTH_LONG).show();
 			return;
 		}
@@ -109,6 +109,7 @@ public class Utils {
 				fis.close();
 				fos.close();
 			} catch (Exception e) {
+				e.printStackTrace();
 				Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
 			}
 		}
@@ -206,6 +207,7 @@ public class Utils {
 		File file = new File(fileName);
 
 		if ( !file.exists() ) {
+			Log.e(TAG, "readFileContent: " + "文件不存在，请检查!");
 			Toast.makeText(context, "文件不存在，请检查!"+fileName, Toast.LENGTH_LONG).show();
 			return null;
 		}
@@ -305,51 +307,54 @@ public class Utils {
 		Log.e(flag, getMsgString(msgs));
 	}
 
-	public static void findInFiles(final Context context, textCache tc, ArrayList keyList, final String filePath, final String strPattern, final boolean isRegex, final boolean showDetail, boolean ignoreCase){
-
+	public static syncTaskResponseData findInFiles(final Context context, textCache tc, ArrayList keyList, final String filePath, final String strPattern, final boolean isRegex, final boolean showDetail, boolean ignoreCase) {
+		syncTaskResponseData srd = new syncTaskResponseData(keyList, tc);
 		if ( filePath.length() == 0 ) {
+			loge(TAG, "No file!");
 			Toast.makeText(context, "您没有选择文件!", Toast.LENGTH_LONG).show();
-			return;
+			return srd;
 		}
-
 		if (strPattern.isEmpty()) {
+			loge(TAG, "Nothing to find!");
 			Toast.makeText(context, "Nothing to find!",Toast.LENGTH_LONG);
-			return;
+			return srd;
 		}
-
 		try {
 			//StringBuffer sb = new StringBuffer();
 
 			File f = new File(filePath);
 			if (!f.exists()) {
-				Toast.makeText(context, "Nothing to find!", Toast.LENGTH_SHORT);
-				return;
+				loge(TAG, "file not exists!");
+				// Toast.makeText(context, "Nothing to find!", Toast.LENGTH_SHORT);
+				return srd;
 			}
-			Log.e(TAG,filePath);
+			// Log.d(TAG,filePath);
 			if (f.isDirectory()) {
 				File[] files = f.listFiles(); // 列出所有文件
 				Utils ut = new Utils();
-						// 创建一个线程池
-						ExecutorService pool = Executors.newFixedThreadPool(files.length);
+				// 创建一个线程池
+				ExecutorService pool = Executors.newFixedThreadPool(files.length);
 				// 创建两个有返回值的任务
 				Callable c1 = ut.new FindCallable(context, tc, keyList, files, strPattern, isRegex, showDetail, ignoreCase);
-						// 执行任务并获取Future对象
-						Future f1 = pool.submit(c1);
-						// 从Future对象上获取任务的返回值，并添加到sb
+				// 执行任务并获取Future对象
+				Future f1 = pool.submit(c1);
+				// 从Future对象上获取任务的返回值，并添加到sb
 				// sb.append(f1.get().toString());
-				// return sb.append(findInFiles(context, fi.getPath(),strPattern,isRegex));
+				// srd = f1.get();
 			} else {
-				find(tc, keyList, f, strPattern, isRegex, showDetail, ignoreCase);
+				srd = find(tc, keyList, f, strPattern, isRegex, showDetail, ignoreCase);
 			}
 		}catch (Exception e) {
 			Log.e(TAG,e.toString());
-			Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
+			//Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
 		}
+		return srd;
 	}
 
-	public static textCache find(textCache tc, ArrayList keyList, File fi, String strPattern, boolean isRegex, boolean showDetail, boolean ignoreCase) {
+	public static syncTaskResponseData find(textCache tc, ArrayList keyList, File fi, String strPattern, boolean isRegex, boolean showDetail, boolean ignoreCase) {
 		StringBuffer sb = new StringBuffer();
 		BufferedReader br;
+		// Log.i(TAG, "find: "+ fi.getPath());
 		try {
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(fi)));
 			String filePath = fi.getPath();
@@ -389,13 +394,18 @@ public class Utils {
 				}
 			}
 			br.close();
-			String key = MD5.getMD5(filePath);
-			keyList.add(key);
-			tc.put(key, sb.toString());
+			if (sb.length() > 0) {
+				// Log.d(TAG, "find: "+ strPattern + " in " + filePath);
+				String key = getMD5Data(filePath);
+				keyList.add(key);
+				tc.put(key, sb.toString() + "\n");
+			}
 		} catch (Exception e) {
+			loge(TAG, e.toString());
 			e.printStackTrace();
 		}
-		return tc;
+		syncTaskResponseData srd = new syncTaskResponseData(keyList, tc);
+		return srd;
 	}
 
 	/**
@@ -475,50 +485,21 @@ public class Utils {
 			this.ignoreCase = ignoreCase;
 		}
 
-		public textCache call() {
+		public syncTaskResponseData call() {
+			syncTaskResponseData srd = new syncTaskResponseData(this.keyList, this.tc);
 			try {
 				for (File fi : files) {
 					String filePath = fi.getPath();
 					if (fi.isDirectory()) {
-						// sb.append(findInFiles(context, fi.getPath(), strPattern, isRegex, showDetail, ignoreCase));
-						findInFiles(context, tc, keyList, filePath, strPattern, isRegex, showDetail, ignoreCase);
+						srd = findInFiles(context, tc, keyList, filePath, strPattern, isRegex, showDetail, ignoreCase);
 					} else {
-						find(tc, keyList, fi, strPattern, isRegex, showDetail, ignoreCase);
+						srd = find(tc, keyList, fi, strPattern, isRegex, showDetail, ignoreCase);
 					}
 				}
 			} catch (Exception e) {
-				Toast.makeText(context, "Error", Toast.LENGTH_LONG).show();
+				e.printStackTrace();
 			}
-			return tc;
+			return srd;
 		}
-	}
-}
-
-class textCache extends LruCache <String, String>{
-	textCache(int maxSize){
-		super(maxSize);
-	}
-
-	@Override
-	protected int sizeOf(String key, String value) {
-		// TODO: Implement this method
-		return super.sizeOf(key, value);
-	}
-
-}
-
-/** * 对外提供getMD5(String)方法 * @author randyjia * */ 
-class MD5 { 
-public static String getMD5(String val) throws NoSuchAlgorithmException{ 
-	MessageDigest md5 = MessageDigest.getInstance("MD5");
-	md5.update(val.getBytes()); 
-	byte[] m = md5.digest();
-	//加密
-	return getString(m); 
-} 
-private static String getString(byte[] b){
-	StringBuffer sb = new StringBuffer();
-	for(int i = 0; i < b.length; i ++){
-		sb.append(b[i]); } return sb.toString();
 	}
 }

@@ -216,7 +216,11 @@
 				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:id="@+id/text_find_result"/>
+					android:id="@+id/text_find_result"
+					android:scrollbarStyle="insideOverlay"
+					android:fadeScrollbars="false"
+					android:scrollbars="vertical"
+					android:visibility="gone"/>
 			</LinearLayout>
 		</LinearLayout>
 	</ScrollView>

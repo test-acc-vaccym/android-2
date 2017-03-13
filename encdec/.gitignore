@@ -1,1 +1,7 @@
-/build
+build/
+app/build/
+*.class
+*.bin
+*.lock
+*.properties
+*.log

@@ -1,7 +1,31 @@
 [
     {
+        "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\anim002.png",
+        "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\drawable\\anim002.png"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\anim004.png",
+        "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\drawable\\anim004.png"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\anim006.png",
+        "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\drawable\\anim006.png"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\anim001.png",
+        "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\drawable\\anim001.png"
+    },
+    {
         "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon.png",
         "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\drawable\\icon.png"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\apic4383.jpg",
+        "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\drawable\\apic4383.jpg"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\anim003.png",
+        "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\drawable\\anim003.png"
     },
     {
         "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ex_doc.png",
@@ -10,5 +34,9 @@
     {
         "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ex_folder.png",
         "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\drawable\\ex_folder.png"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\anim005.png",
+        "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\drawable\\anim005.png"
     }
 ]

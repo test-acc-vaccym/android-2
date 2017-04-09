@@ -6,223 +6,68 @@
 	android:gravity="center_horizontal"
 	android:orientation="vertical">
 
-	<!--TextView
-		android:text="@string/text_select"
+	<TextView
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:textSize="16sp"
-		android:textStyle="bold"/-->
-
-	<EditText
-		android:id="@+id/et_main_filepath"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_gravity="center_horizontal"
-		android:hint="@string/text_file_path"
+		android:text="@string/tv_desc_main"
+		android:textSize="20sp"
 		android:textStyle="bold" />
-
-	<LinearLayout
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:orientation="horizontal">
-
-		<CheckBox
-			android:id="@+id/mainCheckBox_multiDir"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_weight="1.0"
-			android:checked="true"
-			android:text="@string/cb_multi"
-			android:textColor="#80ffbe00"
-			android:textSize="10sp" />
-		<CheckBox
-			android:id="@+id/mainCheckBox_allFiles"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_weight="1.0"
-			android:checked="true"
-			android:text="@string/show_all"
-			android:textColor="#80ff00eb"
-			android:textSize="10sp" />
-		<Button
-			android:id="@+id/btn_get_files"
-			android:layout_width="48dip"
-			android:layout_height="48dip"
-			android:layout_alignParentRight="true"
-			android:background="@drawable/ex_folder"
-			android:gravity="center"
-			android:onClick="getFiles"
-			android:src="@android:drawable/btn_star_big_on"
-			android:text="..." />
-
-	</LinearLayout>
-
-	<LinearLayout
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:orientation="horizontal">
-
-		<!--RadioGroup
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:orientation="horizontal"
-			android:layout_weight="1">
-
-			<RadioButton
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="utf-8"
-				android:id="@+id/mainRadioButton_utf8"
-				android:checked="true"/>
-
-			<RadioButton
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:id="@+id/mainRadioButton_ascii"
-				android:text="ascii"/>
-		</RadioGroup-->
-		<Spinner
-			android:id="@+id/mainSpinnerFrom"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/spinner_from"
-		/>
-		<Spinner
-			android:id="@+id/mainSpinnerTo"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/spinner_to"
-		/>
-		<Button
-			style="?android:attr/buttonStyleSmall"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_gravity="end"
-			android:onClick="transfer"
-			android:text="@string/btn_transfer" />
-
-	</LinearLayout>
-
 	<LinearLayout
 		style="?android:attr/buttonBarStyle"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:orientation="horizontal">
-	</LinearLayout>
-	<ScrollView
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:orientation="vertical">
-			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:orientation="horizontal">
-				<EditText
-					android:id="@+id/edit_find_string"
-					android:layout_width="0dp"
-					android:layout_height="wrap_content"
-					android:layout_gravity="start"
-					android:layout_weight="4"
-					android:hint="@string/edit_hint_find_string" />
-				<Button
-					android:id="@+id/button_find"
-					android:layout_width="0dp"
-					android:layout_height="wrap_content"
-					android:layout_gravity="end"
-					android:layout_weight="1"
-					android:onClick="findInFiles"
-					android:text="@string/button_find_string"
-					android:visibility="visible" />
-			</LinearLayout>
-			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:orientation="vertical">
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:orientation="horizontal">
-					<CheckBox
-						android:id="@+id/check_expand"
-						android:layout_width="0dp"
-						android:layout_height="wrap_content"
-						android:layout_gravity="start"
-						android:layout_weight="4"
-						android:text="@string/check_box_expand" />
-					<CheckBox
-						android:id="@+id/check_regex"
-						android:layout_width="0dp"
-						android:layout_height="wrap_content"
-						android:layout_gravity="start"
-						android:layout_weight="2"
-						android:text="@string/check_box_regex" />
-				</LinearLayout>
-				<LinearLayout
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:orientation="horizontal">
-					<EditText
-						android:id="@+id/edit_replace_string"
-						android:layout_width="0dp"
-						android:layout_height="wrap_content"
-						android:layout_weight="4"
-						android:hint="@string/edit_hint_replace_string" />
-					<Button
-						android:id="@+id/button_replace"
-						android:layout_width="0dp"
-						android:layout_height="wrap_content"
-						android:layout_gravity="end"
-						android:layout_weight="1"
-						android:text="@string/button_replace_string" />
-				</LinearLayout>
-			</LinearLayout>
-			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:orientation="vertical">
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:orientation="vertical">
-					<TextView
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:text="@string/find_result"/>
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:orientation="horizontal">
 
-					<LinearLayout
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:orientation="horizontal">
-						<CheckBox
-							android:id="@+id/cb_reserve_text"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:text="@string/reserve_text" />
-						<CheckBox
-							android:id="@+id/cb_show_detail"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:text="@string/show_detail" />
-						<CheckBox
-							android:id="@+id/cb_ignore_case"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:text="@string/ignore_case" />
-					</LinearLayout>
-				</LinearLayout>
-				<TextView
-					android:id="@+id/text_find_result"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:fadeScrollbars="false"
-					android:scrollbarStyle="insideOverlay"
-					android:scrollbars="vertical"
-					android:visibility="gone" />
-			</LinearLayout>
-		</LinearLayout>
-	</ScrollView>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/main_text_set" />
+
+		<Button
+			android:id="@+id/main_btn_transfer"
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/activity_horizontal_margin"
+			android:background="@android:color/holo_red_dark"
+			android:text="@string/btn_transfer" />
+		<Button
+			android:id="@+id/main_btn_find_replace"
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/activity_horizontal_margin"
+			android:background="@android:color/holo_blue_bright"
+			android:text="@string/button_find_string" />
+	</LinearLayout>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:background="@android:drawable/ic_dialog_info"
+		android:orientation="horizontal">
+
+		<TextView
+			style="?android:attr/textStyle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/main_test_set" />
+		<Button
+			android:id="@+id/main_btn_anim"
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/activity_horizontal_margin"
+			android:text="@string/main_test_anim"
+			android:textColor="#ef923232" />
+	</LinearLayout>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="8"
+		android:background="@android:drawable/ic_dialog_email">
+
+	</LinearLayout>
 </LinearLayout>
 

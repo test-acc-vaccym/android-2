@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="main_text_set">文字类</string>
+    <string name="tv_desc_main">工具集</string>
     <string name="text_select">请选择要转换的文件或者路径:</string>
     <string name="text_file_path">输入文件路径或者按键选择文件</string>
     <string name="cb_multi">允许多个目录</string>
@@ -19,5 +21,12 @@
     <string name="show_detail">显示详细信息</string>
     <string name="reserve_text">保留内容</string>
     <string name="ignore_case">不区分大小写</string>
+    <string name="browse" translatable="false">...</string>
+    <string name="title_activity_encoding_transfer">EncodingTransferActivity</string>
+    <string name="title_activity_find_replace">FindReplaceActivity</string>
+    <string name="main_test_set">测试工作集</string>
+    <string name="main_test_anim">动画</string>
+    <string name="title_activity_animator">AnimatorActivity</string>
+    <string name="anim_tv">动画测试文字</string>
 
 </resources>

@@ -39,6 +39,20 @@
         <activity
             android:name="top.edroplet.encdec.MulSelect"
             android:theme="@android:style/Animation.Dialog" />
+        <activity
+            android:name="top.edroplet.encdec.EncodingTransferActivity"
+            android:label="@string/title_activity_encoding_transfer" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="top.edroplet.encdec.FindReplaceActivity"
+            android:label="@string/title_activity_find_replace" />
+        <activity
+            android:name="top.edroplet.encdec.AnimatorActivity"
+            android:label="@string/title_activity_animator" />
     </application>
 
 </manifest>

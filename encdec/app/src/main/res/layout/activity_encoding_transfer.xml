@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_main_filepath"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:hint="@string/text_file_path"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/mainCheckBox_multiDir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:checked="true"
+            android:text="@string/cb_multi"
+            android:textColor="#80ffbe00"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/mainCheckBox_allFiles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:checked="true"
+            android:text="@string/show_all"
+            android:textColor="#80ff00eb"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btn_get_files"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:background="@drawable/ex_folder"
+            android:gravity="center"
+            android:onClick="getFiles"
+            android:src="@android:drawable/btn_star_big_on"
+            android:text="@string/browse" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!--RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="utf-8"
+                android:id="@+id/mainRadioButton_utf8"
+                android:checked="true"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mainRadioButton_ascii"
+                android:text="ascii"/>
+        </RadioGroup-->
+        <Spinner
+            android:id="@+id/mainSpinnerFrom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/spinner_from" />
+
+        <Spinner
+            android:id="@+id/mainSpinnerTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/spinner_to" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:onClick="transfer"
+            android:text="@string/btn_transfer" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"></LinearLayout>
+
+</LinearLayout>

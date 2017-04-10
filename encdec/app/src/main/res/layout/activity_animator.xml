@@ -23,13 +23,15 @@
 
     <Button
         android:id="@+id/anim_btn_test"
-        style="@android:style/ButtonBar"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="测试按钮啊啊啊啊啊 啊" />
+        android:shadowColor="#FFFFF000"
+        android:text="@string/anim_tv" />
 
     <ImageView
         android:id="@+id/anim_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:contentDescription="@string/app_name" />
 </LinearLayout>

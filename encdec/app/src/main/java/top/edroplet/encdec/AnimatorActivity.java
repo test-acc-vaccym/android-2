@@ -9,6 +9,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
@@ -29,6 +30,7 @@ public class AnimatorActivity extends Activity implements Animation.AnimationLis
     private Button btn_test;
     private int[] dIds = {R.drawable.anim001, R.drawable.anim002, R.drawable.anim003, R.drawable.anim004, R.drawable.anim005, R.drawable.anim006};
     private ImageView iv;
+    private boolean isStop = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,6 +165,24 @@ public class AnimatorActivity extends Activity implements Animation.AnimationLis
         super.onDestroy();
         animDraw.stop();
         animDraw.clearColorFilter();
+    }
+
+    public void toggleAnimDraw() {
+        if (isStop) {
+            isStop = false;
+            animDraw.start();
+        } else {
+            isStop = true;
+            animDraw.stop();
+        }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            toggleAnimDraw();
+        }
+        return super.onTouchEvent(event);
     }
 
     // ImagePiece类，此类保存了一个Bitmap对象和一个标识图片的顺序索引的int变量

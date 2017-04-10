@@ -30,7 +30,7 @@ public class AnimatorActivity extends Activity implements Animation.AnimationLis
     private Button btn_test;
     private int[] dIds = {R.drawable.anim001, R.drawable.anim002, R.drawable.anim003, R.drawable.anim004, R.drawable.anim005, R.drawable.anim006};
     private ImageView iv;
-    private boolean isStop = true;
+    private boolean isStop = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +81,7 @@ public class AnimatorActivity extends Activity implements Animation.AnimationLis
         // Log.i(TAG, "onCreate: photo url = "+photoUrl);
         for (ImagePiece ip : split(rightImg, 3, 5)) {
             Drawable draw = new BitmapDrawable(res, ip.bitmap);
-            animDraw.addFrame(draw, 100);
+            animDraw.addFrame(draw, 300);
         }
         iv.setBackground(animDraw);
         iv.postInvalidate();

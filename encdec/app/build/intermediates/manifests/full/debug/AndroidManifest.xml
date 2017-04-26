@@ -53,6 +53,7 @@
         <activity
             android:name="top.edroplet.encdec.AnimatorActivity"
             android:label="@string/title_activity_animator" />
+        <activity android:name="top.edroplet.encdec.SensorStudy" />
     </application>
 
 </manifest>

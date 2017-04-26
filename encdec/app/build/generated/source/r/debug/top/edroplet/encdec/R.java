@@ -75,9 +75,15 @@ public final class R {
         public static final int mainSpinnerTo=0x7f0a0009;
         public static final int main_btn_anim=0x7f0a0028;
         public static final int main_btn_find_replace=0x7f0a0027;
+        public static final int main_btn_sensor=0x7f0a0029;
         public static final int main_btn_transfer=0x7f0a0026;
         public static final int ok=0x7f0a0016;
         public static final int relative=0x7f0a0015;
+        public static final int sensor_studyListView_sensorList=0x7f0a002e;
+        public static final int sensor_studyTextView_name=0x7f0a002b;
+        public static final int sensor_studyTextView_number=0x7f0a002c;
+        public static final int sensor_studyTextView_typename=0x7f0a002d;
+        public static final int sensor_studyTextView_typenumber=0x7f0a002a;
         public static final int text_find_result=0x7f0a0014;
         public static final int title=0x7f0a001e;
         public static final int txtName=0x7f0a0019;
@@ -91,6 +97,8 @@ public final class R {
         public static final int item=0x7f040004;
         public static final int listview=0x7f040005;
         public static final int main=0x7f040006;
+        public static final int sensor_list_item=0x7f040007;
+        public static final int sensor_study=0x7f040008;
     }
     public static final class mipmap {
         public static final int ic_launcher=0x7f030000;
@@ -111,19 +119,20 @@ public final class R {
         public static final int find_result=0x7f09000c;
         public static final int ignore_case=0x7f09000d;
         public static final int main_test_anim=0x7f09000e;
-        public static final int main_test_set=0x7f09000f;
-        public static final int main_text_set=0x7f090010;
-        public static final int reserve_text=0x7f090011;
-        public static final int show_all=0x7f090012;
-        public static final int show_detail=0x7f090013;
-        public static final int spinner_from=0x7f090014;
-        public static final int spinner_to=0x7f090015;
-        public static final int text_file_path=0x7f090016;
-        public static final int text_select=0x7f090017;
-        public static final int title_activity_animator=0x7f090018;
-        public static final int title_activity_encoding_transfer=0x7f090019;
-        public static final int title_activity_find_replace=0x7f09001a;
-        public static final int tv_desc_main=0x7f09001b;
+        public static final int main_test_sensor=0x7f09000f;
+        public static final int main_test_set=0x7f090010;
+        public static final int main_text_set=0x7f090011;
+        public static final int reserve_text=0x7f090012;
+        public static final int show_all=0x7f090013;
+        public static final int show_detail=0x7f090014;
+        public static final int spinner_from=0x7f090015;
+        public static final int spinner_to=0x7f090016;
+        public static final int text_file_path=0x7f090017;
+        public static final int text_select=0x7f090018;
+        public static final int title_activity_animator=0x7f090019;
+        public static final int title_activity_encoding_transfer=0x7f09001a;
+        public static final int title_activity_find_replace=0x7f09001b;
+        public static final int tv_desc_main=0x7f09001c;
     }
     public static final class style {
         public static final int AppTheme=0x7f070000;

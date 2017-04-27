@@ -47,8 +47,7 @@
         <activity
             android:name=".AnimatorActivity"
             android:label="@string/title_activity_animator"></activity>
-		<activity
-			android:name=".SensorStudy"/>
+        <activity android:name=".SensorStudy" />
     </application>
 
 </manifest>

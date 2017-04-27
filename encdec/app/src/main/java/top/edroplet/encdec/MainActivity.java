@@ -19,12 +19,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnTransfer = (Button) findViewById(R.id.main_btn_transfer);
         btnFindReplace = (Button) findViewById(R.id.main_btn_find_replace);
         btnAnim = (Button) findViewById(R.id.main_btn_anim);
-		btnSensor = (Button) findViewById(R.id.main_btn_sensor);
-		
+        btnSensor = (Button) findViewById(R.id.main_btn_sensor);
+
         btnAnim.setOnClickListener(this);
         btnTransfer.setOnClickListener(this);
         btnFindReplace.setOnClickListener(this);
-		btnSensor.setOnClickListener(this);
+        btnSensor.setOnClickListener(this);
     }
 
     @Override

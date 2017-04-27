@@ -4,8 +4,16 @@
         "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\main.xml"
     },
     {
+        "merged": "F:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main.xml",
+        "source": "F:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\main.xml"
+    },
+    {
         "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\floatview.xml",
         "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\floatview.xml"
+    },
+    {
+        "merged": "F:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\listview.xml",
+        "source": "F:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\listview.xml"
     },
     {
         "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\listview.xml",
@@ -20,6 +28,10 @@
         "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\activity_find_replace.xml"
     },
     {
+        "merged": "F:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\sensor_study.xml",
+        "source": "F:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\sensor_study.xml"
+    },
+    {
         "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_encoding_transfer.xml",
         "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\activity_encoding_transfer.xml"
     },
@@ -28,11 +40,35 @@
         "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\activity_animator.xml"
     },
     {
+        "merged": "F:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\floatview.xml",
+        "source": "F:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\floatview.xml"
+    },
+    {
+        "merged": "F:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_find_replace.xml",
+        "source": "F:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\activity_find_replace.xml"
+    },
+    {
         "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\sensor_list_item.xml",
         "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\sensor_list_item.xml"
     },
     {
         "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item.xml",
         "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\item.xml"
+    },
+    {
+        "merged": "F:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item.xml",
+        "source": "F:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\item.xml"
+    },
+    {
+        "merged": "F:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_encoding_transfer.xml",
+        "source": "F:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\activity_encoding_transfer.xml"
+    },
+    {
+        "merged": "F:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_animator.xml",
+        "source": "F:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\activity_animator.xml"
+    },
+    {
+        "merged": "F:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\layout\\sensor_list_item.xml",
+        "source": "F:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\layout\\sensor_list_item.xml"
     }
 ]

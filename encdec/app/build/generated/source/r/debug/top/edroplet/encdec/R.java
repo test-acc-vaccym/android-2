@@ -79,9 +79,9 @@ public final class R {
         public static final int main_btn_transfer=0x7f0a0026;
         public static final int ok=0x7f0a0016;
         public static final int relative=0x7f0a0015;
-        public static final int sensor_studyListView_sensorList=0x7f0a002c;
-        public static final int sensor_studyTextView_number=0x7f0a002a;
-        public static final int sensor_studyTextView_typename=0x7f0a002b;
+        public static final int sensor_studyListView_sensorList=0x7f0a002e;
+        public static final int sensor_studyTextView_name=0x7f0a002b;
+        public static final int sensor_studyTextView_typenumber=0x7f0a002a;
         public static final int text_find_result=0x7f0a0014;
         public static final int title=0x7f0a001e;
         public static final int txtName=0x7f0a0019;

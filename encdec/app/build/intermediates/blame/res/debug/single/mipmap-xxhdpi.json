@@ -1,5 +1,9 @@
 [
     {
+        "merged": "F:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
+        "source": "F:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
         "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
         "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     }

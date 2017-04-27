@@ -1,9 +1,0 @@
-<<<<<<< HEAD
-#Thu Apr 13 19:20:20 CST 2017
-base.0=D\:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
-=======
-#Wed Apr 26 17:37:10 CST 2017
-base.0=F\:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
->>>>>>> 55fb1ac18999c4a94952894f78f4f9c872c6951d
-renamed.0=classes.dex
-file.0=F\:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

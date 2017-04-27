@@ -26,6 +26,7 @@
     <string name="title_activity_find_replace">FindReplaceActivity</string>
     <string name="main_test_set">测试工作集</string>
     <string name="main_test_anim">动画</string>
+	<string name="main_test_sensor">传感器</string>
     <string name="title_activity_animator">AnimatorActivity</string>
     <string name="anim_tv">动画测试文字</string>
 

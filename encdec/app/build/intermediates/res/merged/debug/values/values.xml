@@ -18,6 +18,7 @@
     <string name="find_result">查找结果</string>
     <string name="ignore_case">不区分大小写</string>
     <string name="main_test_anim">动画</string>
+    <string name="main_test_sensor">传感器</string>
     <string name="main_test_set">测试工作集</string>
     <string name="main_text_set">文字类</string>
     <string name="reserve_text">保留内容</string>

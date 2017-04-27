@@ -4,12 +4,12 @@
         "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\drawable\\anim002.png"
     },
     {
-        "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\anim004.png",
-        "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\drawable\\anim004.png"
-    },
-    {
         "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\anim006.png",
         "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\drawable\\anim006.png"
+    },
+    {
+        "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\anim004.png",
+        "source": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\drawable\\anim004.png"
     },
     {
         "merged": "D:\\project\\StudioProjects\\encdec\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\anim001.png",

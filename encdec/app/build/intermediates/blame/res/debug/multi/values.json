@@ -70,11 +70,11 @@
                 "from": {
                     "file": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\values\\strings.xml",
                     "position": {
-                        "startLine": 29,
+                        "startLine": 30,
                         "startColumn": 4,
-                        "startOffset": 1496,
+                        "startOffset": 1542,
                         "endColumn": 42,
-                        "endOffset": 1534
+                        "endOffset": 1580
                     }
                 }
             },
@@ -349,8 +349,27 @@
                     "startLine": 20,
                     "startColumn": 4,
                     "startOffset": 996,
+                    "endColumn": 48,
+                    "endOffset": 1040
+                },
+                "from": {
+                    "file": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 1,
+                        "startOffset": 1424,
+                        "endColumn": 45,
+                        "endOffset": 1468
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 1045,
                     "endColumn": 47,
-                    "endOffset": 1039
+                    "endOffset": 1088
                 },
                 "from": {
                     "file": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\values\\strings.xml",
@@ -365,11 +384,11 @@
             },
             {
                 "to": {
-                    "startLine": 21,
+                    "startLine": 22,
                     "startColumn": 4,
-                    "startOffset": 1044,
+                    "startOffset": 1093,
                     "endColumn": 45,
-                    "endOffset": 1085
+                    "endOffset": 1134
                 },
                 "from": {
                     "file": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\values\\strings.xml",
@@ -384,11 +403,11 @@
             },
             {
                 "to": {
-                    "startLine": 22,
+                    "startLine": 23,
                     "startColumn": 4,
-                    "startOffset": 1090,
+                    "startOffset": 1139,
                     "endColumn": 45,
-                    "endOffset": 1131
+                    "endOffset": 1180
                 },
                 "from": {
                     "file": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\values\\strings.xml",
@@ -403,11 +422,11 @@
             },
             {
                 "to": {
-                    "startLine": 23,
+                    "startLine": 24,
                     "startColumn": 4,
-                    "startOffset": 1136,
+                    "startOffset": 1185,
                     "endColumn": 43,
-                    "endOffset": 1175
+                    "endOffset": 1224
                 },
                 "from": {
                     "file": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\values\\strings.xml",
@@ -422,11 +441,11 @@
             },
             {
                 "to": {
-                    "startLine": 24,
+                    "startLine": 25,
                     "startColumn": 4,
-                    "startOffset": 1180,
+                    "startOffset": 1229,
                     "endColumn": 46,
-                    "endOffset": 1222
+                    "endOffset": 1271
                 },
                 "from": {
                     "file": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\values\\strings.xml",
@@ -441,11 +460,11 @@
             },
             {
                 "to": {
-                    "startLine": 25,
+                    "startLine": 26,
                     "startColumn": 4,
-                    "startOffset": 1227,
+                    "startOffset": 1276,
                     "endColumn": 42,
-                    "endOffset": 1265
+                    "endOffset": 1314
                 },
                 "from": {
                     "file": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\values\\strings.xml",
@@ -460,11 +479,11 @@
             },
             {
                 "to": {
-                    "startLine": 26,
+                    "startLine": 27,
                     "startColumn": 4,
-                    "startOffset": 1270,
+                    "startOffset": 1319,
                     "endColumn": 40,
-                    "endOffset": 1306
+                    "endOffset": 1355
                 },
                 "from": {
                     "file": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\values\\strings.xml",
@@ -479,11 +498,11 @@
             },
             {
                 "to": {
-                    "startLine": 27,
+                    "startLine": 28,
                     "startColumn": 4,
-                    "startOffset": 1311,
+                    "startOffset": 1360,
                     "endColumn": 57,
-                    "endOffset": 1364
+                    "endOffset": 1413
                 },
                 "from": {
                     "file": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\values\\strings.xml",
@@ -498,11 +517,11 @@
             },
             {
                 "to": {
-                    "startLine": 28,
+                    "startLine": 29,
                     "startColumn": 4,
-                    "startOffset": 1369,
+                    "startOffset": 1418,
                     "endColumn": 54,
-                    "endOffset": 1419
+                    "endOffset": 1468
                 },
                 "from": {
                     "file": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\values\\strings.xml",
@@ -517,30 +536,30 @@
             },
             {
                 "to": {
-                    "startLine": 29,
+                    "startLine": 30,
                     "startColumn": 4,
-                    "startOffset": 1424,
+                    "startOffset": 1473,
                     "endColumn": 68,
-                    "endOffset": 1488
+                    "endOffset": 1537
                 },
                 "from": {
                     "file": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\values\\strings.xml",
                     "position": {
-                        "startLine": 28,
+                        "startLine": 29,
                         "startColumn": 4,
-                        "startOffset": 1427,
+                        "startOffset": 1473,
                         "endColumn": 68,
-                        "endOffset": 1491
+                        "endOffset": 1537
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 30,
+                    "startLine": 31,
                     "startColumn": 4,
-                    "startOffset": 1493,
+                    "startOffset": 1542,
                     "endColumn": 85,
-                    "endOffset": 1574
+                    "endOffset": 1623
                 },
                 "from": {
                     "file": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\values\\strings.xml",
@@ -555,11 +574,11 @@
             },
             {
                 "to": {
-                    "startLine": 31,
+                    "startLine": 32,
                     "startColumn": 4,
-                    "startOffset": 1579,
+                    "startOffset": 1628,
                     "endColumn": 75,
-                    "endOffset": 1650
+                    "endOffset": 1699
                 },
                 "from": {
                     "file": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\values\\strings.xml",
@@ -574,11 +593,11 @@
             },
             {
                 "to": {
-                    "startLine": 32,
+                    "startLine": 33,
                     "startColumn": 4,
-                    "startOffset": 1655,
+                    "startOffset": 1704,
                     "endColumn": 44,
-                    "endOffset": 1695
+                    "endOffset": 1744
                 },
                 "from": {
                     "file": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\values\\strings.xml",
@@ -593,11 +612,11 @@
             },
             {
                 "to": {
-                    "startLine": 33,
+                    "startLine": 34,
                     "startColumn": 4,
-                    "startOffset": 1700,
+                    "startOffset": 1749,
                     "endColumn": 69,
-                    "endOffset": 1765
+                    "endOffset": 1814
                 },
                 "from": {
                     "file": "D:\\project\\StudioProjects\\encdec\\app\\src\\main\\res\\values\\styles.xml",

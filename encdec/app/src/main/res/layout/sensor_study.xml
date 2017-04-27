@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+    <TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="传感器数量"
+		android:textColor="#fdff0000"/>
+	<TextView
+		android:id="@+id/sensor_studyTextView_number"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textSize="16sp"/>
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="传感器名称:传感器类型;"
+		android:textColor="#df00ff00"/>
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textSize="16sp"
+		android:id="@+id/sensor_studyTextView_typename"/>
+	<ListView
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/sensor_studyListView_sensorList"
+		/>
+</LinearLayout>

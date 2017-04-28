@@ -1,6 +1,5 @@
-package top.edroplet.encdec;
+package top.edroplet.encdec.utils;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,7 +14,6 @@ import java.io.Writer;
 import java.net.URLDecoder;
 
 public class Tansfer {
-	static final String FLAG = "TANSFER";
 	//public static final String DefaultSrcEncodeFormat = "GBK";
 	public static final String DefaultSrcEncodeFormat = "GB2312";
 	public static final String DefaultDestEncodeFormat = "UTF-8";
@@ -24,6 +22,7 @@ public class Tansfer {
 	public static final String IOExceptionError = "文件读写错误！";
 	public static final String IsUtf8File = "文件是UTF-8编码格式！";
 	public static final String IsNotUtf8File = "文件不是UTF-8编码格式！";
+	static final String FLAG = "TANSFER";
 
 	public static String readFileAndTransfer(String fileName, String srcFormat, String destFormat) {
 		// Format fm;

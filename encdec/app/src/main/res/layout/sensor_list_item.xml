@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="horizontal"
-    android:background="#585860">
-    <TextView
-        android:id="@+id/sensor_studyTextView_typenumber"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="传感器类型"
-        android:layout_weight="1"
-        android:inputType="numberDecimal"
-        android:layout_column="1"
-        android:alpha="0.8"
-        android:textStyle="bold"/>
-    <TextView
-        android:id="@+id/sensor_studyTextView_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="传感器名称"
-        android:layout_weight="4"
-        android:paddingStart="3dp"/>
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="#98e860"
+	android:orientation="horizontal">
+
+	<TextView
+		android:id="@+id/sensor_list_itemTextView_type"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_column="1"
+		android:layout_weight="1"
+		android:alpha="0.95"
+		android:hint="传感器类型"
+		android:inputType="number"
+		android:textStyle="bold" />
+
+	<TextView
+		android:id="@+id/sensor_list_itemTextView_name"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="4"
+		android:hint="传感器名称"
+		android:paddingStart="3dp"
+		android:textStyle="normal" />
+
 </LinearLayout>
+

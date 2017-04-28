@@ -1,4 +1,4 @@
-package top.edroplet.encdec;
+package top.edroplet.encdec.activities.animation;
 
 import android.app.Activity;
 import android.content.res.Resources;
@@ -19,6 +19,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import top.edroplet.encdec.R;
 
 import static android.content.ContentValues.TAG;
 

@@ -1,4 +1,4 @@
-package top.edroplet.encdec;
+package top.edroplet.encdec.activities.io;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,6 +15,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import top.edroplet.encdec.R;
+import top.edroplet.encdec.utils.Utils;
+import top.edroplet.encdec.utils.syncTaskResponseData;
+import top.edroplet.encdec.utils.textCache;
 
 public class FindReplaceActivity extends Activity {
     private static final String TAG = "Find&Replace";

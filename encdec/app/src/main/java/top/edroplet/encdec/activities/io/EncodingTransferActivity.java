@@ -1,4 +1,4 @@
-package top.edroplet.encdec;
+package top.edroplet.encdec.activities.io;
 
 import android.app.Activity;
 import android.content.Context;
@@ -18,6 +18,9 @@ import android.widget.Toast;
 
 import java.io.DataOutputStream;
 import java.io.File;
+
+import top.edroplet.encdec.R;
+import top.edroplet.encdec.utils.Utils;
 
 public class EncodingTransferActivity extends Activity {
     private final int REQUEST_EX = 10;
@@ -75,7 +78,6 @@ public class EncodingTransferActivity extends Activity {
             intent.putExtra("show_all", cbsa.isChecked());
             intent.setDataAndType(Uri.fromFile(new File(Environment.getExternalStorageDirectory().getPath())), "text/*");   // 设置起始文件夹和文件类型
             intent.setClass(this, ExDialog.class);
-            // intent.setClass(this, MulSelect.class);
             startActivityForResult(intent, REQUEST_EX);
         } else {
             Log.d("main", "enter action get content");

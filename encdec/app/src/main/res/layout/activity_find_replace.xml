@@ -4,7 +4,7 @@
     android:id="@+id/activity_find_replace"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="top.edroplet.encdec.FindReplaceActivity">
+    tools:context="top.edroplet.encdec.activities.io.FindReplaceActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

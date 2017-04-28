@@ -12,6 +12,7 @@
 		android:text="@string/tv_desc_main"
 		android:textSize="20sp"
 		android:textStyle="bold" />
+
 	<LinearLayout
 		style="?android:attr/buttonBarStyle"
 		android:layout_width="match_parent"
@@ -31,7 +32,9 @@
 			android:layout_height="wrap_content"
 			android:layout_marginStart="@dimen/activity_horizontal_margin"
 			android:background="@android:color/holo_red_dark"
-			android:text="@string/btn_transfer" />
+			android:text="@string/btn_transfer"
+			android:textColor="@android:color/holo_blue_dark" />
+
 		<Button
 			android:id="@+id/main_btn_find_replace"
 			style="?android:attr/buttonBarButtonStyle"
@@ -39,8 +42,11 @@
 			android:layout_height="wrap_content"
 			android:layout_marginStart="@dimen/activity_horizontal_margin"
 			android:background="@android:color/holo_blue_bright"
-			android:text="@string/button_find_string" />
+			android:text="@string/button_find_string"
+			android:textColor="@android:color/holo_red_dark" />
+
 	</LinearLayout>
+
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
@@ -53,6 +59,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="@string/main_test_set" />
+
 		<Button
 			android:id="@+id/main_btn_anim"
 			style="?android:attr/buttonBarButtonStyle"
@@ -61,21 +68,70 @@
 			android:layout_marginStart="@dimen/activity_horizontal_margin"
 			android:text="@string/main_test_anim"
 			android:textColor="#ef923232" />
-        <Button
-            android:id="@+id/main_btn_sensor"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:text="@string/main_test_sensor"
-            android:textColor="#ef923232" />
+
+		<Button
+			android:id="@+id/main_btn_sensor"
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/activity_horizontal_margin"
+			android:text="@string/main_test_sensor"
+			android:textColor="#ef923232" />
+
 	</LinearLayout>
+
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
 		android:layout_weight="8"
-		android:background="@android:drawable/ic_dialog_email">
+		android:background="@android:drawable/ic_dialog_email"
+		android:orientation="vertical">
+
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+
+			<EditText
+				android:id="@+id/mainEditTextSmsNumber"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:hint="@string/mainEditTextSmsNumberHint"
+				android:inputType="number"
+				android:textColor="#00ff00"
+				android:textSize="12sp" />
+
+			<EditText
+				android:id="@+id/mainEditTextSmsContent"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="6"
+				android:hint="@string/mainEditTextSmsContentHint"
+				android:inputType="text"
+				android:textColor="#ff0000"
+				android:textSize="12sp" />
+
+			<Button
+				android:id="@+id/mainButtonSmsSend"
+				style="@style/AppTheme"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:text="@string/mainButtonSmsSendText"
+				android:textSize="12sp" />
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/like"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+
+		</LinearLayout>
 
 	</LinearLayout>
+
 </LinearLayout>
 

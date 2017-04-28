@@ -8,7 +8,7 @@
     <string name="show_all">显示所有文件</string>
     <string name="spinner_from">从</string>
     <string name="spinner_to">到</string>
-    <string name="app_name">批量转换编码</string>
+    <string name="app_name">dropletTools</string>
     <string name="dialog_read_from_dir">文件管理器</string>
     <string name="btn_transfer">转换</string>
     <string name="button_find_string">查找</string>
@@ -29,5 +29,7 @@
 	<string name="main_test_sensor">传感器</string>
     <string name="title_activity_animator">AnimatorActivity</string>
     <string name="anim_tv">动画测试文字</string>
-
+    <string name="mainEditTextSmsNumberHint">号码№</string>
+    <string name="mainEditTextSmsContentHint">发送的内容</string>
+    <string name="mainButtonSmsSendText">发送</string>
 </resources>

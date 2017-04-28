@@ -1,4 +1,4 @@
-package top.edroplet.encdec;
+package top.edroplet.encdec.activities.io;
 
 import android.app.ListActivity;
 import android.content.ContentResolver;
@@ -34,16 +34,88 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import android.webkit.MimeTypeMap;
+
+import top.edroplet.encdec.R;
 
 public class ExDialog extends ListActivity  implements OnClickListener {
+
+
+	final Map<String, String> MimeTypeMap = new HashMap<String, String>();
+	final String[][] MIME_MapTable = {
+			// {后缀名， MIME类型}
+			{".3gp", "video/3gpp"},
+			{".apk", "application/vnd.android.package-archive"},
+			{".asf", "video/x-ms-asf"},
+			{".avi", "video/x-msvideo"},
+			{".bin", "application/octet-stream"},
+			{".bmp", "image/bmp"},
+			{".c", "text/plain"},
+			{".class", "application/octet-stream"},
+			{".conf", "text/plain"},
+			{".cpp", "text/plain"},
+			{".doc", "application/msword"},
+			{".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"},
+			{".xls", "application/vnd.ms-excel"},
+			{".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
+			{".exe", "application/octet-stream"},
+			{".gif", "image/gif"},
+			{".gtar", "application/x-gtar"},
+			{".gz", "application/x-gzip"},
+			{".h", "text/plain"},
+			{".htm", "text/html"},
+			{".html", "text/html"},
+			{".jar", "application/java-archive"},
+			{".java", "text/plain"},
+			{".jpeg", "image/jpeg"},
+			{".jpg", "image/jpeg"},
+			{".js", "application/x-javascript"},
+			{".log", "text/plain"},
+			{".m3u", "audio/x-mpegurl"},
+			{".m4a", "audio/mp4a-latm"},
+			{".m4b", "audio/mp4a-latm"},
+			{".m4p", "audio/mp4a-latm"},
+			{".m4u", "video/vnd.mpegurl"},
+			{".m4v", "video/x-m4v"},
+			{".mov", "video/quicktime"},
+			{".mp2", "audio/x-mpeg"},
+			{".mp3", "audio/x-mpeg"},
+			{".mp4", "video/mp4"},
+			{".mpc", "application/vnd.mpohun.certificate"},
+			{".mpe", "video/mpeg"},
+			{".mpeg", "video/mpeg"},
+			{".mpg", "video/mpeg"},
+			{".mpg4", "video/mp4"},
+			{".mpga", "audio/mpeg"},
+			{".msg", "application/vnd.ms-outlook"},
+			{".ogg", "audio/ogg"},
+			{".pdf", "application/pdf"},
+			{".png", "image/png"},
+			{".pps", "application/vnd.ms-powerpoint"},
+			{".ppt", "application/vnd.ms-powerpoint"},
+			{".pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation"},
+			{".prop", "text/plain"},
+			{".rc", "text/plain"},
+			{".rmvb", "audio/x-pn-realaudio"},
+			{".rtf", "application/rtf"},
+			{".sh", "text/plain"},
+			{".tar", "application/x-tar"},
+			{".tgz", "application/x-compressed"},
+			{".txt", "text/plain"},
+			{".wav", "audio/x-wav"},
+			{".wma", "audio/x-ms-wma"},
+			{".wmv", "audio/x-ms-wmv"},
+			{".wps", "application/vnd.ms-works"},
+			{".xml", "text/plain"},
+			{".z", "application/x-compress"},
+			{".zip", "application/x-zip-compressed"},
+			{"", "*/*"}
+	};
+	// private LayoutInflater mInflater;
+	public HashMap<Map<String, Object>, Boolean> ischeck = new HashMap<Map<String, Object>, Boolean>();
 	private List<Map<String, Object>> mData;
 	private String mDir = "/storage";
-	// private LayoutInflater mInflater;
-
 	private ListView listview;
 	private Context  context;
-	public  HashMap<Map<String, Object>, Boolean> ischeck = new HashMap<Map<String, Object>, Boolean>();
 	private List<Map<String, Object>> selectid = new ArrayList<Map<String, Object>>();
 	private boolean isMulChoice = false;	// 是否多选
 	private boolean isMultiDir = false;		// 是否可以选择多个目录里的文件
@@ -63,12 +135,15 @@ public class ExDialog extends ListActivity  implements OnClickListener {
 		}
 		return sb.toString();
 	}
+
 	public void logd(Object ...msgs){
 		Log.d("exdlg", getMsgString(msgs));
 	}
+
 	public void loge(Object ...msgs){
 		Log.e("exdlg", getMsgString(msgs));
 	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -117,7 +192,7 @@ public class ExDialog extends ListActivity  implements OnClickListener {
 		Map<String, Object> map = null;
 		File f = new File(mDir);
 		File[] files = f.listFiles();
-		boolean isRoot = f.getParent() == null; 
+		boolean isRoot = f.getParent() == null;
 		//ContentResolver resolver = getContentResolver();
 		//ContentResolver对象的getType方法可返回形如content://的Uri的类型
 		//如果是一张图片，返回结果为image/jpeg或image/png等
@@ -155,7 +230,7 @@ public class ExDialog extends ListActivity  implements OnClickListener {
 					map.put("img", R.drawable.ex_doc);
 					if ( fileType != null && ( fileType.startsWith("text") || fileType.equalsIgnoreCase("application/text") ) ){ //判断用户选择的是否为text
 						map.put("type", "text");
-					}else{ 
+					} else {
 						if(!showAll){
 							continue;
 						}
@@ -169,30 +244,6 @@ public class ExDialog extends ListActivity  implements OnClickListener {
 			}
 		}
 		return list;
-	}
-
-	/*
-	@Override
-	protected void onListItemClick(ListView l, View v, int position, long id) {
-		Log.d("MyListView4-click", (String) mData.get(position).get("info"));
-		if ( (Integer) mData.get(position).get("img") == R.drawable.ex_folder ) {
-			mDir = (String) mData.get(position).get("info");
-			mData = getData();
-			MyAdapter adapter = new MyAdapter(this, txtcount);
-			setListAdapter(adapter);
-		} else {
-			finishWithResult((String) mData.get(position).get("info"));
-		}
-	}
-	*/
-	public final class ViewHolder {
-		public ImageView img;
-		public TextView title;
-		public TextView info;
-		public TextView type;
-		public TextView date;
-		public TextView size;
-		public CheckBox checked;
 	}
 
     public void onClick(View v) {
@@ -240,14 +291,104 @@ public class ExDialog extends ListActivity  implements OnClickListener {
         // TODO Auto-generated method stub
         super.onCreateContextMenu(menu, v, menuInfo);
         menu.setHeaderTitle("操作");
-    }
+	}
+
+	void finishWithResult(String path) {
+
+		Log.d("adapter", path);
+		ContentResolver resolver = getContentResolver();
+		Bundle conData = new Bundle();
+		conData.putString("results", "Thanks Vivi");
+		Intent intent = new Intent();
+		intent.putExtras(conData);
+		Uri startDir = Uri.fromFile(new File(path));
+		String fileType = resolver.getType(startDir);
+		if (fileType != null)
+			Log.d("adapter", fileType);
+		// Log.d("adapter", startDir.toString());
+		intent.setDataAndType(startDir,
+				"vnd.android.cursor.dir/lysesoft.andexplorer.file");
+		setResult(RESULT_OK, intent);
+		finish();
+	}
+
+	private void openFile(File file) {
+		Intent intent = new Intent();
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.setAction(Intent.ACTION_VIEW);
+		String type = getMIMEType(file.getName());
+		intent.setDataAndType(Uri.fromFile(file), type);
+		try {
+			startActivity(intent);
+		} catch (Exception e) {
+			Toast.makeText(this, "未知类型，不能打开", Toast.LENGTH_SHORT).show();
+		}
+	}
+
+	private String getMIMEType(String fileName) {
+		String type = "*/*";
+		int dotIndex = fileName.lastIndexOf('.'); //fileName.indexOf('.');
+		// logd(String.valueOf("index: "+dotIndex));
+		if (dotIndex < 0) {
+			return type;
+		}
+		String end = fileName.substring(dotIndex, fileName.length()).toLowerCase();
+		// logd("end: "+end);
+		if (end.length() == 0) {
+			return type;
+		}
+		// logd(String.valueOf(MIME_MapTable.length));
+		/*
+		for(int i=0; i<MIME_MapTable.length; i++) {
+			logd(end+", " + MIME_MapTable[i][0]);
+			if(end.equalsIgnoreCase(MIME_MapTable[i][0])){
+				type = MIME_MapTable[i][1] ;
+				return type;
+			}
+		}*/
+		String mResult = MimeTypeMap.get(end);
+		if (mResult != null && mResult.length() > 0)
+			type = mResult;
+		// logd(type);
+		return type;
+	}
+
+	private Map initMap() {
+		for (int i = 0; i < MIME_MapTable.length; i++) {
+			MimeTypeMap.put(MIME_MapTable[i][0], MIME_MapTable[i][1]);
+		}
+		return MimeTypeMap;
+	}
+
+	/*
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		Log.d("MyListView4-click", (String) mData.get(position).get("info"));
+		if ( (Integer) mData.get(position).get("img") == R.drawable.ex_folder ) {
+			mDir = (String) mData.get(position).get("info");
+			mData = getData();
+			MyAdapter adapter = new MyAdapter(this, txtcount);
+			setListAdapter(adapter);
+		} else {
+			finishWithResult((String) mData.get(position).get("info"));
+		}
+	}
+	*/
+	public final class ViewHolder {
+		public ImageView img;
+		public TextView title;
+		public TextView info;
+		public TextView type;
+		public TextView date;
+		public TextView size;
+		public CheckBox checked;
+	}
 
 	public class MyAdapter extends BaseAdapter {
+		public HashMap<Integer, Integer> visiblecheck;//用来记录是否显示checkBox
 		private Context context;
         private LayoutInflater inflater=null;
         private HashMap<Integer, View> mView ;
-        public  HashMap<Integer, Integer> visiblecheck ;//用来记录是否显示checkBox
-        
         private TextView txtcount;
 
 		public MyAdapter(Context context, TextView txtcount) {
@@ -424,144 +565,5 @@ public class ExDialog extends ListActivity  implements OnClickListener {
         }
 
 	}
-
-	private void finishWithResult(String path) {
-		
-		Log.d("adapter", path);
-		ContentResolver resolver = getContentResolver();
-		Bundle conData = new Bundle();
-		conData.putString("results", "Thanks Vivi");
-		Intent intent = new Intent();
-		intent.putExtras(conData);
-		Uri startDir = Uri.fromFile(new File(path));
-		String fileType = resolver.getType(startDir);
-		if (fileType!=null)
-		Log.d("adapter",fileType);
-		// Log.d("adapter", startDir.toString());
-		intent.setDataAndType(startDir,
-							  "vnd.android.cursor.dir/lysesoft.andexplorer.file");
-		setResult(RESULT_OK, intent);
-		finish();
-	}
-
-	private void openFile(File file) {
-	        Intent intent = new Intent();
-	        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-	        intent.setAction(Intent.ACTION_VIEW);
-	        String type = getMIMEType(file.getName());
-	        intent.setDataAndType(Uri.fromFile(file), type);
-	        try {
-	            startActivity(intent);
-	        }
-	    	catch (Exception e) {
-	            Toast.makeText(this, "未知类型，不能打开", Toast.LENGTH_SHORT).show();
-	        }
-	}
-	private String getMIMEType(String fileName) {
-		String type = "*/*";
-		int dotIndex =  fileName.lastIndexOf('.'); //fileName.indexOf('.');
-		// logd(String.valueOf("index: "+dotIndex));
-		if(dotIndex < 0) {
-			return type;
-		}
-		String end = fileName.substring(dotIndex, fileName.length()).toLowerCase();
-		// logd("end: "+end);
-		if(end.length() == 0) {
-			return type;
-		}
-		// logd(String.valueOf(MIME_MapTable.length));
-		/*
-		for(int i=0; i<MIME_MapTable.length; i++) {
-			logd(end+", " + MIME_MapTable[i][0]);
-			if(end.equalsIgnoreCase(MIME_MapTable[i][0])){
-				type = MIME_MapTable[i][1] ;
-				return type;
-			}
-		}*/
-		String mResult = MimeTypeMap.get(end);
-		if(mResult != null && mResult.length() > 0)
-			type = mResult;
-		// logd(type);
-		return type;
-	}
-	
-	private Map initMap(){
-		for(int i = 0; i < MIME_MapTable.length; i++){
-			MimeTypeMap.put(MIME_MapTable[i][0],MIME_MapTable[i][1]);
-		}
-		return MimeTypeMap;
-	}
-	
-	private final Map<String,String> MimeTypeMap = new HashMap<String,String>();
-
-	private final String[][] MIME_MapTable = {
-		// {后缀名， MIME类型}
-		{ ".3gp", "video/3gpp" },
-		{ ".apk", "application/vnd.android.package-archive" },
-		{ ".asf", "video/x-ms-asf" },
-		{ ".avi", "video/x-msvideo" },
-		{ ".bin", "application/octet-stream" },
-		{ ".bmp", "image/bmp" },
-		{ ".c", "text/plain" },
-		{ ".class", "application/octet-stream" },
-		{ ".conf", "text/plain" },
-		{ ".cpp", "text/plain" },
-		{ ".doc", "application/msword" },
-		{ ".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" },
-		{ ".xls", "application/vnd.ms-excel" },
-		{ ".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" },
-		{ ".exe", "application/octet-stream" },
-		{ ".gif", "image/gif" },
-		{ ".gtar", "application/x-gtar" },
-		{ ".gz", "application/x-gzip" },
-		{ ".h", "text/plain" },
-		{ ".htm", "text/html" },
-		{ ".html", "text/html" },
-		{ ".jar", "application/java-archive" },
-		{ ".java", "text/plain" },
-		{ ".jpeg", "image/jpeg" },
-		{ ".jpg", "image/jpeg" },
-		{ ".js", "application/x-javascript" },
-		{ ".log", "text/plain" },
-		{ ".m3u", "audio/x-mpegurl" },
-		{ ".m4a", "audio/mp4a-latm" },
-		{ ".m4b", "audio/mp4a-latm" },
-		{ ".m4p", "audio/mp4a-latm" },
-		{ ".m4u", "video/vnd.mpegurl" },
-		{ ".m4v", "video/x-m4v" },
-		{ ".mov", "video/quicktime" },
-		{ ".mp2", "audio/x-mpeg" },
-		{ ".mp3", "audio/x-mpeg" },
-		{ ".mp4", "video/mp4" },
-		{ ".mpc", "application/vnd.mpohun.certificate" },
-		{ ".mpe", "video/mpeg" },
-		{ ".mpeg", "video/mpeg" },
-		{ ".mpg", "video/mpeg" },
-		{ ".mpg4", "video/mp4" },
-		{ ".mpga", "audio/mpeg" },
-		{ ".msg", "application/vnd.ms-outlook" },
-		{ ".ogg", "audio/ogg" },
-		{ ".pdf", "application/pdf" },
-		{ ".png", "image/png" },
-		{ ".pps", "application/vnd.ms-powerpoint" },
-		{ ".ppt", "application/vnd.ms-powerpoint" },
-		{ ".pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation" },
-		{ ".prop", "text/plain" },
-		{ ".rc", "text/plain" },
-		{ ".rmvb", "audio/x-pn-realaudio" },
-		{ ".rtf", "application/rtf" },
-		{ ".sh", "text/plain" },
-		{ ".tar", "application/x-tar" },
-		{ ".tgz", "application/x-compressed" },
-		{ ".txt", "text/plain" },
-		{ ".wav", "audio/x-wav" },
-		{ ".wma", "audio/x-ms-wma" },
-		{ ".wmv", "audio/x-ms-wmv" },
-		{ ".wps", "application/vnd.ms-works" },
-		{ ".xml", "text/plain" },
-		{ ".z", "application/x-compress" },
-		{ ".zip", "application/x-zip-compressed" },
-		{ "", "*/*" }
-	};
 }
 

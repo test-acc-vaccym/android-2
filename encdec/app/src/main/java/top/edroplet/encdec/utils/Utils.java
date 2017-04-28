@@ -1,4 +1,4 @@
-package top.edroplet.encdec;
+package top.edroplet.encdec.utils;
 
 import android.content.Context;
 import android.util.Log;

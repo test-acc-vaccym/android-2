@@ -3,29 +3,31 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
     <TextView
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="传感器数量"
-		android:textColor="#fdff0000"/>
+		android:text="传感器数量:"
+		android:textColor="#fd8f00ff" />
 	<TextView
 		android:id="@+id/sensor_studyTextView_number"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:textColor="#fdff0000"
 		android:textSize="16sp"/>
+	</LinearLayout>
 	<TextView
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="传感器名称:传感器类型;"
+		android:text="传感器类型\t传感器名称"
 		android:textColor="#df00ff00"/>
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:textSize="16sp"
-		android:id="@+id/sensor_studyTextView_typename"/>
 	<ListView
+		android:id="@+id/sensor_studyListView_sensorList"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:id="@+id/sensor_studyListView_sensorList"
 		/>
 </LinearLayout>

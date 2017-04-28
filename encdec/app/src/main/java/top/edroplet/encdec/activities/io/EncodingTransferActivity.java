@@ -77,7 +77,7 @@ public class EncodingTransferActivity extends Activity {
             intent.putExtra("allow_multidir", cbmd.isChecked());
             intent.putExtra("show_all", cbsa.isChecked());
             intent.setDataAndType(Uri.fromFile(new File(Environment.getExternalStorageDirectory().getPath())), "text/*");   // 设置起始文件夹和文件类型
-            intent.setClass(this, ExDialog.class);
+            intent.setClass(this, ExDialogActivity.class);
             startActivityForResult(intent, REQUEST_EX);
         } else {
             Log.d("main", "enter action get content");

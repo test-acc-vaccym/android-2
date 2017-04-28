@@ -18,8 +18,8 @@ import java.util.List;
 
 import top.edroplet.encdec.R;
 import top.edroplet.encdec.utils.Utils;
-import top.edroplet.encdec.utils.syncTaskResponseData;
-import top.edroplet.encdec.utils.textCache;
+import top.edroplet.encdec.utils.data.syncTaskResponseData;
+import top.edroplet.encdec.utils.data.textCache;
 
 public class FindReplaceActivity extends Activity {
     private static final String TAG = "Find&Replace";

@@ -26,10 +26,10 @@ import java.util.List;
 
 import top.edroplet.encdec.R;
 
-public class SensorStudy extends Activity implements SensorEventListener {
-    TextView tv_number, tv_nameType;
+public class SensorActivity extends Activity implements SensorEventListener {
+    TextView tv_number;
     ListView lv;
-    ArrayList<SensorData> sensors = new ArrayList<SensorData>();
+    ArrayList<SensorData> sensors = new ArrayList<>();
     LayoutInflater inflater;
     Sensor stepCount, stepDetector;
     SensorManager sm;
@@ -48,8 +48,8 @@ public class SensorStudy extends Activity implements SensorEventListener {
         sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         stepCount = sm.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         stepDetector = sm.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
-        sm.registerListener(this, stepCount, sm.SENSOR_DELAY_FASTEST);
-        sm.registerListener(this, stepDetector, sm.SENSOR_DELAY_FASTEST);
+        sm.registerListener(this, stepCount, SensorManager.SENSOR_DELAY_FASTEST);
+        sm.registerListener(this, stepDetector, SensorManager.SENSOR_DELAY_FASTEST);
         List<Sensor> ls = sm.getSensorList(Sensor.TYPE_ALL);
 
         tv_number.setText(String.valueOf(ls.size()));

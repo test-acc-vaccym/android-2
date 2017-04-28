@@ -1,4 +1,4 @@
-package top.edroplet.encdec.utils;
+package top.edroplet.encdec.utils.data;
 
 import android.util.LruCache;
 

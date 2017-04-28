@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.io.ExDialog"
+            android:name=".activities.io.ExDialogActivity"
             android:theme="@android:style/Theme.Dialog">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,7 +48,7 @@
         <activity
             android:name=".activities.animation.AnimatorActivity"
             android:label="@string/title_activity_animator"></activity>
-        <activity android:name=".activities.sensors.SensorStudy" />
+        <activity android:name=".activities.sensors.SensorActivity" />
     </application>
 
 </manifest>

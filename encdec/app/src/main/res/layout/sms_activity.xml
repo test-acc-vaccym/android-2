@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/mainEditTextSmsNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="@string/mainEditTextSmsNumberHint"
+            android:inputType="number"
+            android:textColor="#00ff00"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/mainEditTextSmsContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:hint="@string/mainEditTextSmsContentHint"
+            android:inputType="text"
+            android:textColor="#ff0000"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/mainButtonSmsSend"
+            style="@style/AppTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/mainButtonSmsSendText"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/smsActivitySmsList"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" />
+</LinearLayout>

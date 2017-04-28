@@ -37,8 +37,7 @@ import java.util.Map;
 
 import top.edroplet.encdec.R;
 
-public class ExDialog extends ListActivity  implements OnClickListener {
-
+public class ExDialogActivity extends ListActivity implements OnClickListener {
 
 	final Map<String, String> MimeTypeMap = new HashMap<String, String>();
 	final String[][] MIME_MapTable = {

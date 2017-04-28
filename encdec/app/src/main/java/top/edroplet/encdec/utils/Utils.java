@@ -24,6 +24,9 @@ import java.util.concurrent.Future;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import top.edroplet.encdec.utils.data.syncTaskResponseData;
+import top.edroplet.encdec.utils.data.textCache;
+
 public class Utils {
 	/**
 	 * 7位ASCII字符，也叫作ISO646-US、Unicode字符集的基本拉丁块

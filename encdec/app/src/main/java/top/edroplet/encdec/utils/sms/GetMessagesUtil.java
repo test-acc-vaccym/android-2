@@ -1,4 +1,4 @@
-package top.edroplet.encdec.utils; /**
+package top.edroplet.encdec.utils.sms; /**
  * Created by xw on 2017/4/28.
  */
 
@@ -86,28 +86,6 @@ public class GetMessagesUtil {
 
     protected void showToast(String text) {
         Toast.makeText(context, text, Toast.LENGTH_LONG).show();
-    }
-
-    class SmsData {
-        String address;
-        String person;
-        String boby;
-        String _id;
-        String date;
-        String type;
-        String creator;
-        String date_sent;
-        String error_code;
-        String locked;
-        String protocol;
-        String read;
-        String reply_path_present;
-        String seen;
-        String service_center;
-        String status;
-        String subject;
-        int sub_id;
-        int thread_id;
     }
 
     class SmsObserver extends ContentObserver {

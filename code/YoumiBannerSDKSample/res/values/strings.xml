@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">有米广告示例程序v3.07</string>
+    <string name="label_xmllayout">有米广告XML布局示例</string>
+    <string name="label_codelayout">有米广告代码布局示例</string>
+    <string name="label_suspensoidlayout">有米广告横屏悬浮布局示例</string>
+
+</resources>

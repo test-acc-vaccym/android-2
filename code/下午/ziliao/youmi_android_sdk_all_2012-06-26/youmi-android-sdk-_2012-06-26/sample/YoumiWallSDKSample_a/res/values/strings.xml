@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">有米积分墙v2.13(本地积分账户)</string>
+    <string name="viewpoint">查看积分</string>
+    
+    <string name="spendpoints">消费10积分</string>
+    <string name="award">奖励10积分</string>
+    <string name="pointstitle">我的积分:</string>
+      <string name="tx_Points">积分</string><string name="reward_offers">有米积分墙(使用积分)</string>
+    <string name="rewardless_offers">精品应用推荐(不使用积分)</string><string name="btn_to_rewardless_applist">有米精品应用推荐(列表)</string>
+    <string name="btn_to_rewardless_featuredapp">有米精品应用推荐</string>
+    <string name="btn_show_rewardoffers">打开积分墙</string>
+    <string name="btn_to_checkstatus">检查App及设备状态</string>
+    <string name="query_points">刷新积分</string>
+    
+</resources>

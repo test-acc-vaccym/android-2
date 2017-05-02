@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btnCode"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal|left"
+        android:text="@string/label_codelayout" >
+    </Button>
+
+    <Button
+        android:id="@+id/btnXml"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|left"
+        android:text="@string/label_xmllayout" >
+    </Button>
+
+    <Button
+        android:id="@+id/btnSuspensoid"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|left"
+        android:text="@string/label_suspensoidlayout" >
+    </Button>
+
+</LinearLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+    <Button 
+        android:id="@+id/save"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="保存数据"
+        ></Button>
+    <Button 
+        android:id="@+id/pull"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="更新数据"
+        ></Button>
+    <Button 
+        android:id="@+id/remove"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="删除数据"
+        ></Button>
+    <Button 
+        android:id="@+id/inc"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="递增数据"
+        ></Button>
+    <Button 
+        android:id="@+id/push"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="关于push"
+        ></Button>
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+    ></TextView>
+
+
+</LinearLayout>

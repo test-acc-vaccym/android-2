@@ -8,8 +8,8 @@ import android.database.Cursor;
  * Created by xw on 2017/5/2.
  */
 
-public class DBQuery extends AsyncQueryHandler {
-    public  DBQuery(ContentResolver cr){
+public class AsyncDBQuery extends AsyncQueryHandler {
+    public AsyncDBQuery(ContentResolver cr) {
         super(cr);
     }
 

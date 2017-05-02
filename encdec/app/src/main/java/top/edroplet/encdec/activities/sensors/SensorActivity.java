@@ -49,10 +49,6 @@ public class SensorActivity extends Activity implements SensorEventListener {
     proximity;          // 距离
 	
     SensorManager sm;
-	
-    float count, 
-	detector;
-	
 	float []
 	accelerometerValue,
 	oritentionValue,
@@ -64,6 +60,9 @@ public class SensorActivity extends Activity implements SensorEventListener {
 	lightValue,
 	gameRotionVectorValue,
     proximityValue;
+    private float count, lastPoint,
+            detector;
+    private boolean firstStepFlag = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,9 +128,20 @@ public class SensorActivity extends Activity implements SensorEventListener {
     public void onSensorChanged(SensorEvent event) {
 		switch(event.sensor.getType()){
        	case Sensor.TYPE_STEP_COUNTER:
-            setStepCount(event.values[0]);
-			break;
-    	case Sensor.TYPE_STEP_DETECTOR:
+            if (firstStepFlag) {
+                lastPoint = event.values[1];
+                firstStepFlag = false;
+            }
+            //  当两个values[1]值之差的绝对值大于8时认为走了一步
+            if (Math.abs(event.values[1] - lastPoint) > 8) {
+                //  保存最后一步时的values[1]的峰值
+                lastPoint = event.values[1];
+                //  将当前计数加1
+                ++count;
+                // setStepCount(event.values[0]);
+            }
+            break;
+            case Sensor.TYPE_STEP_DETECTOR:
             if (event.values[0] == 1.0) {
                 detector++;
             }
@@ -271,16 +281,16 @@ public class SensorActivity extends Activity implements SensorEventListener {
                         msg += "本次步数：" + String.valueOf(detector);
 						break;
 					case Sensor.TYPE_ACCELEROMETER:
-						msg += String.valueOf("加速度传感器：x方向:"+accelerometerValue[0]+"\n\tY方向:"+accelerometerValue[1]+"\n\tZ方向:"+accelerometerValue[2]);
+                        msg += String.valueOf("加速度传感器, x方向:" + accelerometerValue[0] + "\n\tY方向:" + accelerometerValue[1] + "\n\tZ方向:" + accelerometerValue[2]);
                         break;
                     case Sensor.TYPE_GYROSCOPE:
                         msg +=  " 陀螺仪传感器:" + String.valueOf(gyroscopeValue);
                         break;
                     case Sensor.TYPE_LIGHT:
-                        msg +=  " 环境光线传感器light" + String.valueOf(lightValue);
+                        msg += " 环境光线传感器, 亮度" + String.valueOf(lightValue[0]);
                         break;
                     case Sensor.TYPE_MAGNETIC_FIELD:
-                        msg +=  " 电磁场传感器magnetic field" + String.valueOf(magneticValue);
+                        msg += String.valueOf(" 电磁场传感器,x方向:" + magneticValue[0] + "\n\tY方向:" + magneticValue[1] + "\n\tZ方向:" + magneticValue[2]);
                         break;
 
                     case Sensor.TYPE_PRESSURE:
@@ -294,7 +304,7 @@ public class SensorActivity extends Activity implements SensorEventListener {
                         msg +=  " 未知传感器" + String.valueOf(lightValue);
                         break;
                     }
-                    msg += ". 现在的方向是：" + sensorsUtils.calculateOrientation(accelerometerValue, magneticValue);
+                    msg += "\n现在的手机放置状态是\n" + sensorsUtils.calculateOrientation(accelerometerValue, magneticValue);
                     Toast.makeText(p1.getContext(), msg, Toast.LENGTH_SHORT).show();
                 }
             });

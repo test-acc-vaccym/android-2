@@ -1,4 +1,4 @@
-package top.edroplet.encdec.utils;
+package top.edroplet.encdec.utils.util;
 
 import java.io.BufferedWriter;
 import java.io.File;

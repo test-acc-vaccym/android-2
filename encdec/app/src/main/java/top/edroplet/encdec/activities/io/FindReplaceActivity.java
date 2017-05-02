@@ -17,7 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import top.edroplet.encdec.R;
-import top.edroplet.encdec.utils.Utils;
+import top.edroplet.encdec.utils.util.Utils;
 import top.edroplet.encdec.utils.data.syncTaskResponseData;
 import top.edroplet.encdec.utils.data.textCache;
 

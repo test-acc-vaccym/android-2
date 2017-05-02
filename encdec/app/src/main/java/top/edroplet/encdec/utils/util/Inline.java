@@ -1,4 +1,4 @@
-package top.edroplet.encdec.utils;
+package top.edroplet.encdec.utils.util;
 
 /**
  * Created by xw on 2016/10/27.

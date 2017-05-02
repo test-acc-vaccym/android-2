@@ -20,7 +20,7 @@ import java.io.DataOutputStream;
 import java.io.File;
 
 import top.edroplet.encdec.R;
-import top.edroplet.encdec.utils.Utils;
+import top.edroplet.encdec.utils.util.Utils;
 
 public class EncodingTransferActivity extends Activity {
     private final int REQUEST_EX = 10;

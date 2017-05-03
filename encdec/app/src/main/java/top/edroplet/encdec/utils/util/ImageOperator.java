@@ -233,8 +233,8 @@ public class ImageOperator {
     /**
      * Bitmap --> byte[]
      *
-     * @param bmp
-     * @return
+     * @param bmp bitmap
+     * @return bytes
      */
     private static byte[] readBitmap(Bitmap bmp)
     {
@@ -253,21 +253,22 @@ public class ImageOperator {
     /**
      * Bitmap --> byte[]
      *
-     * @param buffer
-     * @param size
-     * @return
+     * @param buffer bytes
+     * @param size 长度
+     * @return bytes
      */
     public static byte[] readBitmapFromBuffer(byte[] buffer, float size)
     {
         return readBitmap(convertToThumb(buffer, size));
     }
+
     /**
      * 以屏幕宽度为基准，显示图片
      *
-     * @param context
-     * @param data
-     * @param size
-     * @return
+     * @param context 上下文
+     * @param data 数据
+     * @param size 大小
+     * @return bitmap
      */
     public static Bitmap decodeStream(Context context, Intent data, float size)
     {
@@ -305,10 +306,10 @@ public class ImageOperator {
     /**
      * 按新的宽高缩放图片
      *
-     * @param bm
-     * @param newWidth
-     * @param newHeight
-     * @return
+     * @param bm  bitmap
+     * @param newWidth 新宽度
+     * @param newHeight 新高度
+     * @return bitmap
      */
     public static Bitmap scaleImage(Bitmap bm, int newWidth, int newHeight)
     {
@@ -331,14 +332,13 @@ public class ImageOperator {
         }
         return newbm;
     }
+
     /**
      * fuction: 设置固定的宽度，高度随之变化，使图片不会变形
      *
-     * @param target
-     * 需要转化bitmap参数
-     * @param newWidth
-     * 设置新的宽度
-     * @return
+     * @param target  需要转化bitmap参数
+     * @param newWidth 设置新的宽度
+     * @return bitmap
      */
     public static Bitmap fitBitmap(Bitmap target, int newWidth)
     {
@@ -365,9 +365,9 @@ public class ImageOperator {
     /**
      * 根据指定的宽度平铺图像
      *
-     * @param width
-     * @param src
-     * @return
+     * @param width 宽度
+     * @param src 源bitmap
+     * @return bitmap
      */
     public static Bitmap createRepeater(int width, Bitmap src)
     {
@@ -385,8 +385,8 @@ public class ImageOperator {
     /**
      * 图片的质量压缩方法
      *
-     * @param image
-     * @return
+     * @param image 元bitmap
+     * @return 压缩后的bitmap
      */
     public static Bitmap compressImage(Bitmap image)
     {
@@ -494,21 +494,21 @@ public class ImageOperator {
     /**
      * 通过资源id转化成Bitmap 全屏显示
      *
-     * @param context 傻瓜下文
+     * @param context 上下文
      * @param drawableId 资源ID
      * @param screenWidth 屏幕宽
-     * @param screenHight 屏幕高
+     * @param screenHeight 屏幕高
      * @return
      */
     public static Bitmap ReadBitmapById(Context context, int drawableId,
-                                        int screenWidth, int screenHight)
+                                        int screenWidth, int screenHeight)
     {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inPreferredConfig = Config.ARGB_8888;
-        options.inInputShareable = true;
-        options.inPurgeable = true;
+        // options.inInputShareable = true;
+        // options.inPurgeable = true;
         InputStream stream = context.getResources().openRawResource(drawableId);
         Bitmap bitmap = BitmapFactory.decodeStream(stream, null, options);
-        return getBitmap(bitmap, screenWidth, screenHight);
+        return getBitmap(bitmap, screenWidth, screenHeight);
     }
 }

@@ -13,6 +13,7 @@ import android.widget.Button;
 import top.edroplet.encdec.R;
 import top.edroplet.encdec.service.WalkingService;
 import top.edroplet.encdec.utils.data.StepCounterSQLiteHelper;
+import top.edroplet.encdec.view.StepArcView;
 import top.edroplet.encdec.view.WalkingView;
 
 public class StepCounterActivity extends Activity implements View.OnClickListener {
@@ -65,6 +66,8 @@ public class StepCounterActivity extends Activity implements View.OnClickListene
         startService(i);
         schelper = new StepCounterSQLiteHelper(this,DB_NAME,null,1);
         requireData();  //向Service 请求今日走过步数
+        StepArcView  sv = (StepArcView) findViewById(R.id.sv);
+        sv.setCurrentCount(10000, 7000);
     }
 
     @Override

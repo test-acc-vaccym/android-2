@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_weight="2">
+        android:layout_weight="1">
 
         <Button
             android:id="@+id/stepCounterButtonDispose"
@@ -29,9 +29,18 @@
             android:layout_height="wrap_content"
             android:text="@string/activity_step_counter_delete_data"/>
     </LinearLayout>
+
+    <top.edroplet.encdec.view.StepArcView
+        android:id="@+id/sv"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_weight="2"/>
+
     <top.edroplet.encdec.view.WalkingView
         android:id="@+id/walkingView"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="8"/>
+        android:layout_height="0dp"
+        android:layout_weight="7"/>
 </LinearLayout>

@@ -7,8 +7,10 @@ import android.graphics.Bitmap.*;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Point;
 import android.net.Uri;
 import android.util.Log;
+import android.view.WindowManager;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -510,5 +512,12 @@ public class ImageOperator {
         InputStream stream = context.getResources().openRawResource(drawableId);
         Bitmap bitmap = BitmapFactory.decodeStream(stream, null, options);
         return getBitmap(bitmap, screenWidth, screenHeight);
+    }
+
+    public Point GetScreenSize(Context context){
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Point outSize = new Point();
+        wm.getDefaultDisplay().getSize(outSize);
+        return outSize;
     }
 }

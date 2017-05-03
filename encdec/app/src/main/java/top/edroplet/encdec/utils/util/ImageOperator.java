@@ -22,10 +22,34 @@ import java.util.List;
 import static android.content.ContentValues.TAG;
 
 /**
+ * ImageOperator 操作图像
  * Created by xw on 2017/5/2.
  */
 
 public class ImageOperator {
+
+    /**
+     * dpToPx  dp转换为px
+     * @param context 上下文
+     * @param dpValue dp值
+     * @return px值
+     */
+    public static int dpToPx(float dpValue, Context context) {
+        float scale=context.getResources().getDisplayMetrics().density;//获得当前屏幕密度
+        return (int)(dpValue*scale+0.5f);
+    }
+
+    /**
+     *  /px转换为dp
+     * @param pxValue px值
+     * @param context 上下文
+     * @return dp值
+     */
+    public static int pxToDp(float pxValue, Context context) {
+        float scale=context.getResources().getDisplayMetrics().density;//获得当前屏幕密度
+        return (int)(pxValue/scale+0.5f);
+    }
+
     /**
      *
      * @param bitmap 原始图片

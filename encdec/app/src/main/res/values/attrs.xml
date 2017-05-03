@@ -7,4 +7,9 @@
             <enum name="right" value="1"/>
         </attr>
     </declare-styleable>
+    <declare-styleable name="rainbowbar">
+        <attr name="rainbowbar_hspace" format="dimension"></attr>
+        <attr name="rainbowbar_vspace" format="dimension"></attr>
+        <attr name="rainbowbar_color" format="color"></attr>
+    </declare-styleable>
 </resources>

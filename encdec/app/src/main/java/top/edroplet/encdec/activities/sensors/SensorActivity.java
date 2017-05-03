@@ -419,7 +419,7 @@ public class SensorActivity extends Activity implements SensorEventListener, OnC
                 startActivity(intent);
                 break;
             case R.id.sensor_studyButtonCompass:
-                intent = new Intent(this, StepCounterActivity.class);
+                intent = new Intent(this, CompassActivity.class);
                 startActivity(intent);
                 break;
         }

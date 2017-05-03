@@ -3,28 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="top.edroplet.encdec.activities.sensors.StepCounterActivity">
-
-    <Button
-        android:id="@+id/stepCounterButtonDispose"
-        android:layout_width="wrap_content"
+    tools:context="top.edroplet.encdec.activities.sensors.StepCounterActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/activity_step_counter_dispose"/>
+        android:orientation="horizontal"
+        android:layout_weight="2">
 
-    <Button
-        android:id="@+id/stepCounterButtonStop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_step_counter_stop"/>
+        <Button
+            android:id="@+id/stepCounterButtonDispose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_step_counter_dispose"/>
 
-    <Button
-        android:id="@+id/stepCounterButtonDeleteData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_step_counter_delete_data"/>
+        <Button
+            android:id="@+id/stepCounterButtonStop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_step_counter_stop"/>
 
+        <Button
+            android:id="@+id/stepCounterButtonDeleteData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_step_counter_delete_data"/>
+    </LinearLayout>
     <top.edroplet.encdec.view.WalkingView
         android:id="@+id/walkingView"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"/>
+        android:layout_height="fill_parent"
+        android:layout_weight="8"/>
 </LinearLayout>

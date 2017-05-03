@@ -8,17 +8,35 @@
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:orientation="horizontal">
-    <TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="传感器数量:"
-		android:textColor="#fd8f00ff" />
-	<TextView
-		android:id="@+id/sensor_studyTextView_number"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:textColor="#fdff0000"
-		android:textSize="16sp"/>
+		<Button
+			android:id="@+id/sensor_studyButtonMovements"
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/activity_horizontal_margin"
+			android:text="@string/activity_step_counter_movements"
+			android:textColor="#ef923232" />
+
+		<Button
+			android:id="@+id/sensor_studyButtonCompass"
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/activity_horizontal_margin"
+			android:text="@string/activity_step_counter_compass"
+			android:textColor="#ef923232" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="传感器数量:"
+			android:textColor="#fd8f00ff" />
+		<TextView
+			android:id="@+id/sensor_studyTextView_number"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="#fdff0000"
+			android:textSize="16sp"/>
 	</LinearLayout>
 	<TextView
 		android:layout_width="wrap_content"

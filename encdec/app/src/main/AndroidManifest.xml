@@ -52,7 +52,8 @@
             android:label="@string/title_activity_animator" />
         <activity android:name=".activities.sensors.SensorActivity" />
         <activity android:name=".activities.system.SmsActivity" />
-        <activity android:name=".activities.sensors.StepCounterActivity"></activity>
+        <activity android:name=".activities.sensors.StepCounterActivity" />
+        <activity android:name=".activities.sensors.CompassActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,102 @@
+/* CSS Document */
+/* 141125im */
+body, input, textarea, select, form, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p {margin:0; padding:0;}
+ul, li {list-style:none;}
+img {vertical-align:middle; border:none;}
+a {cursor:pointer; text-decoration:none; color:#29323d;}
+a:hover {color:#8dc21f;text-decoration: none;}
+em, i {font-style:normal;}
+body {font:12px "Microsoft Yahei"; color: #29323d; background:#f1f4f6;}
+.wrapper,.wrap {width:1000px; margin:0 auto;}
+
+.header {background:#29323d; height: 50px; min-width:1000px; position:relative; z-index:3; color:#fff;}
+.header a {color:#fff;}
+.header a:hover {color:#8dc21f;}
+.logoArea {float:left; display:inline; margin: 8px 0 0 0;}
+.logoArea * {float:left; display:inline;}
+.logoArea span {height:37px; width:1px; background:#434a54; margin:0 10px;}
+.headerNav {float:left; display:inline; margin: 0 0 0 45px;}
+.headerNav a {float:left; display:inline; height: 45px; font-size:14px; line-height: 45px; overflow:hidden; text-align:center; padding: 0 14px;}
+.headerNav a.selected {border-bottom:5px #8dc21f solid; cursor:default; color:#fff;}
+.loginArea {float:right; display:inline; line-height: 20px;padding-top:14px;}
+.loginArea a {padding: 0 5px;}
+.loginArea div {display:inline;}
+.loginArea span {color:#fff;}
+.loginArea .icon {background-image:url(../../img/common/images/header_common.png);_background-image:url(../../img/common/images/header_common.gif); padding:0; vertical-align:middle;}
+a.message {display:inline-block; width:26px; height:22px; position:relative; background-position:0 5px;}
+a.message:hover {background-position:0 -45px;}
+.newmessage {position:absolute; width:7px; height:7px; background-position:0 -200px; left:18px; top:0;}
+.hideArea {position:relative;}
+a.settingSwitch {display:inline-block; background-position:0 -100px; width:26px; height:22px;}
+a.settingSwitch:hover {background-position:0 -150px;}
+.hideArea ul {position:absolute; left:-60px; top:21px; display:none; background:#3e4650; width:86px; line-height:22px;}
+.messageArea ul {width:53px; left:-27px;}
+.messageArea li {position:relative;}
+.messageArea li .newmessage {left:40px; top:3px;}
+.hideArea li {_zoom:1;}
+.hideArea ul a {display:block; padding:0 0 0 7px; font-size:12px;}
+.hideArea ul a:hover {color:#fff; background:#8dc21f;}
+.hideArea ul .logout {border-top:1px #262e38 solid;}
+.settingopen a.headerswitch {background-color:#3e4650;}
+.settingopen ul {display:block;}
+
+.searchBar input {border:none; height:20px; vertical-align:middle;}
+.searchBar .txt {width:60px; background:#fff; line-height:20px;}
+.searchBar .btn {width:20px; background:url(../../img/common/images/search_btn2.gif); cursor:pointer;}
+.searchBar .btn:hover{background-position:bottom;}
+
+
+/*m head*/
+.fHead{width:1000px; margin:20px auto 0; height:36px;}
+.fNav li{list-style:none; float:left; position:relative; width:90px; height:30px;}
+.fNav a{display:block; text-align:center; width:100%; font-size:15px; color:#333; line-height:30px; line-height:30px; position:absolute; top:0px; left:0; border-bottom:2px solid #fff;}
+.fNav a:hover{text-decoration:none; color:#8dc21f;}
+.fNav a.selected{font-weight:bold; border-color:#8dc21f;}
+.fNav a.selected:hover{cursor:auto; color:#333;}
+.fHead .logo {line-height: 36px;font-weight: bold;font-size: 18px;float: left; width: 180px;}
+.fHead .fNav {float: left; border-bottom: 2px solid #fff;}
+/*old subNav*/
+.subNav{ height:50px; background:none;}
+.subNav .subNavCenter{ margin:0 auto; width: 1000px; height:50px; padding-top: 18px; clear:both; }
+.subNav .subNavCenter .logo{ width:198px; background:none; height:28px; line-height:28px;text-align: left; color:#29323d; font-weight: bold; font-size:18px; float:left;}
+.subNav .subNavCenter .logo img{ margin-right:5px;}
+.subNav .subNavCenter .menu { border-bottom: 2px solid #fff; float:left; padding-left: 20px;}
+.subNav .subNavCenter .menu li{ float:left;margin-right:5px; float:left; _width:86px; }
+.subNav .subNavCenter .menu li a{padding: 0 8px; line-height:28px; height:28px; display:block;  font-size:14px;}
+.subNav .subNavCenter .menu li.current a{ margin-bottom: -2px; border-bottom: 2px solid #8dc21f;}
+.subNav .subNavCenter .search{ float:right;}
+.searchBar {width: 210px;_width: 180px; display:inline; position:relative; background:#fff; z-index:1; border:none;}
+.searchBar a:hover {text-decoration:none;}
+#searchType {color:#6c6c6c; line-height:26px; height:26px; float:left; display:inline; padding:0 20px 0 6px; text-align:center; background:#f6f6f6 url(../../../bbs/images/arrowLittle.png) no-repeat 36px 11px; cursor:pointer;}
+#searchType.sel{ background-position:36px -15px;}
+#searchBtn {width:32px; height: 26px; float: right; display:inline; border:none; background:#f6f6f6 url(../../../bbs/images/searchBtn.png) no-repeat 0 0; text-indent:-9999px; overflow:hidden; cursor:pointer; outline:none;}
+#searchBtn:hover,.searchBar #searchBtn.hover{ background-color:#9ac505; background-position:0 bottom; }
+.searchBar span {position:absolute; display:none; left:0; top:26px; background:#fff; border-right: 1px solid #A4A4A4;
+border-bottom: 1px solid #A4A4A4; padding:0 1px 1px 1px;}
+.searchBar span a {display:block; cursor:pointer; color:#6c6c6c; line-height:24px; padding:0 18px 0 6px;}
+.searchBar span a:hover {background:#2191CB; color:#fff;}
+#srchtxt{border:0; height:24px; line-height:24px; padding: 0 5px; width:110px;_width:76px}
+
+.footer {line-height:22px; padding:16px 0; background:#e7ecef; color:#798892;}
+.footer a {color:#798892;}
+.footer a:hover {color:#8dc21f;}
+.footer dt {float:left; display:inline; width:87px; padding:0 0 0 6px; font-size:14px;}
+.footer dd {float:left; display:inline; width:880px; padding:0 0 12px;}
+.footer dd a {white-space:nowrap;}
+.footer .hr {height:0; overflow:hidden; border-top:1px #cdd8df solid; border-bottom:1px #eef2f5 solid; clear:both;}
+.footer .footLink {text-align:center; padding:12px 0;}
+.footer p {text-align:center;color:#cfd8de;}
+
+.fr{float:right;}
+.fl{float:left;}
+
+/****** Other Attribute  ******/
+.clear{ clear: both;}
+.clearer{clear: both; font-size:1px; height:1px; visibility: hidden;}
+/* Clear Fix */ 
+.clearfix:after { content:"."; display:block; height:0; clear:both; visibility:hidden; } 
+.clearfix { display:inline-block;} 
+/* Hide from IE Mac \*/ 
+.clearfix { display:block;} 
+/* End hide from IE Mac */ 
+/* end of clearfix */ 

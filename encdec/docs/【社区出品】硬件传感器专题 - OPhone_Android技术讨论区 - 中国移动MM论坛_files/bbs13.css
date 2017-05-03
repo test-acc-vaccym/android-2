@@ -1,0 +1,127 @@
+/*common*/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, lengend, button, input, textarea, th, td ,a,div,p,span,i,em,b,strong{margin:0;padding:0; font-family:msyh,'微软雅黑';}
+.c{font-size:0; line-height:0; height:0; clear:both;}
+img{border:0;margin:0; padding:0;}
+i,em,b{font-weight:normal; font-style:normal;}
+.radius{border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;}
+.f-l{float:left;}
+
+/*common*/
+body{background:#f1f4f6;}
+.searchBar #searchType,.searchBar .sel,.searchBar #searchBtn,.searchBar #searchBtn:hover.userInfo  i,.footer,.fLeft dd a.selected,.fLeft dd a:hover,.picBut,.userInfo  i{background:url(../../../img/forum/img/all.gif) no-repeat;}
+.but{display:block; width:150px; height:36px; text-align:center; line-height:36px; color:#fff; font-size:16px; background-position:0 -103px; background-repeat:repeat-x;}
+
+/*main*/
+.forumFrame{width:1000px; margin:20px auto 0 auto; background:url(../../../img/forum/img/bg.gif) repeat-y;}
+.fLeft{width:155px; float:left}
+.forumFrame #main{width:823px; padding:10px; float:right;}
+.forumFrame #nav{width: 980px;background-color: #e9edf0;margin: 0 auto 0;border-bottom: #dae1e6 1px solid;}
+.forumFrame #wrap{border: none;width: 100%;}
+#search .forumFrame,#viewthread .forumFrame{background:none;}
+#forumdisplay .forumFrame #wrap{clear:none;width:840px; float:right;}
+
+/*m head*/
+.fHead{width:1000px; margin:20px auto 0 auto; }
+.logo{float:left;}
+.fNav{float:right; border-bottom:2px solid #fff;}
+.fNav li{list-style:none; float:left; position:relative; width:90px; height:30px;}
+.fNav a{display:block; text-align:center; width:100%; font-size:15px; color:#333; line-height:30px; line-height:30px; position:absolute; top:0px; left:0; border-bottom:2px solid #fff;}
+.fNav a:hover{text-decoration:none; color:#73aa13;}
+.fNav a.selected{font-weight:bold; border-color:#73aa13;}
+.fNav a.selected:hover{cursor:auto; color:#333;}
+
+.searchBar{float:right; width:300px; height:30px; background:#fff; margin-left:20px; position:relative; z-index:2;}
+.searchBar #searchType{float:left; width:70px; height:30px; display:block; line-height:30px;text-align:left; background-position:-20px -3px; padding:0; text-indent:10px; cursor:pointer; color:#555;}
+.searchBar .sel{background-position:-90px -3px; background-color:#e4e8eb;}
+.searchBar span.dropList{position:absolute; display:block;top:30px; left:0; width:70px; background:#e4e8eb; display:none; border:none;}
+.dropList a{display:block; height:30px; line-height:30px; padding:0 5px;}
+.dropList a:hover{background:#fff;}
+.searchBar #srchtxt{height:30px; line-height:30px; width:180px; border:0; color:#999; float:left; padding:0 5px;}
+.searchBar #searchBtn{float:right; width:33px; height:30px; background-position:-5px -44px; border:0; cursor:pointer; text-indent:-9999px; border:0;}
+.searchBar #searchBtn:hover{background-color:#73aa13; background-position:-66px -43px;}
+#search #srchtxt{height:26px; line-height:26px; float:none;}
+.searchkey select{height: 28px;}
+.searchkey #searchsubmit{width: 60px;height: 30px;margin-left: 0;cursor: pointer;}
+
+/*left*/
+.userInfo{height:49px; -overflow:hidden; background:#29323d;}
+.userInfo a{text-decoration:none;}
+.userInfo  img{float:left; width:36px; margin:5px 10px 0 5px;}
+.userInfo  b{float:left; font-size:12px; color:#fff; font-weight:normal; width:90px; line-height:24px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;}
+.userInfo  i{float:left; width:17px; height:13px; background-position:-14px -95px;}
+
+.fLeft dl{display:block; border-top:1px solid #eaeef1; border-bottom:1px solid #c8d4db; padding:15px 0; line-height:30px;}
+.fLeft dt{color:#29323d; font-weight:bold; display:block; padding:0 15px;}
+.fLeft dd{color:#29323d; display:block; height:30px; position:relative;}
+.fLeft dd a{color:#29323d; padding:0 15px; display:block; height:30px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; position:absolute; top:0; left:0; width:132px; -height:20px; -padding-top:7px;}
+
+.fLeft dd a:hover{background-position:0 -230px;}
+.fLeft dd a.selected{background-position:-123px -195px; color:#fff; cursor:text;}
+.fLeft dd img{vertical-align:middle; margin-right:4px;}
+
+/*right*/
+/*big ad*/
+.bannerAD{width:820px; height:156px; overflow:hidden; margin:0 auto; position:relative;}
+.bannerAD .inner{width:100%; height:100%; overflow:hidden; position:absolute; top:0; left:0;}
+.bannerAD ul{display:block;}
+.bannerAD li{float:left; list-style:none; width:820px; height:155px; overflow:hidden; position:relative;}
+.bannerAD img{position:absolute; top:0; left:0;}
+.bannerAD a.picBut{background-position:0 -149px; display:block; height:30px;position:absolute; bottom:19px; line-height:30px; color:#fff; text-align:center;}
+.bannerAD a.down{left:95px; width:72px; }
+.bannerAD a.preview{left:173px; width:75px;}
+.adNo{position:absolute; top:5px; right:5px; text-align:right; line-height:0; font-size:0;}
+.adNo a{display:inline-block; width:18px; height:6px; font-size:0; line-height:0; background:#d3dde3; margin-left:1px;}
+.adNo a.selected{background:#73aa13;}
+
+/*lit area*/
+.listArea{float:left; width:590px;}
+.titbar{background:#f1f4f6; height:34px; overflow:hidden; line-height:34px; padding-left:10px; margin-top:20px;}
+.titbar h2{font-size:14px; color:#333; float:left; display:inline;}
+.titbar a{float:right; margin-right:10px; color:#333;}
+.titbar a:hover{color:#73aa13;}
+
+.listBox{}
+.listBox li{list-style:none; line-height:40px; border-bottom:1px solid #efefef; height:40px; overflow:hidden; -height:38px; -line-height:38px;}
+.clearfix li:last-child{border-bottom:0;}
+.listBox li .txt{padding: 0;height: 28px;background: transparent;border: none;float:left; width:480px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;}
+.listBox li .dateTime{float:right;}
+li a{font-size:14px; color:#29323d;}
+li a.cart{color:#8995a4;}
+li a.cart:hover{color:#73aa13;}
+
+li.lihead{background:#29323d; height:24px; line-height:24px; overflow:hidden; color:#fff;}
+li.lihead p{float:left; text-indent:5px}
+.col-title{width:385px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; float:left;}
+.col-cart{width:110px; float:left;}
+.col-cart a{color:#8995a4; font-size:12px;}
+.col-cart a:hover{color:#73aa13;}
+.col-author{width:90px;  float:right;}
+li.lihead p.col-author{float:right;}
+.cRed{color:#f00;}
+
+/*side area*/
+.sideArea{float:right; width:220px; margin-right:1px;}
+.popular{}
+.popular li{list-style:none; height:60px; padding:10px 10px; border-bottom:1px solid #eceeee; overflow:hidden;}
+.popular .avatar{float:left; width:60px;}
+.popular .name{float:left; font-size:12px; color:#8995a4; }
+.popular .name a{display:block; font-size:12px; color:#8995a4; width:140px;  white-space:nowrap; text-overflow:ellipsis; overflow:hidden;}
+.popular .txt{float:left; width:140px; height:50px; overflow:hidden; border:none; padding: 0;line-height: 18px;}
+.popular .txt a{ font-size:12px; color:#333;}
+.popular .cart{display:none;}
+.popular .name a:hover,.popular .txt a:hover{color:#73aa13;}
+
+/*forum activity*/
+.bbsAct{}
+.actNo{float:right; margin-right:5px; text-align:right;}
+.actNo a{float:left; width:18px; height:6px; font-size:0; line-height:0; background:#d3dde3; margin:15px 0 0 1px;}
+.actNo a.selected{background:#73aa13;}
+
+.playerList{display:block; width:220px; overflow:hidden;}
+.playerList li{list-style:none; width:220px; float:left;}
+.playerList a{display:block; padding:10px 15px; border-bottom:1px solid #eceeee; -padding:12px 15px 13px 15px;}
+.playerList a:last-child{border:0;}
+.playerList i{display:block; width:99%;  white-space:nowrap; text-overflow:ellipsis; overflow:hidden; font-size:12px; text-align:center; margin:7px auto 0 auto;}
+
+/*foot*/
+.footer{clear:both; background-color:#E7ECEF; background-position:0 -402px; background-repeat:repeat-x;}

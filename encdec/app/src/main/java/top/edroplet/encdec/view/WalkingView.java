@@ -2,6 +2,7 @@ package top.edroplet.encdec.view;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -24,6 +25,7 @@ import top.edroplet.encdec.activities.sensors.StepCounterActivity;
 import top.edroplet.encdec.utils.data.StepCounterSQLiteHelper;
 
 /**
+ * WalkingView 自定义走步视图
  * Created by xw on 2017/5/2.
  */
 
@@ -50,8 +52,27 @@ public class WalkingView extends View {
     int screenWidth = 0;
     int getScreenHeight = 0;
 
+    /**
+     * 必须提供一个能够获取Context和作为属性的AttributeSet对象的构造函数，获取属性，
+     * 当view从XML布局中创建了之后，XML标签中所有的属性都从资源包中读取出来并作为一个
+     * AttributeSet传递给view的构造函数。
+     * @param context 上下文
+     * @param attributeSet 属性
+     */
     public WalkingView(Context context, AttributeSet attributeSet){
         super(context, attributeSet);
+        boolean mShowText;
+        int mTextPos;
+        TypedArray a = context.getTheme().obtainStyledAttributes(
+                attributeSet,
+                R.styleable.PieChart,
+                0, 0);
+        try {
+            mShowText = a.getBoolean(R.styleable.PieChart_showText, false);
+            mTextPos = a.getInteger(R.styleable.PieChart_labelPosition, 0);
+        } finally {
+            a.recycle();
+        }
         sprite = new Bitmap[8];
         digit = new Bitmap[10];
 
@@ -130,7 +151,7 @@ public class WalkingView extends View {
 
         for(int i=0;i<stepsInWeek.size();i++){
             String os = stepsInWeek.get(i);
-            int s = (Integer.valueOf(os)).intValue();
+            int s = Integer.valueOf(os).intValue();
             int width = (int) (s/STEP_MAX * maxStepWidth); //求出指定的步数在统计条中占得宽度
             int tempY = (cellHeight+distY)*i;
             canvas.drawBitmap(back_cell, 0, (cellHeight + distY)*i, paint); //画出渐变条
@@ -142,7 +163,7 @@ public class WalkingView extends View {
             paint.setTextAlign(Align.LEFT);
             paint.setColor(Color.CYAN);
             paint.setAntiAlias(true);
-            canvas.drawText("走了"  +stepsInWeek.get(i)+"步", width, tempY + cellHeight/2, paint);
+            canvas.drawText("走了"  + stepsInWeek.get(i) + "步", width, tempY + cellHeight/2, paint);
         }
     }
 

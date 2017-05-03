@@ -2,6 +2,7 @@ package top.edroplet.encdec.activities.sensors;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +30,7 @@ import top.edroplet.encdec.R;
 import top.edroplet.encdec.utils.data.SensorData;
 import top.edroplet.encdec.utils.data.SensorsUtils;
 
-public class SensorActivity extends Activity implements SensorEventListener {
+public class SensorActivity extends Activity implements SensorEventListener, OnClickListener {
     SensorsUtils sensorsUtils = new SensorsUtils();
 
     TextView tv_number;
@@ -70,12 +72,21 @@ public class SensorActivity extends Activity implements SensorEventListener {
     AudioManager audioManager;
     int volValue = 0;
 
+    Button btnMovements; // 运动
+    Button btnCompass; // 罗盘
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sensor_study);
 
         tv_number = (TextView) findViewById(R.id.sensor_studyTextView_number);
+
+        btnMovements = (Button) findViewById(R.id.sensor_studyButtonMovements);
+        btnMovements.setOnClickListener(this);
+
+        btnCompass = (Button) findViewById(R.id.sensor_studyButtonCompass);
+        btnCompass.setOnClickListener(this);
 
         lv = (ListView) findViewById(R.id.sensor_studyListView_sensorList);
 
@@ -397,6 +408,21 @@ public class SensorActivity extends Activity implements SensorEventListener {
             Toast.makeText(parent.getContext(), item.getName(), Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        switch(v.getId()) {
+            case R.id.sensor_studyButtonMovements:
+                intent = new Intent(this, StepCounterActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.sensor_studyButtonCompass:
+                intent = new Intent(this, StepCounterActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }
 

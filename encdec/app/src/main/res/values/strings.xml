@@ -33,8 +33,9 @@
     <string name="mainEditTextSmsNumberHint">号码№</string>
     <string name="mainEditTextSmsContentHint">发送的内容</string>
     <string name="mainButtonSmsSendText">发送</string>
-    <string name="main_test_movements">运动</string>
+    <string name="activity_step_counter_movements">运动</string>
     <string name="activity_step_counter_dispose">转到后台</string>
     <string name="activity_step_counter_stop">停止服务</string>
     <string name="activity_step_counter_delete_data">删除数据</string>
+    <string name="activity_step_counter_compass">罗盘</string>
 </resources>

@@ -6,6 +6,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,17 +53,22 @@ public class SensorActivity extends Activity implements SensorEventListener {
 	float []
 	accelerometerValue,
 	oritentionValue,
-    gyroscopeValue,
+    gyroscopeValue = new float[3],
 	magneticValue,
+	gravityValue,
 	linearAccelerationValue,
 	temperatureValue,
 	pressureValue,
 	lightValue,
 	gameRotionVectorValue,
     proximityValue;
+	
     private float count, lastPoint,
             detector;
     private boolean firstStepFlag = true;
+
+    AudioManager audioManager;
+    int volValue = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,8 +93,13 @@ public class SensorActivity extends Activity implements SensorEventListener {
 		light = sm.getDefaultSensor(Sensor.TYPE_LIGHT);
 		temperature = sm.getDefaultSensor(Sensor.TYPE_TEMPERATURE);
 		pressure = sm.getDefaultSensor(Sensor.TYPE_PRESSURE);
-		
-		
+		proximity = sm.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+
+
+        //  获得声音服务
+        audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        volValue = audioManager.getRingerMode();
+
         // sm.registerListener(this, stepCount, SensorManager.SENSOR_DELAY_FASTEST);
         // sm.registerListener(this, stepDetector, SensorManager.SENSOR_DELAY_FASTEST);
         List<Sensor> ls = sm.getSensorList(Sensor.TYPE_ALL);
@@ -124,10 +135,14 @@ public class SensorActivity extends Activity implements SensorEventListener {
         // TODO: Implement this method
     }
 
+    private static final float NS2S = 1.0f / 1000000000.0f;
+    private float timestamp;
+
     @Override
     public void onSensorChanged(SensorEvent event) {
 		switch(event.sensor.getType()){
        	case Sensor.TYPE_STEP_COUNTER:
+			if (false){
             if (firstStepFlag) {
                 lastPoint = event.values[1];
                 firstStepFlag = false;
@@ -140,6 +155,9 @@ public class SensorActivity extends Activity implements SensorEventListener {
                 ++count;
                 // setStepCount(event.values[0]);
             }
+			}else{
+				count = event.values[0];
+			}
             break;
             case Sensor.TYPE_STEP_DETECTOR:
             if (event.values[0] == 1.0) {
@@ -148,10 +166,39 @@ public class SensorActivity extends Activity implements SensorEventListener {
 			break;
         case Sensor.TYPE_ORIENTATION:
             oritentionValue = event.values;
-        	break;
+            //  在这里规定翻转角度小于-120度时静音，values[2]表示翻转角度，也可以设置其他角度
+            if (oritentionValue[2] < -120)
+            {
+                audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+            } else {
+                audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+            }
+            break;
+        case  Sensor.TYPE_GRAVITY:
+            /**
+             * 加速度传感器的类型常量是Sensor.TYPE_GRAVITY。重力传感器与加速度传感器使用同一套坐标系。
+             * values数组中三个元素分别表示了X、Y、Z轴的重力大小。Android SDK定义了一些常量，
+             * 用于表示星系中行星、卫星和太阳表面的重力。下面就来温习一下天文知识，
+             * 将来如果在地球以外用Android手机，也许会用得上。
+             * public static final float GRAVITY_SUN= 275.0f;
+             public static final float GRAVITY_MERCURY= 3.70f;
+             public static final float GRAVITY_VENUS= 8.87f;
+             public static final float GRAVITY_EARTH= 9.80665f;
+             public static final float GRAVITY_MOON= 1.6f;
+             public static final float GRAVITY_MARS= 3.71f;
+             public static final float GRAVITY_JUPITER= 23.12f;
+             public static final float GRAVITY_SATURN= 8.96f;
+             public static final float GRAVITY_URANUS= 8.69f;
+             public static final float GRAVITY_NEPTUNE= 11.0f;
+             public static final float GRAVITY_PLUTO= 0.6f;
+             public static final float GRAVITY_DEATH_STAR_I= 0.000000353036145f;
+             public static final float GRAVITY_THE_ISLAND= 4.815162342f;
+             */
+			 gravityValue = event.values;
+            break;
 		case Sensor.TYPE_ACCELEROMETER:
 			accelerometerValue = event.values;
-				break;
+			break;
 		case Sensor.TYPE_MAGNETIC_FIELD:
 			magneticValue = event.values;
 			break;
@@ -162,13 +209,40 @@ public class SensorActivity extends Activity implements SensorEventListener {
 			temperatureValue = event.values;
 			break;
 		case Sensor.TYPE_PRESSURE:
-            temperatureValue = event.values;
+            pressureValue = event.values;
             break;
 		case Sensor.TYPE_LIGHT:
-            oritentionValue = event.values;
+            /**
+             * 光线传感器的类型常量是Sensor.TYPE_LIGHT。values数组只有第一个元素（values[0]）有意义。
+             * 表示光线的强度。最大的值是120000.0f。Android SDK将光线强度分为不同的等级，每一个等级的最大值由一个常量表示，
+             * 这些常量都定义在SensorManager类中，代码如下：
+             * public static final float LIGHT_SUNLIGHT_MAX =120000.0f;
+             * public static final float LIGHT_SUNLIGHT=110000.0f;
+             * public static final float LIGHT_SHADE=20000.0f;
+             * public static final float LIGHT_OVERCAST= 10000.0f;
+             * public static final float LIGHT_SUNRISE= 400.0f;
+             * public static final float LIGHT_CLOUDY= 100.0f;
+             * public static final float LIGHT_FULLMOON= 0.25f;
+             * public static final float LIGHT_NO_MOON= 0.001f;
+             */
+            lightValue = event.values;
             break;
 		case Sensor.TYPE_GYROSCOPE:
-            oritentionValue = event.values;
+            /**
+             * alues[0]：延X轴旋转的角速度。
+             * values[1]：延Y轴旋转的角速度。
+             * values[2]：延Z轴旋转的角速度。
+             * 当手机逆时针旋转时，角速度为正值，顺时针旋转时，角速度为负值。陀螺仪传感器经常被用来计算手机已转动的角度，代码如下：
+             */
+            if (timestamp != 0)
+            {
+                //  event.timesamp表示当前的时间，单位是纳秒（1百万分之一毫秒）
+                final float dT = (event.timestamp - timestamp) * NS2S;
+                gyroscopeValue[0] += event.values[0] * dT;
+                gyroscopeValue[1] += event.values[1] * dT;
+                gyroscopeValue[2] += event.values[2] * dT;
+            }
+            timestamp = event.timestamp;
             break;
 		case Sensor.TYPE_GAME_ROTATION_VECTOR:
             gameRotionVectorValue = event.values;
@@ -210,6 +284,9 @@ public class SensorActivity extends Activity implements SensorEventListener {
 		// TODO: Implement this method
 		super.onStop();
 		sm.unregisterListener(this);
+        if (volValue > 0) {
+            audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+        }
 	}
 
 	@Override
@@ -218,10 +295,6 @@ public class SensorActivity extends Activity implements SensorEventListener {
 		// TODO: Implement this method
 		super.onDestroy();
 	}
-
-    private void setStepCount(float c) {
-        this.count = c;
-    }
 
     class SensorComparator implements Comparator {
         @Override
@@ -297,11 +370,13 @@ public class SensorActivity extends Activity implements SensorEventListener {
                         msg +=  " 压力传感器pressure" + String.valueOf(pressureValue);
                         break;
                     case Sensor.TYPE_PROXIMITY:
-                        msg +=  " 距离传感器" + String.valueOf(lightValue);
+						msg +=  " 距离传感器" + String.valueOf(proximityValue);
                         break;
-
+					case Sensor.TYPE_GRAVITY:
+						msg += " 重力传感器，" + String.valueOf(gravityValue);
+						break;
                     default:
-                        msg +=  " 未知传感器" + String.valueOf(lightValue);
+                        msg +=  " 未知传感器";
                         break;
                     }
                     msg += "\n现在的手机放置状态是\n" + sensorsUtils.calculateOrientation(accelerometerValue, magneticValue);

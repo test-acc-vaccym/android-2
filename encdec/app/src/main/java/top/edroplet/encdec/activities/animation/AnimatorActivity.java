@@ -8,7 +8,6 @@ import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -17,10 +16,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import top.edroplet.encdec.R;
+import top.edroplet.encdec.utils.util.ImageOperator;
+import top.edroplet.encdec.utils.util.ImageOperator.*;
 
 import static android.content.ContentValues.TAG;
 
@@ -81,7 +79,8 @@ public class AnimatorActivity extends Activity implements Animation.AnimationLis
         Bitmap rightImg = Bitmap.createBitmap(resource, width * 6 / 13, 0, width * 7 / 13, height);
         // String photoUrl = MediaStore.Images.Media.insertImage(this.getContentResolver(),leftImg,"bigDark","Big image of dark");
         // Log.i(TAG, "onCreate: photo url = "+photoUrl);
-        for (ImagePiece ip : split(rightImg, 3, 5)) {
+        ImageOperator io = new ImageOperator();
+        for (ImagePiece ip : io.split(rightImg, 3, 5)) {
             Drawable draw = new BitmapDrawable(res, ip.bitmap);
             animDraw.addFrame(draw, 300);
         }
@@ -95,35 +94,6 @@ public class AnimatorActivity extends Activity implements Animation.AnimationLis
         animDraw.setVisible(true, true);
         animDraw.setOneShot(false);
         animDraw.start();
-    }
-
-    // 方法split，传入的参数是要切割的Bitmap对象，和横向和竖向的切割片数。
-    // 比如传入的是3、3，则横竖向都切割成3片，最终会将整个图片切割成3X3=9片
-    public List<ImagePiece> split(Bitmap bitmap, int xPiece, int yPiece) {
-        List<ImagePiece> pieces = new ArrayList<ImagePiece>(xPiece * yPiece);
-        int width = bitmap.getWidth();
-        int height = bitmap.getHeight();
-        int pieceWidth = width / xPiece;
-        int pieceHeight = height / yPiece;
-//        Matrix matrix = new Matrix();
-//        matrix.postScale((float)1/xPiece, (float)1/yPiece);
-        Log.e(TAG, "split: pieceWidth: " + pieceWidth + ", pieceHeight: " + pieceHeight);
-        for (int i = 0; i < yPiece; i++) {
-            for (int j = 0; j < xPiece; j++) {
-                ImagePiece piece = new ImagePiece();
-                piece.index = j + i * xPiece;
-                int xValue = j * pieceWidth;
-                int yValue = i * pieceHeight;
-                piece.bitmap = Bitmap.createBitmap(bitmap, xValue, yValue,
-                        pieceWidth, pieceHeight);
-//                piece.bitmap = Bitmap.createBitmap(bitmap, xValue, yValue, pieceWidth, pieceHeight,matrix,false);
-                pieces.add(piece);
-            }
-        }
-        if (!bitmap.isRecycled()) {
-            bitmap.recycle();
-        }
-        return pieces;
     }
 
     @Override
@@ -187,9 +157,4 @@ public class AnimatorActivity extends Activity implements Animation.AnimationLis
         return super.onTouchEvent(event);
     }
 
-    // ImagePiece类，此类保存了一个Bitmap对象和一个标识图片的顺序索引的int变量
-    public class ImagePiece {
-        public int index = 0;
-        public Bitmap bitmap = null;
-    }
 }

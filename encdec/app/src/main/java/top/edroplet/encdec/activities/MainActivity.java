@@ -11,6 +11,7 @@ import top.edroplet.encdec.activities.animation.AnimatorActivity;
 import top.edroplet.encdec.activities.io.EncodingTransferActivity;
 import top.edroplet.encdec.activities.io.FindReplaceActivity;
 import top.edroplet.encdec.activities.sensors.SensorActivity;
+import top.edroplet.encdec.activities.sensors.StepCounterActivity;
 import top.edroplet.encdec.activities.system.SmsActivity;
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -20,17 +21,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         setContentView(R.layout.main);
 
-        Button btnTransfer, btnFindReplace, btnAnim, btnSensor;
+        Button btnTransfer, btnFindReplace, btnAnim, btnSensor, btnMovements;
 
         btnTransfer = (Button) findViewById(R.id.main_btn_transfer);
         btnFindReplace = (Button) findViewById(R.id.main_btn_find_replace);
         btnAnim = (Button) findViewById(R.id.main_btn_anim);
         btnSensor = (Button) findViewById(R.id.main_btn_sensor);
+        btnMovements = (Button) findViewById(R.id.mainButtonMovements);
 
         btnAnim.setOnClickListener(this);
         btnTransfer.setOnClickListener(this);
         btnFindReplace.setOnClickListener(this);
         btnSensor.setOnClickListener(this);
+        btnMovements.setOnClickListener(this);
+
         findViewById(R.id.mainButtonSms).setOnClickListener(this);
     }
 
@@ -56,6 +60,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.mainButtonSms:
                 intent = new Intent(this, SmsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.mainButtonMovements:
+                intent = new Intent(this, StepCounterActivity.class);
                 startActivity(intent);
                 break;
         }

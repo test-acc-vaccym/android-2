@@ -59,12 +59,12 @@ public class StepCounterActivity extends Activity implements View.OnClickListene
         IntentFilter filter = new IntentFilter();
         filter.addAction(WALKING_ACTIVITY);
         registerReceiver(receiver, filter);
-        //启动注册了传感器监听的Service
 
-        Intent i = new Intent(this,StepCounterActivity.class);
+        //启动注册了传感器监听的Service
+        Intent i = new Intent(this, StepCounterActivity.class);
         startService(i);
         schelper = new StepCounterSQLiteHelper(this,DB_NAME,null,1);
-        requireData(); //向Service 请求今日走过步数
+        requireData();  //向Service 请求今日走过步数
     }
 
     @Override
@@ -98,4 +98,9 @@ public class StepCounterActivity extends Activity implements View.OnClickListene
         sendBroadcast(intent); //发出消息广播
     }
 
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(receiver);
+        super.onDestroy();
+    }
 }

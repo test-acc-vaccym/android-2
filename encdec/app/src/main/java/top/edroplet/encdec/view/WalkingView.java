@@ -52,7 +52,7 @@ public class WalkingView extends View {
 
     public WalkingView(Context context, AttributeSet attributeSet){
         super(context, attributeSet);
-        sprite = new Bitmap[9];
+        sprite = new Bitmap[8];
         digit = new Bitmap[10];
 
         is = new ImageOperator();
@@ -62,10 +62,10 @@ public class WalkingView extends View {
 
         //初始化图片
         Resources res = getResources();
-        Bitmap sports = BitmapFactory.decodeResource(res, R.drawable.sports);
-        for (ImagePiece ip : is.split(sports, 3, 3)) {
+        Bitmap sports = BitmapFactory.decodeResource(res, R.drawable.three_direction_sport);
+        for (ImagePiece ip : is.split(sports, 4, 2)) {
             // 存储缩放后的照片
-            sprite[ip.index] = is.scale(ip.bitmap, 250, 250);
+            sprite[ip.index] = ip.bitmap;
         }
 
         Bitmap numberBitmap = BitmapFactory.decodeResource(res, R.drawable.number);
@@ -79,7 +79,7 @@ public class WalkingView extends View {
 
         }
 
-        back_cell = BitmapFactory.decodeResource(res, R.drawable.back_cell);
+        back_cell = is.scale(BitmapFactory.decodeResource(res, R.drawable.back_cell), screenWidth, 50);
         //获取数据库中最近7 天内的数据
         schelper = new StepCounterSQLiteHelper(context, StepCounterActivity.DB_NAME, null, 1);
         stepsInWeek = getSQLData("7");
@@ -109,17 +109,17 @@ public class WalkingView extends View {
         //把当前步数换算为在屏幕上绘制的条宽度
         int width = (int)(stepsToday/STEP_MAX*280);
         canvas.drawBitmap(back_cell, 0, 20, paint);
-        paint.setColor(Color.TRANSPARENT);
-        canvas.drawRect(width, 22, screenWidth, screenWidth+cellHeight, paint);
+        paint.setColor(Color.RED);
+        canvas.drawRect(width, 70, screenWidth, 70+cellHeight, paint);
 
         //画出遮罩层
         if(isMoving){
             //如果在运动，就切换帧序列
-            canvas.drawBitmap(sprite[(++frameIndex)%5], width+20, 25, paint);
+            canvas.drawBitmap(sprite[(++frameIndex) % sprite.length], width+20, 115, paint);
             isMoving = false;
         } else{
             //如果没在走步，就绘制静止的那张图片
-            canvas.drawBitmap(sprite[4], width + 20, 25, paint);
+            canvas.drawBitmap(sprite[4], width+20, 115, paint);
         }
         drawDigit(canvas,width); //绘制数字
     }

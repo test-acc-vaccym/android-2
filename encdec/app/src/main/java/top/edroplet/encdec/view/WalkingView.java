@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Paint.Align;
+import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -44,22 +45,38 @@ public class WalkingView extends View {
     StepCounterSQLiteHelper schelper; //操作数据库的辅助类
     SQLiteDatabase db; //数据库操作对象
 
+
+    ImageOperator is;
+    int screenWidth = 0;
+    int getScreenHeight = 0;
+
     public WalkingView(Context context, AttributeSet attributeSet){
         super(context, attributeSet);
         sprite = new Bitmap[9];
         digit = new Bitmap[10];
-        //初始化图片
 
+        is = new ImageOperator();
+        Point p = is.GetScreenSize(context);
+        screenWidth = p.x;
+        getScreenHeight = p.y;
+
+        //初始化图片
         Resources res = getResources();
         Bitmap sports = BitmapFactory.decodeResource(res, R.drawable.sports);
-        ImageOperator is = new ImageOperator();
         for (ImagePiece ip : is.split(sports, 3, 3)) {
-            sprite[ip.index] = ip.bitmap;
+            // 存储缩放后的照片
+            sprite[ip.index] = is.scale(ip.bitmap, 250, 250);
         }
 
         Bitmap numberBitmap = BitmapFactory.decodeResource(res, R.drawable.number);
         for (ImagePiece ip : is.split(numberBitmap, 5, 2)) {
-            digit[ip.index] = ip.bitmap;
+            int index = ip.index;
+            if (index + 1 >= 10){
+                index = -1;
+            }
+            // 缩放为32*32
+            digit[index + 1] = is.scale(ip.bitmap, 50,50);
+
         }
 
         back_cell = BitmapFactory.decodeResource(res, R.drawable.back_cell);
@@ -85,24 +102,24 @@ public class WalkingView extends View {
         paint.setStyle(Style.STROKE);
         paint.setStrokeWidth(2.0f);
 
-        canvas.drawLine(0, 300, 320, 300, paint);
+        canvas.drawLine(0, 10, screenWidth, 10, paint);
         paint.setStyle(s);
         paint.setStrokeWidth(strokewidth);//恢复画笔
 
         //把当前步数换算为在屏幕上绘制的条宽度
         int width = (int)(stepsToday/STEP_MAX*280);
-        canvas.drawBitmap(back_cell, 0, 320, paint);
-        paint.setColor(Color.BLACK);
-        canvas.drawRect(width, 320, 320, 320+cellHeight, paint);
+        canvas.drawBitmap(back_cell, 0, 20, paint);
+        paint.setColor(Color.TRANSPARENT);
+        canvas.drawRect(width, 22, screenWidth, screenWidth+cellHeight, paint);
 
         //画出遮罩层
         if(isMoving){
             //如果在运动，就切换帧序列
-            canvas.drawBitmap(sprite[(++frameIndex)%5], width+20, 320,paint);
+            canvas.drawBitmap(sprite[(++frameIndex)%5], width+20, 25, paint);
             isMoving = false;
         } else{
             //如果没在走步，就绘制静止的那张图片
-            canvas.drawBitmap(sprite[4], width + 20, 320, paint);
+            canvas.drawBitmap(sprite[4], width + 20, 25, paint);
         }
         drawDigit(canvas,width); //绘制数字
     }
@@ -120,7 +137,7 @@ public class WalkingView extends View {
 
             paint.setColor(Color.BLACK);
 
-            canvas.drawRect(width, tempY, 320, tempY + cellHeight, paint);
+            canvas.drawRect(width, tempY, screenWidth, tempY + cellHeight, paint);
 
             paint.setTextAlign(Align.LEFT);
             paint.setColor(Color.CYAN);
@@ -154,7 +171,7 @@ public class WalkingView extends View {
         int l = sStep.length();
         for(int i=0;i<l;i++){
             int index = sStep.charAt(i) - '0';
-            canvas.drawBitmap(digit[index], width+20+40+32*i, 320, null);//绘制数字图片
+            canvas.drawBitmap(digit[index], width+20+40+32*i, 0, null);//绘制数字图片
         }
     }
 }

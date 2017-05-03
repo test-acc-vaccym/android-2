@@ -514,6 +514,11 @@ public class ImageOperator {
         return getBitmap(bitmap, screenWidth, screenHeight);
     }
 
+    /**
+     * 获取屏幕尺寸
+     * @param context 上下文
+     * @return 屏幕尺寸，x,y
+     */
     public Point GetScreenSize(Context context){
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Point outSize = new Point();

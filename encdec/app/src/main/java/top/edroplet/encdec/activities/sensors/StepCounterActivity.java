@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import top.edroplet.encdec.R;
@@ -34,8 +35,8 @@ public class StepCounterActivity extends Activity implements View.OnClickListene
 
     public class StepUpdateReceiver extends BroadcastReceiver {
         public void onReceive(Context context, Intent intent) {
-            Bundle bundle = intent.getExtras();//获得Bundle
-            int steps = bundle.getInt("step");//读取步数
+            Bundle bundle = intent.getExtras(); //获得Bundle
+            int steps = bundle.getInt("step");  //读取步数
             wv.stepsToday = steps;
             wv.isMoving = true;
             wv.postInvalidate(); //刷新WalkingView
@@ -46,7 +47,10 @@ public class StepCounterActivity extends Activity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_counter);
+
         wv = (WalkingView)  findViewById(R.id.walkingView);
+        wv.setAlpha(0.9f);
+
         btnToBackstage = (Button) findViewById(R.id.stepCounterButtonDispose);
         btnStopService = (Button) findViewById(R.id.stepCounterButtonStop);
         btnDeleteData = (Button) findViewById(R.id.stepCounterButtonDeleteData);
@@ -84,12 +88,10 @@ public class StepCounterActivity extends Activity implements View.OnClickListene
         } else if(view == btnDeleteData){
             //查看历史数据
             SQLiteDatabase db = openOrCreateDatabase(DB_NAME,Context.MODE_PRIVATE, null);
-
             db.delete(StepCounterSQLiteHelper.TABLE_NAME, null,null);
             db.close();
             wv.stepsInWeek = wv.getSQLData("7");
             wv.postInvalidate();
-
         }
     }
 

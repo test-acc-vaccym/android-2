@@ -8,14 +8,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
+import android.widget.RemoteViews;
 
 import java.lang.reflect.Method;
+
+import top.edroplet.encdec.R;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
 /**
  * 兼容所有SDK的NotificationUtil
- *
+ * http://blog.csdn.net/yangshangwei/article/details/50727129
  * @author Mr.Yang on 2016-02-18  20:34.
  * @version 1.0
  * @desc
@@ -34,6 +37,7 @@ import static android.content.Context.NOTIFICATION_SERVICE;
  */
 public class NotificationUtils {
     private static final String TAG = "NotificationUtils";
+    static NotificationManager notificationManager = null;
 
     public static Notification createNotification(Context context, PendingIntent pendingIntent, String title, String text, int iconId) {
         Notification notification;
@@ -85,11 +89,33 @@ public class NotificationUtils {
     }
 
     /**
+    private void notificationDeleteIntent() {
+        // 通过getSystemservice获取NotificationManager
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        // PendingIntent --getAct ,getBrc ,getSev等等
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity_.class), 0);
+
+
+        // Notification
+        Notification notification = NotificationUtil.createNotification(this, pendingIntent, "Title", "text", R.drawable.tag_blue);
+        notification.when = System.currentTimeMillis();
+        notification.tickerText = "清除Notificaiton的善后工作";
+
+        // 清除通知,触发的操作，这里将清除Notification触发的deleteIntent设置为跳转到ToastDemoListAct，当然了也可以启动广播 服务等等
+        PendingIntent deleteIntent = PendingIntent.getActivity(this, 0, new Intent(this, ToastDemoListAct.class), 0);
+        notification.deleteIntent = deleteIntent;
+
+        notificationManager.notify(R.drawable.tag_blue, notification);
+
+    }*/
+
+    /**
      * 全部兼容
      * http://blog.csdn.net/yangshangwei/article/details/50688221
      */
     public static void showNotification(Context context, Intent intent, int showIcon, String title, String text, CharSequence tickerText) {
-        NotificationManager notificationManager;
+
         notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
         /*
         返回一个PendingIntent对象，这个对象与一个Activity对象关联，这个案例中与当前的Activity关联。
@@ -103,6 +129,14 @@ public class NotificationUtils {
         Notification notification = createNotification(context, pendingIntent, title, text, showIcon);
         notification.tickerText = tickerText;
         notification.when = System.currentTimeMillis();
+
+        /**
+         * 设置默认发声、震动、Light效果
+         * 注意事项：
+         defaults属性必须在调用notify方法之前调用，否则不起作用
+         设置震动效果需要在AndroidManifest.xml中添加权限
+         <uses-permission android:name="android.permission.VIBRATE" />
+         */
         // 使用默认的声音
         notification.defaults = Notification.DEFAULT_SOUND;
         // 使用默认的震动 需要添加uses-permission  android.permission.VIBRATE
@@ -122,6 +156,105 @@ public class NotificationUtils {
 //                notificationManager.cancel(R.drawable.flag_mark_blue);
 //            }
 //        },5*1000);
+
+    }
+
+    public static void Cancel(int id){
+        if (id == 0 ){
+            notificationManager.cancelAll();
+        }else {
+            notificationManager.cancel(id);
+        }
+    }
+
+    /**
+     * FLAG_SHOW_LIGHTS  //控制闪光
+     * <p/>
+     * FLAG_ONGOING_EVENT  //显示在”正在运行的“一栏中
+     * <p/>
+     * FLAG_INSISTENT   //重复发出声音，直到用户响应此通知
+     * <p/>
+     * FLAG_ONLY_ALERT_ONCE  //标记声音或者震动一次
+     * <p/>
+     * FLAG_AUTO_CANCEL  //在通知栏上点击此通知后自动清除此通知
+     * <p/>
+     * FLAG_NO_CLEAR    //将flag设置为这个属性那么通知栏的那个清楚按钮就不会出现
+     * <p/>
+     * FLAG_FOREGROUND_SERVICE//前台服务标记
+     * <p/>
+     * https://developer.android.com/intl/zh-cn/reference/android/app/Notification.html#FLAG_GROUP_SUMMARY
+     * <p/>
+     * FLAG_GROUP_SUMMARY
+     * <p/>
+     * FLAG_LOCAL_ONLY
+     */
+    private void permanentNotification(Context context, Intent intent, int showIcon, String title, String text, CharSequence tickerText) {
+
+        // 通过getSystemService获取NotificationManager
+        if (notificationManager == null) {
+            notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
+        }
+
+        // PendingIntent
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+
+        // Notification
+        Notification notification = createNotification(context, pendingIntent, title, text, showIcon);
+        notification.tickerText = tickerText;
+        notification.when = System.currentTimeMillis();
+
+        notification.flags = Notification.FLAG_NO_CLEAR;
+
+        // 展示Notification
+        notificationManager.notify(showIcon, notification);
+    }
+
+    /**
+     * 通过Notification.contentView 来自定义Notification
+     * contentView 并不是一个View，而是RemoteViews类型。
+     * RemoteView支持的布局
+     FrameLayout
+     LinearLayout
+     RelativeLayout
+     * RemoteView支持的控件
+
+     AnalogClock
+     Button
+     Chronometer
+     ImageButton
+     ImageView
+     ProgressBar
+     TextView
+
+     * @param context
+     * @param intent
+     * @param showIcon
+     * @param title
+     * @param text
+     * @param tickerText
+     */
+    public static  void customNotification(Context context, Intent intent, int showIcon, String title, String text, CharSequence tickerText) {
+
+        // 通过getSystemService()获取NotificationManager
+        notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
+
+        //PendingIntent
+        PendingIntent pendingIntent = PendingIntent.getActivity(context,0,intent,0);
+
+        // Notification
+        Notification notification = createNotification(context,pendingIntent,title,text,showIcon);
+
+        // 设置属性...
+        notification.tickerText=tickerText;
+        notification.when = System.currentTimeMillis();
+
+        //自定义Notification布局
+        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.custom_notification);
+        remoteViews.setTextViewText(R.id.textview,tickerText);
+        notification.contentView = remoteViews ;
+
+        // notifiy
+        notificationManager.notify(showIcon,notification);
 
     }
 }

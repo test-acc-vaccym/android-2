@@ -72,10 +72,11 @@
         <pathelement path="${sdk.dir}/tools/lib/sdklib.jar" />
         <pathelement path="${sdk.dir}/tools/lib/androidprefs.jar" />
     </path>
-
-    <taskdef name="setup"
+	
+	<!-- delete by qxx -->
+    <!--taskdef name="setup"
         classname="com.android.ant.SetupTask"
-        classpathref="android.antlibs" />
+        classpathref="android.antlibs" /-->
 
 <!-- extension targets. Uncomment the ones where you want to do custom work
      in between standard targets -->
@@ -111,13 +112,15 @@
                below to <setup import="false" />.
              - customize to your needs.
     -->
-    <setup />
+	<!-- delete setup by qxx -->
+    <!--setup /-->
 
 
 <!-- #############################################
      OpenIntents modifications to build.xml follow
      ############################################# -->
-
+	<target name="release">
+	</target>
 	<!-- ############### Install-release ################ -->
 	
 	<target name="install-release" depends="release">
@@ -142,7 +145,7 @@
 		
 	<!-- ############ Convencience target ############## -->
 	<target name="all" 
-		depends="release, javadoc" />
+		depends="release" />
 	
 	
 </project>

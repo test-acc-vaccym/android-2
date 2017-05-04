@@ -122,10 +122,11 @@
 			</fileset>
 		</copy>
 		<!-- Copy lib to binary release -->
-		<copy
+		<!-- delete by qxx -->
+		<!--copy
 			file="${base-dir}/bin/sensorsimulator-lib-${version}.jar"
 			tofile="${sensorsimulator-lib-file}"
-			/>
+			/-->
 		<!-- Copy to source release -->
 		<copy todir="${sensorsimulator-dir}/SensorSimulatorSettings">
 		    <fileset dir="${base-dir}">

@@ -11,6 +11,7 @@
 <!-- #############################################
      OpenIntents modifications to build.xml follow
      ############################################# -->
+	<property name="out.classes.absolute.dir" value="../release"/>
 
     <!-- Private build properties are not shared via svn, 
          developers must have there own copy. -->	 
@@ -76,10 +77,10 @@
         <pathelement path="${sdk.dir}/tools/lib/sdklib.jar" />
         <pathelement path="${sdk.dir}/tools/lib/androidprefs.jar" />
     </path>
-
-    <taskdef name="setup"
+	<!--android 环境的建立-->
+    <!--taskdef name="setup"
         classname="com.android.ant.SetupTask"
-        classpathref="android.antlibs" />
+        classpathref="android.antlibs" /-->
 
 <!-- extension targets. Uncomment the ones where you want to do custom work
      in between standard targets -->
@@ -115,13 +116,17 @@
                below to <setup import="false" />.
              - customize to your needs.
     -->
-    <setup />
+	<!-- delete setup by qxx -->
+    <!--setup /-->
 
 
 <!-- #############################################
      OpenIntents modifications to build.xml follow
      ############################################# -->
-
+	<target name="release">
+	</target>
+	<target name="compile">
+	</target>
 	<!-- ############### Install-release ################ -->
 	
 	<target name="install-release" depends="release">
@@ -159,8 +164,9 @@
     </target>
 		
 	<!-- ############ Convencience target ############## -->
+	<!-- delete JavaDoc by qxx -->
 	<target name="all" 
-		depends="release, lib, javadoc" />
+		depends="release, lib" />
 	
 	
 </project>

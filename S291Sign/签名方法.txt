@@ -1,0 +1,25 @@
+在Eclipse中，将Android APK权限提升到System权限的方法：
+
+１.在AndroidManifest.xml中的manifest节点中添加　android:sharedUserId="android.uid.system"。
+
+2.添加后程序在虚拟机上是不可以直接用的。但可以用eclipse编译成apk。
+
+3.编译成apk后用压缩工具打开apk，把META-INF目录中的CERT.SF、CERT.RSA　两个文件删除。
+
+4.使用android自带的签名工具signapk.jar 以及源码中的platform.x509.pem,platform.pk8　对apk进行重新签名。
+
+  　执行：Java -jar signapk.jar  platform.x509.pem platform.pk8　old.apk new.apk　执行后new.apk即为签名后的文件。
+
+　　 (注：执行命令时所有文件这里放在同一目录下，如果不在同一目录请修改路径)。
+
+　　文件platform.x509.pem和platform.pk8我们可以在源码的　build/target/product/security中找到。signapk.jar 可以编译build/tools/signapk/ 得到。
+
+5.签名后就可以安装使用了
+
+另外这样签名后可能会导致不能操作sdcard目录下的文件。
+
+ 
+
+补充：令外一种方法是需要在android源码编译环境中，修改Android.mk的方式来实现的，但是，原理其实是一样的。
+
+具体可参考superkris的文章：http://blog.csdn.net/superkris/article/details/7709504

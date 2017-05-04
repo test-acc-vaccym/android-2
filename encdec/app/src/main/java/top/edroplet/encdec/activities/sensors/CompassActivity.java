@@ -1,32 +1,22 @@
 package top.edroplet.encdec.activities.sensors;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.graphics.PointF;
-import android.graphics.drawable.BitmapDrawable;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
-import android.widget.ImageView;
-
-import top.edroplet.encdec.R;
-import top.edroplet.encdec.utils.util.ImageOperator;
+import android.app.Activity;
+import android.content.*;
+import android.graphics.*;
+import android.graphics.drawable.*;
+import android.hardware.*;
+import android.os.*;
+import android.view.*;
+import android.view.animation.*;
+import android.widget.*;
+import top.edroplet.encdec.*;
+import top.edroplet.encdec.utils.util.*;
 
 /**
  * CompassActivity
  *  通过通过手势也可以缩放图片    左--->右 放大 右 --->左 缩小 速度越快，缩放比例越大
  */
-public class CompassActivity extends AppCompatActivity {
+public class CompassActivity extends Activity {
     ImageView imageView;
     ImageOperator imageOperator;
 

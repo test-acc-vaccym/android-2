@@ -2,6 +2,7 @@ package top.edroplet.encdec.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
@@ -12,7 +13,43 @@ import top.edroplet.encdec.utils.util.ImageOperator;
 import top.edroplet.encdec.utils.util.Utils;
 
 /**
+ * http://www.jianshu.com/p/84cee705b0d3
+ * Android所有的控件都是View或者View的子类，它其实表示的就是屏幕上的一块矩形区域，用一个Rect来表示，
+ * left，top表示View相对于它的parent View的起点，width，height表示View自己的宽高，
+ * 通过这4个字段就能确定View在屏幕上的位置，确定位置后就可以开始绘制View的内容了。
  * Created by xw on 2017/5/3.
+ * View绘制过程
+ * View的绘制可以分为下面三个过程：
+ * Measure
+ * View会先做一次测量，算出自己需要占用多大的面积。View的Measure过程给我们暴露了一个接口onMeasure，方法的定义是这样的
+ * protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {}
+ * View类已经提供了一个基本的onMeasure实现，其中invoke了setMeasuredDimension()方法，
+ * 设置了measure过程中View的宽高，getSuggestedMinimumWidth()返回View的最小Width，Height也有对应的方法。
+ * 插几句，MeasureSpec类是View类的一个内部静态类，它定义了三个常量UNSPECIFIED、AT_MOST、EXACTLY，
+ * 其实我们可以这样理解它，它们分别对应LayoutParams中match_parent、wrap_content、xxxdp。
+ * 我们可以重写onMeasure来重新定义View的宽高。
+ * Layout
+ * Layout过程对于View类非常简单，同样View给我们暴露了onLayout方法
+ * protected void onLayout(boolean changed, int left, int top, int right, int bottom) { }
+ * 因为我们现在讨论的是View，没有子View需要排列，所以这一步其实我们不需要做额外的工作。
+ * 插一句，对ViewGroup类，onLayout方法中，我们需要将所有子View的大小宽高设置好，这个我们下一篇会详细说。
+ * Draw
+ * Draw过程，就是在canvas上画出我们需要的View样式。同样View给我们暴露了onDraw方法
+ * protected void onDraw(Canvas canvas) {}
+ * 默认View类的onDraw没有一行代码，但是提供给我们了一张空白的画布，举个例子，就像一张画卷一样，
+ * 我们就是画家，能画出什么样的效果，完全取决我们。
+ * View中还有三个比较重要的方法
+ * requestLayout
+ View重新调用一次layout过程。
+ * invalidate
+ View重新调用一次draw过程
+ * forceLayout
+ 标识View在下一次重绘，需要重新调用layout过程。
+ * 自定义属性
+ * 整个View的绘制流程我们已经介绍完了，还有一个很重要的知识，自定义控件属性，我们都知道View已经有一些基本的属性，
+ * 比如layout_width，layout_height，background等，我们往往需要定义自己的属性，那么具体可以这么做。
+    1.在values文件夹下，打开attrs.xml，其实这个文件名称可以是任意的，写在这里更规范一点，表示里面放的全是view的属性。
+    2.因为我们下面的实例会用到2个长度，一个颜色值的属性，所以我们这里先创建3个属性。
  */
 
 public class RainbowBar extends View {
@@ -27,15 +64,33 @@ public class RainbowBar extends View {
     float startX = 0;
     float delta = 10f;
     Paint mPaint;
+    int index = 0;
 
+    /**
+     * 第一个方法，一般我们这样使用时会被调用，View view = new View(context);
+     * @param context
+     */
     public RainbowBar(Context context) {
         super(context);
     }
 
+    /**
+     * 第二个方法，当我们在xml布局文件中使用View时，会在inflate布局时被调用，
+     * <View layout_width="match_parent" layout_height="match_parent"/>。
+     * @param context
+     * @param attrs
+     */
     public RainbowBar(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
+    /**
+     * 第三个方法，跟第二种类似，但是增加style属性设置，这时inflater布局时会调用第三个构造方法。
+     * <View style="@styles/MyCustomStyle" layout_width="match_parent" layout_height="match_parent"/>。
+     * @param context
+     * @param attrs
+     * @param defStyleAttr
+     */
     public RainbowBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         //read custom attrs
@@ -49,5 +104,43 @@ public class RainbowBar extends View {
         mPaint.setAntiAlias(true);
         mPaint.setColor(barColor);
         mPaint.setStrokeWidth(vSpace);
+    }
+
+    /**
+     * 因为我们这里不用关注measrue和layout过程，直接重写onDraw方法即可。
+     * 其实就是调用canvas的drawLine方法，然后每次将draw的起点向前推进，在方法的结尾，我们调用了invalidate方法，
+     * 上面我们已经说明了，这个方法会让View重新调用onDraw方法，所以就达到我们的进度条一直在向前绘制的效果。
+     * 下面是最后的显示效果，制作成gif时好像有色差，但是真实效果是蓝色的。
+     * 我们只写了短短的几十行代码，自定义View并不是我们想象中那么难，下一篇我们会继续ViewGroup的绘制流程学习。
+     * @param canvas
+     */
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        //get screen width
+        float sw = this.getMeasuredWidth();
+        if (startX >= sw + (hSpace + space) - (sw % (hSpace + space))) {
+            startX = 0;
+        } else {
+            startX += delta;
+        }
+        float start = startX;
+        // draw latter parse
+        while (start < sw) {
+            canvas.drawLine(start, 5, start + hSpace, 5, mPaint);
+            start += (hSpace + space);
+        }
+
+        start = startX - space - hSpace;
+
+        // draw front parse
+        while (start >= -hSpace) {
+            canvas.drawLine(start, 5, start + hSpace, 5, mPaint);
+            start -= (hSpace + space);
+        }
+        if (index >= 700000) {
+            index = 0;
+        }
+        invalidate();
     }
 }

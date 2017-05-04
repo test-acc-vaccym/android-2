@@ -8,7 +8,7 @@ import android.content.IntentFilter;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import top.edroplet.encdec.R;
@@ -17,12 +17,11 @@ import top.edroplet.encdec.utils.data.StepCounterSQLiteHelper;
 import top.edroplet.encdec.view.StepArcView;
 import top.edroplet.encdec.view.WalkingView;
 
-public class StepCounterActivity extends Activity implements View.OnClickListener {
-
+public class StepCounterActivity extends Activity implements OnClickListener {
     //数据库名称
     public static final String DB_NAME = "step.db";
     public static final String WALKING_SERVICE = "top.edroplet.encdec.service.WalkingService";
-    public static final String WALKING_ACTIVITY = "top.edroplet.encdec.activities.WalkingActivity";
+    public static final String WALKING_ACTIVITY = "top.edroplet.encdec.activities.StepCounterActivity";
     WalkingView wv;                      //WalkingView 对象引用
     StepCounterSQLiteHelper schelper;   // 声明数据库辅助类
     SQLiteDatabase db;                  // 数据库对象

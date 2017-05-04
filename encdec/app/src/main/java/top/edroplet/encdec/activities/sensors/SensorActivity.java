@@ -31,7 +31,7 @@ import top.edroplet.encdec.utils.data.SensorData;
 import top.edroplet.encdec.utils.data.SensorsUtils;
 
 public class SensorActivity extends Activity implements SensorEventListener, OnClickListener {
-    SensorsUtils sensorsUtils = new SensorsUtils();
+    
 
     TextView tv_number;
     ListView lv;
@@ -105,6 +105,7 @@ public class SensorActivity extends Activity implements SensorEventListener, OnC
 		temperature = sm.getDefaultSensor(Sensor.TYPE_TEMPERATURE);
 		pressure = sm.getDefaultSensor(Sensor.TYPE_PRESSURE);
 		proximity = sm.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+		gameRotationVector = sm.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR);
 
 
         //  获得声音服务
@@ -170,11 +171,13 @@ public class SensorActivity extends Activity implements SensorEventListener, OnC
 				count = event.values[0];
 			}
             break;
-            case Sensor.TYPE_STEP_DETECTOR:
+			
+        case Sensor.TYPE_STEP_DETECTOR:
             if (event.values[0] == 1.0) {
                 detector++;
             }
 			break;
+			
         case Sensor.TYPE_ORIENTATION:
             oritentionValue = event.values;
             //  在这里规定翻转角度小于-120度时静音，values[2]表示翻转角度，也可以设置其他角度
@@ -261,6 +264,8 @@ public class SensorActivity extends Activity implements SensorEventListener, OnC
         case Sensor.TYPE_PROXIMITY:
             proximityValue = event.values;
             break;
+		case Sensor.TYPE_AMBIENT_TEMPERATURE:
+			break;
 		}
     }
 
@@ -390,7 +395,7 @@ public class SensorActivity extends Activity implements SensorEventListener, OnC
                         msg +=  " 未知传感器";
                         break;
                     }
-                    msg += "\n现在的手机放置状态是\n" + sensorsUtils.calculateOrientation(accelerometerValue, magneticValue);
+                    msg += "\n现在的手机放置状态是\n" + SensorsUtils.calculateOrientation(accelerometerValue, magneticValue);
                     Toast.makeText(p1.getContext(), msg, Toast.LENGTH_SHORT).show();
                 }
             });

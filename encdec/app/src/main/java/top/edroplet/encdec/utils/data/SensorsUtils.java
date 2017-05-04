@@ -10,7 +10,7 @@ import android.util.Log;
 public class SensorsUtils {
     private static final String TAG="SensorsData";
     // 计算方向
-    public String calculateOrientation(float [] accelerometerValues, float []magneticFieldValues) {
+    public static String calculateOrientation(float [] accelerometerValues, float []magneticFieldValues) {
         float[] values = new float[3];
         float[] R = new float[9];
         String azimuthAngle = "不是正方向";

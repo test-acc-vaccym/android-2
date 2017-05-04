@@ -41,7 +41,6 @@
             android:label="@string/title_activity_encoding_transfer">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
         <activity
@@ -54,6 +53,21 @@
         <activity android:name=".activities.system.SmsActivity" />
         <activity android:name=".activities.sensors.StepCounterActivity" />
         <activity android:name=".activities.sensors.CompassActivity"></activity>
+		<service android:name=".service.WalkingService"
+			android:enabled="true"
+			android:exported="true"
+			android:icon="@mipmap/ic_launcher"
+			android:isolatedProcess="false"
+			android:label="@string/service">
+			<!--
+			android:permission="onStart"
+			android:process="string"-->
+			
+		</service>
+		<!--receiver android:name=".service.WalkingService">
+			<intent-filter>
+				<action android:name="top.edroplet.encdec.service.WalkingService"/>
+			</intent-filter>
+		</receiver-->
     </application>
-
 </manifest>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<string name="service">传感器服务</string>
     <string name="main_text_set">文字类</string>
     <string name="tv_desc_main">工具集</string>
     <string name="text_select">请选择要转换的文件或者路径:</string>

@@ -89,7 +89,7 @@ public class WalkingService extends Service {
         showNotification();//添加Notification
         receiver = new CommandReceiver();
         IntentFilter filter1 = new IntentFilter();
-        filter1.addAction("top.edroplet.encdec.service.WalkingService");
+        filter1.addAction(StepCounterActivity.WALKING_SERVICE);
         registerReceiver(receiver, filter1);
 
         //设定Message 并延迟到本日结束发送

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="top.edroplet.encdec.activities.sensors.StepCounterActivity"
     android:orientation="vertical">
     <LinearLayout
@@ -43,4 +44,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7"/>
+    <top.edroplet.encdec.view.RainbowBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rainbowbar_color="@android:color/holo_blue_bright"
+        app:rainbowbar_hspace="80dp"
+        app:rainbowbar_vspace="10dp"
+        android:layout_weight="1"/>
 </LinearLayout>

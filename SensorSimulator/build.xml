@@ -1,15 +1,16 @@
 <?xml version="1.0" ?>
 <project name="SensorSimulator" default="package">
 
+	<property name="build.properties.dir" value="release" />
 	<!-- Read properties from OpenIntents property file -->
 	<property file="build.properties" />
 	<property file="${build.properties.dir}/build.properties" />
-
+	
 	<!-- Read manifest properties , e.g. 
 	     manifest(android:versionName) or manifest.package -->
-	<!--xmlproperty file="${build.properties.dir}/AndroidManifest.xml" />
-	<property name="version" value="${manifest(android:versionName)}" /-->
-	<property name="version" value="2.20.2" />
+	<xmlproperty file="${build.properties.dir}/AndroidManifest.xml" />
+	<property name="version" value="${manifest(android:versionName)}" />
+	
 	<!-- The intermediates directory -->
 	<!-- Eclipse uses "bin" for its own output, so we do the same. -->
 	<property name="outdir" value="bin" />

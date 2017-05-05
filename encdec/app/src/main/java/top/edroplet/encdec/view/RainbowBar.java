@@ -11,8 +11,10 @@ import android.view.View;
 import top.edroplet.encdec.R;
 import top.edroplet.encdec.utils.util.ImageOperator;
 import top.edroplet.encdec.utils.util.Utils;
+import java.util.*;
 
 /**
+ * http://m.blog.csdn.net/article/details?id=53418940
  * http://www.jianshu.com/p/84cee705b0d3
  * Android所有的控件都是View或者View的子类，它其实表示的就是屏幕上的一块矩形区域，用一个Rect来表示，
  * left，top表示View相对于它的parent View的起点，width，height表示View自己的宽高，
@@ -54,7 +56,30 @@ import top.edroplet.encdec.utils.util.Utils;
 
 public class RainbowBar extends View {
     //progress bar color
-    int barColor = Color.parseColor("#1E88E5");
+    int []barColor = {
+		Color.parseColor("#1E08E5"), 
+		Color.parseColor("#3e080f"),
+		Color.parseColor("#5e0801"),
+		Color.parseColor("#7e0802"),
+		Color.parseColor("#9e0803"),
+		Color.parseColor("#ae0804"),
+		Color.parseColor("#ce080f"),
+		Color.parseColor("#ee081d"),
+		Color.parseColor("#ee281d"),
+		Color.parseColor("#ee481d"),
+		Color.parseColor("#ee681d"),
+		Color.parseColor("#ee881d"),
+		Color.parseColor("#eea81d"),
+		Color.parseColor("#eec81d"),
+		Color.parseColor("#eee81d"),
+		Color.parseColor("#eee83d"),
+		Color.parseColor("#eee85d"),
+		Color.parseColor("#eee87d"),
+		Color.parseColor("#eee89d"),
+		Color.parseColor("#eee8bd"),
+		Color.parseColor("#eee8dd"),
+		Color.parseColor("#eee8ff"),
+	};
     //every bar segment width
     int hSpace = ImageOperator.dpToPx(80, getContext());
     //every bar segment height
@@ -62,9 +87,10 @@ public class RainbowBar extends View {
     //space among bars
     int space = ImageOperator.dpToPx(10, getContext());
     float startX = 0;
-    float delta = 10f;
+    float delta = 2f; // 控制速度
     Paint mPaint;
     int index = 0;
+	Random ran = new Random(100);
 
     /**
      * 第一个方法，一般我们这样使用时会被调用，View view = new View(context);
@@ -98,11 +124,14 @@ public class RainbowBar extends View {
                 R.styleable.rainbowbar, 0, 0);
         hSpace = t.getDimensionPixelSize(R.styleable.rainbowbar_rainbowbar_hspace, hSpace);
         vSpace = t.getDimensionPixelOffset(R.styleable.rainbowbar_rainbowbar_vspace, vSpace);
-        barColor = t.getColor(R.styleable.rainbowbar_rainbowbar_color, barColor);
+		
+		//int i = ran.nextInt(barColor.length);
+		
+        barColor[index] = t.getColor(R.styleable.rainbowbar_rainbowbar_color, barColor[index]);
         t.recycle();   // we should always recycle after used
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
-        mPaint.setColor(barColor);
+        mPaint.setColor(barColor[index]);
         mPaint.setStrokeWidth(vSpace);
     }
 
@@ -117,6 +146,9 @@ public class RainbowBar extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+		
+		// mPaint.setColor(barColor[ran.nextInt(barColor.length)]);
+		
         //get screen width
         float sw = this.getMeasuredWidth();
         if (startX >= sw + (hSpace + space) - (sw % (hSpace + space))) {
@@ -124,23 +156,31 @@ public class RainbowBar extends View {
         } else {
             startX += delta;
         }
+		// mPaint.setColor(barColor[index++]);
         float start = startX;
+		// 左边逐渐移出的过程
         // draw latter parse
         while (start < sw) {
             canvas.drawLine(start, 5, start + hSpace, 5, mPaint);
             start += (hSpace + space);
+			mPaint.setColor(barColor[ran.nextInt(barColor.length)]);
         }
 
+		
+		//右边逐渐移入的过程
         start = startX - space - hSpace;
 
         // draw front parse
         while (start >= -hSpace) {
             canvas.drawLine(start, 5, start + hSpace, 5, mPaint);
             start -= (hSpace + space);
+			// mPaint.setColor(barColor[ran.nextInt(barColor.length)]);
+			// mPaint.setColor(barColor[index++]);
         }
-        if (index >= 700000) {
+        if (index >= barColor.length -1) {
             index = 0;
         }
+		//index++;
         invalidate();
     }
 }

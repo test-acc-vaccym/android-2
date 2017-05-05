@@ -3,17 +3,16 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
+	android:layout_height="wrap_content"
 	tools:context="top.edroplet.encdec.activities.sensors.CompassActivity"
-	android:gravity="center_horizontal">
+	android:gravity="center">
 
 	<ImageView
 		android:id="@+id/activity_compass_iv"
 		android:layout_width="280dp"
 		android:layout_height="280dp"
-		android:contentDescription="@string/activity_step_counter_compass"
 		android:layout_gravity="center_horizontal"
-		android:background="@drawable/compass_north_280x280"
-		android:src="@drawable/compass_pointer_7x120"/>
+		android:contentDescription="@string/activity_step_counter_compass"
+		android:src="@drawable/compassnorth_all"/>
 </LinearLayout>
 

@@ -1,4 +1,4 @@
-package org.openintents.sensorsimulator.record;
+package top.edroplet.encdec.utils.util;
 
 import android.annotation.TargetApi;
 import android.app.Notification;

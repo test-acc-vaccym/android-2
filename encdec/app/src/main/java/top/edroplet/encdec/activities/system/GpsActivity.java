@@ -13,7 +13,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v4.content.PermissionChecker;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -32,7 +31,6 @@ public class GpsActivity extends Activity implements View.OnClickListener {
     private LocationManager lm;
     private List<String> pNames = new ArrayList<String>(); // 存放LocationProvider名称的集合
 
-    @PermissionChecker.PermissionResult
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

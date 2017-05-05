@@ -78,8 +78,7 @@ public class CompassActivity extends Activity
     protected void onResume()
 	{
         //应用在前台时候注册监听器
-        manager.registerListener(listener, orienten,
-								 SensorManager.SENSOR_DELAY_GAME);
+        manager.registerListener(listener, orienten, SensorManager.SENSOR_DELAY_GAME);
         super.onResume();
     }
 
@@ -106,7 +105,7 @@ public class CompassActivity extends Activity
 				 　　 values[2]: z-axis 方向加速度
 				 */
 				float degree = event.values[0];// 存放了方向值
-				if (Math.abs(degree - predegree) > 1)
+				if (Math.abs(degree - predegree) > 0.5)
 				{
 					/**动画效果*/
 					RotateAnimation animation = new RotateAnimation(predegree, degree,

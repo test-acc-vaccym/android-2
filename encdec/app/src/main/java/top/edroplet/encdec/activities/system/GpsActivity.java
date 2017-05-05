@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import top.edroplet.encdec.R;
+import top.edroplet.encdec.service.ProximityReceiver;
 
 public class GpsActivity extends Activity implements View.OnClickListener {
     private Button btn_one;
@@ -56,6 +57,15 @@ public class GpsActivity extends Activity implements View.OnClickListener {
         updateShow(lc);
         //设置间隔两秒获得一次GPS定位信息
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 8, locationListener);
+
+        // 临近警告(地理围栏)
+        //定义固定点的经纬度
+        double longitude = 112.943285;
+        double latitude = 28.149268;
+        float radius = 10;     //定义半径，米
+        Intent intent = new Intent(this, ProximityReceiver.class);
+        PendingIntent pi = PendingIntent.getBroadcast(this, -1, intent, 0);
+        lm.addProximityAlert(latitude, longitude, radius, -1, pi);
     }
 
     public LocationListener locationListener = new LocationListener() {

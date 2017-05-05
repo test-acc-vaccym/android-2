@@ -40,6 +40,7 @@
     <string name="activity_step_counter_stop">停止服务</string>
     <string name="activity_step_counter_delete_data">删除数据</string>
     <string name="activity_step_counter_compass">罗盘</string>
+    <string name="activity_step_counter_sensor_simulator">仿真</string>
     <string name="activity_gps_button_all">获得系统所有的LocationProvider</string>
     <string name="activity_gps_button_filter">根据条件获取LocationProvider</string>
     <string name="activity_gps_button_special">获取指定的LocationProvider</string>

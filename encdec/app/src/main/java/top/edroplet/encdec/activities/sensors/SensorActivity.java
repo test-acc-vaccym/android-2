@@ -79,6 +79,7 @@ public class SensorActivity extends Activity implements SensorEventListener, OnC
 
     Button btnMovements; // 运动
     Button btnCompass; // 罗盘
+    Button btnSimulator; // 仿真
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +93,9 @@ public class SensorActivity extends Activity implements SensorEventListener, OnC
 
         btnCompass = (Button) findViewById(R.id.sensor_studyButtonCompass);
         btnCompass.setOnClickListener(this);
+
+        btnSimulator = (Button) findViewById(R.id.sensor_studyButtonSensorSimulator);
+        btnSimulator.setOnClickListener(this);
 
         lv = (ListView) findViewById(R.id.sensor_studyListView_sensorList);
 
@@ -522,6 +526,10 @@ public class SensorActivity extends Activity implements SensorEventListener, OnC
                 break;
             case R.id.sensor_studyButtonCompass:
                 intent = new Intent(this, CompassActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.sensor_studyButtonSensorSimulator:
+                intent = new Intent(this, SensorSimulatorDemoActivity.class);
                 startActivity(intent);
                 break;
         }

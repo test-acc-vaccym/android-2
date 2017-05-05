@@ -12,9 +12,10 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 位置 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 联网和网络定位 -->
     <uses-permission-sdk-23 android:name="android.permission.BATTERY_STATS" /> <!-- 电池状态 -->
-    <uses-permission android:name="android.permission.SENSOR_INFO" />
-    <uses-permission android:name="android.permission.SENSOR_ENABLE" />
-    <uses-permission android:name="android.permission.VIBRATE" /> <!--震动-->
+    <uses-permission android:name="android.permission.SENSOR_INFO" /> <!-- 传感器信息 -->
+    <uses-permission android:name="android.permission.SENSOR_ENABLE" /> <!-- 传感器使能 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 震动 -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -52,22 +53,30 @@
         <activity android:name=".activities.sensors.SensorActivity" />
         <activity android:name=".activities.system.SmsActivity" />
         <activity android:name=".activities.sensors.StepCounterActivity" />
-        <activity android:name=".activities.sensors.CompassActivity"></activity>
-		<service android:name=".service.WalkingService"
-			android:enabled="true"
-			android:exported="true"
-			android:icon="@mipmap/ic_launcher"
-			android:isolatedProcess="false"
-			android:label="@string/service">
-			<!--
+        <activity android:name=".activities.sensors.CompassActivity" />
+
+        <service
+            android:name=".service.WalkingService"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:isolatedProcess="false"
+            android:label="@string/service">
+
+            <!--
 			android:permission="onStart"
-			android:process="string"-->
-			
-		</service>
-		<!--receiver android:name=".service.WalkingService">
+			android:process="string"
+            -->
+
+        </service>
+        <!--
+        receiver android:name=".service.WalkingService">
 			<intent-filter>
 				<action android:name="top.edroplet.encdec.service.WalkingService"/>
 			</intent-filter>
-		</receiver-->
+		</receiver
+        -->
+        <activity android:name=".activities.system.GpsActivity"></activity>
     </application>
+
 </manifest>

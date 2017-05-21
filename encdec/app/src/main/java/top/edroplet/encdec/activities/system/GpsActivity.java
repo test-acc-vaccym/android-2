@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -13,6 +15,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -32,10 +35,45 @@ public class GpsActivity extends Activity implements View.OnClickListener {
     private LocationManager lm;
     private List<String> pNames = new ArrayList<String>(); // 存放LocationProvider名称的集合
 
+    private static final long MINIMUM_DISTANCECHANGE_FOR_UPDATE = 1;                // in meters
+    private static final long MINIMUM_TIME_BETWEEN_UPDATE = 5000;                   // in Milliseconds
+    private static final long PROX_ALERT_EXPIRATION = -1;                           // -1 is never expires
+    private static final String PROX_ALERT_INTENT = "top.edroplet.encdec.service.ProximityReceiver.ProximityAlert";
+    //public static final int KEY_LOCATION_CHANGED = 0;
+    double latitude, longitude;
+    public String[] Screen;
+    private ProximityReceiver proximityReceiver;
+//private String[] locationList;
+
+    // setting default screen text
+    public TextView txtName;
+    public TextView txtInfo;
+    public TextView txtClue;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gps);
+
+        @SuppressWarnings("unused")
+        Resources res = getResources();
+
+        txtName = (TextView) findViewById(R.id.txtName);
+        Screen = getResources().getStringArray(R.array.first);
+        txtName.setText(Screen[0]);
+
+
+        txtInfo = (TextView) findViewById(R.id.txtInfo);
+        Screen = getResources().getStringArray(R.array.first);
+        txtInfo.setText(Screen[1]);
+
+
+
+        txtClue = (TextView)findViewById(R.id.txtClue);
+        Screen = getResources().getStringArray(R.array.first);
+        txtClue.setText(Screen[2]);
+
 
         bindViews();
 
@@ -56,22 +94,31 @@ public class GpsActivity extends Activity implements View.OnClickListener {
         Location lc = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         updateShow(lc);
         //设置间隔两秒获得一次GPS定位信息
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 8, locationListener);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 4, locationListener);
+        //设置间隔两秒获得一次网络定位信息
+        // lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 4, locationListener);
 
         // 临近警告(地理围栏)
         //定义固定点的经纬度
         double longitude = 112.943285;
         double latitude = 28.149268;
         float radius = 10;     //定义半径，米
-        Intent intent = new Intent(this, ProximityReceiver.class);
-        PendingIntent pi = PendingIntent.getBroadcast(this, -1, intent, 0);
-        lm.addProximityAlert(latitude, longitude, radius, -1, pi);
+        addProximityAlert(latitude, longitude, radius, -1, 0);
+        IntentFilter filter = new IntentFilter(PROX_ALERT_INTENT);
+        proximityReceiver = new ProximityReceiver(this);                      // registers ProximityIntentReceiver
+        registerReceiver(proximityReceiver, filter);
+
+        addProximityAlerts();
     }
 
     public LocationListener locationListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
             // 当GPS定位信息发生改变时，更新定位
+            //String provider = location.getProvider();
+            latitude = location.getLatitude();
+            longitude = location.getLongitude();
+            Log.i("TEST", "lat: "+latitude+" lng: "+longitude+" "+PROX_ALERT_INTENT);
             updateShow(location);
         }
 
@@ -197,10 +244,11 @@ public class GpsActivity extends Activity implements View.OnClickListener {
         if (location != null) {
             StringBuilder sb = new StringBuilder();
             sb.append("当前的位置信息：\n");
-            sb.append("精度：" + location.getLongitude() + "\n");
+            sb.append("经度：" + location.getLongitude() + "\n");
             sb.append("纬度：" + location.getLatitude() + "\n");
             sb.append("高度：" + location.getAltitude() + "\n");
-            sb.append("速度：" + location.getSpeed() + "\n");
+			float speed = location.getSpeed();
+            sb.append("速度：" + speed + "(m/s)="+speed*3.6+"(km/h)\n");
             sb.append("方向：" + location.getBearing() + "\n");
             sb.append("定位精度：" + location.getAccuracy() + "\n");
             tv_result.setText(sb.toString());
@@ -218,5 +266,264 @@ public class GpsActivity extends Activity implements View.OnClickListener {
                 lm.removeUpdates(locationListener);
             }
         }
+        Log.i("TEST", "Close Out");
+        unregisterReceiver(proximityReceiver);
     }
+    private void addProximityAlert(Double latitude, Double longtitude, float radius, int expire, int productId) {
+        Intent intent = new Intent(PROX_ALERT_INTENT);
+        intent.putExtra("productId", productId);
+        PendingIntent proximityIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        if(!checkPermission()) {
+            return;
+        }
+        if (!isGpsAble(lm)) {
+            Toast.makeText(this, "请打开GPS~", Toast.LENGTH_SHORT).show();
+            openGPS();
+        }
+        if (isGpsAble(lm)) {
+            if(false){
+                intent = new Intent(this, ProximityReceiver.class);
+                PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+                lm.addProximityAlert(latitude, longtitude, radius, expire, pi);
+            }else {
+                lm.addProximityAlert(latitude, longtitude, radius, expire, proximityIntent);
+                IntentFilter filter = new IntentFilter(PROX_ALERT_INTENT);
+                registerReceiver(new ProximityReceiver(), filter);
+            }
+        }
+    }
+
+    private void addProximityAlerts(){
+        Location loc = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if (loc == null)
+            Toast.makeText(this, "No location", Toast.LENGTH_SHORT).show();
+        else
+            addProximityAlert(loc.getLatitude(), loc.getLongitude(), 1, 0);
+
+        addProximityAlert (38.042015, -84.492637, 10, 27);                 // test Awesome
+        addProximityAlert (38.085705, -84.561101, 10, 26);                 // Test Home Location
+        addProximityAlert (38.152649, -84.895205, 10, 25);                 // Test Office Location
+        addProximityAlert (38.197871, -84.866924, 3, 1);                   // Information Center
+        addProximityAlert (38.196001, -84.867435, 6, 2);                   // Goebel
+        addProximityAlert (38.203191, -84.867674, 7, 3);                   // Chapel
+        addProximityAlert (38.192173, -84.870451, 6, 4);                   // Confederate Cemetery
+        addProximityAlert (38.193455, -84.868534, 2, 5);                   // O'Bannon
+        addProximityAlert (38.193815, -84.864904, 2, 6);                   // Henry Clay Jr
+        addProximityAlert (38.087388, -84.547503, 2, 7);                   // O'Hara
+        addProximityAlert (38.191642, -84.870967, 5, 8);                   // Daniel Boone
+    }
+
+
+    private void addProximityAlert(double latitude, double longitude, int radius, int ID) {
+        Log.i("TEST", "addProximityAlert "+latitude+", "+longitude+", "+radius+", " +ID+", " + PROX_ALERT_EXPIRATION);
+        Intent intent = new Intent(PROX_ALERT_INTENT);
+        intent.putExtra("ID", ID);
+        PendingIntent proximityIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        //lm.addProximityAlert(latitude, longitude, radius, ID, proximityIntent);
+        lm.addProximityAlert(latitude, longitude, radius, PROX_ALERT_EXPIRATION, proximityIntent);
+
+    }
+
+    public void onProximityAlert(int ID, boolean entering) {
+        Log.i("TEST", "LOC " +latitude+", "+longitude);
+        Log.i("TEST", "onProximityAlert ID="+ID+" entering: "+entering);
+
+
+        switch (ID){
+            case 1:
+                txtName = (TextView) findViewById(R.id.txtName);
+                Screen = getResources().getStringArray(R.array.start);
+                txtName.setText(Screen[0]);
+                Log.i("txtName", "populated"+ID);
+
+                txtInfo = (TextView) findViewById(R.id.txtInfo);
+                Screen = getResources().getStringArray(R.array.start);
+                txtInfo.setText(Screen[1]);
+                Log.i("txtInfo", "populated "+ID);
+
+                txtClue = (TextView)findViewById(R.id.txtClue);
+                Screen = getResources().getStringArray(R.array.start);
+                txtClue.setText(Screen[2]);
+                Log.i("txtClue", "populated "+ID);
+                break;
+            case 2:
+                txtName = (TextView) findViewById(R.id.txtName);
+                Screen = getResources().getStringArray(R.array.goebel);
+                txtName.setText(Screen[0]);
+                Log.i("txtName", "populated "+ID);
+
+                txtInfo = (TextView) findViewById(R.id.txtInfo);
+                Screen = getResources().getStringArray(R.array.goebel);
+                txtInfo.setText(Screen[1]);
+                Log.i("txtInfo", "populated "+ID);
+
+                txtClue = (TextView)findViewById(R.id.txtClue);
+                Screen = getResources().getStringArray(R.array.goebel);
+                txtClue.setText(Screen[2]);
+                Log.i("txtClue", "populated "+ID);
+                break;
+            case 3:
+                txtName = (TextView) findViewById(R.id.txtName);
+                Screen = getResources().getStringArray(R.array.church);
+                txtName.setText(Screen[0]);
+                Log.i("txtName", "populated "+ID);
+
+                txtInfo = (TextView) findViewById(R.id.txtInfo);
+                Screen = getResources().getStringArray(R.array.church);
+                txtInfo.setText(Screen[1]);
+                Log.i("txtInfo", "populated "+ID);
+
+                txtClue = (TextView)findViewById(R.id.txtClue);
+                Screen = getResources().getStringArray(R.array.church);
+                txtClue.setText(Screen[2]);
+                Log.i("txtClue", "populated "+ID);
+                break;
+            case 4:
+                txtName = (TextView) findViewById(R.id.txtName);
+                Screen = getResources().getStringArray(R.array.confederate);
+                txtName.setText(Screen[0]);
+                Log.i("txtName", "populated "+ID);
+
+                txtInfo = (TextView) findViewById(R.id.txtInfo);
+                Screen = getResources().getStringArray(R.array.confederate);
+                txtInfo.setText(Screen[1]);
+                Log.i("txtInfo", "populated "+ID);
+
+                txtClue = (TextView)findViewById(R.id.txtClue);
+                Screen = getResources().getStringArray(R.array.confederate);
+                txtClue.setText(Screen[2]);
+                Log.i("txtClue", "populated "+ID);
+                break;
+            case 5:
+                txtName = (TextView) findViewById(R.id.txtName);
+                Screen = getResources().getStringArray(R.array.obannon);
+                txtName.setText(Screen[0]);
+                Log.i("txtName", "populated "+ID);
+
+                txtInfo = (TextView) findViewById(R.id.txtInfo);
+                Screen = getResources().getStringArray(R.array.obannon);
+                txtInfo.setText(Screen[1]);
+                Log.i("txtInfo", "populated "+ID);
+
+                txtClue = (TextView)findViewById(R.id.txtClue);
+                Screen = getResources().getStringArray(R.array.obannon);
+                txtClue.setText(Screen[2]);
+                Log.i("txtClue", "populated "+ID);
+                break;
+            case 6:
+                txtName = (TextView) findViewById(R.id.txtName);
+                Screen = getResources().getStringArray(R.array.hcj);
+                txtName.setText(Screen[0]);
+                Log.i("txtName", "populated "+ID);
+
+                txtInfo = (TextView) findViewById(R.id.txtInfo);
+                Screen = getResources().getStringArray(R.array.hcj);
+                txtInfo.setText(Screen[1]);
+                Log.i("txtInfo", "populated "+ID);
+
+                txtClue = (TextView)findViewById(R.id.txtClue);
+                Screen = getResources().getStringArray(R.array.hcj);
+                txtClue.setText(Screen[2]);
+                Log.i("txtClue", "populated "+ID);
+                break;
+            case 7:
+                txtName = (TextView) findViewById(R.id.txtName);
+                Screen = getResources().getStringArray(R.array.ohara);
+                txtName.setText(Screen[0]);
+                Log.i("txtName", "populated "+ID);
+
+                txtInfo = (TextView) findViewById(R.id.txtInfo);
+                Screen = getResources().getStringArray(R.array.ohara);
+                txtInfo.setText(Screen[1]);
+                Log.i("txtInfo", "populated "+ID);
+
+                txtClue = (TextView)findViewById(R.id.txtClue);
+                Screen = getResources().getStringArray(R.array.ohara);
+                txtClue.setText(Screen[2]);
+                Log.i("txtClue", "populated "+ID);
+                break;
+            case 8:
+                txtName = (TextView) findViewById(R.id.txtName);
+                Screen = getResources().getStringArray(R.array.danielboone);
+                txtName.setText(Screen[0]);
+                Log.i("txtName", "populated "+ID);
+
+                txtInfo = (TextView) findViewById(R.id.txtInfo);
+                Screen = getResources().getStringArray(R.array.danielboone);
+                txtInfo.setText(Screen[1]);
+                Log.i("txtInfo", "populated "+ID);
+
+                txtClue = (TextView)findViewById(R.id.txtClue);
+                Screen = getResources().getStringArray(R.array.danielboone);
+                txtClue.setText(Screen[2]);
+                Log.i("txtClue", "populated "+ID);
+                break;
+            case 25:
+                txtName = (TextView) findViewById(R.id.txtName);
+                Screen = getResources().getStringArray(R.array.toffice);
+                txtName.setText(Screen[0]);
+                Log.i("txtName", "populated "+ID);
+
+                txtInfo = (TextView) findViewById(R.id.txtInfo);
+                Screen = getResources().getStringArray(R.array.toffice);
+                txtInfo.setText(Screen[1]);
+                Log.i("txtInfo", "populated "+ID);
+
+                txtClue = (TextView)findViewById(R.id.txtClue);
+                Screen = getResources().getStringArray(R.array.toffice);
+                txtClue.setText(Screen[2]);
+                Log.i("txtClue", "populated "+ID);
+                break;
+            case 26:
+                txtName = (TextView) findViewById(R.id.txtName);
+                Screen = getResources().getStringArray(R.array.thome);
+                txtName.setText(Screen[0]);
+                Log.i("txtName", "populated "+ID);
+
+                txtInfo = (TextView) findViewById(R.id.txtInfo);
+                Screen = getResources().getStringArray(R.array.thome);
+                txtInfo.setText(Screen[1]);
+                Log.i("txtInfo", "populated "+ID);
+
+                txtClue = (TextView)findViewById(R.id.txtClue);
+                Screen = getResources().getStringArray(R.array.thome);
+                txtClue.setText(Screen[2]);
+                Log.i("txtClue", "populated "+ID);
+                break;
+            case 27:
+                txtName = (TextView) findViewById(R.id.txtName);
+                Screen = getResources().getStringArray(R.array.tawesome);
+                txtName.setText(Screen[0]);
+                Log.i("txtName", "populated "+ID);
+
+                txtInfo = (TextView) findViewById(R.id.txtInfo);
+                Screen = getResources().getStringArray(R.array.tawesome);
+                txtInfo.setText(Screen[1]);
+                Log.i("txtInfo", "populated "+ID);
+
+                txtClue = (TextView)findViewById(R.id.txtClue);
+                Screen = getResources().getStringArray(R.array.tawesome);
+                txtClue.setText(Screen[2]);
+                Log.i("txtClue", "populated "+ID);
+                break;
+            default:
+                txtName = (TextView) findViewById(R.id.txtName);
+                Screen = getResources().getStringArray(R.array.first);
+                txtName.setText(Screen[0]);
+                Log.i("txtName", "populated "+ID);
+
+                txtInfo = (TextView) findViewById(R.id.txtInfo);
+                Screen = getResources().getStringArray(R.array.first);
+                txtInfo.setText(Screen[1]);
+                Log.i("txtInfo", "populated "+ID);
+
+                txtClue = (TextView)findViewById(R.id.txtClue);
+                Screen = getResources().getStringArray(R.array.first);
+                txtClue.setText(Screen[2]);
+                Log.i("txtClue", "populated "+ID);
+                break;
+        }
+    }
+
 }

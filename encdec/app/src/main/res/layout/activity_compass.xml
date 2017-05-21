@@ -13,6 +13,8 @@
 		android:layout_height="280dp"
 		android:layout_gravity="center_horizontal"
 		android:contentDescription="@string/activity_step_counter_compass"
-		android:src="@drawable/compassnorth_all"/>
+		android:background="@drawable/compass_north_280x280"
+		android:src="@drawable/compass_pointer_7x120"/>
+
 </LinearLayout>
 

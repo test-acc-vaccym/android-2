@@ -55,6 +55,11 @@
 		app:rainbowbar_hspace="80dp"
 		app:rainbowbar_vspace="10dp"
 		android:layout_weight="1"/>
-
+	<top.edroplet.encdec.view.InstrumentPilot
+		android:id="@+id/activity_step_countertop.edroplet.encdec.view.InstrumentPilot"
+		android:layout_width="match_parent"
+		android:layout_height="200dp"
+		android:layout_weight="1"
+		/>
 </LinearLayout>
 

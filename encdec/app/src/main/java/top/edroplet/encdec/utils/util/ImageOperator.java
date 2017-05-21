@@ -1,32 +1,16 @@
 package top.edroplet.encdec.utils.util;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
+import android.content.*;
+import android.graphics.*;
 import android.graphics.Bitmap.*;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.net.Uri;
-import android.util.Log;
-import android.view.WindowManager;
+import android.graphics.PorterDuff.*;
+import android.net.*;
+import android.util.*;
+import android.view.*;
+import java.io.*;
+import java.util.*;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap.Config;
 
 import static android.content.ContentValues.TAG;
 
@@ -59,6 +43,20 @@ public class ImageOperator {
         return (int)(pxValue/scale+0.5f);
     }
 
+	public static int spTopx(int sp, Context context){
+        return (int)TypedValue.applyDimension(
+			TypedValue.COMPLEX_UNIT_SP,
+			sp,
+			context.getResources().getDisplayMetrics());
+    }
+	
+	public static DisplayMetrics getScreenMetrics(Context context) {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(dm);
+        return dm;
+    }
+	
     /**
      *
      * @param bitmap 原始图片

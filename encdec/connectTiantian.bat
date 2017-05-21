@@ -1,0 +1,1 @@
+cmd /k adb connect 127.0.0.1:6555

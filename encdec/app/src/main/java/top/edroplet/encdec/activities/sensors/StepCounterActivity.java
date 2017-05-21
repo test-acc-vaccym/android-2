@@ -1,21 +1,16 @@
 package top.edroplet.encdec.activities.sensors;
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-
-import top.edroplet.encdec.R;
-import top.edroplet.encdec.service.WalkingService;
-import top.edroplet.encdec.utils.data.StepCounterSQLiteHelper;
-import top.edroplet.encdec.view.StepArcView;
-import top.edroplet.encdec.view.WalkingView;
+import android.app.*;
+import android.content.*;
+import android.database.sqlite.*;
+import android.os.*;
+import android.view.*;
+import android.view.View.*;
+import android.widget.*;
+import top.edroplet.encdec.*;
+import top.edroplet.encdec.service.*;
+import top.edroplet.encdec.utils.data.*;
+import top.edroplet.encdec.view.*;
 
 public class StepCounterActivity extends Activity implements OnClickListener {
     //数据库名称
@@ -28,6 +23,7 @@ public class StepCounterActivity extends Activity implements OnClickListener {
     Button btnToBackstage,              // 转入后台按钮
     btnStopService,                     // 停止服务按钮
     btnDeleteData;                      // 删除数据按钮
+	InstrumentPilot ipView;
 
     StepUpdateReceiver receiver;
     //定义一个继承自BroadcastReceiver 的内部类 StepUpdateReceiver 来接受传感器的信息
@@ -49,11 +45,12 @@ public class StepCounterActivity extends Activity implements OnClickListener {
 
         wv = (WalkingView)  findViewById(R.id.walkingView);
         wv.setAlpha(0.9f);
-
+		ipView = (InstrumentPilot) findViewById(R.id.activity_step_countertop_edroplet_encdec_view_InstrumentPilot);
         btnToBackstage = (Button) findViewById(R.id.stepCounterButtonDispose);
         btnStopService = (Button) findViewById(R.id.stepCounterButtonStop);
         btnDeleteData = (Button) findViewById(R.id.stepCounterButtonDeleteData);
-
+		ipView.setMaxNum(600);
+		ipView.setCurrentNum(500);
         btnToBackstage.setOnClickListener(this);
         btnDeleteData.setOnClickListener(this);
         btnStopService.setOnClickListener(this);

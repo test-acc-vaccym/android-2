@@ -28,28 +28,54 @@ import top.edroplet.encdec.R;
 import top.edroplet.encdec.service.ProximityReceiver;
 
 public class GpsActivity extends Activity implements View.OnClickListener {
-    private Button btn_one;
-    private Button btn_two;
-    private Button btn_three;
-    private TextView tv_result;
-    private LocationManager lm;
-    private List<String> pNames = new ArrayList<String>(); // 存放LocationProvider名称的集合
-
     private static final long MINIMUM_DISTANCECHANGE_FOR_UPDATE = 1;                // in meters
     private static final long MINIMUM_TIME_BETWEEN_UPDATE = 5000;                   // in Milliseconds
     private static final long PROX_ALERT_EXPIRATION = -1;                           // -1 is never expires
     private static final String PROX_ALERT_INTENT = "top.edroplet.encdec.service.ProximityReceiver.ProximityAlert";
-    //public static final int KEY_LOCATION_CHANGED = 0;
-    double latitude, longitude;
     public String[] Screen;
-    private ProximityReceiver proximityReceiver;
-//private String[] locationList;
-
     // setting default screen text
     public TextView txtName;
     public TextView txtInfo;
     public TextView txtClue;
+    //public static final int KEY_LOCATION_CHANGED = 0;
+    double latitude, longitude;
+    private Button btn_one;
+    private Button btn_two;
+    private Button btn_three;
+    private TextView tv_result;
+    //private String[] locationList;
+    private LocationManager lm;
+    public LocationListener locationListener = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+            // 当GPS定位信息发生改变时，更新定位
+            //String provider = location.getProvider();
+            latitude = location.getLatitude();
+            longitude = location.getLongitude();
+            Log.i("TEST", "lat: " + latitude + " lng: " + longitude + " " + PROX_ALERT_INTENT);
+            updateShow(location);
+        }
 
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+            // 当GPS LocationProvider可用时，更新定位
+            if (checkPermission()) {
+                updateShow(lm.getLastKnownLocation(provider));
+            }
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+            updateShow(null);
+        }
+    };
+    private List<String> pNames = new ArrayList<String>(); // 存放LocationProvider名称的集合
+    private ProximityReceiver proximityReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,36 +136,6 @@ public class GpsActivity extends Activity implements View.OnClickListener {
 
         addProximityAlerts();
     }
-
-    public LocationListener locationListener = new LocationListener() {
-        @Override
-        public void onLocationChanged(Location location) {
-            // 当GPS定位信息发生改变时，更新定位
-            //String provider = location.getProvider();
-            latitude = location.getLatitude();
-            longitude = location.getLongitude();
-            Log.i("TEST", "lat: "+latitude+" lng: "+longitude+" "+PROX_ALERT_INTENT);
-            updateShow(location);
-        }
-
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-
-        }
-
-        @Override
-        public void onProviderEnabled(String provider) {
-            // 当GPS LocationProvider可用时，更新定位
-            if(checkPermission()) {
-                updateShow(lm.getLastKnownLocation(provider));
-            }
-        }
-
-        @Override
-        public void onProviderDisabled(String provider) {
-            updateShow(null);
-        }
-    };
 
     private void bindViews() {
         btn_one = (Button) findViewById(R.id.gpsActivityButtonAll);
@@ -288,12 +284,15 @@ public class GpsActivity extends Activity implements View.OnClickListener {
             }else {
                 lm.addProximityAlert(latitude, longtitude, radius, expire, proximityIntent);
                 IntentFilter filter = new IntentFilter(PROX_ALERT_INTENT);
-                registerReceiver(new ProximityReceiver(), filter);
+                registerReceiver(new ProximityReceiver(this), filter);
             }
         }
     }
 
     private void addProximityAlerts(){
+        if (!checkPermission()) {
+            return;
+        }
         Location loc = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if (loc == null)
             Toast.makeText(this, "No location", Toast.LENGTH_SHORT).show();
@@ -321,6 +320,9 @@ public class GpsActivity extends Activity implements View.OnClickListener {
         PendingIntent proximityIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         //lm.addProximityAlert(latitude, longitude, radius, ID, proximityIntent);
+        if (!checkPermission()) {
+            return;
+        }
         lm.addProximityAlert(latitude, longitude, radius, PROX_ALERT_EXPIRATION, proximityIntent);
 
     }

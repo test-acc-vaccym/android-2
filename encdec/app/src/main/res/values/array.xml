@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="first">
+        <item>"first"</item>
+        <item>"info"</item>
+        <item>"Clue"</item>
+    </string-array>
+    <string-array name="start">
+        <item>"start"</item>
+        <item>"info"</item>
+        <item>"Clue"</item>
+    </string-array>
+    <string-array name="goebel">
+        <item>"goebel"</item>
+        <item>"info"</item>
+        <item>"Clue"</item>
+    </string-array>
+    <string-array name="church">
+        <item>"church"</item>
+        <item>"info"</item>
+        <item>"Clue"</item>
+    </string-array>
+    <string-array name="confederate">
+        <item>"confederate"</item>
+        <item>"info"</item>
+        <item>"Clue"</item>
+    </string-array>
+    <string-array name="obannon">
+        <item>"obannon"</item>
+        <item>"info"</item>
+        <item>"Clue"</item>
+    </string-array>
+    <string-array name="hcj">
+        <item>"hcj"</item>
+        <item>"info"</item>
+        <item>"Clue"</item>
+    </string-array>
+    <string-array name="ohara">
+        <item>"ohara"</item>
+        <item>"info"</item>
+        <item>"Clue"</item>
+    </string-array>
+    <string-array name="danielboone">
+        <item>"danielboone"</item>
+        <item>"info"</item>
+        <item>"Clue"</item>
+    </string-array>
+    <string-array name="toffice">
+        <item>"toffice"</item>
+        <item>"info"</item>
+        <item>"Clue"</item>
+    </string-array>
+    <string-array name="tawesome">
+        <item>"tawesome"</item>
+        <item>"info"</item>
+        <item>"Clue"</item>
+    </string-array>
+    <string-array name="thome">
+        <item>"thome"</item>
+        <item>"info"</item>
+        <item>"Clue"</item>
+    </string-array>
+</resources>

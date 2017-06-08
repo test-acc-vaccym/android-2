@@ -25,11 +25,12 @@
     <string name="browse" translatable="false">...</string>
     <string name="title_activity_encoding_transfer">EncodingTransferActivity</string>
     <string name="title_activity_find_replace">FindReplaceActivity</string>
-    <string name="main_test_set">测试工作集</string>
+    <string name="main_test_set">工具集</string>
     <string name="main_test_anim">动画</string>
     <string name="main_test_sensor">传感器</string>
     <string name="main_test_sms">短信</string>
     <string name="main_test_gps">GPS</string>
+    <string name="main_test_kbd">键盘</string>
     <string name="title_activity_animator">AnimatorActivity</string>
     <string name="anim_tv">动画测试文字</string>
     <string name="mainEditTextSmsNumberHint">号码№</string>
@@ -44,4 +45,5 @@
     <string name="activity_gps_button_all">获得系统所有的LocationProvider</string>
     <string name="activity_gps_button_filter">根据条件获取LocationProvider</string>
     <string name="activity_gps_button_special">获取指定的LocationProvider</string>
+    <string name="title_activity_keyboard">KeyboardActivity</string>
 </resources>

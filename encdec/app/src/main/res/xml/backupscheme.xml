@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!--此示例备份配置仅将一个特定数据库文件排除在备份之外，所有其他文件均予以备份。-->
+    <exclude domain="database" path="device_info.db"/>
+</full-backup-content>

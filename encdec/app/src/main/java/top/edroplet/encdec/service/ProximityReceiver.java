@@ -32,12 +32,14 @@ public class ProximityReceiver extends BroadcastReceiver {
         mActivity = new WeakReference<GpsActivity>(activity);
     }
 
+    public ProximityReceiver(){}
+
     @Override
     public void onReceive(Context context, Intent intent) {
         if (false) {
             long[] vibratePatern = {0, 300, 200, 300, 200, 300};
             Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-            Intent notificationIntent = new Intent(context, SeeAttractionOrComment.class);
+            Intent notificationIntent = new Intent(context, GpsActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT); // == Intent.FLAG_ACTIVITY_NEW_TASK
             Notification.Builder notificationBuilder = new Notification.Builder(context)
                     .setTicker("near you")

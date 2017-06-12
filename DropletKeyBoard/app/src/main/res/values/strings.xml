@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DropletKeyBoard</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="ime_description">水碱</string>
+	<string name="subtype_en_us">English (US)</string>
+</resources>

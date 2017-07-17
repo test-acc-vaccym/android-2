@@ -5,6 +5,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="top.edroplet.encdec.activities.system.GpsActivity">
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="name"/>
+    <TextView
+        android:id="@+id/txtInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="info"/>
+
+    <TextView
+        android:id="@+id/txtClue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="clue"/>
     <Button
         android:id="@+id/gpsActivityButtonAll"
         android:layout_width="wrap_content"
@@ -26,7 +43,7 @@
     <TextView
         android:id="@+id/gpsActivityTextviewResult"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="#81BB4D"
         android:padding="5dp"
@@ -34,13 +51,4 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/txtInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/txtClue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 </LinearLayout>

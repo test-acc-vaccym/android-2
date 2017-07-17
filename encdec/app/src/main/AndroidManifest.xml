@@ -16,19 +16,36 @@
     <uses-permission android:name="android.permission.SENSOR_ENABLE" /> <!-- 传感器使能 -->
     <uses-permission android:name="android.permission.VIBRATE" /> <!-- 震动 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <permission android:protectionLevel="normal" android:name="oem.permission.SENDMAIL"/>
 
     <!-- 精确位置 -->
+    <!-- http://blog.csdn.net/self_study/article/details/54020909 -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:fullBackupContent="@xml/backupscheme"
+        android:hardwareAccelerated="true"
+        android:allowTaskReparenting="true"
+        android:enabled="true"
+        android:excludeFromRecents="true"
+        android:exported="true"
+        android:noHistory="false"
+        android:multiprocess="false"
+        android:maxRecents="25"
+        android:launchMode="singleTask">
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http"
+                    android:host="recipe-app.com"
+                    android:pathPrefix="/recipes" />
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -60,10 +77,11 @@
         <service
             android:name=".service.WalkingService"
             android:enabled="true"
-            android:exported="true"
+            android:exported="false"
             android:icon="@mipmap/ic_launcher"
             android:isolatedProcess="false"
-            android:label="@string/service">
+            android:label="@string/service"
+            android:permission="oem.permission.SENDMAIL">
 
             <!--
 			android:permission="onStart"
@@ -79,8 +97,11 @@
 		</receiver
         -->
         <activity android:name=".activities.system.GpsActivity" />
-        <activity android:name=".activities.sensors.SensorSimulatorDemoActivity"></activity>
-		<receiver android:name=".service.ProximityReceiver"/>
+        <activity android:name=".activities.sensors.SensorSimulatorDemoActivity" />
+        <receiver android:name=".service.ProximityReceiver" />
+        <activity
+            android:name=".activities.system.KeyboardActivity"
+            android:label="@string/title_activity_keyboard"/>
     </application>
 
 </manifest>

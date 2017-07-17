@@ -56,45 +56,59 @@
 
 		<TextView
 			style="?android:attr/textStyle"
-			android:layout_width="wrap_content"
+			android:layout_width="30dp"
 			android:layout_height="wrap_content"
-			android:text="@string/main_test_set" />
+			android:text="@string/main_test_set"
+			android:textSize="12sp"/>
 
 		<Button
 			android:id="@+id/main_btn_anim"
 			style="?android:attr/buttonBarButtonStyle"
-			android:layout_width="wrap_content"
+			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="@dimen/activity_horizontal_margin"
 			android:text="@string/main_test_anim"
-			android:textColor="#ef923232" />
+			android:textColor="#ef923232"
+			android:layout_weight="1"/>
 
 		<Button
 			android:id="@+id/main_btn_sensor"
 			style="?android:attr/buttonBarButtonStyle"
-			android:layout_width="wrap_content"
+			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="@dimen/activity_horizontal_margin"
 			android:text="@string/main_test_sensor"
-			android:textColor="#ef923232" />
+			android:textColor="#ef923232"
+			android:layout_weight="1.2" />
 
 		<Button
 			android:id="@+id/mainButtonSms"
 			style="?android:attr/buttonBarButtonStyle"
-			android:layout_width="wrap_content"
+			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="@dimen/activity_horizontal_margin"
 			android:text="@string/main_test_sms"
-			android:textColor="#ef923232" />
+			android:textColor="#ef923232"
+			android:layout_weight="1"/>
 		<Button
 			android:id="@+id/mainButtonGps"
 			style="?android:attr/buttonBarButtonStyle"
-			android:layout_width="wrap_content"
+			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="@dimen/activity_horizontal_margin"
 			android:text="@string/main_test_gps"
 			android:textColor="#ef923232"
-			/>
+			android:layout_weight="1"/>
+
+		<Button
+			android:id="@+id/mainButtonKeyboard"
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/activity_horizontal_margin"
+			android:text="@string/main_test_kbd"
+			android:layout_weight="1"
+			android:background="@color/limit_buy_text_bg"/>
 	</LinearLayout>
 
 	<LinearLayout

@@ -31,7 +31,7 @@ public class GpsActivity extends Activity implements View.OnClickListener {
     private static final long MINIMUM_DISTANCECHANGE_FOR_UPDATE = 1;                // in meters
     private static final long MINIMUM_TIME_BETWEEN_UPDATE = 5000;                   // in Milliseconds
     private static final long PROX_ALERT_EXPIRATION = -1;                           // -1 is never expires
-    private static final String PROX_ALERT_INTENT = "top.edroplet.encdec.service.ProximityReceiver.ProximityAlert";
+    public static final String PROX_ALERT_INTENT = "top.edroplet.encdec.service.ProximityReceiver.ProximityAlert";
     public String[] Screen;
     // setting default screen text
     public TextView txtName;

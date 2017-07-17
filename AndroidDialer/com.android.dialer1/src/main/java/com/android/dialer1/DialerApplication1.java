@@ -28,9 +28,9 @@ import com.android.dialer1.database.FilteredNumberAsyncQueryHandler;
 import com.android.dialer1.filterednumber.BlockedNumbersAutoMigrator;
 import com.umeng.analytics.MobclickAgent;
 
-public class DialerApplication extends Application {
+public class DialerApplication1 extends Application {
 
-    private static final String TAG = "DialerApplication";
+    private static final String TAG = "DialerApplication1";
 
     private static Context sContext;
 

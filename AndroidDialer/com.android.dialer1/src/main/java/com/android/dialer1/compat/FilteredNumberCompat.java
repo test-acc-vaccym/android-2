@@ -16,6 +16,7 @@
 
 package com.android.dialer1.compat;
 
+import com.android.dialer1.DialerApplication1;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
 
@@ -36,7 +37,6 @@ import android.util.Log;
 import com.android.contacts.common.compat.CompatUtils;
 import com.android.contacts.common.compat.TelecomManagerUtil;
 import com.android.contacts.common.testing.NeededForTesting;
-import com.android.dialer1.DialerApplication;
 import com.android.dialer1.database.FilteredNumberAsyncQueryHandler;
 import com.android.dialer1.database.FilteredNumberAsyncQueryHandler.OnCheckBlockedListener;
 import com.android.dialer1.database.FilteredNumberContract.FilteredNumber;
@@ -129,7 +129,7 @@ public class FilteredNumberCompat {
             return CompatUtils.isNCompatible() && isEnabledForTest;
         }
         return CompatUtils.isNCompatible() && ObjectFactory
-                .isNewBlockingEnabled(DialerApplication.getContext());
+                .isNewBlockingEnabled(DialerApplication1.getContext());
     }
 
     /**
@@ -145,7 +145,7 @@ public class FilteredNumberCompat {
      * {@link android.provider.BlockedNumberContract} blocking, {@code false} otherwise.
      */
     public static boolean hasMigratedToNewBlocking() {
-        return PreferenceManager.getDefaultSharedPreferences(DialerApplication.getContext())
+        return PreferenceManager.getDefaultSharedPreferences(DialerApplication1.getContext())
                 .getBoolean(HAS_MIGRATED_TO_NEW_BLOCKING_KEY, false);
     }
 
@@ -158,7 +158,7 @@ public class FilteredNumberCompat {
     @NeededForTesting
     public static void setHasMigratedToNewBlocking(boolean hasMigrated) {
         PreferenceManager.getDefaultSharedPreferences(
-                MoreObjects.firstNonNull(contextForTest, DialerApplication.getContext())).edit()
+                MoreObjects.firstNonNull(contextForTest, DialerApplication1.getContext())).edit()
                 .putBoolean(HAS_MIGRATED_TO_NEW_BLOCKING_KEY, hasMigrated).apply();
     }
 
@@ -269,7 +269,7 @@ public class FilteredNumberCompat {
             Log.i(TAG, "showBlockNumberDialogFlow - showing migration dialog");
             MigrateBlockedNumbersDialogFragment
                     .newInstance(new BlockedNumbersMigrator(contentResolver), newMigrationListener(
-                            DialerApplication.getContext().getContentResolver(), number, countryIso,
+                            DialerApplication1.getContext().getContentResolver(), number, countryIso,
                             displayNumber, parentViewId, fragmentManager, callback))
                     .show(fragmentManager, "MigrateBlockedNumbers");
             return;

@@ -61,7 +61,7 @@
     <uses-permission android:name="android.permission.STOP_APP_SWITCHES" />
 
     <application
-        android:name="DialerApplication"
+        android:name=".DialerApplication1"
         android:label="@string/applicationLabel"
         android:icon="@mipmap/ic_launcher_phone"
         android:hardwareAccelerated="true"

@@ -1,1 +1,1 @@
-cmd /k adb connect 127.0.0.1:6555
+cmd /k D:\tools\ttmnq\Tools\adb.exe connect 127.0.0.1:6555

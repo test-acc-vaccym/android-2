@@ -16,9 +16,9 @@
 
 package com.android.dialer1;
 
-import com.android.contacts.common.ContactsUtils.UserType;
-import com.android.contacts.common.preference.ContactsPreferences;
-import com.android.contacts.common.util.ContactDisplayUtils;
+import com.android.contacts.common1.ContactsUtils.UserType;
+import com.android.contacts.common1.preference.ContactsPreferences;
+import com.android.contacts.common1.util.ContactDisplayUtils;
 import com.android.dialer1.calllog.PhoneNumberDisplayUtil;
 
 import android.content.Context;

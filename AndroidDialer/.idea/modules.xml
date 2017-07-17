@@ -3,10 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidDialer.iml" filepath="$PROJECT_DIR$/AndroidDialer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/com.android.common/com.android.common.iml" filepath="$PROJECT_DIR$/com.android.common/com.android.common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/com.android.contacts.common/com.android.contacts.common.iml" filepath="$PROJECT_DIR$/com.android.contacts.common/com.android.contacts.common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.android.common1/com.android.common1.iml" filepath="$PROJECT_DIR$/com.android.common1/com.android.common1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.android.contacts.common1/com.android.contacts.common1.iml" filepath="$PROJECT_DIR$/com.android.contacts.common1/com.android.contacts.common1.iml" />
       <module fileurl="file://$PROJECT_DIR$/com.android.dialer1/com.android.dialer1.iml" filepath="$PROJECT_DIR$/com.android.dialer1/com.android.dialer1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/com.android.phone.common/com.android.phone.common.iml" filepath="$PROJECT_DIR$/com.android.phone.common/com.android.phone.common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.android.phone.common1/com.android.phone.common1.iml" filepath="$PROJECT_DIR$/com.android.phone.common1/com.android.phone.common1.iml" />
     </modules>
   </component>
 </project>

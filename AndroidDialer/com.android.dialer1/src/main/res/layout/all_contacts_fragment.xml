@@ -31,7 +31,7 @@
         android:layout_height="0dip"
         android:layout_weight="1" >
         <view
-            class="com.android.contacts.common.list.PinnedHeaderListView"
+            class="com.android.contacts.common1.list.PinnedHeaderListView"
             style="@style/DialtactsTheme"
             android:id="@android:id/list"
             android:layout_width="match_parent"

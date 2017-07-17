@@ -39,7 +39,7 @@ import com.android.dialer1.R;
 import com.android.dialer1.calllog.CallLogAsyncTaskUtil;
 import com.android.dialer1.util.AsyncTaskExecutor;
 import com.android.dialer1.util.AsyncTaskExecutors;
-import com.android.common.io.MoreCloseables;
+import com.android.common1.io.MoreCloseables;
 
 import java.io.File;
 import java.io.IOException;

@@ -15,7 +15,7 @@
  */
 package com.android.dialer1.compat;
 
-import com.android.contacts.common.compat.CompatUtils;
+import com.android.contacts.common1.compat.CompatUtils;
 
 public final class DialerCompatUtils {
     /**

@@ -26,7 +26,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.android.contacts.common.CallUtil;
+import com.android.contacts.common1.CallUtil;
 import com.android.dialer1.PhoneCallDetails;
 import com.android.dialer1.R;
 import com.android.dialer1.util.DialerUtils;

@@ -30,8 +30,8 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 
-import com.android.contacts.common.interactions.TouchPointManager;
-import com.android.contacts.common.list.ViewPagerTabs;
+import com.android.contacts.common1.interactions.TouchPointManager;
+import com.android.contacts.common1.list.ViewPagerTabs;
 import com.android.dialer1.DialtactsActivity;
 import com.android.dialer1.R;
 import com.android.dialer1.StatisticsUtil;

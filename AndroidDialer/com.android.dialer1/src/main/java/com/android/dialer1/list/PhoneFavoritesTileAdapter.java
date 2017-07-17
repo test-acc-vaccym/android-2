@@ -39,12 +39,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.android.contacts.common.ContactPhotoManager;
-import com.android.contacts.common.ContactTileLoaderFactory;
-import com.android.contacts.common.list.ContactEntry;
-import com.android.contacts.common.list.ContactTileAdapter.DisplayType;
-import com.android.contacts.common.list.ContactTileView;
-import com.android.contacts.common.preference.ContactsPreferences;
+import com.android.contacts.common1.ContactPhotoManager;
+import com.android.contacts.common1.ContactTileLoaderFactory;
+import com.android.contacts.common1.list.ContactEntry;
+import com.android.contacts.common1.list.ContactTileAdapter.DisplayType;
+import com.android.contacts.common1.list.ContactTileView;
+import com.android.contacts.common1.preference.ContactsPreferences;
 import com.android.dialer1.R;
 
 import java.util.ArrayList;

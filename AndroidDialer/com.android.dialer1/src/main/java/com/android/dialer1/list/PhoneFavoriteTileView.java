@@ -23,15 +23,15 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.android.contacts.common.ContactPhotoManager;
-import com.android.contacts.common.MoreContactUtils;
-import com.android.contacts.common.ContactPhotoManager.DefaultImageRequest;
-import com.android.contacts.common.list.ContactEntry;
-import com.android.contacts.common.list.ContactTileView;
+import com.android.contacts.common1.ContactPhotoManager;
+import com.android.contacts.common1.MoreContactUtils;
+import com.android.contacts.common1.ContactPhotoManager.DefaultImageRequest;
+import com.android.contacts.common1.list.ContactEntry;
+import com.android.contacts.common1.list.ContactTileView;
 import com.android.dialer1.R;
 
 /**
- * A light version of the {@link com.android.contacts.common.list.ContactTileView} that is used in
+ * A light version of the {@link com.android.contacts.common1.list.ContactTileView} that is used in
  * Dialtacts for frequently called contacts. Slightly different behavior from superclass when you
  * tap it, you want to call the frequently-called number for the contact, even if that is not the
  * default number for that contact. This abstract class is the super class to both the row and tile

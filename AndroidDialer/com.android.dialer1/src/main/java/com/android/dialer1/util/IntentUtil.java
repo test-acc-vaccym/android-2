@@ -24,7 +24,7 @@ import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telecom.VideoProfile;
 
-import com.android.contacts.common.CallUtil;
+import com.android.contacts.common1.CallUtil;
 
 /**
  * Utilities for creation of intents in Dialer, such as {@link Intent#ACTION_CALL}.

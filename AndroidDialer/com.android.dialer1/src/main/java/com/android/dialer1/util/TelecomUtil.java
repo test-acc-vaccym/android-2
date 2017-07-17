@@ -32,7 +32,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.contacts.common.compat.telecom.TelecomManagerCompat;
+import com.android.contacts.common1.compat.telecom.TelecomManagerCompat;
 
 import java.util.ArrayList;
 import java.util.List;

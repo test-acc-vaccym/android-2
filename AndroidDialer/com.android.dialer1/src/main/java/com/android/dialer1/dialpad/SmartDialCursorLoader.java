@@ -22,9 +22,9 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.util.Log;
 
-import com.android.contacts.common.compat.CompatUtils;
-import com.android.contacts.common.list.PhoneNumberListAdapter.PhoneQuery;
-import com.android.contacts.common.util.PermissionsUtil;
+import com.android.contacts.common1.compat.CompatUtils;
+import com.android.contacts.common1.list.PhoneNumberListAdapter.PhoneQuery;
+import com.android.contacts.common1.util.PermissionsUtil;
 import com.android.dialer1.database.DialerDatabaseHelper;
 import com.android.dialer1.database.DialerDatabaseHelper.ContactNumber;
 import com.android.dialerbind.DatabaseHelperManager;

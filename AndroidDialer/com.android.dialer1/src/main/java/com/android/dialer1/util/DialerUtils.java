@@ -35,8 +35,8 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
-import com.android.contacts.common.ContactsUtils;
-import com.android.contacts.common.interactions.TouchPointManager;
+import com.android.contacts.common1.ContactsUtils;
+import com.android.contacts.common1.interactions.TouchPointManager;
 import com.android.dialer1.R;
 
 import java.util.Iterator;

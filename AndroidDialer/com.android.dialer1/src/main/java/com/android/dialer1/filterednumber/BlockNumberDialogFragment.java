@@ -30,7 +30,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
-import com.android.contacts.common.util.ContactDisplayUtils;
+import com.android.contacts.common1.util.ContactDisplayUtils;
 import com.android.dialer1.R;
 import com.android.dialer1.compat.FilteredNumberCompat;
 import com.android.dialer1.database.FilteredNumberAsyncQueryHandler;

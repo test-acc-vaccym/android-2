@@ -23,7 +23,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
-import com.android.contacts.common.util.PermissionsUtil;
+import com.android.contacts.common1.util.PermissionsUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;

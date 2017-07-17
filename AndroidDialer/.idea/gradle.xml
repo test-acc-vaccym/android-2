@@ -9,10 +9,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/com.android.common" />
-            <option value="$PROJECT_DIR$/com.android.contacts.common" />
+            <option value="$PROJECT_DIR$/com.android.common1" />
+            <option value="$PROJECT_DIR$/com.android.contacts.common1" />
             <option value="$PROJECT_DIR$/com.android.dialer1" />
-            <option value="$PROJECT_DIR$/com.android.phone.common" />
+            <option value="$PROJECT_DIR$/com.android.phone.common1" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

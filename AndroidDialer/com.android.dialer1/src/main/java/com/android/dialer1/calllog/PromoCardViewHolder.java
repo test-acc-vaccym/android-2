@@ -19,7 +19,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.android.contacts.common.testing.NeededForTesting;
+import com.android.contacts.common1.testing.NeededForTesting;
 import com.android.dialer1.R;
 
 /**

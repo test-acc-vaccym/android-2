@@ -29,7 +29,7 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.contacts.common.GeoUtil;
+import com.android.contacts.common1.GeoUtil;
 import com.android.dialer1.database.FilteredNumberContract.FilteredNumberColumns;
 import com.android.dialerbind.DatabaseHelperManager;
 import com.android.dialerbind.ObjectFactory;

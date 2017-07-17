@@ -56,12 +56,12 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.contacts.common.dialog.ClearFrequentsDialog;
-import com.android.contacts.common.interactions.ImportExportDialogFragment;
-import com.android.contacts.common.interactions.TouchPointManager;
-import com.android.contacts.common.list.OnPhoneNumberPickerActionListener;
-import com.android.contacts.common.util.PermissionsUtil;
-import com.android.contacts.common.widget.FloatingActionButtonController;
+import com.android.contacts.common1.dialog.ClearFrequentsDialog;
+import com.android.contacts.common1.interactions.ImportExportDialogFragment;
+import com.android.contacts.common1.interactions.TouchPointManager;
+import com.android.contacts.common1.list.OnPhoneNumberPickerActionListener;
+import com.android.contacts.common1.util.PermissionsUtil;
+import com.android.contacts.common1.widget.FloatingActionButtonController;
 import com.android.dialer1.calllog.CallLogActivity;
 import com.android.dialer1.calllog.CallLogFragment;
 import com.android.dialer1.database.DialerDatabaseHelper;
@@ -91,15 +91,15 @@ import com.android.dialer1.widget.ActionBarController;
 import com.android.dialer1.widget.SearchEditTextLayout;
 import com.android.dialerbind.DatabaseHelperManager;
 import com.android.dialerbind.ObjectFactory;
-import com.android.phone.common.animation.AnimUtils;
-import com.android.phone.common.animation.AnimationListenerAdapter;
+import com.android.phone.common1.animation.AnimUtils;
+import com.android.phone.common1.animation.AnimationListenerAdapter;
 import com.google.common.annotations.VisibleForTesting;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The dialer tab's title is 'phone', a more common name (see strings.xml).
+ * The dialer tab's title is 'phone', a more common1 name (see strings.xml).
  */
 public class DialtactsActivity extends TransactionSafeActivity implements View.OnClickListener,
         DialpadFragment.OnDialpadQueryChangedListener,

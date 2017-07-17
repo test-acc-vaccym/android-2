@@ -20,7 +20,7 @@ import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 
-import com.android.contacts.common.database.ContactUpdateUtils;
+import com.android.contacts.common1.database.ContactUpdateUtils;
 
 /**
  * Service for updating primary number on a contact.

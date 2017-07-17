@@ -23,7 +23,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.android.dialer1.DialtactsActivity;
-import com.android.phone.common.animation.AnimUtils.AnimationCallback;
+import com.android.phone.common1.animation.AnimUtils.AnimationCallback;
 
 /**
  * Controls the various animated properties of the actionBar: showing/hiding, fading/revealing,

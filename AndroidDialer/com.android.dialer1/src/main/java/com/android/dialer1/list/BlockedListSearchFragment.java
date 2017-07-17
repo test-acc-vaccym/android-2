@@ -30,9 +30,9 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.contacts.common.GeoUtil;
-import com.android.contacts.common.list.ContactEntryListAdapter;
-import com.android.contacts.common.util.ContactDisplayUtils;
+import com.android.contacts.common1.GeoUtil;
+import com.android.contacts.common1.list.ContactEntryListAdapter;
+import com.android.contacts.common1.util.ContactDisplayUtils;
 import com.android.dialer1.R;
 import com.android.dialer1.database.FilteredNumberAsyncQueryHandler;
 import com.android.dialer1.database.FilteredNumberAsyncQueryHandler.OnCheckBlockedListener;

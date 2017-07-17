@@ -20,7 +20,7 @@ import com.google.common.collect.Lists;
 
 import android.provider.CallLog.Calls;
 
-import com.android.contacts.common.compat.CompatUtils;
+import com.android.contacts.common1.compat.CompatUtils;
 import com.android.dialer1.compat.CallsSdkCompat;
 import com.android.dialer1.compat.DialerCompatUtils;
 

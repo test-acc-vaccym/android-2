@@ -20,7 +20,7 @@ import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.provider.Settings;
 
-import com.android.contacts.common.compat.SdkVersionOverride;
+import com.android.contacts.common1.compat.SdkVersionOverride;
 
 /**
  * Compatibility class for {@link android.provider.Settings}

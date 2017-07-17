@@ -21,8 +21,8 @@ import android.database.Cursor;
 import android.telephony.PhoneNumberUtils;
 import android.view.View;
 
-import com.android.contacts.common.ContactPhotoManager;
-import com.android.contacts.common.GeoUtil;
+import com.android.contacts.common1.ContactPhotoManager;
+import com.android.contacts.common1.GeoUtil;
 import com.android.dialer1.R;
 import com.android.dialer1.calllog.ContactInfoHelper;
 import com.android.dialer1.database.FilteredNumberContract.FilteredNumberColumns;

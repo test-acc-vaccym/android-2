@@ -20,7 +20,7 @@ import android.os.Process;
 import android.os.UserHandle;
 import android.os.UserManager;
 
-import com.android.contacts.common.compat.CompatUtils;
+import com.android.contacts.common1.compat.CompatUtils;
 
 /**
  * Compatibility class for {@link UserManager}.

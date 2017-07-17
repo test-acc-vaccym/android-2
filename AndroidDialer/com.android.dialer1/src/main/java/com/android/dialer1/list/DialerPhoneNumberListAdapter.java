@@ -9,11 +9,11 @@ import android.text.TextDirectionHeuristics;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.contacts.common.CallUtil;
-import com.android.contacts.common.GeoUtil;
-import com.android.contacts.common.list.ContactListItemView;
-import com.android.contacts.common.list.PhoneNumberListAdapter;
-import com.android.contacts.common.util.ContactDisplayUtils;
+import com.android.contacts.common1.CallUtil;
+import com.android.contacts.common1.GeoUtil;
+import com.android.contacts.common1.list.ContactListItemView;
+import com.android.contacts.common1.list.PhoneNumberListAdapter;
+import com.android.contacts.common1.util.ContactDisplayUtils;
 import com.android.dialer1.R;
 
 /**

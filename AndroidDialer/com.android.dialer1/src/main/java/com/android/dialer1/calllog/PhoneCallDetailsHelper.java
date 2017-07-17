@@ -31,8 +31,8 @@ import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.TextView;
 
-import com.android.contacts.common.testing.NeededForTesting;
-import com.android.contacts.common.util.PhoneNumberHelper;
+import com.android.contacts.common1.testing.NeededForTesting;
+import com.android.contacts.common1.util.PhoneNumberHelper;
 import com.android.dialer1.PhoneCallDetails;
 import com.android.dialer1.R;
 import com.android.dialer1.calllog.calllogcache.CallLogCache;

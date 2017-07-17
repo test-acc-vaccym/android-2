@@ -20,11 +20,11 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.text.TextUtils;
 
-import com.android.contacts.common.CallUtil;
-import com.android.contacts.common.ContactsUtils;
-import com.android.contacts.common.compat.DirectoryCompat;
-import com.android.contacts.common.list.DirectoryPartition;
-import com.android.contacts.common.util.PhoneNumberHelper;
+import com.android.contacts.common1.CallUtil;
+import com.android.contacts.common1.ContactsUtils;
+import com.android.contacts.common1.compat.DirectoryCompat;
+import com.android.contacts.common1.list.DirectoryPartition;
+import com.android.contacts.common1.util.PhoneNumberHelper;
 import com.android.dialer1.calllog.ContactInfo;
 import com.android.dialer1.service.CachedNumberLookupService;
 import com.android.dialer1.service.CachedNumberLookupService.CachedContactInfo;

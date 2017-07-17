@@ -36,9 +36,9 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.contacts.common.ContactsUtils;
-import com.android.contacts.common.compat.TelephonyManagerCompat;
-import com.android.contacts.common.util.ContactDisplayUtils;
+import com.android.contacts.common1.ContactsUtils;
+import com.android.contacts.common1.compat.TelephonyManagerCompat;
+import com.android.contacts.common1.util.ContactDisplayUtils;
 import com.android.dialer1.DialtactsActivity;
 import com.android.dialer1.R;
 import com.android.dialer1.calllog.CallLogNotificationsHelper.NewCall;

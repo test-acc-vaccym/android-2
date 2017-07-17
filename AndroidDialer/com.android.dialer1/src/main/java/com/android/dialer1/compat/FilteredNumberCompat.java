@@ -34,9 +34,9 @@ import android.telecom.TelecomManager;
 import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 
-import com.android.contacts.common.compat.CompatUtils;
-import com.android.contacts.common.compat.TelecomManagerUtil;
-import com.android.contacts.common.testing.NeededForTesting;
+import com.android.contacts.common1.compat.CompatUtils;
+import com.android.contacts.common1.compat.TelecomManagerUtil;
+import com.android.contacts.common1.testing.NeededForTesting;
 import com.android.dialer1.database.FilteredNumberAsyncQueryHandler;
 import com.android.dialer1.database.FilteredNumberAsyncQueryHandler.OnCheckBlockedListener;
 import com.android.dialer1.database.FilteredNumberContract.FilteredNumber;

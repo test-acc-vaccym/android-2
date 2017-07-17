@@ -26,8 +26,8 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.android.contacts.common.testing.NeededForTesting;
-import com.android.contacts.common.util.BitmapUtil;
+import com.android.contacts.common1.testing.NeededForTesting;
+import com.android.contacts.common1.util.BitmapUtil;
 import com.android.dialer1.R;
 import com.android.dialer1.util.AppCompatConstants;
 import com.google.common.collect.Lists;

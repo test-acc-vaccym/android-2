@@ -17,8 +17,8 @@ package com.android.dialer1.logging;
 
 import android.text.TextUtils;
 
-import com.android.contacts.common.dialog.ClearFrequentsDialog;
-import com.android.contacts.common.interactions.ImportExportDialogFragment;
+import com.android.contacts.common1.dialog.ClearFrequentsDialog;
+import com.android.contacts.common1.interactions.ImportExportDialogFragment;
 import com.android.dialer1.calllog.CallLogFragment;
 import com.android.dialer1.dialpad.DialpadFragment;
 import com.android.dialer1.filterednumber.BlockedNumbersFragment;

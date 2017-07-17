@@ -31,9 +31,9 @@ import android.telecom.PhoneAccountHandle;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.contacts.common.GeoUtil;
-import com.android.contacts.common.compat.CompatUtils;
-import com.android.contacts.common.util.PermissionsUtil;
+import com.android.contacts.common1.GeoUtil;
+import com.android.contacts.common1.compat.CompatUtils;
+import com.android.contacts.common1.util.PermissionsUtil;
 import com.android.dialer1.PhoneCallDetails;
 import com.android.dialer1.compat.CallsSdkCompat;
 import com.android.dialer1.database.VoicemailArchiveContract;

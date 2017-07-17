@@ -19,8 +19,8 @@ package com.android.dialer1.calllog.calllogcache;
 import android.content.Context;
 import android.telecom.PhoneAccountHandle;
 
-import com.android.contacts.common.CallUtil;
-import com.android.contacts.common.compat.CompatUtils;
+import com.android.contacts.common1.CallUtil;
+import com.android.contacts.common1.compat.CompatUtils;
 import com.android.dialer1.calllog.CallLogAdapter;
 
 /**

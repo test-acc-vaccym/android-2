@@ -36,18 +36,18 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Space;
 
-import com.android.contacts.common.list.ContactEntryListAdapter;
-import com.android.contacts.common.list.ContactListItemView;
-import com.android.contacts.common.list.OnPhoneNumberPickerActionListener;
-import com.android.contacts.common.list.PhoneNumberPickerFragment;
-import com.android.contacts.common.util.PermissionsUtil;
-import com.android.contacts.common.util.ViewUtil;
+import com.android.contacts.common1.list.ContactEntryListAdapter;
+import com.android.contacts.common1.list.ContactListItemView;
+import com.android.contacts.common1.list.OnPhoneNumberPickerActionListener;
+import com.android.contacts.common1.list.PhoneNumberPickerFragment;
+import com.android.contacts.common1.util.PermissionsUtil;
+import com.android.contacts.common1.util.ViewUtil;
 import com.android.dialer1.R;
 import com.android.dialer1.dialpad.DialpadFragment.ErrorDialogFragment;
 import com.android.dialer1.util.DialerUtils;
 import com.android.dialer1.util.IntentUtil;
 import com.android.dialer1.widget.EmptyContentView;
-import com.android.phone.common.animation.AnimUtils;
+import com.android.phone.common1.animation.AnimUtils;
 
 public class SearchFragment extends PhoneNumberPickerFragment {
     private static final String TAG  = SearchFragment.class.getSimpleName();

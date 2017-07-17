@@ -24,9 +24,9 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.telecom.PhoneAccountHandle;
 
-import com.android.contacts.common.CallUtil;
-import com.android.contacts.common.model.Contact;
-import com.android.contacts.common.model.ContactLoader;
+import com.android.contacts.common1.CallUtil;
+import com.android.contacts.common1.model.Contact;
+import com.android.contacts.common1.model.ContactLoader;
 import com.android.dialer1.CallDetailActivity;
 import com.android.dialer1.util.IntentUtil;
 import com.android.dialer1.util.IntentUtil.CallIntentBuilder;

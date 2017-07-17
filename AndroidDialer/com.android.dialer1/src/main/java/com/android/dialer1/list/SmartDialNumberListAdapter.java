@@ -24,8 +24,8 @@ import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.contacts.common.CallUtil;
-import com.android.contacts.common.list.ContactListItemView;
+import com.android.contacts.common1.CallUtil;
+import com.android.contacts.common1.list.ContactListItemView;
 import com.android.dialer1.dialpad.SmartDialCursorLoader;
 import com.android.dialer1.dialpad.SmartDialNameMatcher;
 import com.android.dialer1.dialpad.SmartDialPrefix;

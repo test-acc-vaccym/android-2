@@ -16,7 +16,7 @@
 
 package com.android.dialer1.voicemail;
 
-import com.android.contacts.common.testing.NeededForTesting;
+import com.android.contacts.common1.testing.NeededForTesting;
 import com.android.dialer1.calllog.CallLogQuery;
 import com.android.dialer1.database.VoicemailArchiveContract;
 import com.android.dialer1.util.AsyncTaskExecutor;

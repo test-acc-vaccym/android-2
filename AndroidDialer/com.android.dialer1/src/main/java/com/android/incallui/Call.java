@@ -18,7 +18,7 @@ package com.android.incallui;
 
 import android.telecom.DisconnectCause;
 
-import com.android.contacts.common.testing.NeededForTesting;
+import com.android.contacts.common1.testing.NeededForTesting;
 
 import java.util.Locale;
 

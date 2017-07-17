@@ -33,10 +33,10 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
-import com.android.contacts.common.compat.SdkVersionOverride;
+import com.android.contacts.common1.compat.SdkVersionOverride;
 import com.android.dialer1.R;
 import com.android.dialer1.compat.SettingsCompat;
-import com.android.phone.common.util.SettingsUtil;
+import com.android.phone.common1.util.SettingsUtil;
 
 public class SoundSettingsFragment extends PreferenceFragment
         implements Preference.OnPreferenceChangeListener {

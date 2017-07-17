@@ -194,13 +194,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.android.contacts.common.test.FragmentTestActivity">
+        <activity android:name="com.android.contacts.common1.test.FragmentTestActivity">
             <intent-filter>
                 <category android:name="android.intent.category.TEST"/>
             </intent-filter>
         </activity>
 
-        <activity android:name="com.android.contacts.common.dialog.CallSubjectDialog"
+        <activity android:name="com.android.contacts.common1.dialog.CallSubjectDialog"
                   android:theme="@style/Theme.CallSubjectDialogTheme"
                   android:windowSoftInputMode="stateVisible|adjustResize">
             <intent-filter>
@@ -228,47 +228,47 @@
 
         <!-- Used to filter contacts list by account -->
         <activity
-            android:name="com.android.contacts.common.list.AccountFilterActivity"
+            android:name="com.android.contacts.common1.list.AccountFilterActivity"
             android:label="@string/activity_title_contacts_filter"
             android:theme="@style/ContactListFilterTheme"/>
 
         <!-- Used to select display and sync groups -->
         <activity
-            android:name="com.android.contacts.common.list.CustomContactListFilterActivity"
+            android:name="com.android.contacts.common1.list.CustomContactListFilterActivity"
             android:label="@string/custom_list_filter"
             android:theme="@style/ContactListFilterTheme"/>
 
         <activity
-            android:name="com.android.contacts.common.activity.RequestImportVCardPermissionsActivity"
+            android:name="com.android.contacts.common1.activity.RequestImportVCardPermissionsActivity"
             android:label="@string/launcherActivityLabel"
             android:theme="@style/BackgroundOnlyTheme"
             android:exported="false"/>
 
         <!-- vCard related -->
-        <activity android:name="com.android.contacts.common.vcard.ImportVCardActivity"
+        <activity android:name="com.android.contacts.common1.vcard.ImportVCardActivity"
                   android:configChanges="orientation|screenSize|keyboardHidden"
                   android:theme="@style/BackgroundOnlyTheme">
         </activity>
 
-        <activity android:name="com.android.contacts.common.vcard.NfcImportVCardActivity"
+        <activity android:name="com.android.contacts.common1.vcard.NfcImportVCardActivity"
                   android:configChanges="orientation|screenSize|keyboardHidden"
                   android:theme="@style/BackgroundOnlyTheme">
         </activity>
 
-        <activity android:name="com.android.contacts.common.vcard.CancelActivity"
+        <activity android:name="com.android.contacts.common1.vcard.CancelActivity"
                   android:theme="@style/BackgroundOnlyTheme"/>
 
-        <activity android:name="com.android.contacts.common.vcard.SelectAccountActivity"
+        <activity android:name="com.android.contacts.common1.vcard.SelectAccountActivity"
                   android:theme="@style/BackgroundOnlyTheme"/>
 
-        <activity android:name="com.android.contacts.common.vcard.ExportVCardActivity"
+        <activity android:name="com.android.contacts.common1.vcard.ExportVCardActivity"
                   android:theme="@style/BackgroundOnlyTheme"/>
 
-        <activity android:name="com.android.contacts.common.vcard.ShareVCardActivity"
+        <activity android:name="com.android.contacts.common1.vcard.ShareVCardActivity"
                   android:theme="@style/BackgroundOnlyTheme" />
 
         <service
-            android:name="com.android.contacts.common.vcard.VCardService"
+            android:name="com.android.contacts.common1.vcard.VCardService"
             android:exported="false"/>
         <!-- end vCard related -->
 
@@ -311,10 +311,10 @@
             android:exported="false" />
 
         <!-- Broadcast receiver that passively listens to location updates -->
-        <receiver android:name="com.android.contacts.common.location.CountryDetector$LocationChangedReceiver"/>
+        <receiver android:name="com.android.contacts.common1.location.CountryDetector$LocationChangedReceiver"/>
 
         <!-- IntentService to update the user's current country -->
-        <service android:name="com.android.contacts.common.location.UpdateCountryService"
+        <service android:name="com.android.contacts.common1.location.UpdateCountryService"
             android:exported="false"/>
 
         <!-- Main in-call UI activity.  This is never launched directly

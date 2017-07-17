@@ -35,7 +35,7 @@
             android:background="@color/actionbar_background_color"
             android:elevation="@dimen/tab_elevation" />
 
-        <com.android.contacts.common.list.ViewPagerTabs
+        <com.android.contacts.common1.list.ViewPagerTabs
             android:id="@+id/lists_pager_header"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tab_height"

@@ -31,7 +31,7 @@ import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.android.contacts.common.testing.NeededForTesting;
+import com.android.contacts.common1.testing.NeededForTesting;
 import com.android.dialer1.R;
 import com.android.dialer1.compat.FilteredNumberCompat;
 import com.android.dialer1.database.FilteredNumberAsyncQueryHandler;

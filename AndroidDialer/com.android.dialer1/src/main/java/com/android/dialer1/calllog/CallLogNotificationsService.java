@@ -22,7 +22,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 
-import com.android.contacts.common.util.PermissionsUtil;
+import com.android.contacts.common1.util.PermissionsUtil;
 import com.android.dialer1.util.TelecomUtil;
 
 /**

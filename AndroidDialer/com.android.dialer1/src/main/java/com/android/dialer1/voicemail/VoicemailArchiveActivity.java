@@ -25,7 +25,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.android.contacts.common.GeoUtil;
+import com.android.contacts.common1.GeoUtil;
 import com.android.dialer1.DialtactsActivity;
 import com.android.dialer1.R;
 import com.android.dialer1.TransactionSafeActivity;

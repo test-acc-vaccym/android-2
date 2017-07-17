@@ -22,8 +22,8 @@ import android.os.Trace;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 
-import com.android.contacts.common.extensions.ExtensionsFactory;
-import com.android.contacts.common.testing.NeededForTesting;
+import com.android.contacts.common1.extensions.ExtensionsFactory;
+import com.android.contacts.common1.testing.NeededForTesting;
 import com.android.dialer1.database.FilteredNumberAsyncQueryHandler;
 import com.android.dialer1.filterednumber.BlockedNumbersAutoMigrator;
 import com.umeng.analytics.MobclickAgent;

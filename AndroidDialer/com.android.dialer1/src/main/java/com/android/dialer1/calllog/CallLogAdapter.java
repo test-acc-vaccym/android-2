@@ -42,11 +42,11 @@ import android.view.View.AccessibilityDelegate;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 
-import com.android.contacts.common.ContactsUtils;
-import com.android.contacts.common.compat.CompatUtils;
-import com.android.contacts.common.compat.PhoneNumberUtilsCompat;
-import com.android.contacts.common.preference.ContactsPreferences;
-import com.android.contacts.common.util.PermissionsUtil;
+import com.android.contacts.common1.ContactsUtils;
+import com.android.contacts.common1.compat.CompatUtils;
+import com.android.contacts.common1.compat.PhoneNumberUtilsCompat;
+import com.android.contacts.common1.preference.ContactsPreferences;
+import com.android.contacts.common1.util.PermissionsUtil;
 import com.android.dialer1.DialtactsActivity;
 import com.android.dialer1.PhoneCallDetails;
 import com.android.dialer1.R;

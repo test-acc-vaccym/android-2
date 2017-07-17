@@ -27,10 +27,10 @@ import android.widget.QuickContactBadge;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-import com.android.contacts.common.ContactPhotoManager;
-import com.android.contacts.common.ContactPhotoManager.DefaultImageRequest;
-import com.android.contacts.common.compat.CompatUtils;
-import com.android.contacts.common.util.UriUtils;
+import com.android.contacts.common1.ContactPhotoManager;
+import com.android.contacts.common1.ContactPhotoManager.DefaultImageRequest;
+import com.android.contacts.common1.compat.CompatUtils;
+import com.android.contacts.common1.util.UriUtils;
 import com.android.dialer1.R;
 import com.android.dialer1.calllog.ContactInfo;
 import com.android.dialer1.calllog.ContactInfoHelper;

@@ -1,1 +1,1 @@
-include ':com.android.dialer1', ':com.android.common', ':com.android.phone.common', ':com.android.contacts.common'
+include ':com.android.dialer1', ':com.android.common1', ':com.android.phone.common1', ':com.android.contacts.common1'

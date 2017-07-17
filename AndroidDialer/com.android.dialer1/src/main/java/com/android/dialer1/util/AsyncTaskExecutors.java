@@ -19,7 +19,7 @@ package com.android.dialer1.util;
 import android.os.AsyncTask;
 import android.os.Looper;
 
-import com.android.contacts.common.testing.NeededForTesting;
+import com.android.contacts.common1.testing.NeededForTesting;
 import com.google.common.base.Preconditions;
 
 import java.util.concurrent.Executor;

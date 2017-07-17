@@ -23,9 +23,9 @@ import android.support.v13.app.FragmentCompat;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.android.contacts.common.list.ContactEntryListAdapter;
-import com.android.contacts.common.list.PinnedHeaderListView;
-import com.android.contacts.common.util.PermissionsUtil;
+import com.android.contacts.common1.list.ContactEntryListAdapter;
+import com.android.contacts.common1.list.PinnedHeaderListView;
+import com.android.contacts.common1.util.PermissionsUtil;
 import com.android.dialerbind.ObjectFactory;
 import com.android.incallui.Call.LogState;
 

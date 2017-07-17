@@ -30,7 +30,7 @@ import android.widget.FrameLayout;
 
 import com.android.dialer1.R;
 import com.android.dialer1.util.DialerUtils;
-import com.android.phone.common.animation.AnimUtils;
+import com.android.phone.common1.animation.AnimUtils;
 
 public class SearchEditTextLayout extends FrameLayout {
     private static final float EXPAND_MARGIN_FRACTION_START = 0.8f;

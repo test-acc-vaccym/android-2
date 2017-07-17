@@ -24,8 +24,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v13.app.FragmentCompat;
 
-import com.android.contacts.common.list.ContactEntryListAdapter;
-import com.android.contacts.common.util.PermissionsUtil;
+import com.android.contacts.common1.list.ContactEntryListAdapter;
+import com.android.contacts.common1.util.PermissionsUtil;
 import com.android.dialer1.dialpad.SmartDialCursorLoader;
 import com.android.dialer1.R;
 import com.android.dialer1.widget.EmptyContentView;

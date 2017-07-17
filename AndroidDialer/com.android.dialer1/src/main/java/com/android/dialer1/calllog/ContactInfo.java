@@ -19,8 +19,8 @@ package com.android.dialer1.calllog;
 import android.net.Uri;
 import android.text.TextUtils;
 
-import com.android.contacts.common.ContactsUtils.UserType;
-import com.android.contacts.common.util.UriUtils;
+import com.android.contacts.common1.ContactsUtils.UserType;
+import com.android.contacts.common1.util.UriUtils;
 import com.google.common.base.Objects;
 
 /**

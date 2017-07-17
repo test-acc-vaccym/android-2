@@ -28,8 +28,8 @@ import android.telephony.TelephonyManager;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.android.contacts.common.compat.CompatUtils;
-import com.android.contacts.common.compat.TelephonyManagerCompat;
+import com.android.contacts.common1.compat.CompatUtils;
+import com.android.contacts.common1.compat.TelephonyManagerCompat;
 import com.android.dialer1.R;
 import com.android.dialer1.StatisticsUtil;
 import com.android.dialer1.compat.FilteredNumberCompat;

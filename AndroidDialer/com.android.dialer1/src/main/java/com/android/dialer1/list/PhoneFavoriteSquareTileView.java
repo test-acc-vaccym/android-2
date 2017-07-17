@@ -24,8 +24,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.android.contacts.common.compat.CompatUtils;
-import com.android.contacts.common.list.ContactEntry;
+import com.android.contacts.common1.compat.CompatUtils;
+import com.android.contacts.common1.list.ContactEntry;
 import com.android.dialer1.R;
 
 /**

@@ -45,10 +45,10 @@ import android.widget.CheckBox;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.android.contacts.common.Collapser;
-import com.android.contacts.common.Collapser.Collapsible;
-import com.android.contacts.common.MoreContactUtils;
-import com.android.contacts.common.util.ContactDisplayUtils;
+import com.android.contacts.common1.Collapser;
+import com.android.contacts.common1.Collapser.Collapsible;
+import com.android.contacts.common1.MoreContactUtils;
+import com.android.contacts.common1.util.ContactDisplayUtils;
 import com.android.dialer1.R;
 import com.android.dialer1.TransactionSafeActivity;
 import com.android.dialer1.contact.ContactUpdateService;

@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 
-<view class="com.android.contacts.common.widget.ActivityTouchLinearLayout"
+<view class="com.android.contacts.common1.widget.ActivityTouchLinearLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

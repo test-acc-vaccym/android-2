@@ -40,13 +40,13 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.common.io.MoreCloseables;
-import com.android.contacts.common.compat.CompatUtils;
-import com.android.contacts.common.compat.TelephonyManagerCompat;
-import com.android.contacts.common.database.NoNullCursorAsyncQueryHandler;
-import com.android.contacts.common.util.ContactDisplayUtils;
-import com.android.contacts.common.widget.SelectPhoneAccountDialogFragment;
-import com.android.contacts.common.widget.SelectPhoneAccountDialogFragment.SelectPhoneAccountListener;
+import com.android.common1.io.MoreCloseables;
+import com.android.contacts.common1.compat.CompatUtils;
+import com.android.contacts.common1.compat.TelephonyManagerCompat;
+import com.android.contacts.common1.database.NoNullCursorAsyncQueryHandler;
+import com.android.contacts.common1.util.ContactDisplayUtils;
+import com.android.contacts.common1.widget.SelectPhoneAccountDialogFragment;
+import com.android.contacts.common1.widget.SelectPhoneAccountDialogFragment.SelectPhoneAccountListener;
 import com.android.dialer1.calllog.PhoneAccountUtils;
 import com.android.dialer1.util.TelecomUtil;
 
@@ -63,7 +63,7 @@ import java.util.List;
  *
  * TODO: there's lots of duplicated code between this class and the
  * corresponding class under apps/Phone.  Let's figure out a way to
- * unify these two classes (in the framework? in a common shared library?)
+ * unify these two classes (in the framework? in a common1 shared library?)
  */
 public class SpecialCharSequenceMgr {
     private static final String TAG = "SpecialCharSequenceMgr";

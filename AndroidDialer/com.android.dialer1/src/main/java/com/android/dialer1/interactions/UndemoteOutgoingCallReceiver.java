@@ -28,7 +28,7 @@ import android.provider.ContactsContract.PhoneLookup;
 import android.provider.ContactsContract.PinnedPositions;
 import android.text.TextUtils;
 
-import com.android.contacts.common.util.PermissionsUtil;
+import com.android.contacts.common1.util.PermissionsUtil;
 
 /**
  * This broadcast receiver is used to listen to outgoing calls and undemote formerly demoted

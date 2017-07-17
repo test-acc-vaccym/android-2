@@ -18,7 +18,7 @@ package com.android.dialer1.util;
 
 import android.util.LruCache;
 
-import com.android.contacts.common.testing.NeededForTesting;
+import com.android.contacts.common1.testing.NeededForTesting;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

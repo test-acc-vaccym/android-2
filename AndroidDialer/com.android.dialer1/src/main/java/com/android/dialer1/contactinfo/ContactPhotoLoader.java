@@ -26,8 +26,8 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.util.Log;
 
-import com.android.contacts.common.GeoUtil;
-import com.android.contacts.common.lettertiles.LetterTileDrawable;
+import com.android.contacts.common1.GeoUtil;
+import com.android.contacts.common1.lettertiles.LetterTileDrawable;
 import com.android.dialer1.R;
 import com.android.dialer1.calllog.ContactInfo;
 import com.android.dialer1.calllog.ContactInfoHelper;

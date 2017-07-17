@@ -38,8 +38,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.contacts.common.GeoUtil;
-import com.android.contacts.common.util.PermissionsUtil;
+import com.android.contacts.common1.GeoUtil;
+import com.android.contacts.common1.util.PermissionsUtil;
 import com.android.dialer1.R;
 import com.android.dialer1.list.ListsFragment;
 import com.android.dialer1.util.EmptyLoader;

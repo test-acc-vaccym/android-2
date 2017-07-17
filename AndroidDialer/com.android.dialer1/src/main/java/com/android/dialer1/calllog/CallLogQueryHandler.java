@@ -35,9 +35,9 @@ import android.provider.VoicemailContract.Status;
 import android.provider.VoicemailContract.Voicemails;
 import android.util.Log;
 
-import com.android.contacts.common.compat.SdkVersionOverride;
-import com.android.contacts.common.database.NoNullCursorAsyncQueryHandler;
-import com.android.contacts.common.util.PermissionsUtil;
+import com.android.contacts.common1.compat.SdkVersionOverride;
+import com.android.contacts.common1.database.NoNullCursorAsyncQueryHandler;
+import com.android.contacts.common1.util.PermissionsUtil;
 import com.android.dialer1.database.VoicemailArchiveContract;
 import com.android.dialer1.util.AppCompatConstants;
 import com.android.dialer1.util.TelecomUtil;

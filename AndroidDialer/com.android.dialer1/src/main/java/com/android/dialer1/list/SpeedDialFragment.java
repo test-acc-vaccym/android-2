@@ -47,11 +47,11 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.android.contacts.common.ContactPhotoManager;
-import com.android.contacts.common.ContactTileLoaderFactory;
-import com.android.contacts.common.list.ContactTileView;
-import com.android.contacts.common.list.OnPhoneNumberPickerActionListener;
-import com.android.contacts.common.util.PermissionsUtil;
+import com.android.contacts.common1.ContactPhotoManager;
+import com.android.contacts.common1.ContactTileLoaderFactory;
+import com.android.contacts.common1.list.ContactTileView;
+import com.android.contacts.common1.list.OnPhoneNumberPickerActionListener;
+import com.android.contacts.common1.util.PermissionsUtil;
 import com.android.dialer1.R;
 import com.android.dialer1.widget.EmptyContentView;
 import com.android.incallui.Call.LogState;

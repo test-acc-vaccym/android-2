@@ -22,8 +22,8 @@ import android.telecom.PhoneAccountHandle;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.contacts.common.util.PhoneNumberHelper;
-import com.android.contacts.common.util.TelephonyManagerUtils;
+import com.android.contacts.common1.util.PhoneNumberHelper;
+import com.android.contacts.common1.util.TelephonyManagerUtils;
 import com.google.common.collect.Sets;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.Phonenumber;

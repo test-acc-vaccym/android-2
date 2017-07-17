@@ -34,8 +34,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.contacts.common.lettertiles.LetterTileDrawable;
-import com.android.contacts.common.testing.NeededForTesting;
+import com.android.contacts.common1.lettertiles.LetterTileDrawable;
+import com.android.contacts.common1.testing.NeededForTesting;
 import com.android.dialer1.R;
 import com.android.dialer1.compat.FilteredNumberCompat;
 import com.android.dialer1.database.FilteredNumberContract;

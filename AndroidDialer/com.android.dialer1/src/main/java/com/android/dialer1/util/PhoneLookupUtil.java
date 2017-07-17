@@ -19,8 +19,8 @@ package com.android.dialer1.util;
 import android.net.Uri;
 import android.provider.ContactsContract;
 
-import com.android.contacts.common.compat.CompatUtils;
-import com.android.contacts.common.compat.PhoneLookupSdkCompat;
+import com.android.contacts.common1.compat.CompatUtils;
+import com.android.contacts.common1.compat.PhoneLookupSdkCompat;
 
 public final class PhoneLookupUtil {
     /**

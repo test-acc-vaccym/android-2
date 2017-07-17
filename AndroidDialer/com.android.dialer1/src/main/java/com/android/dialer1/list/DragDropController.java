@@ -2,7 +2,7 @@ package com.android.dialer1.list;
 
 import android.view.View;
 
-import com.android.contacts.common.compat.CompatUtils;
+import com.android.contacts.common1.compat.CompatUtils;
 
 import java.util.ArrayList;
 import java.util.List;

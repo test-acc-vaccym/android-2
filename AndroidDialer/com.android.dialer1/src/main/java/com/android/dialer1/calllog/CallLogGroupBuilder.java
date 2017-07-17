@@ -23,9 +23,9 @@ import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.text.format.Time;
 
-import com.android.contacts.common.compat.CompatUtils;
-import com.android.contacts.common.util.DateUtils;
-import com.android.contacts.common.util.PhoneNumberHelper;
+import com.android.contacts.common1.compat.CompatUtils;
+import com.android.contacts.common1.util.DateUtils;
+import com.android.contacts.common1.util.PhoneNumberHelper;
 import com.android.dialer1.util.AppCompatConstants;
 
 /**

@@ -20,7 +20,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 /**
- * A common superclass that keeps track of whether an {@link Activity} has saved its state yet or
+ * A common1 superclass that keeps track of whether an {@link Activity} has saved its state yet or
  * not.
  */
 public abstract class TransactionSafeActivity extends AppCompatActivity {

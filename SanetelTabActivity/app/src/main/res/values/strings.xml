@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">SanetelTabActivity</string>
+    <string name="action_settings">帮助</string>
+    <string name="section_format">Hello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section: %1$d</string>
+
+    <string name="toolbar_hint">标题</string>
+    <string name="toolbar_button_default_text"> </string>
+    <string name="toolbar_left_button_default_gravity">left</string>
+    <string name="toolbar_right_button_default_gravity">right</string>
+
+    <!--网络状态-->
+    <string name="communication_state_connected">连接</string>
+    <string name="communication_state_disconnected">断开</string>
+    <!--天线状态-->
+    <string name="antenna_state_exploded">展开</string>
+    <string name="antenna_state_folded">收藏</string>
+    <string name="antenna_state_reset">复位</string>
+    <string name="antenna_state_paused">暂停</string>
+    <string name="antenna_state_searching">寻星</string>
+    <string name="antenna_state_init">初始</string>
+    <string name="antenna_state_lock">锁星</string>
+    <string name="antenna_state_abnormal">异常</string>
+
+    <!--锁紧机构状态-->
+    <string name="locker_state_locked">锁紧</string>
+    <string name="locker_state_released">松开</string>
+
+    <!--节能状态-->
+    <string name="power_state_charged">加电</string>
+    <string name="power_state_saved">释放</string>
+
+    <!--BD状态-->
+    <string name="bd_state_enabled">有效</string>
+    <string name="bd_state_disabled">无效</string>
+    <!--确认对话框-->
+    <string name="operate_confirm_title">提示</string>
+    <string name="operate_confirm_ok">确定</string>
+    <string name="operate_confirm_cancel">取消</string>
+    <string name="operate_confirm_cancel_toast">您已经取消</string>
+    <integer name="operate_confirm_animate_time">300</integer>
+</resources>

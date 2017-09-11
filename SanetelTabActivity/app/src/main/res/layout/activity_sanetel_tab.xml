@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.edroplet.qxx.saneteltabactivity.SanetelTabActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+    <!--com.edroplet.qxx.saneteltabactivity.view.EDropletToolbar
+        android:id="@+id/status_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:leftButtonIcon="@mipmap/ic_launcher"
+        app:rightButtonIcon="@drawable/seekbar_drawable"
+        app:rightButtonGravity="end"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        app:isShowSearchView="false"
+        app:popupTheme="@style/RtlOverlay.DialogWindowTitle.AppCompat" /-->
+        <!--阴影-->
+        <!--android:elevation="1dp"-->
+        <include android:id="@+id/status_toolbar"
+            layout="@layout/status_bar"/>
+        <include android:id="@+id/operate_bar"
+            layout="@layout/operate_bar"/>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/content_toolbar"
+            android:layout_width="match_parent"
+            app:titleTextAppearance="@dimen/status_bar_text_size"
+            android:layout_height="@dimen/status_bar_height"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:navigationIcon="@mipmap/ic_arrow_back_24dp"
+            android:logo="@mipmap/ic_arrow_back_black_24dp"
+            android:title="监视信息"
+            android:subtitle="微信信息"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+        </android.support.v7.widget.Toolbar>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shadow"/>
+        <!--分割线-->
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_divider"
+        android:background="@color/gray"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/content_toolbar"
+        android:background="?attr/colorPrimary"
+        android:scrollbars="horizontal"
+        app:tabTextColor="@android:color/black"
+        app:tabSelectedTextColor="?attr/colorAccent"
+        app:tabBackground="@android:color/white"
+        app:tabIndicatorColor="?attr/colorAccent"
+        app:tabPaddingStart="8dp"
+        app:tabPaddingEnd="8dp"
+        app:tabGravity="fill"
+        android:layout_gravity="bottom|end"/>
+    <!--app:tabMode="scrollable"-->
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_dialog_info" />
+</android.support.design.widget.CoordinatorLayout>

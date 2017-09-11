@@ -43,8 +43,7 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:navigationIcon="@mipmap/ic_arrow_back_24dp"
             android:logo="@mipmap/ic_arrow_back_black_24dp"
-            android:title="监视信息"
-            android:subtitle="微信信息"
+            app:titleTextColor="@color/operate_confirm_message_color"
             app:popupTheme="@style/AppTheme.PopupOverlay">
         </android.support.v7.widget.Toolbar>
         <View

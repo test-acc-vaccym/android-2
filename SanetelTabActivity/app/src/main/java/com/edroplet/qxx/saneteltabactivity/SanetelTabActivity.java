@@ -63,7 +63,8 @@ public class SanetelTabActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.content_toolbar);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
-        ab.setHomeAsUpIndicator(R.drawable.ic_back_arrow);
+        if (ab != null)
+            ab.setHomeAsUpIndicator(R.drawable.ic_back_arrow);
 
         // 隐藏ActionBar的标题
         // ab.setTitle(null);

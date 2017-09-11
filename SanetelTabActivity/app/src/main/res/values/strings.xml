@@ -38,4 +38,6 @@
     <string name="operate_confirm_cancel">取消</string>
     <string name="operate_confirm_cancel_toast">您已经取消</string>
     <integer name="operate_confirm_animate_time">300</integer>
+    <string name="title_city_list">Cities</string>
+    <string name="title_city_detail">City Detail</string>
 </resources>

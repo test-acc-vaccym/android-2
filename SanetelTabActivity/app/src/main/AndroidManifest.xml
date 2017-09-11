@@ -18,6 +18,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.CityListActivity"
+            android:label="@string/title_city_list"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.CityDetailActivity"
+            android:label="@string/title_city_detail"
+            android:parentActivityName=".activities.CityListActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edroplet.qxx.saneteltabactivity.activities.CityListActivity" />
+        </activity>
     </application>
 
 </manifest>

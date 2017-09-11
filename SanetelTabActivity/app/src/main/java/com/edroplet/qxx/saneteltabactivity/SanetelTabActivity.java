@@ -1,6 +1,5 @@
 package com.edroplet.qxx.saneteltabactivity;
 
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
 import android.support.design.widget.TabLayout;
@@ -20,18 +19,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class SanetelTabActivity extends AppCompatActivity {
     public static Toolbar toolbar;
@@ -110,6 +104,7 @@ public class SanetelTabActivity extends AppCompatActivity {
         }
         return null;
     }
+
     public  SanetelTabActivity initView(){
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         map.put("功放厂家","更换参数，点击▲ 设置永久生效。");
@@ -128,7 +123,8 @@ public class SanetelTabActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 Map.Entry<String , String > entry = getElemntFromLinkHashMap(map,tab.getPosition());
-                if (entry != null)
+                // 这儿使用getSupportedActionBar没有用
+                if (entry != null && toolbar != null)
                     toolbar.setTitle(entry.getKey());
             }
 
@@ -188,7 +184,6 @@ public class SanetelTabActivity extends AppCompatActivity {
                         sbPause.getDialogBuilder().dismiss();
                     }
                 });
-                return;
             }
         });
 
@@ -203,7 +198,6 @@ public class SanetelTabActivity extends AppCompatActivity {
                             sbReset.getDialogBuilder().dismiss();
                         }
                     });
-                    return;
                 }
             });
 
@@ -218,7 +212,6 @@ public class SanetelTabActivity extends AppCompatActivity {
                             sbSearch.getDialogBuilder().dismiss();
                         }
                     });
-                    return;
                 }
             });
 
@@ -245,6 +238,7 @@ public class SanetelTabActivity extends AppCompatActivity {
         return this;
     }
 
+    /***
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -266,7 +260,7 @@ public class SanetelTabActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
+    */
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -301,9 +295,7 @@ public class SanetelTabActivity extends AppCompatActivity {
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             // getString(R.string.section_format
             textView.setText(getArguments().getString(ARG_SECTION_MSG));
-            toolbar.setTitle(getArguments().getString(ARG_SECTION_TITLE));
             // textView.setText(msg);
-            // toolbar.setTitle(title);
             return rootView;
         }
     }
@@ -312,9 +304,9 @@ public class SanetelTabActivity extends AppCompatActivity {
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    private class SectionsPagerAdapter extends FragmentPagerAdapter {
         private LinkedHashMap<String,String> sbTabTitleMap = new LinkedHashMap<>();
-        public SectionsPagerAdapter(FragmentManager fm) {
+        private SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
@@ -324,9 +316,11 @@ public class SanetelTabActivity extends AppCompatActivity {
             // Return a PlaceholderFragment (defined as a static inner class below).
             Map.Entry<String , String > entry = getElemntFromLinkHashMap(sbTabTitleMap,position);
             String title = "";
-            if (entry != null)
+            if (entry != null) {
                 title = entry.getKey();
-            return PlaceholderFragment.newInstance(entry.getValue(),title);
+                return PlaceholderFragment.newInstance(entry.getValue(), title);
+            }
+            return null;
         }
 
         @Override
@@ -342,7 +336,7 @@ public class SanetelTabActivity extends AppCompatActivity {
             return null;
         }
 
-        public void setTab( LinkedHashMap map){
+        private void setTab( LinkedHashMap map){
             this.sbTabTitleMap = map;
         }
     }

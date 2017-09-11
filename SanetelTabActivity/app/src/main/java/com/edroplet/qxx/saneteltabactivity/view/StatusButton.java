@@ -33,7 +33,7 @@ import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
  */
 
 public class StatusButton extends AppCompatButton {
-    private static int operator_color = Color.BLUE;
+    private int operator_color = Color.BLUE;
     public static final int BUTTON_STATE_UNKNOWN = -1;
     public static final int BUTTON_STATE_NORMAL = 0;
     public static final int BUTTON_STATE_SPECIAL = 1;
@@ -48,14 +48,12 @@ public class StatusButton extends AppCompatButton {
     @ButtonState
     private int mButtonState = BUTTON_STATE_UNKNOWN;
 
-    private static int[] STATE_COLOR = {R.attr.state_color};
     private static int []ext_attr_normal = { R.attr.state_color_normal };
     private static int []ext_attr_abnormal = { R.attr.state_color_abnormal };
     private static int []ext_attr_special = { R.attr.state_color_special };
     private static int []ext_attr_operate = { R.attr.state_color_operate };
     private static int []ext_attr_disable = { R.attr.state_color_disable };
 
-    private static int status_color = Color.GREEN;
     private float mDrawableWidth;
     private float mDrawableHight;
     private float mDrawableSpace;
@@ -85,10 +83,9 @@ public class StatusButton extends AppCompatButton {
     }
 
     public void setButtonState(@ButtonState int state) {
-        int previous = mButtonState;
         mButtonState = state;
         refreshDrawableState();
-        if (mListener != null) mListener.onStateChanged(mButtonState);
+        // if (mListener != null) mListener.onStateChanged(mButtonState);
     }
 
     @Override
@@ -134,27 +131,27 @@ public class StatusButton extends AppCompatButton {
         int buttonState = typedArray.getInt(R.styleable.StatusButton_state_color, BUTTON_STATE_UNKNOWN);
         switch (buttonState) {
             case BUTTON_STATE_NORMAL:
-                mButtonState = BUTTON_STATE_NORMAL;
+                this.mButtonState = BUTTON_STATE_NORMAL;
                 break;
 
             case BUTTON_STATE_SPECIAL:
-                mButtonState = BUTTON_STATE_SPECIAL;
+                this.mButtonState = BUTTON_STATE_SPECIAL;
                 break;
 
             case BUTTON_STATE_ABNORMAL:
-                mButtonState = BUTTON_STATE_ABNORMAL;
+                this.mButtonState = BUTTON_STATE_ABNORMAL;
                 break;
 
             case BUTTON_STATE_OPERATE:
-                mButtonState = BUTTON_STATE_OPERATE;
+                this.mButtonState = BUTTON_STATE_OPERATE;
                 break;
 
             case BUTTON_STATE_DISABLE:
-                mButtonState = BUTTON_STATE_DISABLE;
+                this.mButtonState = BUTTON_STATE_DISABLE;
                 break;
 
             default:
-                mButtonState = BUTTON_STATE_UNKNOWN;
+                this.mButtonState = BUTTON_STATE_UNKNOWN;
                 break;
         }
 
@@ -208,7 +205,7 @@ public class StatusButton extends AppCompatButton {
     protected int[] onCreateDrawableState(int extraSpace) {
         final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
         // 这种方式不行！ mergeDrawableStates(drawableState, STATE_COLOR);
-        switch (mButtonState){
+        switch (this.mButtonState){
             case BUTTON_STATE_NORMAL:
                 mergeDrawableStates(drawableState,ext_attr_normal);
                 break;
@@ -260,11 +257,15 @@ public class StatusButton extends AppCompatButton {
         }else if (s[s.length-1] == ext_attr_abnormal[0]){
             color = ContextCompat.getColor(getContext(), R.color.status_abnormal);
         }else if (s[s.length-1] == ext_attr_operate[0]){
-            color = operator_color;
             // 只有操作按钮可以点击
-            // setClickable(clickable);
+
+            color = ContextCompat.getColor(getContext(), R.color.status_operate);
+            setClickable(true);
             setFocusable(true);
             // setEnabled(true);
+        }else {
+            color = ContextCompat.getColor(getContext(), R.color.operate_disabled_color);
+            setClickable(false);
         }
         // 设置字体颜色
         setTextColor(color);
@@ -320,9 +321,7 @@ public class StatusButton extends AppCompatButton {
 
         // 先画图，然后再设置位置
         setCompoundDrawablesWithIntrinsicBounds(mDrawableLeft, mDrawableTop, mDrawableRight, mDrawableBottom);
-        int boundRight = (int)mDrawableWidth;
-        int boundBottom = (int) mDrawableHight;
-        mDrawableLeft.setBounds(0,0,boundRight,boundBottom);
+
         int drawablePadding = getCompoundDrawablePadding();
         //if (mDrawableRight != null) {
         float textWidth = getPaint().measureText(getText().toString());
@@ -446,18 +445,11 @@ public class StatusButton extends AppCompatButton {
 
     public void toggleClickable(){
         if (mButtonState !=BUTTON_STATE_OPERATE && mButtonState != BUTTON_STATE_DISABLE) return;
-        int color = Color.WHITE;
-        if (operator_color != Color.BLUE) {
-            color = ContextCompat.getColor(getContext(), R.color.status_operate);
-            // mDrawableLeft.setColorFilter(color, PorterDuff.Mode.SRC_IN);
-            setTextColor(color);
-            setClickable(true);
+
+        if (mButtonState == BUTTON_STATE_DISABLE) {
+            mButtonState = BUTTON_STATE_OPERATE;
         }else{
-            color = ContextCompat.getColor(getContext(), R.color.operate_disabled_color);
-            // mDrawableLeft.setColorFilter(color,PorterDuff.Mode.SRC_IN);
-            setTextColor(color);
-            setClickable(false);
+            mButtonState = BUTTON_STATE_DISABLE;
         }
-        operator_color = color;
     }
 }

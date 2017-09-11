@@ -69,10 +69,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/content_toolbar"
-        android:background="?attr/colorPrimary"
+        android:background="@color/tab_unchecked"
         android:scrollbars="horizontal"
         app:tabTextColor="@android:color/black"
-        app:tabSelectedTextColor="?attr/colorAccent"
+        app:tabSelectedTextColor="@color/tab_checked"
         app:tabBackground="@android:color/white"
         app:tabIndicatorColor="?attr/colorAccent"
         app:tabPaddingStart="8dp"
@@ -86,5 +86,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_info" />
+        android:src="@android:drawable/ic_dialog_info"
+        android:visibility="gone"/>
 </android.support.design.widget.CoordinatorLayout>

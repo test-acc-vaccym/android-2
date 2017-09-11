@@ -1,5 +1,6 @@
 package com.edroplet.qxx.saneteltabactivity;
 
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
 import android.support.design.widget.TabLayout;
@@ -20,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 
@@ -119,6 +121,11 @@ public class SanetelTabActivity extends AppCompatActivity {
 
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+        if (tabLayout.getChildCount()>4)
+            tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        else
+            tabLayout.setTabMode(TabLayout.MODE_FIXED);
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -136,6 +143,9 @@ public class SanetelTabActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+
+        toolbar.setTitle(getElemntFromLinkHashMap(map,0).getKey());
+
         final StatusButton sbExploded = (StatusButton)  findViewById(R.id.button_operate_explode);
         final StatusButton sbFold = (StatusButton) findViewById(R.id.button_operate_fold);
 
@@ -147,9 +157,10 @@ public class SanetelTabActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         // TODO 处理确定事件
-                        sbExploded.toggleClickable();
-                        if (sbFold!=null)
-                            sbFold.toggleClickable();
+                        sbExploded.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
+                        if (sbFold!=null) {
+                            sbFold.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
+                        }
                         sbExploded.getDialogBuilder().dismiss();
                     }
                 });
@@ -164,9 +175,10 @@ public class SanetelTabActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             // 设置为不可点击状态
-                            sbFold.toggleClickable();
-                            if (sbExploded!=null)
-                            sbExploded.toggleClickable();
+                            sbFold.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
+                            if (sbExploded!=null) {
+                                sbExploded.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
+                            }
                             sbFold.getDialogBuilder().dismiss();
                         }
                     });
@@ -238,7 +250,7 @@ public class SanetelTabActivity extends AppCompatActivity {
         return this;
     }
 
-    /***
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -254,13 +266,15 @@ public class SanetelTabActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_help) {
+            // TODO 显示帮助文档
+            Toast.makeText(getBaseContext(),"No Help", Toast.LENGTH_SHORT).show();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-    */
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -331,8 +345,10 @@ public class SanetelTabActivity extends AppCompatActivity {
         @Override
         public CharSequence getPageTitle(int position) {
             Map.Entry<String , String > entry = getElemntFromLinkHashMap(sbTabTitleMap,position);
-            if (entry != null)
+
+            if (entry != null){
                 return entry.getKey();
+            }
             return null;
         }
 

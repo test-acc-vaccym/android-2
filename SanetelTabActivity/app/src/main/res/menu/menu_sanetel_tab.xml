@@ -4,9 +4,9 @@
     tools:context="com.edroplet.qxx.saneteltabactivity.SanetelTabActivity">
     <!--通过Menu设定icon-->
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_help"
         android:icon="@mipmap/help"
         android:orderInCategory="100"
         android:title="@string/action_settings"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 </menu>

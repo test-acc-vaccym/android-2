@@ -17,5 +17,7 @@
     <dimen name="status_button_space">2dp</dimen>
     <dimen name="app_bar_height">200dp</dimen>
     <dimen name="item_width">200dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
+    <dimen name="text_margin">0dp</dimen>
+    <dimen name="list_item_text_size">12sp</dimen>
+    <dimen name="list_detail_padding">5dp</dimen>
 </resources>

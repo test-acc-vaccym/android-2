@@ -26,12 +26,12 @@
     <string name="locker_state_released">松开</string>
 
     <!--节能状态-->
-    <string name="power_state_charged">加电</string>
-    <string name="power_state_saved">释放</string>
+    <string name="power_state_charged">关闭</string>
+    <string name="power_state_saved">开启</string>
 
     <!--BD状态-->
-    <string name="bd_state_enabled">有效</string>
-    <string name="bd_state_disabled">无效</string>
+    <string name="bd_state_enabled">定位</string>
+    <string name="bd_state_disabled">未定</string>
     <!--确认对话框-->
     <string name="operate_confirm_title">提示</string>
     <string name="operate_confirm_ok">确定</string>
@@ -40,4 +40,16 @@
     <integer name="operate_confirm_animate_time">300</integer>
     <string name="title_city_list">Cities</string>
     <string name="title_city_detail">City Detail</string>
+
+    <!--城市数据-->
+    <!--卫星数据-->
+    <string name="satellite_uuid">UUID</string>
+    <string name="satellite_id_key">序号</string>
+    <string name="satellite_name_key">卫星名称</string>
+    <string name="satellite_polarization_key">极化方式</string>
+    <string name="satellite_longitude_key">卫星经度</string>
+    <string name="satellite_beacon_key">信标频率</string>
+    <string name="satellite_threshold_key">门限</string>
+    <string name="satellite_symbol_rate_key">符号率</string>
+    <string name="satellite_comment_key">备注</string>
 </resources>

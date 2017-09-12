@@ -23,6 +23,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.edroplet.qxx.saneteltabactivity.adapters.SectionsPagerAdapter;
+import com.edroplet.qxx.saneteltabactivity.utils.hashMapUtils;
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 
 import java.util.Iterator;
@@ -91,22 +93,6 @@ public class SanetelTabActivity extends AppCompatActivity {
         return this;
     }
 
-    public Map.Entry<String, String> getElemntFromLinkHashMap(LinkedHashMap<String,String> hashMap, int position){
-        if (hashMap.isEmpty())
-            return null;
-        if (position < hashMap.size()){
-            Iterator it = hashMap.entrySet().iterator();
-            int i = 0;
-            while (it.hasNext()) {
-                Map.Entry<String, String> enter=(Map.Entry<String, String>) it.next();
-                if (i == position) {
-                    return enter;
-                }
-                i++;
-            }
-        }
-        return null;
-    }
 
     public  SanetelTabActivity initView(){
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -130,7 +116,7 @@ public class SanetelTabActivity extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                Map.Entry<String , String > entry = getElemntFromLinkHashMap(map,tab.getPosition());
+                Map.Entry<String , String > entry = hashMapUtils.getElemntFromLinkHashMap(map,tab.getPosition());
                 // 这儿使用getSupportedActionBar没有用
                 if (entry != null && toolbar != null)
                     toolbar.setTitle(entry.getKey());
@@ -145,7 +131,7 @@ public class SanetelTabActivity extends AppCompatActivity {
             }
         });
 
-        toolbar.setTitle(getElemntFromLinkHashMap(map,0).getKey());
+        toolbar.setTitle(hashMapUtils.getElemntFromLinkHashMap(map,0).getKey());
 
         final StatusButton sbExploded = (StatusButton)  findViewById(R.id.button_operate_explode);
         final StatusButton sbFold = (StatusButton) findViewById(R.id.button_operate_fold);
@@ -274,87 +260,5 @@ public class SanetelTabActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_MSG = "section_msg";
-        private static final String ARG_SECTION_TITLE = "section_toolbar_title";
-        public PlaceholderFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(String sectionMessage,String title) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-
-            Bundle args = new Bundle();
-            args.putString(ARG_SECTION_MSG, sectionMessage);
-            args.putString(ARG_SECTION_TITLE, title);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_sanetel_tab, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            // getString(R.string.section_format
-            textView.setText(getArguments().getString(ARG_SECTION_MSG));
-            // textView.setText(msg);
-            return rootView;
-        }
-    }
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-    private class SectionsPagerAdapter extends FragmentPagerAdapter {
-        private LinkedHashMap<String,String> sbTabTitleMap = new LinkedHashMap<>();
-        private SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            Map.Entry<String , String > entry = getElemntFromLinkHashMap(sbTabTitleMap,position);
-            String title = "";
-            if (entry != null) {
-                title = entry.getKey();
-                return PlaceholderFragment.newInstance(entry.getValue(), title);
-            }
-            return null;
-        }
-
-        @Override
-        public int getCount() {
-            return sbTabTitleMap.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            Map.Entry<String , String > entry = getElemntFromLinkHashMap(sbTabTitleMap,position);
-
-            if (entry != null){
-                return entry.getKey();
-            }
-            return null;
-        }
-
-        private void setTab( LinkedHashMap map){
-            this.sbTabTitleMap = map;
-        }
     }
 }

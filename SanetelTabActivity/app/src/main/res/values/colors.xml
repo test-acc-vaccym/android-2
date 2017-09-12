@@ -12,6 +12,7 @@
     <color name="operate_confirm_dialog_color">#BBEEDD</color>
     <color name="operate_disabled_color">#757575</color>
 
+    <color name="satellite_list_header_background">#000000</color>
     <color name="menu_item_odd_background">#FF95CA</color>
     <color name="menu_item_even_background">#FFFF93</color>
 

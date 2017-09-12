@@ -43,13 +43,18 @@
 
     <!--城市数据-->
     <!--卫星数据-->
+    <string name="satellite_toolbar_title">卫星列表</string>
     <string name="satellite_uuid">UUID</string>
     <string name="satellite_id_key">序号</string>
-    <string name="satellite_name_key">卫星名称</string>
-    <string name="satellite_polarization_key">极化方式</string>
-    <string name="satellite_longitude_key">卫星经度</string>
-    <string name="satellite_beacon_key">信标频率</string>
+    <string name="satellite_name_key">卫星名</string>
+    <string name="satellite_polarization_key">极化</string>
+    <string name="satellite_longitude_key">经度</string>
+    <string name="satellite_beacon_key">信标</string>
     <string name="satellite_threshold_key">门限</string>
     <string name="satellite_symbol_rate_key">符号率</string>
     <string name="satellite_comment_key">备注</string>
+    <!--底部按钮-->
+    <string name="satellite_recover">恢复出厂</string>
+    <string name="satellite_add">增加卫星</string>
+    <string name="satellite_delete">删除卫星</string>
 </resources>

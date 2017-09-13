@@ -9,6 +9,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activities.ApplicationActivity"
+            android:label="@string/title_activity_application">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".activities.CityListActivity"
             android:label="@string/title_city_list"
             android:theme="@style/AppTheme">
@@ -38,8 +47,8 @@
                 android:value="com.edroplet.qxx.saneteltabactivity.activities.CityListActivity" />
         </activity>
         <activity
-            android:name=".activities.GuidActivity"
-            android:label="@string/title_activity_guid">
+            android:name=".activities.GuideActivity"
+            android:label="@string/guide_main_enter">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

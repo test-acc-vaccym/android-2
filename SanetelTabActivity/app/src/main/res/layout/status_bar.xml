@@ -21,8 +21,8 @@
                     android:text="@string/communication_state_connected"
                     android:textColor="@color/status_normal"
                     android:background="@color/button_blink"
-                    android:drawableStart="@drawable/light_bolb"
-                    android:drawableLeft="@drawable/light_bolb"
+                    android:drawableStart="@drawable/connected"
+                    android:drawableLeft="@drawable/connected"
                     app:drawable_height="@dimen/status_button_height"
                     app:drawable_width="@dimen/status_button_height"
                     app:state_color="abnormal"/>
@@ -39,8 +39,8 @@
                     android:text="@string/antenna_state_init"
                     android:textColor="@color/status_normal"
                     android:background="@color/button_blink"
-                    android:drawableStart="@drawable/light_bolb"
-                    android:drawableLeft="@drawable/light_bolb"
+                    android:drawableStart="@drawable/satellite_connecting"
+                    android:drawableLeft="@drawable/satellite_connecting"
                     app:drawable_height="@dimen/status_button_height"
                     app:drawable_width="@dimen/status_button_height"
                     app:state_color="normal"/>
@@ -57,8 +57,8 @@
                     android:text="@string/bd_state_disabled"
                     android:textColor="@color/status_normal"
                     android:background="@color/button_blink"
-                    android:drawableStart="@drawable/light_bolb"
-                    android:drawableLeft="@drawable/light_bolb"
+                    android:drawableStart="@drawable/location"
+                    android:drawableLeft="@drawable/location"
                     app:drawable_height="@dimen/status_button_height"
                     app:drawable_width="@dimen/status_button_height"
                     app:state_color="special"/>
@@ -77,8 +77,8 @@
                     android:background="@color/button_blink"
                     app:drawable_height="@dimen/status_button_height"
                     app:drawable_width="@dimen/status_button_height"
-                    android:drawableStart="@drawable/light_bolb"
-                    android:drawableLeft="@drawable/light_bolb"
+                    android:drawableStart="@drawable/locker"
+                    android:drawableLeft="@drawable/locker"
                     app:state_color="special"/>
 
                 <com.edroplet.qxx.saneteltabactivity.view.StatusButton
@@ -93,8 +93,8 @@
                     android:text="@string/power_state_saved"
                     android:textColor="@color/status_normal"
                     android:background="@color/button_blink"
-                    android:drawableStart="@drawable/light_bolb"
-                    android:drawableLeft="@drawable/light_bolb"
+                    android:drawableStart="@drawable/saving"
+                    android:drawableLeft="@drawable/saving"
                     app:drawable_height="@dimen/status_button_height"
                     app:drawable_width="@dimen/status_button_height"
                     app:state_color="special"/>

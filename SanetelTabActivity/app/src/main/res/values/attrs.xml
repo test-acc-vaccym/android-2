@@ -99,4 +99,13 @@
         <attr name="drawable_width" format="dimension|reference"/>
         <attr name="drawable_space" format="dimension|reference"/>
     </declare-styleable>
+
+    <declare-styleable name="DrawableCenterButton">
+        <attr name="text" format="reference|string"/>
+        <attr name="textColor" format="reference|color"/>
+        <attr name="textSize" format="integer|dimension"/>
+        <attr name="icon" format="reference"/>
+        <attr name="drawableLeft" format="reference"/>
+        <attr name="drawableStart" format="reference"/>
+    </declare-styleable>
 </resources>

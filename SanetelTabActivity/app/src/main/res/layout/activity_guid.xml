@@ -6,7 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.GuidActivity">
+    tools:context="com.edroplet.qxx.saneteltabactivity.activities.GuideActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:fitsSystemWindows="true">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/guide_tool_bar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:navigationIcon="@mipmap/ic_arrow_back_24dp"
+                android:logo="@mipmap/ic_arrow_back_black_24dp"/>
+    </android.support.design.widget.AppBarLayout>
 
     <FrameLayout
         android:id="@+id/content"
@@ -20,53 +32,53 @@
             android:layout_marginLeft="@dimen/guide_list_padding_left"
             android:layout_marginStart="@dimen/guide_list_padding_left"
             android:orientation="vertical">
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.DrawableCenterButton
                 android:id="@+id/guide_main_button_explode"
-                android:drawableLeft="@drawable/explode"
-                android:drawableStart="@drawable/explode"
-                android:text="@string/antenna_state_exploded"
+                app:drawableLeft="@drawable/explode"
+                app:drawableStart="@drawable/explode"
+                app:text="@string/antenna_state_exploded"
                 style="@style/guide_item_style"/>
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.DrawableCenterButton
                 android:id="@+id/guide_main_button_location"
-                android:drawableLeft="@drawable/input"
-                android:drawableStart="@drawable/input"
-                android:text="@string/guide_main_location"
+                app:drawableLeft="@drawable/input"
+                app:drawableStart="@drawable/input"
+                app:text="@string/guide_main_location"
                 style="@style/guide_item_style"/>
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.DrawableCenterButton
                 android:id="@+id/guide_main_button_destination"
-                android:drawableLeft="@drawable/satellites"
-                android:drawableStart="@drawable/satellites"
-                android:text="@string/guide_main_destination_satellite"
+                app:drawableLeft="@drawable/satellites"
+                app:drawableStart="@drawable/satellites"
+                app:text="@string/guide_main_destination_satellite"
                 style="@style/guide_item_style"/>
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.DrawableCenterButton
                 android:id="@+id/guide_main_button_search_mode"
-                android:drawableLeft="@drawable/search"
-                android:drawableStart="@drawable/search"
-                android:text="@string/guide_main_searching_mode"
+                app:drawableLeft="@drawable/searching_mode"
+                app:drawableStart="@drawable/searching_mode"
+                app:text="@string/guide_main_searching_mode"
                 style="@style/guide_item_style"/>
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.DrawableCenterButton
                 android:id="@+id/guide_main_button_search"
-                android:drawableLeft="@drawable/searching"
-                android:drawableStart="@drawable/searching"
-                android:text="@string/guide_main_searching"
+                app:drawableLeft="@drawable/searching"
+                app:drawableStart="@drawable/searching"
+                app:text="@string/guide_main_searching"
                 style="@style/guide_item_style"/>
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.DrawableCenterButton
                 android:id="@+id/guide_main_button_lock"
-                android:drawableLeft="@drawable/locked"
-                android:drawableStart="@drawable/locked"
-                android:text="@string/guide_main_lock"
+                app:drawableLeft="@drawable/locked"
+                app:drawableStart="@drawable/locked"
+                app:text="@string/guide_main_lock"
                 style="@style/guide_item_style"/>
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.DrawableCenterButton
                 android:id="@+id/guide_main_button_saving"
-                android:drawableLeft="@drawable/saving"
-                android:drawableStart="@drawable/saving"
-                android:text="@string/guide_main_save"
+                app:drawableLeft="@drawable/saving"
+                app:drawableStart="@drawable/saving"
+                app:text="@string/guide_main_save"
                 style="@style/guide_item_style"/>
         </LinearLayout>
     </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
+        android:id="@+id/guide_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"

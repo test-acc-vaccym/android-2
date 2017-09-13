@@ -7,12 +7,14 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
 import com.edroplet.qxx.saneteltabactivity.fragments.MainFragmentBase;
 import com.edroplet.qxx.saneteltabactivity.utils.BottomNavigationViewHelper;
+import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 
 public class ApplicationActivity extends AppCompatActivity {
 
@@ -99,15 +101,97 @@ public class ApplicationActivity extends AppCompatActivity {
 //        });
 
         setupViewPager(viewPager);
+
+        final StatusButton sbExploded = (StatusButton)  findViewById(R.id.button_operate_explode);
+        final StatusButton sbFold = (StatusButton) findViewById(R.id.button_operate_fold);
+
+        if (sbExploded != null)
+            sbExploded.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    sbExploded.onConfirm("你确定要展开吗？", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO 处理确定事件
+                            sbExploded.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
+                            if (sbFold!=null) {
+                                sbFold.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
+                            }
+                            sbExploded.getDialogBuilder().dismiss();
+                        }
+                    });
+                    return;
+                }
+            });
+        if (sbFold!=null){
+            sbFold.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    sbFold.onConfirm("确认收藏吗？", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // 设置为不可点击状态
+                            sbFold.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
+                            if (sbExploded!=null) {
+                                sbExploded.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
+                            }
+                            sbFold.getDialogBuilder().dismiss();
+                        }
+                    });
+                }
+            });
+        }
+        final StatusButton sbPause = (StatusButton) findViewById(R.id.button_operate_pause);
+        if (sbPause != null)
+            sbPause.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    sbPause.onConfirm("暂停？", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            sbPause.getDialogBuilder().dismiss();
+                        }
+                    });
+                }
+            });
+
+        final StatusButton sbReset = (StatusButton) findViewById(R.id.button_operate_reset);
+        if (sbReset != null)
+            sbReset.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    sbReset.onConfirm("复位吗？", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            sbReset.getDialogBuilder().dismiss();
+                        }
+                    });
+                }
+            });
+
+        final StatusButton sbSearch = (StatusButton) findViewById(R.id.button_operate_search);
+        if (sbSearch != null)
+            sbSearch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    sbSearch.onConfirm("开始寻星？", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            sbSearch.getDialogBuilder().dismiss();
+                        }
+                    });
+                }
+            });
     }
 
     private void setupViewPager(ViewPager viewPager) {
         MainViewPagerAdapter adapter = new MainViewPagerAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(MainFragmentBase.newInstance("新闻"));
-        adapter.addFragment(MainFragmentBase.newInstance("图书"));
-        adapter.addFragment(MainFragmentBase.newInstance("发现"));
-        adapter.addFragment(MainFragmentBase.newInstance("更多"));
+        adapter.addFragment(MainFragmentBase.newInstance(getString(R.string.main_bottom_nav_monitor)));
+        adapter.addFragment(MainFragmentBase.newInstance(getString(R.string.main_bottom_nav_application)));
+        adapter.addFragment(MainFragmentBase.newInstance(getString(R.string.main_bottom_nav_status)));
+        adapter.addFragment(MainFragmentBase.newInstance(getString(R.string.main_bottom_nav_collect)));
+        adapter.addFragment(MainFragmentBase.newInstance(getString(R.string.main_bottom_nav_settings)));
         viewPager.setAdapter(adapter);
     }
 

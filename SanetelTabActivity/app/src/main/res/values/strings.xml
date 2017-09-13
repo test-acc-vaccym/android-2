@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SanetelTabActivity</string>
+    <string name="app_name">星网卫通</string>
     <string name="action_settings">帮助</string>
     <string name="section_format">Hello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section: %1$d</string>
 
@@ -38,8 +38,8 @@
     <string name="operate_confirm_cancel">取消</string>
     <string name="operate_confirm_cancel_toast">您已经取消</string>
     <integer name="operate_confirm_animate_time">300</integer>
-    <string name="title_city_list">Cities</string>
-    <string name="title_city_detail">City Detail</string>
+    <string name="title_city_list">卫星列表</string>
+    <string name="title_city_detail">卫星详情</string>
 
     <!--城市数据-->
     <!--卫星数据-->

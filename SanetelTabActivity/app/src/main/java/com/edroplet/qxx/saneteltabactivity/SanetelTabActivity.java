@@ -158,7 +158,7 @@ public class SanetelTabActivity extends AppCompatActivity {
             sbFold.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    sbFold.onConfirm("确认暂停吗？", new View.OnClickListener() {
+                    sbFold.onConfirm("确认收藏吗？", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             // 设置为不可点击状态

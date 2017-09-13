@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">星网卫通</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="welcome_use">App_Text</string>
+    <string name="desc">button1</string>
+    <string name="desc2">button2</string>
+    <string name="accessName">进入</string>
+    <string name="username">请输入用户名</string>
+    <string name="password">请输入密码</string>
+    <string name="login">登录</string>
+    <string name="account">创建新账号</string>
+    <string name="server_set">服务器设置</string>
+    <string name="create">确认</string>
+    <string name="cancel">取消</string>
+    <string name="assert01">用户名不能为空</string>
+    <string name="assert02">用户名和密码为空</string>
+    <string name="assert03">两次输入的密码不匹配</string>
+    <string name="assert04">请检查输入信息</string>
+	<string name="assert05">IP与端口号为空，读取预置数据</string>
+     <string name="assert06">输入不能为空</string>
+     <string name="assert07">停止 ...</string>
+     <string name="assert08">请检查网络连接</string>
+     <string name="assert09">设置失败</string>
+     <string name="assert10">设置成功</string>       
+     <string name="assert11">读取失败</string>
+     <string name="assert12">操作太快</string>
+    <string name="ip_server">服务器IP</string>
+    <string name="server_port">服务器端口号</string>
+    <string name="product_type">产品型号</string>
+    <string name="Agree">同意</string>
+     <string name="UserName">输入用户名</string>
+    <string name="Password">输入密码</string>
+    <string name="PasswordT">再次输入密码</string>
+    <string name="ServerIP">输入服务器IP</string>
+    <string name="Port">输入服务器端口号</string>
+    <string name="Angle">角度数据</string>
+    <string name="Inertial">惯性数据</string>
+    <string name="Position">位置数据</string>
+    <string name="Other">其他数据</string>
+    <string name="preset">预置数据</string>
+    <string name="azimuth">方位角</string>
+    <string name="pitch">俯仰角</string>
+    <string name="receivePolarization">极化接收</string>
+    <string name="transmitPolarization">极化发送</string>
+    <string name="currentdata">当前数据</string>
+    <string name="heading">航向角</string>
+    <string name="roll">横滚角</string>
+    <string name="insdata">惯导数据</string>
+    <string name="status">状态</string>
+    <string name="position">位置数据</string>
+    <string name="longitude">经度</string>
+    <string name="latitude">纬度</string>
+    <string name="altitude">高度</string>
+    <string name="otherdata">其他数据</string>
+    <string name="searchstatus">搜索状态</string>
+    <string name="agclevel">AGC电平</string>
+    <string name="beacon">信标频率</string>
+    <string name="pitchoffset">俯仰偏移</string>
+    <string name="setstar">设置参考星</string>
+    <string name="satLongitude">卫星经度</string>
+    <string name="polarization">极化</string>
+    <string name="set">设置</string>
+    <string name="server">服务器</string>
+    <string name="IP">IP</string>
+    <string name="port">端口号</string>
+    <string name="introduction">介绍</string>
+    <string name="usermanual">使用说明</string>
+    <string name="contact">联系我们</string>
+    <string name="city">城市数据</string>
+    <string name="cityenquire">查询城市</string>
+    <string name="createcity">创建城市</string>
+    <string name="editcity">编辑城市</string>
+    <string name="cityname">城市名</string>
+    <string name="add">增加</string>
+    <string name="satellite">卫星信息</string>
+    <string name="satelliteenquire">卫星查询</string>
+    <string name="satellitecreate">创建卫星</string>
+    <string name="antennacalib">天线标定</string>
+    <string name="calib">标定</string>
+    <string name="threshold">门限</string>
+   <string name="starfinding">寻星门限值</string>
+   <string name="starsearch">寻星</string>
+   <string name="auto">自动寻星</string>
+   <string name="stop">停止寻星</string>
+   <string name="manualposiiton">手动位置控制</string>
+   <string name="positioncontrol">位置控制</string>
+   <string name="manualvelocity">手动速度控制</string>
+   <string name="adjust">调整方式</string>
+   <string name="angle">角速度</string>
+   <string name="velocity">速度控制</string>
+   <string name="inscalib">惯导标定</string>
+   <string name="config">配置</string>
+   <string name="monitor">监控</string>
+   <string name="referstar">参考星</string>
+   <string name="setup">设置</string>
+   <string name="help">帮助</string>
+   <string name="database">数据库</string>
+   <string name="antenna">天线标定</string>
+   <string name="manual">手动控制</string>
+   <string name="update">停止更新</string>
+   <string name="timension">三维视图</string>
+   <string name="fault">故障状态</string>
+   <string name="addsatellite">增加卫星</string>
+   <string name="satellitename">卫星名</string>
+   <string name="old">卫星旧名</string>
+   <string name="horizontal">水平极化</string>
+   <string name="vertical">垂直极化</string>
+   <string name="remark">备注</string>
+   <string name="controlmode">控制模式切换</string>
+   <string name="modeselect">控制模式</string>
+   <string name="LongitudeLatitude">设置经纬度</string>
+   <string name="Network">设置网络</string>
+   <string name="mask">掩码</string>
+   <string name="gateway">网关</string>
+   <string name="setmode">设置模式</string>
+   <string name="setSate">设置经纬度</string>
+   <string name="alert">警告</string>
+   <string name="calibINS">惯导标定</string>
+	
+	
+	
+    
+    <string name="spin_select">选择极化方式 </string>
+       <string-array name="polarizations">
+        <item>水平极化 </item>
+        <item>垂直极化</item>
+        <item>左旋圆极化</item>
+        <item>右旋圆极化</item>
+       </string-array>
+       
+    <string name="spin_search">寻星极化方式</string>
+       <string-array name="polarizations2">
+        <item>水平极化 </item>
+        <item>垂直极化</item>
+        <item>圆极化</item>
+       </string-array>
+                
+				
+	<string name="spin_mode">Please Select Control Mode</string>
+       <string-array name="mode">
+        <item>本地 </item>
+        <item>串口</item>
+        <item>TCP</item>
+        <item>UDP</item>
+       </string-array>
+       
+       
+       	<string name="spin_alter">Please Select Change Mode</string>
+       <string-array name="alter">
+        <item>方位增加 </item>
+        <item>方位减小</item>
+        <item>俯仰增加</item>
+        <item>俯仰减小</item>
+        <item>发射极化增加 </item>
+        <item>发射极化减小</item>
+        <item>接收极化增加</item>
+        <item>接收极化减小</item>
+       </string-array>
+				
+    
+        <style name="NoActionBar" parent="@android:style/Theme.Holo.Light">
+    <item name="android:windowActionBar">false</item>
+    <item name="android:windowNoTitle">true</item>
+</style> 
+
+        
+    
+    
+
+</resources>

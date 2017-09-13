@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="vertical" >
+        
+       <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/title_bar"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:text="设置"
+            android:textStyle="bold" />
+                </LinearLayout>
+                
+       <RelativeLayout 
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+
+          <Button
+              android:id="@+id/button1"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:layout_weight="1"
+              android:gravity="center_horizontal"
+              android:onClick="GetSerialValue"
+              android:text="监控" />
+          
+<ImageButton
+    android:id="@+id/imageButton01"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:onClick="GetSerialValue"
+    android:background="@drawable/an"
+    ></ImageButton>
+           
+           
+          </RelativeLayout>
+
+
+<RelativeLayout 
+               android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+
+             <Button
+                 android:id="@+id/button2"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentTop="true"
+                 android:layout_centerHorizontal="true"
+                 android:layout_weight="1"
+                 android:gravity="center_horizontal"
+                 android:onClick="GetThreashValue"
+                 android:text="设置寻星门限" />
+               
+</RelativeLayout>
+       
+<RelativeLayout 
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:onClick="ManualVelocity"
+            android:text="手动速度控制指令" />
+    
+</RelativeLayout>
+
+
+<RelativeLayout 
+               android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+    
+</RelativeLayout>
+
+<RelativeLayout 
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+
+       <Button
+           android:id="@+id/button4"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentTop="true"
+           android:layout_centerHorizontal="true"
+           android:layout_weight="1"
+           android:gravity="center_horizontal"
+           android:onClick="AntennaCalib"
+           android:text="天线标定指令" />
+
+</RelativeLayout>
+
+
+<RelativeLayout 
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:onClick="IMUCalib"
+            android:text="惯导标定指令" />
+
+</RelativeLayout>
+
+         
+<RelativeLayout 
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:onClick="GetSerialValue"
+        android:text="设置参考星" />
+
+</RelativeLayout>
+
+<RelativeLayout 
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+
+ <Button
+     android:id="@+id/button7"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentTop="true"
+     android:layout_centerHorizontal="true"
+     android:layout_weight="1"
+     android:gravity="center_horizontal"
+     android:onClick="GetSerialValue"
+     android:text="经纬度" />
+
+</RelativeLayout>
+
+
+<RelativeLayout 
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+
+ <Button
+     android:id="@+id/button8"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentTop="true"
+     android:layout_centerHorizontal="true"
+     android:layout_weight="1"
+     android:gravity="center_horizontal"
+     android:onClick="GetSerialValue"
+     android:text="帮助" />
+
+</RelativeLayout>
+
+<RelativeLayout 
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+
+ <Button
+     android:id="@+id/button9"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentTop="true"
+     android:layout_centerHorizontal="true"
+     android:layout_weight="1"
+     android:gravity="center_horizontal"
+     android:onClick="GetSerialValue"
+     android:text="设置" />
+
+</RelativeLayout>
+
+
+<RelativeLayout 
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+
+</RelativeLayout>
+
+<RelativeLayout 
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">       
+</RelativeLayout>
+       
+    </LinearLayout>
+   
+</LinearLayout>

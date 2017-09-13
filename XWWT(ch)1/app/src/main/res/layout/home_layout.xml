@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/login_bg">
+    
+ <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/border"
+        android:orientation="vertical" >
+
+<!--         <TextView -->
+<!--             android:id="@+id/textView04" -->
+<!--             android:layout_width="50dp" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_marginLeft="10dp" -->
+<!--             android:layout_marginTop="10dp" -->
+<!--             android:gravity="center_horizontal" -->
+<!--             android:text="方位角:" /> -->
+
+<!--         <EditText -->
+<!--             android:id="@+id/editText04" -->
+<!--             android:layout_width="90dp" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_marginLeft="10dp" -->
+<!--             android:layout_marginTop="00dp" -->
+<!--             android:layout_toRightOf="@+id/textView04" -->
+<!--             android:ems="10" /> -->
+
+<!--         <TextView -->
+<!--             android:id="@+id/textView05" -->
+<!--             android:layout_width="50dp" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_marginTop="10dp" -->
+<!--             android:layout_toRightOf="@+id/editText04" -->
+<!--             android:gravity="center_horizontal" -->
+<!--             android:text="极化角:" /> -->
+
+<!--         <EditText -->
+<!--             android:id="@+id/editText05" -->
+<!--             android:layout_width="90dp" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_marginLeft="10dp" -->
+<!--             android:layout_marginTop="00dp" -->
+<!--             android:layout_toRightOf="@+id/textView05" -->
+<!--             android:ems="10" /> -->
+
+<!--         <TextView -->
+<!--             android:id="@+id/textView06" -->
+<!--             android:layout_width="50dp" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_below="@+id/textView04" -->
+<!--             android:layout_marginLeft="10dp" -->
+<!--             android:layout_marginTop="30dp" -->
+<!--             android:gravity="center_horizontal" -->
+<!--             android:text="俯仰角:" /> -->
+
+<!--         <EditText -->
+<!--             android:id="@+id/editText06" -->
+<!--             android:layout_width="90dp" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_below="@+id/editText04" -->
+<!--             android:layout_marginLeft="10dp" -->
+<!--             android:layout_marginTop="10dp" -->
+<!--             android:layout_toRightOf="@+id/textView06" -->
+<!--             android:ems="10" /> -->
+
+<!--         <TextView -->
+<!--             android:id="@+id/textView07" -->
+<!--             android:layout_width="50dp" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_below="@+id/textView05" -->
+<!--             android:layout_marginTop="30dp" -->
+<!--             android:layout_toRightOf="@+id/editText06" -->
+<!--             android:gravity="center_horizontal" -->
+<!--             android:text="经度:" /> -->
+
+<!--         <EditText -->
+<!--             android:id="@+id/editText07" -->
+<!--             android:layout_width="90dp" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_below="@+id/editText05" -->
+<!--             android:layout_marginLeft="10dp" -->
+<!--             android:layout_marginTop="10dp" -->
+<!--             android:layout_toRightOf="@+id/textView07" -->
+<!--             android:ems="10" /> -->
+
+<!--         <TextView -->
+<!--             android:id="@+id/textView08" -->
+<!--             android:layout_width="50dp" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_below="@+id/textView06" -->
+<!--             android:layout_marginLeft="10dp" -->
+<!--             android:layout_marginTop="30dp" -->
+<!--             android:gravity="center_horizontal" -->
+<!--             android:text="俯仰角:" /> -->
+
+<!--         <EditText -->
+<!--             android:id="@+id/editText08" -->
+<!--             android:layout_width="90dp" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_below="@+id/editText06" -->
+<!--             android:layout_marginLeft="10dp" -->
+<!--             android:layout_marginTop="10dp" -->
+<!--             android:layout_toRightOf="@+id/textView06" -->
+<!--             android:ems="10" /> -->
+
+<!--         <TextView -->
+<!--             android:id="@+id/textView09" -->
+<!--             android:layout_width="50dp" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_below="@+id/textView07" -->
+<!--             android:layout_marginTop="30dp" -->
+<!--             android:layout_toRightOf="@+id/editText06" -->
+<!--             android:gravity="center_horizontal" -->
+<!--             android:text="经度:" /> -->
+
+<!--         <EditText -->
+<!--             android:id="@+id/editText09" -->
+<!--             android:layout_width="90dp" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_below="@+id/editText07" -->
+<!--             android:layout_marginLeft="10dp" -->
+<!--             android:layout_marginTop="10dp" -->
+<!--             android:layout_toRightOf="@+id/textView07" -->
+<!--             android:ems="10" /> -->
+    </RelativeLayout>
+    
+    
+
+</LinearLayout>

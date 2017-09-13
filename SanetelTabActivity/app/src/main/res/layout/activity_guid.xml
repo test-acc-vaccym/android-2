@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.edroplet.qxx.saneteltabactivity.activities.GuidActivity">
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/guide_list_padding_left"
+            android:layout_marginLeft="@dimen/guide_list_padding_left"
+            android:layout_marginStart="@dimen/guide_list_padding_left"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/guide_main_button_explode"
+                android:drawableLeft="@drawable/explode"
+                android:drawableStart="@drawable/explode"
+                android:text="@string/antenna_state_exploded"
+                style="@style/guide_item_style"/>
+            <Button
+                android:id="@+id/guide_main_button_location"
+                android:drawableLeft="@drawable/input"
+                android:drawableStart="@drawable/input"
+                android:text="@string/guide_main_location"
+                style="@style/guide_item_style"/>
+            <Button
+                android:id="@+id/guide_main_button_destination"
+                android:drawableLeft="@drawable/satellites"
+                android:drawableStart="@drawable/satellites"
+                android:text="@string/guide_main_destination_satellite"
+                style="@style/guide_item_style"/>
+            <Button
+                android:id="@+id/guide_main_button_search_mode"
+                android:drawableLeft="@drawable/search"
+                android:drawableStart="@drawable/search"
+                android:text="@string/guide_main_searching_mode"
+                style="@style/guide_item_style"/>
+            <Button
+                android:id="@+id/guide_main_button_search"
+                android:drawableLeft="@drawable/searching"
+                android:drawableStart="@drawable/searching"
+                android:text="@string/guide_main_searching"
+                style="@style/guide_item_style"/>
+            <Button
+                android:id="@+id/guide_main_button_lock"
+                android:drawableLeft="@drawable/locked"
+                android:drawableStart="@drawable/locked"
+                android:text="@string/guide_main_lock"
+                style="@style/guide_item_style"/>
+            <Button
+                android:id="@+id/guide_main_button_saving"
+                android:drawableLeft="@drawable/saving"
+                android:drawableStart="@drawable/saving"
+                android:text="@string/guide_main_save"
+                style="@style/guide_item_style"/>
+        </LinearLayout>
+    </FrameLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/navigation_guide_main" />
+
+</LinearLayout>

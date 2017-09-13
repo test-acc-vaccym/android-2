@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_green"
+    android:orientation="vertical" >
+          <ScrollView
+           android:id="@+id/sc_1"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content">
+           
+              <LinearLayout
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:orientation="vertical" >
+
+        <TableLayout
+        android:id="@+id/tlctl"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip" >
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_top_corner_no_bottom_line"
+            android:padding="10dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dip"
+                android:text="@string/server" 
+                android:textSize="30sp">
+            </TextView>
+
+        </TableRow>
+            
+        
+               <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:baselineAligned="false"
+            android:background="@drawable/shape_large_border"           
+            android:orientation="horizontal">
+            
+            <RelativeLayout
+                android:id="@+id/rl_ctl1"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"  
+                android:layout_weight="1"     
+               android:orientation="vertical" >
+
+          <TextView
+              android:id="@+id/textView01"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="30dp"
+              android:layout_alignParentTop="true"
+              android:textSize="20sp"
+              android:text="@string/modeselect" />
+
+
+                  
+ </RelativeLayout>
+           
+          <RelativeLayout
+              android:id="@+id/ctl2"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:layout_weight="1"
+              android:orientation="vertical" >
+
+       <Spinner
+           android:id="@+id/spinner01"
+           android:layout_width="120dp"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"
+           android:layout_marginTop="15dp"
+           android:ems="10" 
+           android:background="#ffffff"
+           android:prompt="@string/spin_search" />
+           
+
+      </RelativeLayout>      
+           
+
+         
+ </LinearLayout>
+        
+        
+         <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="100dp"
+      android:background="@drawable/shape_large_border"
+      android:orientation="horizontal" >
+
+      
+     <com.example.flatbuttonlib.FButton
+        android:id="@+id/BtnCtl"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
+          android:layout_weight="5"
+        android:layout_below="@id/linearLayout01"
+        android:layout_marginLeft="42dp"
+        android:layout_marginRight="42dp"
+        android:onClick="true"
+        android:text="@string/set" 
+        fbutton:buttonColor="@color/fbutton_color_turquoise"
+        fbutton:shadowEnabled="true" />
+      
+      
+         </LinearLayout>
+         
+                        <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_no_corner_without_bottom"
+                >
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_bottom_corner_no_top_line"
+                    android:padding="10dip" >
+                </TableRow>
+                
+            </LinearLayout>
+            </TableLayout>
+              
+        
+        </LinearLayout>       
+                </ScrollView>
+</LinearLayout>

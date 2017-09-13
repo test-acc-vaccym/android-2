@@ -1,0 +1,136 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_green"
+    android:orientation="vertical" >
+        <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="10dip" >
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_top_corner_no_bottom_line"
+            android:padding="10dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dip"
+                android:text="联系我们" 
+                android:textSize="30sp">
+            </TextView>
+
+        </TableRow>
+        <!-- 表格布局：第二行 -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:background="@drawable/shape_large_border"           
+            android:orientation="horizontal">      
+           
+           
+           <RelativeLayout
+                android:id="@+id/rl_4"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"                             
+                android:orientation="vertical" >           
+        <TextView
+            android:id="@+id/textView04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:layout_marginTop="30dp"
+            android:textSize="20sp"
+            android:text="咨询电话:400-999-1391" />
+        
+          <TextView
+            android:id="@+id/textView05"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView04"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:text="总机电话:010-57915799" />
+           <TextView
+            android:id="@+id/textView06"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView05"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:text="公司传真:010-57915796" />
+           <TextView
+            android:id="@+id/textView07"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView06"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:text="E-mial:sales@sanetel.com(产品咨询)" />
+           
+         <TextView
+            android:id="@+id/textView08"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView07"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="65dp"
+            android:textSize="20sp"
+            android:text="support@sanetel.com(售后服务)" />
+         
+          <TextView
+            android:id="@+id/textView09"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView08"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="65dp"
+            android:textSize="20sp"
+            android:text="hr@sanetel.com(人力资源)" />
+          
+           <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView09"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:text="地址：北京市北京经济技术开发区科创十三街26号C幢" />
+           
+           <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView10"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:text="邮编：100176" />
+          
+        </RelativeLayout> 
+ 
+         
+ </LinearLayout>
+            
+            <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_no_corner_without_bottom"
+                >
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_bottom_corner_no_top_line"
+                    android:padding="10dip" >
+                </TableRow>
+                
+            </LinearLayout>
+    </TableLayout>
+
+</LinearLayout>

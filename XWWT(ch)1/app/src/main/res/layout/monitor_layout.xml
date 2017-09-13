@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+   
+                  <ScrollView
+           android:id="@+id/sc_1"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content">
+   <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:baselineAligned="false"  
+        android:orientation="vertical">
+   
+       
+
+        <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip" >
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_top_corner_no_bottom_line"
+            android:padding="10dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dip"
+                android:text="@string/preset" 
+                android:textSize="25sp">
+            </TextView>
+
+        </TableRow>
+        <!-- 表格布局：第二行 -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:baselineAligned="false"
+            android:background="@drawable/shape_large_border"           
+            android:orientation="horizontal">
+            
+            <LinearLayout
+                android:id="@+id/rl_1"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+            <LinearLayout
+               android:id="@+id/ll_11"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+          <TextView
+              android:id="@+id/textView01"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:gravity="center_horizontal"
+              android:text="@string/azimuth"
+              android:textSize="20sp" />
+          </LinearLayout>
+               <LinearLayout
+               android:id="@+id/ll_12"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+
+          <TextView
+              android:id="@+id/textView02"
+              android:layout_gravity="center_vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:text="@string/pitch"
+              android:textSize="20sp" />
+                  </LinearLayout>
+ </LinearLayout>
+           
+          <LinearLayout
+              android:id="@+id/rl_2"
+              android:layout_width="0dp"
+              android:layout_height="fill_parent"
+              android:layout_weight="1"
+              android:orientation="vertical" >
+
+              <RelativeLayout 
+              android:id="@+id/r1_1"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:layout_weight="1"
+              android:orientation="horizontal" >
+              
+           <EditText
+            android:id="@+id/editText01"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_input"
+            android:layout_centerVertical="true"
+            android:ems="10"
+            android:editable="false"
+            android:textColor="@color/black"
+            android:textSize="20sp" ></EditText>
+           
+        <TextView
+           android:id="@+id/TextView01"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_toRightOf="@+id/editText01"
+           android:layout_alignTop="@+id/editText01"
+           android:text="。"
+           android:textSize="15sp" />
+           </RelativeLayout>
+           
+       <RelativeLayout 
+            android:id="@+id/r1_2"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:layout_weight="1"
+              android:orientation="horizontal" >
+                  
+          <EditText
+             android:id="@+id/editText02"
+             android:layout_width="70dp"
+             android:layout_height="wrap_content"
+             android:ems="10" 
+             android:layout_centerVertical="true"
+             android:background="@drawable/login_input"
+             android:editable="false"
+            android:textColor="@color/black"
+            android:textSize="20sp" >
+         </EditText>
+
+
+
+       <TextView
+           android:id="@+id/textView1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_toRightOf="@+id/editText02"
+           android:layout_alignTop="@+id/editText02"
+           android:text="。"
+           android:textSize="15sp" />
+              </RelativeLayout>
+           
+
+
+      </LinearLayout>      
+           
+           <LinearLayout
+               android:id="@+id/rl_4"
+               android:layout_width="0dp"
+               android:layout_height="fill_parent"
+               android:layout_weight="1"
+               android:orientation="vertical" >  
+              
+
+             <LinearLayout
+               android:id="@+id/ll_13"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+          <TextView
+              android:id="@+id/textView05"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+             android:gravity="center_horizontal"
+              android:text="@string/receivePolarization"
+              android:textSize="20sp" />
+          </LinearLayout>
+
+            <LinearLayout
+               android:id="@+id/ll_14"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+          <TextView
+              android:id="@+id/textView04"
+              android:layout_weight="1"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:layout_gravity="center_vertical"
+              android:text="@string/transmitPolarization"
+              android:textSize="20sp" />
+
+          </LinearLayout>
+        </LinearLayout>
+        
+       <LinearLayout
+                android:id="@+id/rl_5"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"  
+                android:layout_weight="1"           
+                android:orientation="vertical" >   
+                
+     <RelativeLayout 
+            android:id="@+id/r1_3"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:layout_weight="1"
+              android:orientation="horizontal" >
+           
+           <EditText
+            android:id="@+id/editText04"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_input"
+            android:layout_centerVertical="true"
+            android:ems="10"
+            android:editable="false"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+           
+                    <TextView
+             android:id="@+id/TextView02"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+           android:layout_toRightOf="@+id/editText04"
+           android:layout_alignTop="@+id/editText04"
+           android:text="。"
+           android:textSize="15sp" />
+           </RelativeLayout>
+           
+     
+          <RelativeLayout 
+            android:id="@+id/r1_4"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:layout_weight="1"
+              android:orientation="horizontal" >
+           <EditText
+            android:id="@+id/editText05"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_input"
+            android:ems="10"
+            android:layout_centerVertical="true"
+            android:editable="false"
+            android:textColor="@color/black"
+            android:textSize="20sp" >
+
+        </EditText>
+
+
+
+         <TextView
+             android:id="@+id/TextView03"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+           android:layout_toRightOf="@+id/editText05"
+           android:layout_alignTop="@+id/editText05"
+           android:text="。"
+           android:textSize="15sp" />
+         
+         </RelativeLayout>
+ 
+</LinearLayout> 
+ 
+         
+ </LinearLayout>
+            
+            <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_no_corner_without_bottom"
+                >
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_bottom_corner_no_top_line"
+                    android:padding="10dip" >
+                </TableRow>
+                
+            </LinearLayout>
+    </TableLayout>
+        
+        
+          <TableLayout
+        android:id="@+id/tableLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip" >
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_top_corner_no_bottom_line"
+            android:padding="10dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dip"
+                android:text="@string/currentdata" 
+                android:textSize="25sp">
+            </TextView>
+
+        </TableRow>
+   
+         <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:baselineAligned="false"
+            android:background="@drawable/shape_large_border"           
+            android:orientation="horizontal">
+            
+            <LinearLayout
+                android:id="@+id/rl_6"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+         
+              <LinearLayout
+               android:id="@+id/ll_15"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+           <TextView
+            android:id="@+id/textView07"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:layout_gravity="center_vertical"
+              android:gravity="center_horizontal"
+              android:textSize="20sp"
+            android:text="@string/azimuth" />
+           </LinearLayout>
+           
+            <LinearLayout
+               android:id="@+id/ll_16"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+
+          <TextView
+              android:id="@+id/textView08"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:layout_gravity="center_vertical"
+              android:gravity="center_horizontal"
+              android:text="@string/pitch"
+              android:textSize="20sp" />
+          </LinearLayout>
+
+                </LinearLayout>
+      
+            
+            <LinearLayout
+              android:id="@+id/rl_7"
+              android:layout_width="0dp"
+              android:layout_height="fill_parent"
+              android:layout_weight="1"
+              android:orientation="vertical" >
+          
+         <RelativeLayout 
+              android:id="@+id/r1_6"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:layout_weight="1"
+              android:orientation="horizontal" >
+                
+           <EditText
+            android:id="@+id/editText07"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_input"
+            android:layout_centerVertical="true"
+            android:ems="10"
+            android:editable="false"
+            android:textColor="@color/black"/>
+           
+        <TextView
+            android:id="@+id/TextView04"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:layout_toRightOf="@+id/editText07"
+           android:layout_alignTop="@+id/editText07"
+           android:text="。"
+           android:textSize="15sp" />
+           
+           </RelativeLayout>
+            
+                  <RelativeLayout 
+              android:id="@+id/r1_5"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:layout_weight="1"
+              android:orientation="horizontal" >
+         
+           <EditText
+             android:id="@+id/editText08"
+             android:layout_width="70dp"
+             android:layout_height="wrap_content"
+             android:ems="10" 
+             android:background="@drawable/login_input"
+            android:textColor="@color/black"
+            android:layout_centerVertical="true"
+            android:editable="false"
+            android:textSize="20sp" >
+          </EditText>
+          
+
+         <TextView
+             android:id="@+id/TextView05"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+           android:layout_toRightOf="@+id/editText08"
+           android:layout_alignTop="@+id/editText08"
+           android:text="。"
+           android:textSize="15sp"/>
+     </RelativeLayout>
+         
+            </LinearLayout>   
+      
+          <LinearLayout
+              android:id="@+id/rl_8"
+              android:layout_width="0dp"
+              android:layout_height="fill_parent"
+              android:layout_weight="1"
+              android:orientation="vertical" >
+  
+                            <LinearLayout
+               android:id="@+id/ll_17"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+         <TextView
+            android:id="@+id/textView09"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:text="@string/receivePolarization" />
+                    </LinearLayout>
+                    
+            <LinearLayout
+               android:id="@+id/ll_18"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+                 <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:text="@string/transmitPolarization" />
+              </LinearLayout>
+          </LinearLayout> 
+          
+          
+         <LinearLayout
+                android:id="@+id/rl_9"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"  
+                android:layout_weight="1"           
+                android:orientation="vertical" >   
+                
+         <RelativeLayout 
+              android:id="@+id/r1_7"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:layout_weight="1"
+              android:orientation="horizontal" >
+             
+         <EditText
+            android:id="@+id/editText09"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_input"
+            android:ems="10"
+            android:layout_centerVertical="true"
+            android:editable="false"
+            android:textColor="@color/black"
+            android:textSize="20sp" /> 
+            
+         <TextView
+            android:id="@+id/TextView06"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+           android:layout_toRightOf="@+id/editText09"
+           android:layout_alignTop="@+id/editText09"
+           android:text="。"
+           android:textSize="15sp"/>
+            
+         </RelativeLayout>
+         
+        <RelativeLayout 
+              android:id="@+id/r1_8"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:layout_weight="1"
+              android:orientation="horizontal" >
+         
+        <EditText
+            android:id="@+id/editText10"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_input"
+            android:ems="10"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"
+            android:editable="false"
+            android:textSize="20sp" />
+        
+
+
+         <TextView
+             android:id="@+id/TextView07"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+           android:layout_toRightOf="@+id/editText10"
+           android:layout_alignTop="@+id/editText10"
+           android:text="。"
+           android:textSize="15sp"/>
+                
+         </RelativeLayout>
+         
+             </LinearLayout>
+          
+
+         </LinearLayout>
+                 <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_no_corner_without_bottom"
+                >
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_bottom_corner_no_top_line"
+                    android:padding="10dip" >
+                </TableRow>
+                
+            </LinearLayout>
+        
+</TableLayout>
+
+    
+    </LinearLayout>
+        
+</ScrollView>
+
+</LinearLayout>

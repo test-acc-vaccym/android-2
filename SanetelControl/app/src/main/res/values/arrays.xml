@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="right_nav_items">
+        <item>@string/right_nav_monitor</item>
+        <item>@string/right_nav_communication</item>
+        <item>@string/right_nav_system_settings</item>
+        <item>@string/right_nav_satellite</item>
+        <item>@string/right_nav_calibration</item>
+        <item>@string/right_nav_manual</item>
+        <item>@string/right_nav_power</item>
+        <item>@string/right_nav_system_info</item>
+        <item>@string/right_nav_database</item>
+        <item>@string/right_nav_logs</item>
+        <item>@string/right_nav_update</item>
+        <item>@string/right_nav_contacts</item>
+        <item>@string/right_nav_help</item>
+    </array>
+</resources>

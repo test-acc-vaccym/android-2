@@ -1,0 +1,112 @@
+<resources>
+    <!--    模式选择     -->
+    <string name="main_menu_changetheme_day">夜间模式</string>
+    <string name="main_menu_changetheme_night">日间模式</string>
+
+    <!--欢迎界面-->
+    <string name="welcome_version">版本号:%1$s</string>
+    <string name="title_activity_welcome_activitiy">欢迎</string>
+    <string name="welcome_skip">跳过</string>
+
+    <!--引导页面-->
+    <string name="guide_done">开始使用</string>
+
+    <!--    主界面     -->
+    <string name="app_name">星网卫通</string>
+    <string name="satellite_reference_title">寻星参照</string>
+    <string name="manual">手动</string>
+    <string name="explode">展开</string>
+    <string name="fold">收藏</string>
+    <string name="longitude">经度</string>
+    <string name="degree_hint" translatable="false">-90°- 90°</string>
+    <string name="longitude_unit" translatable="false">°E</string>
+    <string name="latitude">纬度</string>
+    <string name="latitude_unit" translatable="false">°N</string>
+    <string name="main_read">读取</string>
+    <string name="main_setting">设置</string>
+    <string name="clear">清除</string>
+
+    <!--    底部导航     -->
+    <string name="satellite">卫星选择</string>
+    <string name="location_setting">位置设置</string>
+    <string name="oscillator">本振设置</string>
+    <string name="threshold">寻星门限</string>
+    <string name="more">更多</string>
+    <string name="reference">寻星参照</string>
+    <string name="interfere">邻星干扰</string>
+    <string name="location_label">位置输入</string>
+    <string name="operator_settings">设置</string>
+
+    <!--         右侧导航        -->
+    <string name="right_nav_monitor">监视信息</string>
+    <string name="right_nav_communication">通信设置</string>
+    <string name="right_nav_system_settings">系统设置</string>
+    <string name="right_nav_satellite">寻星参数</string>
+    <string name="right_nav_calibration">标定</string>
+    <string name="right_nav_manual">手动控制</string>
+    <string name="right_nav_power">功放监控</string>
+    <string name="right_nav_system_info">系统信息</string>
+    <string name="right_nav_database">数据库</string>
+    <string name="right_nav_logs">日志</string>
+    <string name="right_nav_update">程序更新</string>
+    <string name="right_nav_contacts">联系我们</string>
+    <string name="right_nav_help">帮助</string>
+
+    <!--登陆界面-->
+    <string name="title_activity_login">登录</string>
+    <string name="login_account_label">账号</string>
+    <string name="login_password_label">密码</string>
+    <string name="login_remember_account">记住用户</string>
+    <string name="login_button">登录</string>
+    <string name="login_register">注册账号</string>
+    <string name="login_forget_password">忘记密码</string>
+    <string name="login_server_set_label">服务器设置</string>
+    <string name="login_server_ip">服务器地址</string>
+    <string name="login_server_port">服务器端口</string>
+    <string name="login_server_ip_hint" translatable="false">192.168.1.1</string>
+    <string name="login_server_port_hint" translatable="false">8088</string>
+    <string name="product_type">型号</string>
+    <string name="login_product_type">产品型号</string>
+    <string name="prompt_email">邮件/手机号/账号</string>
+    <string name="prompt_password">密码(可选) ，4&#8211;10位</string>
+    <string name="action_sign_in">登录</string>
+    <string name="action_sign_in_short">登录</string>
+    <string name="error_invalid_email">邮箱不符合规则，例如admin@sanetel.com</string>
+    <string name="error_invalid_password">密码过短或过长</string>
+    <string name="error_incorrect_password">密码错误</string>
+    <string name="error_field_required">必填项</string>
+    <string name="error_server_ip_required">服务器地址必填</string>
+    <string name="error_server_port_required">服务器端口必填</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="error_external_storage">外部存储不可访问</string>
+
+    <!--注册界面-->
+    <string name="register_password_repeat">重复密码</string>
+    <string name="register_password_again">再次输入密码，与前面一致</string>
+    <string name="enroll_account">创建账号</string>
+
+    <string name="title_activity_monitor_info">MonitorInfoActivity</string>
+    <string name="title_home">主页</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="title_activity_communication_settings">通信设置</string>
+
+    <string name="navigation_drawer_open">打开菜单</string>
+    <string name="navigation_drawer_close">关闭菜单</string>
+
+    <string name="action_settings">设置</string>
+    <string name="title_activity_register">注册</string>
+
+    <!-- ======================== 通信设置界面 ======================== -->
+    <!-- 通信底部导航 -->
+    <string name="communication_nav_ip">IP地址</string>
+    <string name="communication_nav_port1">端口1</string>
+    <string name="communication_nav_port2">端口2</string>
+    <string name="communication_nav_port3">端口3</string>
+    <string name="communication_nav_port4">端口4</string>
+    <string name="communication_nav_wifi">WIFI</string>
+
+</resources>

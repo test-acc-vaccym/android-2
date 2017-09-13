@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lwkandroid.statelayoutdemo.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="loading"/>
+
+        <Button
+            android:id="@+id/btn_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="empty"/>
+
+        <Button
+            android:id="@+id/btn_net_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="neterror"/>
+
+        <Button
+            android:id="@+id/btn_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="success"/>
+    </LinearLayout>
+
+    <com.lwkandroid.stateframelayout.StateFrameLayout
+        android:id="@+id/stateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:emptyLayoutResId="@layout/layout_empty"
+        app:enableContentAnim="true"
+        app:loadingLayoutResId="@layout/layout_loading"
+        app:netErrorLayoutResId="@layout/layout_net_error">
+
+        <!--在这里定义内容布局，内容布局只能有一个-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_green_dark">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="我是内容"
+                android:textAppearance="?android:textAppearanceLarge"/>
+
+        </FrameLayout>
+
+    </com.lwkandroid.stateframelayout.StateFrameLayout>
+
+</LinearLayout>

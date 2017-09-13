@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">DrawerSample</string>
+    <string name="action_settings">Settings</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="no_title">No Title</string>
+    <string name="item1">Long Long Tab1</string>
+    <string name="item2">Long Long Tab2</string>
+    <string name="item3">Long Long Tab3</string>
+    <string name="item4">Long Long Tab4</string>
+    <string name="item5">Long Long Tab5</string>
+</resources>

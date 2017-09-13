@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">儒釋道網路電視台</string>
+    <string name="navigation_drawer_open">打開導航</string>
+    <string name="navigation_drawer_close">關閉導航</string>
+    <string name="action_select_server">選擇線路</string>
+    <string name="jwjy">經文講義</string>
+    <string name="jsy">僅聲音</string>
+    <string name="spbt">視頻標題</string>
+    <string name="jmlb">節目列表</string>
+    <string name="zxxx">最新消息</string>
+    <string name="wljwl">未連接網絡，程序將關閉。\r\n請連網後重新打開本程序。</string>
+    <string name="zrsj">載入數據</string>
+    <string name="sjjzz">數據加載中...</string>
+    <string name="onstop">程序關閉，關閉視頻。</string>
+    <string name="sxwc">刷新完成</string>
+    <string name="sjhcsb">獲取數據失敗，程序將關閉。\r\n請連網後重新打開本程序。</string>
+    <string name="wlfwcw">網絡服務錯誤</string>
+    <string name="wlljcw">網絡連接錯誤</string>
+    <string name="wlcs">網絡超時</string>
+    <string name="action_select_program_type">節目類型</string>
+    <string name="lxwm">聯繫我們</string>
+    <string name="spjzsb">視頻加載失敗。\r\n请检查网络重新加載。</string>
+    <string name="gfwz">凈空老法師官方網站</string>
+    <string name="pl">噗浪</string>
+    <string name="xlwb">新浪微博</string>
+    <string name="txwb">騰訊微博</string>
+    <string name="czxx">電子信箱</string>
+    <string name="wxh">微信號</string>
+</resources>

@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">CoordinatorTabLayout</string>
+    <string name="tab1">Android</string>
+    <string name="tab2">IOS</string>
+    <string name="tab3">Web</string>
+    <string name="tab4">Other</string>
+    <string name="tab5">电影</string>
+    <string name="tab6">数据</string>
+    <string name="navigation_drawer_open">打开菜单</string>
+    <string name="navigation_drawer_close">关闭菜单</string>
+    <string name="operator_manual">手动</string>
+    <string name="operator_exploded">展开</string>
+    <string name="operator_folded">收藏</string>
+</resources>

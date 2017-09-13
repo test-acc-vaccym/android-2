@@ -1,0 +1,43 @@
+<resources>
+    <string name="toolbar_hint">标题</string>
+    <string name="toolbar_button_default_text"> </string>
+    <string name="toolbar_left_button_default_gravity">left</string>
+    <string name="toolbar_right_button_default_gravity">right</string>
+    <string name="right_nav_item_color">#3F51B5</string>
+    <string name="right_nav_item_color_alter">#757575</string>
+    <string name="app_name">CoordinatorTabLayout</string>
+    <string name="tab1" translatable="false">Android</string>
+    <string name="tab2" translatable="false">IOS</string>
+    <string name="tab3" translatable="false">Web</string>
+    <string name="tab4" translatable="false">Other</string>
+    <string name="tab5">电影</string>
+    <string name="tab6">数据</string>
+    <string name="navigation_drawer_imageView">引导</string>
+    <string name="navigation_drawer_open">打开菜单</string>
+    <string name="navigation_drawer_close">关闭菜单</string>
+    <string name="operator_manual">手动</string>
+    <string name="operator_exploded">展开</string>
+    <string name="operator_folded">收藏</string>
+
+    <!--         右侧导航        -->
+    <string name="right_nav_monitor">监视信息</string>
+    <string name="right_nav_communication">通信设置</string>
+    <string name="right_nav_system_settings">系统设置</string>
+    <string name="right_nav_satellite">寻星参数</string>
+    <string name="right_nav_calibration">标定</string>
+    <string name="right_nav_manual">手动控制</string>
+    <string name="right_nav_power">功放监控</string>
+    <string name="right_nav_system_info">系统信息</string>
+    <string name="right_nav_database">数据库</string>
+    <string name="right_nav_logs">日志</string>
+    <string name="right_nav_update">程序更新</string>
+    <string name="right_nav_contacts">联系我们</string>
+    <string name="right_nav_help">帮助</string>
+    <string name="title_activity_base">BaseActivity</string>
+
+    <string name="operate_confirm_title">确认</string>
+    <string name="operate_confirm_ok">确定</string>
+    <string name="operate_confirm_cancel">取消</string>
+    <string name="operate_confirm_cancel_toast">已经取消</string>
+
+</resources>

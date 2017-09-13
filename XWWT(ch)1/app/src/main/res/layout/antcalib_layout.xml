@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+   <LinearLayout
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:orientation="vertical" >
+
+       <RelativeLayout
+           android:layout_width="fill_parent"
+           android:layout_height="250dp"
+           android:layout_marginTop="10dp"
+           android:background="@drawable/border"
+           android:orientation="vertical" >
+
+           <TextView
+               android:id="@+id/textView03"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_alignParentLeft="true"
+               android:layout_alignParentTop="true"
+               android:gravity="center_horizontal"
+               android:text="天线标定"
+               android:textColor="@color/dodgerblue" />
+
+           <EditText
+               android:id="@+id/editText05"
+               android:layout_width="70dp"
+               android:layout_height="wrap_content"
+               android:layout_alignTop="@+id/textView04"
+               android:layout_toRightOf="@+id/textView05"
+               android:ems="10" 
+             android:background="@drawable/login_input"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="20sp">
+           </EditText>
+
+           <EditText
+               android:id="@+id/editText04"
+               android:layout_width="70dp"
+               android:layout_height="wrap_content"
+               android:layout_alignTop="@+id/textView04"
+               android:layout_toRightOf="@+id/textView04"
+               android:ems="10" 
+             android:background="@drawable/login_input"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+
+           <TextView
+               android:id="@+id/textView05"
+               android:layout_width="50dp"
+               android:layout_height="wrap_content"
+               android:layout_alignBottom="@+id/textView04"
+               android:layout_toLeftOf="@+id/editText02"
+               android:gravity="center_horizontal"
+               android:text="接收极化角:" />
+
+           <Button
+               android:id="@+id/button01"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentBottom="true"
+               android:layout_alignRight="@+id/editText05"
+               android:background="@drawable/bbg"
+               android:text="标定" />
+
+           <EditText
+               android:id="@+id/editText02"
+               android:layout_width="70dp"
+               android:layout_height="wrap_content"
+               android:layout_alignBaseline="@+id/editText01"
+               android:layout_alignBottom="@+id/editText01"
+               android:layout_toRightOf="@+id/textView02"
+               android:background="@drawable/login_input"
+               android:ems="10"
+               android:paddingLeft="10dp"
+               android:textColor="@color/black"
+               android:textSize="20sp" />
+
+           <TextView
+               android:id="@+id/textView04"
+               android:layout_width="50dp"
+               android:layout_height="wrap_content"
+               android:layout_alignLeft="@+id/textView01"
+               android:layout_centerVertical="true"
+               android:gravity="center_horizontal"
+               android:text="发射极化角:" />
+
+           <EditText
+               android:id="@+id/editText01"
+               android:layout_width="70dp"
+               android:layout_height="wrap_content"
+               android:layout_above="@+id/editText04"
+               android:layout_alignLeft="@+id/editText04"
+               android:layout_marginBottom="23dp"
+               android:background="@drawable/login_input"
+               android:ems="10"
+               android:paddingLeft="10dp"
+               android:textColor="@color/black"
+               android:textSize="20sp" >
+
+               <requestFocus />
+           </EditText>
+
+           <TextView
+               android:id="@+id/textView01"
+               android:layout_width="50dp"
+               android:layout_height="wrap_content"
+               android:layout_alignBaseline="@+id/editText01"
+               android:layout_alignBottom="@+id/editText01"
+               android:layout_alignParentLeft="true"
+               android:layout_marginLeft="16dp"
+               android:gravity="center_horizontal"
+               android:text="方位角:" />
+
+           <TextView
+               android:id="@+id/textView02"
+               android:layout_width="50dp"
+               android:layout_height="wrap_content"
+               android:layout_alignBaseline="@+id/editText02"
+               android:layout_alignBottom="@+id/editText02"
+               android:layout_marginLeft="32dp"
+               android:layout_toRightOf="@+id/editText01"
+               android:gravity="center_horizontal"
+               android:text="俯仰角:" />
+
+           <TextView
+               android:id="@+id/TextView01"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/textView03"
+               android:layout_toLeftOf="@+id/textView05"
+               android:text="。"
+               android:textSize="30sp" />
+
+           <TextView
+               android:id="@+id/TextView02"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentRight="true"
+               android:layout_below="@+id/textView03"
+               android:text="。"
+               android:textSize="30sp" />
+
+           <TextView
+               android:id="@+id/TextView03"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/editText02"
+               android:layout_toLeftOf="@+id/textView05"
+               android:text="。"
+               android:textSize="30sp" />
+
+           <TextView
+               android:id="@+id/TextView04"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentRight="true"
+               android:layout_below="@+id/editText02"
+               android:text="。"
+               android:textSize="30sp" />
+
+       </RelativeLayout>
+
+       <RelativeLayout
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="100dp"
+           android:orientation="horizontal"
+           android:paddingTop="0dp" >
+       </RelativeLayout>
+   </LinearLayout>
+
+</LinearLayout>

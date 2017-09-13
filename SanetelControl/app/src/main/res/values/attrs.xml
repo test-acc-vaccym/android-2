@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="textFieldStyle" format="reference"/>
+    <declare-styleable name="DynamicButton">
+        <attr name="dybtn_color" format="color" />
+        <attr name="dybtn_corner_radius" format="dimension" />
+        <attr name="dybtn_stroke_color" format="color" />
+        <attr name="dybtn_stroke_width" format="dimension" />
+        <attr name="dybtn_pressed_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="ProgressButton">
+        <attr name="pbtn_progresscolor" format="color" />
+        <attr name="pbtn_maxvalue" format="float" />
+        <attr name="pbtn_minvalue" format="float" />
+        <attr name="pbtn_progress" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="CircleProgressbar">
+         <attr name="in_circle_color" format="color" />
+     </declare-styleable>
+
+    <attr name="colorControlHighlight" format="color" />
+    <attr name="colorAccent" format="color" />
+    <attr name="textColorFirst" format="color" />
+    <attr name="textColorSecond" format="color" />
+    <attr name="textColorThird" format="color" />
+    <attr name="toolbar_Text_Color" format="color" />
+    <attr name="toolbar_Background_Color" format="color" />
+    <attr name="toolbar_Menu_Text_Color" format="color" />
+    <attr name="main_item_background" format="color" />
+    <attr name="main_menu_changetheme" format="string" />
+
+    <attr name="toolbar_height" format="dimension" />
+    <attr name="toolbar_paddingtop" format="dimension" />
+
+    <attr name="myTheme" format="integer">
+        <enum name="day" value="0" />
+        <enum name="night" value="1" />
+    </attr>
+
+    <!-- Declare custom theme attributes that allow changing which styles are
+         used for button bars depending on the API level.
+         ?android:attr/buttonBarStyle is new as of API 11 so this is
+         necessary to support previous API levels. -->
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference" />
+        <attr name="metaButtonBarButtonStyle" format="reference" />
+    </declare-styleable>
+</resources>

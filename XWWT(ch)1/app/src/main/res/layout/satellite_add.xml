@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+   <LinearLayout
+       android:id="@+id/pop_sat"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:orientation="vertical" >
+
+           <TextView
+               android:id="@+id/textView03"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_horizontal"
+               android:text="@string/addsatellite"
+               android:textColor="@color/dodgerblue" />
+       
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="220dp"
+           android:background="@drawable/border"
+           android:orientation="horizontal" >
+        
+           <LinearLayout
+               android:id="@+id/ll_1"
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_height="match_parent"
+               android:orientation="vertical">
+               
+           <LinearLayout
+               android:id="@+id/ll_11"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+               
+           <TextView
+               android:id="@+id/textView01"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_vertical|center_horizontal"
+               android:text="@string/satellitename" />
+               </LinearLayout>
+               
+               
+           <LinearLayout
+               android:id="@+id/ll_12"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+          <TextView
+               android:id="@+id/textView04"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_vertical|center_horizontal"
+               android:text="@string/satLongitude" />
+               
+               </LinearLayout>
+               
+             
+           <LinearLayout
+               android:id="@+id/ll_13"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+               
+           <TextView
+               android:id="@+id/textView05"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_vertical|center_horizontal"
+               android:text="@string/remark" />
+           </LinearLayout>
+               
+           </LinearLayout>
+
+           <LinearLayout
+               android:id="@+id/ll_2"
+                android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_height="match_parent"
+               android:orientation="vertical">
+           
+               
+          <EditText
+               android:id="@+id/editText01"
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:layout_weight="1"
+               android:background="@drawable/login_input"
+               android:ems="10"
+               android:paddingLeft="10dp"
+               android:textColor="@color/black"
+               android:textSize="20sp" />
+               
+               
+            <EditText
+               android:id="@+id/editText04"
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:layout_weight="1"
+               android:background="@drawable/login_input"
+               android:ems="10"
+                                 android:inputType="numberDecimal|numberSigned"
+               android:paddingLeft="10dp"
+               android:textColor="@color/black"
+               android:textSize="20sp" />
+               
+        <EditText
+               android:id="@+id/editText05"
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:layout_weight="1"
+               android:background="@drawable/login_input"
+               android:ems="10"
+               android:paddingLeft="10dp"
+               android:textColor="@color/black"
+               android:textSize="20sp" />
+
+               
+               </LinearLayout>
+               
+           
+           
+           <LinearLayout 
+               android:id="@+id/ll_3"
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_height="match_parent"
+               android:orientation="vertical">
+               
+               
+            <LinearLayout
+               android:id="@+id/ll_21"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+            <TextView
+               android:id="@+id/TextView01"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical|center_horizontal"
+               android:text="@string/old" />
+              
+            </LinearLayout>
+               
+            
+             <LinearLayout
+               android:id="@+id/ll_22"
+               android:layout_width="wrap_content"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+            
+             <TextView
+               android:id="@+id/TextView02"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+                              android:layout_gravity="center_vertical|center_horizontal"
+               android:text="@string/horizontal" />
+             
+             </LinearLayout>
+             
+            <LinearLayout
+               android:id="@+id/ll_23"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+             
+          <TextView
+               android:id="@+id/TextView03"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_vertical|center_horizontal"
+               android:text="@string/vertical" />
+          
+          </LinearLayout>
+          
+<!--          <TextView -->
+<!--                android:id="@+id/TextView03" -->
+<!--                android:layout_width="50dp" -->
+<!--                android:layout_height="wrap_content" -->
+<!--                android:layout_below="@+id/textView04" -->
+<!--                android:layout_marginTop="43dp" -->
+<!--                android:gravity="center_horizontal" -->
+<!--                android:text="@string/vertical" />           -->
+      </LinearLayout> 
+
+           
+            <LinearLayout 
+               android:id="@+id/ll_4"
+              android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_height="match_parent"
+               android:orientation="vertical">
+         
+                
+          <EditText
+               android:id="@+id/EditText01"
+                              android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:layout_weight="1"
+               android:background="@drawable/login_input"
+               android:ems="10"
+               android:textColor="@color/black"
+               android:textSize="20sp" />
+
+
+           <EditText
+               android:id="@+id/EditText02"
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:layout_weight="1"
+               android:background="@drawable/login_input"
+               android:ems="10"
+                                 android:inputType="numberDecimal|numberSigned"
+                  android:digits="0123456789."
+               android:paddingLeft="10dp"
+               android:textColor="@color/black"
+               android:textSize="20sp" />
+              
+                      <EditText
+               android:id="@+id/EditText04"
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:layout_weight="1"
+               android:background="@drawable/login_input"
+                                 android:inputType="numberDecimal|numberSigned"
+                  android:digits="0123456789."
+               android:ems="10"
+               android:paddingLeft="10dp"
+               android:textColor="@color/black"
+               android:textSize="20sp" />
+                
+                
+                </LinearLayout>
+
+            
+
+
+       </LinearLayout>
+       
+       <LinearLayout 
+               android:id="@+id/ll_5"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+                      
+                
+              <com.example.flatbuttonlib.FButton
+               android:id="@+id/button02"
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_height="wrap_content"
+               android:onClick="true"
+               android:text="@string/add"
+               android:textSize="12sp"
+               android:gravity="center"
+               fbutton:buttonColor="@color/fbutton_color_turquoise"
+               fbutton:shadowEnabled="true" />
+           
+              <com.example.flatbuttonlib.FButton
+               android:id="@+id/button03"
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_height="wrap_content"
+               android:onClick="true"
+               android:text="@string/cancel"
+               android:textColor="#ffffffff"
+               android:gravity="center"
+               android:textSize="12sp"
+               fbutton:shadowEnabled="true" />
+
+
+                
+                </LinearLayout>
+       
+              <RelativeLayout
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="130dp"
+           android:orientation="horizontal"
+           android:paddingTop="0dp" >
+       </RelativeLayout>
+       
+   </LinearLayout>
+
+</LinearLayout>

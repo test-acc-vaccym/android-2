@@ -1,0 +1,4 @@
+newmtl 0
+map_Kd ./base.bmp
+illum 2
+

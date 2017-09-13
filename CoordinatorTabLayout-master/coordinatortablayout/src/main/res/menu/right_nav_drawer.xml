@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="single">
+        <!--https://stackoverflow.com/questions/30560663/navigationview-menu-items-with-counter-on-the-right
+        actionViewClass
+        -->
+        <item
+            android:id="@+id/nav_monitor"
+            android:icon="@mipmap/monitor"
+            android:menuCategory="alternative"
+            android:title="@string/right_nav_monitor" />
+        <item
+            android:id="@+id/nav_communication"
+            android:icon="@mipmap/communicate"
+            android:title="@string/right_nav_communication" />
+        <item
+            android:id="@+id/nav_system_settings"
+            android:icon="@mipmap/settings"
+            android:title="@string/right_nav_system_settings" />
+        <item
+            android:id="@+id/nav_satellite"
+            android:icon="@mipmap/satellite_settings"
+            android:title="@string/right_nav_satellite" />
+        <item
+            android:id="@+id/nav_calibration"
+            android:icon="@mipmap/scales"
+            android:title="@string/right_nav_calibration" />
+        <item
+            android:id="@+id/nav_manual"
+            android:icon="@mipmap/manual"
+            android:title="@string/right_nav_manual" />
+        <item
+            android:id="@+id/nav_power"
+            android:icon="@mipmap/power"
+            android:title="@string/right_nav_power" />
+        <item
+            android:id="@+id/nav_system_info"
+            android:icon="@mipmap/info"
+            android:title="@string/right_nav_system_info" />
+        <item
+            android:id="@+id/nav_database"
+            android:icon="@mipmap/database"
+            android:title="@string/right_nav_database" />
+
+        <item
+            android:id="@+id/nav_logs"
+            android:icon="@mipmap/log"
+            android:title="@string/right_nav_logs" />
+        <item
+            android:id="@+id/nav_update"
+            android:icon="@mipmap/update"
+            app:actionViewClass="android.widget.TextView"
+            android:title="@string/right_nav_update" />
+        <item
+            android:id="@+id/nav_contacts"
+            android:icon="@mipmap/contacts"
+            android:title="@string/right_nav_contacts" />
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@mipmap/help"
+            android:title="@string/right_nav_help" />
+    </group>
+</menu>

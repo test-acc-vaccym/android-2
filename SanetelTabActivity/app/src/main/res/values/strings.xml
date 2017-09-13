@@ -57,4 +57,15 @@
     <string name="satellite_recover">恢复出厂</string>
     <string name="satellite_add">增加卫星</string>
     <string name="satellite_delete">删除卫星</string>
-</resources>
+    <string name="title_activity_guid">引导页</string>
+
+    <!--引导页-->
+    <!--引导页主页-->
+    <string name="guide_main_location">位置输入</string>
+    <string name="guide_main_destination_satellite">目标星</string>
+    <string name="guide_main_searching_mode">寻星模式</string>
+    <string name="guide_main_searching">寻星</string>
+    <string name="guide_main_lock">锁定</string>
+    <string name="guide_main_save">节能</string>
+    <string name="guide_main_enter">直接进入</string>
+    </resources>

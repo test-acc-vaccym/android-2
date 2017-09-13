@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_green"
+    android:orientation="horizontal" >
+    
+   <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
+        
+
+       
+        <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip" >
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_top_corner_no_bottom_line"
+            android:padding="10dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dip"
+                android:text="@string/setstar" 
+                android:textSize="30sp">
+            </TextView>
+
+        </TableRow>
+                <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:baselineAligned="false"
+            android:background="@drawable/shape_large_border"           
+            android:orientation="horizontal">
+            
+            <LinearLayout
+                android:id="@+id/rl_1"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"  
+                android:layout_weight="1"     
+               android:orientation="vertical" >
+         
+           <LinearLayout
+               android:id="@+id/ll_11"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+                
+            <TextView
+              android:id="@+id/textView01"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+             android:layout_gravity="center_vertical"
+             android:gravity="center_horizontal"
+              android:textSize="20sp"
+            android:text="@string/beacon" />
+            </LinearLayout>
+          
+         
+
+        <LinearLayout
+               android:id="@+id/ll_12"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+         <TextView
+            android:id="@+id/textView02"
+              android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:gravity="center_horizontal"
+              android:textSize="20sp"
+            android:text="@string/satLongitude" />
+         </LinearLayout>
+       
+            <LinearLayout
+               android:id="@+id/ll_13"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+               
+         <TextView
+            android:id="@+id/textView04"
+              android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:gravity="center_horizontal"
+              android:textSize="20sp"
+            android:text="@string/polarization" />
+         </LinearLayout>
+                  
+ </LinearLayout>
+           
+          
+         <LinearLayout
+              android:id="@+id/rl_2"
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:layout_weight="1"
+              android:orientation="vertical" >
+
+        <RelativeLayout 
+              android:id="@+id/r1_1"
+              android:layout_width="wrap_content"
+              android:layout_height="0dp"
+              android:layout_gravity="center_horizontal"
+              android:layout_weight="1"
+              android:orientation="horizontal" > 
+             
+           <EditText
+            android:id="@+id/editText02"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned"
+            android:background="@drawable/login_input"
+            android:digits="0123456789."
+            android:layout_centerVertical="true"
+            android:ems="10"
+            android:textColor="@color/black"
+            android:textSize="20sp" ></EditText>
+
+         <TextView
+             android:id="@+id/textView1"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_alignBottom="@+id/editText02"
+             android:layout_toRightOf="@+id/editText02"
+             android:text="MHz" 
+             android:textSize="20sp"
+             />
+           
+        </RelativeLayout>
+        
+        
+                <RelativeLayout 
+              android:id="@+id/r1_2"
+              android:layout_width="wrap_content"
+              android:layout_height="0dp"
+              android:layout_weight="1"
+              android:layout_gravity="center_horizontal"
+              android:orientation="horizontal" > 
+          <EditText
+             android:id="@+id/editText01"
+             android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned"
+            android:background="@drawable/login_input"
+            android:layout_centerVertical="true"
+            android:digits="0123456789."
+            android:ems="10"
+            android:textColor="@color/black"
+            android:textSize="20sp"  >
+         </EditText>
+         <TextView
+           android:id="@+id/TextView01"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+                  android:layout_alignTop="@+id/editText01"
+                  android:layout_toRightOf="@+id/editText01"
+                  android:text="。"
+                  android:textSize="15sp" />
+          
+          </RelativeLayout>
+
+         <RelativeLayout 
+              android:id="@+id/r1_3"
+              android:layout_width="wrap_content"
+              android:layout_height="0dp"
+              android:layout_gravity="center_horizontal"
+              android:layout_weight="1" > 
+
+
+       <Spinner
+           android:id="@+id/spinner01"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_centerVertical="true"
+           android:layout_marginTop="15dp"
+           android:ems="10" 
+           android:background="#ffffff"
+           android:prompt="@string/spin_select" />
+
+       </RelativeLayout>
+       
+      </LinearLayout>
+        
+ </LinearLayout>
+
+  <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="50dp"
+      android:background="@drawable/shape_large_border"
+      android:orientation="vertical" >
+
+<!--       <Button -->
+<!--           android:id="@+id/Button01" -->
+<!--           android:layout_width="wrap_content" -->
+<!--           android:layout_height="wrap_content" -->
+<!--           android:layout_marginTop="20dp" -->
+<!--           android:background="@drawable/border_button_blue" -->
+<!--           android:layout_weight="5" -->
+<!--           android:onClick="true" -->
+<!--           android:text="自动寻星" /> -->
+      
+<!--             <com.example.flatbuttonlib.FButton -->
+<!--           android:id="@+id/Button01" -->
+<!--           android:layout_width="fill_parent" -->
+<!--           android:layout_height="wrap_content" -->
+<!--             android:layout_weight="1" -->
+<!--             android:onClick="true" -->
+<!--             android:text="自动寻星"  -->
+<!--             android:textColor="#ffffffff" -->
+<!--             fbutton:buttonColor="@color/fbutton_color_turquoise" -->
+<!--             fbutton:shadowEnabled="true" /> -->
+      
+
+<!--       <Button -->
+<!--           android:id="@+id/button01" -->
+<!--           android:layout_width="wrap_content" -->
+<!--           android:layout_height="wrap_content" -->
+<!--           android:layout_marginTop="20dp" -->
+<!--           android:background="@drawable/border_button" -->
+<!--           android:layout_weight="4" -->
+<!--           android:onClick="true" -->
+<!--           android:text="设置参考星" /> -->
+      
+      
+     <com.example.flatbuttonlib.FButton
+          android:id="@+id/button01"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:onClick="true"
+          android:paddingLeft="8dp"
+          android:paddingRight="25dp"
+          android:text="@string/set" 
+          android:textColor="#ffffffff"
+          fbutton:shadowEnabled="true" />
+
+  </LinearLayout>
+
+
+              <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_no_corner_without_bottom"
+                >
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_bottom_corner_no_top_line"
+                    android:padding="10dip" >
+                </TableRow>
+                
+            </LinearLayout>
+
+    </TableLayout>
+    
+
+    </LinearLayout>
+    
+
+</LinearLayout>

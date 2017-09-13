@@ -8,6 +8,24 @@
 # Java class files
 *.class
 
+# zip files
+*.zip
+*.rar
+
+AndroidUI-master
+App_BlueTooth
+BottomNavigation-master_v2
+BottomNavigationView-master
+BottomNavigationViewSample-master
+Calligraphy-master
+DropletDialPad
+DropletDialer
+DynamicButton-master
+Material-Design-Demo-master
+MaterialDesign
+MaterialPageStateLayout-master
+MyKeep-master
+
 # Generated files
 bin/
 gen/

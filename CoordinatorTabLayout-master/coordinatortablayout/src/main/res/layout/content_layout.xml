@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <cn.hugeterry.coordinatortablayout.view.EdropletToolbar
+        android:id="@+id/content_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:leftButtonIcon="@drawable/home"
+        app:rightButtonIcon="@drawable/menu"
+        app:rightButtonGravity="end"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        app:isShowSearchView="false"
+        android:elevation="1dp"/>
+    <!--app:elevation="0dp" 去掉阴影-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="@color/title_background">
+        <cn.hugeterry.coordinatortablayout.view.DrawableCenterButton
+            android:id="@+id/button_operator_manual"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:drawableLeft="@mipmap/operator_manual"
+            android:drawableStart="@mipmap/operator_manual"
+            android:text="@string/operator_manual"
+            android:background="@color/title_background"/>
+        <cn.hugeterry.coordinatortablayout.view.DrawableCenterButton
+            android:id="@+id/button_operator_exploded"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:drawableLeft="@mipmap/operator_exploded"
+            android:drawableStart="@mipmap/operator_exploded"
+            android:text="@string/operator_exploded"
+            android:background="@color/title_background"/>
+        <cn.hugeterry.coordinatortablayout.view.DrawableCenterButton
+            android:id="@+id/button_operator_folded"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:drawableLeft="@mipmap/operator_folded"
+            android:drawableStart="@mipmap/operator_folded"
+            android:text="@string/operator_folded"
+            android:background="@color/title_background"/>
+    </LinearLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6">
+
+    </android.support.v4.view.ViewPager>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@android:drawable/ic_menu_help" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/title_background"
+        style="@style/TabLayoutStyle"
+        android:layout_gravity="bottom|end">
+
+    </android.support.design.widget.TabLayout>
+
+</LinearLayout>

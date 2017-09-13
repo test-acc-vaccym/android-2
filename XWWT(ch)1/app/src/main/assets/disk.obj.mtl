@@ -1,0 +1,7 @@
+newmtl 0
+illum 2
+
+newmtl 1
+map_Kd ./disk.jpg
+illum 2
+

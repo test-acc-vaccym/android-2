@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_green"
+    android:orientation="vertical" >
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/id_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </android.support.v4.view.ViewPager>
+            <com.viewpagerindicator.CirclePageIndicator
+	        android:id="@+id/main_viewPager_indicator"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:padding="20dp" /> 
+    
+
+
+<LinearLayout
+    android:id="@+id/textView"
+    android:layout_height="300dp"
+    android:layout_width="fill_parent">
+    
+    <TextView 
+        android:id="@+id/tv_1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:textSize="20sp"
+        android:textColor="#dcdcdc" 
+        android:text=" SANETEL 星网通®S100 Ku波段船用卫星通信天线是针对近海以及内河航行船只或海上作业平台研发的高带宽传输船载动中通天线。系统拥有高可靠性稳定跟踪平台，即使在恶劣海况下也能自动搜索、识别、锁定并实时精确跟踪卫星。本系统适用性强、可靠性高，能帮助用户实现动态条件下不间断的互联网接入、视频会议、VOIP语音电话、传真、文件传输等高带宽多媒体数据传输。"
+        />
+    
+    
+</LinearLayout>
+
+</LinearLayout>

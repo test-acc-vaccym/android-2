@@ -1,0 +1,1 @@
+stateFrameLayout	可以藉鑒：狀態恢復stateFrameLayout.java->SavedViewState,自定義layout，addview，//获取自定义属性 TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.StateFrameLayout);

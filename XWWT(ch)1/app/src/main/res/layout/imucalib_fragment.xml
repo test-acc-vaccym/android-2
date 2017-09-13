@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_green"
+    android:orientation="vertical" >
+    
+   <LinearLayout
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:orientation="vertical" >
+       
+       <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip" >
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_top_corner_no_bottom_line"
+            android:padding="10dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dip"
+                android:text="@string/inscalib" 
+                android:textSize="30sp">
+            </TextView>
+
+        </TableRow>
+       
+         <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:baselineAligned="false"
+            android:background="@drawable/shape_large_border"           
+            android:orientation="horizontal">
+            
+            <LinearLayout
+                android:id="@+id/rl_1"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"  
+                android:layout_weight="1"     
+               android:orientation="vertical" >
+         <LinearLayout
+               android:id="@+id/ll_11"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+            <TextView
+               android:id="@+id/textView01"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_vertical"
+               android:gravity="center_horizontal"
+               android:textSize="20sp"
+               android:text="@string/heading" />
+            </LinearLayout>
+            
+                     <LinearLayout
+               android:id="@+id/ll_12"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+         
+            <TextView
+               android:id="@+id/textView02"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_vertical"
+               android:gravity="center_horizontal"
+               android:textSize="20sp"
+               android:text="@string/pitch" />
+            </LinearLayout>
+            
+             <LinearLayout
+               android:id="@+id/ll_13"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="0dp">
+                     
+             <TextView
+               android:id="@+id/textView04"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_vertical"
+               android:gravity="center_horizontal"
+               android:textSize="20sp"
+               android:text="@string/roll" />
+             
+             </LinearLayout>
+                </LinearLayout>
+                
+            <LinearLayout
+                android:id="@+id/rl_2"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"  
+                android:layout_weight="1"     
+               android:orientation="vertical" >
+             
+            <RelativeLayout 
+               android:id="@+id/r1_1"
+              android:layout_width="wrap_content"
+              android:layout_height="0dp"
+              android:layout_weight="1"
+              android:orientation="horizontal">
+                
+             <EditText
+               android:id="@+id/editText01"
+               android:layout_width="90dp"
+               android:inputType="numberDecimal|numberSigned"
+               android:layout_height="wrap_content"
+               android:background="@drawable/login_input"
+               android:layout_centerVertical="true"
+               android:ems="10"
+               android:textColor="@color/black"
+               android:textSize="20sp" />
+                          <TextView
+                 android:id="@+id/TextView01"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                  android:layout_alignTop="@+id/editText01"
+                  android:layout_toRightOf="@+id/editText01"
+                  android:text="。"
+                  android:textSize="15sp"  />
+             
+             </RelativeLayout>
+             
+            
+           <RelativeLayout 
+               android:id="@+id/r1_2"
+              android:layout_width="wrap_content"
+              android:layout_height="0dp"
+              android:layout_weight="1"
+              android:orientation="horizontal">
+             <EditText
+               android:id="@+id/editText04"
+               android:layout_width="90dp"
+               android:inputType="numberDecimal|numberSigned"
+               android:layout_height="wrap_content"
+               android:background="@drawable/login_input"
+               android:layout_centerVertical="true"
+               android:ems="10"
+               android:textColor="@color/black"
+               android:textSize="20sp" />
+             
+                          <TextView
+                 android:id="@+id/TextView02"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                  android:layout_alignTop="@+id/editText04"
+                  android:layout_toRightOf="@+id/editText04"
+                  android:text="。"
+                  android:textSize="15sp" />
+             
+             </RelativeLayout>
+             
+            <RelativeLayout 
+               android:id="@+id/r1_3"
+              android:layout_width="wrap_content"
+              android:layout_height="0dp"
+              android:layout_weight="1"
+              android:orientation="horizontal">
+             
+             <EditText
+               android:id="@+id/editText02"
+               android:layout_width="90dp"
+               android:inputType="numberDecimal|numberSigned"
+               android:layout_height="wrap_content"
+               android:background="@drawable/login_input"
+               android:layout_centerVertical="true"
+               android:ems="10"
+               android:textColor="@color/black"
+               android:textSize="20sp" />
+             
+       <TextView
+                 android:id="@+id/TextView03"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                  android:layout_alignTop="@+id/editText02"
+                  android:layout_toRightOf="@+id/editText02"
+                  android:text="。"
+                  android:textSize="15sp" />
+</RelativeLayout>
+             
+
+
+
+
+
+             
+                </LinearLayout>
+                
+            </LinearLayout>
+         <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:baselineAligned="false"
+            android:background="@drawable/shape_large_border"           
+            android:orientation="horizontal">
+<!--               <Button -->
+<!--                android:id="@+id/button01" -->
+<!--                android:layout_width="wrap_content" -->
+<!--                android:layout_height="wrap_content" -->
+<!--                android:layout_centerHorizontal="true" -->
+<!--                android:layout_marginTop="10dp" -->
+<!--                android:background="@drawable/border_button" -->
+<!--                android:text="惯导标定" /> -->
+              
+         <com.example.flatbuttonlib.FButton
+               android:id="@+id/button01"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_marginTop="10dp"
+            android:onClick="true"
+            android:text="@string/calibINS"
+            android:textColor="#ffffffff"
+            fbutton:buttonColor="@color/fbutton_color_turquoise"
+            fbutton:shadowEnabled="true" /> 
+              
+             </RelativeLayout>
+            
+          <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_no_corner_without_bottom"
+                >
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_bottom_corner_no_top_line"
+                    android:padding="10dip" >
+                </TableRow>
+                
+            </LinearLayout>
+         </TableLayout>
+       
+
+   </LinearLayout>
+
+</LinearLayout>

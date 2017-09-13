@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--android:icon="@mipmap/ic_news_gray"-->
+    <item
+        android:id="@+id/item_satellite"
+        android:title="@string/satellite" />
+    <!--android:icon="@mipmap/ic_library_gray"-->
+    <item
+        android:id="@+id/item_location_setting"
+        android:title="@string/location_setting" />
+
+    <!--android:icon="@mipmap/ic_discovery_gray"-->
+    <item
+        android:id="@+id/item_oscillator"
+        android:title="@string/oscillator" />
+
+    <!--android:icon="@mipmap/ic_launcher"-->
+    <item
+    android:id="@+id/item_threshold"
+    android:title="@string/threshold"/>
+
+    <!--<item-->
+    <!--android:id="@+id/item_reference"-->
+    <!--android:title="@string/reference"/>-->
+    <!--<item-->
+    <!--android:id="@+id/item_interfere"-->
+    <!--android:title="@string/interfere"/>-->
+
+    <!--android:icon="@mipmap/ic_more_gray"-->
+    <item
+        android:id="@+id/item_more"
+        android:title="@string/more" />
+
+</menu>

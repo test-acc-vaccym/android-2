@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/mainLinearLayoutTitle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal|center_vertical"
+        android:background="@color/title_background">
+        <ImageButton
+            android:id="@+id/mainImageButtonHome"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:src="@drawable/home"
+            android:layout_gravity="start"
+            android:background="@color/button_blink"/>
+        <TextView
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:text="@string/satellite_reference_title"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:typeface="monospace"
+            android:textSize="@dimen/title_font_size"
+            android:textColor="@color/title_text"
+            />
+        <ImageButton
+            android:id="@+id/mainImageButtonMenu"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:src="@drawable/menu"
+            android:background="@color/button_blink"
+            android:layout_gravity="end"/>
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/mainLinearLayoutTitle"
+        android:layout_above="@+id/bottom_navigation" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_navigation_height"
+        android:layout_alignParentBottom="true"
+        app:itemIconTint="@drawable/bottom_navigation_selector"
+        app:itemTextColor="@drawable/bottom_navigation_selector"
+        app:itemBackground="@color/title_background"
+        app:menu="@menu/menu_bottom_navigation" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_above="@id/bottom_navigation"
+        android:background="@drawable/bottom_shadow" />
+
+</RelativeLayout>

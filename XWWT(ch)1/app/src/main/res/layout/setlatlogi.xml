@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_green"
+    android:orientation="horizontal" >
+    
+   <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
+        
+
+       
+        <TableLayout
+        android:id="@+id/tlll"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip" >
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_top_corner_no_bottom_line"
+            android:padding="10dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dip"
+                android:text="@string/setstar" 
+                android:textSize="30sp">
+            </TextView>
+
+        </TableRow>
+                <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:baselineAligned="false"
+            android:background="@drawable/shape_large_border"           
+            android:orientation="horizontal">
+            
+            <RelativeLayout
+                android:id="@+id/rl_ll1"
+                android:layout_width="150dp"
+                android:layout_height="fill_parent"  
+                android:layout_weight="1"     
+               android:orientation="vertical" >
+         
+            <TextView
+              android:id="@+id/tvll1"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="35dp"
+              android:layout_centerHorizontal="true"
+              android:layout_alignParentTop="true"
+              android:textSize="20sp"
+            android:text="@string/longitude" />
+          
+         
+
+       
+         <TextView
+            android:id="@+id/tvll2"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/tvll1"
+              android:layout_marginTop="30dp"
+              android:layout_centerHorizontal="true"
+              android:textSize="20sp"
+            android:text="@string/latitude" />
+                  
+ </RelativeLayout>
+           
+          
+         <RelativeLayout
+              android:id="@+id/rl_2"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:layout_weight="1"
+              android:orientation="vertical" >
+
+           <EditText
+            android:id="@+id/etlogi"
+            android:layout_width="100dp"
+            android:inputType="numberDecimal|numberSigned"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_input"
+            android:digits="0123456789."
+            android:ems="10"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="5dp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="20sp" ></EditText>
+           
+        
+          <EditText
+             android:id="@+id/etlati"
+             android:layout_width="100dp"
+             android:inputType="numberDecimal|numberSigned"
+             android:layout_height="wrap_content"
+             android:digits="0123456789."
+             android:ems="10" 
+             android:background="@drawable/login_input"
+             android:layout_below="@+id/etlogi"
+             android:layout_marginTop="5dp"
+             android:layout_marginLeft="5dp"
+             android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="20sp" >
+         </EditText>
+
+      </RelativeLayout>
+        
+ </LinearLayout>
+
+ <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="50dp"
+      android:background="@drawable/shape_large_border"
+      android:orientation="vertical" >
+     
+      
+     <com.example.flatbuttonlib.FButton
+          android:id="@+id/btnll"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:onClick="true"
+          android:paddingLeft="8dp"
+          android:paddingRight="25dp"
+          android:text="@string/set" 
+          android:textColor="#ffffffff"
+          fbutton:shadowEnabled="true" />
+
+  </LinearLayout>
+
+
+              <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_no_corner_without_bottom"
+                >
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_bottom_corner_no_top_line"
+                    android:padding="10dip" >
+                </TableRow>
+                
+            </LinearLayout>
+
+    </TableLayout>
+    
+
+    </LinearLayout>
+    
+
+</LinearLayout>

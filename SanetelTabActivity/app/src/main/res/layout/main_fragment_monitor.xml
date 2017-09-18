@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/manual_divider">
+    <include layout="@layout/satellite_info"/>
+    <!--天线信息-->
+    <include layout="@layout/antenna_info"/>
+
+    <!--位置信息-->
+    <include layout="@layout/location_info"/>
+
+    <!--功放信息-->
+    <include layout="@layout/amplifier_info"/>
+
+</LinearLayout>

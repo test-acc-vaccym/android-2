@@ -2,27 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/status_bar_height"
+    android:layout_height="match_parent"
     android:background="@color/state_bar_background">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
-
                 <com.edroplet.qxx.saneteltabactivity.view.StatusButton
                     style="@style/Base.Widget.AppCompat.Button.Borderless"
                     android:id="@+id/status_bar_button_communication_state"
-                    android:layout_height="@dimen/status_bar_height"
+                    android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="start"
                     android:layout_marginLeft="@dimen/status_button_margin_left"
                     android:layout_marginStart="@dimen/status_button_margin_left"
-                    android:text="@string/communication_state_connected"
+                    android:text="@string/communication_state_disconnected"
                     android:textColor="@color/status_normal"
                     android:background="@color/button_blink"
-                    android:drawableStart="@drawable/connected"
-                    android:drawableLeft="@drawable/connected"
+                    android:drawableStart="@drawable/disconnected"
+                    android:drawableLeft="@drawable/disconnected"
                     app:drawable_height="@dimen/status_button_height"
                     app:drawable_width="@dimen/status_button_height"
                     app:state_color="abnormal"/>
@@ -30,7 +29,7 @@
                 <com.edroplet.qxx.saneteltabactivity.view.StatusButton
                     style="@style/Base.Widget.AppCompat.Button.Borderless"
                     android:id="@+id/status_bar_button_antenna_state"
-                    android:layout_height="@dimen/status_bar_height"
+                    android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="start"
@@ -39,8 +38,8 @@
                     android:text="@string/antenna_state_init"
                     android:textColor="@color/status_normal"
                     android:background="@color/button_blink"
-                    android:drawableStart="@drawable/satellite_connecting"
-                    android:drawableLeft="@drawable/satellite_connecting"
+                    android:drawableStart="@drawable/explode"
+                    android:drawableLeft="@drawable/explode"
                     app:drawable_height="@dimen/status_button_height"
                     app:drawable_width="@dimen/status_button_height"
                     app:state_color="normal"/>
@@ -48,7 +47,7 @@
                 <com.edroplet.qxx.saneteltabactivity.view.StatusButton
                     style="@style/Base.Widget.AppCompat.Button.Borderless"
                     android:id="@+id/status_bar_button_bd_state"
-                    android:layout_height="@dimen/status_bar_height"
+                    android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="start"
@@ -57,8 +56,8 @@
                     android:text="@string/bd_state_disabled"
                     android:textColor="@color/status_normal"
                     android:background="@color/button_blink"
-                    android:drawableStart="@drawable/location"
-                    android:drawableLeft="@drawable/location"
+                    android:drawableStart="@drawable/bd"
+                    android:drawableLeft="@drawable/bd"
                     app:drawable_height="@dimen/status_button_height"
                     app:drawable_width="@dimen/status_button_height"
                     app:state_color="special"/>
@@ -66,7 +65,7 @@
                 <com.edroplet.qxx.saneteltabactivity.view.StatusButton
                     style="@style/Base.Widget.AppCompat.Button.Borderless"
                     android:id="@+id/status_bar_button_locker_state"
-                    android:layout_height="@dimen/status_bar_height"
+                    android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="start"
@@ -84,7 +83,7 @@
                 <com.edroplet.qxx.saneteltabactivity.view.StatusButton
                     style="@style/Base.Widget.AppCompat.Button.Borderless"
                     android:id="@+id/status_bar_button_power_state"
-                    android:layout_height="@dimen/status_bar_height"
+                    android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="start"

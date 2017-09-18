@@ -2,7 +2,7 @@
 <resources>
     <!--toolbar status color 状态颜色-->
     <color name="status_normal">#00FF00</color>
-    <color name="status_special">#FFFF00</color>
+    <color name="status_special">#aa66cc</color>
     <color name="status_abnormal">#FF0000</color>
     <color name="status_operate">#0000FF</color>
 
@@ -16,18 +16,26 @@
     <color name="menu_item_odd_background">#FF95CA</color>
     <color name="menu_item_even_background">#FFFF93</color>
 
+    <color name="guide_item_background_start">#efefef</color>
+    <color name="guide_item_background_center">#afbbeedd</color>
+    <color name="guide_item_background_end">#efefef</color>
+
     <color name="bottom_tab_nav_background">#afbbeedd</color>
-    <color name="toobar_color_14b8f4">#14b8f4</color>
+    <color name="toolbar_color_14b8f4">#14b8f4</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorControlHighlight">#fffaaf</color>
 
+    <color name="button_pressed">#00ffbb</color>
+    <color name="button_enabled">#fff</color>
+    <color name="button_selected">#0f0</color>
+
     <color name="tab_checked">#3F51B5</color>
     <color name="tab_unchecked">#757575</color>
-    <color name="title_text">#78DDF0</color>
-    <color name="state_bar_background">#ffffffff</color>
-    <color name="operate_bar_background">#ffffffff</color>
+    <color name="title_text">#0000B5</color>
+    <color name="state_bar_background">#BBEEDD</color>
+    <color name="operate_bar_background">#6B8E23</color>
     <color name="title_background">#ffbbeedd</color>
     <color name="subtitle_Honeydew">#F0FFF0</color>
     <color name="button_blink">#00FFFFFF</color>

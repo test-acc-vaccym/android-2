@@ -5,7 +5,10 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.1"
+        android:layout_weight="1.05"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:maxHeight="@dimen/main_application_image_max_height"
         android:src="@drawable/main_application_image"/>
     <TextView
         android:id="@+id/message"
@@ -28,24 +31,27 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/speed"
+            android:drawableTop="@drawable/speed_manual"
             android:text="@string/main_application_operate_speed"
+            android:clickable="true"
             android:background="@color/button_blink"/>
         <Button
             android:id="@+id/main_application_manual_location"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/location"
+            android:drawableTop="@drawable/location_manual"
             android:text="@string/main_application_operate_location"
+            android:clickable="true"
             android:background="@color/button_blink"/>
         <Button
             android:id="@+id/main_application_manual_calculate"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/calculate"
+            android:drawableTop="@drawable/calculate_manual"
             android:text="@string/main_application_operate_calculate"
+            android:clickable="true"
             android:background="@color/button_blink"/>
     </LinearLayout>
 </LinearLayout>

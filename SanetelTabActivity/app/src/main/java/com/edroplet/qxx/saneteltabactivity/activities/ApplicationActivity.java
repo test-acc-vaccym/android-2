@@ -1,18 +1,23 @@
 package com.edroplet.qxx.saneteltabactivity.activities;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
 import com.edroplet.qxx.saneteltabactivity.fragments.MainFragmentBase;
+import com.edroplet.qxx.saneteltabactivity.fragments.MainMonitorFragment;
 import com.edroplet.qxx.saneteltabactivity.utils.BottomNavigationViewHelper;
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 
@@ -21,6 +26,7 @@ public class ApplicationActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private MenuItem menuItem;
     private BottomNavigationView bottomNavigationView;
+    private Button btnSpeed;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -59,10 +65,30 @@ public class ApplicationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_application);
 
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_content_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        /*
         toolbar.setTitle(R.string.main_application_operate);
+        */
+        //actionBar的设置(使用自定义的设置)
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // 使用自定义layout
+            actionBar.setCustomView(R.layout.status_bar);
+            actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            // 修改图标
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){
+                actionBar.setHomeAsUpIndicator(R.drawable.back);
+            }
+        }
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.main_navigation);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
@@ -101,6 +127,15 @@ public class ApplicationActivity extends AppCompatActivity {
 //        });
 
         setupViewPager(viewPager);
+        if (btnSpeed != null)
+        btnSpeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ApplicationActivity.this, ManualActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         final StatusButton sbExploded = (StatusButton)  findViewById(R.id.button_operate_explode);
         final StatusButton sbFold = (StatusButton) findViewById(R.id.button_operate_fold);
@@ -187,8 +222,8 @@ public class ApplicationActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         MainViewPagerAdapter adapter = new MainViewPagerAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(MainFragmentBase.newInstance(getString(R.string.main_bottom_nav_monitor)));
-        adapter.addFragment(MainFragmentBase.newInstance(getString(R.string.main_bottom_nav_application)));
+        adapter.addFragment(MainMonitorFragment.newInstance(null));
+        adapter.addFragment(MainFragmentBase.newInstance(getString(R.string.main_application_operate)));
         adapter.addFragment(MainFragmentBase.newInstance(getString(R.string.main_bottom_nav_status)));
         adapter.addFragment(MainFragmentBase.newInstance(getString(R.string.main_bottom_nav_collect)));
         adapter.addFragment(MainFragmentBase.newInstance(getString(R.string.main_bottom_nav_settings)));

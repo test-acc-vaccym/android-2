@@ -1,58 +1,88 @@
 package com.edroplet.qxx.saneteltabactivity.activities;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
+import android.support.v4.content.res.ResourcesCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.view.DrawableCenterButton;
 
 public class GuideActivity extends AppCompatActivity implements View.OnClickListener {
-    private DrawableCenterButton mExplode;
-    private DrawableCenterButton mLocation;
-    private DrawableCenterButton mDestination;
-    private DrawableCenterButton mSearchMode;
-    private DrawableCenterButton mSearching;
-    private DrawableCenterButton mLock;
-    private DrawableCenterButton mSaving;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    return true;
-            }
-            return false;
-        }
-
-    };
-
-
+    private Button mExplode;
+    private Button mLocation;
+    private Button mDestination;
+    private Button mSearchMode;
+    private Button mSearching;
+    private Button mLock;
+    private Button mSaving;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guid);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.guide_tool_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setTitle(R.string.guide_main_enter);
-        mExplode = (DrawableCenterButton) findViewById(R.id.guide_main_button_explode);
+        setupToolbar();
+        mExplode = (Button) findViewById(R.id.guide_main_button_explode);
         mExplode.setOnClickListener(this);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.guide_navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        // BottomNavigationView manual_navigation = (BottomNavigationView) findViewById(R.id.guide_navigation);
+        // manual_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    public void setupToolbar(){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.guide_tool_bar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            ActionBar ab = getSupportActionBar();
+            if (ab != null) {
+                ab.setHomeAsUpIndicator(R.drawable.back);
+                // 隐藏ActionBar的标题
+                // ab.setTitle(null);
+                ab.setDisplayShowTitleEnabled(false);
+                toolbar.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.title_background, null));
+                // 使用自定义试图
+                // ab.setDisplayShowCustomEnabled(true);
+            }
+
+            //关键下面两句话，设置了回退按钮，及点击事件的效果
+            ab.setDisplayHomeAsUpEnabled(true);
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+            toolbar.hideOverflowMenu();
+        }
+    }
+
+    private void setupToolsbar2(){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.guide_tool_bar);
+        if (toolbar != null) {
+            // toolbar.setTitle("");
+            setSupportActionBar(toolbar);
+            ActionBar actionBar = getSupportActionBar();
+            if (actionBar != null) {
+                // getSupportActionBar().setTitle("");
+                // 返回箭头（默认显示）
+                actionBar.setDisplayHomeAsUpEnabled(true);
+                // 更改返回图标
+                actionBar.setHomeAsUpIndicator(R.drawable.back);
+                // 左侧图标点击事件使能
+                actionBar.setHomeButtonEnabled(true);
+                // 使左上角图标(系统)是否显示
+                actionBar.setDisplayShowHomeEnabled(true);
+                // 显示标题
+                actionBar.setDisplayShowTitleEnabled(false);
+                //显示自定义视图
+                actionBar.setDisplayShowCustomEnabled(true);
+                actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+                // View actionbarLayout = LayoutInflater.from(this).inflate(R.layout.guide_toolbar, null);
+                // actionBar.setCustomView(actionbarLayout);
+            }
+        }
     }
 
     @Override
@@ -79,11 +109,4 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
         return super.onOptionsItemSelected(item);
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.navigation_guide_main, menu);
-        return true;
-    }
 }

@@ -7,8 +7,8 @@
     <dimen name="title_font_size">16sp</dimen>
     <dimen name="toolbar_divider">2dp</dimen>
     <!--状态栏尺寸-->
-    <dimen name="status_bar_height">24dp</dimen>
-    <dimen name="operate_bar_height">30dp</dimen>
+    <dimen name="status_bar_height">40dp</dimen>
+    <dimen name="operate_bar_height">50dp</dimen>
     <dimen name="status_bar_text_size">5sp</dimen>
     <dimen name="status_button_height">16dp</dimen>
     <dimen name="operate_button_height">22dp</dimen>
@@ -25,7 +25,11 @@
     <dimen name="satellite_bottom_bar_height">50dp</dimen>
 
     <dimen name="guide_list_padding_left">20dp</dimen>
-    <dimen name="guide_list_item_padding">10dp</dimen>
+    <dimen name="guide_list_item_padding">5dp</dimen>
 
-    <dimen name="drawable_center_spacing">5dp</dimen>
+    <dimen name="drawable_center_spacing">2dp</dimen>
+    <!--主页面-->
+    <dimen name="main_application_image_max_height">200dp</dimen>
+    <dimen name="main_margin_top">10dp</dimen>
+    <dimen name="spacing_medium">2dp</dimen>
 </resources>

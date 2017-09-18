@@ -63,31 +63,38 @@ public class SanetelTabActivity extends AppCompatActivity {
 
     public SanetelTabActivity setupToolbar(){
         toolbar = (Toolbar) findViewById(R.id.content_toolbar);
-        setSupportActionBar(toolbar);
-        ActionBar ab = getSupportActionBar();
-        if (ab != null)
-            ab.setHomeAsUpIndicator(R.drawable.ic_back_arrow);
-
-        // 隐藏ActionBar的标题
-        // ab.setTitle(null);
-        ab.setDisplayShowTitleEnabled(false);
-        toolbar.setBackgroundColor(ResourcesCompat.getColor(getResources(),R.color.title_background,null));
-        // 一个布局内的所有控件可以获取到焦点
-        for (int i = 0; i< toolbar.getChildCount(); i++){
-            View v = toolbar.getChildAt(i);
-            v.setFocusable(true);
-        }
-        // 使用drawable资源但不为其设置theme主题
-        // ab.setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(),R.drawable.status_background,null));
-        //关键下面两句话，设置了回退按钮，及点击事件的效果
-        ab.setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            ActionBar ab = getSupportActionBar();
+            if (ab != null) {
+                ab.setHomeAsUpIndicator(R.drawable.back);
+                // 隐藏ActionBar的标题
+                // ab.setTitle(null);
+                ab.setDisplayShowTitleEnabled(false);
+                toolbar.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.title_background, null));
+                // 使用自定义试图
+                ab.setCustomView(R.layout.status_bar);
+                ab.setDisplayShowCustomEnabled(true);
             }
-        });
-        toolbar.hideOverflowMenu();
+
+            // 一个布局内的所有控件可以获取到焦点
+//            for (int i = 0; i < toolbar.getChildCount(); i++) {
+//                View v = toolbar.getChildAt(i);
+//                v.setFocusable(true);
+//            }
+            // 使用drawable资源但不为其设置theme主题
+            // ab.setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(),R.drawable.status_background,null));
+            //关键下面两句话，设置了回退按钮，及点击事件的效果
+            ab.setDisplayHomeAsUpEnabled(true);
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+            toolbar.hideOverflowMenu();
+        }
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         return this;
@@ -238,12 +245,14 @@ public class SanetelTabActivity extends AppCompatActivity {
     }
 
 
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_sanetel_tab, menu);
         return true;
     }
+    */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -17,4 +17,4 @@
 <bitmap xmlns:android="http://schemas.android.com/apk/res/android"
     android:src="@drawable/ic_delete_wht_24dp"
     android:gravity="center"
-    android:tint="@color/toobar_color_14b8f4" />
+    android:tint="@color/toolbar_color_14b8f4" />

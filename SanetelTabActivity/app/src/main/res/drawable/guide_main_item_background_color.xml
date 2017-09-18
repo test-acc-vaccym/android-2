@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 按下状态 -->
+    <item android:state_pressed="true">
+        <shape  xmlns:android="http://schemas.android.com/apk/res/android">
+            <solid
+                android:color="@color/mb_green_dark" />
+            <padding
+                android:bottom="10dp"
+                android:left="30dp"
+                android:right="30dp"
+                android:top="10dp" />
+        </shape >
+    </item>
+    <!-- 按下状态 -->
+    <item>
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="0.1dp"
+                android:color="@color/guide_item_background_start"/>
+            <!--gradient
+                android:startColor="@color/guide_item_background_start"
+                android:endColor="@color/guide_item_background_center"
+                android:centerColor="@color/guide_item_background_end"
+                android:type="radial"
+                android:angle="90"/-->
+            <!--android:type="sweep"-->
+            <padding
+                android:bottom="10dp"
+                android:left="30dp"
+                android:right="30dp"
+                android:top="10dp" />
+        </shape >
+    </item>
+</selector>

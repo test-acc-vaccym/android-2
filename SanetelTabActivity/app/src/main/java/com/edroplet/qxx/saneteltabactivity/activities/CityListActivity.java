@@ -23,19 +23,14 @@ import com.edroplet.qxx.saneteltabactivity.beans.SatelliteParameters;
 
 import org.json.JSONException;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
-
-import static android.R.attr.path;
 
 /**
  * An activity representing a list of Cities. This activity
  * has different presentations for handset and tablet-size devices. On
  * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link CityDetailActivity} representing
+ * lead to a {@link SatelliteDetailActivity} representing
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
@@ -68,7 +63,7 @@ public class CityListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_city_list);
+        setContentView(R.layout.activity_satellite_list);
         /**
          * 没必要复制先观察
         try {
@@ -84,7 +79,7 @@ public class CityListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
-            ab.setHomeAsUpIndicator(R.drawable.ic_back_arrow);
+            ab.setHomeAsUpIndicator(R.drawable.back);
             ab.setTitle(R.string.satellite_toolbar_title);
         }
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -133,7 +128,7 @@ public class CityListActivity extends AppCompatActivity {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.city_list_content, parent, false);
+                    .inflate(R.layout.satellite_list_content, parent, false);
             return new ViewHolder(view);
         }
 
@@ -154,16 +149,16 @@ public class CityListActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putString(CityDetailFragment.ARG_ITEM_ID, holder.mItem.mId.toString());
-                        CityDetailFragment fragment = new CityDetailFragment();
+                        arguments.putString(SatelliteDetailFragment.ARG_ITEM_ID, holder.mItem.mId.toString());
+                        SatelliteDetailFragment fragment = new SatelliteDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.city_detail_container, fragment)
                                 .commit();
                     } else {
                         Context context = v.getContext();
-                        Intent intent = new Intent(context, CityDetailActivity.class);
-                        intent.putExtra(CityDetailFragment.ARG_ITEM_ID, holder.mItem.mId.toString());
+                        Intent intent = new Intent(context, SatelliteDetailActivity.class);
+                        intent.putExtra(SatelliteDetailFragment.ARG_ITEM_ID, holder.mItem.mId.toString());
 
                         context.startActivity(intent);
                     }

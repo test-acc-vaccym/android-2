@@ -7,82 +7,198 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.GuideActivity">
-
-    <android.support.design.widget.AppBarLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/guide_tool_bar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        app:navigationIcon="@drawable/back"
+        app:title=" "
         android:fitsSystemWindows="true">
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/guide_tool_bar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:navigationIcon="@mipmap/ic_arrow_back_24dp"
-                android:logo="@mipmap/ic_arrow_back_black_24dp"/>
-    </android.support.design.widget.AppBarLayout>
+        <Button
+            android:id="@+id/guide_enter_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/guide_main_enter"
+            android:drawableEnd="@drawable/next"
+            android:drawableRight="@drawable/next"
+            android:background="@color/button_blink"
+            android:layout_gravity="end"
+            android:textAppearance="?attr/textAppearanceLargePopupMenu"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"/>
+    </android.support.v7.widget.Toolbar>
 
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:background="@color/guide_item_background_end">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/guide_list_padding_left"
-            android:layout_marginLeft="@dimen/guide_list_padding_left"
-            android:layout_marginStart="@dimen/guide_list_padding_left"
-            android:orientation="vertical">
-            <com.edroplet.qxx.saneteltabactivity.view.DrawableCenterButton
-                android:id="@+id/guide_main_button_explode"
-                app:drawableLeft="@drawable/explode"
-                app:drawableStart="@drawable/explode"
-                app:text="@string/antenna_state_exploded"
-                style="@style/guide_item_style"/>
-            <com.edroplet.qxx.saneteltabactivity.view.DrawableCenterButton
-                android:id="@+id/guide_main_button_location"
-                app:drawableLeft="@drawable/input"
-                app:drawableStart="@drawable/input"
-                app:text="@string/guide_main_location"
-                style="@style/guide_item_style"/>
-            <com.edroplet.qxx.saneteltabactivity.view.DrawableCenterButton
-                android:id="@+id/guide_main_button_destination"
-                app:drawableLeft="@drawable/satellites"
-                app:drawableStart="@drawable/satellites"
-                app:text="@string/guide_main_destination_satellite"
-                style="@style/guide_item_style"/>
-            <com.edroplet.qxx.saneteltabactivity.view.DrawableCenterButton
-                android:id="@+id/guide_main_button_search_mode"
-                app:drawableLeft="@drawable/searching_mode"
-                app:drawableStart="@drawable/searching_mode"
-                app:text="@string/guide_main_searching_mode"
-                style="@style/guide_item_style"/>
-            <com.edroplet.qxx.saneteltabactivity.view.DrawableCenterButton
-                android:id="@+id/guide_main_button_search"
-                app:drawableLeft="@drawable/searching"
-                app:drawableStart="@drawable/searching"
-                app:text="@string/guide_main_searching"
-                style="@style/guide_item_style"/>
-            <com.edroplet.qxx.saneteltabactivity.view.DrawableCenterButton
-                android:id="@+id/guide_main_button_lock"
-                app:drawableLeft="@drawable/locked"
-                app:drawableStart="@drawable/locked"
-                app:text="@string/guide_main_lock"
-                style="@style/guide_item_style"/>
-            <com.edroplet.qxx.saneteltabactivity.view.DrawableCenterButton
-                android:id="@+id/guide_main_button_saving"
-                app:drawableLeft="@drawable/saving"
-                app:drawableStart="@drawable/saving"
-                app:text="@string/guide_main_save"
-                style="@style/guide_item_style"/>
+            android:orientation="vertical"
+            tools:ignore="UselessParent"
+            style="@style/linear_shadow">
+            <!--android:layout_marginTop="@dimen/guide_list_padding_left"-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@drawable/process_ok"
+                    android:drawableEnd="@drawable/process_ok"
+                    android:clickable="false"
+                    android:background="@color/button_blink"
+                    style="?android:attr/borderlessButtonStyle"/>
+                <Button
+                    android:id="@+id/guide_main_button_explode"
+                    android:drawableLeft="@drawable/satellite_vista"
+                    android:drawableStart="@drawable/satellite_vista"
+                    android:clickable="false"
+                    android:text="@string/guide_main__exploded"
+                    style="@style/guide_item_style"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@drawable/process_ok"
+                    android:drawableEnd="@drawable/process_ok"
+                    android:clickable="false"
+                    android:background="@color/button_blink"
+                    style="?android:attr/borderlessButtonStyle"/>
+                <Button
+                    android:id="@+id/guide_main_button_location"
+                    android:drawableLeft="@drawable/input"
+                    android:drawableStart="@drawable/input"
+                    android:text="@string/guide_main_location"
+                    style="@style/guide_item_style"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@drawable/process_ok"
+                    android:drawableEnd="@drawable/process_ok"
+                    android:clickable="false"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@color/button_blink"/>
+                <Button
+                    android:id="@+id/guide_main_button_destination"
+                    android:drawableLeft="@drawable/satellites"
+                    android:drawableStart="@drawable/satellites"
+                    android:text="@string/guide_main_destination_satellite"
+                    style="@style/guide_item_style"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@drawable/process_ok"
+                    android:drawableEnd="@drawable/process_ok"
+                    android:clickable="false"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@color/button_blink"/>
+                <Button
+                    android:id="@+id/guide_main_button_search_mode"
+                    android:drawableLeft="@drawable/searching_mode"
+                    android:drawableStart="@drawable/searching_mode"
+                    android:text="@string/guide_main_searching_mode"
+                    style="@style/guide_item_style"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@drawable/process_ok"
+                    android:drawableEnd="@drawable/process_ok"
+                    android:clickable="false"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@color/button_blink"/>
+                <Button
+                    android:id="@+id/guide_main_button_search"
+                    android:drawableLeft="@drawable/searching"
+                    android:drawableStart="@drawable/searching"
+                    android:text="@string/guide_main_searching"
+                    style="@style/guide_item_style"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@drawable/process_ok"
+                    android:drawableEnd="@drawable/process_ok"
+                    android:clickable="false"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@color/button_blink"/>
+                <Button
+                    android:id="@+id/guide_main_button_lock"
+                    android:drawableLeft="@drawable/locked"
+                    android:drawableStart="@drawable/locked"
+                    android:text="@string/guide_main_lock"
+                    style="@style/guide_item_style"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@drawable/process_ok"
+                    android:drawableEnd="@drawable/process_ok"
+                    android:clickable="false"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@color/button_blink"/>
+                <Button
+                    android:id="@+id/guide_main_button_saving"
+                    android:drawableLeft="@drawable/saving"
+                    android:drawableStart="@drawable/saving"
+                    android:text="@string/guide_main_save"
+                    style="@style/guide_item_style"/>
+            </LinearLayout>
         </LinearLayout>
     </FrameLayout>
 
-    <android.support.design.widget.BottomNavigationView
+    <!--android.support.design.widget.BottomNavigationView
         android:id="@+id/guide_navigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_gravity="bottom"
+        android:layout_marginBottom="2dp"
         android:background="?android:attr/windowBackground"
-        app:menu="@menu/navigation_guide_main" />
+        app:menu="@menu/navigation_guide_main" /-->
 
 </LinearLayout>

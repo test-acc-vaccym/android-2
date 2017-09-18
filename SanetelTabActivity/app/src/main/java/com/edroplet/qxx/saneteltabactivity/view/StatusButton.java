@@ -240,7 +240,8 @@ public class StatusButton extends AppCompatButton {
             color = ContextCompat.getColor(getContext(), R.color.status_abnormal);
         }else if (s[s.length-1] == ext_attr_operate[0]){
             // 只有操作按钮可以点击
-
+            boundRight = (int)(boundRight * 1.1);
+            boundBottom = (int)(boundBottom * 1.1);
             color = ContextCompat.getColor(getContext(), R.color.status_operate);
             setClickable(true);
             setFocusable(true);
@@ -280,7 +281,8 @@ public class StatusButton extends AppCompatButton {
         if (left!=null){
             // http://blog.sina.com.cn/s/blog_5da93c8f01012pkj.html
             // 取两层绘制交集。显示上层。
-            left.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+            // 不使用滤镜
+            // left.setColorFilter(color, PorterDuff.Mode.SRC_IN);
             left.setBounds(0,0,boundRight,boundBottom);
         }
         if (top!=null){
@@ -303,17 +305,24 @@ public class StatusButton extends AppCompatButton {
 
         // 先画图，然后再设置位置
         setCompoundDrawablesWithIntrinsicBounds(mDrawableLeft, mDrawableTop, mDrawableRight, mDrawableBottom);
-
-        int drawablePadding = getCompoundDrawablePadding();
-        //if (mDrawableRight != null) {
-        float textWidth = getPaint().measureText(getText().toString());
-        float bodyWidth = textWidth + mDrawableWidth + drawablePadding;
-        // 居中
-        int paddingVertical = (int)(getHeight()-mDrawableWidth)/2;
-        int paddingHorizontal = (int)(getWidth()-bodyWidth)/2;
-        setPadding(paddingHorizontal, paddingVertical, paddingHorizontal, paddingVertical);
-        canvas.translate((getWidth() - bodyWidth) / 2, 0);
-        //}
+            int drawablePadding = getCompoundDrawablePadding();
+            //if (mDrawableRight != null) {
+            float textWidth = getPaint().measureText(getText().toString());
+            float bodyWidth = textWidth + mDrawableWidth + drawablePadding;
+            // 居中
+            int paddingVertical = 0;
+            int paddingVerticalBottom = 0;
+            int paddingHorizontal = 0;
+            if (mButtonState != BUTTON_STATE_DISABLE && mButtonState != BUTTON_STATE_OPERATE) {
+                paddingVertical = (int) (getHeight() - mDrawableWidth) / 2;
+                paddingHorizontal = (int) (getWidth() - bodyWidth) / 2;
+            }else{
+                paddingVertical = (int) (getHeight() - mDrawableWidth) / 2;
+                paddingVerticalBottom = paddingVertical;
+            }
+            setPadding(paddingHorizontal, paddingVertical, paddingHorizontal, paddingVerticalBottom);
+            canvas.translate((getWidth() - bodyWidth) / 2, 0);
+            //}
         super.onDraw(canvas);
     }
 

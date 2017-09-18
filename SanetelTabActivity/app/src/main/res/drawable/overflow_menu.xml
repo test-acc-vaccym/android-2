@@ -17,4 +17,4 @@
 <bitmap xmlns:android="http://schemas.android.com/apk/res/android"
         android:src="@drawable/ic_menu_all_contacts_dk"
         android:autoMirrored="true"
-        android:tint="@color/toobar_color_14b8f4" />
+        android:tint="@color/toolbar_color_14b8f4" />

@@ -15,7 +15,7 @@
     <string name="antenna_state_exploded">展开</string>
     <string name="antenna_state_folded">收藏</string>
     <string name="antenna_state_reset">复位</string>
-    <string name="antenna_state_paused">暂停</string>
+    <string name="antenna_state_paused">停止</string>
     <string name="antenna_state_searching">寻星</string>
     <string name="antenna_state_init">初始</string>
     <string name="antenna_state_lock">锁星</string>
@@ -38,12 +38,14 @@
     <string name="operate_confirm_cancel">取消</string>
     <string name="operate_confirm_cancel_toast">您已经取消</string>
     <integer name="operate_confirm_animate_time">300</integer>
-    <string name="title_city_list">卫星列表</string>
-    <string name="title_city_detail">卫星详情</string>
 
     <!--城市数据-->
+    <string name="title_city_list">城市列表</string>
+    <string name="title_city_detail">城市详情</string>
+
     <!--卫星数据-->
     <string name="satellite_toolbar_title">卫星列表</string>
+    <string name="title_satellite_detail">卫星详情</string>
     <string name="satellite_uuid">UUID</string>
     <string name="satellite_id_key">序号</string>
     <string name="satellite_name_key">卫星名</string>
@@ -52,7 +54,16 @@
     <string name="satellite_beacon_key">信标</string>
     <string name="satellite_threshold_key">门限</string>
     <string name="satellite_symbol_rate_key">符号率</string>
-    <string name="satellite_comment_key">备注</string>
+
+    <string name="satellite_detail_id_key">序&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;号</string>
+    <string name="satellite_detail_name_key">卫星名称</string>
+    <string name="satellite_detail_polarization_key">极化方式</string>
+    <string name="satellite_detail_longitude_key">卫星经度</string>
+    <string name="satellite_detail_beacon_key">信标频率</string>
+    <string name="satellite_detail_threshold_key">门&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;限</string>
+    <string name="satellite_detail_symbol_rate_key">符&#160;&#160;号&#160;&#160;率</string>
+    <string name="satellite_detail_comment_key">备&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;注</string>
+
     <!--底部按钮-->
     <string name="satellite_recover">恢复出厂</string>
     <string name="satellite_add">增加卫星</string>
@@ -61,14 +72,17 @@
 
     <!--引导页-->
     <!--引导页主页-->
+    <string name="guide_main__exploded">展&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;开</string>
     <string name="guide_main_location">位置输入</string>
-    <string name="guide_main_destination_satellite">目标星</string>
+    <string name="guide_main_destination_satellite">目&#160;&#160;标&#160;&#160;星</string>
     <string name="guide_main_searching_mode">寻星模式</string>
-    <string name="guide_main_searching">寻星</string>
-    <string name="guide_main_lock">锁定</string>
-    <string name="guide_main_save">节能</string>
+    <string name="guide_main_searching">寻&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;星</string>
+    <string name="guide_main_lock">锁&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;紧</string>
+    <string name="guide_main_save">节&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;能</string>
     <string name="guide_main_enter">直接进入</string>
+    <string name="guide_main_enter_icon">&#160;&#160;》》》</string>
     <string name="title_activity_application">主页面</string>
+
     <!--主页面-->
     <!--底部导航-->
     <string name="main_bottom_nav_monitor">监视</string>
@@ -79,7 +93,69 @@
 
     <!--应用主页面-->
     <string name="main_application_operate">手动控制</string>
-    <string name="main_application_operate_speed">速率控制</string>
+    <string name="main_application_operate_speed">速度控制</string>
     <string name="main_application_operate_location">位置控制</string>
     <string name="main_application_operate_calculate">预制角计算</string>
+    <string name="main_application_manual_speed_info">当前数值</string>
+    <string name="main_application_manual_speed_azimuth">方位角</string>
+    <string name="main_application_manual_speed_pitch">俯仰角</string>
+    <string name="main_application_manual_speed_polarization">极化角</string>
+    <string name="main_application_manual_speed_agc">AGC电平</string>
+    <string name="main_application_manual_speed_movement">运动方式:</string>
+    <string name="main_application_manual_speed_movement_step">步进</string>
+    <string name="main_application_manual_speed_movement_continuous">连续</string>
+    <string name="main_application_manual_speed_palstance">角速度（°/s）：</string>
+    <array name="main_application_manual_speed_palstance_array">
+        <item>0.1</item>
+        <item>0.5</item>
+        <item>1.0</item>
+        <item>3.0</item>
+        <item>5.0</item>
+        <item>custom</item>
+    </array>
+    <!--手动控制-->
+    <string name="manual_direction">方位</string>
+    <string name="manual_pitch">俯仰</string>
+    <string name="manual_polarization">极化</string>
+    <string name="manual_pause">暂停</string>
+    <!--监视主页面-->
+    <!--卫星信息-->
+    <string name="main_monitor_satellite_info">卫星信息</string>
+    <string name="main_monitor_satellite_name">卫星名称</string>
+    <string name="main_monitor_satellite_longitude">卫星经度</string>
+    <string name="main_monitor_satellite_polarization">极化方式</string>
+    <string name="main_monitor_satellite_beacon">信标频率</string>
+    <string name="main_monitor_satellite_agc">AGC电平</string>
+    <!--天线信息-->
+    <string name="main_monitor_antenna_info">天线信息</string>
+    <string name="main_monitor_antenna_prepare_azimuth">预置方位角</string>
+    <string name="main_monitor_antenna_prepare_pitch">预置俯仰角</string>
+    <string name="main_monitor_antenna_prepare_polarization">预置极化角</string>
+    <string name="main_monitor_antenna_azimuth">当前方位角</string>
+    <string name="main_monitor_antenna_pitch">当前俯仰角</string>
+    <string name="main_monitor_antenna_polarization">当前极化角</string>
+    <!--位置信息-->
+    <string name="main_monitor_location_info">位置信息</string>
+    <string name="main_monitor_location_longitude">经度</string>
+    <string name="main_monitor_location_latitude">纬度</string>
+    <!--功放信息-->
+    <string name="main_monitor_amplifier_info">功放信息</string>
+    <string name="main_monitor_amplifier_status">状态</string>
+    <string name="main_monitor_amplifier_value">数值</string>
+    <string name="main_monitor_amplifier_status_state">功放状态</string>
+    <string name="main_monitor_amplifier_status_state_open">开启</string>
+    <string name="main_monitor_amplifier_status_state_closed">关闭</string>
+    <string name="main_monitor_amplifier_status_temperature_state">自动温控</string>
+    <string name="main_monitor_amplifier_status_temperature_state_normal">正常</string>
+    <string name="main_monitor_amplifier_status_temperature_state_abnormal">异常</string>
+    <string name="main_monitor_amplifier_status_pll_state">锁相环</string>
+    <string name="main_monitor_amplifier_status_pll_state_normal">正常</string>
+    <string name="main_monitor_amplifier_status_pll_state_abnormal">异常</string>
+    <string name="main_monitor_amplifier_value_output">输出</string>
+    <string name="main_monitor_amplifier_value_temperature">温度</string>
+    <string name="title_activity_manual">ManualActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
 </resources>

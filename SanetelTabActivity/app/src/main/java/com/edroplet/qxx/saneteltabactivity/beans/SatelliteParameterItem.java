@@ -9,12 +9,16 @@ import android.support.annotation.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  * A  Satellite Parameter item representing a piece of content.
  */
-public class SatelliteParameterItem {
+public class SatelliteParameterItem implements Serializable {
+
+    private static final long serialVersionUID = -6919461967497580385L;
+
     // 字段的key
     public static final String JSON_ID = "序号";
     public static final String JSON_NAME = "卫星名称";
@@ -35,8 +39,12 @@ public class SatelliteParameterItem {
     public final String threshold;      // 门限
     public final String symbolRate;     // 符号率
     public final String comment;        // 备注
+    public String agc;            // AGC电平
 
-    public SatelliteParameterItem(String id, String name, String polarization, String longitude, @Nullable String beacon, String threshold, @Nullable String symbolRate, @Nullable String comment) {
+    public SatelliteParameterItem(String id, String name, String polarization, String longitude,
+                                  @Nullable String beacon, String threshold,
+                                  @Nullable String symbolRate,
+                                  @Nullable String comment) {
         mId = UUID.randomUUID();
         this.id = id;
         this.name = name;
@@ -47,6 +55,12 @@ public class SatelliteParameterItem {
         this.symbolRate = symbolRate;
         this.comment = comment;
     }
+
+    public SatelliteParameterItem setAGC(String agc) {
+        this.agc = agc;
+        return this;
+    }
+
     public SatelliteParameterItem(JSONObject json) throws JSONException{
         mId = UUID.randomUUID();
         id = json.getString(JSON_ID);
@@ -87,5 +101,9 @@ public class SatelliteParameterItem {
         json.put(JSON_SYMBOL_RATE, symbolRate);
         json.put(JSON_COMMENT, comment);
         return json;
+    }
+
+    public String getAgc(){
+        return this.agc;
     }
 }

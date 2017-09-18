@@ -14,23 +14,19 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/appbar_padding_top"
         android:theme="@style/AppTheme.AppBarOverlay">
-
-        <include android:id="@+id/main_status_toolbar"
-            layout="@layout/status_bar"/>
-        <include android:id="@+id/main_operate_bar"
-            layout="@layout/operate_bar"/>
         <android.support.v7.widget.Toolbar
             android:id="@+id/main_content_toolbar"
             android:layout_width="match_parent"
             app:titleTextAppearance="@dimen/status_bar_text_size"
             android:layout_height="@dimen/status_bar_height"
-            android:background="?attr/colorPrimary"
+            android:background="@color/state_bar_background"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:navigationIcon="@mipmap/ic_arrow_back_24dp"
-            android:logo="@mipmap/ic_arrow_back_black_24dp"
-            app:titleTextColor="@color/operate_confirm_message_color"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
+            app:navigationIcon="@drawable/back"
+            app:titleTextColor="@color/title_text">
         </android.support.v7.widget.Toolbar>
+
+        <include android:id="@+id/main_operate_bar"
+            layout="@layout/operate_bar"/>
         <!--分割线-->
         <View
             android:layout_width="match_parent"

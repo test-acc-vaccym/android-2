@@ -11,7 +11,7 @@ import android.widget.Button;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 
-public class GuideActivity extends AppCompatActivity implements View.OnClickListener {
+public class GuideEntryActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mExplode;
     private Button mLocation;
     private Button mDestination;
@@ -39,8 +39,8 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
             if (ab != null) {
                 ab.setHomeAsUpIndicator(R.drawable.back);
                 // 隐藏ActionBar的标题
-                // ab.setTitle(null);
-                ab.setDisplayShowTitleEnabled(false);
+                // ab.setDisplayShowTitleEnabled(false);
+                ab.setTitle(R.string.follow_me_bottom_nav_main);
                 toolbar.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.title_background, null));
                 // 使用自定义试图
                 // ab.setDisplayShowCustomEnabled(true);

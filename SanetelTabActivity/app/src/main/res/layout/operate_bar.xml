@@ -17,10 +17,10 @@
         android:drawableStart="@drawable/antenna_exploded"
         android:drawableLeft="@drawable/antenna_exploded"
         android:text="@string/antenna_state_exploded"
-        android:background="@color/button_blink"
         app:drawable_height="@dimen/operate_button_height"
         app:drawable_width="@dimen/operate_button_height"
-        app:state_color="operate"/>
+        app:state_color="operate"
+        style="?android:attr/borderlessButtonStyle"/>
     <com.edroplet.qxx.saneteltabactivity.view.StatusButton
         android:id="@+id/button_operate_pause"
         android:layout_width="0dp"
@@ -32,10 +32,10 @@
         android:drawableStart="@drawable/park"
         android:drawableLeft="@drawable/park"
         android:text="@string/antenna_state_paused"
-        android:background="@color/button_blink"
         app:drawable_height="@dimen/operate_button_height"
         app:drawable_width="@dimen/operate_button_height"
-        app:state_color="operate"/>
+        app:state_color="operate"
+        style="?android:attr/borderlessButtonStyle"/>
     <com.edroplet.qxx.saneteltabactivity.view.StatusButton
         android:id="@+id/button_operate_search"
         android:layout_width="0dp"
@@ -47,10 +47,10 @@
         android:drawableStart="@drawable/searching"
         android:drawableLeft="@drawable/searching"
         android:text="@string/antenna_state_searching"
-        android:background="@color/button_blink"
         app:drawable_height="@dimen/operate_button_height"
         app:drawable_width="@dimen/operate_button_height"
-        app:state_color="operate"/>
+        app:state_color="operate"
+        style="?android:attr/borderlessButtonStyle"/>
     <com.edroplet.qxx.saneteltabactivity.view.StatusButton
         android:id="@+id/button_operate_reset"
         android:layout_width="0dp"
@@ -62,10 +62,10 @@
         android:drawableStart="@drawable/recycle"
         android:drawableLeft="@drawable/recycle"
         android:text="@string/antenna_state_reset"
-        android:background="@color/button_blink"
         app:drawable_height="@dimen/operate_button_height"
         app:drawable_width="@dimen/operate_button_height"
-        app:state_color="operate"/>
+        app:state_color="operate"
+        style="?android:attr/borderlessButtonStyle"/>
     <com.edroplet.qxx.saneteltabactivity.view.StatusButton
         android:id="@+id/button_operate_fold"
         android:layout_width="0dp"
@@ -77,8 +77,9 @@
         android:drawableStart="@drawable/folder"
         android:drawableLeft="@drawable/folder"
         android:text="@string/antenna_state_folded"
-        android:background="@color/button_blink"
         app:drawable_height="@dimen/operate_button_height"
         app:drawable_width="@dimen/operate_button_height"
-        app:state_color="operate"/>
+        app:state_color="operate"
+        style="?android:attr/borderlessButtonStyle"/>
+    <!--android:background="@color/button_blink"-->
 </LinearLayout>

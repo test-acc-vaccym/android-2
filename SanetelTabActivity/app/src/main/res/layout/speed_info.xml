@@ -209,6 +209,7 @@
                 android:drawableLeft="@drawable/arrow_left"
                 android:drawableStart="@drawable/arrow_left"
                 style="?android:attr/borderlessButtonStyle"
+                android:textColor="@color/button_text"
                 android:text="@string/manual_direction"/>
             <!--android:background="@drawable/button_click_selector"-->
             <Button

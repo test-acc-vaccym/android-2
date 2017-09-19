@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
+import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 
 public class ManualActivity extends AppCompatActivity {
 
@@ -24,13 +26,13 @@ public class ManualActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_speed_manual:
-                    mTextMessage.setText(R.string.title_home);
+                    mTextMessage.setText(R.string.main_application_operate_speed);
                     return true;
                 case R.id.navigation_location_manual:
-                    mTextMessage.setText(R.string.title_dashboard);
+                    mTextMessage.setText(R.string.main_application_operate_location);
                     return true;
                 case R.id.navigation_calculate_manual:
-                    mTextMessage.setText(R.string.title_notifications);
+                    mTextMessage.setText(R.string.main_application_operate_calculate);
                     return true;
             }
             return false;
@@ -42,10 +44,11 @@ public class ManualActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual);
-
-        initToolbar();
+        StatusBarControl.setupToolbar(this, R.id.main_content_toolbar);
+        OperateBarControl.setupOperatorBar(this);
+        // initToolbar();
         mTextMessage = (TextView) findViewById(R.id.custom_val);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.manual_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
     private void  initToolbar(){

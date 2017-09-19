@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/follow_me_bottom_nav_main"
+        android:title="@string/follow_me_bottom_nav_main" />
+
+    <item
+        android:id="@+id/follow_me_bottom_nav_preview"
+        android:title="@string/follow_me_bottom_nav_preview" />
+
+    <item
+        android:id="@+id/follow_me_bottom_nav_next"
+        android:title="@string/follow_me_bottom_nav_next" />
+
+    <item
+        android:id="@+id/follow_me_bottom_nav_monitor"
+        android:title="@string/follow_me_bottom_nav_monitor" />
+
+</menu>

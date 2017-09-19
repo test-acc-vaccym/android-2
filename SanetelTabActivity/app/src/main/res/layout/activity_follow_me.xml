@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.ManualActivity">
+    tools:context="com.edroplet.qxx.saneteltabactivity.activities.FollowMeActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -15,7 +15,7 @@
         android:paddingTop="@dimen/appbar_padding_top"
         android:theme="@style/AppTheme.AppBarOverlay">
         <android.support.v7.widget.Toolbar
-            android:id="@+id/main_content_toolbar"
+            android:id="@+id/follow_me_content_toolbar"
             android:layout_width="match_parent"
             app:titleTextAppearance="@dimen/status_bar_text_size"
             android:layout_height="@dimen/status_bar_height"
@@ -25,7 +25,7 @@
             app:titleTextColor="@color/title_text">
         </android.support.v7.widget.Toolbar>
 
-        <include android:id="@+id/main_operate_bar"
+        <include android:id="@+id/follow_me_operate_bar"
             layout="@layout/operate_bar"/>
         <!--分割线-->
         <View
@@ -33,20 +33,27 @@
             android:layout_height="@dimen/toolbar_divider"
             android:background="@color/gray"/>
     </android.support.design.widget.AppBarLayout>
-    <FrameLayout
-        android:id="@+id/content"
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/follow_me_view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-        <include layout="@layout/speed_info"/>
-    </FrameLayout>
+        android:layout_weight="1"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/manual_navigation"
+        android:id="@+id/follow_me_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="?android:attr/windowBackground"
-        app:menu="@menu/manual_navigation" />
-
+        app:itemBackground="@color/bottom_tab_nav_background"
+        app:itemTextColor="@color/button_text"
+        app:menu="@menu/follow_me_navigation" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/follow_me_explode_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@android:drawable/ic_menu_help"/>
 </LinearLayout>

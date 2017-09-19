@@ -1,6 +1,9 @@
 package com.edroplet.qxx.saneteltabactivity.activities;
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
@@ -8,8 +11,12 @@ import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
+import android.view.ViewParent;
+import android.widget.ImageView;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+
+import java.util.Random;
 
 /**
  * An activity representing a single City detail screen. This
@@ -18,14 +25,19 @@ import com.edroplet.qxx.saneteltabactivity.R;
  * in a {@link CityListActivity}.
  */
 public class SatelliteDetailActivity extends AppCompatActivity {
+    final int[] ivImages = {R.mipmap.s3, R.mipmap.s1, R.mipmap.s2};
+    public CollapsingToolbarLayout collap;
+    public AppBarLayout appBarLayout;
+    //因为setExpanded会调用事件监听，所以通过标志过滤掉
+    public static int expendedtag=2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_satellite_detail);
+        setImageView();
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +46,23 @@ public class SatelliteDetailActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
+        appBarLayout = (AppBarLayout) findViewById(R.id.satellite_detail_app_bar);
+        appBarLayout.setExpanded(false);
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener(){
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (getSupportActionBar().getHeight()-appBarLayout.getHeight() == verticalOffset){
+                    // TODO 折叠监听
+                }
+                if (expendedtag == 2 && verticalOffset == 0){
+                    //展开监听
+                    setImageView();
+                }else if (expendedtag != 2 && verticalOffset == 0){
+                    expendedtag++;
+                }
+            }
+        });
+        collap = (CollapsingToolbarLayout) findViewById(R.id.satellite_detail_toolbar_layout);
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -81,4 +109,23 @@ public class SatelliteDetailActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setImageView();
+    }
+
+    private void setImageView() {
+        ImageView iv_satellite = (ImageView) findViewById(R.id.iv_satellite);
+        Random random = new Random();
+        //for (int iv : ivImages){
+        //    if (iv_satellite != null){
+        int seed=100;
+        int rInt = (random.nextInt(100))%(ivImages.length);
+        iv_satellite.setImageResource(ivImages[rInt]);
+        //    }
+        //}
+    }
 }
+

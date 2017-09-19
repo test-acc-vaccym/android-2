@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
+import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
+import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 import com.edroplet.qxx.saneteltabactivity.fragments.MainFragmentBase;
 import com.edroplet.qxx.saneteltabactivity.fragments.MainMonitorFragment;
 import com.edroplet.qxx.saneteltabactivity.utils.BottomNavigationViewHelper;
@@ -65,12 +67,10 @@ public class ApplicationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_application);
 
-
+        StatusBarControl.setupToolbar(this, R.id.main_content_toolbar);
+        /*
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_content_toolbar);
         setSupportActionBar(toolbar);
-        /*
-        toolbar.setTitle(R.string.main_application_operate);
-        */
         //actionBar的设置(使用自定义的设置)
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -89,7 +89,7 @@ public class ApplicationActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+        */
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.main_navigation);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -136,7 +136,8 @@ public class ApplicationActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+        OperateBarControl.setupOperatorBar(this);
+        /*
         final StatusButton sbExploded = (StatusButton)  findViewById(R.id.button_operate_explode);
         final StatusButton sbFold = (StatusButton) findViewById(R.id.button_operate_fold);
 
@@ -217,6 +218,7 @@ public class ApplicationActivity extends AppCompatActivity {
                     });
                 }
             });
+        */
     }
 
     private void setupViewPager(ViewPager viewPager) {

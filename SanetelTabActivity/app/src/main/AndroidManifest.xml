@@ -15,9 +15,10 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter></activity>
+            </intent-filter>
+        </activity>
         <activity
-            android:name=".activities.GuideActivity"
+            android:name=".activities.GuideEntryActivity"
             android:label="@string/guide_main_enter">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -62,6 +63,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.edroplet.qxx.saneteltabactivity.activities.CityListActivity" />
+        </activity>
+        <activity
+            android:name=".activities.FollowMeActivity"
+            android:label="@string/title_activity_follow_me">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

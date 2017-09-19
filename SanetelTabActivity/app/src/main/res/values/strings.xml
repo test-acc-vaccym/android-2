@@ -153,9 +153,15 @@
     <string name="main_monitor_amplifier_status_pll_state_abnormal">异常</string>
     <string name="main_monitor_amplifier_value_output">输出</string>
     <string name="main_monitor_amplifier_value_temperature">温度</string>
-    <string name="title_activity_manual">ManualActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
 
+    <string name="title_activity_manual">手动控制</string>
+    <!--引导页-->
+    <string name="title_activity_follow_me">引导页</string>
+    <string name="follow_me_bottom_nav_main">引导主页</string>
+    <string name="follow_me_bottom_nav_preview">上一步</string>
+    <string name="follow_me_bottom_nav_next">下一步</string>
+    <string name="follow_me_bottom_nav_monitor">监控页面</string>
+    <!--引导页展开-->
+    <string name="follow_me_explode_exploding">展开中</string>
+    <string name="follow_me_explode_exploded">展开完成</string>
 </resources>

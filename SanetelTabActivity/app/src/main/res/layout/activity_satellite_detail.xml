@@ -8,14 +8,14 @@
     tools:ignore="MergeRootFrame">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar"
+        android:id="@+id/satellite_detail_app_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
+            android:id="@+id/satellite_detail_toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:contentScrim="?attr/colorPrimary"
@@ -25,31 +25,13 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/list_toolbar">
             <ImageView
-                android:id="@+id/iv_satellite_1"
+                android:id="@+id/iv_satellite"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
                 android:fitsSystemWindows="true"
-                android:src="@drawable/satellite_detail_background"
-                android:scaleType="centerCrop" />
-            <ImageView
-                android:id="@+id/iv_satellite_2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerInside"
                 android:src="@mipmap/s1"
-                android:fitsSystemWindows="true"
-                app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.5" />
-            <ImageView
-                android:id="@+id/iv_satellite_3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerInside"
-                android:src="@mipmap/s2"
-                app:layout_collapseMode="parallax"
-                android:fitsSystemWindows="true"
-                app:layout_collapseParallaxMultiplier="0.3" />
+                android:scaleType="centerCrop" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/detail_toolbar"

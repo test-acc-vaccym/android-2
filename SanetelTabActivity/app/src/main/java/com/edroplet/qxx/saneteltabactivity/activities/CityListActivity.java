@@ -80,7 +80,9 @@ public class CityListActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
             ab.setHomeAsUpIndicator(R.drawable.back);
-            ab.setTitle(R.string.satellite_toolbar_title);
+            // ab.setTitle(R.string.satellite_toolbar_title);
+            // 设置居中的时候不能含有原标题
+            ab.setDisplayShowTitleEnabled(false);
         }
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         if (fab !=null)

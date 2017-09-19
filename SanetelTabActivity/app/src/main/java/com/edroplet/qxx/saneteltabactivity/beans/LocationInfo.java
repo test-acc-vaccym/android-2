@@ -44,7 +44,7 @@ public class LocationInfo implements Parcelable {
             LocationInfo li = new LocationInfo();
             li.longitude = source.readFloat();
             li.latitude  = source.readFloat();
-            return null;
+            return li;
         }
 
         @Override

@@ -15,16 +15,25 @@
         app:navigationIcon="@drawable/back"
         app:title=" "
         android:fitsSystemWindows="true">
+        <TextView
+            android:id="@+id/guide_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/follow_me_bottom_nav_main"
+            android:textColor="@color/title_text"
+            android:textAppearance="?attr/textAppearanceSearchResultTitle"/>
         <Button
             android:id="@+id/guide_enter_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/guide_main_enter"
+            android:textColor="@color/button_text"
             android:drawableEnd="@drawable/next"
             android:drawableRight="@drawable/next"
             android:background="@color/button_blink"
             android:layout_gravity="end"
-            android:textAppearance="?attr/textAppearanceLargePopupMenu"
+            android:textAppearance="?attr/textAppearanceSearchResultTitle"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"/>
     </android.support.v7.widget.Toolbar>
@@ -38,15 +47,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            tools:ignore="UselessParent"
             style="@style/linear_shadow">
             <!--android:layout_marginTop="@dimen/guide_list_padding_left"-->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:orientation="horizontal">
+                style="@style/guide_entry_list_style">
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -64,11 +68,7 @@
                     style="@style/guide_item_style"/>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:orientation="horizontal">
+                style="@style/guide_entry_list_style">
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -85,11 +85,7 @@
                     style="@style/guide_item_style"/>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:orientation="horizontal">
+                style="@style/guide_entry_list_style">
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -106,11 +102,7 @@
                     style="@style/guide_item_style"/>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:orientation="horizontal">
+                style="@style/guide_entry_list_style">
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -127,11 +119,7 @@
                     style="@style/guide_item_style"/>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:orientation="horizontal">
+                style="@style/guide_entry_list_style">
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -148,11 +136,7 @@
                     style="@style/guide_item_style"/>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:orientation="horizontal">
+                style="@style/guide_entry_list_style">
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -169,11 +153,7 @@
                     style="@style/guide_item_style"/>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:orientation="horizontal">
+                style="@style/guide_entry_list_style">
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -191,14 +171,5 @@
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>
-
-    <!--android.support.design.widget.BottomNavigationView
-        android:id="@+id/guide_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="2dp"
-        android:background="?android:attr/windowBackground"
-        app:menu="@menu/navigation_guide_main" /-->
 
 </LinearLayout>

@@ -118,6 +118,32 @@
     <string name="manual_pitch">俯仰</string>
     <string name="manual_polarization">极化</string>
     <string name="manual_pause">暂停</string>
+
+    <!--位置控制-->
+    <string name="location_control_current_info">当前角度</string>
+    <string name="location_control_current_azimuth">当前方位角</string>
+    <string name="location_control_current_pitch">当前俯仰角</string>
+    <string name="location_control_current_polarization">当前极化角</string>
+    <string name="location_control_setting_info">预置角度</string>
+    <string name="location_control_setting_azimuth">预置方位角</string>
+    <string name="location_control_setting_pitch">预置俯仰角</string>
+    <string name="location_control_setting_polarization">预置极化角</string>
+    <string name="location_control_rotate_start">开始旋转</string>
+    <string name="location_control_rotate_stop">停止旋转</string>
+    <string name="location_control_setting_hint_val">0.000</string>
+    <!--预置角计算-->
+    <string name="angle_calculate_input_data">输入数据</string>
+    <string name="angle_calculate_satellite_select">卫星选择</string>
+    <string name="angle_calculate_local_location">本地位置</string>
+    <string name="angle_calculate_select_city">选择城市</string>
+    <string name="angle_calculate_local_longitude">本地经度</string>
+    <string name="angle_calculate_local_latitude">本地纬度</string>
+    <string name="angle_calculate_calculate_result">计算结果</string>
+
+    <string name="angle_calculate_operate_calculate">计算</string>
+    <string name="angle_calculate_operate_clear">清除</string>
+    <string name="angle_calculate_operate_use">使用结果</string>
+
     <!--监视主页面-->
     <!--卫星信息-->
     <string name="main_monitor_satellite_info">卫星信息</string>

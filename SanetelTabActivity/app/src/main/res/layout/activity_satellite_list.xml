@@ -19,7 +19,18 @@
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/back"
             android:background="@color/state_bar_background"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <TextView
+                android:id="@+id/satellite_list_toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/satellite_toolbar_title"
+                android:textColor="@color/title_text"
+                android:textAppearance="?attr/textAppearanceSearchResultTitle"/>
+
+        </android.support.v7.widget.Toolbar>
 
         <LinearLayout
             android:layout_width="match_parent"

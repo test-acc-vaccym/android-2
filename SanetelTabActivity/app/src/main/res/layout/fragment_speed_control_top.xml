@@ -11,6 +11,7 @@
         android:orientation="vertical">
         <!--速度控制-->
         <TextView
+            android:id="@+id/speed_info_now"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/main_application_manual_speed_info"
@@ -36,7 +37,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:hint="@string/main_application_manual_speed_azimuth"/>
+                        android:hint="@string/location_control_setting_hint_val"/>
             </LinearLayout>
             <LinearLayout
                     android:layout_height="0dp"
@@ -55,7 +56,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:hint="@string/main_application_manual_speed_pitch"/>
+                        android:hint="@string/location_control_setting_hint_val"/>
             </LinearLayout>
             <LinearLayout
                     android:layout_height="0dp"
@@ -74,7 +75,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:hint="@string/main_application_manual_speed_polarization"/>
+                        android:hint="@string/location_control_setting_hint_val"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_height="0dp"
@@ -88,12 +89,23 @@
                     android:text="@string/main_application_manual_speed_agc"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     tools:ignore="NestedWeights" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/main_application_manual_speed_tv_agc"
                     android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/location_control_setting_hint_val"/>
+                <TextView
+                    android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:hint="@string/main_application_manual_speed_agc"/>
+                    android:layout_gravity="left|start"
+                    android:text="V"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -204,46 +216,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
-                android:drawableLeft="@drawable/arrow_left"
-                android:drawableStart="@drawable/arrow_left"
+                android:drawableTop="@drawable/arrow_left"
                 style="@style/button_style"
                 android:text="@string/manual_direction"/>
             <!--android:background="@drawable/button_click_selector"-->
             <Button
-                android:drawableLeft="@drawable/arrow_right"
-                android:drawableStart="@drawable/arrow_right"
-                style="@style/button_style"
-                android:text="@string/manual_direction"/>
-            <Button
-                android:drawableLeft="@drawable/arrow_up"
-                android:drawableStart="@drawable/arrow_up"
+                android:drawableTop="@drawable/arrow_up"
                 style="@style/button_style"
                 android:text="@string/manual_pitch"/>
             <Button
+                android:drawableTop="@drawable/arrow_right_up"
                 style="@style/button_style"
-                android:drawableLeft="@drawable/arrow_down"
-                android:drawableStart="@drawable/arrow_down"
-                android:text="@string/manual_pitch" />
+                android:text="@string/manual_polarization"/>
             </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
-                android:drawableLeft="@drawable/arrow_left_down"
-                android:drawableStart="@drawable/arrow_left_down"
+                android:drawableTop="@drawable/arrow_right"
+                style="@style/button_style"
+                android:text="@string/manual_direction"/>
+            <Button
+                style="@style/button_style"
+                android:drawableTop="@drawable/arrow_down"
+                android:text="@string/manual_pitch" />
+            <Button
+                android:drawableTop="@drawable/arrow_left_down"
                 style="@style/button_style"
                 android:text="@string/manual_polarization"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <Button
-                android:drawableLeft="@drawable/arrow_right_up"
-                android:drawableStart="@drawable/arrow_right_up"
                 style="@style/button_style"
-                android:text="@string/manual_polarization"/>
+                android:clickable="false"
+                android:focusable="false"/>
             <Button
-                android:drawableLeft="@drawable/park_circle"
-                android:drawableStart="@drawable/park_circle"
+                android:drawableTop="@drawable/park_circle"
                 style="@style/button_style"
                 android:text="@string/manual_pause"/>
                 <!--android:background="@color/button_blink"-->
-    </LinearLayout>
+            <Button
+                style="@style/button_style"
+                android:clickable="false"
+                android:focusable="false"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

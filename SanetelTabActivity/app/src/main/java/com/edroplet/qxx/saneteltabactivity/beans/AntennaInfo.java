@@ -11,6 +11,15 @@ public class AntennaInfo implements Parcelable {
     private float azimuth; // 方位角
     private float pitch;   // 俯仰角
     private float polarization; // 极化角
+    private float agcLevel; // AGC电平
+
+    public float getAgcLevel() {
+        return agcLevel;
+    }
+
+    public void setAgcLevel(float agcLevel) {
+        this.agcLevel = agcLevel;
+    }
 
     public float getAzimuth() {
         return azimuth;
@@ -43,6 +52,7 @@ public class AntennaInfo implements Parcelable {
             ai.azimuth = source.readFloat();
             ai.pitch = source.readFloat();
             ai.polarization = source.readFloat();
+            ai.agcLevel = source.readFloat();
             return ai;
         }
 
@@ -62,5 +72,6 @@ public class AntennaInfo implements Parcelable {
         dest.writeFloat(azimuth);
         dest.writeFloat(pitch);
         dest.writeFloat(polarization);
+        dest.writeFloat(agcLevel);
     }
 }

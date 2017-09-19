@@ -1,5 +1,6 @@
 package com.edroplet.qxx.saneteltabactivity;
 
+import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
@@ -14,16 +15,21 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.adapters.SectionsPagerAdapter;
+import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
+import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 import com.edroplet.qxx.saneteltabactivity.utils.hashMapUtils;
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 
@@ -55,49 +61,11 @@ public class SanetelTabActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sanetel_tab);
-        setupToolbar();
+        StatusBarControl.setupToolbar(this,R.id.content_toolbar);
         initView();
+        StatusBarControl.setTitle(hashMapUtils.getElemntFromLinkHashMap(map,0).getKey());
 //        setupFab();
 
-    }
-
-    public SanetelTabActivity setupToolbar(){
-        toolbar = (Toolbar) findViewById(R.id.content_toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            ActionBar ab = getSupportActionBar();
-            if (ab != null) {
-                ab.setHomeAsUpIndicator(R.drawable.back);
-                // 隐藏ActionBar的标题
-                // ab.setTitle(null);
-                ab.setDisplayShowTitleEnabled(false);
-                toolbar.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.title_background, null));
-                // 使用自定义试图
-                ab.setCustomView(R.layout.status_bar);
-                ab.setDisplayShowCustomEnabled(true);
-            }
-
-            // 一个布局内的所有控件可以获取到焦点
-//            for (int i = 0; i < toolbar.getChildCount(); i++) {
-//                View v = toolbar.getChildAt(i);
-//                v.setFocusable(true);
-//            }
-            // 使用drawable资源但不为其设置theme主题
-            // ab.setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(),R.drawable.status_background,null));
-            //关键下面两句话，设置了回退按钮，及点击事件的效果
-            ab.setDisplayHomeAsUpEnabled(true);
-            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
-            toolbar.hideOverflowMenu();
-        }
-
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        return this;
     }
 
 
@@ -137,90 +105,8 @@ public class SanetelTabActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
-
-        toolbar.setTitle(hashMapUtils.getElemntFromLinkHashMap(map,0).getKey());
-
-        final StatusButton sbExploded = (StatusButton)  findViewById(R.id.button_operate_explode);
-        final StatusButton sbFold = (StatusButton) findViewById(R.id.button_operate_fold);
-
-        if (sbExploded != null)
-            sbExploded.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sbExploded.onConfirm("你确定要展开吗？", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // TODO 处理确定事件
-                        sbExploded.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
-                        if (sbFold!=null) {
-                            sbFold.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
-                        }
-                        sbExploded.getDialogBuilder().dismiss();
-                    }
-                });
-                return;
-            }
-        });
-        if (sbFold!=null){
-            sbFold.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    sbFold.onConfirm("确认收藏吗？", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            // 设置为不可点击状态
-                            sbFold.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
-                            if (sbExploded!=null) {
-                                sbExploded.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
-                            }
-                            sbFold.getDialogBuilder().dismiss();
-                        }
-                    });
-                }
-            });
-        }
-        final StatusButton sbPause = (StatusButton) findViewById(R.id.button_operate_pause);
-        if (sbPause != null)
-            sbPause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sbPause.onConfirm("暂停？", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        sbPause.getDialogBuilder().dismiss();
-                    }
-                });
-            }
-        });
-
-        final StatusButton sbReset = (StatusButton) findViewById(R.id.button_operate_reset);
-        if (sbReset != null)
-            sbReset.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    sbReset.onConfirm("复位吗？", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            sbReset.getDialogBuilder().dismiss();
-                        }
-                    });
-                }
-            });
-
-        final StatusButton sbSearch = (StatusButton) findViewById(R.id.button_operate_search);
-        if (sbSearch != null)
-            sbSearch.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    sbSearch.onConfirm("开始寻星？", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            sbSearch.getDialogBuilder().dismiss();
-                        }
-                    });
-                }
-            });
-
+        // 初始化快捷键
+        OperateBarControl.setupOperatorBar(this);
         return this;
     }
 

@@ -142,8 +142,8 @@
                     android:background="@color/button_blink"/>
                 <Button
                     android:id="@+id/guide_main_button_search"
-                    android:drawableLeft="@drawable/searching"
-                    android:drawableStart="@drawable/searching"
+                    android:drawableLeft="@drawable/guide_searching"
+                    android:drawableStart="@drawable/guide_searching"
                     android:text="@string/guide_main_searching"
                     style="@style/guide_item_style"/>
             </LinearLayout>

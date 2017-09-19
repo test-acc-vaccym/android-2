@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
+    android:layout_height="@dimen/operate_bar_height"
     android:background="@color/operate_bar_background">
     <!--展开、暂停、寻星、复位、收藏-->
     <com.edroplet.qxx.saneteltabactivity.view.StatusButton

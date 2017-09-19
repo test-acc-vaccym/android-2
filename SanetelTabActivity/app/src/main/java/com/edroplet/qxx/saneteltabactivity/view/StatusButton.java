@@ -15,6 +15,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -143,19 +144,7 @@ public class StatusButton extends AppCompatButton {
             mDrawableTop = mDrawables[1];
             mDrawableRight = mDrawables[2];
             mDrawableBottom = mDrawables[3];
-            /**
-             * 没卵用
-            if(mDrawableLeft != null){
-                // bd = (BitmapDrawable) mDrawableLeft;
-                mBitmap = drawableToBitmap(mDrawableLeft);
-            }else if(mDrawableRight != null){
-                // bd = (BitmapDrawable) mDrawableRight;
-                mBitmap = drawableToBitmap(mDrawableRight);
-            }
-            if (bd != null) {
-                mBitmap = bd.getBitmap();
-            }
-            */
+
         }
         //if (mBitmap == null){
         //    mBitmap = drawableToBitmap(ResourcesCompat.getDrawable(this.getResources(),R.drawable.triangle, null));
@@ -171,16 +160,6 @@ public class StatusButton extends AppCompatButton {
         // 关键的一步， 在这儿才能修改状态啊， 被搞死了。
         setButtonState(mButtonState);
 
-        if (mDrawables != null) {
-            //if (mDrawableLeft != null) {
-            // int [] s = getDrawableState();
-            // mDrawableLeft.setState(s);
-            //float textWidth = getPaint().measureText(getText().toString());
-            // drawableWidth = drawableLeft.getIntrinsicWidth();
-            //float bodyWidth = textWidth + mDrawableWidth + drawablePadding;
-            //canvas.translate((getWidth() - bodyWidth) / 2, 0);
-            //}
-        }
     }
 
     @Override
@@ -302,11 +281,12 @@ public class StatusButton extends AppCompatButton {
 
     @Override
     protected void onDraw(Canvas canvas) {
-
         // 先画图，然后再设置位置
         setCompoundDrawablesWithIntrinsicBounds(mDrawableLeft, mDrawableTop, mDrawableRight, mDrawableBottom);
-            int drawablePadding = getCompoundDrawablePadding();
-            //if (mDrawableRight != null) {
+
+        int drawablePadding = getCompoundDrawablePadding();
+        if (mDrawableRight != null || mDrawableLeft != null) {
+            // 左右结构
             float textWidth = getPaint().measureText(getText().toString());
             float bodyWidth = textWidth + mDrawableWidth + drawablePadding;
             // 居中
@@ -315,14 +295,29 @@ public class StatusButton extends AppCompatButton {
             int paddingHorizontal = 0;
             if (mButtonState != BUTTON_STATE_DISABLE && mButtonState != BUTTON_STATE_OPERATE) {
                 paddingVertical = (int) (getHeight() - mDrawableWidth) / 2;
-                paddingHorizontal = (int) (getWidth() - bodyWidth) / 2;
-            }else{
-                paddingVertical = (int) (getHeight() - mDrawableWidth) / 2;
                 paddingVerticalBottom = paddingVertical;
+                // 下面这段文字图标不居中
+                // paddingVertical = (int) (getHeight() - mDrawableWidth) / 2;
+                // paddingHorizontal = (int) (getWidth() - bodyWidth) / 2;
+            }else{
+                  paddingVertical = (int) (getHeight() - mDrawableWidth) / 2;
+                  paddingVerticalBottom = paddingVertical;
             }
             setPadding(paddingHorizontal, paddingVertical, paddingHorizontal, paddingVerticalBottom);
             canvas.translate((getWidth() - bodyWidth) / 2, 0);
-            //}
+        }else {
+            // 上下结构
+            if (false) {
+                float textWidth = getPaint().measureText(getText().toString());
+                float bodyWidth = textWidth + mDrawableWidth + drawablePadding;
+                // 居中
+                int paddingHorizontal = (int) (getWidth() - mDrawableWidth) / 2;
+                setPadding(paddingHorizontal, 0, paddingHorizontal, 0);
+                canvas.translate((getWidth() - bodyWidth) / 2, 0);
+            }else{
+                canvas = getTopCanvas(canvas);
+            }
+        }
         super.onDraw(canvas);
     }
 
@@ -417,5 +412,50 @@ public class StatusButton extends AppCompatButton {
         }else{
             mButtonState = BUTTON_STATE_DISABLE;
         }
+    }
+
+    private Canvas getTopCanvas(Canvas canvas) {
+        Drawable[] drawables = getCompoundDrawables();
+        if (drawables == null) {
+            return canvas;
+        }
+        Drawable drawable = drawables[1];// 上面的drawable
+        if (drawable == null) {
+            drawable = drawables[3];// 下面的drawable
+        }
+
+        float textSize = getPaint().getTextSize();
+        int drawHeight = drawable.getIntrinsicHeight();
+        int drawPadding = getCompoundDrawablePadding();
+        float contentHeight = textSize + drawHeight + drawPadding;
+        int topPadding = (int) (getHeight() - contentHeight);
+        setPadding(0, topPadding , 0, 0);
+        float dy = (contentHeight - getHeight())/2;
+        canvas.translate(0, dy);
+        Log.i("DrawableTopButton", "setPadding(0,"+topPadding+",0,0");
+        Log.i("DrawableTopButton", "translate(0,"+dy+")");
+        return canvas;
+    }
+
+    // 通过重写Button的onDraw(Canvas canvas) 方法，把图片和文字一起居中。
+    private Canvas getLeftRightCanvas(Canvas canvas){
+        Drawable[] drawables = getCompoundDrawables();
+        if (drawables == null) {
+            return canvas;
+        }
+        Drawable drawable = drawables[0];// 左面的drawable
+        if (drawable == null) {
+            drawable = drawables[2];// 右面的drawable
+        }
+        // float textSize = getPaint().getTextSize(); // 使用这个会导致文字竖向排下来
+        float textSize = getPaint().measureText(getText().toString());
+        int drawWidth = drawable.getIntrinsicWidth();
+        int drawPadding = getCompoundDrawablePadding();
+        float contentWidth = textSize + drawWidth + drawPadding;
+        int leftPadding = (int) (getWidth() - contentWidth);
+        setPadding(0, 0, leftPadding, 0); // 直接贴到左边
+        float dx = (getWidth() - contentWidth) / 2;
+        canvas.translate(dx, 0);// 往右移动
+        return canvas;
     }
 }

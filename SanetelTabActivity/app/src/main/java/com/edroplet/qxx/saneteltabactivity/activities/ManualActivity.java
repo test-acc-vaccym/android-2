@@ -46,36 +46,8 @@ public class ManualActivity extends AppCompatActivity {
         setContentView(R.layout.activity_manual);
         StatusBarControl.setupToolbar(this, R.id.main_content_toolbar);
         OperateBarControl.setupOperatorBar(this);
-        // initToolbar();
         mTextMessage = (TextView) findViewById(R.id.custom_val);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.manual_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-    }
-    private void  initToolbar(){
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_content_toolbar);
-        setSupportActionBar(toolbar);
-        /*
-        toolbar.setTitle(R.string.main_application_operate);
-        */
-        //actionBar的设置(使用自定义的设置)
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            // 使用自定义layout
-            actionBar.setCustomView(R.layout.status_bar);
-            actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            // 修改图标
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){
-                actionBar.setHomeAsUpIndicator(R.drawable.back);
-            }
-        }
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
     }
 }

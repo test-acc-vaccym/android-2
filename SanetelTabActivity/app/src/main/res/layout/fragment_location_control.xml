@@ -6,8 +6,10 @@
     android:layout_height="wrap_content"
     style="@style/manual_divider">
     <LinearLayout
+        android:id="@+id/current_location_values"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical">
         <!--速度控制-->
         <TextView
@@ -37,6 +39,13 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:hint="@string/location_control_setting_hint_val"/>
+                    <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_height="wrap_content"
+                    android:text="@string/degree_unit"
+                    android:layout_gravity="start"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>
             <LinearLayout
                     android:layout_height="0dp"
@@ -56,6 +65,13 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:hint="@string/location_control_setting_hint_val"/>
+                    <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_height="wrap_content"
+                    android:text="@string/degree_unit"
+                    android:layout_gravity="start"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>
             <LinearLayout
                     android:layout_height="0dp"
@@ -75,14 +91,24 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:hint="@string/location_control_setting_hint_val"/>
+                    <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_height="wrap_content"
+                    android:text="@string/degree_unit"
+                    android:layout_gravity="start"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/prepare_location_values"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/appbar_padding_top">
+        android:layout_below="@+id/current_location_values"
+        android:layout_marginTop="@dimen/layout_padding_top">
         <!--速度控制-->
         <TextView
             android:layout_width="match_parent"
@@ -114,6 +140,13 @@
                     android:inputType="number|numberDecimal"
                     android:padding="@dimen/no_padding"
                     android:hint="@string/location_control_setting_hint_val"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_height="wrap_content"
+                    android:text="@string/degree_unit"
+                    android:layout_gravity="start"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>
             <LinearLayout
                 android:layout_height="0dp"
@@ -136,6 +169,13 @@
                     android:inputType="number|numberDecimal"
                     android:padding="@dimen/no_padding"
                     android:hint="@string/location_control_setting_hint_val"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_height="wrap_content"
+                    android:text="@string/degree_unit"
+                    android:layout_gravity="start"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>
             <LinearLayout
                 android:layout_height="0dp"
@@ -158,15 +198,26 @@
                     android:inputType="number|numberDecimal"
                     android:padding="@dimen/no_padding"
                     android:hint="@string/location_control_setting_hint_val"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_height="wrap_content"
+                    android:text="@string/degree_unit"
+                    android:layout_gravity="start"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/appbar_padding_top">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/layout_padding_top">
+
         <Button
-            android:text="@string/location_control_rotate_start"
-            style="@style/button_style"/>
+            android:id="@+id/button"
+            style="@style/button_style"
+            android:layout_gravity="center"
+            android:text="@string/location_control_rotate_start" />
     </LinearLayout>
 </LinearLayout>

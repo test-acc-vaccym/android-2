@@ -37,4 +37,6 @@
     <dimen name="pop_margin">20dp</dimen>
     <!--引导页-->
     <dimen name="guide_entry_list_margin_top">15dp</dimen>
+    <!--layout之间的间隔-->
+    <dimen name="layout_padding_top">12dp</dimen>
 </resources>

@@ -7,7 +7,8 @@
     style="@style/manual_divider">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical">
         <!--输入数据-->
         <TextView
@@ -38,9 +39,10 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="2"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/appbar_padding_top">
+        android:layout_marginTop="@dimen/layout_padding_top">
         <!--本地位置-->
         <TextView
             android:layout_width="match_parent"
@@ -81,8 +83,9 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/appbar_padding_top"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_marginTop="@dimen/layout_padding_top"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
@@ -114,6 +117,13 @@
                     android:inputType="number|numberDecimal"
                     android:padding="@dimen/no_padding"
                     android:hint="@string/location_control_setting_hint_val"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_height="wrap_content"
+                    android:text="@string/degree_unit"
+                    android:layout_gravity="start"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>
             <LinearLayout
                 android:layout_height="0dp"
@@ -125,8 +135,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/location_control_setting_pitch"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    tools:ignore="NestedWeights" />
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
                 <EditText
                     android:id="@+id/main_application_manual_angle_calculate_tv_setting_pitch"
                     android:layout_width="0dp"
@@ -136,6 +145,13 @@
                     android:inputType="number|numberDecimal"
                     android:padding="@dimen/no_padding"
                     android:hint="@string/location_control_setting_hint_val"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_height="wrap_content"
+                    android:text="@string/degree_unit"
+                    android:layout_gravity="start"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>
             <LinearLayout
                 android:layout_height="0dp"
@@ -158,22 +174,34 @@
                     android:inputType="number|numberDecimal"
                     android:padding="@dimen/no_padding"
                     android:hint="@string/location_control_setting_hint_val"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_height="wrap_content"
+                    android:text="@string/degree_unit"
+                    android:layout_gravity="start"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/appbar_padding_top"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/layout_padding_top"
+        android:orientation="horizontal"
+        android:background="@color/bottom_tab_nav_background">
         <Button
             style="@style/button_style"
+            android:layout_gravity="center_vertical"
             android:text="@string/angle_calculate_operate_calculate"/>
         <Button
             style="@style/button_style"
+            android:layout_gravity="center_vertical"
             android:text="@string/angle_calculate_operate_clear"/>
         <Button
             style="@style/button_style"
+            android:layout_gravity="center_vertical"
             android:text="@string/angle_calculate_operate_use"/>
     </LinearLayout>
 </LinearLayout>

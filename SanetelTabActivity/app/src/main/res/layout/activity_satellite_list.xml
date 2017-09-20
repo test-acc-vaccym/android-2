@@ -28,6 +28,7 @@
                 android:layout_gravity="center"
                 android:text="@string/satellite_toolbar_title"
                 android:textColor="@color/title_text"
+                android:textStyle="bold"
                 android:textAppearance="?attr/textAppearanceSearchResultTitle"/>
 
         </android.support.v7.widget.Toolbar>

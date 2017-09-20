@@ -62,9 +62,6 @@ public class FollowMeActivity extends AppCompatActivity {
         OperateBarControl.setupOperatorBar(this);
         StatusBarControl.setupToolbar(this, R.id.follow_me_content_toolbar);
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.follow_me_navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.follow_me_explode_fab);
         if (fab !=null)
             fab.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +84,30 @@ public class FollowMeActivity extends AppCompatActivity {
         mSectionsPagerAdapter.addFragment(GuideFragmentExplode.newInstance("ahaha3"));
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.follow_me_view_pager);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+        // mViewPager = (ViewPager) findViewById(R.id.follow_me_view_pager);
+        // mViewPager.addOnPageChangeListener(mOnPageChangeListener);
+        // mViewPager.setAdapter(mSectionsPagerAdapter);
     }
+
+    private MenuItem menuItem;
+
+    private ViewPager.OnPageChangeListener mOnPageChangeListener = new ViewPager.OnPageChangeListener(){
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            if (menuItem != null){
+                menuItem.setChecked(false);
+            }else {
+                // navigation.getMenu().getItem(0).setChecked(false);
+            }
+            // menuItem = navigation.getMenu().getItem(position);
+            menuItem.setChecked(true);
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) { }
+    };
 }

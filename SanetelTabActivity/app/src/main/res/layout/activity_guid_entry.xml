@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         app:navigationIcon="@drawable/back"
-        app:title=" "
+        app:title="@null"
         android:fitsSystemWindows="true">
         <TextView
             android:id="@+id/guide_toolbar_title"
@@ -22,16 +22,18 @@
             android:layout_gravity="center"
             android:text="@string/follow_me_bottom_nav_main"
             android:textColor="@color/title_text"
+            android:textStyle="bold"
             android:textAppearance="?attr/textAppearanceSearchResultTitle"/>
         <Button
             android:id="@+id/guide_enter_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/guide_main_enter"
+            android:textStyle="bold"
             android:textColor="@color/button_text"
             android:drawableEnd="@drawable/next"
             android:drawableRight="@drawable/next"
-            android:background="@color/button_blink"
+            android:background="@drawable/button_background"
             android:layout_gravity="end"
             android:textAppearance="?attr/textAppearanceSearchResultTitle"
             android:layout_marginEnd="10dp"
@@ -39,26 +41,19 @@
     </android.support.v7.widget.Toolbar>
 
     <FrameLayout
-        android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/guide_item_background_end">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             style="@style/linear_shadow">
             <!--android:layout_marginTop="@dimen/guide_list_padding_left"-->
             <LinearLayout
                 style="@style/guide_entry_list_style">
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:drawableRight="@drawable/process_ok"
-                    android:drawableEnd="@drawable/process_ok"
-                    android:clickable="false"
-                    android:background="@color/button_blink"
-                    style="?android:attr/borderlessButtonStyle"/>
+                    style="@style/guide_item_flow_style"/>
                 <Button
                     android:id="@+id/guide_main_button_explode"
                     android:drawableLeft="@drawable/satellite_vista"
@@ -70,13 +65,7 @@
             <LinearLayout
                 style="@style/guide_entry_list_style">
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:drawableRight="@drawable/process_ok"
-                    android:drawableEnd="@drawable/process_ok"
-                    android:clickable="false"
-                    android:background="@color/button_blink"
-                    style="?android:attr/borderlessButtonStyle"/>
+                    style="@style/guide_item_flow_style"/>
                 <Button
                     android:id="@+id/guide_main_button_location"
                     android:drawableLeft="@drawable/input"
@@ -87,13 +76,7 @@
             <LinearLayout
                 style="@style/guide_entry_list_style">
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:drawableRight="@drawable/process_ok"
-                    android:drawableEnd="@drawable/process_ok"
-                    android:clickable="false"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:background="@color/button_blink"/>
+                    style="@style/guide_item_flow_style"/>
                 <Button
                     android:id="@+id/guide_main_button_destination"
                     android:drawableLeft="@drawable/satellites"
@@ -104,13 +87,7 @@
             <LinearLayout
                 style="@style/guide_entry_list_style">
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:drawableRight="@drawable/process_ok"
-                    android:drawableEnd="@drawable/process_ok"
-                    android:clickable="false"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:background="@color/button_blink"/>
+                    style="@style/guide_item_flow_style"/>
                 <Button
                     android:id="@+id/guide_main_button_search_mode"
                     android:drawableLeft="@drawable/searching_mode"
@@ -121,30 +98,19 @@
             <LinearLayout
                 style="@style/guide_entry_list_style">
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:drawableRight="@drawable/process_ok"
-                    android:drawableEnd="@drawable/process_ok"
-                    android:clickable="false"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:background="@color/button_blink"/>
+                    style="@style/guide_item_flow_style"/>
+
                 <Button
                     android:id="@+id/guide_main_button_search"
+                    style="@style/guide_item_style"
                     android:drawableLeft="@drawable/guide_searching"
                     android:drawableStart="@drawable/guide_searching"
-                    android:text="@string/guide_main_searching"
-                    style="@style/guide_item_style"/>
+                    android:text="@string/guide_main_searching"/>
             </LinearLayout>
             <LinearLayout
                 style="@style/guide_entry_list_style">
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:drawableRight="@drawable/process_ok"
-                    android:drawableEnd="@drawable/process_ok"
-                    android:clickable="false"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:background="@color/button_blink"/>
+                    style="@style/guide_item_flow_style"/>
                 <Button
                     android:id="@+id/guide_main_button_lock"
                     android:drawableLeft="@drawable/locked"
@@ -155,13 +121,7 @@
             <LinearLayout
                 style="@style/guide_entry_list_style">
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:drawableRight="@drawable/process_ok"
-                    android:drawableEnd="@drawable/process_ok"
-                    android:clickable="false"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:background="@color/button_blink"/>
+                    style="@style/guide_item_flow_style"/>
                 <Button
                     android:id="@+id/guide_main_button_saving"
                     android:drawableLeft="@drawable/saving"

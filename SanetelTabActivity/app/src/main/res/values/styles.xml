@@ -26,7 +26,8 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-    <style name="guide_item_style" >
+
+    <style name="guide_item_style" parent="Base.Widget.AppCompat.Button.Borderless">
         <item name="android:paddingTop">@dimen/guide_list_item_padding</item>
         <item name="android:gravity">start|center_vertical</item>
         <item name="android:layout_gravity">start</item>
@@ -35,12 +36,24 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/button_background</item>
-        <item name="android:textSize">16sp</item>
         <item name="android:clickable">false</item>
         <item name="android:layout_marginLeft">@dimen/guide_list_padding_left</item>
+        <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="guide_item_flow_style" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:drawableRight">@drawable/process_ok</item>
+        <item name="android:drawableEnd">@drawable/process_ok</item>
+        <item name="android:gravity">end|center_vertical</item>
+        <item name="android:layout_gravity">end</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:clickable">false</item>
+    </style>
+
     <style name="guide_entry_list_style">
-        <item name="android:layout_marginTop">@dimen/main_margin_top</item>
+        <item name="android:layout_marginTop">@dimen/guide_entry_list_margin_top</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
         <item name="android:layout_weight">1</item>
@@ -75,8 +88,20 @@
         <item name="android:layout_weight">1</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/button_text</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?attr/textAppearanceSearchResultTitle</item>
     </style>
+
+    <style name="follow_me_navigation_bar" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">@dimen/app_bar_height</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">@dimen/no_padding</item>
+        <item name="android:textAppearance">?attr/textAppearanceSearchResultTitle</item>
+    </style>
+
     <!--状态栏-->
     <style name="status_bar_button_style" parent="Base.Widget.AppCompat.Button.Borderless">
         <item name="android:layout_height">match_parent</item>
@@ -87,6 +112,8 @@
         <item name="android:layout_marginStart">@dimen/status_button_margin_left</item>
         <item name="android:textColor">@color/status_normal</item>
         <item name="android:background">@color/button_blink</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">?attr/textAppearanceSearchResultTitle</item>
     </style>
     <!--快捷栏目-->
     <style name="operate_bar_button_style" parent="Base.Widget.AppCompat.Button.Borderless">
@@ -98,5 +125,7 @@
         <item name="android:layout_marginLeft">@dimen/status_button_margin_left</item>
         <item name="android:layout_marginStart">@dimen/status_button_margin_left</item>
         <item name="android:textColor">@color/button_text</item>
+        <item name="android:textAppearance">?attr/textAppearanceSearchResultTitle</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

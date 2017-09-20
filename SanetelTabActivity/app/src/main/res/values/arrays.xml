@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="satellites">
-        <item>亚洲四号</item>
+        <item>亚太7号</item>
+        <item>中星12号</item>
+        <item>中星11号</item>
         <item>亚洲5号</item>
         <item>亚洲7号</item>
+        <item>中星10号</item>
+        <item>亚洲4号</item>
+        <item>中星6A</item>
     </string-array>
     <string-array name="satellites_local">
         <item>水平</item>
-        <item>数值</item>
         <item>垂直</item>
     </string-array>
 </resources>

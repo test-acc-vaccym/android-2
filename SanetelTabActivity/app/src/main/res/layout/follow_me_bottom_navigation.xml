@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+    <!--底部阴影-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/bottom_shadow" />
+    <LinearLayout
+        android:id="@+id/follow_me_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:orientation="horizontal"
+        android:background="@color/bottom_tab_nav_background"
+        android:layout_gravity="bottom"
+        style="@style/linear_shadow">
+        <Button
+            style="@style/follow_me_navigation_bar"
+            android:layout_weight="1.2"
+            android:id="@+id/follow_me_bottom_nav_main"
+            android:text="@string/follow_me_bottom_nav_main"/>
+        <Button
+            style="@style/follow_me_navigation_bar"
+            android:id="@+id/follow_me_bottom_nav_preview"
+            android:text="@string/follow_me_bottom_nav_preview" />
+        <Button
+            style="@style/follow_me_navigation_bar"
+            android:id="@+id/follow_me_bottom_nav_next"
+            android:text="@string/follow_me_bottom_nav_next" />
+        <Button
+            style="@style/follow_me_navigation_bar"
+            android:layout_weight="1.2"
+            android:id="@+id/follow_me_bottom_nav_monitor"
+            android:text="@string/follow_me_bottom_nav_monitor"/>
+    </LinearLayout>
+</merge>

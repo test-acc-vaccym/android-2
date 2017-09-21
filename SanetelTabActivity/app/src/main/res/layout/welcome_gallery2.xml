@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/welcome_check_device"
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:src="@mipmap/welcome_check_device"
         android:contentDescription="@string/welcome_check_device"/>
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/welcome_check_device_detail"

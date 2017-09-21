@@ -45,7 +45,7 @@ public class WelcomeActivity extends AppCompatActivity  implements OnPageChangeL
     private WelcomePageAdapter vpAdapter;
     private List<View> views;
     private ViewPager viewPager;
-    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton btnstarthome;
+    private Button btnstarthome;
 
     // 底部小点图片
     private ImageView[] dots;
@@ -120,7 +120,7 @@ public class WelcomeActivity extends AppCompatActivity  implements OnPageChangeL
         vp = (ViewPager) findViewById(R.id.welcome_viewpager);
         vp.setAdapter(vpAdapter);
 
-        btnstarthome = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton) views.get(3).findViewById(R.id.toMain);
+        btnstarthome = (Button) views.get(3).findViewById(R.id.toMain);
         btnstarthome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/main_margin_top">
     <!--卫星信息-->
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/main_monitor_satellite_info"
@@ -23,12 +23,12 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_name"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:id="@+id/main_monitor_satellite_tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -39,12 +39,12 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_longitude"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:id="@+id/main_monitor_satellite_tv_longitude"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -60,12 +60,12 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_beacon"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:id="@+id/main_monitor_satellite_tv_beacon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -76,12 +76,12 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_polarization"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:id="@+id/main_monitor_satellite_tv_polarization"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -97,12 +97,12 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_agc"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:id="@+id/main_monitor_satellite_tv_agc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

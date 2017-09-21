@@ -53,11 +53,11 @@ public class CustomRadioGroup extends RadioGroup {
         //存放view到rowViews
         public void addChidView(View view) {
             if (!lineViews.contains(view)){
-                ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton)view).setOnClickListener(new OnClickListener() {
+                ((RadioButton)view).setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if(listener!=null){
-                            listener.OnText(((com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton)v).getText().toString().trim());
+                            listener.OnText(((RadioButton)v).getText().toString().trim());
                         }
                     }
                 });

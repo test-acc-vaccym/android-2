@@ -176,33 +176,33 @@ public class CityListActivity extends AppCompatActivity {
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             // public final TextView mIdView;
-            public final com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView mNameView;
-            public final com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView mPolarizationView;
-            public final com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView mLongitudeView;
-            public final com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView mBeaconView;
-            public final com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView mThresholdView;
-            public final com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView mSymbolRateView;
+            public final TextView mNameView;
+            public final TextView mPolarizationView;
+            public final TextView mLongitudeView;
+            public final TextView mBeaconView;
+            public final TextView mThresholdView;
+            public final TextView mSymbolRateView;
             // public final TextView mComentView;
             public SatelliteParameterItem mItem;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                // mIdView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.id);
+                // mIdView = (TextView) view.findViewById(R.id.id);
                 // assert mIdView != null;
-                mNameView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.name);
+                mNameView = (TextView) view.findViewById(R.id.name);
                 assert mNameView != null;
-                mPolarizationView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.polarization);
+                mPolarizationView = (TextView) view.findViewById(R.id.polarization);
                 assert mPolarizationView == null;
-                mLongitudeView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.longitude);
+                mLongitudeView = (TextView) view.findViewById(R.id.longitude);
                 assert mLongitudeView == null;
-                mBeaconView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.beacon);
+                mBeaconView = (TextView) view.findViewById(R.id.beacon);
                 assert mBeaconView != null;
-                mThresholdView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.threshold);
+                mThresholdView = (TextView) view.findViewById(R.id.threshold);
                 assert mThresholdView != null;
-                mSymbolRateView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.symbolRate);
+                mSymbolRateView = (TextView) view.findViewById(R.id.symbolRate);
                 assert mSymbolRateView != null;
-                // mComentView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.comment);
+                // mComentView = (TextView) view.findViewById(R.id.comment);
                 // assert mComentView != null;
             }
 

@@ -9,6 +9,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.ManualActivity;
@@ -18,7 +20,7 @@ import com.edroplet.qxx.saneteltabactivity.activities.ManualActivity;
  */
 
 public class MainFragmentBase extends Fragment {
-    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton btnSpeed;
+    private Button btnSpeed;
     private View.OnClickListener speedClick;
     public static MainFragmentBase newInstance(String info) {
         Bundle args = new Bundle();
@@ -31,7 +33,7 @@ public class MainFragmentBase extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.main_fragment_base, null);
-        com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView tvInfo = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.message);
+        TextView tvInfo = (TextView) view.findViewById(R.id.message);
         tvInfo.setText(getArguments().getString("info"));
         tvInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,7 +41,7 @@ public class MainFragmentBase extends Fragment {
                 Snackbar.make(v, "Don't click me.please!.", Snackbar.LENGTH_SHORT).show();
             }
         });
-        btnSpeed = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton)view.findViewById(R.id.main_application_manual_speed);
+        btnSpeed = (Button)view.findViewById(R.id.main_application_manual_speed);
 
         return view;
     }

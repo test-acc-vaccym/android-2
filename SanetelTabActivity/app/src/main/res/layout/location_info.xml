@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/main_margin_top">
 
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/main_monitor_location_info"
@@ -22,12 +22,12 @@
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_location_longitude"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:id="@+id/main_monitor_location_tv_longitude"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -38,12 +38,12 @@
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_location_latitude"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:id="@+id/main_monitor_location_tv_latitude"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

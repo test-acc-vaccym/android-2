@@ -12,13 +12,13 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 
 public class GuideEntryActivity extends AppCompatActivity {
-    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton mExplode;
-    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton mLocation;
-    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton mDestination;
-    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton mSearchMode;
-    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton mSearching;
-    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton mLock;
-    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton mSaving;
+    private Button mExplode;
+    private Button mLocation;
+    private Button mDestination;
+    private Button mSearchMode;
+    private Button mSearching;
+    private Button mLock;
+    private Button mSaving;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class GuideEntryActivity extends AppCompatActivity {
         // StatusBarControl.setupToolbar(this, R.id.guide_tool_bar);
         setToolbar();
 
-        mExplode = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton) findViewById(R.id.guide_main_button_explode);
+        mExplode = (Button) findViewById(R.id.guide_main_button_explode);
         mExplode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

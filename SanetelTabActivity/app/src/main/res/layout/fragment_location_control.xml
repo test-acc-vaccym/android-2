@@ -12,7 +12,7 @@
         android:layout_weight="1"
         android:orientation="vertical">
         <!--速度控制-->
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/location_control_current_info"
@@ -26,20 +26,20 @@
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:orientation="horizontal">
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="@string/location_control_current_azimuth"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         tools:ignore="NestedWeights" />
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <TextView
                         android:id="@+id/main_application_manual_location_tv_azimuth"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:hint="@string/location_control_setting_hint_val"/>
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <TextView
                     android:layout_width="0dp"
                     android:layout_weight="0.2"
                     android:layout_height="wrap_content"
@@ -52,20 +52,20 @@
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:orientation="horizontal">
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="@string/location_control_current_pitch"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         tools:ignore="NestedWeights" />
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <TextView
                         android:id="@+id/main_application_manual_location_tv_pitch"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:hint="@string/location_control_setting_hint_val"/>
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <TextView
                     android:layout_width="0dp"
                     android:layout_weight="0.2"
                     android:layout_height="wrap_content"
@@ -78,20 +78,20 @@
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:orientation="horizontal">
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="@string/location_control_current_polarization"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         tools:ignore="NestedWeights" />
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <TextView
                         android:id="@+id/main_application_manual_location_tv_polarization"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:hint="@string/location_control_setting_hint_val"/>
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <TextView
                     android:layout_width="0dp"
                     android:layout_weight="0.2"
                     android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
         android:layout_below="@+id/current_location_values"
         android:layout_marginTop="@dimen/layout_padding_top">
         <!--速度控制-->
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/location_control_setting_info"
@@ -124,14 +124,14 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/location_control_setting_azimuth"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     tools:ignore="NestedWeights" />
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                <EditText
                     android:id="@+id/main_application_manual_location_tv_setting_azimuth"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -140,7 +140,7 @@
                     android:inputType="number|numberDecimal"
                     android:padding="@dimen/no_padding"
                     android:hint="@string/location_control_setting_hint_val"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:layout_width="0dp"
                     android:layout_weight="0.2"
                     android:layout_height="wrap_content"
@@ -153,14 +153,14 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/location_control_setting_pitch"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     tools:ignore="NestedWeights" />
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                <EditText
                     android:id="@+id/main_application_manual_location_tv_setting_pitch"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -169,7 +169,7 @@
                     android:inputType="number|numberDecimal"
                     android:padding="@dimen/no_padding"
                     android:hint="@string/location_control_setting_hint_val"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:layout_width="0dp"
                     android:layout_weight="0.2"
                     android:layout_height="wrap_content"
@@ -182,14 +182,14 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/location_control_setting_polarization"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     tools:ignore="NestedWeights" />
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                <EditText
                     android:id="@+id/main_application_manual_location_tv_setting_polarization"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -198,7 +198,7 @@
                     android:inputType="number|numberDecimal"
                     android:padding="@dimen/no_padding"
                     android:hint="@string/location_control_setting_hint_val"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <TextView
                     android:layout_width="0dp"
                     android:layout_weight="0.2"
                     android:layout_height="wrap_content"
@@ -214,7 +214,7 @@
         android:layout_weight="1"
         android:layout_marginTop="@dimen/layout_padding_top">
 
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <Button
             android:id="@+id/button"
             style="@style/button_style"
             android:layout_gravity="center"

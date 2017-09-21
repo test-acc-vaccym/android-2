@@ -30,7 +30,7 @@ public class SpeedControlFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_speed_control, null);
-        com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView tvInfo = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.speed_info_now);
+        TextView tvInfo = (TextView) view.findViewById(R.id.speed_info_now);
         AntennaInfo antennaInfo = getArguments().getParcelable("antennaInfo");
 
         tvInfo.setOnClickListener(new View.OnClickListener() {

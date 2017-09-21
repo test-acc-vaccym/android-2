@@ -8,18 +8,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/pop_blue">
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <TextView
             android:id="@+id/follow_me_fragment_explode_tv_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/follow_me_explode_exploded"
             android:visibility="visible"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <TextView
             android:id="@+id/follow_me_fragment_explode_tv_prompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/follow_me_explode_exploding"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <TextView
             android:id="@+id/follow_me_fragment_explode_tv_next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -25,6 +25,9 @@
             app:navigationIcon="@drawable/back"
             app:titleTextColor="@color/title_text">
         </android.support.v7.widget.Toolbar>
+
+        <include android:id="@+id/follow_me_operate_bar"
+            layout="@layout/operate_bar"/>
         <!--分割线-->
         <View
             android:layout_width="match_parent"

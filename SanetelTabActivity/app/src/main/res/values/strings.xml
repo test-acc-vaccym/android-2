@@ -8,6 +8,31 @@
     <string name="toolbar_left_button_default_gravity">left</string>
     <string name="toolbar_right_button_default_gravity">right</string>
 
+    <!--欢迎界面-->
+    <string name="welcome_version">版本号:%1$s</string>
+    <string name="title_activity_welcome_activity">欢迎</string>
+    <string name="welcome_skip">跳过</string>
+    <string name="welcome_install_line">安装线缆</string>
+    <string name="welcome_install_line_detail">\t便携站可以和modem等设备一起组成卫通系统。便携站的对外接口都来自电气仓面板。其中：\n
+5m射频线缆2根。发射和接收相同。线缆的任意一端连接至面板收发N头并旋转固定。\n
+\t本产品为用户提供了多种通道实现对便携站的监控。用户还可以通过网线和串口两种有线方式监控便携站。\n
+\t这里采用无线WI-FI为信号传输介质，通过手机APP控制。注意不用的通信接口需加装防尘盖。\n
+线缆连接之后，可以给设备上电了！上电之后，延时1分钟后，点击进入。
+</string>
+    <string name="welcome_fix_device">固定设备</string>
+    <string name="welcome_fix_device_detail">\t通过安装在电气仓上盖前端的水平仪和指南针将天线本体保持正南并水平放置。保证方位偏置不要大于10°。\n
+\t在4级最大风速以下：只需支臂展开就能够实现正常寻星锁星。（风速：≤28km/h）\n
+\t在5~6级风速以下：由于天线较轻，需支臂配置。能够正常寻星锁星；通信性能不受影响。（风速：≤50km/h）\n
+\t在7、8级风速：需锁紧机构和配重。此时不能完成寻星。但已经锁星的前提下，可以继续工作，通信性能降低，天线轻微颤动。（风速：≤65km/h）\n
+</string>
+    <string name="welcome_check_device">检查设备</string>
+    <string name="welcome_check_device_detail">\t便携站由天线主体和辅瓣及其配件3部分构成。配件包含：电源线、网线（监视）、发射线缆、接收线缆、BD天线。如果选配手持机，还应当包括手持机和手持机线缆。此外，还包含《产品使用说明书》、合格证和入网许可证附件各一份。\n
+\t用户使用前需检查物品是否齐全，包装是否完好。
+</string>
+
+    <!--引导页面-->
+    <string name="guide_done">开始使用</string>
+
     <!--网络状态-->
     <string name="communication_state_connected">连接</string>
     <string name="communication_state_disconnected">断开</string>
@@ -138,6 +163,7 @@
     <string name="angle_calculate_satellite_select">卫星选择</string>
     <string name="angle_calculate_local_location">本地位置</string>
     <string name="angle_calculate_select_city">选择城市</string>
+    <string name="angle_calculate_input_location">输入参数</string>
     <string name="angle_calculate_local_longitude">本地经度</string>
     <string name="angle_calculate_local_latitude">本地纬度</string>
     <string name="angle_calculate_calculate_result">计算结果</string>

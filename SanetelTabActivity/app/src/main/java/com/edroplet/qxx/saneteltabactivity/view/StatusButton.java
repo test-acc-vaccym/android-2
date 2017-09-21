@@ -13,7 +13,6 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +23,7 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 /**
@@ -33,7 +33,7 @@ import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
  *
  */
 
-public class StatusButton extends AppCompatButton {
+public class StatusButton extends CustomButton {
     private int operator_color = Color.BLUE;
     public static final int BUTTON_STATE_UNKNOWN = -1;
     public static final int BUTTON_STATE_NORMAL = 0;

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/welcome"
+    tools:context=".SplashActivity">
+    <!--android:background="@drawable/welcome"-->
+
+    <!--android:layout_centerInParent="true"-->
+    <TextView
+        android:id="@+id/tv_splash_version"
+        android:text="@string/welcome_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/splash_version_font_size"
+        android:textColor="@android:color/holo_blue_bright"
+        android:shadowColor="@android:color/holo_orange_light"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"   />
+        <!--    设置阴影
+        android:shadowColor="@android:color/holo_orange_light"
+       android:shadowDx="1"
+       android:shadowDy="1"
+       android:shadowRadius="2" -->
+
+    <!--ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_splash_version">
+
+        <com.edroplet.qxx.saneteltabactivity.view.CircleProgressbar
+            android:id="@+id/tv_red_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/welcome_skip"
+            android:textColor="@android:color/holo_blue_bright"
+            android:textSize="@dimen/splash_version_font_size"/>
+    </ScrollView>
+
+
+</RelativeLayout >

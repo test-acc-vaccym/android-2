@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.utils.ChangeTypeFace;
 import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
 
 /**
@@ -41,6 +42,7 @@ public class DrawableCenterButton extends RelativeLayout {
         this.imgView = (ImageView)findViewById(R.id.drawable_text_image_view);
         this.textView = (TextView)findViewById(R.id.drawable_text_text_view);
 
+        this.textView.setTypeface(ChangeTypeFace.getSimHei(this.getContext()));
         //获取所需的控件参数
         TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.DrawableCenterButton);
         CharSequence cs = typedArray.getText(R.styleable.DrawableCenterButton_text);

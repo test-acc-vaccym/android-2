@@ -9,7 +9,7 @@
     <!--android:background="@drawable/welcome"-->
 
     <!--android:layout_centerInParent="true"-->
-    <TextView
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
         android:id="@+id/tv_splash_version"
         android:text="@string/welcome_version"
         android:layout_width="wrap_content"

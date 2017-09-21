@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:orientation="horizontal">
-            <TextView
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
@@ -23,11 +23,11 @@
                 android:layout_weight="2"
                 android:orientation="horizontal"
                 android:layout_height="match_parent">
-                <RadioButton
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/main_application_manual_speed_movement_step"/>
-                <RadioButton
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/main_application_manual_speed_movement_continuous" />
@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="vertical">
-            <TextView
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
@@ -53,33 +53,33 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:layout_width="wrap_content">
-                    <RadioButton
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="0.1"/>
-                    <RadioButton
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="0.5"/>
-                    <RadioButton
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="1.0"/>
-                    <RadioButton
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="3.0"/>
-                    <RadioButton
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="5.0"/>
-                    <RadioButton
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:id="@+id/custom_setting"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"/>
                 </RadioGroup>
 
-                <EditText
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                     android:id="@+id/custom_val"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -101,18 +101,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:drawableLeft="@drawable/arrow_left"
                 android:drawableStart="@drawable/arrow_left"
                 style="@style/button_style"
                 android:text="@string/manual_direction"/>
             <!--android:background="@drawable/button_click_selector"-->
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:drawableLeft="@drawable/arrow_up"
                 android:drawableStart="@drawable/arrow_up"
                 style="@style/button_style"
                 android:text="@string/manual_pitch"/>
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:drawableLeft="@drawable/arrow_right_up"
                 android:drawableStart="@drawable/arrow_right_up"
                 style="@style/button_style"
@@ -121,17 +121,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:drawableLeft="@drawable/arrow_right"
                 android:drawableStart="@drawable/arrow_right"
                 style="@style/button_style"
                 android:text="@string/manual_direction"/>
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 style="@style/button_style"
                 android:drawableLeft="@drawable/arrow_down"
                 android:drawableStart="@drawable/arrow_down"
                 android:text="@string/manual_pitch" />
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:drawableLeft="@drawable/arrow_left_down"
                 android:drawableStart="@drawable/arrow_left_down"
                 style="@style/button_style"
@@ -140,17 +140,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 style="@style/button_style"
                 android:clickable="false"
                 android:focusable="false"/>
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:drawableLeft="@drawable/park_circle"
                 android:drawableStart="@drawable/park_circle"
                 style="@style/button_style"
                 android:text="@string/manual_pause"/>
             <!--android:background="@color/button_blink"-->
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 style="@style/button_style"
                 android:clickable="false"
                 android:focusable="false"/>

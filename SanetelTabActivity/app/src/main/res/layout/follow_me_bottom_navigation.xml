@@ -15,20 +15,20 @@
         android:background="@color/bottom_tab_nav_background"
         android:layout_gravity="bottom"
         style="@style/linear_shadow">
-        <Button
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             style="@style/follow_me_navigation_bar"
             android:layout_weight="1.2"
             android:id="@+id/follow_me_bottom_nav_main"
             android:text="@string/follow_me_bottom_nav_main"/>
-        <Button
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             style="@style/follow_me_navigation_bar"
             android:id="@+id/follow_me_bottom_nav_preview"
             android:text="@string/follow_me_bottom_nav_preview" />
-        <Button
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             style="@style/follow_me_navigation_bar"
             android:id="@+id/follow_me_bottom_nav_next"
             android:text="@string/follow_me_bottom_nav_next" />
-        <Button
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             style="@style/follow_me_navigation_bar"
             android:layout_weight="1.2"
             android:id="@+id/follow_me_bottom_nav_monitor"

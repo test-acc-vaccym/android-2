@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -13,12 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@mipmap/welcome4"/>
-    <TextView
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
         android:layout_below="@id/welcome_iv_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/welcome_install_line_detail"/>
-    <Button
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
         android:id="@+id/toMain"
         android:text="@string/guide_done"
         android:layout_width="wrap_content"

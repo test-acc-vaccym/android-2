@@ -21,7 +21,7 @@ import com.edroplet.qxx.saneteltabactivity.view.CircleProgressbar;
  */
 
 public class SplashActivity extends Activity {
-    private TextView tv_splash_version;
+    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView tv_splash_version;
     private CircleProgressbar mCircleProgressbar;
     private boolean isClick = false;
 
@@ -33,7 +33,7 @@ public class SplashActivity extends Activity {
         //去掉标题栏
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash);
-        tv_splash_version = (TextView) findViewById(R.id.tv_splash_version);
+        tv_splash_version = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) findViewById(R.id.tv_splash_version);
         //设置版本号
         String input = getResources().getString(R.string.welcome_version);
         String ouput = String.format(input, String.format("%6s", getVersion()));

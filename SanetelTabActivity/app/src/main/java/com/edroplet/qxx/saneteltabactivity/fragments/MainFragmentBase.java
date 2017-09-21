@@ -9,8 +9,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.ManualActivity;
@@ -20,7 +18,7 @@ import com.edroplet.qxx.saneteltabactivity.activities.ManualActivity;
  */
 
 public class MainFragmentBase extends Fragment {
-    private Button btnSpeed;
+    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton btnSpeed;
     private View.OnClickListener speedClick;
     public static MainFragmentBase newInstance(String info) {
         Bundle args = new Bundle();
@@ -41,7 +39,7 @@ public class MainFragmentBase extends Fragment {
                 Snackbar.make(v, "Don't click me.please!.", Snackbar.LENGTH_SHORT).show();
             }
         });
-        btnSpeed = (Button)view.findViewById(R.id.main_application_manual_speed);
+        btnSpeed = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton)view.findViewById(R.id.main_application_manual_speed);
 
         return view;
     }

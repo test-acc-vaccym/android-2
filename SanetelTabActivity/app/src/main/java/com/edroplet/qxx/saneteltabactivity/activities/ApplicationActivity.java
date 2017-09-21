@@ -28,7 +28,7 @@ public class ApplicationActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private MenuItem menuItem;
     private BottomNavigationView bottomNavigationView;
-    private Button btnSpeed;
+    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton btnSpeed;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {

@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/welcome_install_line_detail"/>
-    <Button
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
         android:id="@+id/toMain"
         android:text="@string/guide_done"
         android:layout_width="wrap_content"

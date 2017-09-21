@@ -26,13 +26,13 @@ public class EDropletToolbar extends Toolbar {
     //添加布局必不可少的工具
     private LayoutInflater mInflater;
     //搜索框
-    // private EditText mEditSearchView;
+    // private com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText mEditSearchView;
     //标题
     private com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView mTextTitle;
     //右边按钮
-    private Button mRightButton;
+    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton mRightButton;
     //左边按钮
-    private Button mLeftButton;
+    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton mLeftButton;
     private View mView;
 
     public  EDropletToolbar(Context context){
@@ -86,10 +86,10 @@ public class EDropletToolbar extends Toolbar {
             mView = mInflater.inflate(R.layout.status_bar, null);
 
             //绑定控件
-            //mEditSearchView = (EditText) mView.findViewById(R.id.edroplet_toolbar_search);
+            //mEditSearchView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText) mView.findViewById(R.id.edroplet_toolbar_search);
             mTextTitle = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) mView.findViewById(R.id.edroplet_toolbar_title);
-            mLeftButton = (Button) mView.findViewById(R.id.status_bar_button_communication_state);
-            mRightButton = (Button) mView.findViewById(R.id.edroplet_toolbar_right_button);
+            mLeftButton = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton) mView.findViewById(R.id.status_bar_button_communication_state);
+            mRightButton = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton) mView.findViewById(R.id.edroplet_toolbar_right_button);
 
 
             //然后使用LayoutParams把控件添加到子view中
@@ -150,7 +150,7 @@ public class EDropletToolbar extends Toolbar {
     //    }
 
     //给左侧按钮设置图片，也可以在布局文件中直接引入
-    private void setButtonIcon(Button button, Drawable icon, int textResourceId, int drawGravity) {
+    private void setButtonIcon(com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton button, Drawable icon, int textResourceId, int drawGravity) {
 
         if (button != null){
             if (drawGravity == 1) {
@@ -184,7 +184,7 @@ public class EDropletToolbar extends Toolbar {
     };
 
     public  void setButtonState(@IdRes int resId, STATES state, @IdRes int textRes){
-        Button btn = (Button) findViewById(resId);
+        com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton btn = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton) findViewById(resId);
         int color = ContextCompat.getColor(mContext,(R.color.status_normal));
         switch (state){
             case SPECIAL:

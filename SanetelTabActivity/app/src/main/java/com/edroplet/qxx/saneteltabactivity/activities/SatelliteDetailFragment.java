@@ -70,12 +70,12 @@ public class SatelliteDetailFragment extends Fragment {
         if (mItem != null) {
             ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) rootView.findViewById(R.id.id_detail)).setText(mItem.id);
             ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) rootView.findViewById(R.id.name_detail)).setText(mItem.toString());
-            ((EditText) rootView.findViewById(R.id.polarization_detail)).setText(mItem.polarization);
-            ((EditText) rootView.findViewById(R.id.beacon_detail)).setText(mItem.beacon);
-            ((EditText) rootView.findViewById(R.id.longitude_detail)).setText(mItem.longitude);
-            ((EditText) rootView.findViewById(R.id.threshold_detail)).setText(mItem.threshold);
-            ((EditText) rootView.findViewById(R.id.symbol_rate_detail)).setText(mItem.symbolRate);
-            ((EditText) rootView.findViewById(R.id.comment_detail)).setText(mItem.comment);
+            ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText) rootView.findViewById(R.id.polarization_detail)).setText(mItem.polarization);
+            ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText) rootView.findViewById(R.id.beacon_detail)).setText(mItem.beacon);
+            ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText) rootView.findViewById(R.id.longitude_detail)).setText(mItem.longitude);
+            ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText) rootView.findViewById(R.id.threshold_detail)).setText(mItem.threshold);
+            ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText) rootView.findViewById(R.id.symbol_rate_detail)).setText(mItem.symbolRate);
+            ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText) rootView.findViewById(R.id.comment_detail)).setText(mItem.comment);
         }
 
         return rootView;

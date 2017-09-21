@@ -126,7 +126,7 @@
         android:layout_height="@dimen/satellite_bottom_bar_height"
         android:background="@color/bottom_tab_nav_background"
         android:layout_gravity="bottom">
-        <Button
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
@@ -134,7 +134,7 @@
             android:drawableTop="@drawable/recover"
             android:text="@string/satellite_recover"
             android:background="@color/button_blink"/>
-        <Button
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
@@ -142,7 +142,7 @@
             android:drawableTop="@drawable/ic_dialer_fork_add_call"
             android:text="@string/satellite_add"
             android:background="@color/button_blink"/>
-        <Button
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"

@@ -31,7 +31,7 @@ public class MainMonitorFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment_monitor, null);
-        TextView tvAntennaAzimuthInfo = (TextView) view.findViewById(R.id.main_monitor_antenna_tv_azimuth);
+        com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView tvAntennaAzimuthInfo = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.main_monitor_antenna_tv_azimuth);
         tvAntennaAzimuthInfo.setText(getArguments().getString(AntennaAzimuthInfo));
         return view;
     }

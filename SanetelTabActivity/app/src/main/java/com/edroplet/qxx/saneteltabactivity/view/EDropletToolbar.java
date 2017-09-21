@@ -28,7 +28,7 @@ public class EDropletToolbar extends Toolbar {
     //搜索框
     // private EditText mEditSearchView;
     //标题
-    private TextView mTextTitle;
+    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView mTextTitle;
     //右边按钮
     private Button mRightButton;
     //左边按钮
@@ -87,7 +87,7 @@ public class EDropletToolbar extends Toolbar {
 
             //绑定控件
             //mEditSearchView = (EditText) mView.findViewById(R.id.edroplet_toolbar_search);
-            mTextTitle = (TextView) mView.findViewById(R.id.edroplet_toolbar_title);
+            mTextTitle = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) mView.findViewById(R.id.edroplet_toolbar_title);
             mLeftButton = (Button) mView.findViewById(R.id.status_bar_button_communication_state);
             mRightButton = (Button) mView.findViewById(R.id.edroplet_toolbar_right_button);
 

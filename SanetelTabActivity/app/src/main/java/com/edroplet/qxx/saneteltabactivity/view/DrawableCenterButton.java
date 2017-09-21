@@ -26,7 +26,7 @@ import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
 
 public class DrawableCenterButton extends RelativeLayout {
     private ImageView imgView;
-    private TextView textView;
+    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView textView;
 
     public DrawableCenterButton(Context context) {
         super(context,null);
@@ -40,7 +40,7 @@ public class DrawableCenterButton extends RelativeLayout {
         super(context, attrs);
         LayoutInflater.from(context).inflate(R.layout.drawable_text_button, this,true);
         this.imgView = (ImageView)findViewById(R.id.drawable_text_image_view);
-        this.textView = (TextView)findViewById(R.id.drawable_text_text_view);
+        this.textView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView)findViewById(R.id.drawable_text_text_view);
 
         this.textView.setTypeface(ChangeTypeFace.getSimHei(this.getContext()));
         //获取所需的控件参数

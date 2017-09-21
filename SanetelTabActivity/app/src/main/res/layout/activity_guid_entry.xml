@@ -15,7 +15,7 @@
         app:navigationIcon="@drawable/back"
         app:title="@null"
         android:fitsSystemWindows="true">
-        <TextView
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:id="@+id/guide_toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

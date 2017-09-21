@@ -10,7 +10,7 @@
         android:adjustViewBounds="true"
         android:maxHeight="@dimen/main_application_image_max_height"
         android:src="@drawable/main_application_image"/>
-    <TextView
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
         android:id="@+id/message"
         android:layout_width="match_parent"
         android:layout_height="0dp"

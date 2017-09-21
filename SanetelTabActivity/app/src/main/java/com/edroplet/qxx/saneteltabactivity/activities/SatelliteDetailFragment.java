@@ -68,8 +68,8 @@ public class SatelliteDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.id_detail)).setText(mItem.id);
-            ((TextView) rootView.findViewById(R.id.name_detail)).setText(mItem.toString());
+            ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) rootView.findViewById(R.id.id_detail)).setText(mItem.id);
+            ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) rootView.findViewById(R.id.name_detail)).setText(mItem.toString());
             ((EditText) rootView.findViewById(R.id.polarization_detail)).setText(mItem.polarization);
             ((EditText) rootView.findViewById(R.id.beacon_detail)).setText(mItem.beacon);
             ((EditText) rootView.findViewById(R.id.longitude_detail)).setText(mItem.longitude);

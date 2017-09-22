@@ -9,5 +9,5 @@
     android:layout_marginLeft="6dp"
     android:layout_marginRight="6dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.CityListActivity"
+    tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteListActivity"
     tools:listitem="@layout/satellite_list_content" />

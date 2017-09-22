@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.05"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:maxHeight="@dimen/main_application_image_max_height"
+        android:src="@drawable/main_application_image"/>
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.40"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/main_application_operate" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:orientation="horizontal">
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/main_application_manual_speed"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/speed_manual"
+            android:text="@string/main_application_operate_speed"
+            android:clickable="true"
+            android:background="@color/button_blink"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/main_application_manual_location"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/location_manual"
+            android:text="@string/main_application_operate_location"
+            android:clickable="true"
+            android:background="@color/button_blink"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/main_application_manual_calculate"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/calculate_manual"
+            android:text="@string/main_application_operate_calculate"
+            android:clickable="true"
+            android:background="@color/button_blink"/>
+    </LinearLayout>
+</LinearLayout>

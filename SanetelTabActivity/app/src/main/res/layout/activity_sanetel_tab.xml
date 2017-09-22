@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.edroplet.qxx.saneteltabactivity.SanetelTabActivity">
+    tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.PowerAmplifierSettingsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -41,14 +41,15 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/app_bar_height"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/app_bar_height"
         android:layout_below="@id/content_toolbar"
-        android:background="@color/tab_unchecked"
+        android:background="@color/bottom_tab_nav_background"
         android:scrollbars="horizontal"
         app:tabTextColor="@android:color/black"
         app:tabSelectedTextColor="@color/tab_checked"

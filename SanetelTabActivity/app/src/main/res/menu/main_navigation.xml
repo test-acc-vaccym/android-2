@@ -2,26 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/main_navigation_monitor"
-        android:icon="@drawable/monitor"
-        android:title="@string/main_bottom_nav_monitor" />
+        android:id="@+id/main_bottom_nav_guide"
+        android:icon="@drawable/icon_discovery"
+        android:title="@string/main_bottom_nav_guide" />
 
     <item
-        android:id="@+id/main_navigation_application"
-        android:icon="@drawable/application"
-        android:title="@string/main_bottom_nav_application" />
+        android:id="@+id/main_bottom_nav_start"
+        android:icon="@mipmap/icon_start"
+        android:title="@string/main_bottom_nav_start" />
 
     <item
-        android:id="@+id/main_navigation_status"
-        android:icon="@drawable/status"
-        android:title="@string/main_bottom_nav_status" />
-    <item
-        android:id="@+id/main_navigation_collect"
-        android:icon="@drawable/record"
-        android:title="@string/main_bottom_nav_collect" />
-    <item
-        android:id="@+id/main_navigation_settings"
-        android:icon="@drawable/settings"
-        android:title="@string/main_bottom_nav_settings" />
+        android:id="@+id/main_bottom_nav_me"
+        android:icon="@drawable/icon_mine"
+        android:title="@string/main_bottom_nav_me" />
 
 </menu>

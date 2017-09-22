@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.ApplicationActivity">
+    tools:context="com.edroplet.qxx.saneteltabactivity.activities.functions.ApplicationActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:menu="@menu/main_navigation"
+        app:menu="@menu/function_pages_navigation"
         app:itemBackground="@color/bottom_tab_nav_background"
         app:itemTextColor="@color/tab_unchecked"/>
         <!--app:itemIconTint="@color/yellow"-->

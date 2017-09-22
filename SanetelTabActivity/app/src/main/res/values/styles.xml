@@ -22,6 +22,7 @@
         <item name="android:windowBackground">@mipmap/welcome</item>
         <item name="android:windowNoTitle">true</item>
     </style>
+
     <style name="FullscreenTheme" parent="AppTheme">
         <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
         <item name="android:windowActionBarOverlay">true</item>
@@ -29,6 +30,7 @@
         <!--item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
         <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item-->
     </style>
+
     <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
     </style>
@@ -97,11 +99,13 @@
         <item name="android:padding">@dimen/spacing_medium</item>
         <item name="android:showDividers">middle</item>
     </style>
+
     <style name="manual_divider">
         <item name="android:divider">@drawable/spacer_medium</item>
         <item name="android:padding">@dimen/spacing_medium</item>
         <item name="android:showDividers">middle</item>
     </style>
+
     <style name="button_style" parent="Base.Widget.AppCompat.Button.Borderless">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
@@ -109,6 +113,18 @@
         <item name="android:textColor">@color/button_text</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?attr/textAppearanceSearchResultTitle</item>
+    </style>
+
+    <style name="button_vertical_style" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="background">@color/floating_action_button_touch_tint</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Large</item>
+        <item name="android:layout_marginLeft">@dimen/guide_list_padding_left</item>
+        <item name="android:layout_marginStart">@dimen/guide_list_padding_left</item>
     </style>
 
     <style name="follow_me_navigation_bar" parent="Base.Widget.AppCompat.Button.Borderless">

@@ -29,12 +29,14 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     // 弹出对话框
     //  http://blog.csdn.net/u013299524/article/details/50722863
-    compile 'com.android.support:appcompat-v7:26+'
-    compile 'com.android.support:design:26+'
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support:design:26.+'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.github.sd6352051.niftydialogeffects:niftydialogeffects:1.0.0@aar'
-    compile 'com.android.support:support-v4:26+'
-    compile 'com.android.support:recyclerview-v7:26+'
-    compile 'com.android.support:support-vector-drawable:26+'
+    compile 'com.android.support:support-v4:26.+'
+    compile 'com.android.support:recyclerview-v7:26.+'
+    compile 'com.android.support:support-vector-drawable:26.+'
+    compile 'com.github.apl-devs:appintro:v4.2.2'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 }

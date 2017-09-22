@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
         android:orientation="vertical"
         android:layout_margin="@dimen/pop_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/pop_blue">
+        android:background="@drawable/pop_blue"
+        android:gravity="center">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:id="@+id/follow_me_fragment_explode_tv_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/follow_me_explode_exploded"
-            android:visibility="visible"/>
+            android:visibility="visible"
+            android:gravity="center"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:id="@+id/follow_me_fragment_explode_tv_prompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/follow_me_explode_exploding"/>
+            android:text="@string/follow_me_explode_exploding"
+            android:gravity="center"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:id="@+id/follow_me_fragment_explode_tv_next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:visibility="gone"/>
     </LinearLayout>
 </LinearLayout>

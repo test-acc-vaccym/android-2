@@ -58,6 +58,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/button_background</item>
         <item name="android:clickable">false</item>
+        <item name="android:checkable">false</item>
+        <item name="android:focusable">false</item>
         <item name="android:layout_marginLeft">@dimen/guide_list_padding_left</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -71,6 +73,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/button_background</item>
         <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:checkable">false</item>
     </style>
 
     <style name="guide_entry_list_style">
@@ -80,6 +84,7 @@
         <item name="android:layout_weight">1</item>
         <item name="android:clickable">true</item>
         <item name="android:orientation">horizontal</item>
+        <item name="android:background">@drawable/guide_main_item_background_color</item>
     </style>
 
     <style name="CustomActionBarStyle" parent="Widget.AppCompat.Light.ActionBar">

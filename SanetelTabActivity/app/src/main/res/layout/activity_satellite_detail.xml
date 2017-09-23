@@ -17,7 +17,7 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/satellite_detail_toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginBottom="16dp"
             app:expandedTitleMarginStart="24dp"
@@ -30,6 +30,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/white"
                 android:fitsSystemWindows="true"
+                android:contentDescription="@string/detailed_incall_info_title"
                 android:src="@mipmap/s1"
                 android:scaleType="centerCrop" />
             <android.support.v7.widget.Toolbar

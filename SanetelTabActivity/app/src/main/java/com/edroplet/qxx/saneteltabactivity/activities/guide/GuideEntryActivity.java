@@ -9,15 +9,48 @@ import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.functions.ApplicationActivity;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 
-public class GuideEntryActivity extends AppCompatActivity {
-    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton mExplode;
-    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton mLocation;
-    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton mDestination;
-    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton mSearchMode;
-    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton mSearching;
-    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton mLock;
-    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton mSaving;
+public class GuideEntryActivity extends AppCompatActivity implements View.OnClickListener{
+    private CustomButton mLocation;
+    private CustomButton mDestination;
+    private CustomButton mSearchMode;
+    private CustomButton mSearching;
+    private CustomButton mLock;
+    private CustomButton mSaving;
+
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(GuideEntryActivity.this, FollowMeActivity.class);
+        Bundle bundle = new Bundle();
+        switch (view.getId()){
+            case R.id.guide_main_button_explode:
+                bundle.putInt("position", 0 );
+                break;
+            case R.id.guide_main_button_location:
+                bundle.putInt("position", 1 );
+                break;
+            case R.id.guide_main_button_destination:
+                bundle.putInt("position", 2 );
+                break;
+            case R.id.guide_main_button_search_mode:
+                bundle.putInt("position", 3 );
+                break;
+            case R.id.guide_main_button_search:
+                bundle.putInt("position", 4 );
+                break;
+            case R.id.guide_main_button_lock:
+                bundle.putInt("position", 5 );
+                break;
+            case R.id.guide_main_button_saving:
+                bundle.putInt("position", 6);
+                break;
+            default:
+                bundle.putInt("position", 0 );
+                break;
+        }
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +60,7 @@ public class GuideEntryActivity extends AppCompatActivity {
         // StatusBarControl.setupToolbar(this, R.id.guide_tool_bar);
         setToolbar();
 
-        mExplode = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton) findViewById(R.id.guide_main_button_explode);
-        mExplode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO
-                Intent intent = new Intent(GuideEntryActivity.this, FollowMeActivity.class);
-                startActivity(intent);
-                // finish();
-            }
-        });
+        findViewById(R.id.guide_main_button_explode).setOnClickListener(this);
         // BottomNavigationView manual_navigation = (BottomNavigationView) findViewById(R.id.guide_navigation);
         // manual_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }

@@ -67,7 +67,16 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follow_me);
-
+        //新页面接收数据
+        Bundle bundle = this.getIntent().getExtras();
+        //接收name值
+        int position = 0;
+        if (bundle != null) {
+            position = bundle.getInt("position");
+            if (position <= 0) {
+                position = 0;
+            }
+        }
         OperateBarControl.setupOperatorBar(this);
         StatusBarControl.setupToolbar(this, R.id.follow_me_content_toolbar);
         findViewById(R.id.follow_me_bottom_nav_main).setOnClickListener(this);
@@ -84,11 +93,10 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
                 }
             });
 
-        initView();
+        initView(position);
     }
 
-    private void initView(){
-
+    private void initView(int position){
         mSectionsPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager());
         mSectionsPagerAdapter.addFragment(GuideFragmentExplode.newInstance("ahaha"));
         mSectionsPagerAdapter.addFragment(GuideFragmentExplode.newInstance("ahaha1"));
@@ -99,6 +107,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
         mViewPager = (ViewPager) findViewById(R.id.follow_me_view_pager);
         mViewPager.addOnPageChangeListener(mOnPageChangeListener);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        mViewPager.setCurrentItem(position);
     }
 
     private MenuItem menuItem;

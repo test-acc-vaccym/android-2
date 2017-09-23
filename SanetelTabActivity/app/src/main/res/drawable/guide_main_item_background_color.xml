@@ -15,21 +15,30 @@
     <!-- 按下状态 -->
     <item>
         <shape android:shape="rectangle">
-            <stroke
+            <!--stroke
                 android:width="0.1dp"
                 android:color="@color/guide_item_background_start"/>
-            <!--gradient
-                android:startColor="@color/guide_item_background_start"
-                android:endColor="@color/guide_item_background_center"
-                android:centerColor="@color/guide_item_background_end"
-                android:type="radial"
-                android:angle="90"/-->
-            <!--android:type="sweep"-->
             <padding
                 android:bottom="10dp"
                 android:left="30dp"
                 android:right="30dp"
-                android:top="10dp" />
+                android:top="10dp" /-->
+            <gradient
+                android:startColor="@color/guide_item_background_start"
+                android:centerColor="@color/guide_item_background_center"
+                android:endColor="@color/guide_item_background_end"
+                android:type="linear"
+                android:centerX="0.5"
+                android:centerY="0.5"
+                android:angle="90"/>
+            <!--android:type="sweep"-->
+            <corners android:radius="10dp" />
+
+            <!--padding
+                android:bottom="10dp"
+                android:left="30dp"
+                android:right="30dp"
+                android:top="10dp" /-->
         </shape >
     </item>
 </selector>

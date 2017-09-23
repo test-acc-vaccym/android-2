@@ -46,7 +46,7 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sanetel_tab);
+        setContentView(R.layout.activity_power_amplifier);
         StatusBarControl.setupToolbar(this,R.id.content_toolbar);
         initView();
         StatusBarControl.setTitle(hashMapUtils.getElemntFromLinkHashMap(map,0).getKey());

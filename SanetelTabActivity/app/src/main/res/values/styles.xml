@@ -104,7 +104,10 @@
         <item name="android:padding">@dimen/spacing_medium</item>
         <item name="android:showDividers">middle</item>
     </style>
-
+    <style name="settings_linear_shadow" parent="linear_shadow">
+        <item name="android:paddingLeft">@dimen/layout_padding_left</item>
+        <item name="android:paddingStart">@dimen/layout_padding_left</item>
+    </style>
     <style name="manual_divider">
         <item name="android:divider">@drawable/spacer_medium</item>
         <item name="android:padding">@dimen/spacing_medium</item>

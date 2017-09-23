@@ -10,25 +10,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.2"
         android:orientation="vertical">
         <!--输入数据-->
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/angle_calculate_input_data"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
             android:orientation="horizontal">
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:padding="@dimen/no_padding"
+                android:layout_width="@dimen/radio_group_width"
                 android:layout_height="wrap_content"
-                android:text="@string/angle_calculate_satellite_select"/>
+                android:text="@string/angle_calculate_satellite_select"
+                android:textColor="@color/blacklisted_call"/>
             <Spinner
                 android:id="@+id/angle_calculate_spinner_satellites"
+                android:padding="@dimen/no_padding"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:entries="@array/satellites"/>
@@ -36,6 +40,7 @@
                 android:id="@+id/angle_calculate_spinner_satellites_local"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/no_padding"
                 android:entries="@array/satellites_local"/>
         </LinearLayout>
     </LinearLayout>
@@ -51,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/angle_calculate_local_location"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
         <!--单选框-->
         <RelativeLayout
             android:layout_width="match_parent"
@@ -59,7 +64,8 @@
             <!--单选组-->
             <RadioGroup
                 android:id="@+id/rbg_city"
-                android:layout_width="wrap_content"
+                android:padding="@dimen/no_padding"
+                android:layout_width="@dimen/radio_group_width"
                 android:layout_height="wrap_content">
 
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
@@ -75,7 +81,11 @@
             <!--城市选择-->
             <LinearLayout
                 android:id="@+id/city_select"
-                android:layout_width="wrap_content"
+                android:paddingLeft="@dimen/radio_group_city_padding"
+                android:paddingStart="@dimen/radio_group_city_padding"
+                android:layout_marginStart="@dimen/radio_group_width"
+                android:layout_marginLeft="@dimen/radio_group_width"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
@@ -86,7 +96,7 @@
 
                 <Spinner
                     android:id="@+id/angle_calculate_spinner_province"
-                    android:layout_width="143dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:entries="@array/province" />
 
@@ -98,6 +108,8 @@
             </LinearLayout>
             <!--城市位置输入-->
             <LinearLayout
+                android:paddingLeft="@dimen/radio_group_city_padding"
+                android:paddingStart="@dimen/radio_group_city_padding"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@id/city_select"
@@ -113,9 +125,8 @@
                     android:orientation="horizontal">
 
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.04"
                         android:text="@string/angle_calculate_local_longitude" />
 
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
@@ -127,7 +138,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
-                        android:layout_weight="0.5"
+                        android:layout_weight="1"
                         android:text="@string/degree_unit" />
                 </LinearLayout>
 
@@ -137,9 +148,8 @@
                     android:orientation="horizontal">
 
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:text="@string/angle_calculate_local_latitude" />
 
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
@@ -151,7 +161,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
-                        android:layout_weight="0.5"
+                        android:layout_weight="1"
                         android:text="@string/degree_unit" />
                 </LinearLayout>
             </LinearLayout>
@@ -168,7 +178,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/angle_calculate_calculate_result"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -200,7 +210,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/degree_unit"
                     android:layout_gravity="start"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>
             <LinearLayout
                 android:layout_height="0dp"
@@ -228,7 +238,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/degree_unit"
                     android:layout_gravity="start"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>
             <LinearLayout
                 android:layout_height="0dp"
@@ -257,7 +267,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/degree_unit"
                     android:layout_gravity="start"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

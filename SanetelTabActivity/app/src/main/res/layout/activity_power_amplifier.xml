@@ -17,14 +17,12 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/content_toolbar"
             android:layout_width="match_parent"
-            app:titleTextAppearance="@dimen/status_bar_text_size"
             android:layout_height="@dimen/status_bar_height"
             android:background="@color/state_bar_background"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:titleTextColor="@color/title_text">
+            app:layout_scrollFlags="scroll|enterAlways">
         </android.support.v7.widget.Toolbar>
         <include android:id="@+id/operate_bar"
-            layout="@layout/operate_bar"/>
+            layout="@layout/operate_bar_top"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -40,7 +40,7 @@ public class PlaceholderFragment  extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_sanetel_tab, container, false);
+        View rootView = inflater.inflate(R.layout.settings_fragment_power_ampiler, container, false);
         com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView textView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) rootView.findViewById(R.id.section_label);
         // getString(R.string.section_format
         textView.setText(getArguments().getString(ARG_SECTION_MSG));

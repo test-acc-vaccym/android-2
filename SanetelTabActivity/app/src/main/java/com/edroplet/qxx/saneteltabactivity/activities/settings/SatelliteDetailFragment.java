@@ -62,7 +62,7 @@ public class SatelliteDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.satellite_detail, container, false);
+        View rootView = inflater.inflate(R.layout.settings_fragment_satellite_detail, container, false);
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {

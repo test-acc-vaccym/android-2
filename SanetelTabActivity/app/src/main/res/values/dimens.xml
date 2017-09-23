@@ -42,4 +42,10 @@
     <dimen name="guide_entry_list_margin_top">5dp</dimen>
     <!--layout之间的间隔-->
     <dimen name="layout_padding_top">12dp</dimen>
+    <dimen name="layout_padding_left">10dp</dimen>
+    <dimen name="settings_linear_shadow_padding_left">20dp</dimen>
+
+    <!--单选组-->
+    <dimen name="radio_group_width">100dp</dimen>
+    <dimen name="radio_group_city_padding">20dp</dimen>
 </resources>

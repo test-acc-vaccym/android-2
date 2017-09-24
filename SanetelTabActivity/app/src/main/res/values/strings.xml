@@ -252,6 +252,7 @@
     <string name="main_bottom_nav_me_language_zh_cn">简中体文</string>
     <string name="main_bottom_nav_me_language_english">English</string>
     <string name="title_activity_main_me_language">语言设置</string>
+
     <!--故障报修-->
     <string name="main_me_error_report_title">故障报修</string>
     <string name="main_me_error_report_email_receive">接收邮箱</string>
@@ -267,4 +268,44 @@
     <string name="main_me_error_report_commit">提交</string>
     <string name="main_me_error_report_save">保存</string>
     <string name="main_me_error_report_return">返回</string>
+
+    <!--意见反馈-->
+    <string name="main_me_advice_title">意见反馈</string>
+    <string name="main_me_advice_email_receive">接收邮箱</string>
+    <string name="main_me_advice_email_receive_address">support@sanetel.com</string>
+    <string name="main_me_advice_email_send">发送邮箱</string>
+    <string name="main_me_advice_name">姓&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;名</string>
+    <string name="main_me_advice_phone">电&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;话</string>
+    <string name="main_me_advice_serial_number">产品序列号</string>
+    <string name="main_me_advice_filename">文件名称</string>
+    <string name="main_me_advice_photo">添加照片</string>
+    <string name="main_me_advice_description">故障描述</string>
+    <string name="main_me_advice_commit">提交</string>
+    <string name="main_me_advice_save">保存</string>
+    <string name="main_me_advice_return">返回</string>
+
+    <!--关于卫通-->
+    <string name="main_me_about_title">关于卫通</string>
+    <string name="main_me_about_address_title">公司地址</string>
+    <string name="main_me_about_address">中国 北京\n经济技术开发区科谷二街6号院1号楼</string>
+    <string name="main_me_about_phone">电话</string>
+    <string name="main_me_about_phone_number">010-87838886</string>
+    <string name="main_me_about_fax">传真</string>
+    <string name="main_me_about_fax_number">010-87838866</string>
+    <string name="main_me_about_email">EMAIL:</string>
+    <string name="main_me_about_email_address">sale@sanetel.com（产品咨询）</string>
+    <string name="main_me_about_official_site">官网</string>
+    <string name="main_me_about_official_site_url">www.sanetel.com（产品咨询）</string>
+    <!--确认切换设备-->
+    <string name="main_me_switch_device_confirm">确定要连接其他天线或其他类型设备吗？</string>
+
+    <!--关于-->
+    <string name="main_me_app_title">关于</string>
+    <string name="main_me_app_version">%1$s</string>
+    <string name="main_me_app_update">APP版本更新</string>
+    <string name="main_me_app_update_state_checking">检查中……</string>
+    <string name="main_me_app_recovery">APP恢复出厂</string>
+    <string name="main_me_app_browse">APP使用说明书在线浏览</string>
+    <string name="main_me_app_download">APP使用说明书下载</string>
+
 </resources>

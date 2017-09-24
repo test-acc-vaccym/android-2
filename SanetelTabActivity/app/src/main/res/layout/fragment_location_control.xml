@@ -216,7 +216,7 @@
 
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             android:id="@+id/button"
-            style="@style/button_style"
+            style="@style/button_horizontal_style"
             android:layout_gravity="center"
             android:text="@string/location_control_rotate_start" />
     </LinearLayout>

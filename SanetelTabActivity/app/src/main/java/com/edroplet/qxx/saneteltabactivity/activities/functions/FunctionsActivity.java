@@ -17,7 +17,7 @@ import com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragment
 import com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentSettings;
 import com.edroplet.qxx.saneteltabactivity.utils.BottomNavigationViewHelper;
 
-public class ApplicationActivity extends AppCompatActivity {
+public class FunctionsActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private MenuItem menuItem;
@@ -30,25 +30,25 @@ public class ApplicationActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.main_navigation_monitor:
-                    Toast.makeText(getBaseContext(),"选择了 监视", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(getBaseContext(),"选择了 监视", Toast.LENGTH_SHORT).show();
                     viewPager.setCurrentItem(0);
                     return true;
                 case R.id.main_navigation_application:
-                    Toast.makeText(getBaseContext(),"选择了 应用", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(getBaseContext(),"选择了 应用", Toast.LENGTH_SHORT).show();
                     viewPager.setCurrentItem(1);
                     return true;
                 case R.id.main_navigation_status:
-                    Toast.makeText(getBaseContext(),"选择了 状态", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(getBaseContext(),"选择了 状态", Toast.LENGTH_SHORT).show();
                     viewPager.setCurrentItem(2);
                     return true;
 
                 case R.id.main_navigation_collect:
-                    Toast.makeText(getBaseContext(),"选择了 采集", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(getBaseContext(),"选择了 采集", Toast.LENGTH_SHORT).show();
                     viewPager.setCurrentItem(3);
                     return true;
 
                 case R.id.main_navigation_settings:
-                    Toast.makeText(getBaseContext(),"选择了 设置", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(getBaseContext(),"选择了 设置", Toast.LENGTH_SHORT).show();
                     viewPager.setCurrentItem(4);
                     return true;
                 case android.R.id.home:
@@ -63,7 +63,7 @@ public class ApplicationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_application);
+        setContentView(R.layout.activity_functions);
 
         StatusBarControl.setupToolbar(this, R.id.main_content_toolbar);
         /*

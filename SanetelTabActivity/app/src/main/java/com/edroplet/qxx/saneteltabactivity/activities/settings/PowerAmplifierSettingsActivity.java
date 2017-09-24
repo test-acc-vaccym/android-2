@@ -1,5 +1,6 @@
 package com.edroplet.qxx.saneteltabactivity.activities.settings;
 
+import android.content.pm.ActivityInfo;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -46,11 +47,13 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //  始终保持竖屏
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_power_amplifier);
         StatusBarControl.setupToolbar(this,R.id.content_toolbar);
         initView();
         StatusBarControl.setTitle(hashMapUtils.getElemntFromLinkHashMap(map,0).getKey());
-//        setupFab();
+        // setupFab();
 
     }
 

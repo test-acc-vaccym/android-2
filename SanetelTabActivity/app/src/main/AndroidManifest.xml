@@ -45,7 +45,7 @@
         <activity
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation"
-            android:name=".activities.functions.ApplicationActivity"
+            android:name=".activities.functions.FunctionsActivity"
             android:label="@string/title_activity_application"/>
         <activity
             android:name=".activities.settings.SatelliteListActivity"

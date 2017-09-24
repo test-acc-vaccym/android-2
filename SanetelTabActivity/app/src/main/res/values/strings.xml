@@ -138,6 +138,7 @@
         <item>5.0</item>
         <item>custom</item>
     </array>
+    <string name="main_application_manual_speed_palstance_hint">1.0</string>
     <!--手动控制-->
     <string name="manual_direction">方位</string>
     <string name="manual_pitch">俯仰</string>

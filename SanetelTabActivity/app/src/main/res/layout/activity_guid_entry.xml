@@ -20,7 +20,7 @@
             android:id="@+id/guide_toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="left|start"
             android:text="@string/follow_me_bottom_nav_main"
             android:textColor="@color/title_text"
             android:textStyle="bold"

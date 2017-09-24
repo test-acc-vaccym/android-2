@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+
 /**
  * Created by qxs on 2017/9/24.
  */
@@ -65,31 +67,36 @@ public class CustomRadioGroupWithCustomRadioButton extends LinearLayout {
                     setCheckedStateForView(mCheckedId, false);
                 }
                 mProtectFromCheckedChange = false;
-                setCheckedId(button.getId());
+                int id  = button.getId();
+                setCheckedId(id);
             }
         } else if (child instanceof ViewGroup) {
-            final CustomRadioButton button = findRadioButton((ViewGroup) child);
-            if (button.isChecked()) {
-                mProtectFromCheckedChange = true;
-                if (mCheckedId != -1) {
-                    setCheckedStateForView(mCheckedId, false);
+            final ArrayList<CustomRadioButton> buttons = findRadioButton((ViewGroup) child);
+            for (CustomRadioButton button: buttons){
+                if (button != null && button.isChecked()) {
+                    mProtectFromCheckedChange = true;
+                    if (mCheckedId != -1) {
+                        setCheckedStateForView(mCheckedId, false);
+                    }
+                    mProtectFromCheckedChange = false;
+                    int id  = button.getId();
+                    setCheckedId(id);
                 }
-                mProtectFromCheckedChange = false;
-                setCheckedId(button.getId());
             }
         }
         super.addView(child, index, params);
     }
     /** 查找radioButton控件 */
-    public CustomRadioButton findRadioButton(ViewGroup group) {
-        CustomRadioButton resBtn = null;
+    public ArrayList<CustomRadioButton> findRadioButton(ViewGroup group) {
         int len = group.getChildCount();
+        ArrayList<CustomRadioButton> resBtn = new ArrayList<CustomRadioButton>();
         for (int i = 0; i < len; i++) {
             if (group.getChildAt(i) instanceof CustomRadioButton) {
-                resBtn = (CustomRadioButton) group.getChildAt(i);
-                break;
+                resBtn.add( (CustomRadioButton) group.getChildAt(i));
             } else if (group.getChildAt(i) instanceof ViewGroup) {
-                findRadioButton((ViewGroup) group.getChildAt(i));
+               for(CustomRadioButton button: findRadioButton((ViewGroup) group.getChildAt(i))) {
+                   resBtn.add(button);
+               }
             }
         }
         return resBtn;
@@ -322,30 +329,35 @@ public class CustomRadioGroupWithCustomRadioButton extends LinearLayout {
                     id = child.hashCode();
                     child.setId(id);
                 }
-                ((CustomRadioButton) child)
-                        .setOnCheckedChangeListener(mChildOnCheckedChangeListener);
+                ((CustomRadioButton) child).setOnCheckedChangeListener(mChildOnCheckedChangeListener);
             } else if (parent == CustomRadioGroupWithCustomRadioButton.this
                     && child instanceof ViewGroup) {
-                CustomRadioButton btn = findRadioButton((ViewGroup) child);
-                int id = btn.getId();
-                // generates an id if it's missing
-                if (id == View.NO_ID) {
-                    id = btn.hashCode();
-                    btn.setId(id);
+                ArrayList<CustomRadioButton> btns = findRadioButton((ViewGroup) child);
+                for (CustomRadioButton btn: btns) {
+                    int id = btn.getId();
+                    // generates an id if it's missing
+                    if (id == View.NO_ID) {
+                        id = btn.hashCode();
+                        btn.setId(id);
+                    }
+                    btn.setOnCheckedChangeListener(mChildOnCheckedChangeListener);
                 }
-                btn.setOnCheckedChangeListener(mChildOnCheckedChangeListener);
             }
             if (mOnHierarchyChangeListener != null) {
                 mOnHierarchyChangeListener.onChildViewAdded(parent, child);
             }
         }
+
         public void onChildViewRemoved(View parent, View child) {
             if (parent == CustomRadioGroupWithCustomRadioButton.this && child instanceof CustomRadioButton) {
                 ((CustomRadioButton) child).setOnCheckedChangeListener(null);
             } else if (parent == CustomRadioGroupWithCustomRadioButton.this
                     && child instanceof ViewGroup) {
-                findRadioButton((ViewGroup) child).setOnCheckedChangeListener(
-                        null);
+                ArrayList<CustomRadioButton> rdBtns = findRadioButton((ViewGroup) child);
+                for (CustomRadioButton crb: rdBtns){
+                    crb.setOnCheckedChangeListener(
+                            null);
+                }
             }
             if (mOnHierarchyChangeListener != null) {
                 mOnHierarchyChangeListener.onChildViewRemoved(parent, child);

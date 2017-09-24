@@ -1,8 +1,11 @@
 package com.edroplet.qxx.saneteltabactivity.view.custom;
 
 import android.content.Context;
+import android.graphics.Rect;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatRadioButton;
 import android.util.AttributeSet;
+import android.view.View;
 
 import com.edroplet.qxx.saneteltabactivity.utils.ChangeTypeFace;
 
@@ -27,15 +30,5 @@ public class CustomRadioButton extends AppCompatRadioButton {
         if (!isInEditMode()) {
             setTypeface(ChangeTypeFace.getSimHei(this.getContext()));
         }
-    }
-
-    @Override
-    public boolean callOnClick() {
-        if (isChecked()){
-            setChecked(false);
-        }else {
-            setChecked(true);
-        }
-        return super.callOnClick();
     }
 }

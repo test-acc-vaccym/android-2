@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.activities.functions.ApplicationActivity;
+import com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsActivity;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -30,7 +30,7 @@ public class MainFragmentStart extends Fragment {
         view.findViewById(R.id.main_start_launch).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), ApplicationActivity.class));
+                startActivity(new Intent(getActivity(), FunctionsActivity.class));
                 // getActivity().finish();
             }
         });

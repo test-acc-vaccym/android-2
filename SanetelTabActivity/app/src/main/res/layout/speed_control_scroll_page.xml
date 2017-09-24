@@ -20,7 +20,7 @@
                 android:layout_height="match_parent"
                 android:text="@string/main_application_manual_speed_movement"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
-            <RadioGroup
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
                 android:layout_width="0dp"
                 android:layout_weight="2"
                 android:orientation="horizontal"
@@ -32,8 +32,9 @@
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:checked="true"
                     android:text="@string/main_application_manual_speed_movement_continuous" />
-            </RadioGroup>
+            </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
         </LinearLayout>
         <!--角速度-->
         <LinearLayout
@@ -80,6 +81,7 @@
                             android:id="@+id/rd_three"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:checked="true"
                             android:text="3.0"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                             android:id="@+id/rd_five"
@@ -101,7 +103,7 @@
                             android:layout_alignBottom="@id/custom_setting"
                             android:layout_toEndOf="@id/custom_setting"
                             android:layout_toRightOf="@id/custom_setting"
-                            android:hint="1.0"
+                            android:hint="@string/main_application_manual_speed_palstance_hint"
                             android:inputType="number|numberDecimal"
                             android:padding="0dp"/>
                     </RelativeLayout>

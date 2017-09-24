@@ -2,8 +2,6 @@ package com.edroplet.qxx.saneteltabactivity.activities.guide;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
@@ -13,13 +11,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.activities.functions.ApplicationActivity;
+import com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsActivity;
 import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
 import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
 import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentExplode;
-
-import java.util.LinkedHashMap;
 
 public class FollowMeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -57,7 +53,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.follow_me_bottom_nav_monitor:
                 StatusBarControl.setTitle(getString(R.string.follow_me_bottom_nav_monitor));
-                startActivity(new Intent(FollowMeActivity.this, ApplicationActivity.class));
+                startActivity(new Intent(FollowMeActivity.this, FunctionsActivity.class));
                 finish();
                 break;
         }

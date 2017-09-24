@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="WeChatRadioButton">
+        <attr name="focus_icon" format="reference"/>
+        <attr name="defocus_icon" format="reference"/>
+        <attr name="focus_color" format="color"/>
+    </declare-styleable>
     <declare-styleable name="CoordinatorTabLayout">
         <attr name="contentScrim" format="color" />
         <attr name="tabIndicatorColor" format="color" />

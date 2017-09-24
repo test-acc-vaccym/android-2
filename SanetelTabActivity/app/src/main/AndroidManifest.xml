@@ -79,6 +79,22 @@
             android:name=".activities.main.MainMeLanguageActivity"
             android:label="@string/title_activity_main_me_language"
             android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".activities.main.MainMeAboutActivity"
+            android:label="@string/main_me_about_title"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.main.MainMeAdviceActivity"
+            android:label="@string/main_me_advice_title"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.main.MainMeAppActivity"
+            android:label="@string/main_me_app_title"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.main.MainMeErrorReportActivity"
+            android:label="@string/main_me_error_report_title"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

@@ -19,5 +19,12 @@ public class MainMeAboutActivity extends AppCompatActivity{
         setContentView(R.layout.fragment_main_me_about);
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_me_about_toolbar);
         toolbar.setTitle(R.string.main_me_about_title);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
+
 }

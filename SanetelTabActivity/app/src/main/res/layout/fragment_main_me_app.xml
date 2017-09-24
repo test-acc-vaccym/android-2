@@ -55,6 +55,7 @@
                     android:gravity="center"
                     android:text="@string/app_name"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    android:id="@+id/main_me_app_version"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -80,7 +81,8 @@
                     style="@style/text_horizontal_style"
                     android:padding="@dimen/no_padding"
                     android:textColor="@color/gray"
-                    android:text="@string/main_me_app_update_state_checking"/>
+                    android:text="@string/main_me_app_update_state_checking"
+                    android:visibility="gone"/>
             </LinearLayout>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:id="@+id/main_me_app_recovery"

@@ -77,10 +77,21 @@ public class MainFragmentMe extends Fragment implements View.OnClickListener{
         final View view = inflater.inflate(R.layout.fragment_main_me, null);
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.main_me_toolbar);
         toolbar.setTitle(R.string.main_bottom_nav_me);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
         CustomButton language = (CustomButton) view.findViewById(R.id.main_bottom_nav_me_language);
         areas[0]=getString(languages[0]);
         areas[1]=getString(languages[1]);
         language.setOnClickListener(new RadioClickListener());
+        view.findViewById(R.id.main_bottom_nav_me_version).setOnClickListener(this);
+        view.findViewById(R.id.main_bottom_nav_me_error_report).setOnClickListener(this);
+        view.findViewById(R.id.main_bottom_nav_me_advices).setOnClickListener(this);
+        view.findViewById(R.id.main_bottom_nav_me_switch_device).setOnClickListener(this);
+        view.findViewById(R.id.main_bottom_nav_me_about).setOnClickListener(this);
         return view;
     }
 
@@ -124,6 +135,8 @@ public class MainFragmentMe extends Fragment implements View.OnClickListener{
                             @Override
                             public void onClick(View view) {
                                 // TODO 切换设备
+
+                                builder.dismiss();
                             }
                         })
                         .setButton2Click(new View.OnClickListener() {

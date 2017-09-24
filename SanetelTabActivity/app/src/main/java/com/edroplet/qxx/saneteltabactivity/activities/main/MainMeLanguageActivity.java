@@ -16,6 +16,12 @@ public class MainMeLanguageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_me_language);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -26,6 +32,7 @@ public class MainMeLanguageActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
     }
 
 }

@@ -31,7 +31,12 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_main_me_error_report);
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_me_error_report_toolbar);
-        toolbar.setTitle(R.string.main_me_error_report_title);
+        toolbar.setTitle(R.string.main_me_error_report_title);toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         findViewById(R.id.main_me_error_report_return).setOnClickListener(this);
         findViewById(R.id.main_me_error_report_save).setOnClickListener(this);
         findViewById(R.id.main_me_error_report_commit).setOnClickListener(this);
@@ -44,7 +49,7 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
         Intent intent = null;
         switch(view.getId()){
             case R.id.main_me_error_report_return:
-                finish();
+                this.finish();
                 break;
             case R.id.main_me_error_report_save:
                 // TODO 保存到本地缓存

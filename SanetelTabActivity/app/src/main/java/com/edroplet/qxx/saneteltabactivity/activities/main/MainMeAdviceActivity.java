@@ -32,6 +32,12 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.fragment_main_me_advice);
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_me_advice_toolbar);
         toolbar.setTitle(R.string.main_me_advice_title);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         findViewById(R.id.main_me_advice_return).setOnClickListener(this);
         findViewById(R.id.main_me_advice_save).setOnClickListener(this);
         findViewById(R.id.main_me_advice_commit).setOnClickListener(this);
@@ -43,7 +49,7 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
         Intent intent = null;
         switch(view.getId()){
             case R.id.main_me_advice_return:
-                finish();
+                this.finish();
                 break;
             case R.id.main_me_advice_save:
                 // TODO 保存到本地缓存

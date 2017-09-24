@@ -86,6 +86,7 @@ public class CustomRadioGroupWithCustomRadioButton extends LinearLayout {
         }
         super.addView(child, index, params);
     }
+
     /** 查找radioButton控件 */
     public ArrayList<CustomRadioButton> findRadioButton(ViewGroup group) {
         int len = group.getChildCount();

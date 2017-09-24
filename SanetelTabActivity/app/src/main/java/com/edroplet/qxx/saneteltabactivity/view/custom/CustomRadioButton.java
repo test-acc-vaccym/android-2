@@ -31,4 +31,11 @@ public class CustomRadioButton extends AppCompatRadioButton {
             setTypeface(ChangeTypeFace.getSimHei(this.getContext()));
         }
     }
+    public void toggleChecked(){
+        if (isChecked()){
+            setChecked(false);
+        }else {
+            setChecked(true);
+        }
+    }
 }

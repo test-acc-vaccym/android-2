@@ -21,15 +21,18 @@
                 android:text="@string/main_application_manual_speed_movement"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
+                android:id="@+id/main_application_manual_speed_movement_group_top"
                 android:layout_width="0dp"
                 android:layout_weight="2"
                 android:orientation="horizontal"
                 android:layout_height="match_parent">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    android:id="@+id/main_application_manual_speed_movement_step_top"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/main_application_manual_speed_movement_step"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    android:id="@+id/main_application_manual_speed_movement_continuous_top"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:checked="true"

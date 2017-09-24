@@ -14,6 +14,7 @@ import android.text.StaticLayout;
 import android.util.AttributeSet;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.utils.ChangeTypeFace;
 
 
 /**
@@ -54,6 +55,7 @@ public class WeChatRadioButton extends AppCompatRadioButton {
         mFocusPaint.setAntiAlias(true);
         mTextPaint.setAntiAlias(true);
         mDeFocusPaint.setAntiAlias(true);
+        mTextPaint.setTypeface(ChangeTypeFace.getSimHei(getContext()));
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.WeChatRadioButton);
         Drawable mFocusDrawable = ta.getDrawable(R.styleable.WeChatRadioButton_focus_icon);

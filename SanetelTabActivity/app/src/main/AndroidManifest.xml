@@ -33,12 +33,18 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation"
             android:name=".activities.functions.ManualActivity"
             android:label="@string/title_activity_manual"/>
         <activity
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation"
             android:name=".activities.guide.GuideEntryActivity"
             android:label="@string/guide_main_enter" />
         <activity
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation"
             android:name=".activities.functions.ApplicationActivity"
             android:label="@string/title_activity_application"/>
         <activity
@@ -47,6 +53,8 @@
             android:theme="@style/AppTheme">
         </activity>
         <activity
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation"
             android:name=".activities.settings.PowerAmplifierSettingsActivity"
             android:label="@string/settings_main_amplifier"
             android:theme="@style/AppTheme.NoActionBar">

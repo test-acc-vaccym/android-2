@@ -28,4 +28,14 @@ public class CustomRadioButton extends AppCompatRadioButton {
             setTypeface(ChangeTypeFace.getSimHei(this.getContext()));
         }
     }
+
+    @Override
+    public boolean callOnClick() {
+        if (isChecked()){
+            setChecked(false);
+        }else {
+            setChecked(true);
+        }
+        return super.callOnClick();
+    }
 }

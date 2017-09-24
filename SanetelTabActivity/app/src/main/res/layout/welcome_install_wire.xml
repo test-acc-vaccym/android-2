@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/WhiteSmoke"
@@ -15,20 +16,20 @@
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/welcome_install_wire_scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/welcome_install_wire_title">
-
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="@dimen/appIntro2BottomBarHeight">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
             android:orientation="vertical">
             <ImageView
                 android:id="@+id/welcome_install_wire_iv"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:src="@mipmap/welcome4"/>
+                android:src="@mipmap/welcome4"
+                tools:ignore="ContentDescription" />
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:padding="@dimen/layout_padding_top"
@@ -39,13 +40,4 @@
                 android:text="@string/welcome_install_line_detail"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-        android:id="@+id/toMain"
-        android:text="@string/guide_done"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@color/button_blink"
-        android:visibility="invisible"/>
 </LinearLayout>

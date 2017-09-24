@@ -96,14 +96,7 @@ public class WelcomeActivity extends AppCompatActivity  implements OnPageChangeL
 
         LayoutInflater inflater = LayoutInflater.from(this);
         RelativeLayout guideFour = (RelativeLayout) inflater.inflate(R.layout.welcome_install_wire, null);
-        guideFour.findViewById(R.id.toMain).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this,PowerAmplifierSettingsActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+
         views = new ArrayList<View>();
         // 初始化引导图片列表
         views.add(inflater.inflate(R.layout.welcome, null));
@@ -115,17 +108,6 @@ public class WelcomeActivity extends AppCompatActivity  implements OnPageChangeL
 
         vp = (ViewPager) findViewById(R.id.welcome_viewpager);
         vp.setAdapter(vpAdapter);
-
-        btnstarthome = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton) views.get(3).findViewById(R.id.toMain);
-        btnstarthome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //跳转到主界面并杀死导航页面
-                Intent intent=new Intent(WelcomeActivity.this,MainActivity.class);
-                startActivity(intent);
-                WelcomeActivity.this.finish();
-            }
-        });
 
         // 监听ViewPager
         vp.setOnPageChangeListener(this);

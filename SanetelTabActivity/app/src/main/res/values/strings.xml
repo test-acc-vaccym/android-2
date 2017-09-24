@@ -17,7 +17,7 @@
 5m射频线缆2根。发射和接收相同。线缆的任意一端连接至面板收发N头并旋转固定。\n
 \t本产品为用户提供了多种通道实现对便携站的监控。用户还可以通过网线和串口两种有线方式监控便携站。\n
 \t这里采用无线WI-FI为信号传输介质，通过手机APP控制。注意不用的通信接口需加装防尘盖。\n
-线缆连接之后，可以给设备上电了！上电之后，延时1分钟后，点击进入。
+线缆连接之后，可以给设备上电了！上电之后，延时1分钟后，点击进入主页面。
 </string>
     <string name="welcome_fix_device">固定设备</string>
     <string name="welcome_fix_device_detail">\t通过安装在电气仓上盖前端的水平仪和指南针将天线本体保持正南并水平放置。保证方位偏置不要大于10°。\n
@@ -251,4 +251,19 @@
     <string name="main_bottom_nav_me_language_zh_cn">简中体文</string>
     <string name="main_bottom_nav_me_language_english">English</string>
     <string name="title_activity_main_me_language">语言设置</string>
+    <!--故障报修-->
+    <string name="main_me_error_report_title">故障报修</string>
+    <string name="main_me_error_report_email_receive">接收邮箱</string>
+    <string name="main_me_error_report_email_receive_address">support@sanetel.com</string>
+    <string name="main_me_error_report_email_send">发送邮箱</string>
+    <string name="main_me_error_report_name">姓&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;名</string>
+    <string name="main_me_error_report_phone">用户电话</string>
+    <string name="main_me_error_report_serial_number">产品序列号</string>
+    <string name="main_me_error_report_filename">文件名称</string>
+    <string name="main_me_error_report_attach">添加附件（历史文件）</string>
+    <string name="main_me_error_report_photo">添加照片</string>
+    <string name="main_me_error_report_description">故障描述</string>
+    <string name="main_me_error_report_commit">提交</string>
+    <string name="main_me_error_report_save">保存</string>
+    <string name="main_me_error_report_return">返回</string>
 </resources>

@@ -10,26 +10,32 @@
     tools:showIn="@layout/activity_main_me_language"
     android:layout_marginStart="@dimen/guide_list_padding_left"
     android:layout_marginLeft="@dimen/guide_list_padding_left">
-    <LinearLayout
+    <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/main_bottom_nav_me_language_zh_cn"
-        app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        tools:layout_editor_absoluteY="16dp"
-        tools:layout_editor_absoluteX="16dp"
-        android:padding="@dimen/appbar_padding_top"/>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/main_bottom_nav_me_language_english"
-        app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        tools:layout_editor_absoluteY="54dp"
-        tools:layout_editor_absoluteX="16dp" />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:textAlignment="textStart"
+            android:text="@string/main_bottom_nav_me_language_zh_cn"
+            android:button="@null"
+            android:drawableRight="@drawable/radio_button_checked"
+            android:drawableEnd="@drawable/radio_button_checked"
+            android:layout_marginEnd="@dimen/app_bar_height"
+            android:layout_marginRight="@dimen/app_bar_height"/>
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/app_bar_height"
+            android:layout_marginRight="@dimen/app_bar_height"
+            android:button="@null"
+            android:drawableEnd="@drawable/radio_button_checked"
+            android:drawableRight="@drawable/radio_button_checked"
+            android:text="@string/main_bottom_nav_me_language_english"
+            android:textAlignment="textStart" />
+    </RadioGroup>
 </LinearLayout>

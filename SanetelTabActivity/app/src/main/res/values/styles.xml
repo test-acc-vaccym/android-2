@@ -133,6 +133,7 @@
         <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Large</item>
         <item name="android:layout_marginLeft">@dimen/guide_list_padding_left</item>
         <item name="android:layout_marginStart">@dimen/guide_list_padding_left</item>
+        <item name="android:gravity">left|start</item>
     </style>
 
     <style name="follow_me_navigation_bar" parent="Base.Widget.AppCompat.Button.Borderless">

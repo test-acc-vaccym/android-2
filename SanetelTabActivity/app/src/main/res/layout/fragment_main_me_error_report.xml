@@ -7,23 +7,29 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.main.MainMeLanguageActivity"
-    tools:showIn="@layout/activity_main_me_language"
     android:layout_marginStart="@dimen/guide_list_padding_left"
-    android:layout_marginLeft="@dimen/guide_list_padding_left">
+    android:layout_marginLeft="@dimen/guide_list_padding_left"
+    android:divider="@drawable/divider">
+
+    <!--接收邮箱：support@sanetel.com-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/main_bottom_nav_me_language_zh_cn"
-        app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        tools:layout_editor_absoluteY="16dp"
-        tools:layout_editor_absoluteX="16dp"
-        android:padding="@dimen/appbar_padding_top"/>
-        <CheckBox
+        style="@style/Widget.Design.TextInputLayout">
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/main_me_error_report_email_receive"
+            app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            tools:layout_editor_absoluteY="16dp"
+            tools:layout_editor_absoluteX="16dp"
+            android:padding="@dimen/appbar_padding_top"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_me_error_report_email_receive_address"
+            app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            style="@style/Widget.Design.TextInputLayout"/>
     </LinearLayout>
     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
         android:layout_width="wrap_content"

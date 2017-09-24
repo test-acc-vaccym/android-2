@@ -2,8 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.edroplet.qxx.saneteltabactivity">
 
+    <!--震动-->
     <uses-permission android:name="android.permission.VIBRATE" />
-
+    <!--相册和文件-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--发送邮件-->
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -33,32 +38,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation"
             android:name=".activities.functions.ManualActivity"
-            android:label="@string/title_activity_manual"/>
-        <activity
-            android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation"
+            android:label="@string/title_activity_manual"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activities.guide.GuideEntryActivity"
-            android:label="@string/guide_main_enter" />
-        <activity
-            android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation"
+            android:label="@string/guide_main_enter"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activities.functions.FunctionsActivity"
-            android:label="@string/title_activity_application"/>
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/title_activity_application"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.settings.SatelliteListActivity"
             android:label="@string/satellite_toolbar_title"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation"
             android:name=".activities.settings.PowerAmplifierSettingsActivity"
+            android:configChanges="keyboardHidden|orientation"
             android:label="@string/settings_main_amplifier"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activities.settings.SatelliteDetailActivity"
             android:label="@string/title_satellite_detail"
@@ -70,31 +73,62 @@
         </activity>
         <activity
             android:name=".activities.guide.FollowMeActivity"
-            android:parentActivityName=".activities.guide.GuideEntryActivity"
-            android:label="@string/title_activity_follow_me"/>
+            android:label="@string/title_activity_follow_me"
+            android:parentActivityName=".activities.guide.GuideEntryActivity" />
         <activity
             android:name=".activities.main.MainActivity"
             android:label="@string/title_activity_main" />
         <activity
             android:name=".activities.main.MainMeLanguageActivity"
             android:label="@string/title_activity_main_me_language"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.main.MainMeAboutActivity"
             android:label="@string/main_me_about_title"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.main.MainMeAdviceActivity"
             android:label="@string/main_me_advice_title"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.main.MainMeAppActivity"
             android:label="@string/main_me_app_title"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.main.MainMeErrorReportActivity"
             android:label="@string/main_me_error_report_title"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!--图片选择-->
+        <activity android:name="com.yongchun.library.view.ImageSelectorActivity"/>
+        <activity android:name="com.yongchun.library.view.ImagePreviewActivity"/>
+        <activity android:name="com.yongchun.library.view.ImageCropActivity"/>
+        <!--文件选择-->
+        <!--Important FileChooserActivity must have android:exported="true" and have the <intent-filter> set as follows:-->
+        <activity
+            android:name="com.ipaulpro.afilechooser.FileChooserActivity"
+            android:icon="@drawable/ic_chooser"
+            android:enabled="@bool/use_activity"
+            android:exported="true"
+            android:label="@string/choose_file" >
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.OPENABLE" />
+                <data android:mimeType="*/*" />
+            </intent-filter>
+        </activity>
+        <!--If you want to use the Storage Access Framework (API 19+),-->
+        <provider
+            android:name="com.ianhanniballake.localstorage.LocalStorageProvider"
+            android:authorities="com.ianhanniballake.localstorage.documents"
+            android:enabled="@bool/use_provider"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:permission="android.permission.MANAGE_DOCUMENTS" >
+            <intent-filter>
+                <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
+            </intent-filter>
+        </provider>
     </application>
 
 </manifest>

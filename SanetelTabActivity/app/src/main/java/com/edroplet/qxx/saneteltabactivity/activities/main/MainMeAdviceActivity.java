@@ -11,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.yongchun.library.view.ImageSelectorActivity;
+
+import java.util.ArrayList;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -47,6 +50,7 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View view) {
         Intent intent = null;
+        boolean noResult=true;
         switch(view.getId()){
             case R.id.main_me_advice_return:
                 this.finish();
@@ -59,12 +63,23 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.main_me_advice_photo:
                 // intent = new Intent(getContext(), Context.AUDIO_SERVICE);
+                noResult = false;
+                ImageSelectorActivity.start(MainMeAdviceActivity.this, 9, ImageSelectorActivity.MODE_MULTIPLE, true,true, false);
                 break;
             default:
                 break;
         }
-        if (intent != null) {
+        if (noResult && intent != null) {
             startActivity(intent);
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode == RESULT_OK && requestCode == ImageSelectorActivity.REQUEST_IMAGE){
+            ArrayList<String> images = (ArrayList<String>) data.getSerializableExtra(ImageSelectorActivity.REQUEST_OUTPUT);
+            // todo get images then do something
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

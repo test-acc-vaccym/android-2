@@ -6,10 +6,10 @@ android {
 
     defaultConfig {
         applicationId "com.edroplet.qxx.saneteltabactivity"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0.1"
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
@@ -39,4 +39,17 @@ dependencies {
     compile 'com.github.apl-devs:appintro:v4.2.2'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+    // 图像选择
+    compile 'com.android.support:recyclerview-v7:26+'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.commit451:PhotoView:1.2.4'
+    compile 'com.isseiaoki:simplecropview:1.0.13'
+    compile 'com.yongchun:com.yongchun.imageselector:1.1.0'
+    // 数据库
+    // https://github.com/jgilfelt/android-sqlite-asset-helper
+    compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
+    // https://github.com/amulyakhare/TextDrawable
+    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+
+
 }

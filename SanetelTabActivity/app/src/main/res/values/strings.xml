@@ -308,4 +308,6 @@
     <string name="main_me_app_browse">APP使用说明书在线浏览</string>
     <string name="main_me_app_download">APP使用说明书下载</string>
 
+    <string name="choose_file">选择文件</string>
+    <string name="choose_mail_client">请选择邮件发送软件(Choose Email Client)</string>
 </resources>

@@ -17,6 +17,7 @@ import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
 import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
 import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentExplode;
+import com.edroplet.qxx.saneteltabactivity.utils.RandomDialoger;
 import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
 
 public class FollowMeActivity extends AppCompatActivity implements View.OnClickListener {
@@ -66,12 +67,6 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follow_me);
-
-        String ssid = SystemServices.getConnectWifiSsid(this);
-        Toast.makeText(this,ssid, Toast.LENGTH_SHORT).show();
-        if (!ssid.contains("P120-3-")){
-            SystemServices.startWifiManager(this);
-        }
 
         //新页面接收数据
         Bundle bundle = this.getIntent().getExtras();

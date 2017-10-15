@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteParameterItem;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteParameters;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 import java.util.Map;
 
@@ -66,14 +68,14 @@ public class SatelliteDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) rootView.findViewById(R.id.id_detail)).setText(mItem.id);
-            ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) rootView.findViewById(R.id.name_detail)).setText(mItem.toString());
-            ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText) rootView.findViewById(R.id.polarization_detail)).setText(mItem.polarization);
-            ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText) rootView.findViewById(R.id.beacon_detail)).setText(mItem.beacon);
-            ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText) rootView.findViewById(R.id.longitude_detail)).setText(mItem.longitude);
-            ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText) rootView.findViewById(R.id.threshold_detail)).setText(mItem.threshold);
-            ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText) rootView.findViewById(R.id.symbol_rate_detail)).setText(mItem.symbolRate);
-            ((com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText) rootView.findViewById(R.id.comment_detail)).setText(mItem.comment);
+            ((CustomTextView) rootView.findViewById(R.id.id_detail)).setText(mItem.id);
+            ((CustomTextView) rootView.findViewById(R.id.name_detail)).setText(mItem.toString());
+            ((CustomEditText) rootView.findViewById(R.id.polarization_detail)).setText(mItem.polarization);
+            ((CustomEditText) rootView.findViewById(R.id.beacon_detail)).setText(mItem.beacon);
+            ((CustomEditText) rootView.findViewById(R.id.longitude_detail)).setText(mItem.longitude);
+            ((CustomEditText) rootView.findViewById(R.id.threshold_detail)).setText(mItem.threshold);
+            ((CustomEditText) rootView.findViewById(R.id.symbol_rate_detail)).setText(mItem.symbolRate);
+            ((CustomEditText) rootView.findViewById(R.id.comment_detail)).setText(mItem.comment);
         }
 
         return rootView;

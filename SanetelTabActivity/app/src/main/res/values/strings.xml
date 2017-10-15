@@ -80,6 +80,7 @@
     <string name="satellite_threshold_key">门限</string>
     <string name="satellite_symbol_rate_key">符号率</string>
 
+    <!--卫星-->
     <string name="satellite_detail_id_key">序&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;号</string>
     <string name="satellite_detail_name_key">卫星名称</string>
     <string name="satellite_detail_polarization_key">极化方式</string>
@@ -89,6 +90,11 @@
     <string name="satellite_detail_symbol_rate_key">符&#160;&#160;号&#160;&#160;率</string>
     <string name="satellite_detail_comment_key">备&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;注</string>
 
+    <!--城市-->
+    <string name="city_detail_id_key">序号</string>
+    <string name="city_detail_name_key">地名</string>
+    <string name="city_detail_longitude_key">东经°</string>
+    <string name="city_detail_latitude_key">北纬°</string>
     <!--底部按钮-->
     <string name="satellite_recover">恢复出厂</string>
     <string name="satellite_add">增加卫星</string>
@@ -157,7 +163,7 @@
     <string name="location_control_setting_pitch">预置俯仰角</string>
     <string name="location_control_setting_polarization">预置极化角</string>
     <string name="location_control_rotate_start">开始旋转</string>
-    <string name="location_control_rotate_stop">停止旋转</string>
+    <string name="location_control_rotate_stop">停止</string>
     <string name="location_control_setting_hint_val">0.000</string>
     <!--预置角计算-->
     <string name="angle_calculate_input_data">输入数据</string>
@@ -217,7 +223,7 @@
     <string name="settings_main_amplifier_factory">功放厂家</string>
     <string name="settings_main_amplifier_oscillator">功放本振</string>
     <string name="settings_main_amplifier_interfere">邻星干扰</string>
-    <string name="settings_main_amplifier_emit">发射开关</string>
+    <string name="settings_main_amplifier_emit">发射手动</string>
     <string name="settings_main_lnb">LNB</string>
     <string name="settings_main_lnb_oscillator">LNB本振</string>
     <string name="settings_main_antenna">天线</string>
@@ -242,7 +248,7 @@
     <string name="title_activity_main">主页面</string>
     <string name="main_bottom_nav_guide">引导模式</string>
     <string name="main_bottom_nav_start">开始使用</string>
-    <string name="main_bottom_nav_me">我的</string>
+    <string name="main_bottom_nav_me">我的设备</string>
     <string name="main_bottom_nav_me_language">多语言环境</string>
     <string name="main_bottom_nav_me_error_report">故障报修</string>
     <string name="main_bottom_nav_me_advices">意见反馈</string>
@@ -251,6 +257,9 @@
     <string name="main_bottom_nav_me_switch_device">切换设备</string>
     <string name="main_bottom_nav_me_language_zh_cn">简中体文</string>
     <string name="main_bottom_nav_me_language_english">English</string>
+    <string name="main_me_font">修改字体</string>
+    <string name="main_me_font_simhei">黑体</string>
+    <string name="main_me_font_default">默认</string>
     <string name="title_activity_main_me_language">语言设置</string>
 
     <!--故障报修-->
@@ -309,5 +318,14 @@
     <string name="main_me_app_download">APP使用说明书下载</string>
 
     <string name="choose_file">选择文件</string>
+    <string name="empty_directory">Empty Directory</string>
+    <string name="storage_removed">Storage was removed or unmounted.</string>
+    <string name="error_selecting_file">Error selecting File</string>
+    <string name="internal_storage">Internal storage</string>
+    <string name="select_files">文件选择</string>
+    <string name="finish">完成</string>
+
     <string name="choose_mail_client">请选择邮件发送软件(Choose Email Client)</string>
+    <string name="title_citylocation_list">CityLocations</string>
+    <string name="title_citylocation_detail">CityLocation Detail</string>
 </resources>

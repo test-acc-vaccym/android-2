@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.guide.GuideEntryActivity;
+import com.edroplet.qxx.saneteltabactivity.activities.settings.CityLocationListActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.PowerAmplifierSettingsActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteListActivity;
 
@@ -33,6 +34,13 @@ public class FunctionsFragmentSettings extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), SatelliteListActivity.class));
+                // getActivity().finish();
+            }
+        });
+        view.findViewById(R.id.settings_main_database_city).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), CityLocationListActivity.class));
                 // getActivity().finish();
             }
         });

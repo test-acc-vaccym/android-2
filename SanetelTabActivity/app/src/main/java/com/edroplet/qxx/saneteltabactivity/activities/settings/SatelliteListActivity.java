@@ -19,6 +19,7 @@ import com.edroplet.qxx.saneteltabactivity.R;
 
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteParameterItem;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteParameters;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 import org.json.JSONException;
 
@@ -83,7 +84,7 @@ public class SatelliteListActivity extends AppCompatActivity {
             // 设置居中的时候不能含有原标题
             ab.setDisplayShowTitleEnabled(false);
         }
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.satellite_list_fab);
         if (fab !=null)
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -93,11 +94,11 @@ public class SatelliteListActivity extends AppCompatActivity {
                 }
             });
 
-        View recyclerView = findViewById(R.id.city_list);
+        View recyclerView = findViewById(R.id.satellite_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
 
-        if (findViewById(R.id.city_detail_container) != null) {
+        if (findViewById(R.id.satellite_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
             // If this view is present, then the
@@ -154,7 +155,7 @@ public class SatelliteListActivity extends AppCompatActivity {
                         SatelliteDetailFragment fragment = new SatelliteDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.city_detail_container, fragment)
+                                .replace(R.id.satellite_detail_container, fragment)
                                 .commit();
                     } else {
                         Context context = v.getContext();
@@ -175,33 +176,33 @@ public class SatelliteListActivity extends AppCompatActivity {
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             // public final TextView mIdView;
-            public final com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView mNameView;
-            public final com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView mPolarizationView;
-            public final com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView mLongitudeView;
-            public final com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView mBeaconView;
-            public final com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView mThresholdView;
-            public final com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView mSymbolRateView;
+            public final CustomTextView mNameView;
+            public final CustomTextView mPolarizationView;
+            public final CustomTextView mLongitudeView;
+            public final CustomTextView mBeaconView;
+            public final CustomTextView mThresholdView;
+            public final CustomTextView mSymbolRateView;
             // public final TextView mComentView;
             public SatelliteParameterItem mItem;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                // mIdView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.id);
+                // mIdView = (CustomTextView) view.findViewById(R.id.id);
                 // assert mIdView != null;
-                mNameView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.name);
+                mNameView = (CustomTextView) view.findViewById(R.id.name);
                 assert mNameView != null;
-                mPolarizationView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.polarization);
+                mPolarizationView = (CustomTextView) view.findViewById(R.id.polarization);
                 assert mPolarizationView == null;
-                mLongitudeView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.longitude);
+                mLongitudeView = (CustomTextView) view.findViewById(R.id.longitude);
                 assert mLongitudeView == null;
-                mBeaconView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.beacon);
+                mBeaconView = (CustomTextView) view.findViewById(R.id.beacon);
                 assert mBeaconView != null;
-                mThresholdView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.threshold);
+                mThresholdView = (CustomTextView) view.findViewById(R.id.threshold);
                 assert mThresholdView != null;
-                mSymbolRateView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.symbolRate);
+                mSymbolRateView = (CustomTextView) view.findViewById(R.id.symbolRate);
                 assert mSymbolRateView != null;
-                // mComentView = (com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView) view.findViewById(R.id.comment);
+                // mComentView = (CustomTextView) view.findViewById(R.id.comment);
                 // assert mComentView != null;
             }
 

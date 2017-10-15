@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.support.annotation.Nullable;
 
+import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteParameterItem;
 
 import org.json.JSONArray;
@@ -86,4 +87,56 @@ public class JsonLoad {
             }
         }
     }
+
+    public ArrayList<LocationInfo> loadCities() throws IOException, JSONException, NullPointerException {
+        ArrayList<LocationInfo> objects = new ArrayList<LocationInfo>();
+        BufferedReader reader = null;
+        assert  mContext!= null;
+        try {
+            //获取assets资源管理器
+            AssetManager assetManager = mContext.getAssets();
+            InputStream in;
+            // in = mContext.openFileInput(this.mJsonFileName);
+            in = assetManager.open(this.mJsonFileName);
+
+            reader = new BufferedReader(new InputStreamReader(in));
+            StringBuilder jsonString = new StringBuilder();
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                jsonString.append(line);
+            }
+            JSONArray array = (JSONArray) new JSONTokener(jsonString.toString())
+                    .nextValue();
+            for (int i = 0; i < array.length(); i++) {
+                objects.add(new LocationInfo(array.getJSONObject(i)));
+            }
+
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }finally {
+            if (reader != null) {
+                reader.close();
+            }
+        }
+        return objects;
+    }
+    public void saveCities(ArrayList <LocationInfo> locationInfo) throws JSONException, IOException{
+        assert  mContext!= null;
+        JSONArray array = new JSONArray();
+        for (LocationInfo l : locationInfo)
+            array.put(l.toJSON());
+
+        Writer writer = null;
+        try {
+            OutputStream out = mContext.openFileOutput(mJsonFileName,
+                    Context.MODE_PRIVATE);
+            writer = new OutputStreamWriter(out);
+            writer.write(array.toString());
+        } finally {
+            if (writer != null) {
+                writer.close();
+            }
+        }
+    }
+
 }

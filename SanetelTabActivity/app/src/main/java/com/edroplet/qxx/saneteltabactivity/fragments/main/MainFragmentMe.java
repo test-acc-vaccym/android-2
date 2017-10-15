@@ -31,18 +31,31 @@ import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
 public class MainFragmentMe extends Fragment implements View.OnClickListener{
     private int[] languages = new int[]{R.string.main_bottom_nav_me_language_zh_cn, R.string.main_bottom_nav_me_language_english};
+    private int[] fontsArray = new int[]{R.string.main_me_font_simhei, R.string.main_me_font_default};
     private RadioOnClick OnClick = new RadioOnClick(1);
     String[] areas = new String[2];
+    String[] fonts = new String[2];
     private ListView areaListView;
 
     class RadioClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            AlertDialog ad =new AlertDialog.Builder(getActivity()).setTitle(getString(R.string.main_bottom_nav_me_language))
-                    .setSingleChoiceItems(areas,OnClick.getIndex(),OnClick)
-                    .create();
-            areaListView=ad.getListView();
-            ad.show();
+            switch (v.getId()) {
+                case R.id.main_me_font:
+                    AlertDialog adFont = new AlertDialog.Builder(getActivity()).setTitle(getString(R.string.main_me_font))
+                            .setSingleChoiceItems(fonts, OnClick.getIndex(), OnClick)
+                            .create();
+                    areaListView = adFont.getListView();
+                    adFont.show();
+                    break;
+                default:
+                    AlertDialog ad = new AlertDialog.Builder(getActivity()).setTitle(getString(R.string.main_bottom_nav_me_language))
+                            .setSingleChoiceItems(areas, OnClick.getIndex(), OnClick)
+                            .create();
+                    areaListView = ad.getListView();
+                    ad.show();
+                    break;
+            }
         }
     }
     class RadioOnClick implements DialogInterface.OnClickListener{
@@ -60,7 +73,7 @@ public class MainFragmentMe extends Fragment implements View.OnClickListener{
 
         public void onClick(DialogInterface dialog, int whichButton){
             setIndex(whichButton);
-            Toast.makeText(getContext(), "您已经选择了 " +  ":" + areas[index], Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "您已经选择了 " +  ":" + areaListView.getChildAt(index), Toast.LENGTH_LONG).show();
             dialog.dismiss();
         }
     }
@@ -77,6 +90,8 @@ public class MainFragmentMe extends Fragment implements View.OnClickListener{
         final View view = inflater.inflate(R.layout.fragment_main_me, null);
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.main_me_toolbar);
         toolbar.setTitle(R.string.main_bottom_nav_me);
+        toolbar.setTitleTextAppearance(getContext(), android.R.style.TextAppearance_Large);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,6 +101,9 @@ public class MainFragmentMe extends Fragment implements View.OnClickListener{
         CustomButton language = (CustomButton) view.findViewById(R.id.main_bottom_nav_me_language);
         areas[0]=getString(languages[0]);
         areas[1]=getString(languages[1]);
+        fonts[0] = getString(fontsArray[0]);
+        fonts[1] = getString(fontsArray[1]);
+
         language.setOnClickListener(new RadioClickListener());
         view.findViewById(R.id.main_bottom_nav_me_version).setOnClickListener(this);
         view.findViewById(R.id.main_bottom_nav_me_error_report).setOnClickListener(this);

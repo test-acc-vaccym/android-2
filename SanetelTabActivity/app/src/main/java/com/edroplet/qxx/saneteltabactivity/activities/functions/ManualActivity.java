@@ -65,11 +65,12 @@ public class ManualActivity extends AppCompatActivity {
         @Override
         public void onPageScrollStateChanged(int state) { }
     };
-
+    public static String POSITION = "position";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual);
+        Bundle bundle = this.getIntent().getExtras();
 
         StatusBarControl.setupToolbar(this, R.id.main_content_toolbar);
         OperateBarControl.setupOperatorBar(this);
@@ -77,7 +78,6 @@ public class ManualActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.manual_viewpager);
         viewPager.addOnPageChangeListener(mOnPageChangeListener);
         setupViewPager(viewPager);
-
         //禁止ViewPager滑动
         //        viewPager.setOnTouchListener(new View.OnTouchListener() {
         //            @Override
@@ -95,6 +95,16 @@ public class ManualActivity extends AppCompatActivity {
         NestedScrollView sv = (NestedScrollView) findViewById(R.id.speed_info_scroll);
         if (sv != null)
             sv.smoothScrollTo(0,0);
+
+
+
+        int position = bundle.getInt(POSITION);
+        if (position < 0){
+            position = 0;
+        }else if (position >= viewPager.getChildCount()){
+            position = viewPager.getChildCount() - 1;
+        }
+        viewPager.setCurrentItem(position);
     }
 
     private void setupViewPager(ViewPager viewPager) {

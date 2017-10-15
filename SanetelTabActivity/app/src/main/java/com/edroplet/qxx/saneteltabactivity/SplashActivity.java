@@ -46,7 +46,7 @@ public class SplashActivity extends Activity {
         mCircleProgressbar.setProgressColor(Color.parseColor("#1BB079"));
         mCircleProgressbar.setProgressLineWidth(5);
         mCircleProgressbar.setProgressType(CircleProgressbar.ProgressType.COUNT);
-        mCircleProgressbar.setTimeMillis(5000); // 设置5秒倒计时
+        mCircleProgressbar.setTimeMillis(getResources().getInteger(R.integer.splash_time)); // 设置2秒倒计时
         mCircleProgressbar.reStart();
 
         mCircleProgressbar.setCountdownProgressListener(1,progressListener);

@@ -25,30 +25,31 @@ public class GuideEntryActivity extends AppCompatActivity implements View.OnClic
         Bundle bundle = new Bundle();
         switch (view.getId()){
             case R.id.guide_main_button_explode:
-                bundle.putInt("position", 0 );
+                bundle.putInt(FollowMeActivity.POSITION, 0 );
                 break;
             case R.id.guide_main_button_location:
-                bundle.putInt("position", 1 );
+                bundle.putInt(FollowMeActivity.POSITION, 1 );
                 break;
             case R.id.guide_main_button_destination:
-                bundle.putInt("position", 2 );
+                bundle.putInt(FollowMeActivity.POSITION, 2 );
                 break;
             case R.id.guide_main_button_search_mode:
-                bundle.putInt("position", 3 );
+                bundle.putInt(FollowMeActivity.POSITION, 3 );
                 break;
             case R.id.guide_main_button_search:
-                bundle.putInt("position", 4 );
+                bundle.putInt(FollowMeActivity.POSITION, 4 );
                 break;
             case R.id.guide_main_button_lock:
-                bundle.putInt("position", 5 );
+                bundle.putInt(FollowMeActivity.POSITION, 5 );
                 break;
             case R.id.guide_main_button_saving:
-                bundle.putInt("position", 6);
+                bundle.putInt(FollowMeActivity.POSITION, 6);
                 break;
             default:
-                bundle.putInt("position", 0 );
+                bundle.putInt(FollowMeActivity.POSITION, 0 );
                 break;
         }
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
@@ -61,6 +62,12 @@ public class GuideEntryActivity extends AppCompatActivity implements View.OnClic
         setToolbar();
 
         findViewById(R.id.guide_main_button_explode).setOnClickListener(this);
+        findViewById(R.id.guide_main_button_location).setOnClickListener(this);
+        findViewById(R.id.guide_main_button_destination).setOnClickListener(this);
+        findViewById(R.id.guide_main_button_search_mode).setOnClickListener(this);
+        findViewById(R.id.guide_main_button_search).setOnClickListener(this);
+        findViewById(R.id.guide_main_button_lock).setOnClickListener(this);
+        findViewById(R.id.guide_main_button_saving).setOnClickListener(this);
         // BottomNavigationView manual_navigation = (BottomNavigationView) findViewById(R.id.guide_navigation);
         // manual_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }

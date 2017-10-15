@@ -7,8 +7,6 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.main.MainActivity"
-    android:layout_marginStart="@dimen/guide_list_padding_left"
-    android:layout_marginLeft="@dimen/guide_list_padding_left"
     android:divider="@drawable/divider">
 
     <android.support.design.widget.AppBarLayout
@@ -41,7 +39,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/guide_list_padding_left"
+            android:layout_marginLeft="@dimen/guide_list_padding_left">
             <!--接收邮箱：support@sanetel.com-->
             <LinearLayout
                 style="@style/layout_vertical_style">
@@ -136,22 +136,32 @@
             </LinearLayout>
             <!--添加附件-->
             <LinearLayout
-                style="@style/layout_vertical_style">
+                style="@style/layout_vertical_style"
+                android:layout_weight="2"
+                android:orientation="vertical">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     android:id="@+id/main_me_error_report_attach"
                     android:text="@string/main_me_error_report_attach"
-                    style="@style/button_horizontal_style"
+                    style="@style/button_vertical_style"
+                    android:padding="@dimen/no_padding"
                     android:gravity="start|left"/>
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    android:id="@+id/main_me_error_report_attach_files"
+                    style="@style/text_vertical_style"/>
             </LinearLayout>
             <!--添加照片-->
             <LinearLayout
-                style="@style/layout_vertical_style">
-
+                style="@style/layout_vertical_style"
+                android:layout_weight="2"
+                android:orientation="vertical">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     android:id="@+id/main_me_error_report_photo"
                     android:text="@string/main_me_error_report_photo"
-                    style="@style/button_horizontal_style"
+                    style="@style/button_vertical_style"
                     android:gravity="start|left"/>
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    android:id="@+id/main_me_error_report_photo_files"
+                    style="@style/text_vertical_style"/>
             </LinearLayout>
             <!--故障描述-->
             <LinearLayout

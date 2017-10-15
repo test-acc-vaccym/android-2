@@ -14,8 +14,14 @@ import android.widget.ListView;
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.mail.MailUtil;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
+import com.ipaulpro.afilechooser.FileChooserActivity;
+import com.ssa.afilechooser.FileChooserActivity2;
+import com.ssa.afilechooser.utils.FileUtils2;
 import com.yongchun.library.view.ImageSelectorActivity;
 
+import android.net.Uri;
+
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -23,8 +29,9 @@ import java.util.ArrayList;
  */
 
 public class MainMeErrorReportActivity extends AppCompatActivity implements View.OnClickListener{
-
+    private int REQUESTFileChooserActivity = 1000;
     ArrayList<String> images;
+    Uri attache;
 //    public static MainMeErrorReportActivity newInstance(String info) {
 //        Bundle args = new Bundle();
 //        MainMeErrorReportActivity fragment = new MainMeErrorReportActivity();
@@ -87,7 +94,12 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
                 ImageSelectorActivity.start(MainMeErrorReportActivity.this, 9, ImageSelectorActivity.MODE_MULTIPLE, true,true, false);
                 break;
             case R.id.main_me_error_report_attach:
-                // intent = new Intent(getContext(), Context.AUDIO_SERVICE);
+                noResult = false;
+//                intent = new Intent(MainMeErrorReportActivity.this, FileChooserActivity.class);
+//                startActivityForResult(intent, REQUESTFileChooserActivity);
+                FileUtils2.mFileFileterBySuffixs.acceptSuffixs("log|txt|amr|mp3");//过江哪些格式的文件，用“|”分隔（英文），如果不加这句代码，默认显示所有文件。
+                intent = new Intent(this, FileChooserActivity2.class);
+                startActivityForResult(intent, REQUESTFileChooserActivity);
                 break;
             default:
                 break;
@@ -102,6 +114,13 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
         if(resultCode == RESULT_OK && requestCode == ImageSelectorActivity.REQUEST_IMAGE){
             images = (ArrayList<String>) data.getSerializableExtra(ImageSelectorActivity.REQUEST_OUTPUT);
             // todo get images then do something
+        }else if(resultCode == RESULT_OK && requestCode == REQUESTFileChooserActivity){
+            if (null != data) {
+                @SuppressWarnings("unchecked")
+                ArrayList<File> files = (ArrayList<File>) data.getSerializableExtra(FileChooserActivity2.PATHS);//返回的一个ArrayList<File>
+             }
+
+            attache = data.getData();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

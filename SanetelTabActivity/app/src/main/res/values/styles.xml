@@ -4,7 +4,6 @@
     <!--在Theme中隐藏现有的ActionBar-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
         <!--这是通过Style去设定icon-->
         <item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
         <!-- Customize your theme here. -->
@@ -15,9 +14,10 @@
     </style>
 
     <!-- 为 Theme 设置背景图 -->
-    <style name="AppStartTheme" parent="android:Theme">
+    <style name="AppStartTheme" parent="AppTheme">
         <!-- 为 Theme 设置透明属性 -->
         <item name="android:windowIsTranslucent">true</item>
+        <!--解决白屏的问题-->
         <!-- 为 Theme 设置背景图 -->
         <item name="android:windowBackground">@mipmap/welcome</item>
         <item name="android:windowNoTitle">true</item>
@@ -50,11 +50,11 @@
 
     <style name="guide_item_style" parent="Base.Widget.AppCompat.Button.Borderless">
         <item name="android:paddingTop">@dimen/guide_list_item_padding</item>
-        <item name="android:gravity">start|center_vertical</item>
-        <item name="android:layout_gravity">start</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">end|right</item>
         <item name="android:paddingLeft">@dimen/guide_list_item_padding</item>
-        <item name="android:textAppearance">?attr/textAppearanceSearchResultTitle</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Medium</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/button_background</item>
         <item name="android:clickable">false</item>
@@ -67,8 +67,8 @@
     <style name="guide_item_flow_style" parent="Base.Widget.AppCompat.Button.Borderless">
         <item name="android:drawableRight">@drawable/process_ok</item>
         <item name="android:drawableEnd">@drawable/process_ok</item>
-        <item name="android:gravity">end|center_vertical</item>
-        <item name="android:layout_gravity">end</item>
+        <item name="android:paddingRight">30dp</item>
+        <item name="android:paddingEnd">30dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/button_background</item>
@@ -104,10 +104,12 @@
         <item name="android:padding">@dimen/spacing_medium</item>
         <item name="android:showDividers">middle</item>
     </style>
+
     <style name="settings_linear_shadow" parent="linear_shadow">
         <item name="android:paddingLeft">@dimen/layout_padding_left</item>
         <item name="android:paddingStart">@dimen/layout_padding_left</item>
     </style>
+
     <style name="manual_divider">
         <item name="android:divider">@drawable/spacer_medium</item>
         <item name="android:padding">@dimen/spacing_medium</item>
@@ -202,6 +204,16 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:paddingLeft">@dimen/layout_padding_left</item>
+    </style>
+
+    <style name="fileChooserName">
+        <item name="android:drawablePadding">@dimen/guide_list_item_padding</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:paddingLeft">@dimen/guide_list_item_padding</item>
+        <item name="android:paddingRight">@dimen/guide_list_item_padding</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
 
 </resources>

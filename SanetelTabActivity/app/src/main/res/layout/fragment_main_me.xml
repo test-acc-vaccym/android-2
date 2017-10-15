@@ -42,6 +42,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                android:id="@+id/main_me_font"
+                style="@style/button_vertical_style"
+                android:layout_width="match_parent"
+                android:text="@string/main_me_font"/>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:id="@+id/main_bottom_nav_me_language"
                 style="@style/button_vertical_style"
                 android:layout_width="match_parent"

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="300dp"
+    android:background="@drawable/pop_new_gray"
+    android:layout_gravity="center"
+    android:gravity="center">
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            android:id="@+id/pop_dialog_tv_first"
+            style="@style/text_vertical_style"
+            android:visibility="visible"
+            android:gravity="center"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            android:id="@+id/pop_dialog_tv_second"
+            style="@style/text_vertical_style"
+            android:gravity="center"/>
+        <LinearLayout
+            android:id="@+id/pop_dialog_third"
+            style="@style/layout_vertical_style"
+            android:padding="0dp"
+            android:orientation="horizontal">
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:id="@+id/pop_dialog_tv_third_start"
+                style="@style/text_horizontal_style"
+                android:gravity="center"/>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                android:id="@+id/pop_dialog_btn_third"
+                style="@style/button_horizontal_style"/>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:id="@+id/pop_dialog_tv_third_end"
+                style="@style/text_horizontal_style"
+                android:gravity="center"/>
+        </LinearLayout>
+</LinearLayout>

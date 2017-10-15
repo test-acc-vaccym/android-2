@@ -24,7 +24,8 @@
             android:text="@string/follow_me_bottom_nav_main"
             android:textColor="@color/title_text"
             android:textStyle="bold"
-            android:textAppearance="?attr/textAppearanceSearchResultTitle"/>
+            android:textAppearance="?attr/textAppearanceSearchResultTitle"
+            tools:ignore="RtlHardcoded" />
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             android:id="@+id/guide_enter_main"
             android:layout_width="wrap_content"

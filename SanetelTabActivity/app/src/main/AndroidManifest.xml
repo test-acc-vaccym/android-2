@@ -2,13 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.edroplet.qxx.saneteltabactivity">
 
-    <!--震动-->
+    <!-- 震动 -->
     <uses-permission android:name="android.permission.VIBRATE" />
-    <!--相册和文件-->
+    <!-- 相册和文件 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <!--发送邮件-->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 发送邮件 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- wifi -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 获取WIFI信息状态的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 获取网络状态改变的权限 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 网络状态改变的权限 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+
+    <!-- 改变WiFi多播状态 -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -30,7 +38,7 @@
             android:name=".SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenLayout|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/AppStartTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,13 +63,13 @@
         <activity
             android:name=".activities.settings.SatelliteListActivity"
             android:label="@string/satellite_toolbar_title"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.settings.PowerAmplifierSettingsActivity"
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/settings_main_amplifier"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.settings.SatelliteDetailActivity"
             android:label="@string/title_satellite_detail"
@@ -98,37 +106,69 @@
             android:name=".activities.main.MainMeErrorReportActivity"
             android:label="@string/main_me_error_report_title"
             android:theme="@style/AppTheme.NoActionBar" />
-        <!--图片选择-->
-        <activity android:name="com.yongchun.library.view.ImageSelectorActivity"/>
-        <activity android:name="com.yongchun.library.view.ImagePreviewActivity"/>
-        <activity android:name="com.yongchun.library.view.ImageCropActivity"/>
-        <!--文件选择-->
-        <!--Important FileChooserActivity must have android:exported="true" and have the <intent-filter> set as follows:-->
+        <!-- 图片选择 -->
+        <activity android:name="com.yongchun.library.view.ImageSelectorActivity" />
+        <activity android:name="com.yongchun.library.view.ImagePreviewActivity" />
+        <activity android:name="com.yongchun.library.view.ImageCropActivity" />
+        <!-- 文件选择 -->
         <activity
-            android:name="com.ipaulpro.afilechooser.FileChooserActivity"
+            android:name="com.ssa.afilechooser.FileChooserActivity2"
+            android:exported="false"
             android:icon="@drawable/ic_chooser"
-            android:enabled="@bool/use_activity"
-            android:exported="true"
-            android:label="@string/choose_file" >
+            android:label="@string/choose_file">
             <intent-filter>
                 <action android:name="android.intent.action.GET_CONTENT" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.OPENABLE" />
+
                 <data android:mimeType="*/*" />
             </intent-filter>
         </activity>
-        <!--If you want to use the Storage Access Framework (API 19+),-->
+        <!-- Important FileChooserActivity must have android:exported="true" and have the <intent-filter> set as follows: -->
+        <activity
+            android:name="com.ipaulpro.afilechooser.FileChooserActivity"
+            android:enabled="@bool/use_activity"
+            android:exported="true"
+            android:icon="@drawable/ic_chooser"
+            android:label="@string/choose_file">
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.OPENABLE" />
+
+                <data android:mimeType="*/*" />
+            </intent-filter>
+        </activity>
+        <!-- If you want to use the Storage Access Framework (API 19+), -->
         <provider
             android:name="com.ianhanniballake.localstorage.LocalStorageProvider"
             android:authorities="com.ianhanniballake.localstorage.documents"
             android:enabled="@bool/use_provider"
             android:exported="true"
             android:grantUriPermissions="true"
-            android:permission="android.permission.MANAGE_DOCUMENTS" >
+            android:permission="android.permission.MANAGE_DOCUMENTS">
             <intent-filter>
                 <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
             </intent-filter>
         </provider>
+
+        <activity
+            android:name=".activities.settings.CityLocationListActivity"
+            android:label="@string/title_citylocation_list"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.settings.CityLocationDetailActivity"
+            android:label="@string/title_citylocation_detail"
+            android:parentActivityName=".activities.settings.CityLocationListActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.edroplet.qxx.saneteltabactivity.activities.settings.CityLocationListActivity" />
+        </activity>
+        <activity android:name=".activities.guide.WifiManagerActivity"
+            android:label="wifi"/>
     </application>
 
 </manifest>

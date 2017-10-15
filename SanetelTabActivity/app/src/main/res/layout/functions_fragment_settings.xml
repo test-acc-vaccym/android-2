@@ -57,44 +57,52 @@
                     android:text="@string/settings_main_amplifier"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
 
-                <LinearLayout
+                <android.support.v4.widget.NestedScrollView
+                    android:id="@+id/settings_main_amplifier_nsv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                    style="@style/settings_linear_shadow"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    style="@style/settings_linear_shadow">
+                    android:orientation="horizontal">
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                         android:id="@+id/settings_main_amplifier_factory"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/button_blink"
                         android:text="@string/settings_main_amplifier_factory"
-                        android:textColor="@color/button_text"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/button_text" />
+
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                         android:id="@+id/settings_main_amplifier_oscillator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/button_blink"
                         android:text="@string/settings_main_amplifier_oscillator"
-                        android:textColor="@color/button_text"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/button_text" />
+
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                         android:id="@+id/settings_main_amplifier_interfere"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/button_blink"
                         android:text="@string/settings_main_amplifier_interfere"
-                        android:textColor="@color/button_text"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/button_text" />
+
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                         android:id="@+id/settings_main_amplifier_emit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/button_blink"
                         android:text="@string/settings_main_amplifier_emit"
-                        android:textColor="@color/button_text"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/button_text" />
                 </LinearLayout>
+                </android.support.v4.widget.NestedScrollView>
             </LinearLayout>
 
             <!--LNB-->

@@ -24,15 +24,25 @@
             app:expandedTitleTextAppearance="?android:attr/textAppearanceLarge"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/list_toolbar">
-            <ImageView
-                android:id="@+id/iv_satellite"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:fitsSystemWindows="true"
-                android:contentDescription="@string/detailed_incall_info_title"
-                android:src="@mipmap/s1"
-                android:scaleType="centerCrop" />
+
+            <FrameLayout android:layout_height="150dp"
+                android:layout_width="fill_parent"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/frameLayout01">
+                <ImageView android:layout_height="0dp"
+                    android:layout_width="fill_parent"
+                    android:id="@+id/iv_satellite"
+                    android:fitsSystemWindows="true"
+                    android:contentDescription="@string/detailed_incall_info_title"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/s2"/>
+                <Gallery android:layout_height="0dp"
+                    android:layout_width="match_parent"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/gallery01"
+                    android:spacing="5dp"/>
+            </FrameLayout>
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/detail_toolbar"
                 android:layout_width="match_parent"
@@ -45,7 +55,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
-        android:id="@+id/city_detail_container"
+        android:id="@+id/satellite_detail_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/text_margin"
@@ -53,12 +63,12 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/satellite_detail_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|start"
         android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@+id/city_detail_container"
+        app:layout_anchor="@+id/satellite_detail_container"
         app:layout_anchorGravity="top|end"
         android:visibility="gone"
         app:srcCompat="@android:drawable/stat_notify_chat" />

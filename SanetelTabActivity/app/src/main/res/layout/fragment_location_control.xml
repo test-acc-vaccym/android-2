@@ -215,9 +215,12 @@
         android:layout_marginTop="@dimen/layout_padding_top">
 
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-            android:id="@+id/button"
+            android:id="@+id/location_control_rotate"
             style="@style/button_horizontal_style"
             android:layout_gravity="center"
+            android:focusedByDefault="true"
+            android:focusableInTouchMode="true"
+            android:defaultFocusHighlightEnabled="true"
             android:text="@string/location_control_rotate_start" />
     </LinearLayout>
 </LinearLayout>

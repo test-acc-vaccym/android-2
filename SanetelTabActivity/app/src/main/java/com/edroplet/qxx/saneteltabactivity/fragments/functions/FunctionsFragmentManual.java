@@ -34,10 +34,33 @@ public class FunctionsFragmentManual extends Fragment {
         view.findViewById(R.id.main_application_manual_speed).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               startActivity(new Intent(getActivity(), ManualActivity.class));
+                setOnClickListener(0);
             }
         });
+
+        view.findViewById(R.id.main_application_manual_location).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setOnClickListener(1);
+            }
+        });
+
+        view.findViewById(R.id.main_application_manual_calculate).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setOnClickListener(2);
+            }
+        });
+
         return view;
+    }
+
+    private void setOnClickListener(int position){
+        Intent intent = new Intent(getActivity(), ManualActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt(ManualActivity.POSITION, position);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
 }

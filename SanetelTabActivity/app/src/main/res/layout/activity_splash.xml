@@ -4,10 +4,12 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/welcome"
     tools:context=".SplashActivity">
     <!--android:background="@drawable/welcome"-->
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/welcome"/>
     <!--android:layout_centerInParent="true"-->
     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
         android:id="@+id/tv_splash_version"

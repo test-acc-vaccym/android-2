@@ -5,16 +5,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 
-import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
+//import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 /**
  * Created by qxs on 2017/9/24.
  */
 
-public class UsefulDatabase extends SQLiteAssetHelper {
+public class UsefulDatabase /*extends SQLiteAssetHelper*/ {
     private static final String DATABASE_NAME = "sanetel.db";
     private static final int DATABASE_VERSION = 1;
-
+/*
     public UsefulDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -35,4 +35,5 @@ public class UsefulDatabase extends SQLiteAssetHelper {
         return c;
 
     }
+*/
 }

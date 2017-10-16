@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="300dp">
+<LinearLayout
     android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="300dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/pop_margin_horizontal"
+    android:layout_marginStart="@dimen/pop_margin_horizontal"
+    android:layout_marginRight="@dimen/pop_margin_horizontal"
+    android:layout_marginEnd="@dimen/pop_margin_horizontal"
+    android:layout_marginTop="@dimen/pop_margin_vertical"
+    android:layout_marginBottom="@dimen/pop_margin_vertical"
     android:background="@drawable/pop_new_gray"
     android:layout_gravity="center"
     android:gravity="center">
@@ -14,7 +23,8 @@
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:id="@+id/pop_dialog_tv_second"
             style="@style/text_vertical_style"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:lines="3"/>
         <LinearLayout
             android:id="@+id/pop_dialog_third"
             style="@style/layout_vertical_style"
@@ -23,13 +33,19 @@
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/pop_dialog_tv_third_start"
                 style="@style/text_horizontal_style"
-                android:gravity="center"/>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                android:id="@+id/pop_dialog_btn_third"
-                style="@style/button_horizontal_style"/>
+                android:padding="@dimen/no_padding"
+                android:gravity="right|end"/>
+            <ImageView
+                android:id="@+id/pop_dialog_iv_third"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:scaleType="centerInside"
+                android:padding="@dimen/no_padding"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/pop_dialog_tv_third_end"
                 style="@style/text_horizontal_style"
-                android:gravity="center"/>
+                android:padding="@dimen/no_padding"
+                android:gravity="start|left"/>
         </LinearLayout>
 </LinearLayout>
+</ScrollView>

@@ -162,9 +162,9 @@ public class WifiManagerActivity extends AppCompatActivity  implements View.OnCl
             level=WifiManager.calculateSignalLevel(scanResult.level,5);
             if(scanResult.capabilities.contains("WEP")||scanResult.capabilities.contains("PSK")||
                     scanResult.capabilities.contains("EAP")){
-                wifi_level.setImageResource(R.drawable.wifi_signal_open); // wifi_signal_lock
+                wifi_level.setImageResource(R.drawable.wifi_signal_lock); // wifi_signal_lock
             }else{
-                wifi_level.setImageResource(android.R.drawable.ic_lock_silent_mode_off); // wifi_signal_open
+                wifi_level.setImageResource(R.drawable.wifi_signal_open); // wifi_signal_open
             }
             wifi_level.setImageLevel(level);
             //判断信号强度，显示对应的指示图标

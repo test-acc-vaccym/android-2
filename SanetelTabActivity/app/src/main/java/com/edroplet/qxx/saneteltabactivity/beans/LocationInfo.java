@@ -97,4 +97,9 @@ public class LocationInfo implements Parcelable {
         json.put(JSON_CITY_LONGITUDE, longitude);
         return json;
     }
+
+    public static class BDState {
+        public static final int NONLOCATED = 0;
+        public static  final int LOCATED = 1;
+    }
 }

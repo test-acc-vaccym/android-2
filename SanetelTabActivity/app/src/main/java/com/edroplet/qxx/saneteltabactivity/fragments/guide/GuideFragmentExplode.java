@@ -1,17 +1,18 @@
 package com.edroplet.qxx.saneteltabactivity.fragments.guide;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
+import com.edroplet.qxx.saneteltabactivity.activities.guide.GuideExplodeActivity;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 /**
@@ -41,61 +42,68 @@ public class GuideFragmentExplode extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_follow_me_explode, null);
         CustomTextView firstLine = view.findViewById(R.id.pop_dialog_tv_first);
-        boolean showFirst = getArguments().getBoolean("showFirst",false);
-        boolean showSecond = getArguments().getBoolean("showSecond",false);
-        boolean showThird = getArguments().getBoolean("showThird",false);
-        if (showFirst) {
-            String first = getArguments().getString("first", null);
-            if (first != null && first.length() > 0) {
-                firstLine.setText(first);
-            }
-        }else {
-            // firstLine.setLayoutParams(new LinearLayoutCompat.LayoutParams(0,0,0));
-            firstLine.setVisibility(View.INVISIBLE);
-        }
-
-        CustomTextView secondLine = view.findViewById(R.id.pop_dialog_tv_second);
-        if (showSecond) {
-            String second = getArguments().getString("second", null);
-            if (second != null && second.length() > 0) {
-                secondLine.setText(second);
-            }
-        }else {
-            // secondLine.setLayoutParams(new LinearLayoutCompat.LayoutParams(0,0,0));
-            secondLine.setVisibility(View.INVISIBLE);
-        }
-
-        if (showThird) {
-            CustomTextView thirdStart = view.findViewById(R.id.pop_dialog_tv_third_start);
-            String start = getArguments().getString("start", null);
-            if (start != null && start.length() > 0) {
-                thirdStart.setText(start);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            boolean showFirst = getArguments().getBoolean("showFirst", false);
+            boolean showSecond = getArguments().getBoolean("showSecond", false);
+            boolean showThird = getArguments().getBoolean("showThird", false);
+            if (showFirst) {
+                String first = getArguments().getString("first", null);
+                if (first != null && first.length() > 0) {
+                    firstLine.setText(first);
+                }
             } else {
-                // thirdStart.setLayoutParams(new LinearLayoutCompat.LayoutParams(0, 0, 0));
-                thirdStart.setVisibility(View.INVISIBLE);
+                firstLine.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
+                // firstLine.setVisibility(View.INVISIBLE);
             }
 
-            CustomButton thirdButton = view.findViewById(R.id.pop_dialog_btn_third);
-            int icon = getArguments().getInt("icon", -1);
-            if (icon > 0) {
-                thirdButton.setBackgroundResource(icons[icon]);
+            CustomTextView secondLine = view.findViewById(R.id.pop_dialog_tv_second);
+            if (showSecond) {
+                String second = getArguments().getString("second", null);
+                if (second != null && second.length() > 0) {
+                    secondLine.setText(second);
+                }
             } else {
-                // thirdButton.setLayoutParams(new LinearLayoutCompat.LayoutParams(0, 0, 0));
-                thirdButton.setVisibility(View.INVISIBLE);
+                secondLine.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
+                // secondLine.setVisibility(View.INVISIBLE);
             }
 
+            if (showThird) {
+                CustomTextView thirdStart = view.findViewById(R.id.pop_dialog_tv_third_start);
+                String start = getArguments().getString("start", null);
+                if (start != null && start.length() > 0) {
+                    thirdStart.setText(start);
+                } else {
+                    thirdStart.setVisibility(View.GONE);
+                    // thirdStart.setLayoutParams(new LinearLayout.LayoutParams(0, 0, 0));
+                    // thirdStart.setVisibility(View.INVISIBLE);
+                }
 
-            CustomTextView thirdEnd = view.findViewById(R.id.pop_dialog_tv_third_end);
-            String end = getArguments().getString("end", null);
-            if (end != null && end.length() > 0) {
-                thirdEnd.setText(end);
+                ImageView thirdImageVIew = view.findViewById(R.id.pop_dialog_iv_third);
+                int icon = getArguments().getInt("icon", -1);
+                if (icon >= 0) {
+                    thirdImageVIew.setBackgroundResource(icons[icon]);
+                } else {
+                    thirdImageVIew.setVisibility(View.GONE);
+                    // thirdButton.setLayoutParams(new LinearLayout.LayoutParams(0, 0, 0));
+                    // thirdButton.setVisibility(View.INVISIBLE);
+                }
+
+
+                CustomTextView thirdEnd = view.findViewById(R.id.pop_dialog_tv_third_end);
+                String end = getArguments().getString("end", null);
+                if (end != null && end.length() > 0) {
+                    thirdEnd.setText(end);
+                } else {
+                    thirdEnd.setVisibility(View.GONE);
+                    // thirdEnd.setLayoutParams(new LinearLayout.LayoutParams(0, 0, 0));
+                    // thirdEnd.setVisibility(View.INVISIBLE);
+                }
             } else {
-                // thirdEnd.setLayoutParams(new LinearLayoutCompat.LayoutParams(0, 0, 0));
-                thirdEnd.setVisibility(View.INVISIBLE);
+                LinearLayout ll = view.findViewById(R.id.pop_dialog_third);
+                ll.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
+                // ll.setVisibility(View.INVISIBLE);
             }
-        }else{
-            LinearLayout ll = view.findViewById(R.id.pop_dialog_third);
-            ll.setVisibility(View.INVISIBLE);
         }
         return view;
     }

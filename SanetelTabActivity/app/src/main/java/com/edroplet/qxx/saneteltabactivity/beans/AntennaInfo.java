@@ -74,4 +74,14 @@ public class AntennaInfo implements Parcelable {
         dest.writeFloat(polarization);
         dest.writeFloat(agcLevel);
     }
+
+    public static class AntennaStatus{
+        public static final int EXPLODED = 0;
+        public static final int FOLDED = 1;
+        public static final int PAUSE = 2;
+        public static final int SEARCHING = 3;
+        public static final int RECYCLED = 4;
+        public static final int EXPLODING = 5;
+
+    }
 }

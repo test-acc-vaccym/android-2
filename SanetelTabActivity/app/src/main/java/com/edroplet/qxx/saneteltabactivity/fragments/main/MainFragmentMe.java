@@ -21,6 +21,7 @@ import com.edroplet.qxx.saneteltabactivity.activities.main.MainMeAdviceActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.main.MainMeAppActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.main.MainMeErrorReportActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.main.MainMeLanguageActivity;
+import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
@@ -153,7 +154,7 @@ public class MainFragmentMe extends Fragment implements View.OnClickListener{
                             @Override
                             public void onClick(View view) {
                                 // TODO 切换设备
-
+                                SystemServices.startWifiManager(getActivity());
                                 builder.dismiss();
                             }
                         })

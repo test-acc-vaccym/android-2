@@ -1,5 +1,6 @@
 package com.edroplet.qxx.saneteltabactivity.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiInfo;
@@ -12,9 +13,15 @@ import java.util.List;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager.WifiLock;
+import android.view.View;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.activities.guide.WifiManagerActivity;
+import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
+import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
+import com.edroplet.qxx.saneteltabactivity.fragments.main.MainFragmentGuide;
+import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
+import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
 import static android.content.Context.WIFI_SERVICE;
 
@@ -30,14 +37,27 @@ public class SystemServices {
         Log.d("SSID",wifiInfo.getSSID());
         return wifiInfo.getSSID();
     }
-
-    public static void startWifiManager(Context context){
+    public static void startWifiManager(Activity activity){
         // context.startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));//进入无线网络配置界面
-        // context.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));//进入无线网络配置界面
-        Intent intent= new Intent(context, WifiManagerActivity.class);
-        context.startActivity(intent);//进入无线网络配置界面
+        Intent intent= new Intent(Settings.ACTION_WIFI_SETTINGS);//进入无线网络配置界面
+        // Intent intent= new Intent(activity, WifiManagerActivity.class);
+        activity.startActivityForResult(intent,10000);//进入无线网络配置界面
     }
 
+    public static void checkConnectedSsid(Context context, String ssid, final Activity activity){
+        String currentSSID = getConnectWifiSsid(context);
+        Toast.makeText(context, ssid, Toast.LENGTH_SHORT).show();
+        if (!currentSSID.contains(ssid)) {
+            final RandomDialog rd = new RandomDialog(context);
+            rd.onConfirm("没有连接设备\n请连接设备" + ssid, new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    SystemServices.startWifiManager(activity);
+                    rd.getDialogBuilder().dismiss();
+                }
+            });
+        }
+    }
     public static class WifiAdmin {
         // 定义WifiManager对象
         private WifiManager mWifiManager;
@@ -291,4 +311,11 @@ public class SystemServices {
         }
     }
 
+    public static int getAntennaState(){
+        return AntennaInfo.AntennaStatus.FOLDED;
+    }
+
+    public static int getBDState(){
+        return LocationInfo.BDState.NONLOCATED;
+    }
 }

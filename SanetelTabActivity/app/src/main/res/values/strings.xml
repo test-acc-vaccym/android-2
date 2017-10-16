@@ -152,6 +152,7 @@
     <string name="manual_pause">暂停</string>
     <string name="degree_unit">°</string>
     <string name="voltage_unit">V</string>
+    <string name="frequency_unit">MHz</string>
 
     <!--位置控制-->
     <string name="location_control_current_info">当前角度</string>
@@ -242,6 +243,40 @@
     <!--引导页展开-->
     <string name="follow_me_explode_exploding">展开中</string>
     <string name="follow_me_explode_exploded">展开完成</string>
+    <string name="follow_me_explode_help_title">检查设备说明</string>
+    <string name="follow_me_explode_help_message">&#160;&#160;状态行，包含通信、天线、BD、锁紧、节能五个状态。其中：\n
+    &#160;&#160;通信状态：有断开和连接两个状态；表明WIFI和TCP连接已经建立。\n
+    &#160;&#160;天线状态 ：有初始、收藏、展开、复位、寻星、锁星、异常； 收藏为灰色；其他为彩色。\n
+    &#160;&#160;BD状态；有定位和未定两个状态；未定为灰色；定位为彩色。\n
+    &#160;&#160;锁紧机构状态：有松开和锁紧两个状态；松开为灰色；锁紧为彩色。\n
+    &#160;&#160;节能状态：有开启和关闭两个状态。关闭为灰色；开启为彩色。\n
+    &#160;&#160;此处仅仅提出一些概念，随着引导的深入，用户会逐渐理解。\n
+    </string>
+
+    <string name="follow_me_location_help_title">位置输入说明</string>
+    <string name="follow_me_location_help_message">\t寻星原理：利用BD/GPS提供的经纬度信息、倾角传感器提供的姿态信息和卫星的经度，经坐标转换解算出天线对准卫星所需的方位、俯仰和极化角。\n
+\t原理中提到的BD/GPS属于设备的功能部件。用户可点击“读取”，由BD/GPS返回来的本地经纬度就显示在下面的经度和纬度文本框中。\n
+\t用户还可以将输入城市名称，点击设置，保存本地经纬度与城市数据库，以备GPS/BD故障情况下，从城市数据库中选择本地城市的名称，得到本地经纬度。\n
+\t有时天线附近的BD/GPS信号较弱；而且北斗卫星数量较少不能保证北斗天线在任意方向都能有效接收信号。就需要用户移动天线到不同位置和调整北斗天线角度，最终固定天线。\n
+\t若系统一直报告GPS/BD异常时，用户才需要而且必须手动输入当地的经纬度。</string>
+    <string name="follow_me_location_db_city">选择数据库城市</string>
+    <string name="follow_me_location_new_city">新城市参数输入</string>
+
+    <string name="follow_me_destination_satellite_title">目标星</string>
+    <string name="follow_me_destination_satellite_new">新卫星参数输入：</string>
+    <string name="follow_me_destination_satellite_name">卫星名称</string>
+    <string name="follow_me_destination_satellite_polarization">极化方式</string>
+    <string name="follow_me_destination_satellite_longitude">卫星经度</string>
+    <string name="follow_me_destination_satellite_beacon">信标频率</string>
+    <string name="follow_me_destination_satellite_threshold">门&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;限</string>
+    <string name="follow_me_destination_satellite_dvb">DVB&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+
+    <string name="follow_me_search_mode_title">寻星模式</string>
+    <string name="follow_me_search_mode_beacon">信标模式</string>
+    <string name="follow_me_search_mode_dvb">DVB模式</string>
+    <string name="follow_me_search_mode_third_start">选择后点击</string>
+    <string name="follow_me_search_mode_third_end">永久生效</string>
+    <string name="follow_me_search_mode_second">***不是所有星都支持两种模式***</string>
 
     <!--主页面-->
     <string name="main_follow_me">跟我来</string>

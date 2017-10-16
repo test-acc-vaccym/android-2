@@ -167,8 +167,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.edroplet.qxx.saneteltabactivity.activities.settings.CityLocationListActivity" />
         </activity>
-        <activity android:name=".activities.guide.WifiManagerActivity"
-            android:label="wifi"/>
+        <activity
+            android:name=".activities.guide.WifiManagerActivity"
+            android:label="wifi" />
+        <activity android:name=".TestFragmentActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.guide.GuideExplodeActivity" />
+        <activity android:name=".activities.guide.GuideLocationActivity"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.edroplet.qxx.saneteltabactivity.activities.main;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -17,6 +18,7 @@ import com.edroplet.qxx.saneteltabactivity.fragments.main.MainFragmentStart;
 import com.edroplet.qxx.saneteltabactivity.fragments.manual.AngleCalculateFragment;
 import com.edroplet.qxx.saneteltabactivity.fragments.manual.LocationControlFragment;
 import com.edroplet.qxx.saneteltabactivity.fragments.manual.SpeedControlFragment;
+import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
 import com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioGroup;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.main_viewpager);
         setupViewPager(viewPager);
         gradualRadioGroup.setViewPager(viewPager);
+        // 进入该界面，检测wifi连接
+        SystemServices.checkConnectedSsid(this, MainFragmentGuide.device, this);
     }
 
 

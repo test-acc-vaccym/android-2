@@ -278,6 +278,41 @@
     <string name="follow_me_search_mode_third_end">永久生效</string>
     <string name="follow_me_search_mode_second">***不是所有星都支持两种模式***</string>
 
+    <string name="follow_me_searching_title">寻星操作</string>
+    <string name="follow_me_searching_first_line">恭喜您：</string>
+    <string name="follow_me_searching_second_line">可以开始寻星了！</string>
+    <string name="follow_me_searching_third_start">点击</string>
+    <string name="follow_me_searching_third_end">开始寻星</string>
+    <string name="follow_me_searching_ing_first_line">寻星中…</string>
+    <string name="follow_me_searching_ing_second_line">寻星时间：%1$s s\n遇紧急情况:</string>
+    <string name="follow_me_searching_ing_third_start">请点击</string>
+    <string name="follow_me_searching_lock_first_line">锁定目标星！</string>
+    <string name="follow_me_searching_lock_second_line">寻星时间：%1$s s</string>
+    <string name="follow_me_searching_lock_third_start">请点击下一步。</string>
+    <string name="follow_me_searching_timeout_first_line">寻星中…</string>
+    <string name="follow_me_searching_timeout_second_line">寻星时间：%1$s s\n寻星超时！</string>
+    <string name="follow_me_searching_timeout_third_start">点击▲ 跳回位置输入，重设参数。</string>
+    <string name="follow_me_searching_timeout_third_end">如果确认已设参数正确，请点击监视页面进设置页面，设置本振等参数。</string>
+    <string name="follow_me_searching_error_first_line">寻星中…</string>
+    <string name="follow_me_searching_error_second_line">寻星时间：%1$s s</string>
+    <string name="follow_me_searching_error_third_start">电机故障，停止寻星。请故障解除后，寻星！</string>
+
+
+    <string name="follow_me_locker_title">锁紧操作</string>
+    <string name="follow_me_locker_open_first_line">锁紧机构状态：松开 </string>
+    <string name="follow_me_locker_open_second_line">锁星后，为防止大风恶劣天气影响信号质量，通过方位锁紧手刹和和俯仰锁紧手刹来加强强度，尽可能保证通信性能。</string>
+    <string name="follow_me_locker_open_third_start">无需锁紧，直接点击下一步。</string>
+    <string name="follow_me_locker_lock_first_line">锁紧机构状态：锁紧 </string>
+    <string name="follow_me_locker_lock_second_line">锁星后，为防止大风恶劣天气影响信号质量，通过方位锁紧手刹和和俯仰锁紧手刹来加强强度，尽可能保证电性能。</string>
+    <string name="follow_me_locker_lock_third_start">无需锁紧，直接点击下一步。</string>
+
+    <string name="follow_me_saving_title">节能操作</string>
+    <string name="follow_me_saving_open_first_line">节能状态：开启</string>
+    <string name="follow_me_saving_close_first_line">节能状态：关闭</string>
+    <string name="follow_me_saving_second_line">锁星后，锁紧机构锁紧产生的力矩来代替电机的保持力矩，保持方位和俯仰静止。节能70%。</string>
+    <string name="follow_me_saving_third_start">点击</string>
+    <string name="follow_me_saving_third_end">无需锁紧，直接点击下一步。</string>
+
     <!--主页面-->
     <string name="main_follow_me">跟我来</string>
     <string name="title_activity_main">主页面</string>

@@ -318,4 +318,12 @@ public class SystemServices {
     public static int getBDState(){
         return LocationInfo.BDState.NONLOCATED;
     }
+
+    public static int getLockerState() {
+        return 0;
+    }
+
+    public static int getSavingState(){
+        return 0;
+    }
 }

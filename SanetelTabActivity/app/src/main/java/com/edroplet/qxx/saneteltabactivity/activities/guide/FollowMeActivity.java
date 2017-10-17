@@ -22,7 +22,10 @@ import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentDestination;
 import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentExplode;
 import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentLocation;
+import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentLocker;
+import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentSaving;
 import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentSearchModeSetting;
+import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentSearching;
 import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 
@@ -157,8 +160,59 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
         mSectionsPagerAdapter.addFragment(GuideFragmentSearchModeSetting.newInstance(true, getString(R.string.follow_me_search_mode_third_start), false, null, true,
                 getString(R.string.follow_me_search_mode_third_end), -1, getString(R.string.follow_me_search_mode_second)));
         // 4.3.6.	寻星操作
+        int satelliteStatus = SystemServices.getAntennaState();
+
+        switch (satelliteStatus){
+            // 开始寻星
+            case 0:
+                mSectionsPagerAdapter.addFragment(GuideFragmentSearching.newInstance(false, true, getString(R.string.follow_me_searching_first_line), true, getString(R.string.follow_me_searching_second_line),
+                        true, getString(R.string.follow_me_searching_third_start), 0, getString(R.string.follow_me_searching_third_end)));
+                break;
+            // 寻星中
+            case 1:
+                mSectionsPagerAdapter.addFragment(GuideFragmentSearching.newInstance(true, true, getString(R.string.follow_me_searching_ing_first_line), true, getString(R.string.follow_me_searching_ing_second_line),
+                        true, getString(R.string.follow_me_searching_ing_third_start), 0, null));
+                break;
+            // 锁星
+            case 2:
+                mSectionsPagerAdapter.addFragment(GuideFragmentSearching.newInstance(true, true, getString(R.string.follow_me_searching_lock_first_line), true, getString(R.string.follow_me_searching_lock_second_line),
+                        true, getString(R.string.follow_me_searching_lock_third_start), -1, null));
+                break;
+            // 重设参数
+            case 3:
+                mSectionsPagerAdapter.addFragment(GuideFragmentSearching.newInstance(true, true, getString(R.string.follow_me_searching_timeout_first_line), true, getString(R.string.follow_me_searching_timeout_second_line),
+                        true, getString(R.string.follow_me_searching_timeout_third_start), 3, getString(R.string.follow_me_searching_timeout_third_end)));
+                break;
+            // 故障报告
+            case 4:
+                mSectionsPagerAdapter.addFragment(GuideFragmentSearching.newInstance(true, true, getString(R.string.follow_me_searching_error_first_line), true, getString(R.string.follow_me_searching_error_second_line),
+                        true, getString(R.string.follow_me_searching_error_third_start), -1, null));
+                break;
+        }
         // 4.3.7.	锁紧操作
+        int lockerState = SystemServices.getLockerState();
+        switch (lockerState){
+            case 0:
+                mSectionsPagerAdapter.addFragment(GuideFragmentLocker.newInstance(true, getString(R.string.follow_me_locker_open_first_line), true, getString(R.string.follow_me_locker_open_second_line),
+                        true, getString(R.string.follow_me_locker_open_third_start), -1, null));
+                break;
+            case 1:
+                mSectionsPagerAdapter.addFragment(GuideFragmentLocker.newInstance(true, getString(R.string.follow_me_locker_lock_first_line), true, getString(R.string.follow_me_locker_lock_second_line),
+                        true, getString(R.string.follow_me_locker_lock_third_start), -1, null));
+                break;
+        }
         // 4.3.8.	节能操作
+        int savingState = SystemServices.getSavingState();
+        switch (savingState){
+            case 0:
+                mSectionsPagerAdapter.addFragment(GuideFragmentSaving.newInstance(true, getString(R.string.follow_me_saving_open_first_line), true, getString(R.string.follow_me_saving_second_line),
+                        true, getString(R.string.follow_me_saving_third_start), 0, getString(R.string.follow_me_saving_third_end)));
+                break;
+            case 1:
+                mSectionsPagerAdapter.addFragment(GuideFragmentSaving.newInstance(true, getString(R.string.follow_me_saving_close_first_line), true, getString(R.string.follow_me_saving_second_line),
+                        true, getString(R.string.follow_me_saving_third_start), 0, getString(R.string.follow_me_saving_third_end)));
+                break;
+        }
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.follow_me_view_pager);

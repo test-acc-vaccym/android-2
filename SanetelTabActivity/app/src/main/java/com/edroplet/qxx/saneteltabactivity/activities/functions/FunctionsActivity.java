@@ -1,28 +1,34 @@
 package com.edroplet.qxx.saneteltabactivity.activities.functions;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
 import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
 import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
+import com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentCollect;
 import com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentManual;
 import com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor;
 import com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentSettings;
+import com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentStatus;
 import com.edroplet.qxx.saneteltabactivity.utils.BottomNavigationViewHelper;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomFAB;
 
 public class FunctionsActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private MenuItem menuItem;
     private BottomNavigationView bottomNavigationView;
-
+    private CustomFAB cfab;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -64,30 +70,9 @@ public class FunctionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_functions);
-
+        cfab = (CustomFAB) findViewById(R.id.activity_functions_fab);
         StatusBarControl.setupToolbar(this, R.id.main_content_toolbar);
-        /*
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_content_toolbar);
-        setSupportActionBar(toolbar);
-        //actionBar的设置(使用自定义的设置)
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            // 使用自定义layout
-            actionBar.setCustomView(R.layout.status_bar);
-            actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            // 修改图标
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){
-                actionBar.setHomeAsUpIndicator(R.drawable.back);
-            }
-        }
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        */
+
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.main_navigation);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -97,7 +82,11 @@ public class FunctionsActivity extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+                if (position == 0){
+                    cfab.setVisibility(View.VISIBLE);
+                }else {
+                    cfab.setVisibility(View.INVISIBLE);
+                }
             }
 
             @Override
@@ -208,6 +197,13 @@ public class FunctionsActivity extends AppCompatActivity {
                 }
             });
         */
+        cfab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FunctionsActivity.this, MonitorHelpActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -215,8 +211,8 @@ public class FunctionsActivity extends AppCompatActivity {
 
         adapter.addFragment(FunctionsFragmentMonitor.newInstance(null));
         adapter.addFragment(FunctionsFragmentManual.newInstance(getString(R.string.main_application_operate)));
-        adapter.addFragment(FunctionsFragmentManual.newInstance(getString(R.string.main_bottom_nav_status)));
-        adapter.addFragment(FunctionsFragmentManual.newInstance(getString(R.string.main_bottom_nav_collect)));
+        adapter.addFragment(FunctionsFragmentStatus.newInstance(null));
+        adapter.addFragment(FunctionsFragmentCollect.newInstance(null));
         adapter.addFragment(FunctionsFragmentSettings.newInstance(getString(R.string.main_bottom_nav_settings)));
         viewPager.setAdapter(adapter);
     }

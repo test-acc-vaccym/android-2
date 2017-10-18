@@ -3,16 +3,39 @@ package com.edroplet.qxx.saneteltabactivity.utils;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
+import android.text.Layout;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 
 /**
  * Created by qxs on 2017/9/13.
  */
 
 public class ImageUtil {
+    public static Bitmap textAsBitmap(Context context,String text, float textSize) {
 
+        TextPaint textPaint = new TextPaint();
+
+        // textPaint.setARGB(0x31, 0x31, 0x31, 0);
+        textPaint.setColor(Color.BLACK);
+        textPaint.setTextSize(textSize);
+        textPaint.setTypeface(ChangeTypeFace.getSimHei(context));
+
+        StaticLayout layout = new StaticLayout(text, textPaint, 450,
+                Layout.Alignment.ALIGN_CENTER, 1.3f, 0.0f, true);
+        Bitmap bitmap = Bitmap.createBitmap(layout.getWidth() + 20,
+                layout.getHeight() + 20, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        canvas.translate(10, 10);
+        canvas.drawColor(Color.TRANSPARENT);
+
+        layout.draw(canvas);
+        return bitmap;
+    }
     /***
      * 图片的缩放方法
      *
@@ -65,7 +88,7 @@ public class ImageUtil {
      * 将px值转换为dip或dp值，保证尺寸大小不变
      *
      * @param pxValue
-     * @param scale
+     * @param context
      *            （DisplayMetrics类中属性density）
      * @return
      */

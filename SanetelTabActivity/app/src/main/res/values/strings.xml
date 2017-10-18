@@ -181,6 +181,13 @@
     <string name="angle_calculate_operate_use">使用结果</string>
 
     <!--监视主页面-->
+    <!--监视页面说明-->
+    <string name="functions_monitor_help_title">监视页面说明</string>
+    <string name="functions_monitor_help_message">&#160;&#160;&#160;&#160;快捷按钮行：包括展开、手动、寻星、复位、收藏五个天线快捷动作。\n
+&#160;&#160;&#160;&#160;当天线处于展开、收藏时，快捷键为灰色，不能操作。\n
+&#160;&#160;&#160;&#160;当锁紧机构处于锁紧时，快捷键为灰色，不能操作。\n
+&#160;&#160;&#160;&#160;当电机处于释放时，快捷键为灰色，不能操作。\n
+</string>
     <!--卫星信息-->
     <string name="main_monitor_satellite_info">卫星信息</string>
     <string name="main_monitor_satellite_name">卫星名称</string>
@@ -219,21 +226,77 @@
     <string name="title_activity_manual">手动控制</string>
 
     <!--设置主界面-->
-    <string name="settings_main_reference">参考寻星</string>
-    <string name="settings_main_amplifier">功放</string>
-    <string name="settings_main_amplifier_factory">功放厂家</string>
-    <string name="settings_main_amplifier_oscillator">功放本振</string>
-    <string name="settings_main_amplifier_interfere">邻星干扰</string>
-    <string name="settings_main_amplifier_emit">发射手动</string>
-    <string name="settings_main_lnb">LNB</string>
-    <string name="settings_main_lnb_oscillator">LNB本振</string>
-    <string name="settings_main_antenna">天线</string>
-    <string name="settings_main_antenna_restart">天线重启</string>
-    <string name="settings_main_database">数据库</string>
-    <string name="settings_main_database_city">城市库</string>
-    <string name="settings_main_database_satellites">卫星库</string>
-    <string name="settings_main_advance">高级设置</string>
-    <string name="settings_main_administrator">管理员设置</string>
+    <string name="main_settings_reference">参考寻星</string>
+    <string name="main_settings_amplifier">功放</string>
+    <string name="main_settings_amplifier_factory">功放厂家</string>
+    <string name="main_settings_amplifier_oscillator">功放本振</string>
+    <string name="main_settings_amplifier_interfere">邻星干扰</string>
+    <string name="main_settings_amplifier_emit">发射手动</string>
+    <string name="main_settings_lnb">LNB</string>
+    <string name="main_settings_lnb_oscillator">LNB本振</string>
+    <string name="main_settings_antenna">天线</string>
+    <string name="main_settings_antenna_restart">天线重启</string>
+    <string name="main_settings_database">数据库</string>
+    <string name="main_settings_database_city">城市库</string>
+    <string name="main_settings_database_satellites">卫星库</string>
+    <string name="main_settings_advance">高级设置</string>
+    <string name="main_settings_administrator">管理员设置</string>
+
+    <!--8.	状态页面-->
+    <!--环境信息-->
+    <string name="main_status_environment">环境信息</string>
+    <string name="main_status_environment_temperature">温度</string>
+    <string name="temperature_unit">℃</string>
+    <string name="main_status_environment_humidity">湿度</string>
+    <string name="humidity_unit">%</string>
+    <!--通信状况-->
+    <string name="main_status_communicate">通信状况</string>
+    <string name="main_status_communicate_status_opening">正在通信</string>
+    <string name="main_status_communicate_status_close">断&#160;&#160;&#160;&#160;开</string>
+    <string name="main_status_communicate_internet">网络通信</string>
+    <string name="main_status_communicate_serial_port">主串口通信</string>
+    <string name="main_status_communicate_bd">BD/GPS</string>
+    <string name="main_status_communicate_beacon">信&#160;&#160;标&#160;&#160;机</string>
+    <string name="main_status_communicate_clinometer">倾&#160;&#160;角&#160;&#160;计</string>
+    <string name="main_status_communicate_power">功&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;放</string>
+    <string name="main_status_communicate_lnb">LNB</string>
+
+    <!--设备状况-->
+    <string name="main_status_device">设备状况</string>
+    <string name="main_status_device_status_normal">正常</string>
+    <string name="main_status_device_status_abnormal">异常</string>
+    <string name="main_status_device_motor_encoder">方位电机和编码器</string>
+    <string name="main_status_device_azimuth_holzer_switch">方位霍尔开关</string>
+    <string name="main_status_device_azimuth_locking_holzer_switch">方位锁紧霍尔开关</string>
+    <string name="main_status_device_pitch_motor">俯仰电机</string>
+    <string name="main_status_device_pitch_holzer_switch">俯仰霍尔开关</string>
+    <string name="main_status_device_pitch_locking_holzer_switch">俯仰锁紧霍尔开关</string>
+    <string name="main_status_device_polarize_motor">极化电机</string>
+    <string name="main_status_device_polarization_potentiometer">极化电位计</string>
+
+    <!--版本信息-->
+    <string name="main_status_version">版本信息</string>
+    <string name="main_status_version_software">软件版本</string>
+    <string name="main_status_version_hardware">硬件版本</string>
+
+    <!--数据采集-->
+    <string name="main_collect_data">数据采集</string>
+    <string name="main_collect_data_history">历史文件</string>
+    <string name="main_collect_data_history_list_name">文件名称</string>
+    <string name="main_collect_data_history_list_date">时间</string>
+    <string name="main_collect_data_new">新建文件</string>
+    <string name="main_collect_data_new_file_name">输入文件名称</string>
+    <string name="main_collect_data_clear">▲清空</string>
+    <string name="main_collect_data_start">▲开始</string>
+    <string name="main_collect_data_stop">▲停止</string>
+    <string name="main_collect_data_save">▲保存</string>
+
+    <!--管理员设置-->
+    <string name="main_settings_administrator_password_title">管理员密码</string>
+    <string name="main_settings_administrator_password_third_start">输入密码后，点击</string>
+    <string name="main_settings_administrator_password_third_button">▲ 进入</string>
+    <string name="error_invalid_password">密码错误</string>
+    <!--============================================================================-->
     <!--引导页-->
     <string name="title_activity_follow_me">引导页</string>
     <string name="follow_me_bottom_nav_main">引导主页</string>
@@ -398,4 +461,8 @@
     <string name="choose_mail_client">请选择邮件发送软件(Choose Email Client)</string>
     <string name="title_citylocation_list">CityLocations</string>
     <string name="title_citylocation_detail">CityLocation Detail</string>
+
+    <!--登陆-->
+    <string name="main_settings_administrator_login_title">管理员密码</string>
+    <string name="main_settings_administrator_password">密码</string>
 </resources>

@@ -2,12 +2,10 @@ package com.edroplet.qxx.saneteltabactivity.fragments.manual;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
@@ -28,7 +26,7 @@ public class AngleCalculateFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_angle_calculate, null);
+        View view = inflater.inflate(R.layout.functions_fragment_application_manual_speed_angle_calculate, null);
         AntennaInfo antennaInfo = getArguments().getParcelable("antennaInfo");
 
         return view;

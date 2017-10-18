@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="FAB">
+        <!-- Background color -->
+        <attr name="bg_color" format="color|reference"/>
+        <attr name="bg_color_pressed" format="color|reference"/>
+    </declare-styleable>
+
     <declare-styleable name="WeChatRadioButton">
         <attr name="focus_icon" format="reference"/>
         <attr name="defocus_icon" format="reference"/>

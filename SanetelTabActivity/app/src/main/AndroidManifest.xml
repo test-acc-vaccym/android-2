@@ -67,7 +67,7 @@
         <activity
             android:name=".activities.settings.PowerAmplifierSettingsActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:label="@string/settings_main_amplifier"
+            android:label="@string/main_settings_amplifier"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -178,7 +178,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.guide.GuideExplodeActivity" />
-        <activity android:name=".activities.guide.GuideLocationActivity"></activity>
+        <activity android:name=".activities.guide.GuideLocationActivity" />
+        <activity android:name=".activities.functions.MonitorHelpActivity"/>
+        <activity android:name=".activities.functions.AdministratorLoginActivity"/>
     </application>
 
 </manifest>

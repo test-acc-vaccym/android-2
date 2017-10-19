@@ -82,8 +82,10 @@
                 </LinearLayout>
                 <!--新卫星参数输入-->
                 <LinearLayout
-                    android:paddingLeft="@dimen/radio_group_city_padding"
-                    android:paddingStart="@dimen/radio_group_city_padding"
+                    android:layout_marginLeft="@dimen/radio_group_city_padding"
+                    android:layout_marginStart="@dimen/radio_group_city_padding"
+                    android:layout_marginRight="100dp"
+                    android:layout_marginEnd="100dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@id/city_select"
@@ -103,6 +105,7 @@
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="@string/follow_me_destination_satellite_name" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
@@ -122,6 +125,7 @@
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="@string/follow_me_destination_satellite_polarization" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
@@ -141,6 +145,7 @@
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="@string/follow_me_destination_satellite_longitude" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
@@ -166,6 +171,7 @@
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="@string/follow_me_destination_satellite_beacon" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
@@ -191,6 +197,7 @@
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="@string/follow_me_destination_satellite_threshold" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
@@ -210,6 +217,7 @@
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="@string/follow_me_destination_satellite_dvb" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
@@ -221,7 +229,7 @@
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
-        <include layout="@layout/pop_dialog"
+        <include layout="@layout/pop_dialog_blue"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.8"/>

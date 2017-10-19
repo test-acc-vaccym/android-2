@@ -46,5 +46,5 @@
             </RadioGroup>
         </RelativeLayout>
     </LinearLayout>
-    <include layout="@layout/pop_dialog"/>
+    <include layout="@layout/pop_dialog_blue"/>
 </LinearLayout>

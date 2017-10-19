@@ -334,8 +334,8 @@
     <string name="follow_me_destination_satellite_polarization">极化方式</string>
     <string name="follow_me_destination_satellite_longitude">卫星经度</string>
     <string name="follow_me_destination_satellite_beacon">信标频率</string>
-    <string name="follow_me_destination_satellite_threshold">门&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;限</string>
-    <string name="follow_me_destination_satellite_dvb">DVB&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="follow_me_destination_satellite_threshold">门&#160;&#160;&#160;&#160;&#160;&#160;限</string>
+    <string name="follow_me_destination_satellite_dvb">DVB&#160;&#160;&#160;&#160;&#160;&#160;</string>
 
     <string name="follow_me_search_mode_title">寻星模式</string>
     <string name="follow_me_search_mode_beacon">信标模式</string>

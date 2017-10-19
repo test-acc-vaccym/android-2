@@ -22,9 +22,9 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
  */
 
 public class GuideFragmentSaving extends Fragment {
-    private static
-    int[] icons = {R.drawable.antenna_exploded, R.drawable.park, R.drawable.searching, R.drawable.recycle, R.drawable.folder};
-    public static GuideFragmentSaving newInstance(boolean showFirst, String firstLine, boolean showSecond, String secondLine, boolean showThird, String thirdLineStart, int icon, String thirdLineEnd) {
+    public static GuideFragmentSaving newInstance(boolean showFirst, String firstLine, boolean showSecond,
+                                                  String secondLine, boolean showThird, String thirdLineStart,
+                                                  int icon, String buttonText, String thirdLineEnd) {
         Bundle args = new Bundle();
         GuideFragmentSaving fragment = new GuideFragmentSaving();
         args.putBoolean("showFirst",showFirst);
@@ -34,6 +34,7 @@ public class GuideFragmentSaving extends Fragment {
         args.putBoolean("showThird",showThird);
         args.putString("start", thirdLineStart);
         args.putInt("icon", icon);
+        args.putString("buttonText", buttonText);
         args.putString("end", thirdLineEnd);
         fragment.setArguments(args);
         return fragment;
@@ -57,15 +58,17 @@ public class GuideFragmentSaving extends Fragment {
 
             int icon = bundle.getInt("icon", -1);
             if (icon == 0) {
-                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
-                        ImageUtil.textAsBitmap(context,context.getString(
-                                R.string.saving_open_button),
-                                ImageUtil.sp2px(context,24)))) ;
+//                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
+//                        ImageUtil.textAsBitmap(context,context.getString(
+//                                R.string.triangle_string),
+//                                ImageUtil.sp2px(context,24)))) ;
+                popDialog.setButtonText(context, getString(R.string.saving_open_button));
             } else if (icon == 1) {
-                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
-                        ImageUtil.textAsBitmap(context,context.getString(
-                                R.string.saving_close_button),
-                                ImageUtil.sp2px(context,24)))) ;
+//                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
+//                        ImageUtil.textAsBitmap(context,context.getString(
+//                                R.string.revert_triangle_string),
+//                                ImageUtil.sp2px(context,24)))) ;
+                popDialog.setButtonText(context, getString(R.string.saving_close_button));
             }
         }
         return popDialog.show();

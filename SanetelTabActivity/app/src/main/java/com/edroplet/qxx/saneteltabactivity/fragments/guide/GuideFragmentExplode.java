@@ -25,9 +25,10 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
  */
 
 public class GuideFragmentExplode extends Fragment {
-    private static
-    int[] icons = {R.drawable.antenna_exploded, R.drawable.park, R.drawable.searching, R.drawable.recycle, R.drawable.folder};
-    public static GuideFragmentExplode newInstance(boolean showFirst, String firstLine, boolean showSecond, String secondLine, boolean showThird, String thirdLineStart, int icon, String thirdLineEnd) {
+    private int[] icons = {R.drawable.antenna_exploded, R.drawable.park, R.drawable.searching, R.drawable.recycle, R.drawable.folder};
+    public static GuideFragmentExplode newInstance(boolean showFirst, String firstLine, boolean showSecond,
+                                                   String secondLine, boolean showThird, String thirdLineStart,
+                                                   int icon, String buttonText, String thirdLineEnd) {
         Bundle args = new Bundle();
         GuideFragmentExplode fragment = new GuideFragmentExplode();
         args.putBoolean("showFirst",showFirst);
@@ -37,6 +38,7 @@ public class GuideFragmentExplode extends Fragment {
         args.putBoolean("showThird",showThird);
         args.putString("start", thirdLineStart);
         args.putInt("icon", icon);
+        args.putString("buttonText", buttonText);
         args.putString("end", thirdLineEnd);
         fragment.setArguments(args);
         return fragment;

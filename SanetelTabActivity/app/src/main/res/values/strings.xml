@@ -318,7 +318,9 @@
     &#160;&#160;此处仅仅提出一些概念，随着引导的深入，用户会逐渐理解。\n
     </string>
 
-    <string name="setting_string_button">▲设置</string>
+    <string name="triangle_string">▲</string>
+    <string name="revert_triangle_string">▼</string>
+    <string name="setting_button_text">▲设置</string>
     <string name="follow_me_location_help_title">位置输入说明</string>
     <string name="follow_me_location_help_message">\t寻星原理：利用BD/GPS提供的经纬度信息、倾角传感器提供的姿态信息和卫星的经度，经坐标转换解算出天线对准卫星所需的方位、俯仰和极化角。\n
 \t原理中提到的BD/GPS属于设备的功能部件。用户可点击“读取”，由BD/GPS返回来的本地经纬度就显示在下面的经度和纬度文本框中。\n
@@ -364,7 +366,7 @@
     <string name="follow_me_searching_error_second_line">寻星时间：%1$s s</string>
     <string name="follow_me_searching_error_third_start">电机故障，停止寻星。请故障解除后，寻星！</string>
     <string name="back_string_button">▲返回</string>
-    <string name="return_string_button">▲ 跳回</string>
+    <string name="return_string_button">▼跳回</string>
 
     <string name="follow_me_locker_title">锁紧操作</string>
     <string name="follow_me_locker_open_first_line">锁紧机构状态：松开 </string>

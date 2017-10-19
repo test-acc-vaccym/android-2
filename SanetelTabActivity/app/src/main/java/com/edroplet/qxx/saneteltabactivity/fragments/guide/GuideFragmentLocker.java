@@ -20,7 +20,9 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
  */
 
 public class GuideFragmentLocker extends Fragment {
-    public static GuideFragmentLocker newInstance(boolean showFirst, String firstLine, boolean showSecond, String secondLine, boolean showThird, String thirdLineStart, int icon, String thirdLineEnd) {
+    public static GuideFragmentLocker newInstance(boolean showFirst, String firstLine, boolean showSecond,
+                                                  String secondLine, boolean showThird, String thirdLineStart,
+                                                  int icon, String buttonText, String thirdLineEnd) {
         Bundle args = new Bundle();
         GuideFragmentLocker fragment = new GuideFragmentLocker();
         args.putBoolean("showFirst",showFirst);
@@ -30,6 +32,7 @@ public class GuideFragmentLocker extends Fragment {
         args.putBoolean("showThird",showThird);
         args.putString("start", thirdLineStart);
         args.putInt("icon", icon);
+        args.putString("buttonText", buttonText);
         args.putString("end", thirdLineEnd);
         fragment.setArguments(args);
         return fragment;

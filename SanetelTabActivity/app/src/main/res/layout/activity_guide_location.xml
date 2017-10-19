@@ -15,7 +15,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
         <android.support.v7.widget.Toolbar
             android:id="@+id/guide_location_toolbar"
             android:layout_width="match_parent"
-            app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:layout_height="@dimen/status_bar_height"
             android:background="@color/state_bar_background"
             app:layout_scrollFlags="scroll|enterAlways"
@@ -35,7 +35,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:text="@string/follow_me_location_help_message"/>
     </ScrollView>
 </LinearLayout>

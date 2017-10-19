@@ -38,7 +38,7 @@
                 android:padding="@dimen/no_padding"
                 android:gravity="end|center"/>
 
-            <com.edroplet.qxx.saneteltabactivity.view.StatusButton
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:id="@+id/pop_dialog_third_button"
                 style="@style/pop_operate_bar_button_style"
                 app:drawable_height="@dimen/operate_button_height"

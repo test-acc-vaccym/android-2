@@ -1,32 +1,22 @@
 package com.edroplet.qxx.saneteltabactivity.activities.settings;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-import android.widget.Gallery;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.utils.GalleryOnTime;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
 import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * An activity representing a single City detail screen. This
@@ -35,49 +25,28 @@ import java.util.TimerTask;
  * in a {@link SatelliteListActivity}.
  */
 public class SatelliteDetailActivity extends AppCompatActivity {
-    final int[] ivImages = {R.mipmap.s3, R.mipmap.s1, R.mipmap.s2};
+    private static int[] satellitesImages = {R.mipmap.satellite1, R.mipmap.satellite2, R.mipmap.satellite3};
     public CollapsingToolbarLayout collap;
     public AppBarLayout appBarLayout;
     //因为setExpanded会调用事件监听，所以通过标志过滤掉
     public static int expendedtag=2;
 
-    // 定时器
-    Timer timer = new Timer();
-    private static int i = 0;
     // ImageView iv_satellite;
     FrameLayout frameLayout;
-    private Handler handler = new Handler()
-    {
-        @Override
-        public void handleMessage(Message msg) {
-            Log.e("@@@", i + "");
-            //index=msg.what;
-            if (i > 3){
-                i = 0;
-            }else{
-                switch (i){
-                    case 1:
-                        frameLayout.setBackgroundResource(R.mipmap.s1);
-                        break;
-                    case 2:
-                        frameLayout.setBackgroundResource(R.mipmap.s2);
-                        break;
-                    default:
-                    case 3:
-                        frameLayout.setBackgroundResource(R.mipmap.s3);
-                        break;
-                }
-                frameLayout.invalidate();
-            }
-            super.handleMessage(msg);
-        }
-    };
-
+    Timer timer;
+    GalleryOnTime galleryOnTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_satellite_detail);
-        setImageView();
+
+        frameLayout = (FrameLayout) findViewById(R.id.frameLayout_satellite);
+        galleryOnTime = new GalleryOnTime(this);
+        galleryOnTime.setFrameLayout(frameLayout);
+        galleryOnTime.setImages(satellitesImages);
+        galleryOnTime.setImageView();
+        timer = galleryOnTime.getTimer();
+
         final Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.satellite_detail_fab);
@@ -101,7 +70,7 @@ public class SatelliteDetailActivity extends AppCompatActivity {
                 if (expendedtag == 2 && verticalOffset == 0){
                     //展开监听
                     toolbar.setBackgroundColor(ContextCompat.getColor(getBaseContext(),R.color.button_blink));
-                    setImageView();
+                    galleryOnTime.setImageView();
                 }else if (expendedtag != 2 && verticalOffset == 0){
                     expendedtag++;
                 }
@@ -113,8 +82,6 @@ public class SatelliteDetailActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-
-        frameLayout = (FrameLayout) findViewById(R.id.frameLayout01);
 
         // savedInstanceState is non-null when there is fragment state
         // saved from previous configurations of this activity
@@ -143,7 +110,7 @@ public class SatelliteDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        setImageView();
+        galleryOnTime.setImageView();
         super.onStart();
     }
 
@@ -174,7 +141,7 @@ public class SatelliteDetailActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setImageView();
+        galleryOnTime.setImageView();
     }
 
     @Override
@@ -183,35 +150,5 @@ public class SatelliteDetailActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    private void setImageView() {
-        // Random random = new Random();
-        // int seed=100;
-        // int rInt = (random.nextInt(100))%(ivImages.length);
-        // Glide.with( this ).load( R.mipmap.s1 ).placeholder( R.mipmap.s2 ).error( R.mipmap.s3 ).into( iv_satellite ) ;
-        // iv_satellite.setImageResource(ivImages[rInt]);
-
-//        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//        try {
-//            Date startDate = dateFormatter.parse("2017/09/27 01:06:00");
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-        final int schedule = getResources().getInteger(R.integer.detail_schedule_timer);
-        // timer.scheduleAtFixedRate(new TimerTask(){
-        timer.schedule(new TimerTask(){
-            @Override
-            public void run(){
-                i++;
-                Message message = new Message();
-                message.what = i;
-                handler.sendMessage(message);
-                try {
-                    Thread.sleep(schedule);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, 0, schedule);
-    }
 }
 

@@ -28,14 +28,14 @@
             <FrameLayout android:layout_height="150dp"
                 android:layout_width="fill_parent"
                 xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/frameLayout01">
+                android:id="@+id/frameLayout_satellite">
                 <ImageView android:layout_height="0dp"
                     android:layout_width="fill_parent"
                     android:id="@+id/iv_satellite"
                     android:fitsSystemWindows="true"
                     android:contentDescription="@string/detailed_incall_info_title"
                     android:scaleType="centerCrop"
-                    android:src="@mipmap/s2"/>
+                    android:src="@mipmap/satellite2"/>
                 <Gallery android:layout_height="0dp"
                     android:layout_width="match_parent"
                     xmlns:android="http://schemas.android.com/apk/res/android"

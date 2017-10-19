@@ -23,7 +23,9 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
  */
 
 public class GuideFragmentSearching extends Fragment {
-    public static GuideFragmentSearching newInstance(boolean showInfo,boolean showFirst, String firstLine, boolean showSecond, String secondLine, boolean showThird, String thirdLineStart, int icon, String thirdLineEnd) {
+    public static GuideFragmentSearching newInstance(boolean showInfo,boolean showFirst, String firstLine,
+                                                     boolean showSecond, String secondLine, boolean showThird,
+                                                     String thirdLineStart, int icon, String buttonText, String thirdLineEnd) {
         Bundle args = new Bundle();
         GuideFragmentSearching fragment = new GuideFragmentSearching();
         args.putBoolean("showInfo",showInfo);
@@ -34,6 +36,7 @@ public class GuideFragmentSearching extends Fragment {
         args.putBoolean("showThird",showThird);
         args.putString("start", thirdLineStart);
         args.putInt("icon", icon);
+        args.putString("buttonText", buttonText);
         args.putString("end", thirdLineEnd);
         fragment.setArguments(args);
         return fragment;
@@ -55,20 +58,23 @@ public class GuideFragmentSearching extends Fragment {
             Context context = getContext();
             int icon = bundle.getInt("icon", -1);
             if (icon == 1) {
-                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
-                        ImageUtil.textAsBitmap(context,context.getString(
-                                R.string.follow_me_searching_third_button_start),
-                                ImageUtil.sp2px(context,24))));
+//                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
+//                        ImageUtil.textAsBitmap(context,context.getString(
+//                                R.string.triangle_string),
+//                                ImageUtil.sp2px(context,24))));
+                popDialog.setButtonText(context, getString(R.string.follow_me_searching_third_button_start));
             } else if (icon == 2){
-                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
-                        ImageUtil.textAsBitmap(context,context.getString(
-                                R.string.follow_me_searching_third_button_stop),
-                                ImageUtil.sp2px(context,24))));
+//                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
+//                        ImageUtil.textAsBitmap(context,context.getString(
+//                                R.string.revert_triangle_string),
+//                                ImageUtil.sp2px(context,24))));
+                popDialog.setButtonText(context, getString(R.string.follow_me_searching_third_button_stop));
             }else if (icon == 3) {
-                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
-                        ImageUtil.textAsBitmap(context,context.getString(
-                                R.string.return_string_button),
-                                ImageUtil.sp2px(context,24)))) ;
+//                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
+//                        ImageUtil.textAsBitmap(context,context.getString(
+//                                R.string.triangle_string),
+//                                ImageUtil.sp2px(context,24)))) ;
+                popDialog.setButtonText(context, getString(R.string.return_string_button));
             }else if (icon == 4){
                 // 故障
                 popDialog.setSetThirdColor(true);

@@ -3,13 +3,15 @@ package com.edroplet.qxx.saneteltabactivity.utils;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 /**
@@ -32,15 +34,14 @@ public class PopDialog {
     private String thirdEnd = null;
     private Drawable drawable = null;
     private @ColorInt int firstLineColor = Color.RED;
+    private String buttonText = null;
 
-    public PopDialog setBundle(Bundle bundle) {
+    public void setBundle(Bundle bundle) {
         this.bundle = bundle;
-        return this;
     }
 
-    public PopDialog setDrawable(Drawable drawable) {
+    public void setDrawable(Drawable drawable) {
         this.drawable = drawable;
-        return this;
     }
 
     public void setSetFirstColor(boolean setFirstColor) {
@@ -51,18 +52,21 @@ public class PopDialog {
         this.setFirstColor = setFirstColor;
     }
 
-    public PopDialog setView(View view) {
+    public void setView(View view) {
         this.view = view;
-        return this;
     }
 
-    public PopDialog setContext(Context context) {
+    public void setContext(Context context) {
         this.context = context;
-        return this;
     }
 
     public void setFirstLineColor(@ColorInt int firstLineColor) {
         this.firstLineColor = firstLineColor;
+    }
+
+    public void setButtonText(Context context, String buttonText) {
+        this.context = context;
+        this.buttonText = buttonText;
     }
 
     public PopDialog(){}
@@ -85,30 +89,34 @@ public class PopDialog {
     }
 
     public View show(){
-        if (bundle != null){
-            showInfo = bundle.getBoolean("showInfo", false);
-            showFirst = bundle.getBoolean("showFirst", false);
-            showSecond = bundle.getBoolean("showSecond", false);
-            showThird = bundle.getBoolean("showThird", false);
-            first = bundle.getString("first", null);
-            second = bundle.getString("second", null);
-            thirdStart = bundle.getString("start", null);
-            thirdEnd = bundle.getString("end", null);
+        if (this.bundle != null){
+            this.showInfo = bundle.getBoolean("showInfo", false);
+            this.showFirst = bundle.getBoolean("showFirst", false);
+            this.showSecond = bundle.getBoolean("showSecond", false);
+            this.showThird = bundle.getBoolean("showThird", false);
+            this.first = bundle.getString("first", null);
+            this.second = bundle.getString("second", null);
+            this.thirdStart = bundle.getString("start", null);
+            this.thirdEnd = bundle.getString("end", null);
+            this.buttonText = bundle.getString("buttonText",this.buttonText);
         }
 
-        if (view != null) {
-            CustomTextView firstLine = view.findViewById(R.id.pop_dialog_tv_first);
+        if (this.view != null) {
+            CustomTextView firstLine = this.view.findViewById(R.id.pop_dialog_tv_first);
             // 是否显示卫星信息
-            if (showInfo){
-                view.findViewById(R.id.follow_me_searching_satellite_info).setVisibility(View.VISIBLE);
-            }else{
-                view.findViewById(R.id.follow_me_searching_satellite_info).setVisibility(View.GONE);
+            LinearLayout satelliteInfo = this.view.findViewById(R.id.follow_me_searching_satellite_info);
+            if (satelliteInfo != null) {
+                if (this.showInfo) {
+                    satelliteInfo.setVisibility(View.VISIBLE);
+                } else {
+                    satelliteInfo.setVisibility(View.GONE);
+                }
             }
-            if (showFirst) {
-                if (first != null && first.length() > 0) {
+            if (this.showFirst) {
+                if (this.first != null && this.first.length() > 0) {
                     firstLine.setText(first);
-                    if (setFirstColor) {
-                        firstLine.setTextColor(firstLineColor);
+                    if (this.setFirstColor) {
+                        firstLine.setTextColor(this.firstLineColor);
                     }
                     firstLine.setVisibility(View.VISIBLE);
                 }
@@ -117,43 +125,53 @@ public class PopDialog {
                 // firstLine.setVisibility(View.INVISIBLE);
             }
 
-            CustomTextView secondLine = view.findViewById(R.id.pop_dialog_tv_second);
-            if (showSecond) {
-                if (second != null && second.length() > 0) {
-                    secondLine.setText(second);
+            CustomTextView secondLine = this.view.findViewById(R.id.pop_dialog_tv_second);
+            if (this.showSecond) {
+                if (this.second != null && this.second.length() > 0) {
+                    secondLine.setText(this.second);
                     secondLine.setVisibility(View.VISIBLE);
                 }
             } else {
                 secondLine.setVisibility(View.GONE);
             }
 
-            LinearLayout ll = view.findViewById(R.id.pop_dialog_third);
-            if (showThird) {
+            LinearLayout ll = this.view.findViewById(R.id.pop_dialog_third);
+            if (this.showThird) {
                 ll.setVisibility(View.VISIBLE);
-                CustomTextView thirdStartTextView = view.findViewById(R.id.pop_dialog_tv_third_start);
-                if (thirdStart != null && thirdStart.length() > 0) {
-                    thirdStartTextView.setText(thirdStart);
-                    if (setThirdColor){
-                        thirdStartTextView.setTextColor(firstLineColor);
+                CustomTextView thirdStartTextView = this.view.findViewById(R.id.pop_dialog_tv_third_start);
+                if (this.thirdStart != null && this.thirdStart.length() > 0) {
+                    thirdStartTextView.setText(this.thirdStart);
+                    if (this.setThirdColor){
+                        thirdStartTextView.setTextColor(this.firstLineColor);
                     }
                     thirdStartTextView.setVisibility(View.VISIBLE);
                 } else {
                     thirdStartTextView.setVisibility(View.GONE);
                 }
-                StatusButton thirdButton = view.findViewById(R.id.pop_dialog_third_button);
-                if (drawable != null) {
-                    thirdButton.setCompoundDrawables(drawable,
+                CustomButton thirdButton = this.view.findViewById(R.id.pop_dialog_third_button);
+                if (this.buttonText != null || this.drawable != null) {
+                    if (this.drawable != null) {
+                        this.drawable.setBounds(0, 0, this.drawable.getMinimumWidth(), this.drawable.getMinimumHeight());
+                    }
+                    thirdButton.setCompoundDrawables(this.drawable,
                             null,null,null);
+                    thirdButton.setText(this.buttonText);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                        thirdButton.setTextAppearance(android.R.style.TextAppearance_DeviceDefault_Large);
+                    else {
+                        thirdButton.setTextAppearance(context, android.R.style.TextAppearance_DeviceDefault_Large);
+                    }
+                    thirdButton.setTextColor(ContextCompat.getColor(context, R.color.button_text));
                     thirdButton.setVisibility(View.VISIBLE);
                 } else {
                     thirdButton.setVisibility(View.GONE);
                 }
 
-                CustomTextView thirdEndTextView = view.findViewById(R.id.pop_dialog_tv_third_end);
-                if (thirdEnd != null && thirdEnd.length() > 0) {
-                    thirdEndTextView.setText(thirdEnd);
-                    if (setThirdColor){
-                        thirdEndTextView.setTextColor(firstLineColor);
+                CustomTextView thirdEndTextView = this.view.findViewById(R.id.pop_dialog_tv_third_end);
+                if (this.thirdEnd != null && this.thirdEnd.length() > 0) {
+                    thirdEndTextView.setText(this.thirdEnd);
+                    if (this.setThirdColor){
+                        thirdEndTextView.setTextColor(this.firstLineColor);
                     }
                     thirdEndTextView.setVisibility(View.VISIBLE);
                 } else {
@@ -164,7 +182,7 @@ public class PopDialog {
                 ll.setVisibility(View.GONE);
             }
         }
-        return view;
+        return this.view;
     }
 
 }

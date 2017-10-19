@@ -28,23 +28,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <!--单选组-->
-            <RadioGroup
-                android:id="@+id/rbg_city"
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
+                android:id="@+id/rbg_search_mode"
                 android:padding="@dimen/no_padding"
                 android:layout_width="@dimen/radio_group_width"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    android:id="@+id/follow_me_search_mode_beacon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/follow_me_search_mode_beacon"
                     android:checked="true"/>
 
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    android:id="@+id/follow_me_search_mode_dvb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/follow_me_search_mode_dvb"/>
-            </RadioGroup>
+            </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
         </RelativeLayout>
     </LinearLayout>
     <include layout="@layout/pop_dialog_blue"/>

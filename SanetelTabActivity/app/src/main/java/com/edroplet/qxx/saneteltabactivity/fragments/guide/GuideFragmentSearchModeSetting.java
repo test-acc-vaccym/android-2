@@ -15,6 +15,7 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 /**
@@ -22,9 +23,9 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
  */
 
 public class GuideFragmentSearchModeSetting extends Fragment {
-    private static
-    int[] icons = {R.drawable.antenna_exploded, R.drawable.park, R.drawable.searching, R.drawable.recycle, R.drawable.folder};
-    public static GuideFragmentSearchModeSetting newInstance(boolean showFirst, String firstLine, boolean showSecond, String secondLine, boolean showThird, String thirdLineStart, int icon, String thirdLineEnd) {
+    public static GuideFragmentSearchModeSetting newInstance(boolean showFirst, String firstLine, boolean showSecond,
+                                                             String secondLine, boolean showThird, String thirdLineStart,
+                                                             int icon, String buttonText, String thirdLineEnd) {
         Bundle args = new Bundle();
         GuideFragmentSearchModeSetting fragment = new GuideFragmentSearchModeSetting();
         args.putBoolean("showFirst",showFirst);
@@ -34,6 +35,7 @@ public class GuideFragmentSearchModeSetting extends Fragment {
         args.putBoolean("showThird",showThird);
         args.putString("start", thirdLineStart);
         args.putInt("icon", icon);
+        args.putString("buttonText", buttonText);
         args.putString("end", thirdLineEnd);
         fragment.setArguments(args);
         return fragment;
@@ -47,6 +49,12 @@ public class GuideFragmentSearchModeSetting extends Fragment {
         if (view == null){
             return null;
         }
+        // 单选组的选择互斥
+        CustomRadioButton crbSearchModeBeacon = view.findViewById(R.id.follow_me_search_mode_beacon);
+        CustomRadioButton crbSearchModeDvb = view.findViewById(R.id.follow_me_search_mode_dvb);
+        crbSearchModeBeacon.setOnCheckedChangeListener(GuideFragmentLocation.mOnCheckedChangeListener);
+        crbSearchModeDvb.setOnCheckedChangeListener(GuideFragmentLocation.mOnCheckedChangeListener);
+
         Context context = getContext();
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);
@@ -58,10 +66,11 @@ public class GuideFragmentSearchModeSetting extends Fragment {
 
             int icon = bundle.getInt("icon", -1);
             if (icon == 0) {
-                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
-                        ImageUtil.textAsBitmap(context,context.getString(
-                                R.string.setting_string_button),
-                                ImageUtil.sp2px(context,24)))) ;
+//                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
+//                        ImageUtil.textAsBitmap(context,context.getString(
+//                                R.string.triangle_string),
+//                                ImageUtil.sp2px(context,24)))) ;
+                popDialog.setButtonText(context, getString(R.string.setting_button_text));
             }
         }
         return popDialog.show();

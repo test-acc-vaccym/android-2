@@ -2,6 +2,8 @@ package com.edroplet.qxx.saneteltabactivity.activities.settings;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
@@ -10,8 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.utils.GalleryOnTime;
+
+import java.util.Timer;
 
 /**
  * An activity representing a single CityLocation detail screen. This
@@ -21,12 +27,28 @@ import com.edroplet.qxx.saneteltabactivity.R;
  */
 public class CityLocationDetailActivity extends AppCompatActivity {
 
+    private static int[] cityImages = {R.mipmap.city1, R.mipmap.city2, R.mipmap.city3};
+    public CollapsingToolbarLayout collap;
+    public AppBarLayout appBarLayout;
+    //因为setExpanded会调用事件监听，所以通过标志过滤掉
+    public static int expendedtag=2;
+    FrameLayout frameLayout;
+    Timer timer;
+    GalleryOnTime galleryOnTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
+
+        frameLayout = (FrameLayout) findViewById(R.id.city_detail_frame);
+        galleryOnTime = new GalleryOnTime(this);
+        galleryOnTime.setFrameLayout(frameLayout);
+        galleryOnTime.setImages(cityImages);
+        galleryOnTime.setImageView();
+        timer = galleryOnTime.getTimer();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.city_detail_fab);
         fab.setOnClickListener(new View.OnClickListener() {

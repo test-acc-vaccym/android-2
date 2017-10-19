@@ -320,7 +320,7 @@ public class SystemServices {
     }
 
     public static int getLockerState() {
-        return 0;
+        return 1;
     }
 
     public static int getSavingState(){

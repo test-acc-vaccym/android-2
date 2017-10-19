@@ -31,15 +31,15 @@
                 android:id="@+id/city_detail_frame">
                 <ImageView android:layout_height="0dp"
                     android:layout_width="fill_parent"
-                    android:id="@+id/iv_satellite"
+                    android:id="@+id/iv_city"
                     android:fitsSystemWindows="true"
                     android:contentDescription="@string/detailed_incall_info_title"
                     android:scaleType="centerCrop"
-                    android:src="@mipmap/s2"/>
+                    android:src="@mipmap/city1"/>
                 <Gallery android:layout_height="0dp"
                     android:layout_width="match_parent"
                     xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:id="@+id/gallery01"
+                    android:id="@+id/gallery_city"
                     android:spacing="5dp"/>
             </FrameLayout>
             <android.support.v7.widget.Toolbar

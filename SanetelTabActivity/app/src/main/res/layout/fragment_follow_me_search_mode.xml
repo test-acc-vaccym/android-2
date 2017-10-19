@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/follow_me_search_mode_title"
+        android:textStyle="bold"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
     <!--寻星模式-->
     <LinearLayout

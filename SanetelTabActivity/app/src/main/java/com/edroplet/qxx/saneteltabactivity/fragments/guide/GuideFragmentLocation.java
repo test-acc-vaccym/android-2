@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
+import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
@@ -41,76 +42,26 @@ public class GuideFragmentLocation extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_follow_me_location, null);
+        if (view == null){
+            return null;
+        }
         Context context = getContext();
+
+        PopDialog popDialog = new PopDialog();
+        popDialog.setView(view);
         // 位置输入
-        // 泡泡弹框
-        CustomTextView firstLine = view.findViewById(R.id.pop_dialog_tv_first);
         Bundle bundle = getArguments();
         if (bundle != null) {
-            boolean showFirst = getArguments().getBoolean("showFirst", false);
-            boolean showSecond = getArguments().getBoolean("showSecond", false);
-            boolean showThird = getArguments().getBoolean("showThird", false);
-            if (showFirst) {
-                String first = getArguments().getString("first", null);
-                if (first != null && first.length() > 0) {
-                    firstLine.setText(first);
-                    firstLine.setTextColor(Color.RED);
-                    firstLine.setVisibility(View.VISIBLE);
-                }
-            } else {
-                // firstLine.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
-                // 不占位
-                firstLine.setVisibility(View.GONE);
-            }
-
-            CustomTextView secondLine = view.findViewById(R.id.pop_dialog_tv_second);
-            if (showSecond) {
-                String second = getArguments().getString("second", null);
-                if (second != null && second.length() > 0) {
-                    secondLine.setText(second);
-                }
-            } else {
-                secondLine.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
-            }
-
-            if (showThird) {
-                CustomTextView thirdStart = view.findViewById(R.id.pop_dialog_tv_third_start);
-                String start = getArguments().getString("start", null);
-                if (start != null && start.length() > 0) {
-                    thirdStart.setText(start);
-                    thirdStart.setVisibility(View.VISIBLE);
-                } else {
-                    thirdStart.setVisibility(View.GONE);
-                }
-
-                StatusButton thirdButton = view.findViewById(R.id.pop_dialog_third_button);
-                int icon = getArguments().getInt("icon", -1);
-                if (icon >= 0) {
-                    thirdButton.setCompoundDrawables((ImageUtil.bitmapToDrawable(
-                            ImageUtil.textAsBitmap(context,context.getString(
-                                    R.string.setting_string_button),
-                                    ImageUtil.sp2px(context,24)))) ,
-                            null,null,null);
-                    thirdButton.setVisibility(View.VISIBLE);
-                } else {
-                    thirdButton.setVisibility(View.GONE);
-                }
-
-
-                CustomTextView thirdEnd = view.findViewById(R.id.pop_dialog_tv_third_end);
-                String end = getArguments().getString("end", null);
-                if (end != null && end.length() > 0) {
-                    thirdEnd.setText(end);
-                    thirdEnd.setVisibility(View.VISIBLE);
-                } else {
-                    thirdEnd.setVisibility(View.GONE);
-                }
-            } else {
-                LinearLayout ll = view.findViewById(R.id.pop_dialog_third);
-                ll.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
-                // ll.setVisibility(View.INVISIBLE);
+            popDialog.setBundle(bundle);
+            popDialog.setSetFirstColor(true);
+            int icon = bundle.getInt("icon", -1);
+            if (icon >= 0) {
+                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
+                        ImageUtil.textAsBitmap(context,context.getString(
+                                R.string.setting_string_button),
+                                ImageUtil.sp2px(context,24)))) ;
             }
         }
-        return view;
+        return popDialog.show();
     }
 }

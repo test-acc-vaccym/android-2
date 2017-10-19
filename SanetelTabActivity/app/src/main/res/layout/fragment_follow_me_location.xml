@@ -13,6 +13,7 @@
             android:layout_height="@dimen/app_bar_height"
             android:text="@string/guide_main_location"
             android:gravity="center"
+            android:textStyle="bold"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
         <ImageView
             android:layout_width="match_parent"

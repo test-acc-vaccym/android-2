@@ -358,12 +358,13 @@
     <string name="follow_me_searching_lock_third_start">请点击下一步。</string>
     <string name="follow_me_searching_timeout_first_line">寻星中…</string>
     <string name="follow_me_searching_timeout_second_line">寻星时间：%1$s s\n寻星超时！</string>
-    <string name="follow_me_searching_timeout_third_start">点击▲ 跳回位置输入，重设参数。</string>
-    <string name="follow_me_searching_timeout_third_end">如果确认已设参数正确，请点击监视页面进设置页面，设置本振等参数。</string>
+    <string name="follow_me_searching_timeout_third_start">如果确认已设参数正确，请点击监视页面进设置页面，设置本振等参数。点击</string>
+    <string name="follow_me_searching_timeout_third_end">位置输入，重设参数。</string>
     <string name="follow_me_searching_error_first_line">寻星中…</string>
     <string name="follow_me_searching_error_second_line">寻星时间：%1$s s</string>
     <string name="follow_me_searching_error_third_start">电机故障，停止寻星。请故障解除后，寻星！</string>
     <string name="back_string_button">▲返回</string>
+    <string name="return_string_button">▲ 跳回</string>
 
     <string name="follow_me_locker_title">锁紧操作</string>
     <string name="follow_me_locker_open_first_line">锁紧机构状态：松开 </string>
@@ -373,6 +374,8 @@
     <string name="follow_me_locker_lock_second_line">锁星后，为防止大风恶劣天气影响信号质量，通过方位锁紧手刹和和俯仰锁紧手刹来加强强度，尽可能保证电性能。</string>
     <string name="follow_me_locker_lock_third_start">无需锁紧，直接点击下一步。</string>
 
+    <string name="saving_open_button">▲开启</string>
+    <string name="saving_close_button">▼关闭</string>
     <string name="follow_me_saving_title">节能操作</string>
     <string name="follow_me_saving_open_first_line">节能状态：开启</string>
     <string name="follow_me_saving_close_first_line">节能状态：关闭</string>

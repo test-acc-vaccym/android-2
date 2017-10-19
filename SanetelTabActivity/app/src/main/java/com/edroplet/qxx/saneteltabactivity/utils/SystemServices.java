@@ -312,7 +312,7 @@ public class SystemServices {
     }
 
     public static int getAntennaState(){
-        return AntennaInfo.AntennaStatus.FOLDED;
+        return AntennaInfo.AntennaStatus.EXPLODED;
     }
 
     public static int getBDState(){

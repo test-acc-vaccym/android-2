@@ -1,6 +1,7 @@
 package com.edroplet.qxx.saneteltabactivity.fragments.guide;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
+import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
@@ -41,88 +43,38 @@ public class GuideFragmentSearching extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_follow_me_searching, null);
-        CustomTextView firstLine = view.findViewById(R.id.pop_dialog_tv_first);
+        if (view == null){
+            return null;
+        }
+        PopDialog popDialog = new PopDialog();
+        popDialog.setView(view);
         Bundle bundle = getArguments();
         if (bundle != null) {
-            boolean showInfo = getArguments().getBoolean("showInfo", false);
-            boolean showFirst = getArguments().getBoolean("showFirst", false);
-            boolean showSecond = getArguments().getBoolean("showSecond", false);
-            boolean showThird = getArguments().getBoolean("showThird", false);
-            // 是否显示卫星信息
-            if (showInfo){
-                view.findViewById(R.id.follow_me_searching_satellite_info).setVisibility(View.VISIBLE);
-            }else{
-                view.findViewById(R.id.follow_me_searching_satellite_info).setVisibility(View.GONE);
-            }
-            if (showFirst) {
-                String first = getArguments().getString("first", null);
-                if (first != null && first.length() > 0) {
-                    firstLine.setText(first);
-                    firstLine.setVisibility(View.VISIBLE);
-                }
-            } else {
-                firstLine.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
-                // firstLine.setVisibility(View.INVISIBLE);
-            }
-
-            CustomTextView secondLine = view.findViewById(R.id.pop_dialog_tv_second);
-            if (showSecond) {
-                String second = getArguments().getString("second", null);
-                if (second != null && second.length() > 0) {
-                    secondLine.setText(second);
-                    secondLine.setVisibility(View.VISIBLE);
-                }
-            } else {
-                secondLine.setVisibility(View.GONE);
+            popDialog.setBundle(bundle);
+            popDialog.setSetFirstColor(true);
+            Context context = getContext();
+            int icon = bundle.getInt("icon", -1);
+            if (icon == 1) {
+                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
+                        ImageUtil.textAsBitmap(context,context.getString(
+                                R.string.follow_me_searching_third_button_start),
+                                ImageUtil.sp2px(context,24))));
+            } else if (icon == 2){
+                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
+                        ImageUtil.textAsBitmap(context,context.getString(
+                                R.string.follow_me_searching_third_button_stop),
+                                ImageUtil.sp2px(context,24))));
+            }else if (icon == 3) {
+                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
+                        ImageUtil.textAsBitmap(context,context.getString(
+                                R.string.return_string_button),
+                                ImageUtil.sp2px(context,24)))) ;
+            }else if (icon == 4){
+                // 故障
+                popDialog.setSetThirdColor(true);
             }
 
-            if (showThird) {
-                CustomTextView thirdStart = view.findViewById(R.id.pop_dialog_tv_third_start);
-                String start = getArguments().getString("start", null);
-                if (start != null && start.length() > 0) {
-                    thirdStart.setText(start);
-                    thirdStart.setVisibility(View.VISIBLE);
-                } else {
-                    thirdStart.setVisibility(View.GONE);
-                }
-                Context context = getContext();
-                StatusButton thirdButton = view.findViewById(R.id.pop_dialog_third_button);
-                int icon = getArguments().getInt("icon", -1);
-                if (icon == 0) {
-                    thirdButton.setCompoundDrawables((ImageUtil.bitmapToDrawable(
-                            ImageUtil.textAsBitmap(context,context.getString(
-                                    R.string.follow_me_searching_third_button_start),
-                                    ImageUtil.sp2px(context,24)))) ,
-                            null,null,null);
-                    thirdButton.setVisibility(View.VISIBLE);
-                } else if (icon == 1){
-
-                    thirdButton.setCompoundDrawables((ImageUtil.bitmapToDrawable(
-                            ImageUtil.textAsBitmap(context,context.getString(
-                                    R.string.follow_me_searching_third_button_stop),
-                                    ImageUtil.sp2px(context,24)))) ,
-                            null,null,null);
-                    thirdButton.setVisibility(View.VISIBLE);
-                }
-                else {
-                    thirdButton.setVisibility(View.GONE);
-                }
-
-
-                CustomTextView thirdEnd = view.findViewById(R.id.pop_dialog_tv_third_end);
-                String end = getArguments().getString("end", null);
-                if (end != null && end.length() > 0) {
-                    thirdEnd.setText(end);
-                    thirdEnd.setVisibility(View.VISIBLE);
-                } else {
-                    thirdEnd.setVisibility(View.GONE);
-                }
-            } else {
-                LinearLayout ll = view.findViewById(R.id.pop_dialog_third);
-                // ll.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
-                ll.setVisibility(View.GONE);
-            }
         }
-        return view;
+        return popDialog.show();
     }
 }

@@ -137,9 +137,9 @@
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="start"
+                        android:layout_gravity="start|center_vertical"
                         android:layout_weight="1"
-                        android:text="@string/degree_unit" />
+                        android:text="@string/latitude_degree_unit" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -160,9 +160,9 @@
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="start"
+                        android:layout_gravity="start|center_vertical"
                         android:layout_weight="1"
-                        android:text="@string/degree_unit" />
+                        android:text="@string/longitude_degree_unit" />
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
@@ -208,7 +208,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="0.2"
                     android:layout_height="wrap_content"
-                    android:text="@string/degree_unit"
+                    android:text="@string/angle_degree_unit"
                     android:layout_gravity="start"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>
@@ -236,7 +236,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="0.2"
                     android:layout_height="wrap_content"
-                    android:text="@string/degree_unit"
+                    android:text="@string/angle_degree_unit"
                     android:layout_gravity="start"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>
@@ -265,7 +265,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="0.2"
                     android:layout_height="wrap_content"
-                    android:text="@string/degree_unit"
+                    android:text="@string/angle_degree_unit"
                     android:layout_gravity="start"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>

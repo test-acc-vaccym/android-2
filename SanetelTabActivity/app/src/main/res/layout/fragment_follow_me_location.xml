@@ -1,144 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:gravity="center">
-    <ImageView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:src="@mipmap/satellites"
-        android:layout_weight="1"/>
-    <!--本地位置-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/layout_padding_top"
-        android:layout_weight="1"
-        android:orientation="vertical">
-        <!--本地位置-->
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <!--位置输入-->
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/app_bar_height"
             android:text="@string/guide_main_location"
+            android:gravity="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
-        <!--单选框-->
-        <RelativeLayout
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <!--单选组-->
-            <RadioGroup
-                android:id="@+id/rbg_city"
-                android:padding="@dimen/no_padding"
-                android:layout_width="@dimen/radio_group_width"
-                android:layout_height="wrap_content">
-
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/follow_me_location_db_city" />
-
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/follow_me_location_new_city"/>
-            </RadioGroup>
-            <!--城市选择-->
-            <LinearLayout
-                android:id="@+id/city_select"
-                android:paddingLeft="@dimen/radio_group_city_padding"
-                android:paddingStart="@dimen/radio_group_city_padding"
-                android:layout_marginStart="@dimen/radio_group_width"
-                android:layout_marginLeft="@dimen/radio_group_width"
+            android:layout_height="0dp"
+            android:src="@mipmap/satellites"
+            android:layout_weight="1"/>
+        <!--本地位置-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/layout_padding_top"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <!--单选框-->
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true">
+                android:layout_height="wrap_content">
+                <!--单选组-->
+                <RadioGroup
+                    android:id="@+id/rbg_city"
+                    android:padding="@dimen/no_padding"
+                    android:layout_width="@dimen/radio_group_width"
+                    android:layout_height="wrap_content">
 
-                <!--android:layout_toEndOf="@+id/rbg_city"-->
-                <!--android:layout_toRightOf="@+id/rbg_city"-->
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/follow_me_location_db_city"
+                        android:checked="true"/>
 
-                <Spinner
-                    android:id="@+id/angle_calculate_spinner_province"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/province" />
-
-                <Spinner
-                    android:id="@+id/angle_calculate_spinner_city"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/city" />
-            </LinearLayout>
-            <!--城市位置输入-->
-            <LinearLayout
-                android:paddingLeft="@dimen/radio_group_city_padding"
-                android:paddingStart="@dimen/radio_group_city_padding"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/city_select"
-                android:layout_alignStart="@id/city_select"
-                android:layout_below="@id/city_select"
-                android:layout_alignEnd="@id/city_select"
-                android:layout_alignRight="@id/city_select"
-                android:orientation="vertical">
-
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/follow_me_location_new_city"/>
+                </RadioGroup>
+                <!--城市选择-->
                 <LinearLayout
+                    android:id="@+id/city_select"
+                    android:paddingLeft="@dimen/radio_group_city_padding"
+                    android:paddingStart="@dimen/radio_group_city_padding"
+                    android:layout_marginStart="@dimen/radio_group_width"
+                    android:layout_marginLeft="@dimen/radio_group_width"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true">
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <!--android:layout_toEndOf="@+id/rbg_city"-->
+                    <!--android:layout_toRightOf="@+id/rbg_city"-->
+
+                    <Spinner
+                        android:id="@+id/angle_calculate_spinner_province"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/angle_calculate_local_longitude" />
+                        android:entries="@array/province" />
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-                        android:layout_width="0dp"
+                    <Spinner
+                        android:id="@+id/angle_calculate_spinner_city"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:layout_weight="1"
-                        android:text="@string/degree_unit" />
+                        android:entries="@array/city" />
                 </LinearLayout>
-
+                <!--城市位置输入-->
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:paddingLeft="@dimen/radio_group_city_padding"
+                    android:paddingStart="@dimen/radio_group_city_padding"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_alignLeft="@id/city_select"
+                    android:layout_alignStart="@id/city_select"
+                    android:layout_below="@id/city_select"
+                    android:layout_alignEnd="@id/city_select"
+                    android:layout_alignRight="@id/city_select"
+                    android:orientation="vertical">
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/angle_calculate_local_latitude" />
+                        android:orientation="horizontal">
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/angle_calculate_local_longitude" />
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                        android:layout_width="0dp"
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center_vertical"
+                            android:layout_weight="1"
+                            android:text="@string/latitude_degree_unit" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:layout_weight="1"
-                        android:text="@string/degree_unit" />
+                        android:orientation="horizontal">
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/angle_calculate_local_latitude" />
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center_vertical"
+                            android:layout_weight="1"
+                            android:text="@string/longitude_degree_unit" />
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-        </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+        <include layout="@layout/pop_dialog_blue"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
     </LinearLayout>
-    <include layout="@layout/pop_dialog"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-</LinearLayout>
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>

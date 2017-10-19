@@ -423,6 +423,9 @@ public class StatusButton extends CustomButton {
         if (drawable == null) {
             drawable = drawables[3];// 下面的drawable
         }
+        if (drawable == null) {
+            return canvas;
+        }
 
         float textSize = getPaint().getTextSize();
         int drawHeight = drawable.getIntrinsicHeight();

@@ -1,15 +1,25 @@
 package com.edroplet.qxx.saneteltabactivity.utils;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.PixelFormat;
+import android.graphics.Rect;
+import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
+import android.util.TypedValue;
 
 /**
  * Created by qxs on 2017/9/13.
@@ -59,6 +69,9 @@ public class ImageUtil {
         Bitmap bitmap = Bitmap.createBitmap(bgimage, 0, 0, (int) width,
                 (int) height, matrix, true);
         return bitmap;
+    }
+    public static Drawable bitmapToDrawable(Bitmap bmp){
+        return new BitmapDrawable(bmp);
     }
 
     public static Bitmap drawableToBitmap(Drawable drawable) {
@@ -135,4 +148,5 @@ public class ImageUtil {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
+
 }

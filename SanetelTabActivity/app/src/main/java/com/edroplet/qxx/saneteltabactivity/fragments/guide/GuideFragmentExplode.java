@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.guide.GuideExplodeActivity;
+import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 /**
@@ -79,12 +81,13 @@ public class GuideFragmentExplode extends Fragment {
                     // thirdStart.setVisibility(View.INVISIBLE);
                 }
 
-                ImageView thirdImageVIew = view.findViewById(R.id.pop_dialog_iv_third);
+                StatusButton thirdButton = view.findViewById(R.id.pop_dialog_third_button);
                 int icon = getArguments().getInt("icon", -1);
                 if (icon >= 0) {
-                    thirdImageVIew.setBackgroundResource(icons[icon]);
+                    thirdButton.setCompoundDrawables(ContextCompat.getDrawable(getContext(),icons[icon]) ,null,null,null);
+                    thirdButton.setVisibility(View.VISIBLE);
                 } else {
-                    thirdImageVIew.setVisibility(View.GONE);
+                    thirdButton.setVisibility(View.GONE);
                     // thirdButton.setLayoutParams(new LinearLayout.LayoutParams(0, 0, 0));
                     // thirdButton.setVisibility(View.INVISIBLE);
                 }

@@ -1,8 +1,10 @@
 package com.edroplet.qxx.saneteltabactivity.fragments.guide;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
+import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 /**
@@ -17,8 +21,6 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
  */
 
 public class GuideFragmentSearching extends Fragment {
-    private static
-    int[] icons = {R.drawable.antenna_exploded, R.drawable.park, R.drawable.searching, R.drawable.recycle, R.drawable.folder};
     public static GuideFragmentSearching newInstance(boolean showInfo,boolean showFirst, String firstLine, boolean showSecond, String secondLine, boolean showThird, String thirdLineStart, int icon, String thirdLineEnd) {
         Bundle args = new Bundle();
         GuideFragmentSearching fragment = new GuideFragmentSearching();
@@ -56,6 +58,7 @@ public class GuideFragmentSearching extends Fragment {
                 String first = getArguments().getString("first", null);
                 if (first != null && first.length() > 0) {
                     firstLine.setText(first);
+                    firstLine.setVisibility(View.VISIBLE);
                 }
             } else {
                 firstLine.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
@@ -67,10 +70,10 @@ public class GuideFragmentSearching extends Fragment {
                 String second = getArguments().getString("second", null);
                 if (second != null && second.length() > 0) {
                     secondLine.setText(second);
+                    secondLine.setVisibility(View.VISIBLE);
                 }
             } else {
-                secondLine.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
-                // secondLine.setVisibility(View.INVISIBLE);
+                secondLine.setVisibility(View.GONE);
             }
 
             if (showThird) {
@@ -78,20 +81,31 @@ public class GuideFragmentSearching extends Fragment {
                 String start = getArguments().getString("start", null);
                 if (start != null && start.length() > 0) {
                     thirdStart.setText(start);
+                    thirdStart.setVisibility(View.VISIBLE);
                 } else {
                     thirdStart.setVisibility(View.GONE);
-                    // thirdStart.setLayoutParams(new LinearLayout.LayoutParams(0, 0, 0));
-                    // thirdStart.setVisibility(View.INVISIBLE);
                 }
-
-                ImageView thirdImageVIew = view.findViewById(R.id.pop_dialog_iv_third);
+                Context context = getContext();
+                StatusButton thirdButton = view.findViewById(R.id.pop_dialog_third_button);
                 int icon = getArguments().getInt("icon", -1);
-                if (icon >= 0) {
-                    thirdImageVIew.setBackgroundResource(icons[icon]);
-                } else {
-                    thirdImageVIew.setVisibility(View.GONE);
-                    // thirdButton.setLayoutParams(new LinearLayout.LayoutParams(0, 0, 0));
-                    // thirdButton.setVisibility(View.INVISIBLE);
+                if (icon == 0) {
+                    thirdButton.setCompoundDrawables((ImageUtil.bitmapToDrawable(
+                            ImageUtil.textAsBitmap(context,context.getString(
+                                    R.string.follow_me_searching_third_button_start),
+                                    ImageUtil.sp2px(context,24)))) ,
+                            null,null,null);
+                    thirdButton.setVisibility(View.VISIBLE);
+                } else if (icon == 1){
+
+                    thirdButton.setCompoundDrawables((ImageUtil.bitmapToDrawable(
+                            ImageUtil.textAsBitmap(context,context.getString(
+                                    R.string.follow_me_searching_third_button_stop),
+                                    ImageUtil.sp2px(context,24)))) ,
+                            null,null,null);
+                    thirdButton.setVisibility(View.VISIBLE);
+                }
+                else {
+                    thirdButton.setVisibility(View.GONE);
                 }
 
 
@@ -99,15 +113,14 @@ public class GuideFragmentSearching extends Fragment {
                 String end = getArguments().getString("end", null);
                 if (end != null && end.length() > 0) {
                     thirdEnd.setText(end);
+                    thirdEnd.setVisibility(View.VISIBLE);
                 } else {
                     thirdEnd.setVisibility(View.GONE);
-                    // thirdEnd.setLayoutParams(new LinearLayout.LayoutParams(0, 0, 0));
-                    // thirdEnd.setVisibility(View.INVISIBLE);
                 }
             } else {
                 LinearLayout ll = view.findViewById(R.id.pop_dialog_third);
-                ll.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
-                // ll.setVisibility(View.INVISIBLE);
+                // ll.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
+                ll.setVisibility(View.GONE);
             }
         }
         return view;

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="300dp">
+    android:layout_height="300dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -33,20 +34,23 @@
             android:orientation="horizontal">
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/pop_dialog_tv_third_start"
-                style="@style/text_horizontal_style"
+                style="@style/pop_text_horizontal_style"
                 android:padding="@dimen/no_padding"
                 android:gravity="end|center"/>
-            <ImageView
-                android:id="@+id/pop_dialog_iv_third"
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight="0.4"
-                android:scaleType="centerInside"
-                android:padding="@dimen/no_padding"
-                tools:ignore="ContentDescription" />
+
+            <com.edroplet.qxx.saneteltabactivity.view.StatusButton
+                android:id="@+id/pop_dialog_third_button"
+                style="@style/pop_operate_bar_button_style"
+                app:drawable_height="@dimen/operate_button_height"
+                app:drawable_width="@dimen/operate_button_height"
+                app:state_color="operate"
+                android:drawableLeft="@drawable/antenna_exploded"
+                android:drawableStart="@drawable/antenna_exploded"
+                android:visibility="gone"
+                android:padding="@dimen/no_padding"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/pop_dialog_tv_third_end"
-                style="@style/text_horizontal_style"
+                style="@style/pop_text_horizontal_style"
                 android:padding="@dimen/no_padding"
                 android:gravity="start|center"/>
         </LinearLayout>

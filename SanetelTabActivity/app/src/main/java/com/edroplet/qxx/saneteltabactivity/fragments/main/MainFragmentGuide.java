@@ -19,7 +19,7 @@ import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
  */
 
 public class MainFragmentGuide extends Fragment {
-    public static String device = "P120-3-";
+    public static String device = "P120-3";
     public static MainFragmentGuide newInstance(String info) {
         Bundle args = new Bundle();
         MainFragmentGuide fragment = new MainFragmentGuide();

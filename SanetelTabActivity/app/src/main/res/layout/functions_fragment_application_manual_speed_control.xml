@@ -49,7 +49,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="0.2"
                         android:layout_height="wrap_content"
-                        android:text="@string/degree_unit"
+                        android:text="@string/angle_degree_unit"
                         android:layout_gravity="start"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>
@@ -75,7 +75,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="0.2"
                         android:layout_height="wrap_content"
-                        android:text="@string/degree_unit"
+                        android:text="@string/angle_degree_unit"
                         android:layout_gravity="start"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>
@@ -101,7 +101,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="0.2"
                         android:layout_height="wrap_content"
-                        android:text="@string/degree_unit"
+                        android:text="@string/angle_degree_unit"
                         android:layout_gravity="start"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
             </LinearLayout>

@@ -133,6 +133,13 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="pop_text_horizontal_style" parent="Base.TextAppearance.AppCompat.Medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">start</item>
+    </style>
+
     <style name="text_vertical_style" parent="Base.TextAppearance.AppCompat.Medium">
         <item name="android:layout_height">0dp</item>
         <item name="android:layout_weight">1</item>
@@ -191,12 +198,26 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="pop_operate_bar_button_style" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginLeft">@dimen/no_padding</item>
+        <item name="android:layout_marginStart">@dimen/no_padding</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textAppearance">?attr/textAppearanceSearchResultTitle</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <!--垂直布局-->
     <style name="layout_vertical_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:paddingLeft">@dimen/layout_padding_left</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
     </style>
     <!--水平布局-->
     <style name="layout_horizontal_style">

@@ -4,7 +4,9 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
@@ -18,18 +20,18 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
+import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
+import com.edroplet.qxx.saneteltabactivity.view.TextDrawable;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 import java.util.ArrayList;
@@ -47,7 +49,7 @@ public class AdministratorLoginActivity extends AppCompatActivity implements Loa
      */
     private static final int REQUEST_READ_CONTACTS = 0;
     private View mProgressView;
-    ImageView thirdImageVIew;
+    StatusButton thirdButton;
     /**
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
@@ -72,16 +74,16 @@ public class AdministratorLoginActivity extends AppCompatActivity implements Loa
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.pop_dialog_iv_third || id == EditorInfo.IME_NULL) {
+                if (id == R.id.pop_dialog_third_button || id == EditorInfo.IME_NULL) {
                     attemptLogin();
                     return true;
                 }
                 return false;
             }
         });
-        thirdImageVIew = (ImageView) findViewById(R.id.pop_dialog_iv_third);
-        if (thirdImageVIew != null){
-            thirdImageVIew.setOnClickListener(new OnClickListener() {
+        thirdButton = (StatusButton) findViewById(R.id.pop_dialog_third_button);
+        if (thirdButton != null){
+            thirdButton.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     attemptLogin();
@@ -120,9 +122,12 @@ public class AdministratorLoginActivity extends AppCompatActivity implements Loa
             thirdStart.setVisibility(View.GONE);
         }
 
-        thirdImageVIew.setImageBitmap(ImageUtil.textAsBitmap(this, getString(R.string.main_settings_administrator_password_third_button), ImageUtil.sp2px(this,32)));
-        thirdImageVIew.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        thirdImageVIew.setMaxWidth(ImageUtil.dip2px(this, 90));
+        TextDrawable textDrawable = new TextDrawable(this);
+        textDrawable.setText(getString(R.string.main_settings_administrator_password_third_button));
+        textDrawable.setTextSize(ImageUtil.sp2px(this,32));
+        thirdButton.setCompoundDrawables( textDrawable ,null,null,null);
+
+        thirdButton.setMaxWidth(ImageUtil.dip2px(this, 90));
         findViewById(R.id.pop_dialog_tv_third_end).setVisibility(View.GONE);
     }
 

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 
+import java.util.Set;
+
 import static android.content.Context.MODE_PRIVATE;
 
 /**
@@ -11,6 +13,8 @@ import static android.content.Context.MODE_PRIVATE;
  */
 
 public class CustomSP {
+    public static final String globalLanguage = "global.language";
+    public static final String globalFont = "global.font";
     private static final String spFileName="sanetel";
     public  static boolean getBoolean(Context context, String key, boolean defaultVal){
         //用SharedPreferences保存是否第一次进入App的参数
@@ -36,6 +40,34 @@ public class CustomSP {
         SharedPreferences sharedPreferences= context.getSharedPreferences(spFileName, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(key,val);
+        editor.apply();
+    }
+
+    public  static void putInt(Context context, String key, int val){
+        SharedPreferences sharedPreferences= context.getSharedPreferences(spFileName, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(key,val);
+        editor.apply();
+    }
+
+    public  static void putFloat(Context context, String key, float val){
+        SharedPreferences sharedPreferences= context.getSharedPreferences(spFileName, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putFloat(key,val);
+        editor.apply();
+    }
+
+    public  static void putString(Context context, String key, String val){
+        SharedPreferences sharedPreferences= context.getSharedPreferences(spFileName, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(key,val);
+        editor.apply();
+    }
+
+    public  static void putStringSet(Context context, String key, Set<String> val){
+        SharedPreferences sharedPreferences= context.getSharedPreferences(spFileName, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putStringSet(key,val);
         editor.apply();
     }
 

@@ -1,8 +1,11 @@
 package com.edroplet.qxx.saneteltabactivity.fragments.guide;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
+import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 /**
@@ -17,8 +22,6 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
  */
 
 public class GuideFragmentLocation extends Fragment {
-    private static
-    int[] icons = {R.drawable.antenna_exploded, R.drawable.park, R.drawable.searching, R.drawable.recycle, R.drawable.folder};
     public static GuideFragmentLocation newInstance(boolean showFirst, String firstLine, boolean showSecond, String secondLine, boolean showThird, String thirdLineStart, int icon, String thirdLineEnd) {
         Bundle args = new Bundle();
         GuideFragmentLocation fragment = new GuideFragmentLocation();
@@ -38,6 +41,7 @@ public class GuideFragmentLocation extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_follow_me_location, null);
+        Context context = getContext();
         // 位置输入
         // 泡泡弹框
         CustomTextView firstLine = view.findViewById(R.id.pop_dialog_tv_first);
@@ -50,10 +54,13 @@ public class GuideFragmentLocation extends Fragment {
                 String first = getArguments().getString("first", null);
                 if (first != null && first.length() > 0) {
                     firstLine.setText(first);
+                    firstLine.setTextColor(Color.RED);
+                    firstLine.setVisibility(View.VISIBLE);
                 }
             } else {
-                firstLine.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
-                // firstLine.setVisibility(View.INVISIBLE);
+                // firstLine.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
+                // 不占位
+                firstLine.setVisibility(View.GONE);
             }
 
             CustomTextView secondLine = view.findViewById(R.id.pop_dialog_tv_second);
@@ -64,7 +71,6 @@ public class GuideFragmentLocation extends Fragment {
                 }
             } else {
                 secondLine.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
-                // secondLine.setVisibility(View.INVISIBLE);
             }
 
             if (showThird) {
@@ -72,20 +78,22 @@ public class GuideFragmentLocation extends Fragment {
                 String start = getArguments().getString("start", null);
                 if (start != null && start.length() > 0) {
                     thirdStart.setText(start);
+                    thirdStart.setVisibility(View.VISIBLE);
                 } else {
                     thirdStart.setVisibility(View.GONE);
-                    // thirdStart.setLayoutParams(new LinearLayout.LayoutParams(0, 0, 0));
-                    // thirdStart.setVisibility(View.INVISIBLE);
                 }
 
-                ImageView thirdImageVIew = view.findViewById(R.id.pop_dialog_iv_third);
+                StatusButton thirdButton = view.findViewById(R.id.pop_dialog_third_button);
                 int icon = getArguments().getInt("icon", -1);
                 if (icon >= 0) {
-                    thirdImageVIew.setBackgroundResource(icons[icon]);
+                    thirdButton.setCompoundDrawables((ImageUtil.bitmapToDrawable(
+                            ImageUtil.textAsBitmap(context,context.getString(
+                                    R.string.setting_string_button),
+                                    ImageUtil.sp2px(context,24)))) ,
+                            null,null,null);
+                    thirdButton.setVisibility(View.VISIBLE);
                 } else {
-                    thirdImageVIew.setVisibility(View.GONE);
-                    // thirdButton.setLayoutParams(new LinearLayout.LayoutParams(0, 0, 0));
-                    // thirdButton.setVisibility(View.INVISIBLE);
+                    thirdButton.setVisibility(View.GONE);
                 }
 
 
@@ -93,10 +101,9 @@ public class GuideFragmentLocation extends Fragment {
                 String end = getArguments().getString("end", null);
                 if (end != null && end.length() > 0) {
                     thirdEnd.setText(end);
+                    thirdEnd.setVisibility(View.VISIBLE);
                 } else {
                     thirdEnd.setVisibility(View.GONE);
-                    // thirdEnd.setLayoutParams(new LinearLayout.LayoutParams(0, 0, 0));
-                    // thirdEnd.setVisibility(View.INVISIBLE);
                 }
             } else {
                 LinearLayout ll = view.findViewById(R.id.pop_dialog_third);

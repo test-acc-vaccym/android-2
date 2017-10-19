@@ -33,6 +33,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
     public static String POSITION="position";
     private MainViewPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+    private FloatingActionButton fab;
 
     @Override
     public void onClick(View view) {
@@ -90,7 +91,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.follow_me_bottom_nav_preview).setOnClickListener(this);
         findViewById(R.id.follow_me_bottom_nav_next).setOnClickListener(this);
         findViewById(R.id.follow_me_bottom_nav_monitor).setOnClickListener(this);
-        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.follow_me_explode_fab);
+        fab = (FloatingActionButton) findViewById(R.id.follow_me_explode_fab);
         if (fab !=null)
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -166,12 +167,12 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
             // 开始寻星
             case 0:
                 mSectionsPagerAdapter.addFragment(GuideFragmentSearching.newInstance(false, true, getString(R.string.follow_me_searching_first_line), true, getString(R.string.follow_me_searching_second_line),
-                        true, getString(R.string.follow_me_searching_third_start), 0, getString(R.string.follow_me_searching_third_end)));
+                        true, getString(R.string.follow_me_searching_third_start), 0, null));
                 break;
             // 寻星中
             case 1:
                 mSectionsPagerAdapter.addFragment(GuideFragmentSearching.newInstance(true, true, getString(R.string.follow_me_searching_ing_first_line), true, getString(R.string.follow_me_searching_ing_second_line),
-                        true, getString(R.string.follow_me_searching_ing_third_start), 0, null));
+                        true, getString(R.string.follow_me_searching_ing_third_start), 1, null));
                 break;
             // 锁星
             case 2:
@@ -224,32 +225,31 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
         }else if (position >= mViewPager.getChildCount()){
             position = mViewPager.getChildCount() - 1;
         }
-        // mViewPager.setCurrentItem(position);
-        // mViewPager.setCurrentItem(position, true);
-        // mViewPager.addOnPageChangeListener(mOnPageChangeListener);
+        mViewPager.addOnPageChangeListener(mOnPageChangeListener);
         // jumpTo(position);
         mViewPager.setCurrentItem(position);
+        mViewPager.setCurrentItem(position, true);
     }
 
     private void  jumpTo(final int index){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.follow_me_view_pager, GuideFragmentExplode.newInstance(false, null, true,"展开中……！", false, "请点击", 1, "展开"));
         transaction.commit();
-//        if (mViewPager !=  null){
-//            mViewPager.getAdapter().notifyDataSetChanged();
-//            new Handler().post(new Runnable() {
-//                @Override
-//                public void run() {
-//                    mViewPager.setCurrentItem(index, true); //Where "2" is the position you want to go
-//                }
-//            });
-//        }
     }
     private MenuItem menuItem;
 
     private ViewPager.OnPageChangeListener mOnPageChangeListener = new ViewPager.OnPageChangeListener(){
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            switch (position){
+                case 0:
+                case 1:
+                    fab.setVisibility(View.VISIBLE);
+                    break;
+                default:
+                    fab.setVisibility(View.INVISIBLE);
+                    break;
+            }
         }
 
         @Override

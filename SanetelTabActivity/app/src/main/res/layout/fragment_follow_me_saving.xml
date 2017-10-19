@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,5 +12,5 @@
         android:text="@string/follow_me_saving_title"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
-    <include layout="@layout/pop_dialog"/>
+    <include layout="@layout/pop_dialog_blue"/>
 </LinearLayout>

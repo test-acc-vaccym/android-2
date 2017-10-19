@@ -3,16 +3,20 @@ package com.edroplet.qxx.saneteltabactivity.fragments.main;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.AppCompatCheckedTextView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
@@ -21,8 +25,11 @@ import com.edroplet.qxx.saneteltabactivity.activities.main.MainMeAdviceActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.main.MainMeAppActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.main.MainMeErrorReportActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.main.MainMeLanguageActivity;
+import com.edroplet.qxx.saneteltabactivity.utils.ChangeTypeFace;
+import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
@@ -33,7 +40,8 @@ import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 public class MainFragmentMe extends Fragment implements View.OnClickListener{
     private int[] languages = new int[]{R.string.main_bottom_nav_me_language_zh_cn, R.string.main_bottom_nav_me_language_english};
     private int[] fontsArray = new int[]{R.string.main_me_font_simhei, R.string.main_me_font_default};
-    private RadioOnClick OnClick = new RadioOnClick(1);
+    private RadioOnClick languageOnClick = new RadioOnClick(0);
+    private RadioOnClick fontOnClick = new RadioOnClick(1);
     String[] areas = new String[2];
     String[] fonts = new String[2];
     private ListView areaListView;
@@ -43,15 +51,17 @@ public class MainFragmentMe extends Fragment implements View.OnClickListener{
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.main_me_font:
+                    fontOnClick.setKey(CustomSP.globalFont);
                     AlertDialog adFont = new AlertDialog.Builder(getActivity()).setTitle(getString(R.string.main_me_font))
-                            .setSingleChoiceItems(fonts, OnClick.getIndex(), OnClick)
+                            .setSingleChoiceItems(fonts, fontOnClick.getIndex(), fontOnClick)
                             .create();
                     areaListView = adFont.getListView();
                     adFont.show();
                     break;
                 default:
+                    languageOnClick.setKey(CustomSP.globalLanguage);
                     AlertDialog ad = new AlertDialog.Builder(getActivity()).setTitle(getString(R.string.main_bottom_nav_me_language))
-                            .setSingleChoiceItems(areas, OnClick.getIndex(), OnClick)
+                            .setSingleChoiceItems(areas, languageOnClick.getIndex(), languageOnClick)
                             .create();
                     areaListView = ad.getListView();
                     ad.show();
@@ -61,9 +71,12 @@ public class MainFragmentMe extends Fragment implements View.OnClickListener{
     }
     class RadioOnClick implements DialogInterface.OnClickListener{
         private int index;
-
+        private String spKey;
         public RadioOnClick(int index){
             this.index = index;
+        }
+        public void setKey(String key){
+            this.spKey = key;
         }
         public void setIndex(int index){
             this.index=index;
@@ -74,7 +87,11 @@ public class MainFragmentMe extends Fragment implements View.OnClickListener{
 
         public void onClick(DialogInterface dialog, int whichButton){
             setIndex(whichButton);
-            Toast.makeText(getContext(), "您已经选择了 " +  ":" + areaListView.getChildAt(index), Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "您已经选择了 " +  ":" + ((AppCompatCheckedTextView)areaListView.getChildAt(index)).getText().toString(), Toast.LENGTH_LONG).show();
+            if (spKey.equals(CustomSP.globalFont)){
+                ChangeTypeFace.changeFont(getContext(), index);
+            }
+            CustomSP.putInt(getContext(),spKey,index);
             dialog.dismiss();
         }
     }
@@ -100,12 +117,15 @@ public class MainFragmentMe extends Fragment implements View.OnClickListener{
             }
         });
         CustomButton language = (CustomButton) view.findViewById(R.id.main_bottom_nav_me_language);
+        CustomButton font = view.findViewById(R.id.main_me_font);
         areas[0]=getString(languages[0]);
         areas[1]=getString(languages[1]);
         fonts[0] = getString(fontsArray[0]);
         fonts[1] = getString(fontsArray[1]);
 
         language.setOnClickListener(new RadioClickListener());
+        font.setOnClickListener(new RadioClickListener());
+
         view.findViewById(R.id.main_bottom_nav_me_version).setOnClickListener(this);
         view.findViewById(R.id.main_bottom_nav_me_error_report).setOnClickListener(this);
         view.findViewById(R.id.main_bottom_nav_me_advices).setOnClickListener(this);

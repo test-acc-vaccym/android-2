@@ -56,4 +56,15 @@
     <!--单选组-->
     <dimen name="radio_group_width">100dp</dimen>
     <dimen name="radio_group_city_padding">20dp</dimen>
+
+    <!--EDropletDialogBuilder-->
+    <dimen name="title_size">16dp</dimen>
+    <dimen name="button_size">14dp</dimen>
+    <dimen name="text_size">14sp</dimen>
+    <dimen name="marginLeft">24dp</dimen>
+    <dimen name="marginRight">24dp</dimen>
+    <dimen name="message_marginTop">10dp</dimen>
+    <dimen name="input_marginTop">20dp</dimen>
+    <dimen name="input_marginLeft">26dp</dimen>
+    <dimen name="input_marginRight">26dp</dimen>
 </resources>

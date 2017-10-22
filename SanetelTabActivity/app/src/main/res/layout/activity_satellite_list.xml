@@ -140,7 +140,7 @@
             android:layout_height="match_parent"
             android:id="@+id/add_satellite"
             android:drawableTop="@drawable/ic_dialer_fork_add_call"
-            android:text="@string/satellite_add"
+            android:text="@string/add_satellite"
             android:background="@color/button_blink"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             android:layout_width="0dp"
@@ -148,7 +148,7 @@
             android:layout_height="match_parent"
             android:id="@+id/delete_satellite"
             android:drawableTop="@drawable/ic_remove"
-            android:text="@string/satellite_delete"
+            android:text="@string/delete_satellite"
             android:background="@color/button_blink"/>
     </LinearLayout>
     <android.support.design.widget.FloatingActionButton

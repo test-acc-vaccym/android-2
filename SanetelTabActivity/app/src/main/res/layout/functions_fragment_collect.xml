@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/app_bar_height"
     style="@style/manual_divider">
 
     <!--数据采集-->
@@ -11,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_marginBottom="@dimen/app_bar_height"
         android:orientation="vertical">
         <!--数据采集-->
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -19,24 +21,34 @@
             android:gravity="center"
             android:text="@string/main_collect_data"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:layout_marginTop="2dp"
+            android:layout_margin="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
+
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                android:padding="@dimen/no_padding"
+                android:id="@+id/main_collect_data_history"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/button_blink"
+                android:padding="@dimen/no_padding"
                 android:text="@string/main_collect_data_history"
-                android:textColor="@color/blacklisted_call"/>
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title"
+                android:textColor="@color/button_text" />
+
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                android:padding="@dimen/no_padding"
+                android:id="@+id/main_collect_data_new"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/button_blink"
+                android:padding="@dimen/no_padding"
                 android:text="@string/main_collect_data_new"
-                android:textColor="@color/blacklisted_call"/>
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title"
+                android:textColor="@color/button_text" />
         </LinearLayout>
     </LinearLayout>
 
@@ -47,6 +59,7 @@
         android:orientation="horizontal"
         android:background="@color/bottom_tab_nav_background">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/main_collect_data_clear"
             style="@style/button_horizontal_style"
             android:layout_gravity="center_vertical"
             android:padding="@dimen/no_padding"
@@ -54,18 +67,21 @@
             android:text="@string/main_collect_data_clear"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             style="@style/button_horizontal_style"
+            android:id="@+id/main_collect_data_start"
             android:layout_gravity="center_vertical"
             android:padding="@dimen/no_padding"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:text="@string/main_collect_data_start"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             style="@style/button_horizontal_style"
+            android:id="@+id/main_collect_data_stop"
             android:layout_gravity="center_vertical"
             android:padding="@dimen/no_padding"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:text="@string/main_collect_data_stop"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             style="@style/button_horizontal_style"
+            android:id="@+id/main_collect_data_save"
             android:layout_gravity="center_vertical"
             android:padding="@dimen/no_padding"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"

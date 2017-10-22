@@ -10,7 +10,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/city_detail_app_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
+        android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
@@ -23,7 +23,7 @@
             app:expandedTitleMarginStart="24dp"
             app:expandedTitleTextAppearance="?android:attr/textAppearanceLarge"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:toolbarId="@+id/city_list_toolbar">
+            app:toolbarId="@+id/list_toolbar">
 
             <FrameLayout android:layout_height="150dp"
                 android:layout_width="fill_parent"
@@ -35,21 +35,20 @@
                     android:fitsSystemWindows="true"
                     android:contentDescription="@string/detailed_incall_info_title"
                     android:scaleType="centerCrop"
-                    android:src="@mipmap/city1"/>
+                    android:src="@mipmap/satellite2"/>
                 <Gallery android:layout_height="0dp"
                     android:layout_width="match_parent"
-                    xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/gallery_city"
                     android:spacing="5dp"/>
             </FrameLayout>
+
             <android.support.v7.widget.Toolbar
-                android:id="@+id/city_detail_detail_toolbar"
+                android:id="@+id/city_detail_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:navigationIcon="@drawable/back"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>

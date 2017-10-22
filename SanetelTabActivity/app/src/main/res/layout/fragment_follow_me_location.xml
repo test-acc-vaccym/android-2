@@ -6,6 +6,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/status_bar_height"
         android:gravity="center">
         <!--位置输入-->
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView

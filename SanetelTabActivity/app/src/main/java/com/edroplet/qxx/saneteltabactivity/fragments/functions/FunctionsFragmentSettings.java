@@ -4,20 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.AppCompatImageButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.activities.functions.AdministratorLoginActivity;
-import com.edroplet.qxx.saneteltabactivity.activities.guide.GuideEntryActivity;
+import com.edroplet.qxx.saneteltabactivity.activities.settings.AdministratorLoginActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.CityLocationListActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.PowerAmplifierSettingsActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteListActivity;
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomImageButton;
 
 /**
  * Created by qxs on 2017/9/19.

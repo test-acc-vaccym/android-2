@@ -1,6 +1,7 @@
 package com.edroplet.qxx.saneteltabactivity.activities.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -8,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
@@ -46,5 +48,18 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(MainFragmentMe.newInstance(""));
         viewPager.setAdapter(adapter);
     }
-
+    // 回调方法，从第二个页面回来的时候会执行这个方法
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // 根据上面发送过去的请求吗来区别
+        switch (requestCode) {
+            case 10086:
+                SystemServices.checkConnectedSsid(this,MainFragmentGuide.device, this);
+                break;
+            case 10000:
+                Toast.makeText(this, getString(R.string.main_connected_ssid_prompt) + SystemServices.getConnectWifiSsid(this), Toast.LENGTH_SHORT).show();
+            default:
+                break;
+        }
+    }
 }

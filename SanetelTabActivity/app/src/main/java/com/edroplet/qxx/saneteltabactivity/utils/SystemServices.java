@@ -2,10 +2,13 @@ package com.edroplet.qxx.saneteltabactivity.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -17,6 +20,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.activities.guide.WifiManagerActivity;
+import com.edroplet.qxx.saneteltabactivity.activities.main.MainWifiSettingHelpActivity;
 import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
 import com.edroplet.qxx.saneteltabactivity.fragments.main.MainFragmentGuide;
@@ -44,16 +48,19 @@ public class SystemServices {
         activity.startActivityForResult(intent,10000);//进入无线网络配置界面
     }
 
-    public static void checkConnectedSsid(Context context, String ssid, final Activity activity){
+    public static void checkConnectedSsid(final Context context, String ssid, final Activity activity){
         String currentSSID = getConnectWifiSsid(context);
-        Toast.makeText(context, ssid, Toast.LENGTH_SHORT).show();
         if (!currentSSID.contains(ssid)) {
             final RandomDialog rd = new RandomDialog(context);
-            rd.onConfirm("没有连接设备\n请连接设备" + ssid, new View.OnClickListener() {
+            rd.onConfirmEDropletDialogBuilder("没有连接设备\n请连接设备" + ssid, new DialogInterface.OnClickListener(){
                 @Override
-                public void onClick(View view) {
-                    SystemServices.startWifiManager(activity);
-                    rd.getDialogBuilder().dismiss();
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    startWifiManager(activity);
+                }
+            }, new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    activity.startActivityForResult(new Intent(context, MainWifiSettingHelpActivity.class), 10086);
                 }
             });
         }

@@ -1,11 +1,18 @@
 package com.edroplet.qxx.saneteltabactivity.utils;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
+import android.text.InputType;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo;
+import com.edroplet.qxx.saneteltabactivity.view.EDropletDialogBuilder;
 import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
@@ -15,8 +22,9 @@ import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
 public class RandomDialog {
     private NiftyDialogBuilder dialogBuilder;
+    private AlertDialog.Builder alertDialogBuilder;
     private Context context;
-    RandomDialog(Context context){
+    public RandomDialog(Context context){
         this.context = context;
     }
     public boolean onConfirm(String message, View.OnClickListener listener){
@@ -70,7 +78,150 @@ public class RandomDialog {
         return true;
     }
 
+
+    public void onConfirmThreeButton(String message,
+                                        DialogInterface.OnClickListener btnOkListener,
+                                        DialogInterface.OnClickListener btnHelpListener){
+        alertDialogBuilder = new AlertDialog.Builder(context);
+//        builder.setIcon(R.drawable.ic_launcher);
+        alertDialogBuilder.setTitle(context.getResources().getString(R.string.operate_confirm_title))
+                .setMessage(message)
+                //  第一个按钮
+                .setNeutralButton(context.getResources().getString(R.string.operate_confirm_ok), btnOkListener)
+                //  中间的按钮
+                .setNegativeButton(context.getResources().getString(R.string.operate_confirm_cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        //  提示信息
+                        Toast toast = Toast.makeText(context, "你选择了取消", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                })
+                //  第二个按钮
+                .setPositiveButton("？", btnHelpListener)
+                //  Dialog的显示
+                .create().show();
+    }
     public  NiftyDialogBuilder getDialogBuilder() {
         return dialogBuilder;
+    }
+
+    public AlertDialog.Builder getAlertDialog(){return alertDialogBuilder; }
+
+    public void onConfirmEDropletDialogBuilder(String message,
+                                               final DialogInterface.OnClickListener btnOkListener,
+                                               final DialogInterface.OnClickListener btnHelpListener){
+        new EDropletDialogBuilder(context)
+                .setTitle(context.getResources().getString(R.string.operate_confirm_title))
+                .setTitleSize(24)
+                .setTitleColor(Color.parseColor("#000000"))
+                .setTitleBold(true)
+                .setTitleCenter(true)
+                .setMessageCenter(true)
+                .setMessage(message)
+                .setMessageSize(20)
+                .setMessageBold(true)
+                .setMessageColor(Color.parseColor("#000000"))
+                //  第一个按钮
+                .setNegativeTextColor(Color.BLUE)
+                //  第二个按钮 最后一个
+                .setPositiveTextColor(Color.BLUE)
+                //  第3个按钮 中间
+                .setNeutralTextColor(Color.BLUE)
+                .setButtonCenter(false)
+                .setButtonSize(24)
+                .setCancleable(false)
+                //  第一个按钮
+                .setNeutralButton(context.getResources().getString(R.string.operate_confirm_ok), btnOkListener)
+                //  第二个按钮
+                .setPositiveButton("？", btnHelpListener)
+                //  第3个按钮
+                .setNegativeButton(context.getResources().getString(R.string.operate_confirm_cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        //  提示信息
+                        Toast toast = Toast.makeText(context, "你选择了取消", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                })
+                /*
+                .setOnConfirmListener(new EDropletDialogBuilder.OnConfirmListener() {
+                    @Override
+                    public void onClick(int which) {
+                        //which,0代表NegativeButton，1代表PositiveButton
+                        Toast.makeText(context, "点击了：：" + which, Toast.LENGTH_SHORT).show();
+                        switch (which) {
+                            // 最左边的
+                            // positive 1 最后一个
+                            case 1:
+                                btnHelpListener.onClick(null, which);
+                                break;
+                            // 0 确定
+                            // negtive 第一个
+                            case 0:
+                                btnOkListener.onClick(null, which);
+                                break;
+                            // 取消
+                            // 中间的
+                            default:
+                                //  提示信息
+                                Toast.makeText(context, "你选择了取消", Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+                    }
+                })*/
+                .create(EDropletDialogBuilder.CONFIRM).show();
+    }
+    private String mInputText = null;
+    public void onInputBuilder (String message,
+                                String hint){
+        new EDropletDialogBuilder(context).setTitle(message)
+                .setInputHintText(hint)
+                .setInputHintTextColor(Color.parseColor("#c1c1c1"))
+                .setInputText("")
+                .setInputTextColor(Color.parseColor("#333333"))
+                .setInputTextSize(14)
+                .setInputType(InputType.TYPE_CLASS_TEXT)
+                .setInputLineColor(Color.parseColor("#00ff00"))
+                .setPositiveButtonText(context.getResources().getString(R.string.operate_confirm_ok))
+                .setNegativeButtonText(context.getResources().getString(R.string.operate_confirm_cancel))
+                .setNegativeTextColor(Color.parseColor("#c1c1c1"))
+                .setOnInputListener(new EDropletDialogBuilder.OnInputListener() {
+                    @Override
+                    public void onClick(String inputText, int which) {
+                        //which,0代表NegativeButton，1代表PositiveButton
+                        Toast.makeText(context, "输入了: " + inputText, Toast.LENGTH_SHORT).show();
+                        if (which == 0){
+                            mInputText = inputText;
+                            CollectHistoryFileInfo collectHistoryFileInfo = new CollectHistoryFileInfo(context);
+                            collectHistoryFileInfo.setDateTime(DateTime.getCurrentDateTime()).setFileName(mInputText).save();
+                        }
+                    }
+                }).create(EDropletDialogBuilder.INPUT).show();
+    }
+
+    public String getmInputText() {
+        return mInputText;
+    }
+
+    public void onSelectBuilder (String message,
+                                 EDropletDialogBuilder.OnConfirmListener btnOkListener,
+                                 EDropletDialogBuilder.OnConfirmListener btnHelpListener){
+        new EDropletDialogBuilder(context)
+                .setItems(new String[]{"aaa", "bbb", "ccc", "ddd"})
+                .setItemGravity(Gravity.LEFT)
+                .setItemColor(Color.parseColor("#000000"))
+                .setItemHeigh(50)
+                .setItemSize(16)
+                .setDividerHeigh(1)
+                .setAdapter(null)
+                .setDividerColor(Color.parseColor("#c1c1c1"))
+                .setHasDivider(true)
+                .setOnChoiceListener(new EDropletDialogBuilder.OnChoiceListener() {
+                    @Override
+                    public void onClick(String item, int which) {
+                        Toast.makeText(context, "选择了：：" + item, Toast.LENGTH_SHORT).show();
+                    }
+                }).create(EDropletDialogBuilder.CHOICE).show();
     }
 }

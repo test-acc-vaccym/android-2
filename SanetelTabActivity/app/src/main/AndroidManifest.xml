@@ -172,8 +172,11 @@
             android:label="wifi" />
         <activity android:name=".activities.guide.GuideExplodeActivity" />
         <activity android:name=".activities.guide.GuideLocationActivity" />
-        <activity android:name=".activities.functions.MonitorHelpActivity"/>
-        <activity android:name=".activities.functions.AdministratorLoginActivity"/>
+        <activity android:name=".activities.functions.MonitorHelpActivity" />
+        <activity android:name=".activities.settings.AdministratorLoginActivity" />
+        <activity android:name=".activities.main.MainWifiSettingHelpActivity"/>
+        <activity android:name=".activities.functions.FunctionsCollectHistoryFileListActivity"/>
+
     </application>
 
 </manifest>

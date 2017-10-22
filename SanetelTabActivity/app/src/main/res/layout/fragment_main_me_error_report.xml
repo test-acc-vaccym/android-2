@@ -117,6 +117,8 @@
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                     android:id="@+id/main_me_error_report_serial_number"
                     style="@style/text_horizontal_style"
+                    android:padding="@dimen/no_padding"
+                    android:hint="@string/main_me_error_report_serial_number_hint"
                     app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
             </LinearLayout>
             <!--文件名称-->
@@ -138,12 +140,15 @@
             <LinearLayout
                 style="@style/layout_vertical_style"
                 android:layout_weight="2"
+                android:layout_gravity="start|left"
+                android:gravity="start|left"
                 android:orientation="vertical">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     android:id="@+id/main_me_error_report_attach"
                     android:text="@string/main_me_error_report_attach"
                     style="@style/button_vertical_style"
                     android:padding="@dimen/no_padding"
+                    android:layout_width="wrap_content"
                     android:gravity="start|left"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_me_error_report_attach_files"
@@ -153,11 +158,14 @@
             <LinearLayout
                 style="@style/layout_vertical_style"
                 android:layout_weight="2"
+                android:layout_gravity="start|left"
+                android:gravity="start|left"
                 android:orientation="vertical">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     android:id="@+id/main_me_error_report_photo"
                     android:text="@string/main_me_error_report_photo"
                     style="@style/button_vertical_style"
+                    android:layout_width="wrap_content"
                     android:gravity="start|left"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_me_error_report_photo_files"

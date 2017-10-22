@@ -1,8 +1,9 @@
-package com.edroplet.qxx.saneteltabactivity.activities.functions;
+package com.edroplet.qxx.saneteltabactivity.activities.settings;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
@@ -19,8 +20,10 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
@@ -30,12 +33,15 @@ import android.widget.TextView;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
+import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 import com.edroplet.qxx.saneteltabactivity.view.TextDrawable;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -49,7 +55,7 @@ public class AdministratorLoginActivity extends AppCompatActivity implements Loa
      */
     private static final int REQUEST_READ_CONTACTS = 0;
     private View mProgressView;
-    StatusButton thirdButton;
+    CustomButton thirdButton;
     /**
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
@@ -69,7 +75,14 @@ public class AdministratorLoginActivity extends AppCompatActivity implements Loa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administrator_login);
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.administrator_login_toolbar);
+        toolbar.setTitle(R.string.main_settings_administrator_login_title);
+        toolbar.setNavigationOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         mPasswordView = (EditText) findViewById(R.id.main_settings_administrator_password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -81,7 +94,22 @@ public class AdministratorLoginActivity extends AppCompatActivity implements Loa
                 return false;
             }
         });
-        thirdButton = (StatusButton) findViewById(R.id.pop_dialog_third_button);
+        mProgressView = findViewById(R.id.administrator_login_progress);
+
+        // pop dialog
+        PopDialog popDialog = new PopDialog(this);
+
+//        View view = LayoutInflater.from(this).inflate(R.layout.activity_administrator_login, null);
+        popDialog.setView(findViewById(R.id.administrator_login_pop));
+        Bundle bundle = new Bundle();
+        String start = getString(R.string.main_settings_administrator_password_third_start);
+        bundle.putString("start",start);
+        popDialog.setBundle(bundle);
+        popDialog.setSetFirstColor(true);
+        popDialog.setButtonText(this,getString(R.string.main_settings_administrator_password_third_button));
+        popDialog.show();
+
+        thirdButton = (CustomButton) findViewById(R.id.pop_dialog_third_button);
         if (thirdButton != null){
             thirdButton.setOnClickListener(new OnClickListener() {
                 @Override
@@ -90,45 +118,6 @@ public class AdministratorLoginActivity extends AppCompatActivity implements Loa
                 }
             });
         }
-        mProgressView = findViewById(R.id.administrator_login_progress);
-
-        /*
-        spinner = (Spinner) findViewById(R.id.spinnerServerType);
-
-        //将可选内容与ArrayAdapter连接起来
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,serverTypes);
-        //设置下拉列表的风格
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //将adapter 添加到spinner中
-        spinner.setAdapter(adapter);
-        //添加事件Spinner事件监听
-        spinner.setOnItemSelectedListener(new SpinnerSelectedListener());
-        //设置默认值
-        spinner.setVisibility(View.VISIBLE);
-        */
-        CustomTextView firstLine = (CustomTextView)findViewById(R.id.pop_dialog_tv_first);
-        firstLine.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
-
-        CustomTextView secondLine = (CustomTextView) findViewById(R.id.pop_dialog_tv_second);
-
-        secondLine.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
-
-        CustomTextView thirdStart = (CustomTextView) findViewById(R.id.pop_dialog_tv_third_start);
-        String start = getString(R.string.main_settings_administrator_password_third_start);
-        if (start != null && start.length() > 0) {
-            thirdStart.setText(start);
-            // thirdStart.setGravity(Gravity.CENTER|Gravity.END);
-        } else {
-            thirdStart.setVisibility(View.GONE);
-        }
-
-        TextDrawable textDrawable = new TextDrawable(this);
-        textDrawable.setText(getString(R.string.main_settings_administrator_password_third_button));
-        textDrawable.setTextSize(ImageUtil.sp2px(this,32));
-        thirdButton.setCompoundDrawables( textDrawable ,null,null,null);
-
-        thirdButton.setMaxWidth(ImageUtil.dip2px(this, 90));
-        findViewById(R.id.pop_dialog_tv_third_end).setVisibility(View.GONE);
     }
 
     //使用数组形式操作

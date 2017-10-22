@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".activities.functions.AdministratorLoginActivity">
+    tools:context=".activities.settings.AdministratorLoginActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/administrator_login_appbar"
@@ -40,6 +40,7 @@
         android:visibility="gone" />
 
     <LinearLayout
+        android:id="@+id/login_pop_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/status_bar_height"
@@ -55,6 +56,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:gravity="start|center_vertical"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:text="@string/main_settings_administrator_password"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                     android:id="@+id/main_settings_administrator_password"
@@ -68,10 +71,10 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#000" />
-        <include layout="@layout/pop_dialog_blue"
+        <include layout="@layout/pop_dialog"
+            android:id="@+id/administrator_login_pop"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_height="150dp"/>
         </LinearLayout>
 </LinearLayout>
 

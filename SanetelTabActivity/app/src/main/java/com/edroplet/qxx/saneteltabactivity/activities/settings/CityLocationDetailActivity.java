@@ -6,6 +6,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
@@ -40,7 +41,7 @@ public class CityLocationDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.city_detail_toolbar);
         setSupportActionBar(toolbar);
 
         frameLayout = (FrameLayout) findViewById(R.id.city_detail_frame);
@@ -65,6 +66,26 @@ public class CityLocationDetailActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        appBarLayout = (AppBarLayout) findViewById(R.id.city_detail_app_bar);
+        appBarLayout.setExpanded(true);
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener(){
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (getSupportActionBar().getHeight()-appBarLayout.getHeight() == verticalOffset){
+                    // TODO 折叠监听
+                    // timer.cancel();
+                    toolbar.setBackgroundColor(ContextCompat.getColor(getBaseContext(),R.color.state_bar_background));
+                }
+                if (expendedtag == 2 && verticalOffset == 0){
+                    //展开监听
+                    toolbar.setBackgroundColor(ContextCompat.getColor(getBaseContext(),R.color.button_blink));
+                    galleryOnTime.setImageView();
+                }else if (expendedtag != 2 && verticalOffset == 0){
+                    expendedtag++;
+                }
+            }
+        });
+
         // savedInstanceState is non-null when there is fragment state
         // saved from previous configurations of this activity
         // (e.g. when rotating the screen from portrait to landscape).
@@ -87,6 +108,30 @@ public class CityLocationDetailActivity extends AppCompatActivity {
                     .commit();
         }
     }
+    @Override
+    protected void onStart() {
+        galleryOnTime.setImageView();
+        super.onStart();
+    }
+
+    @Override
+    protected void onDestroy() {
+        timer.cancel();
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        galleryOnTime.setImageView();
+    }
+
+    @Override
+    protected void onPause() {
+        // timer.cancel();
+        super.onPause();
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -100,6 +145,7 @@ public class CityLocationDetailActivity extends AppCompatActivity {
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
             NavUtils.navigateUpTo(this, new Intent(this, CityLocationListActivity.class));
+            this.finish();
             return true;
         }
         return super.onOptionsItemSelected(item);

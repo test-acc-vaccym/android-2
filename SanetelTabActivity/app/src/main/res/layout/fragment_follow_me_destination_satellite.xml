@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/status_bar_height"
         android:gravity="center">
         <!--目标星-->
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.3"
-            android:gravity="center"
+            android:layout_height="@dimen/status_bar_height"
             android:text="@string/follow_me_destination_satellite_title"
-            android:textColor="@color/black"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:gravity="center"
             android:textStyle="bold"
-            android:padding="@dimen/no_padding"/>
-
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
         <FrameLayout android:layout_height="150dp"
             android:layout_width="fill_parent"
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -100,10 +97,7 @@
                 </LinearLayout>
                 <!--新卫星参数输入-->
                 <LinearLayout
-                    android:layout_marginLeft="@dimen/radio_group_city_padding"
-                    android:layout_marginStart="@dimen/radio_group_city_padding"
-                    android:layout_marginRight="100dp"
-                    android:layout_marginEnd="100dp"
+                    android:padding="@dimen/radio_group_city_padding"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@id/city_select"
@@ -130,6 +124,7 @@
                             android:id="@+id/follow_me_destination_satellite_name"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:padding="@dimen/no_padding"
                             android:layout_weight="1" />
                     </LinearLayout>
                     <!--极化方式-->
@@ -150,6 +145,7 @@
                             android:id="@+id/follow_me_destination_satellite_polarization"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:padding="@dimen/no_padding"
                             android:layout_weight="1" />
                     </LinearLayout>
                     <!--卫星经度-->
@@ -169,6 +165,7 @@
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:padding="@dimen/no_padding"
                             android:layout_weight="0.7" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -196,12 +193,13 @@
                             android:id="@+id/follow_me_destination_satellite_beacon"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.7" />
+                            android:padding="@dimen/no_padding"
+                            android:layout_weight="0.6" />
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start|center_vertical"
-                            android:layout_weight="0.3"
+                            android:layout_weight="0.4"
                             android:text="@string/frequency_unit" />
                     </LinearLayout>
                     <!--门    限-->
@@ -222,6 +220,7 @@
                             android:id="@+id/follow_me_destination_satellite_threshold"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:padding="@dimen/no_padding"
                             android:layout_weight="1" />
                     </LinearLayout>
                     <!--DVB-->
@@ -242,6 +241,7 @@
                             android:id="@+id/follow_me_destination_satellite_dvb"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:padding="@dimen/no_padding"
                             android:layout_weight="1" />
                     </LinearLayout>
                 </LinearLayout>
@@ -250,6 +250,6 @@
         <include layout="@layout/pop_dialog_blue"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.8"/>
+            android:layout_weight="1"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

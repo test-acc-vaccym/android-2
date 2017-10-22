@@ -14,7 +14,7 @@
     android:layout_marginEnd="@dimen/pop_margin_horizontal"
     android:layout_marginTop="@dimen/pop_margin_vertical"
     android:layout_marginBottom="@dimen/pop_margin_vertical"
-    android:background="@drawable/pop_new_blue"
+    android:background="@drawable/pop"
     android:layout_gravity="center"
     android:gravity="center">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -25,11 +25,11 @@
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:id="@+id/pop_dialog_tv_second"
             style="@style/text_vertical_style"
-            android:gravity="center"
-            android:lines="3"/>
+            android:gravity="center"/>
         <LinearLayout
             android:id="@+id/pop_dialog_third"
             style="@style/layout_vertical_style"
+            android:layout_height="wrap_content"
             android:padding="0dp"
             android:orientation="horizontal">
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -51,8 +51,9 @@
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/pop_dialog_tv_third_end"
                 style="@style/pop_text_horizontal_style"
+                android:layout_height="wrap_content"
                 android:padding="@dimen/no_padding"
-                android:gravity="start|center"/>
+                android:gravity="start|center_vertical"/>
         </LinearLayout>
 </LinearLayout>
 </ScrollView>

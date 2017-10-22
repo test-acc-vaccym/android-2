@@ -52,7 +52,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
             case R.id.follow_me_bottom_nav_preview:
                 StatusBarControl.setTitle(getString(R.string.follow_me_bottom_nav_preview));
                 if (now == 0) {
-                    Toast.makeText(this, "Already the FIRST one", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.follow_me_first_page), Toast.LENGTH_SHORT).show();
                 }else{
                     mViewPager.setCurrentItem(now - 1);
                 }
@@ -60,7 +60,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
             case R.id.follow_me_bottom_nav_next:
                 StatusBarControl.setTitle(getString(R.string.follow_me_bottom_nav_next));
                 if (now == count - 1) {
-                    Toast.makeText(this, "Already the LAST one", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.follow_me_last_page), Toast.LENGTH_SHORT).show();
                 }else{
                     mViewPager.setCurrentItem(now + 1);
                 }
@@ -123,23 +123,29 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
         int state = SystemServices.getAntennaState();
         switch (state){
             case AntennaInfo.AntennaStatus.FOLDED:
-                mSectionsPagerAdapter.addFragment(GuideFragmentExplode.newInstance(true,"天线状态为收藏！", false, null, true, "请点击", 0, "展开", null));
+                mSectionsPagerAdapter.addFragment(GuideFragmentExplode.newInstance(true, getString(R.string.follow_me_antenna_state_folder),
+                        false, null, true, getString(R.string.follow_me_message_click), 0, getString(R.string.antenna_state_exploded), null));
                 break;
             case AntennaInfo.AntennaStatus.EXPLODED:
-                mSectionsPagerAdapter.addFragment(GuideFragmentExplode.newInstance(true, "天线状态已为展开！", true,"     天线面辅瓣放置在软包中," +
-                        "每个天线辅面配有图标；用户通过主瓣上标注的安装说明，可以轻而易举的完成天线面安装。", true, "     安装完成之后,可以点击下一步。",-1, null, null));
+                mSectionsPagerAdapter.addFragment(GuideFragmentExplode.newInstance(true, getString(R.string.follow_me_antenna_state_explode),
+                        true, getString(R.string.follow_me_antenna_state_explode_second_line),
+                        true, getString(R.string.follow_me_antenna_state_explode_third_start),-1, null, null));
                 break;
             case AntennaInfo.AntennaStatus.PAUSE:
-                mSectionsPagerAdapter.addFragment(GuideFragmentExplode.newInstance(true,"天线状态为暂停！", false, null, true, "请点击", 0, "展开", null));
+                mSectionsPagerAdapter.addFragment(GuideFragmentExplode.newInstance(true, getString(R.string.follow_me_antenna_state_pause),
+                        false, null, true, getString(R.string.follow_me_message_click), 0, getString(R.string.antenna_state_exploded), null));
                 break;
             case AntennaInfo.AntennaStatus.EXPLODING:
-                mSectionsPagerAdapter.addFragment(GuideFragmentExplode.newInstance(true,"展开中……！", false, null, true, "请点击", 1, "暂停", null));
+                mSectionsPagerAdapter.addFragment(GuideFragmentExplode.newInstance(true,getString(R.string.follow_me_explode_exploding),
+                        false, null, true, getString(R.string.follow_me_message_click), 1,  getString(R.string.antenna_state_paused), null));
                 break;
             case AntennaInfo.AntennaStatus.SEARCHING:
-                mSectionsPagerAdapter.addFragment(GuideFragmentExplode.newInstance(true,"天线状态为寻星中……！", false, "", false, null, -1, null, null));
+                mSectionsPagerAdapter.addFragment(GuideFragmentExplode.newInstance(true,getString(R.string.follow_me_antenna_state_searching),
+                        false, null, false, null, -1, null, null));
                 break;
             case AntennaInfo.AntennaStatus.RECYCLED:
-                mSectionsPagerAdapter.addFragment(GuideFragmentExplode.newInstance(true,"天线状态为节能模式！", false, null, true, "请点击", 0, "展开", null));
+                mSectionsPagerAdapter.addFragment(GuideFragmentExplode.newInstance(true,getString(R.string.follow_me_antenna_state_saving),
+                        false, null, true, getString(R.string.follow_me_message_click), 0, getString(R.string.antenna_state_exploded), null));
                 break;
         }
         // 位置输入
@@ -147,17 +153,20 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
         int bdState = SystemServices.getBDState();
         switch (bdState){
             case LocationInfo.BDState.NONLOCATED:
-                mSectionsPagerAdapter.addFragment(GuideFragmentLocation.newInstance(true, "GPS/BD状态：未定位！",
-                        true, "请您从数据库中选择城市；如果数据库无该城市，请输入城市参数。\n新城市将保持于数据库。", true, "点击", 0, null, "永久生效。"));
+                mSectionsPagerAdapter.addFragment(GuideFragmentLocation.newInstance(true, getString(R.string.follow_me_location_state_not_locate),
+                        true, getString(R.string.follow_me_location_state_not_locate_second_line),
+                        true, getString(R.string.follow_me_message_click), 0, null, getString(R.string.follow_me_forever)));
                 break;
             case LocationInfo.BDState.LOCATED:
-                mSectionsPagerAdapter.addFragment(GuideFragmentLocation.newInstance(true, "GPS/BD状态：已定位！",
-                        true, "**当地经纬度展现在文本框中，直接点击下一步。**", false, null,  -1, null, null));
+                mSectionsPagerAdapter.addFragment(GuideFragmentLocation.newInstance(true, getString(R.string.follow_me_location_state_locate),
+                        true, getString(R.string.follow_me_location_state_locate_second_line), false, null,  -1, null, null));
                 break;
         }
+
         // 目标星
-        mSectionsPagerAdapter.addFragment(GuideFragmentDestination.newInstance(false, null, true,
-                "请您从数据库中选择目标星；如果数据库没有目标星，请输入卫星参数。新卫星将保持于数据库。", true, "点击", 0, null, "永久生效。"));
+        mSectionsPagerAdapter.addFragment(GuideFragmentDestination.newInstance(false, null,
+                true, getString(R.string.follow_me_destination_second_line),
+                true, getString(R.string.follow_me_message_click), 0, null, getString(R.string.follow_me_forever)));
 
         // 4.3.5.	寻星模式
         mSectionsPagerAdapter.addFragment(GuideFragmentSearchModeSetting.newInstance(false, null,
@@ -246,7 +255,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
 
     private void  jumpTo(final int index){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.follow_me_view_pager, GuideFragmentExplode.newInstance(false, null, true,"展开中……！", false, "请点击", 1, "展开", null));
+        transaction.replace(R.id.follow_me_view_pager, GuideFragmentExplode.newInstance(false, null, true,"展开中……！", false, getString(R.string.follow_me_message_click), 1, getString(R.string.antenna_state_exploded), null));
         transaction.commit();
     }
     private MenuItem menuItem;

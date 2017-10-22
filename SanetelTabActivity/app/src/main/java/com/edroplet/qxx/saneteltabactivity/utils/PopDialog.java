@@ -71,6 +71,10 @@ public class PopDialog {
 
     public PopDialog(){}
 
+    public PopDialog(Context context){
+        this.context = context;
+    }
+
     public PopDialog(View view, Context context, Bundle bundle, boolean showInfo, boolean showFirst,
                      boolean showSecond, boolean showThird, String first, String second,
                      String start, Drawable drawable, String end){

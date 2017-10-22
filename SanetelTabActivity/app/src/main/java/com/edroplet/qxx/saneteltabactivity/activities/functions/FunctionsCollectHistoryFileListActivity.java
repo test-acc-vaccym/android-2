@@ -77,7 +77,7 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity {
         }
     }
 
-    public class SimpleItemRecyclerViewAdapter
+    class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final List<CollectHistoryFileInfo> mValues;

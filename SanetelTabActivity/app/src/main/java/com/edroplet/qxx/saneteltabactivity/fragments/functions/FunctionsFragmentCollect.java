@@ -17,6 +17,7 @@ import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.utils.DateTime;
 import com.edroplet.qxx.saneteltabactivity.utils.RandomDialog;
 import com.edroplet.qxx.saneteltabactivity.view.EDropletDialogBuilder;
+import com.edroplet.qxx.saneteltabactivity.view.NDialog;
 
 /**
  * Created by qxs on 2017/9/14.
@@ -49,21 +50,22 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
                 startActivity(new Intent(getActivity(), FunctionsCollectHistoryFileListActivity.class));
                 break;
             case R.id.main_collect_data_new:
-                RandomDialog randomDialog = new RandomDialog(getContext());
-                randomDialog.onInputBuilder(getString(R.string.main_collect_data_new_input_message),
-                        getString(R.string.main_collect_data_new_input_hint),
-
-                        new EDropletDialogBuilder.OnInputListener() {
-                            @Override
-                            public void onClick(String inputText, int which) {
-                                //which,0代表NegativeButton，1代表PositiveButton
-                                Toast.makeText(getContext(), "输入了: " + inputText, Toast.LENGTH_SHORT).show();
-                                if (which == 0){
-                                    CollectHistoryFileInfo collectHistoryFileInfo = new CollectHistoryFileInfo(getContext());
-                                    collectHistoryFileInfo.setDateTime(DateTime.getCurrentDateTime()).setFileName(inputText).save();
-                                }
-                            }
-                        });
+//                RandomDialog randomDialog = new RandomDialog(getContext());
+//                randomDialog.onInputBuilder(getString(R.string.main_collect_data_new_input_message),
+//                        getString(R.string.main_collect_data_new_input_hint),
+//
+//                        new EDropletDialogBuilder.OnInputListener() {
+//                            @Override
+//                            public void onClick(String inputText, int which) {
+//                                //which,0代表NegativeButton，1代表PositiveButton
+//                                Toast.makeText(getContext(), "输入了: " + inputText, Toast.LENGTH_SHORT).show();
+//                                if (which == 0){
+//                                    CollectHistoryFileInfo collectHistoryFileInfo = new CollectHistoryFileInfo(getContext());
+//                                    collectHistoryFileInfo.setDateTime(DateTime.getCurrentDateTime()).setFileName(inputText).save();
+//                                }
+//                            }
+//                        });
+                new NDialog(getContext()).intputDialog();
                 break;
         }
     }

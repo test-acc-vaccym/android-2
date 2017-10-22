@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -80,14 +81,15 @@ public class CollectHistoryFileInfo {
             return jsonArray;
         } catch (JSONException je){
             je.printStackTrace();
+            return null;
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     public List<CollectHistoryFileInfo> getList(){
-        List<CollectHistoryFileInfo> collectHistoryFileInfos = null;
+        List<CollectHistoryFileInfo> collectHistoryFileInfos = new ArrayList<CollectHistoryFileInfo>();
         try {
             JSONArray jsonArray = read();
             if (jsonArray != null){
@@ -106,9 +108,18 @@ public class CollectHistoryFileInfo {
         FileOutputStream out = null;
         PrintStream ps = null;
         try {
-            out = context.openFileOutput(historyJsonFileName, Activity.MODE_APPEND);
+            JSONArray array = new JSONArray();
+            array.put(toJson());
+
+            List<CollectHistoryFileInfo> l = getList();
+            if (l != null && l.size() > 0) {
+                for (CollectHistoryFileInfo collectHistoryFileInfo : l)
+                    array.put(collectHistoryFileInfo.toJson());
+            }
+
+            out = context.openFileOutput(historyJsonFileName, Context.MODE_PRIVATE);
             ps = new PrintStream(out);
-            ps.println(toString());
+            ps.println(array.toString());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

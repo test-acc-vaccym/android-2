@@ -15,9 +15,10 @@ import java.util.UUID;
 /**
  * A  Satellite Parameter item representing a piece of content.
  */
-public class SatelliteParameterItem implements Serializable {
+public class SatelliteInfo implements Serializable {
 
     private static final long serialVersionUID = -6919461967497580385L;
+    public static final String satelliteJsonFile = "satellite.json";
 
     // 字段的key
     public static final String JSON_ID = "序号";
@@ -41,10 +42,10 @@ public class SatelliteParameterItem implements Serializable {
     public final String comment;        // 备注
     public String agc;            // AGC电平
 
-    public SatelliteParameterItem(String id, String name, String polarization, String longitude,
-                                  @Nullable String beacon, String threshold,
-                                  @Nullable String symbolRate,
-                                  @Nullable String comment) {
+    public SatelliteInfo(String id, String name, String polarization, String longitude,
+                         @Nullable String beacon, String threshold,
+                         @Nullable String symbolRate,
+                         @Nullable String comment) {
         mId = UUID.randomUUID();
         this.id = id;
         this.name = name;
@@ -56,17 +57,34 @@ public class SatelliteParameterItem implements Serializable {
         this.comment = comment;
     }
 
-    public SatelliteParameterItem setAGC(String agc) {
+    public SatelliteInfo setAGC(String agc) {
         this.agc = agc;
         return this;
     }
 
-    public SatelliteParameterItem(JSONObject json) throws JSONException{
+    public SatelliteInfo(JSONObject json) throws JSONException{
         mId = UUID.randomUUID();
-        id = json.getString(JSON_ID);
-        name = json.getString(JSON_NAME);
-        polarization = json.getString(JSON_POLARIZATION);
-        longitude = json.getString(JSON_LONGITUDE);
+
+        if (json.has(JSON_ID)) {
+            id = json.getString(JSON_ID);
+        }else {
+            id = "";
+        }
+        if (json.has(JSON_NAME)) {
+            name = json.getString(JSON_NAME);
+        }else {
+            name = "";
+        }
+        if (json.has(JSON_POLARIZATION)) {
+            polarization = json.getString(JSON_POLARIZATION);
+        }else {
+            polarization = "";
+        }
+        if (json.has(JSON_LONGITUDE)) {
+            longitude = json.getString(JSON_LONGITUDE);
+        }else {
+            longitude = "";
+        }
         if (json.has(JSON_BEACON))
             beacon = json.getString(JSON_BEACON);
         else

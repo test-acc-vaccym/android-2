@@ -93,7 +93,7 @@
                         android:id="@+id/angle_calculate_spinner_city"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:entries="@array/satellites_local" />
+                        android:entries="@array/satellites_polarization" />
                 </LinearLayout>
                 <!--新卫星参数输入-->
                 <LinearLayout

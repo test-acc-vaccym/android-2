@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo;
 import com.edroplet.qxx.saneteltabactivity.view.EDropletDialogBuilder;
 import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
@@ -172,9 +171,10 @@ public class RandomDialog {
                 })*/
                 .create(EDropletDialogBuilder.CONFIRM).show();
     }
-    private String mInputText = null;
+
     public void onInputBuilder (String message,
-                                String hint){
+                                String hint,
+                                EDropletDialogBuilder.OnInputListener inputListener){
         new EDropletDialogBuilder(context).setTitle(message)
                 .setInputHintText(hint)
                 .setInputHintTextColor(Color.parseColor("#c1c1c1"))
@@ -183,25 +183,9 @@ public class RandomDialog {
                 .setInputTextSize(14)
                 .setInputType(InputType.TYPE_CLASS_TEXT)
                 .setInputLineColor(Color.parseColor("#00ff00"))
-                .setPositiveButtonText(context.getResources().getString(R.string.operate_confirm_ok))
                 .setNegativeButtonText(context.getResources().getString(R.string.operate_confirm_cancel))
                 .setNegativeTextColor(Color.parseColor("#c1c1c1"))
-                .setOnInputListener(new EDropletDialogBuilder.OnInputListener() {
-                    @Override
-                    public void onClick(String inputText, int which) {
-                        //which,0代表NegativeButton，1代表PositiveButton
-                        Toast.makeText(context, "输入了: " + inputText, Toast.LENGTH_SHORT).show();
-                        if (which == 0){
-                            mInputText = inputText;
-                            CollectHistoryFileInfo collectHistoryFileInfo = new CollectHistoryFileInfo(context);
-                            collectHistoryFileInfo.setDateTime(DateTime.getCurrentDateTime()).setFileName(mInputText).save();
-                        }
-                    }
-                }).create(EDropletDialogBuilder.INPUT).show();
-    }
-
-    public String getmInputText() {
-        return mInputText;
+                .setOnInputListener(inputListener).create(EDropletDialogBuilder.INPUT).show();
     }
 
     public void onSelectBuilder (String message,

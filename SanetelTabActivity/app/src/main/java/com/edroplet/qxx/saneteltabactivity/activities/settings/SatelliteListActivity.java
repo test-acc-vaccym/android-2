@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 
-import com.edroplet.qxx.saneteltabactivity.beans.SatelliteParameterItem;
+import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteParameters;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
@@ -94,6 +94,13 @@ public class SatelliteListActivity extends AppCompatActivity {
                 }
             });
 
+        findViewById(R.id.add_satellite).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SatelliteListActivity.this, NewSatelliteActivity.class));
+            }
+        });
+
         View recyclerView = findViewById(R.id.satellite_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
@@ -121,9 +128,9 @@ public class SatelliteListActivity extends AppCompatActivity {
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<SatelliteParameterItem> mValues;
+        private final List<SatelliteInfo> mValues;
 
-        public SimpleItemRecyclerViewAdapter(List<SatelliteParameterItem> items) {
+        public SimpleItemRecyclerViewAdapter(List<SatelliteInfo> items) {
             mValues = items;
         }
 
@@ -183,7 +190,7 @@ public class SatelliteListActivity extends AppCompatActivity {
             public final CustomTextView mThresholdView;
             public final CustomTextView mSymbolRateView;
             // public final TextView mComentView;
-            public SatelliteParameterItem mItem;
+            public SatelliteInfo mItem;
 
             public ViewHolder(View view) {
                 super(view);

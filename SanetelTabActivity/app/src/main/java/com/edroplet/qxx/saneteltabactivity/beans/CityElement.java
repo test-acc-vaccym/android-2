@@ -21,9 +21,10 @@ import static android.content.ContentValues.TAG;
  * <p>
  * TODO: Replace all uses of this class before publishing your app.
  */
-public class CityElements {
+public class CityElement {
     private Context mContext;
     private static ArrayList<LocationInfo> cities;
+
     /**
      * An array of sample (dummy) items.
      */
@@ -38,9 +39,9 @@ public class CityElements {
         return cities.size();
     }
 
-    public CityElements(Context context) throws JSONException, IOException{
+    public CityElement(Context context) throws JSONException, IOException{
         mContext = context;
-        JsonLoad jl = new JsonLoad(context, "city_location.json");
+        JsonLoad jl = new JsonLoad(context, LocationInfo.citiesJsonFile);
         cities = jl.loadCities();
         // Add some sample items.
         for (int i = 0; i < getItemCounts(); i++) {

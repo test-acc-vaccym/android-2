@@ -23,16 +23,16 @@ import static android.content.ContentValues.TAG;
  */
 public class SatelliteParameters {
     private Context mContext;
-    private static ArrayList<SatelliteParameterItem> satellites;
+    private static ArrayList<SatelliteInfo> satellites;
     /**
      * An array of sample (dummy) items.
      */
-    public static final List<SatelliteParameterItem> ITEMS = new ArrayList<SatelliteParameterItem>();
+    public static final List<SatelliteInfo> ITEMS = new ArrayList<SatelliteInfo>();
 
     /**
      * A map of sample (dummy) items, by ID.
      */
-    public static final Map<String, SatelliteParameterItem> ITEM_MAP = new HashMap<String, SatelliteParameterItem>();
+    public static final Map<String, SatelliteInfo> ITEM_MAP = new HashMap<String, SatelliteInfo>();
 
     public int getItemCounts(){
         return satellites.size();
@@ -40,18 +40,18 @@ public class SatelliteParameters {
 
     public SatelliteParameters(Context context) throws JSONException, IOException{
         mContext = context;
-        JsonLoad jl = new JsonLoad(context, "satellite.json");
+        JsonLoad jl = new JsonLoad(context, SatelliteInfo.satelliteJsonFile);
         satellites = jl.loadSatellite();
         // Add some sample items.
         /* 表头单独处理
-        addItem(new SatelliteParameterItem(SatelliteParameterItem.JSON_ID,
-                SatelliteParameterItem.JSON_NAME,
-                SatelliteParameterItem.JSON_POLARIZATION,
-                SatelliteParameterItem.JSON_LONGITUDE,
-                SatelliteParameterItem.JSON_BEACON,
-                SatelliteParameterItem.JSON_THRESHOLD,
-                SatelliteParameterItem.JSON_SYMBOL_RATE,
-                SatelliteParameterItem.JSON_COMMENT
+        addItem(new SatelliteInfo(SatelliteInfo.JSON_ID,
+                SatelliteInfo.JSON_NAME,
+                SatelliteInfo.JSON_POLARIZATION,
+                SatelliteInfo.JSON_LONGITUDE,
+                SatelliteInfo.JSON_BEACON,
+                SatelliteInfo.JSON_THRESHOLD,
+                SatelliteInfo.JSON_SYMBOL_RATE,
+                SatelliteInfo.JSON_COMMENT
                 ));
          */
         for (int i = 0; i < getItemCounts(); i++) {
@@ -59,16 +59,16 @@ public class SatelliteParameters {
         }
     }
 
-    private void addItem(SatelliteParameterItem item) {
+    private void addItem(SatelliteInfo item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.mId.toString(), item);
     }
 
-    private static SatelliteParameterItem createSatelliteParameterItem(int position) {
+    private static SatelliteInfo createSatelliteParameterItem(int position) {
         try {
-            return new SatelliteParameterItem(satellites.get(position).toJSON());
+            return new SatelliteInfo(satellites.get(position).toJSON());
         }catch (JSONException je){
-            Log.e(TAG, "createSatelliteParameterItem: SatelliteParameterItem error");
+            Log.e(TAG, "createSatelliteParameterItem: SatelliteInfo error");
         }
         return null;
 

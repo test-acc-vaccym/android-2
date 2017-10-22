@@ -13,11 +13,15 @@ import java.util.UUID;
  */
 
 public class LocationInfo implements Parcelable {
-    private String name;           // 卫星名称
-    private float longitude;
-    private  float latitude;
+    public static final String citiesJsonFile = "city_location.json";
+
+    private String provence;        // 卫星名称
+    private String name;            // 卫星名称
+    private float longitude;        // 纬度
+    private  float latitude;        // 经度
 
     // 字段的key
+    public static final String JSON_PROVENCE_NAME = "省份";
     public static final String JSON_CITY_NAME = "地名";
     public static final String JSON_CITY_LATITUDE = "北纬°";
     public static final String JSON_CITY_LONGITUDE = "东经°";
@@ -28,6 +32,10 @@ public class LocationInfo implements Parcelable {
 
     public String getName() {
         return name;
+    }
+
+    public void setProvence(String provence) {
+        this.provence = provence;
     }
 
     public void setLatitude(float latitude) {
@@ -44,6 +52,10 @@ public class LocationInfo implements Parcelable {
 
     public float getLongitude() {
         return longitude;
+    }
+
+    public String getProvence() {
+        return provence;
     }
 
     @Override
@@ -80,11 +92,35 @@ public class LocationInfo implements Parcelable {
         this.longitude = longitude;
     }
 
+    public LocationInfo(String provence, String name, float latitude, float longitude){
+        this.provence = provence;
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
     public LocationInfo(JSONObject json) {
         try {
-            name = json.getString(JSON_CITY_NAME);
-            latitude = (float)json.getDouble(JSON_CITY_LATITUDE);
-            longitude = (float)json.getDouble(JSON_CITY_LONGITUDE);
+            if (json.has(JSON_PROVENCE_NAME)) {
+                this.provence = json.getString(JSON_PROVENCE_NAME);
+            }else {
+                this.provence = "";
+            }
+            if (json.has(JSON_CITY_NAME)) {
+                this.name = json.getString(JSON_CITY_NAME);
+            }else {
+                this.name = "";
+            }
+            if (json.has(JSON_CITY_LATITUDE)) {
+                this.latitude = (float) json.getDouble(JSON_CITY_LATITUDE);
+            }else {
+                this.latitude = 0;
+            }
+            if (json.has(JSON_CITY_LONGITUDE)) {
+                this.longitude = (float) json.getDouble(JSON_CITY_LONGITUDE);
+            }else {
+                this.longitude = 0;
+            }
         }catch (JSONException je){
             je.printStackTrace();
         }
@@ -92,9 +128,10 @@ public class LocationInfo implements Parcelable {
 
     public JSONObject toJSON() throws JSONException {
         JSONObject json = new JSONObject();
-        json.put(JSON_CITY_NAME, name);
-        json.put(JSON_CITY_LATITUDE, latitude);
-        json.put(JSON_CITY_LONGITUDE, longitude);
+        json.put(JSON_PROVENCE_NAME, this.provence);
+        json.put(JSON_CITY_NAME, this.name);
+        json.put(JSON_CITY_LATITUDE, this.latitude);
+        json.put(JSON_CITY_LONGITUDE, this.longitude);
         return json;
     }
 

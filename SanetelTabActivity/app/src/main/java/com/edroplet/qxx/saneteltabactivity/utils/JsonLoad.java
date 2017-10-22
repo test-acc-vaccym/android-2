@@ -2,17 +2,16 @@ package com.edroplet.qxx.saneteltabactivity.utils;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.support.annotation.Nullable;
 
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
-import com.edroplet.qxx.saneteltabactivity.beans.SatelliteParameterItem;
+import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,7 +20,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.Scanner;
 
 /**
  * Created by qxs on 2017/9/11.
@@ -36,27 +35,38 @@ public class JsonLoad {
         this.mJsonFileName =  fileName;
     }
 
-    public ArrayList<SatelliteParameterItem> loadSatellite() throws IOException, JSONException, NullPointerException {
-        ArrayList<SatelliteParameterItem> objects = new ArrayList<SatelliteParameterItem>();
+    public ArrayList<SatelliteInfo> loadSatellite() throws IOException, JSONException, NullPointerException {
+        ArrayList<SatelliteInfo> objects = new ArrayList<SatelliteInfo>();
         BufferedReader reader = null;
         assert  mContext!= null;
         try {
-            //获取assets资源管理器
-            AssetManager assetManager = mContext.getAssets();
-            InputStream in;
-            // in = mContext.openFileInput(this.mJsonFileName);
-            in = assetManager.open(this.mJsonFileName);
+            boolean firstRead =  CustomSP.getBoolean(mContext, CustomSP.firstReadSatellites, true);
 
-            reader = new BufferedReader(new InputStreamReader(in));
             StringBuilder jsonString = new StringBuilder();
-            String line = null;
-            while ((line = reader.readLine()) != null) {
-                jsonString.append(line);
+            if (firstRead) {
+                //获取assets资源管理器
+                AssetManager assetManager = mContext.getAssets();
+                InputStream in;
+                in = assetManager.open(this.mJsonFileName);
+                CustomSP.putBoolean(mContext, CustomSP.firstReadSatellites, false);
+                reader = new BufferedReader(new InputStreamReader(in));
+                String line = null;
+                while ((line = reader.readLine()) != null) {
+                    jsonString.append(line);
+                }
+
+            }else {
+                FileInputStream fin = mContext.openFileInput(this.mJsonFileName);
+                Scanner s = new Scanner(fin);
+                while (s.hasNext()) {
+                    jsonString.append(s.next());
+                }
             }
+
             JSONArray array = (JSONArray) new JSONTokener(jsonString.toString())
                     .nextValue();
             for (int i = 0; i < array.length(); i++) {
-                objects.add(new SatelliteParameterItem(array.getJSONObject(i)));
+                objects.add(new SatelliteInfo(array.getJSONObject(i)));
             }
 
         }catch (FileNotFoundException e){
@@ -69,10 +79,10 @@ public class JsonLoad {
         return objects;
     }
 
-    public void saveSatellites(ArrayList <SatelliteParameterItem> satelliteParameterItems) throws JSONException, IOException{
+    public void saveSatellites(ArrayList <SatelliteInfo> satelliteInfos) throws JSONException, IOException{
         assert  mContext!= null;
         JSONArray array = new JSONArray();
-        for (SatelliteParameterItem s : satelliteParameterItems)
+        for (SatelliteInfo s : satelliteInfos)
             array.put(s.toJSON());
 
         Writer writer = null;
@@ -93,18 +103,29 @@ public class JsonLoad {
         BufferedReader reader = null;
         assert  mContext!= null;
         try {
-            //获取assets资源管理器
-            AssetManager assetManager = mContext.getAssets();
-            InputStream in;
-            // in = mContext.openFileInput(this.mJsonFileName);
-            in = assetManager.open(this.mJsonFileName);
+            boolean firstRead =  CustomSP.getBoolean(mContext, CustomSP.firstReadCities, true);
 
-            reader = new BufferedReader(new InputStreamReader(in));
             StringBuilder jsonString = new StringBuilder();
-            String line = null;
-            while ((line = reader.readLine()) != null) {
-                jsonString.append(line);
+            if (firstRead) {
+                //获取assets资源管理器
+                AssetManager assetManager = mContext.getAssets();
+                InputStream in;
+                in = assetManager.open(this.mJsonFileName);
+                CustomSP.putBoolean(mContext, CustomSP.firstReadCities, false);
+                reader = new BufferedReader(new InputStreamReader(in));
+                String line = null;
+                while ((line = reader.readLine()) != null) {
+                    jsonString.append(line);
+                }
+
+            }else {
+                FileInputStream fin = mContext.openFileInput(this.mJsonFileName);
+                Scanner s = new Scanner(fin);
+                while (s.hasNext()) {
+                    jsonString.append(s.next());
+                }
             }
+
             JSONArray array = (JSONArray) new JSONTokener(jsonString.toString())
                     .nextValue();
             for (int i = 0; i < array.length(); i++) {

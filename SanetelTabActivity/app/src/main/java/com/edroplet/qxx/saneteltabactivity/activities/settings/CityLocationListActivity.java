@@ -1,5 +1,6 @@
 package com.edroplet.qxx.saneteltabactivity.activities.settings;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.beans.CityElements;
+import com.edroplet.qxx.saneteltabactivity.beans.CityElement;
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
@@ -35,12 +36,27 @@ import java.util.List;
  * item details side-by-side using two vertical panes.
  */
 public class CityLocationListActivity extends AppCompatActivity {
-
+    public static final int NEW_CITY_REQUEST_CODE = 10010;
+    public static final int CITY_DETAIL_REQUEST_CODE = 10011;
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
      */
     private boolean mTwoPane;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case CITY_DETAIL_REQUEST_CODE:
+            case NEW_CITY_REQUEST_CODE:
+                if(resultCode== Activity.RESULT_OK){
+                    //  刷新当前activity界面数据
+                    onCreate(null);
+                }
+                break;
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -83,7 +99,12 @@ public class CityLocationListActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
+        findViewById(R.id.add_city).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivityForResult(new Intent(CityLocationListActivity.this, NewCityActivity.class), NEW_CITY_REQUEST_CODE);
+            }
+        });
         View recyclerView = findViewById(R.id.city_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
@@ -99,7 +120,7 @@ public class CityLocationListActivity extends AppCompatActivity {
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         try {
-            CityElements ce = new CityElements(this);
+            CityElement ce = new CityElement(this);
             recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(ce.ITEMS));
         }catch (JSONException je){
             je.printStackTrace();
@@ -145,8 +166,7 @@ public class CityLocationListActivity extends AppCompatActivity {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, CityLocationDetailActivity.class);
                         intent.putExtra(CityLocationDetailFragment.ARG_ITEM_ID, holder.mItem.getName());
-
-                        context.startActivity(intent);
+                        startActivityForResult(intent, CITY_DETAIL_REQUEST_CODE);
                     }
                 }
             });

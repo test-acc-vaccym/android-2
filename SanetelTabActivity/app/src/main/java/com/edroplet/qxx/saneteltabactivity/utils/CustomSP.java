@@ -13,9 +13,17 @@ import static android.content.Context.MODE_PRIVATE;
  */
 
 public class CustomSP {
+    private static final String spFileName="sanetel";
     public static final String globalLanguage = "global.language";
     public static final String globalFont = "global.font";
-    private static final String spFileName="sanetel";
+    public static  final String firstReadSatellites = "firstReadSatellites";
+    public static  final String firstReadCities = "firstReadCities";
+    public static  final String showWelcome = "showWelcome";
+    public static  final String searchingMode = "searchingMode";
+
+    public static final String searchingModeBeacon = "beacon";
+    public static final String searchingModeDVB = "dvb";
+
     public  static boolean getBoolean(Context context, String key, boolean defaultVal){
         //用SharedPreferences保存是否第一次进入App的参数
         SharedPreferences sharedPreferences= context.getSharedPreferences(spFileName, MODE_PRIVATE);

@@ -94,15 +94,16 @@
 
     <!--城市-->
     <string name="city_detail_id_key">序号</string>
-    <string name="city_detail_name_key">地名</string>
-    <string name="city_detail_longitude_key">东经°</string>
-    <string name="city_detail_latitude_key">北纬°</string>
+    <string name="city_detail_provence">所属省份</string>
+    <string name="city_detail_name_key">城市名称</string>
+    <string name="city_detail_longitude_key">东&#160;&#160;&#160;&#160;&#160;&#160;经°</string>
+    <string name="city_detail_latitude_key">北&#160;&#160;&#160;&#160;&#160;&#160;纬°</string>
     <!--底部按钮-->
     <string name="satellite_recover">恢复出厂</string>
     <string name="add_satellite">增加卫星</string>
     <string name="delete_satellite">删除卫星</string>
-    <string name="add_city">增加卫星</string>
-    <string name="delete_city">删除卫星</string>
+    <string name="add_city">增加城市</string>
+    <string name="delete_city">删除城市</string>
     <string name="title_activity_guide">引导页</string>
 
     <!--引导页-->

@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/no_padding"
-                android:entries="@array/satellites_local"/>
+                android:entries="@array/satellites_polarization"/>
         </LinearLayout>
     </LinearLayout>
     <!--本地位置-->

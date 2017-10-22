@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.beans.SatelliteParameterItem;
+import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteParameters;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
@@ -32,7 +32,7 @@ public class SatelliteDetailFragment extends Fragment {
     /**
      * The dummy content this fragment is presenting.
      */
-    private SatelliteParameterItem mItem;
+    private SatelliteInfo mItem;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -50,7 +50,7 @@ public class SatelliteDetailFragment extends Fragment {
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
             String itemId = getArguments().getString(ARG_ITEM_ID);
-            Map<String, SatelliteParameterItem> map = SatelliteParameters.ITEM_MAP;
+            Map<String, SatelliteInfo> map = SatelliteParameters.ITEM_MAP;
             mItem = map.get(itemId);
 
             Activity activity = this.getActivity();

@@ -76,16 +76,14 @@ public class CollectHistoryFileInfo {
             while (s.hasNext()) {
                 sb.append(s.next());
             }
+            JSONArray jsonArray = new JSONArray(sb.toString());
+            return jsonArray;
+        } catch (JSONException je){
+            je.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try {
-            JSONArray jsonArray = new JSONArray(sb.toString());
-            return jsonArray;
-        }catch (JSONException je){
-            je.printStackTrace();
-            return null;
-        }
+        return null;
     }
 
     public List<CollectHistoryFileInfo> getList(){

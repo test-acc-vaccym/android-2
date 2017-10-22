@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.beans.SatelliteParameterItem;
+import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 
 /**
  * Created by qxs on 2017/9/14.
@@ -34,6 +34,6 @@ public class FunctionsFragmentStatus extends Fragment {
     }
 
     public static class MainMonitorFragmentHolder {
-        private SatelliteParameterItem spi;
+        private SatelliteInfo spi;
     }
 }

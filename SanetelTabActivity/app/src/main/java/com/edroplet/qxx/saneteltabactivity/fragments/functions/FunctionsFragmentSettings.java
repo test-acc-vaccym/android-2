@@ -10,8 +10,11 @@ import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.AdministratorLoginActivity;
+import com.edroplet.qxx.saneteltabactivity.activities.settings.AntennaRestartActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.CityLocationListActivity;
+import com.edroplet.qxx.saneteltabactivity.activities.settings.LowNoiseBlockOscillatorActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.PowerAmplifierSettingsActivity;
+import com.edroplet.qxx.saneteltabactivity.activities.settings.ReferenceSatelliteActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteListActivity;
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 
@@ -52,6 +55,27 @@ public class FunctionsFragmentSettings extends Fragment {
                 // getActivity().finish();
             }
         });
+        view.findViewById(R.id.main_settings_amplifier_oscillator).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), PowerAmplifierSettingsActivity.class));
+                // getActivity().finish();
+            }
+        });
+        view.findViewById(R.id.main_settings_amplifier_emit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), PowerAmplifierSettingsActivity.class));
+                // getActivity().finish();
+            }
+        });
+        view.findViewById(R.id.main_settings_amplifier_interfere).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), PowerAmplifierSettingsActivity.class));
+                // getActivity().finish();
+            }
+        });
         StatusButton customImageButton = view.findViewById(R.id.main_settings_administrator);
         customImageButton.setText(getString(R.string.main_settings_administrator));
         customImageButton.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +83,24 @@ public class FunctionsFragmentSettings extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), AdministratorLoginActivity.class);
                 startActivity(intent);
+            }
+        });
+        view.findViewById(R.id.main_settings_reference).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), ReferenceSatelliteActivity.class));
+            }
+        });
+        view.findViewById(R.id.main_settings_lnb_oscillator).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), LowNoiseBlockOscillatorActivity.class));
+            }
+        });
+        view.findViewById(R.id.main_settings_antenna_restart).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), AntennaRestartActivity.class));
             }
         });
         return view;

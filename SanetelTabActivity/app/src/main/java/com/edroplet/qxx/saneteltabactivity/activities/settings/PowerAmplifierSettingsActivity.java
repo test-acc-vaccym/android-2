@@ -1,5 +1,6 @@
 package com.edroplet.qxx.saneteltabactivity.activities.settings;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -16,9 +17,14 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
 import com.edroplet.qxx.saneteltabactivity.adapters.SectionsPagerAdapter;
 import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
 import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifierInterfere;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifierManufacture;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifierOscillator;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifiereEmit;
 import com.edroplet.qxx.saneteltabactivity.utils.hashMapUtils;
 
 import java.util.LinkedHashMap;
@@ -26,7 +32,8 @@ import java.util.Map;
 
 public class PowerAmplifierSettingsActivity extends AppCompatActivity {
     public static Toolbar toolbar;
-    private static LinkedHashMap<String, String> map = new LinkedHashMap<>();
+    // private static LinkedHashMap<String, String> map = new LinkedHashMap<>();
+    private FloatingActionButton fab;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -35,7 +42,7 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private MainViewPagerAdapter mSectionsPagerAdapter;
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -52,22 +59,21 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_power_amplifier);
         StatusBarControl.setupToolbar(this,R.id.content_toolbar);
         initView();
-        StatusBarControl.setTitle(hashMapUtils.getElemntFromLinkHashMap(map,0).getKey());
-        // setupFab();
+        // StatusBarControl.setTitle(hashMapUtils.getElemntFromLinkHashMap(map,0).getKey());
+        setupFab();
 
     }
 
 
     public PowerAmplifierSettingsActivity initView(){
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        map.put("功放厂家","更换参数，点击▲ 设置永久生效。");
-        map.put("功放本振","更换参数，点击▲ 设置永久生效。");
-        map.put("邻星干扰","更换参数，点击▲ 设置永久生效。");
-        map.put("发射开关","更换参数，点击▲ 设置永久生效。");
-        mSectionsPagerAdapter.setTab(map);
+        mSectionsPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager());
+        mSectionsPagerAdapter.addFragment(SettingsFragmentAmplifierManufacture.newInstance(null));
+        mSectionsPagerAdapter.addFragment(SettingsFragmentAmplifierOscillator.newInstance(null));
+        mSectionsPagerAdapter.addFragment(SettingsFragmentAmplifierInterfere.newInstance(null));
+        mSectionsPagerAdapter.addFragment(SettingsFragmentAmplifiereEmit.newInstance(null));
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager = (ViewPager) findViewById(R.id.amplifier_container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
@@ -80,10 +86,15 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                Map.Entry<String , String > entry = hashMapUtils.getElemntFromLinkHashMap(map,tab.getPosition());
+                // Map.Entry<String , String > entry = hashMapUtils.getElemntFromLinkHashMap(map,tab.getPosition());
                 // 这儿使用getSupportedActionBar没有用
-                if (entry != null && toolbar != null)
-                    toolbar.setTitle(entry.getKey());
+                // if (entry != null && toolbar != null)
+                //    toolbar.setTitle(entry.getKey());
+                if (tab.getPosition() == 3){
+                    fab.setVisibility(View.VISIBLE);
+                }else {
+                    fab.setVisibility(View.INVISIBLE);
+                }
             }
 
             @Override
@@ -100,15 +111,16 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
     }
 
     public PowerAmplifierSettingsActivity setupFab(){
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.amplifier_fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (snackHelpMessage == null || snackHelpMessage.isEmpty()) {
-                    snackHelpMessage = "Replace with your own action";
-                }
-                Snackbar.make(view, snackHelpMessage, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(new Intent(PowerAmplifierSettingsActivity.this, SettingsPowerAmplifierEmitHelpActivity.class));
+//                if (snackHelpMessage == null || snackHelpMessage.isEmpty()) {
+//                    snackHelpMessage = "Replace with your own action";
+//                }
+//                Snackbar.make(view, snackHelpMessage, Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
             }
         });
         return this;
@@ -118,16 +130,6 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
         this.snackHelpMessage = message;
         return this;
     }
-
-
-    /*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_sanetel_tab, menu);
-        return true;
-    }
-    */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

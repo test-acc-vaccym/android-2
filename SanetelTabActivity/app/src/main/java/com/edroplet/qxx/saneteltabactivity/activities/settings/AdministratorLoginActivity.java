@@ -103,7 +103,9 @@ public class AdministratorLoginActivity extends AppCompatActivity implements Loa
         popDialog.setView(findViewById(R.id.administrator_login_pop));
         Bundle bundle = new Bundle();
         String start = getString(R.string.main_settings_administrator_password_third_start);
-        bundle.putString("start",start);
+        bundle.putBoolean(PopDialog.SHOWFIRST, true);
+        bundle.putString(PopDialog.START,start);
+        bundle.putBoolean(PopDialog.SHOWTHIRD, true);
         popDialog.setBundle(bundle);
         popDialog.setSetFirstColor(true);
         popDialog.setButtonText(this,getString(R.string.main_settings_administrator_password_third_button));

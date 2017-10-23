@@ -31,15 +31,15 @@ public class GuideFragmentExplode extends Fragment {
                                                    int icon, String buttonText, String thirdLineEnd) {
         Bundle args = new Bundle();
         GuideFragmentExplode fragment = new GuideFragmentExplode();
-        args.putBoolean("showFirst",showFirst);
-        args.putString("first", firstLine);
-        args.putBoolean("showSecond",showSecond);
-        args.putString("second", secondLine);
-        args.putBoolean("showThird",showThird);
-        args.putString("start", thirdLineStart);
+        args.putBoolean(PopDialog.SHOWFIRST,showFirst);
+        args.putString(PopDialog.FIRST, firstLine);
+        args.putBoolean(PopDialog.SHOWSECOND,showSecond);
+        args.putString(PopDialog.SECOND, secondLine);
+        args.putBoolean(PopDialog.SHOWTHIRD,showThird);
+        args.putString(PopDialog.START, thirdLineStart);
         args.putInt("icon", icon);
-        args.putString("buttonText", buttonText);
-        args.putString("end", thirdLineEnd);
+        args.putString(PopDialog.BUTTONTEXT, buttonText);
+        args.putString(PopDialog.END, thirdLineEnd);
         fragment.setArguments(args);
         return fragment;
     }

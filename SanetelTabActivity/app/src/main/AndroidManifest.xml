@@ -177,7 +177,12 @@
         <activity android:name=".activities.main.MainWifiSettingHelpActivity" />
         <activity android:name=".activities.functions.FunctionsCollectHistoryFileListActivity" />
         <activity android:name=".activities.settings.NewCityActivity" />
-        <activity android:name=".activities.settings.NewSatelliteActivity"></activity>
+        <activity android:name=".activities.settings.NewSatelliteActivity" />
+        <activity android:name=".activities.settings.ReferenceSatelliteActivity" />
+        <activity android:name=".activities.settings.LowNoiseBlockOscillatorActivity" />
+        <activity android:name=".activities.settings.AntennaRestartActivity" />
+        <activity android:name=".activities.settings.SettingsPowerAmplifierEmitHelpActivity"/>
+
     </application>
 
 </manifest>

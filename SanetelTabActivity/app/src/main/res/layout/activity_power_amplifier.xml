@@ -36,7 +36,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/container"
+        android:id="@+id/amplifier_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/app_bar_height"
@@ -59,11 +59,12 @@
         android:layout_gravity="bottom|end"/>
     <!--app:tabMode="scrollable"-->
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/amplifier_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="@dimen/fab_margin_bottom"
-        android:src="@android:drawable/ic_dialog_info"
+        android:src="@mipmap/help"
+        app:backgroundTint="@color/button_text"
         android:visibility="gone"/>
 </android.support.design.widget.CoordinatorLayout>

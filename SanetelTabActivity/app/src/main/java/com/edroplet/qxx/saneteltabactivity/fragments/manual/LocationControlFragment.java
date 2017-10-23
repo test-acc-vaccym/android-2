@@ -36,21 +36,25 @@ public class LocationControlFragment extends Fragment {
         rotate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if (rotate.getText() == getString(R.string.location_control_rotate_start))
+                if (rotate.getText() == getString(R.string.location_control_rotate_start)) {
                     // TODO 发送开始旋转的指令
                     rotate.setText(R.string.location_control_rotate_stop);
-                else
+                }
+                else {
                     // TODO 发送停止旋转的指令
                     rotate.setText(R.string.location_control_rotate_start);
+                }
             }
         });
         rotate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (rotate.getText() == getString(R.string.location_control_rotate_start))
+                if (rotate.getText() == getString(R.string.location_control_rotate_start)) {
                     rotate.setText(R.string.location_control_rotate_stop);
-                else
+                }
+                else {
                     rotate.setText(R.string.location_control_rotate_start);
+                }
             }
         });
         return view;

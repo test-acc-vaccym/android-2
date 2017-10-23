@@ -92,17 +92,27 @@ public class PopDialog {
         this.context = context;
     }
 
+    public static final String START = "start";
+    public static final String FIRST = "first";
+    public static final String SECOND = "second";
+    public static final String END = "end";
+    public static final String BUTTONTEXT = "buttonText";
+    public static final String SHOWINFO = "showInfo";
+    public static final String SHOWFIRST = "showFirst";
+    public static final String SHOWSECOND = "showSecond";
+    public static final String SHOWTHIRD = "showThird";
+
     public View show(){
         if (this.bundle != null){
-            this.showInfo = bundle.getBoolean("showInfo", false);
-            this.showFirst = bundle.getBoolean("showFirst", false);
-            this.showSecond = bundle.getBoolean("showSecond", false);
-            this.showThird = bundle.getBoolean("showThird", false);
-            this.first = bundle.getString("first", null);
-            this.second = bundle.getString("second", null);
-            this.thirdStart = bundle.getString("start", null);
-            this.thirdEnd = bundle.getString("end", null);
-            this.buttonText = bundle.getString("buttonText",this.buttonText);
+            this.showInfo = bundle.getBoolean(SHOWINFO, false);
+            this.showFirst = bundle.getBoolean(SHOWFIRST, false);
+            this.showSecond = bundle.getBoolean(SHOWSECOND, false);
+            this.showThird = bundle.getBoolean(SHOWTHIRD, false);
+            this.first = bundle.getString(FIRST, null);
+            this.second = bundle.getString(SECOND, null);
+            this.thirdStart = bundle.getString(START, null);
+            this.thirdEnd = bundle.getString(END, null);
+            this.buttonText = bundle.getString(BUTTONTEXT,this.buttonText);
         }
 
         if (this.view != null) {

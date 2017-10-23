@@ -69,7 +69,7 @@
                 </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
                 <!--卫星选择-->
                 <LinearLayout
-                    android:id="@+id/city_select"
+                    android:id="@+id/satellite_select"
                     android:paddingLeft="@dimen/radio_group_city_padding"
                     android:paddingStart="@dimen/radio_group_city_padding"
                     android:layout_marginStart="@dimen/radio_group_width"
@@ -80,17 +80,14 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true">
 
-                    <!--android:layout_toEndOf="@+id/rbg_city"-->
-                    <!--android:layout_toRightOf="@+id/rbg_city"-->
-
                     <Spinner
-                        android:id="@+id/angle_calculate_spinner_province"
+                        android:id="@+id/follow_me_destination_spinner_satellites_select"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:entries="@array/satellites" />
 
                     <Spinner
-                        android:id="@+id/angle_calculate_spinner_city"
+                        android:id="@+id/follow_me_destination_spinner_satellites_polarization_select"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:entries="@array/satellites_polarization" />
@@ -100,11 +97,11 @@
                     android:padding="@dimen/radio_group_city_padding"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/city_select"
-                    android:layout_alignStart="@id/city_select"
-                    android:layout_below="@id/city_select"
-                    android:layout_alignEnd="@id/city_select"
-                    android:layout_alignRight="@id/city_select"
+                    android:layout_alignLeft="@id/satellite_select"
+                    android:layout_alignStart="@id/satellite_select"
+                    android:layout_below="@id/satellite_select"
+                    android:layout_alignEnd="@id/satellite_select"
+                    android:layout_alignRight="@id/satellite_select"
                     android:orientation="vertical">
                     <!--卫星名称-->
                     <LinearLayout

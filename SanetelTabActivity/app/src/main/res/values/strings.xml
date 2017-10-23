@@ -527,4 +527,65 @@
     <!--登陆-->
     <string name="main_settings_administrator_login_title">管理员密码</string>
     <string name="main_settings_administrator_password">密码</string>
+
+    <!--参考星-->
+    <string name="settings_reference_title">参考星</string>
+    <string name="settings_reference_mode">寻星方式</string>
+    <string name="settings_reference_mode_direct">直接寻星</string>
+    <string name="settings_reference_mode_reference">参考星寻星</string>
+    <string name="settings_reference_satellite_name">卫星名</string>
+    <string name="settings_reference_latitude">卫星经度</string>
+    <string name="settings_reference_beacon">信标频率</string>
+    <string name="settings_reference_ag">AG门 限</string>
+    <string name="settings_reference_dvb">DVB符号率</string>
+    <string name="settings_reference_message_second_line">当目标星存在信标不稳定等特定情况，直接寻星困难，才选择参考星寻星。</string>
+    <string name="settings_reference_message_third_end">永久生效。否则，跳到下一步。</string>
+    <string name="settings_reference_help_title">参考星说明</string>
+    <string name="settings_reference_help_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;寻星方式有直接寻星和参考星寻星两种方式。\n
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;直接寻星是利用BD/GPS提供的经纬度信息、倾角传感器提供的姿态信息和目标卫星的经度，经坐标转换解算出天线对准卫星所需的方位、俯仰和极化角。\n
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;参考星寻星是指利用BD/GPS提供的经纬度信息、倾角传感器提供的姿态信息和参考星的经度，经坐标转换解算出天线对准参考星的所需的方位、俯仰和极化角；闭环控制系统先驱动天线向指定的角度运动，锁定参考星；之后再通过目标星和参考星的位置关系，计算出由参考星到目标星的相对方位和俯仰；闭环控制系统再驱动天线移动相对角度，最后锁定目标星。\n
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;默认的寻星方式为直接寻星方式。天线上电之后，直接寻找目标星，无须两次寻星，寻星速度快。\n
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当目标星存在频偏、信标不稳定等特定情况下，直接寻星困难。此情况下请选择参考星寻星。\n
+</string>
+
+    <!--10.2.	功放-->
+    <string name="settings_amplifier_manufacture_1">JRC</string>
+    <string name="settings_amplifier_manufacture_2">WaveSTream</string>
+    <string name="settings_amplifier_manufacture_3">Mitec</string>
+    <string name="settings_amplifier_manufacture_4">WaveLab</string>
+    <string name="settings_amplifier_manufacture_5">Advantech</string>
+    <string name="settings_amplifier_manufacture_message_third_start">更换参数，点击</string>
+    <string name="settings_amplifier_oscillator_value_1">12.80</string>
+    <string name="settings_amplifier_oscillator_value_2">13.05</string>
+    <string name="oscillator_unit">GHz</string>
+    <string name="settings_amplifier_oscillator_value">本振值（GHz）</string>
+    <string name="settings_amplifier_oscillator_message_third_start">更换参数，点击</string>
+    <string name="settings_amplifier_interfere_use">启用</string>
+    <string name="settings_amplifier_interfere_disuse">不启用</string>
+    <string name="settings_amplifier_emit_title">开关发射</string>
+    <string name="settings_amplifier_emit_select">开关选择</string>
+    <string name="settings_amplifier_emit_open">发射打开</string>
+    <string name="settings_amplifier_emit_close">发射关闭</string>
+    <string name="settings_amplifier_emit_help_title">发射手动说明</string>
+    <string name="settings_amplifier_emit_help_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当天线由于某种原因偏离锁星位置，成为失锁状态，此时功放再发射功率已经没有意义，反而会干扰其他卫星。这就要求当天线失锁时自动关闭功放；锁星后再打开功放。这样的功能叫邻星干扰。\n
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;选择开关后点击设置，邻星干扰将关闭；功放发射进入手动开关模式。退出“发射手动”功能后，恢复邻星干扰功能。
+</string>
+    <string name="settings_lnb_value">本振值(MHz)</string>
+    <string name="settings_lnb_ka_value_1">17400</string>
+    <string name="settings_lnb_ka_value_2">19250</string>
+    <string name="settings_lnb_ku_value_1">05150</string>
+    <string name="settings_lnb_ku_value_2">09750</string>
+    <string name="settings_lnb_ku_value_3">10000</string>
+    <string name="settings_lnb_ku_value_4">10750</string>
+    <string name="settings_lnb_ku_value_5">11300</string>
+    <string name="settings_lnb_ku_value_6">10600</string>
+    <string name="settings_lnb_ku_value_7">17400</string>
+    <string name="settings_lnb_message_first_line">根据实际LNB选择。</string>
+    <string name="settings_antenna_restart_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;此功能能够在系统不断电的情况下通过软件实现天线重新启动。在一些不希望天线断电的场合可以用到此功能。\n
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;按重启2秒后，天线自己重新启动。</string>
+
+    <!--天线重启-->
+    <string name="settings_antenna_restart_button">▲ 重启</string>
+    <string name="settings_antenna_restart_third_end">生效</string>
+
 </resources>

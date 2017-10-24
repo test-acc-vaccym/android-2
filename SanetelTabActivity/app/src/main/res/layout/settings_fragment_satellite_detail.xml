@@ -10,6 +10,26 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:visibility="invisible">
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="right|end"
+            android:layout_height="match_parent"
+            android:padding="@dimen/list_detail_padding"
+            android:text="@string/satellite_detail_uuid_key"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            style="?android:attr/textAppearanceMedium"
+            android:id="@+id/satellite_detail_uuid"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="invisible">
     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
         style="?android:attr/textAppearanceLarge"
         android:layout_width="0dp"

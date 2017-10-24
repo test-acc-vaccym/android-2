@@ -43,7 +43,7 @@
                         android:background="@color/button_blink"
                         android:text="@string/main_settings_reference"
                         android:textColor="@color/button_text"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -214,6 +214,7 @@
                         android:layout_width="100dp"
                         android:textColor="@color/button_text"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                        android:textSize="32sp"
                         android:drawableStart="@drawable/settings"
                         android:drawableLeft="@drawable/settings"
                         android:layout_marginLeft="@dimen/status_button_margin_left"

@@ -12,9 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
+import com.edroplet.qxx.saneteltabactivity.beans.Satellites;
 import com.edroplet.qxx.saneteltabactivity.utils.GalleryOnTime;
+import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
+import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 
 import java.util.Timer;
 
@@ -31,8 +36,14 @@ public class SatelliteDetailActivity extends AppCompatActivity {
     //因为setExpanded会调用事件监听，所以通过标志过滤掉
     public static int expendedtag=2;
 
-    // ImageView iv_satellite;
+    @BindId(R.id.satellite_detail_toolbar)
+    private Toolbar toolbar;
+
+    @BindId(R.id.frameLayout_satellite)
+    private
     FrameLayout frameLayout;
+    private SatelliteInfo satelliteInfo;
+
     Timer timer;
     GalleryOnTime galleryOnTime;
     @Override
@@ -40,14 +51,14 @@ public class SatelliteDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_satellite_detail);
 
-        frameLayout = (FrameLayout) findViewById(R.id.frameLayout_satellite);
+        ViewInject.inject(this, this);
+
         galleryOnTime = new GalleryOnTime(this);
         galleryOnTime.setFrameLayout(frameLayout);
         galleryOnTime.setImages(satellitesImages);
         galleryOnTime.setImageView();
         timer = galleryOnTime.getTimer();
 
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.satellite_detail_fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -93,11 +104,12 @@ public class SatelliteDetailActivity extends AppCompatActivity {
         // http://developer.android.com/guide/components/fragments.html
         //
         if (savedInstanceState == null) {
+            satelliteInfo = Satellites.ITEM_MAP.get(getIntent().getStringExtra(SatelliteDetailFragment.SATELLITE_ARG_ITEM_ID));
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(SatelliteDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(SatelliteDetailFragment.ARG_ITEM_ID));
+            arguments.putString(SatelliteDetailFragment.SATELLITE_ARG_ITEM_ID,
+                    getIntent().getStringExtra(SatelliteDetailFragment.SATELLITE_ARG_ITEM_ID));
             SatelliteDetailFragment fragment = new SatelliteDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()

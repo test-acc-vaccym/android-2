@@ -18,13 +18,19 @@ import android.view.ViewGroup;
 import com.edroplet.qxx.saneteltabactivity.R;
 
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
-import com.edroplet.qxx.saneteltabactivity.beans.SatelliteParameters;
+import com.edroplet.qxx.saneteltabactivity.beans.Satellites;
+import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
+import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.List;
+
+import static com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo.objectKey;
+import static com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo.positionKey;
+import static com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo.uuidKey;
 
 /**
  * An activity representing a list of Cities. This activity
@@ -35,12 +41,61 @@ import java.util.List;
  * item details side-by-side using two vertical panes.
  */
 public class SatelliteListActivity extends AppCompatActivity {
+    public static final int NEW_SATELLITES_REQUEST_CODE = 11000;
+    public static final int SATELLITE_DETAIL_REQUEST_CODE = 11001;
+
+    private SimpleItemRecyclerViewAdapter simpleItemRecyclerViewAdapter;
+    private Satellites sp;
+
+    @BindId((R.id.satellite_list))
+    private RecyclerView recyclerView;
+
+    @BindId(R.id.satellite_list_fab)
+    private FloatingActionButton fab;
+
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
      */
     private boolean mTwoPane;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        int position = 0;
+        String id = "";
+        SatelliteInfo satelliteInfo = null;
+        if (null != data) {
+            if (data.hasExtra(objectKey)) {
+                satelliteInfo = data.getParcelableExtra(objectKey);
+            }
+            if (data.hasExtra(positionKey)) {
+                position = data.getIntExtra(positionKey, 0);
+            }
+            if (data.hasExtra(uuidKey)){
+                id = data.getStringExtra(uuidKey);
+            }
+        }
+
+        switch (requestCode){
+            case SATELLITE_DETAIL_REQUEST_CODE:
+                if (id != null && id.length() > 0) {
+                    sp.update(id, satelliteInfo);
+                    simpleItemRecyclerViewAdapter.notifyItemChanged(position);
+                }
+                break;
+            case NEW_SATELLITES_REQUEST_CODE:
+                // if(resultCode== Activity.RESULT_OK){
+                    //  刷新当前activity界面数据
+                    sp.addItem(satelliteInfo);
+                    //RecyclerView列表进行UI数据更新
+                    simpleItemRecyclerViewAdapter.notifyItemInserted(position);
+                    //如果在第一项添加模拟数据需要调用 scrollToPosition（0）把列表移动到顶端（可选）
+                    recyclerView.scrollToPosition(position);
+                // }
+                break;
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -64,17 +119,9 @@ public class SatelliteListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_satellite_list);
-        /**
-         * 没必要复制先观察
-        try {
-            String fileNames[] =getAssets().list(".");
-            for (String s:fileNames) {
-                copyFilesFassets(this, s, );
-            }
-        }catch (IOException ie){
-            ie.printStackTrace();
-        }
-         */
+
+        ViewInject.inject(this, this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.list_toolbar);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
@@ -84,7 +131,7 @@ public class SatelliteListActivity extends AppCompatActivity {
             // 设置居中的时候不能含有原标题
             ab.setDisplayShowTitleEnabled(false);
         }
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.satellite_list_fab);
+
         if (fab !=null)
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -97,13 +144,10 @@ public class SatelliteListActivity extends AppCompatActivity {
         findViewById(R.id.add_satellite).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SatelliteListActivity.this, NewSatelliteActivity.class));
+                startActivityForResult(new Intent(SatelliteListActivity.this, NewSatelliteActivity.class), NEW_SATELLITES_REQUEST_CODE);
             }
         });
-
-        View recyclerView = findViewById(R.id.satellite_list);
-        assert recyclerView != null;
-        setupRecyclerView((RecyclerView) recyclerView);
+        setupRecyclerView(recyclerView);
 
         if (findViewById(R.id.satellite_detail_container) != null) {
             // The detail container view will be present only in the
@@ -116,8 +160,9 @@ public class SatelliteListActivity extends AppCompatActivity {
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         try {
-            SatelliteParameters sp = new SatelliteParameters(this);
-            recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(sp.ITEMS));
+            sp = new Satellites(this);
+            simpleItemRecyclerViewAdapter = new SimpleItemRecyclerViewAdapter(sp.ITEMS);
+            recyclerView.setAdapter(simpleItemRecyclerViewAdapter);
         }catch (JSONException je){
             je.printStackTrace();
         }catch (IOException ie){
@@ -158,7 +203,7 @@ public class SatelliteListActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putString(SatelliteDetailFragment.ARG_ITEM_ID, holder.mItem.mId.toString());
+                        arguments.putString(SatelliteDetailFragment.SATELLITE_ARG_ITEM_ID, holder.mItem.mId.toString());
                         SatelliteDetailFragment fragment = new SatelliteDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
@@ -167,7 +212,7 @@ public class SatelliteListActivity extends AppCompatActivity {
                     } else {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, SatelliteDetailActivity.class);
-                        intent.putExtra(SatelliteDetailFragment.ARG_ITEM_ID, holder.mItem.mId.toString());
+                        intent.putExtra(SatelliteDetailFragment.SATELLITE_ARG_ITEM_ID, holder.mItem.mId.toString());
 
                         context.startActivity(intent);
                     }
@@ -195,21 +240,21 @@ public class SatelliteListActivity extends AppCompatActivity {
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                // mIdView = (CustomTextView) view.findViewById(R.id.id);
+                // mIdView = view.findViewById(R.id.id);
                 // assert mIdView != null;
-                mNameView = (CustomTextView) view.findViewById(R.id.name);
+                mNameView = view.findViewById(R.id.name);
                 assert mNameView != null;
-                mPolarizationView = (CustomTextView) view.findViewById(R.id.polarization);
+                mPolarizationView = view.findViewById(R.id.polarization);
                 assert mPolarizationView == null;
-                mLongitudeView = (CustomTextView) view.findViewById(R.id.longitude);
+                mLongitudeView = view.findViewById(R.id.longitude);
                 assert mLongitudeView == null;
-                mBeaconView = (CustomTextView) view.findViewById(R.id.beacon);
+                mBeaconView = view.findViewById(R.id.beacon);
                 assert mBeaconView != null;
-                mThresholdView = (CustomTextView) view.findViewById(R.id.threshold);
+                mThresholdView = view.findViewById(R.id.threshold);
                 assert mThresholdView != null;
-                mSymbolRateView = (CustomTextView) view.findViewById(R.id.symbolRate);
+                mSymbolRateView = view.findViewById(R.id.symbolRate);
                 assert mSymbolRateView != null;
-                // mComentView = (CustomTextView) view.findViewById(R.id.comment);
+                // mComentView = view.findViewById(R.id.comment);
                 // assert mComentView != null;
             }
 

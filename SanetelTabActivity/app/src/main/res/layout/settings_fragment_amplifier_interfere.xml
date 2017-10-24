@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout
-        android:orientation="vertical" android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:layout_width="match_parent"
@@ -22,6 +23,7 @@
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:id="@+id/settings_amplifier_interfere_use"
                     android:text="@string/settings_amplifier_interfere_use"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
@@ -35,6 +37,7 @@
         <include layout="@layout/pop_dialog_blue"
             android:id="@+id/amplifier_interfere_pop"
             android:layout_height="150dp"
-            android:layout_width="match_parent"/>
+            android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/app_bar_height"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

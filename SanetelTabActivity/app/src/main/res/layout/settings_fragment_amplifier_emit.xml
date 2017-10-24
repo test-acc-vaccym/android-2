@@ -43,6 +43,7 @@
         <include layout="@layout/pop_dialog_blue"
             android:id="@+id/amplifier_pop"
             android:layout_height="150dp"
-            android:layout_width="match_parent"/>
+            android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/app_bar_height"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

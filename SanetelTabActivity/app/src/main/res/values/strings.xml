@@ -65,7 +65,8 @@
     <string name="operate_confirm_cancel">取消</string>
     <string name="operate_confirm_cancel_toast">您已经取消</string>
     <integer name="operate_confirm_animate_time">300</integer>
-
+    <string name="create_new_file_complete">添加文件成功：</string>
+    <string name="create_new_file_canceled">您没有新建文件</string>
     <!--城市数据-->
     <string name="title_city_list">城市列表</string>
     <string name="title_city_detail">城市详情</string>
@@ -83,6 +84,7 @@
     <string name="satellite_symbol_rate_key">符号率</string>
 
     <!--卫星-->
+    <string name="satellite_detail_uuid_key">UUID</string>
     <string name="satellite_detail_id_key">序&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;号</string>
     <string name="satellite_detail_name_key">卫星名称</string>
     <string name="satellite_detail_polarization_key">极化方式</string>
@@ -94,7 +96,7 @@
 
     <!--城市-->
     <string name="city_detail_id_key">序号</string>
-    <string name="city_detail_provence">所属省份</string>
+    <string name="city_detail_province">所属省份</string>
     <string name="city_detail_name_key">城市名称</string>
     <string name="city_detail_longitude_key">东&#160;&#160;&#160;&#160;&#160;&#160;经°</string>
     <string name="city_detail_latitude_key">北&#160;&#160;&#160;&#160;&#160;&#160;纬°</string>
@@ -254,7 +256,7 @@
     <string name="main_settings_antenna">天线</string>
     <string name="main_settings_antenna_restart">天线重启</string>
     <string name="main_settings_database">数据库</string>
-    <string name="main_settings_database_city">城市库</string>
+    <string name="main_settings_database_city">城市库&#160;&#160;&#160;&#160;</string>
     <string name="main_settings_database_satellites">卫星库</string>
     <string name="main_settings_advance">高级设置</string>
     <string name="main_settings_administrator">管理员设置</string>

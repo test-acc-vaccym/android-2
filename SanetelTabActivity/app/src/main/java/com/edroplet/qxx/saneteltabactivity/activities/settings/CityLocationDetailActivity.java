@@ -16,7 +16,14 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.Cities;
+import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
+import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.GalleryOnTime;
+import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
+import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 import java.util.Timer;
 
@@ -27,6 +34,20 @@ import java.util.Timer;
  * in a {@link CityLocationListActivity}.
  */
 public class CityLocationDetailActivity extends AppCompatActivity {
+    @BindId(R.id.city_detail_latitude)
+    private CustomEditText cityDetailLatitude;
+
+    @BindId(R.id.city_detail_longitude)
+    private CustomEditText cityDetailLongitude;
+
+    @BindId(R.id.city_detail_name)
+    private CustomTextView cityName;
+
+    @BindId(R.id.city_detail_province)
+    private CustomTextView provience;
+
+    @BindId(R.id.city_detail_id)
+    private CustomTextView cityId;
 
     private static int[] cityImages = {R.mipmap.city1, R.mipmap.city2, R.mipmap.city3};
     public CollapsingToolbarLayout collap;
@@ -43,6 +64,8 @@ public class CityLocationDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_city_detail);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.city_detail_toolbar);
         setSupportActionBar(toolbar);
+
+        ViewInject.inject(this, this);
 
         frameLayout = (FrameLayout) findViewById(R.id.city_detail_frame);
         galleryOnTime = new GalleryOnTime(this);
@@ -99,8 +122,8 @@ public class CityLocationDetailActivity extends AppCompatActivity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(CityLocationDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(CityLocationDetailFragment.ARG_ITEM_ID));
+            arguments.putString(CityLocationDetailFragment.CITY_ARG_ITEM_ID,
+                    getIntent().getStringExtra(CityLocationDetailFragment.CITY_ARG_ITEM_ID));
             CityLocationDetailFragment fragment = new CityLocationDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
@@ -144,7 +167,7 @@ public class CityLocationDetailActivity extends AppCompatActivity {
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
-            NavUtils.navigateUpTo(this, new Intent(this, CityLocationListActivity.class));
+            // NavUtils.navigateUpTo(this, new Intent(this, CityLocationListActivity.class));
             this.finish();
             return true;
         }

@@ -124,26 +124,33 @@ public class NDialog {
 
     }
 
-    public void intputDialog() {
-        new NDialog(mContext).setTitle("请输入。。。")
-                .setInputHintText("hint")
+    public void inputDialog() {
+        new NDialog(mContext).setTitle(mContext.getString(R.string.main_collect_data_new_input_message))
+                .setInputHintText(mContext.getString(R.string.main_collect_data_new_input_hint))
                 .setInputHintTextColor(Color.parseColor("#c1c1c1"))
                 .setInputText("")
                 .setInputTextColor(Color.parseColor("#333333"))
                 .setInputTextSize(14)
                 .setInputType(InputType.TYPE_CLASS_TEXT)
                 .setInputLineColor(Color.parseColor("#00ff00"))
-                .setPositiveButtonText("确定")
-                .setNegativeButtonText("取消")
+                .setPositiveButtonText(mContext.getString(R.string.operate_confirm_ok))
+                .setNegativeButtonText(mContext.getString(R.string.operate_confirm_cancel))
                 .setNegativeTextColor(Color.parseColor("#c1c1c1"))
                 .setOnInputListener(new NDialog.OnInputListener() {
                     @Override
                     public void onClick(String inputText, int which) {
                         //which,0代表NegativeButton，1代表PositiveButton
-                        Toast.makeText(mContext, "输入了：：" + inputText, Toast.LENGTH_SHORT).show();
-
-                        CollectHistoryFileInfo collectHistoryFileInfo = new CollectHistoryFileInfo(mContext);
-                        collectHistoryFileInfo.setDateTime(DateTime.getCurrentDateTime()).setFileName(inputText).save();
+                        if (which == 1) {
+                            if (inputText.length()>0) {
+                                CollectHistoryFileInfo collectHistoryFileInfo = new CollectHistoryFileInfo(mContext);
+                                collectHistoryFileInfo.setDateTime(DateTime.getCurrentDateTime()).setFileName(inputText).save();
+                                Toast.makeText(mContext, mContext.getString(R.string.create_new_file_complete) + inputText, Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(mContext, mContext.getString(R.string.create_new_file_canceled), Toast.LENGTH_SHORT).show();
+                            }
+                        }else {
+                            Toast.makeText(mContext, mContext.getString(R.string.create_new_file_canceled), Toast.LENGTH_SHORT).show();
+                        }
 
                     }
                 }).create(NDialog.INPUT).show();

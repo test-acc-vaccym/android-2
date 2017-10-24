@@ -6,13 +6,6 @@
     android:layout_height="match_parent"
     android:layout_marginBottom="@dimen/app_bar_height"
     style="@style/manual_divider">
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-        android:id="@+id/functions_view_pager_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:text="@string/main_bottom_nav_monitor"/>
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/speed_info_scroll"
@@ -25,6 +18,14 @@
             android:paddingTop="2dp"
             android:paddingBottom="8dp"
             android:orientation="vertical">
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:id="@+id/functions_view_pager_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:text="@string/main_bottom_nav_monitor"/>
+
             <!--卫星信息-->
             <include layout="@layout/satellite_info"/>
             <!--天线信息-->

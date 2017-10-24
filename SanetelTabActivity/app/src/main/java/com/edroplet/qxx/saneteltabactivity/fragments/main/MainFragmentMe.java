@@ -40,8 +40,8 @@ import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 public class MainFragmentMe extends Fragment implements View.OnClickListener{
     private int[] languages = new int[]{R.string.main_bottom_nav_me_language_zh_cn, R.string.main_bottom_nav_me_language_english};
     private int[] fontsArray = new int[]{R.string.main_me_font_simhei, R.string.main_me_font_default};
-    private RadioOnClick languageOnClick = new RadioOnClick(0);
-    private RadioOnClick fontOnClick = new RadioOnClick(1);
+    private RadioOnClick languageOnClick;
+    private RadioOnClick fontOnClick;
     String[] areas = new String[2];
     String[] fonts = new String[2];
     private ListView areaListView;
@@ -109,6 +109,13 @@ public class MainFragmentMe extends Fragment implements View.OnClickListener{
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.main_me_toolbar);
         toolbar.setTitle(R.string.main_bottom_nav_me);
         toolbar.setTitleTextAppearance(getContext(), android.R.style.TextAppearance_Large);
+        Context context = getContext();
+        int languageIndex = CustomSP.getInt(context, CustomSP.globalLanguage, 0);
+        int fontIndex = CustomSP.getInt(context, CustomSP.globalFont, 1);
+
+        languageOnClick = new RadioOnClick(languageIndex);
+        fontOnClick = new RadioOnClick(fontIndex);
+
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

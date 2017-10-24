@@ -52,7 +52,7 @@
         android:id="@+id/activity_functions_fab"
         android:layout_width="@dimen/fab_size"
         android:layout_height="@dimen/fab_size"
-        android:layout_marginBottom="@dimen/app_bar_height"
+        android:layout_marginBottom="@dimen/monitor_fab_margin_bottom"
         android:src="@mipmap/help"
         app:backgroundTint="@color/button_text"
         app:borderWidth="0dp"

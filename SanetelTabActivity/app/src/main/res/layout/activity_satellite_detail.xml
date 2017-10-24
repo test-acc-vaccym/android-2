@@ -26,16 +26,16 @@
             app:toolbarId="@+id/list_toolbar">
 
             <FrameLayout android:layout_height="150dp"
-                android:layout_width="fill_parent"
-                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
                 android:id="@+id/frameLayout_satellite">
-                <ImageView android:layout_height="0dp"
-                    android:layout_width="fill_parent"
-                    android:id="@+id/iv_satellite"
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.8"
                     android:fitsSystemWindows="true"
                     android:contentDescription="@string/detailed_incall_info_title"
                     android:scaleType="centerCrop"
-                    android:src="@mipmap/satellite2"/>
+                    android:src="@mipmap/satellite1"/>
                 <Gallery android:layout_height="0dp"
                     android:layout_width="match_parent"
                     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -44,7 +44,7 @@
             </FrameLayout>
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/detail_toolbar"
+                android:id="@+id/satellite_detail_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:navigationIcon="@drawable/back"

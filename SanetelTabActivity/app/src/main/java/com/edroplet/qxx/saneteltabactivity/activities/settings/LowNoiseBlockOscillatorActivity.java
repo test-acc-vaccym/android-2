@@ -90,6 +90,8 @@ public class LowNoiseBlockOscillatorActivity extends AppCompatActivity {
                 // TODO: 2017/10/23 设置命令
             }
         });
+        /*
+        不需要 这些代码，在控件中已经处理了
         settings_lnb_ku_value_1.setOnCheckedChangeListener(generalOnCheckedChangeListener);
         settings_lnb_ku_value_2.setOnCheckedChangeListener(generalOnCheckedChangeListener);
         settings_lnb_ku_value_3.setOnCheckedChangeListener(generalOnCheckedChangeListener);
@@ -100,7 +102,7 @@ public class LowNoiseBlockOscillatorActivity extends AppCompatActivity {
 
         settings_lnb_ka_value_1.setOnCheckedChangeListener(generalOnCheckedChangeListener);
         settings_lnb_ka_value_2.setOnCheckedChangeListener(generalOnCheckedChangeListener);
-
+        */
         PopDialog popDialog = new PopDialog(this);
 
         popDialog.setView(findViewById(R.id.low_noise_block_oscillator_pop));

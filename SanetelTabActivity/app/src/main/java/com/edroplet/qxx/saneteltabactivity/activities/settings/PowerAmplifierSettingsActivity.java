@@ -32,7 +32,7 @@ import java.util.Map;
 
 public class PowerAmplifierSettingsActivity extends AppCompatActivity {
     public static Toolbar toolbar;
-    // private static LinkedHashMap<String, String> map = new LinkedHashMap<>();
+    private static LinkedHashMap<String, String> map = new LinkedHashMap<>();
     private FloatingActionButton fab;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -59,13 +59,18 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_power_amplifier);
         StatusBarControl.setupToolbar(this,R.id.content_toolbar);
         initView();
-        // StatusBarControl.setTitle(hashMapUtils.getElemntFromLinkHashMap(map,0).getKey());
+        StatusBarControl.setTitle(hashMapUtils.getElementFromLinkHashMap(map,0).getKey());
         setupFab();
 
     }
 
 
     public PowerAmplifierSettingsActivity initView(){
+        map.put("功放厂家","更换参数，点击▲ 设置永久生效。");
+        map.put("功放本振","更换参数，点击▲ 设置永久生效。");
+        map.put("邻星干扰","更换参数，点击▲ 设置永久生效。");
+        map.put("发射开关","更换参数，点击▲ 设置永久生效。");
+
         mSectionsPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager());
         mSectionsPagerAdapter.addFragment(SettingsFragmentAmplifierManufacture.newInstance(null));
         mSectionsPagerAdapter.addFragment(SettingsFragmentAmplifierOscillator.newInstance(null));
@@ -86,10 +91,10 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                // Map.Entry<String , String > entry = hashMapUtils.getElemntFromLinkHashMap(map,tab.getPosition());
+                Map.Entry<String , String > entry = hashMapUtils.getElementFromLinkHashMap(map,tab.getPosition());
                 // 这儿使用getSupportedActionBar没有用
-                // if (entry != null && toolbar != null)
-                //    toolbar.setTitle(entry.getKey());
+                if (entry != null && toolbar != null)
+                    toolbar.setTitle(entry.getKey());
                 if (tab.getPosition() == 3){
                     fab.setVisibility(View.VISIBLE);
                 }else {

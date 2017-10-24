@@ -9,7 +9,7 @@ import java.util.Map;
  */
 
 public class hashMapUtils {
-    public static Map.Entry<String, String> getElemntFromLinkHashMap(LinkedHashMap<String,String> hashMap, int position){
+    public static Map.Entry<String, String> getElementFromLinkHashMap(LinkedHashMap<String,String> hashMap, int position){
         if (hashMap.isEmpty())
             return null;
         if (position < hashMap.size()){

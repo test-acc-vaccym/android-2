@@ -40,7 +40,7 @@
                 android:layout_gravity="right|end"
                 android:layout_height="match_parent"
                 android:padding="@dimen/list_detail_padding"
-                android:text="@string/city_detail_provence"/>
+                android:text="@string/city_detail_province"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                 style="?android:attr/textAppearanceMedium"
                 android:id="@+id/city_new_provence"

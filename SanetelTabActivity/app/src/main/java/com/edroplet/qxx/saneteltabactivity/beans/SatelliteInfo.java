@@ -19,6 +19,9 @@ public class SatelliteInfo implements Serializable {
 
     private static final long serialVersionUID = -6919461967497580385L;
     public static final String satelliteJsonFile = "satellite.json";
+    public static final String objectKey = "satellite";
+    public static final String positionKey = "position";
+    public static final String uuidKey = "uuid";
 
     // 字段的key
     public static final String JSON_ID = "序号";
@@ -34,7 +37,7 @@ public class SatelliteInfo implements Serializable {
     public final UUID mId;
     public final String id;             // 序号
     public final String name;           // 卫星名称
-    public final String polarization;   // 极化
+    public final String polarization;  // 极化
     public final String longitude;      // 经度
     public final String beacon;         // 信标
     public final String threshold;      // 门限

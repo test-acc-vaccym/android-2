@@ -11,6 +11,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import android.net.wifi.ScanResult;
@@ -332,5 +339,42 @@ public class SystemServices {
 
     public static int getSavingState(){
         return 0;
+    }
+
+    public static void copyAssetsFiles2FileDir(Context context,String filename){
+        InputStream is=null;
+        Writer writer = null;
+        try {
+            is=context.getAssets().open(filename);
+            int filesize=is.available();
+            byte[] buffer=new byte[0];
+            if(filesize>0){
+                buffer=new byte[filesize];
+            }
+            OutputStream out = context.openFileOutput(filename,
+                    Context.MODE_APPEND);
+            writer = new OutputStreamWriter(out);
+
+            int t=0;
+            while((t=is.read(buffer))!=-1){
+                writer.write(new String(buffer));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally{
+            if(null!=is){
+                try{
+                    is.close();
+                }catch(Exception e){}
+            }
+
+            if (writer != null) {
+
+                try{
+                    writer.close();
+                }catch(Exception e){}
+            }
+
+        }
     }
 }

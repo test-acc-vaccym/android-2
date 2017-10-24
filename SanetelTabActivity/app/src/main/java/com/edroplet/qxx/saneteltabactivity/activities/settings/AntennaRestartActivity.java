@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
@@ -21,6 +22,7 @@ public class AntennaRestartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_antenna_restart);
         ViewInject.inject(this, this);
+        StatusBarControl.setupToolbar(this, R.id.antenna_restart_toolbar);
 
         PopDialog popDialog = new PopDialog(this);
 

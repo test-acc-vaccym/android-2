@@ -19,7 +19,7 @@
         android:text="@string/satellite_detail_id_key"/>
     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
         style="?android:attr/textAppearanceMedium"
-        android:id="@+id/id_city_detail"
+        android:id="@+id/city_detail_id"
         android:layout_width="0dp"
         android:layout_weight="2"
         android:layout_height="match_parent"/>
@@ -35,10 +35,10 @@
             android:layout_gravity="right|end"
             android:layout_height="match_parent"
             android:padding="@dimen/list_detail_padding"
-            android:text="@string/city_detail_provence"/>
+            android:text="@string/city_detail_province"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             style="?android:attr/textAppearanceMedium"
-            android:id="@+id/city_detail_provence"
+            android:id="@+id/city_detail_province"
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="match_parent"/>
@@ -57,7 +57,7 @@
             android:text="@string/city_detail_name_key"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             style="?android:attr/textAppearanceMedium"
-            android:id="@+id/city_name_detail"
+            android:id="@+id/city_detail_name"
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="match_parent"/>

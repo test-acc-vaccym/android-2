@@ -54,7 +54,7 @@ public class JsonLoad {
                 while ((line = reader.readLine()) != null) {
                     jsonString.append(line);
                 }
-
+                SystemServices.copyAssetsFiles2FileDir(mContext,this.mJsonFileName);
             }else {
                 FileInputStream fin = mContext.openFileInput(this.mJsonFileName);
                 Scanner s = new Scanner(fin);
@@ -117,7 +117,7 @@ public class JsonLoad {
                 while ((line = reader.readLine()) != null) {
                     jsonString.append(line);
                 }
-
+                SystemServices.copyAssetsFiles2FileDir(mContext,this.mJsonFileName);
             }else {
                 FileInputStream fin = mContext.openFileInput(this.mJsonFileName);
                 Scanner s = new Scanner(fin);

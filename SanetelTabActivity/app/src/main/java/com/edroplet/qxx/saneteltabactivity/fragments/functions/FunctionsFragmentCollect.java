@@ -65,7 +65,7 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
 //                                }
 //                            }
 //                        });
-                new NDialog(getContext()).intputDialog();
+                new NDialog(getContext()).inputDialog();
                 break;
         }
     }

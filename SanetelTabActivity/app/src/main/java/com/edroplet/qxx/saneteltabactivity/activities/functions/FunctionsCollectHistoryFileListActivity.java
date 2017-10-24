@@ -1,11 +1,7 @@
 package com.edroplet.qxx.saneteltabactivity.activities.functions;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -17,15 +13,9 @@ import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteDetailActivity;
-import com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteDetailFragment;
 import com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo;
-import com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo;
-import com.edroplet.qxx.saneteltabactivity.beans.SatelliteParameters;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
-import org.json.JSONException;
-
-import java.io.IOException;
 import java.util.List;
 
 /**

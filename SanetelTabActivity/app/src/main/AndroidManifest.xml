@@ -181,8 +181,8 @@
         <activity android:name=".activities.settings.ReferenceSatelliteActivity" />
         <activity android:name=".activities.settings.LowNoiseBlockOscillatorActivity" />
         <activity android:name=".activities.settings.AntennaRestartActivity" />
-        <activity android:name=".activities.settings.SettingsPowerAmplifierEmitHelpActivity"/>
-
+        <activity android:name=".activities.settings.SettingsPowerAmplifierEmitHelpActivity" />
+        <activity android:name=".activities.administrator.AdministratorActivity"></activity>
     </application>
 
 </manifest>

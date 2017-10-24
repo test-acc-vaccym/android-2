@@ -26,7 +26,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        Map.Entry<String , String > entry = hashMapUtils.getElemntFromLinkHashMap(sbTabTitleMap,position);
+        Map.Entry<String , String > entry = hashMapUtils.getElementFromLinkHashMap(sbTabTitleMap,position);
         String title = "";
         if (entry != null) {
             title = entry.getKey();
@@ -42,7 +42,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        Map.Entry<String , String > entry = hashMapUtils.getElemntFromLinkHashMap(sbTabTitleMap,position);
+        Map.Entry<String , String > entry = hashMapUtils.getElementFromLinkHashMap(sbTabTitleMap,position);
 
         if (entry != null){
             return entry.getKey();

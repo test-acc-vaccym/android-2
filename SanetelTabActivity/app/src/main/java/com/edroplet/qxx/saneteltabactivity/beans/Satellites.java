@@ -21,44 +21,51 @@ import static android.content.ContentValues.TAG;
  * <p>
  * TODO: Replace all uses of this class before publishing your app.
  */
-public class CityElement {
+public class Satellites {
     private Context mContext;
-    private static ArrayList<LocationInfo> cities;
-
+    private static ArrayList<SatelliteInfo> satellites;
     /**
      * An array of sample (dummy) items.
      */
-    public static final List<LocationInfo> ITEMS = new ArrayList<LocationInfo>();
+    public static final List<SatelliteInfo> ITEMS = new ArrayList<SatelliteInfo>();
 
     /**
      * A map of sample (dummy) items, by ID.
      */
-    public static final Map<String, LocationInfo> ITEM_MAP = new HashMap<String, LocationInfo>();
+    public static final Map<String, SatelliteInfo> ITEM_MAP = new HashMap<String, SatelliteInfo>();
 
     public int getItemCounts(){
-        return cities.size();
+        return satellites.size();
     }
 
-    public CityElement(Context context) throws JSONException, IOException{
+    public Satellites(Context context) throws JSONException, IOException{
         mContext = context;
-        JsonLoad jl = new JsonLoad(context, LocationInfo.citiesJsonFile);
-        cities = jl.loadCities();
-        // Add some sample items.
-        for (int i = 0; i < getItemCounts(); i++) {
-            addItem(createLocationInfo(i));
+        if (satellites == null || satellites.size() == 0) {
+            JsonLoad jl = new JsonLoad(context, SatelliteInfo.satelliteJsonFile);
+            satellites = jl.loadSatellite();
+            for (int i = 0; i < getItemCounts(); i++) {
+                addItem(createSatelliteParameterItem(i));
+            }
         }
     }
 
-    private void addItem(LocationInfo item) {
+    public void addItem(SatelliteInfo item) {
         ITEMS.add(item);
-        ITEM_MAP.put(item.getName(), item);
+        ITEM_MAP.put(item.mId.toString(), item);
     }
 
-    private static LocationInfo createLocationInfo(int position) {
+    public void update(String id, SatelliteInfo item){
+        int index = satellites.indexOf(item);
+        satellites.set(index, item);
+        int itemIndex = ITEMS.indexOf(item);
+        ITEMS.set(itemIndex, item);
+    }
+
+    private static SatelliteInfo createSatelliteParameterItem(int position) {
         try {
-            return new LocationInfo(cities.get(position).toJSON());
+            return new SatelliteInfo(satellites.get(position).toJSON());
         }catch (JSONException je){
-            Log.e(TAG, "createLocationInfo: LocationInfo error");
+            Log.e(TAG, "createSatelliteParameterItem: SatelliteInfo error");
         }
         return null;
 

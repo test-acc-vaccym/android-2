@@ -23,6 +23,9 @@ import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
  */
 
 public class FunctionsFragmentSettings extends Fragment {
+
+    Intent intent;
+
     public static FunctionsFragmentSettings newInstance(String info) {
         Bundle args = new Bundle();
         FunctionsFragmentSettings fragment = new FunctionsFragmentSettings();
@@ -32,7 +35,7 @@ public class FunctionsFragmentSettings extends Fragment {
     }
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.functions_fragment_settings, null);
         view.findViewById(R.id.main_settings_database_satellites).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,29 +54,33 @@ public class FunctionsFragmentSettings extends Fragment {
         view.findViewById(R.id.main_settings_amplifier_factory).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), PowerAmplifierSettingsActivity.class));
-                // getActivity().finish();
+                intent = new Intent(getActivity(), PowerAmplifierSettingsActivity.class);
+                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, 0);
+                startActivity(intent);
             }
         });
         view.findViewById(R.id.main_settings_amplifier_oscillator).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), PowerAmplifierSettingsActivity.class));
-                // getActivity().finish();
+                intent = new Intent(getActivity(), PowerAmplifierSettingsActivity.class);
+                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, 1);
+                startActivity(intent);
             }
         });
         view.findViewById(R.id.main_settings_amplifier_emit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), PowerAmplifierSettingsActivity.class));
-                // getActivity().finish();
+                intent = new Intent(getActivity(), PowerAmplifierSettingsActivity.class);
+                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, 2);
+                startActivity(intent);
             }
         });
         view.findViewById(R.id.main_settings_amplifier_interfere).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), PowerAmplifierSettingsActivity.class));
-                // getActivity().finish();
+                intent = new Intent(getActivity(), PowerAmplifierSettingsActivity.class);
+                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, 3);
+                startActivity(intent);
             }
         });
         StatusButton customImageButton = view.findViewById(R.id.main_settings_administrator);

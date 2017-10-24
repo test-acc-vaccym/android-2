@@ -49,7 +49,8 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
-    private String snackHelpMessage;
+    private int startPosition;
+    public static final String positionKey = "position";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +58,15 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
         //  始终保持竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_power_amplifier);
+        if (savedInstanceState == null){
+            startPosition = getIntent().getIntExtra(positionKey, 0);
+            if (startPosition >= mSectionsPagerAdapter.getCount()) {
+                startPosition = mSectionsPagerAdapter.getCount() - 1;
+            }
+        }
         StatusBarControl.setupToolbar(this,R.id.content_toolbar);
         initView();
+        mViewPager.setCurrentItem(startPosition);
         StatusBarControl.setTitle(hashMapUtils.getElementFromLinkHashMap(map,0).getKey());
         setupFab();
 
@@ -131,10 +139,10 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
         return this;
     }
 
-    public PowerAmplifierSettingsActivity setHelpMessage(String message){
-        this.snackHelpMessage = message;
-        return this;
-    }
+//    public PowerAmplifierSettingsActivity setHelpMessage(String message){
+//        this.snackHelpMessage = message;
+//        return this;
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

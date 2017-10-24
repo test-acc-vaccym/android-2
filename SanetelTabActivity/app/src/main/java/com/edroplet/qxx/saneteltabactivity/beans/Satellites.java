@@ -49,6 +49,15 @@ public class Satellites {
         }
     }
 
+    public Satellites(Context context, boolean reload) throws JSONException, IOException {
+        if (reload || satellites == null || satellites.size() == 0) {
+            JsonLoad jl = new JsonLoad(context, SatelliteInfo.satelliteJsonFile);
+            satellites = jl.loadSatellite();
+            for (int i = 0; i < getItemCounts(); i++) {
+                addItem(createSatelliteParameterItem(i));
+            }
+        }
+    }
     public void addItem(SatelliteInfo item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.mId.toString(), item);

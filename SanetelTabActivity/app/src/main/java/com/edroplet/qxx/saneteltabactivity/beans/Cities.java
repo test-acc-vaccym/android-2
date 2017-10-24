@@ -50,7 +50,17 @@ public class Cities {
             }
         }
     }
-
+    public Cities(Context context, boolean reload) throws JSONException, IOException{
+        mContext = context;
+        if (reload || cities == null || cities.size() == 0) {
+            JsonLoad jl = new JsonLoad(context, LocationInfo.citiesJsonFile);
+            cities = jl.loadCities();
+            // Add some sample items.
+            for (int i = 0; i < getItemCounts(); i++) {
+                addItem(createLocationInfo(i));
+            }
+        }
+    }
     public void addItem(LocationInfo item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.getName(), item);

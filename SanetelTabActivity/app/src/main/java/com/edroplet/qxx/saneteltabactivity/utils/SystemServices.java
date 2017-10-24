@@ -343,7 +343,7 @@ public class SystemServices {
                 buffer=new byte[filesize];
             }
             OutputStream out = context.openFileOutput(filename,
-                    Context.MODE_APPEND);
+                    Context.MODE_PRIVATE);
             writer = new OutputStreamWriter(out);
 
             int t=0;

@@ -92,12 +92,14 @@ public class SatelliteListActivity extends AppCompatActivity {
                 break;
             case NEW_SATELLITES_REQUEST_CODE:
                 // if(resultCode== Activity.RESULT_OK){
+                if (satelliteInfo != null) {
                     //  刷新当前activity界面数据
                     sp.addItem(satelliteInfo);
                     //RecyclerView列表进行UI数据更新
                     satelliteItemRecyclerViewAdapter.notifyItemInserted(position);
                     //如果在第一项添加模拟数据需要调用 scrollToPosition（0）把列表移动到顶端（可选）
                     recyclerView.scrollToPosition(position);
+                }
                 // }
                 break;
         }
@@ -128,7 +130,7 @@ public class SatelliteListActivity extends AppCompatActivity {
 
         ViewInject.inject(this, this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.list_toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.list_toolbar);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
@@ -167,7 +169,13 @@ public class SatelliteListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SystemServices.copyAssetsFiles2FileDir(SatelliteListActivity.this, SatelliteInfo.satelliteJsonFile);
-                SystemServices.restartAPP(SatelliteListActivity.this, 1000);
+                try {
+                    sp = new Satellites(SatelliteListActivity.this,true);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                satelliteItemRecyclerViewAdapter.notifyDataSetChanged();
+                // SystemServices.restartAPP(SatelliteListActivity.this, 1000);
             }
         });
     }

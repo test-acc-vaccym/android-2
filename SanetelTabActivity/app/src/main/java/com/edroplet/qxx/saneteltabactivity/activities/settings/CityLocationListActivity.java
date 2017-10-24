@@ -84,6 +84,7 @@ public class CityLocationListActivity extends AppCompatActivity {
                 break;
             case NEW_CITY_REQUEST_CODE:
                 // if(resultCode== Activity.RESULT_OK){
+                if (locationInfo != null) {
                     //  刷新当前activity界面数据
                     ce.addItem(locationInfo);
                     //RecyclerView列表进行UI数据更新
@@ -91,6 +92,7 @@ public class CityLocationListActivity extends AppCompatActivity {
                     //如果在第一项添加模拟数据需要调用 scrollToPosition（0）把列表移动到顶端（可选）
                     recyclerView.scrollToPosition(position);
                     simpleItemRecyclerViewAdapter.notifyItemChanged(position);
+                }
                 // }
                 break;
         }
@@ -161,7 +163,13 @@ public class CityLocationListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SystemServices.copyAssetsFiles2FileDir(CityLocationListActivity.this, LocationInfo.citiesJsonFile);
-                SystemServices.restartAPP(CityLocationListActivity.this, 1000);
+                try {
+                    ce = new Cities(CityLocationListActivity.this,true);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                simpleItemRecyclerViewAdapter.notifyDataSetChanged();
+                // SystemServices.restartAPP(CityLocationListActivity.this, 1000);
             }
         });
     }

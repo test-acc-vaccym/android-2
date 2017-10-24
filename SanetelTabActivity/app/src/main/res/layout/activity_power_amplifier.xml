@@ -36,14 +36,14 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/amplifier_container"
+        android:id="@+id/amplifier_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/app_bar_height"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.TabLayout
-        android:id="@+id/tabs"
+        android:id="@+id/power_amplifier_tabs"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
         android:layout_below="@id/content_toolbar"
@@ -58,13 +58,28 @@
         app:tabGravity="fill"
         android:layout_gravity="bottom|end"/>
     <!--app:tabMode="scrollable"-->
-    <android.support.design.widget.FloatingActionButton
+    <!--android.support.design.widget.FloatingActionButton
         android:id="@+id/amplifier_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="@dimen/fab_margin_bottom"
         android:src="@mipmap/help"
-        app:backgroundTint="@color/button_text"
-        android:visibility="gone"/>
+        app:backgroundTint="@color/button_blink"
+        android:visibility="invisible"/-->
+
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomFAB
+        android:id="@+id/amplifier_fab"
+        android:layout_width="@dimen/fab_size"
+        android:layout_height="@dimen/fab_size"
+        android:src="@mipmap/help"
+        app:backgroundTint="@color/button_blink"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:layout_anchor="@id/amplifier_view_pager"
+        android:layout_gravity="bottom"
+        app:layout_anchorGravity="top|end"
+        app:pressedTranslationZ="12dp"
+        app:rippleColor="#a6a6a6" />
 </android.support.design.widget.CoordinatorLayout>

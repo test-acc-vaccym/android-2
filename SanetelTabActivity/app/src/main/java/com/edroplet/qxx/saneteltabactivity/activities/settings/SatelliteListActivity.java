@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,8 +20,11 @@ import com.edroplet.qxx.saneteltabactivity.R;
 
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.Satellites;
+import com.edroplet.qxx.saneteltabactivity.utils.RandomDialog;
+import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 import org.json.JSONException;
@@ -53,6 +57,9 @@ public class SatelliteListActivity extends AppCompatActivity {
     @BindId(R.id.satellite_list_fab)
     private FloatingActionButton fab;
 
+    @BindId(R.id.recover_satellite)
+
+    private CustomButton recoverySatellites;
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -156,6 +163,31 @@ public class SatelliteListActivity extends AppCompatActivity {
             // activity should be in two-pane mode.
             mTwoPane = true;
         }
+
+        recoverySatellites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SystemServices.copyAssetsFiles2FileDir(SatelliteListActivity.this, SatelliteInfo.satelliteJsonFile);
+                SystemServices.restartAPP(SatelliteListActivity.this, 1000);
+            }
+        });
+    }
+
+    @Override
+    public boolean onKeyLongPress(int keyCode, KeyEvent event) {
+        // TODO: 2017/10/24 长按删除
+        final int position = 0;
+        final SatelliteInfo item = sp.ITEMS.get(position);
+        String confirmDelete = String.format(getString(R.string.confirm_delete_message),item.toString());
+        RandomDialog dialogBuilder = new RandomDialog(this);
+        dialogBuilder.onConfirm(confirmDelete, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sp.deleteItem(item);
+                simpleItemRecyclerViewAdapter.notifyItemRemoved(position);
+            }
+        });
+        return super.onKeyLongPress(keyCode, event);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {

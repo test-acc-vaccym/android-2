@@ -61,6 +61,11 @@ public class Satellites {
         ITEMS.set(itemIndex, item);
     }
 
+    public static void deleteItem(SatelliteInfo satelliteInfo){
+        ITEMS.remove(satelliteInfo);
+        ITEM_MAP.remove(satelliteInfo);
+        satellites.remove(satelliteInfo);
+    }
     private static SatelliteInfo createSatelliteParameterItem(int position) {
         try {
             return new SatelliteInfo(satellites.get(position).toJSON());

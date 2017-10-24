@@ -71,7 +71,7 @@ public class FunctionsFragmentSettings extends Fragment {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getActivity(), PowerAmplifierSettingsActivity.class);
-                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, 2);
+                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, 3);
                 startActivity(intent);
             }
         });
@@ -79,7 +79,7 @@ public class FunctionsFragmentSettings extends Fragment {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getActivity(), PowerAmplifierSettingsActivity.class);
-                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, 3);
+                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, 2);
                 startActivity(intent);
             }
         });

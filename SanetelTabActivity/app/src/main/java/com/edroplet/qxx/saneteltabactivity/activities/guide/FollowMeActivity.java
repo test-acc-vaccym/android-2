@@ -2,10 +2,7 @@ package com.edroplet.qxx.saneteltabactivity.activities.guide;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -18,8 +15,6 @@ import android.widget.Toast;
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsActivity;
 import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
-import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
-import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
 import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
 import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentDestination;
@@ -30,21 +25,19 @@ import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentSaving;
 import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentSearchModeSetting;
 import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentSearching;
 import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
-import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
+import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomFAB;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Objects;
 
 public class FollowMeActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String POSITION="position";
     private MainViewPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
-    private FloatingActionButton fab;
+
     private int startPosition = 0;
+    @BindId(R.id.follow_me_explode_fab)
+    private CustomFAB fab;
 
     private boolean isInited = false;
 
@@ -62,8 +55,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
         if (mViewPager == null){
             return;
         }
-        int count = mViewPager.getChildCount();
-        count = mViewPager.getAdapter().getCount();
+        int count = mViewPager.getAdapter().getCount();
         int now = mViewPager.getCurrentItem();
         switch (view.getId()) {
             case R.id.follow_me_bottom_nav_main:
@@ -113,7 +105,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.follow_me_bottom_nav_preview).setOnClickListener(this);
         findViewById(R.id.follow_me_bottom_nav_next).setOnClickListener(this);
         findViewById(R.id.follow_me_bottom_nav_monitor).setOnClickListener(this);
-        fab = (FloatingActionButton) findViewById(R.id.follow_me_explode_fab);
+
         if (fab !=null)
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override

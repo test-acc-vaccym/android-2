@@ -107,6 +107,7 @@
     <string name="add_city">增加城市</string>
     <string name="delete_city">删除城市</string>
     <string name="title_activity_guide">引导页</string>
+    <string name="confirm_delete_message">您确定需要删除你所选择的%1$s</string>
 
     <!--引导页-->
     <!--引导页主页-->

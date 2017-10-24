@@ -20,6 +20,10 @@ import android.widget.TextView;
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.Cities;
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
+import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
+import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
+import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 import org.json.JSONException;
@@ -41,6 +45,10 @@ public class CityLocationListActivity extends AppCompatActivity {
     private SimpleItemRecyclerViewAdapter simpleItemRecyclerViewAdapter;
     private Cities ce;
     private RecyclerView recyclerView;
+
+    @BindId(R.id.recover_city)
+    private CustomButton recoveryCity;
+
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
@@ -107,6 +115,8 @@ public class CityLocationListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_list);
 
+        ViewInject.inject(this, this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.city_list_toolbar);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
@@ -142,6 +152,14 @@ public class CityLocationListActivity extends AppCompatActivity {
             // activity should be in two-pane mode.
             mTwoPane = true;
         }
+
+        recoveryCity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SystemServices.copyAssetsFiles2FileDir(CityLocationListActivity.this, LocationInfo.citiesJsonFile);
+                SystemServices.restartAPP(CityLocationListActivity.this, 1000);
+            }
+        });
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {

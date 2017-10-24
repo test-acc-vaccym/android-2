@@ -68,9 +68,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|start"
         android:layout_margin="@dimen/fab_margin_bottom"
-        app:layout_anchor="@+id/satellite_detail_container"
+        app:layout_anchor="@id/satellite_detail_container"
         app:layout_anchorGravity="top|end"
         android:visibility="gone"
-        app:srcCompat="@android:drawable/stat_notify_chat" />
+        app:srcCompat="@mipmap/help"
+        android:background="@color/button_blink"/>
 
 </android.support.design.widget.CoordinatorLayout>

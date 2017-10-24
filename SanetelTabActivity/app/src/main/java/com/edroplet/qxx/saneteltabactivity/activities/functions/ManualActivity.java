@@ -24,6 +24,7 @@ public class ManualActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private MenuItem menuItem;
     private BottomNavigationView bottomNavigationView;
+    private MainViewPagerAdapter adapter;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -101,14 +102,14 @@ public class ManualActivity extends AppCompatActivity {
         int position = bundle.getInt(POSITION);
         if (position < 0){
             position = 0;
-        }else if (position >= viewPager.getChildCount()){
-            position = viewPager.getChildCount() - 1;
+        }else if (position >= adapter.getCount()){
+            position = adapter.getCount() - 1;
         }
         viewPager.setCurrentItem(position);
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        MainViewPagerAdapter adapter = new MainViewPagerAdapter(getSupportFragmentManager());
+        adapter = new MainViewPagerAdapter(getSupportFragmentManager());
 
         adapter.addFragment(SpeedControlFragment.newInstance(new AntennaInfo()));
         adapter.addFragment(LocationControlFragment.newInstance(new AntennaInfo()));

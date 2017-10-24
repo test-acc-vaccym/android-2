@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -30,7 +29,7 @@ public class LocationControlFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_location_control, null);
+        View view = inflater.inflate(R.layout.functions_fragment_application_manual_location_control, null);
         AntennaInfo antennaInfo = getArguments().getParcelable("antennaInfo");
         final CustomButton rotate = (CustomButton) view.findViewById(R.id.location_control_rotate);
         rotate.setOnFocusChangeListener(new View.OnFocusChangeListener() {

@@ -7,12 +7,8 @@ import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -23,16 +19,11 @@ import java.util.List;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager.WifiLock;
-import android.view.View;
 import android.widget.Toast;
 
-import com.edroplet.qxx.saneteltabactivity.activities.guide.WifiManagerActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.main.MainWifiSettingHelpActivity;
 import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
-import com.edroplet.qxx.saneteltabactivity.fragments.main.MainFragmentGuide;
-import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
-import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
 import static android.content.Context.WIFI_SERVICE;
 
@@ -377,4 +368,36 @@ public class SystemServices {
 
         }
     }
+
+    /**
+     * 重启整个APP
+     * @param context
+     * @param Delayed 延迟多少毫秒
+     */
+    public static void restartAPP(Context context,long Delayed){
+
+        /**开启一个新的服务，用来重启本APP
+        Intent intent1=new Intent(context,KillSelfService.class);
+        intent1.putExtra("PackageName",context.getPackageName());
+        intent1.putExtra("Delayed",Delayed);
+        context.startService(intent1);
+
+        杀死整个进程
+        android.os.Process.killProcess(android.os.Process.myPid());
+         */
+        /*  http://blog.csdn.net/ifangler/article/details/44100193
+        Intent intent = getBaseContext().getPackageManager()
+                .getLaunchIntentForPackage(getBaseContext().getPackageName());
+        PendingIntent restartIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        AlarmManager mgr = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 1000, restartIntent); // 1秒钟后重启应用
+        System.exit(0);
+        * */
+
+        Intent i = context.getPackageManager()
+                .getLaunchIntentForPackage(context.getPackageName());
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(i);
+    }
+
 }

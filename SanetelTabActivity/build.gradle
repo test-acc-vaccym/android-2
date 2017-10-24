@@ -6,6 +6,10 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
+        // http://blog.csdn.net/nicolelili1/article/details/52275263
+        // lambda expressions are not supported at this language level（需设置project language level）
+        // Android studio默认使用Lambda表达式会报错，即使使用的jdk是1.8.需要借助一个插件retrolambda，该插件将java8种的lambda表达式特性兼容到java5
+        // classpath 'me.tatarka:gradle-retrolambda:3.2.0'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

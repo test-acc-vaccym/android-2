@@ -93,6 +93,7 @@ public class MainFragmentMe extends Fragment implements View.OnClickListener{
             }
             CustomSP.putInt(getContext(),spKey,index);
             dialog.dismiss();
+            SystemServices.restartAPP(getContext(), 1000);
         }
     }
     public static MainFragmentMe newInstance(String info) {

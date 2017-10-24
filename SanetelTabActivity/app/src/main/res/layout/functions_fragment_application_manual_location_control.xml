@@ -5,6 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     style="@style/manual_divider">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/main_application_operate_location"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
     <LinearLayout
         android:id="@+id/current_location_values"
         android:layout_width="match_parent"

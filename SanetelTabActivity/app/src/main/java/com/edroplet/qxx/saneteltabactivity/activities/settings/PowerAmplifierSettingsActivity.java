@@ -2,6 +2,8 @@ package com.edroplet.qxx.saneteltabactivity.activities.settings;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,13 +22,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
 import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
 import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifierInterfere;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifierManufacture;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifierOscillator;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifiereEmit;
+import com.edroplet.qxx.saneteltabactivity.view.BottomNavigationViewEx;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomFAB;
@@ -35,6 +37,9 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
     public static Toolbar toolbar;
     @BindId(R.id.amplifier_fab)
     private CustomFAB fab;
+
+    @BindId(R.id.settings_power_amplifier_bottom_navigation)
+    private BottomNavigationViewEx bottomNavigationView;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -80,6 +85,7 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_power_amplifier);
         ViewInject.inject(this, this);
+
         StatusBarControl.setupToolbar(this,R.id.content_toolbar);
         initView();
         if (savedInstanceState == null){
@@ -88,10 +94,42 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
                 startPosition = COUNT - 1;
             }
         }
+        bottomNavigationView.enableAnimation(false);
+        bottomNavigationView.enableItemShiftingMode(false);
+        bottomNavigationView.enableShiftingMode(false);
+        bottomNavigationView.setTextSize(18);
+        bottomNavigationView.setIconSize(1,1);
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.settings_power_amplifier_bottom_navigation_factory:
+                                mViewPager.setCurrentItem(0);
+                                fab.setVisibility(View.INVISIBLE);
+                                break;
+                            case R.id.settings_power_amplifier_bottom_navigation_oscillator:
+                                mViewPager.setCurrentItem(1);
+                                fab.setVisibility(View.INVISIBLE);
+                                break;
+                            case R.id.settings_power_amplifier_bottom_navigation_interfere:
+                                mViewPager.setCurrentItem(2);
+                                fab.setVisibility(View.INVISIBLE);
+                                break;
+                            case R.id.settings_power_amplifier_bottom_navigation_emit:
+                                mViewPager.setCurrentItem(3);
+                                fab.setVisibility(View.VISIBLE);
+                        }
+                        return false;
+                    }
+                });
+        bottomNavigationView.setupWithViewPager(mViewPager);
+
         mViewPager.setCurrentItem(startPosition);
         setupFab();
     }
 
+    private MenuItem menuItem;
     public PowerAmplifierSettingsActivity initView(){
 //        mSectionsPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager());
 //        mSectionsPagerAdapter.addFragment();
@@ -99,14 +137,40 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
 //        mSectionsPagerAdapter.addFragment();
 //        mSectionsPagerAdapter.addFragment();
 
-        final TabLayout mTabLayout = (TabLayout) findViewById(R.id.power_amplifier_tabs);
-        setTabs(mTabLayout,this.getLayoutInflater(),TAB_TITLES,TAB_IMGS);
+        // final TabLayout mTabLayout = (TabLayout) findViewById(R.id.power_amplifier_tabs);
+        // setTabs(mTabLayout,this.getLayoutInflater(),TAB_TITLES,TAB_IMGS);
         mAdapter = new MyViewPagerAdapter(getSupportFragmentManager());
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.amplifier_view_pager);
         mViewPager.setAdapter(mAdapter);
-        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
-        // mTabLayout.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                if (position == 3){
+                    fab.setVisibility(View.VISIBLE);
+                }else {
+                    fab.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (menuItem != null) {
+                    menuItem.setChecked(false);
+                } else {
+                    bottomNavigationView.getMenu().getItem(0).setChecked(false);
+                }
+                menuItem = bottomNavigationView.getMenu().getItem(position);
+                menuItem.setChecked(true);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+
+        /* mTabLayout.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
         mTabLayout.setupWithViewPager(mViewPager);
 
@@ -134,6 +198,7 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+        */
         // 初始化快捷键
         OperateBarControl.setupOperatorBar(this);
         return this;

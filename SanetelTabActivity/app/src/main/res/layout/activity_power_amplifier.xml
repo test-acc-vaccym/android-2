@@ -42,7 +42,24 @@
         android:layout_marginBottom="@dimen/app_bar_height"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <android.support.design.widget.TabLayout
+    <com.edroplet.qxx.saneteltabactivity.view.BottomNavigationViewEx
+        android:id="@+id/settings_power_amplifier_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:layout_gravity="bottom"
+        android:background="@color/title_background"
+        app:itemIconTint="@drawable/bottom_navigation_selector"
+        app:itemTextColor="@drawable/bottom_navigation_selector"
+        app:itemBackground="@color/title_background"
+        app:menu="@menu/menu_power_amplifier" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_above="@id/settings_power_amplifier_bottom_navigation"
+        android:background="@drawable/bottom_shadow" />
+
+    <!-- 搞不定 android.support.design.widget.TabLayout
         android:id="@+id/power_amplifier_tabs"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
@@ -56,7 +73,7 @@
         app:tabPaddingStart="8dp"
         app:tabPaddingEnd="8dp"
         app:tabGravity="fill"
-        android:layout_gravity="bottom|end"/>
+        android:layout_gravity="bottom|end"/-->
     <!--app:tabMode="scrollable"-->
     <!--android.support.design.widget.FloatingActionButton
         android:id="@+id/amplifier_fab"

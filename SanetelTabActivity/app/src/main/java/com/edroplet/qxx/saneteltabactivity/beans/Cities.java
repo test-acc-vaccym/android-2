@@ -65,6 +65,12 @@ public class Cities {
         }
     }
 
+    public static void deleteItem(LocationInfo locationInfo){
+        ITEMS.remove(locationInfo);
+        ITEM_MAP.remove(locationInfo);
+        cities.remove(locationInfo);
+    }
+
     private static LocationInfo createLocationInfo(int position) {
         try {
             return new LocationInfo(cities.get(position).toJSON());

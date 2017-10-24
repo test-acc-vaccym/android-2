@@ -16,10 +16,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.Cities;
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
+import com.edroplet.qxx.saneteltabactivity.utils.JsonLoad;
+import com.edroplet.qxx.saneteltabactivity.utils.RandomDialog;
 import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
@@ -29,6 +32,7 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -215,6 +219,38 @@ public class CityLocationListActivity extends AppCompatActivity {
                         intent.putExtra(CityLocationDetailFragment.CITY_ARG_ITEM_ID, holder.mItem.getName());
                         startActivityForResult(intent, CITY_DETAIL_REQUEST_CODE);
                     }
+                }
+            });
+
+            holder.mView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    Toast.makeText(view.getContext(), "长按了" + holder.mItem.getName(), Toast.LENGTH_SHORT).show();
+
+                    String confirmDelete = String.format(view.getContext().getString(R.string.confirm_delete_message),holder.mItem.getName());
+                    final RandomDialog dialogBuilder = new RandomDialog(view.getContext());
+                    dialogBuilder.onConfirm(confirmDelete, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            holder.mView.setVisibility(View.GONE);
+                            mValues.remove(holder.mItem);
+                            ce.deleteItem(holder.mItem);
+                            // 修改文件
+                            JsonLoad js = new JsonLoad(view.getContext(), LocationInfo.citiesJsonFile);
+                            ArrayList<LocationInfo> al = new ArrayList<LocationInfo>();
+                            for (LocationInfo l:  mValues){
+                                al.add(l);
+                            }
+                            try {
+                                js.saveCities(al);
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            simpleItemRecyclerViewAdapter.notifyItemChanged(holder.getAdapterPosition());
+                            dialogBuilder.getDialogBuilder().dismiss();
+                        }
+                    });
+                    return true;
                 }
             });
         }

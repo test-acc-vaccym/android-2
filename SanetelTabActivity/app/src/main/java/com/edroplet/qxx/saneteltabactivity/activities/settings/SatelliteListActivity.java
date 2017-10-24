@@ -4,22 +4,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.Satellites;
+import com.edroplet.qxx.saneteltabactivity.utils.JsonLoad;
 import com.edroplet.qxx.saneteltabactivity.utils.RandomDialog;
 import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
@@ -30,11 +32,8 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-
-import static com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo.objectKey;
-import static com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo.positionKey;
-import static com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo.uuidKey;
 
 /**
  * An activity representing a list of Cities. This activity
@@ -48,7 +47,7 @@ public class SatelliteListActivity extends AppCompatActivity {
     public static final int NEW_SATELLITES_REQUEST_CODE = 11000;
     public static final int SATELLITE_DETAIL_REQUEST_CODE = 11001;
 
-    private SimpleItemRecyclerViewAdapter simpleItemRecyclerViewAdapter;
+    private SatelliteItemRecyclerViewAdapter satelliteItemRecyclerViewAdapter;
     private Satellites sp;
 
     @BindId((R.id.satellite_list))
@@ -73,14 +72,14 @@ public class SatelliteListActivity extends AppCompatActivity {
         String id = "";
         SatelliteInfo satelliteInfo = null;
         if (null != data) {
-            if (data.hasExtra(objectKey)) {
-                satelliteInfo = data.getParcelableExtra(objectKey);
+            if (data.hasExtra(SatelliteInfo.objectKey)) {
+                satelliteInfo = data.getParcelableExtra(SatelliteInfo.objectKey);
             }
-            if (data.hasExtra(positionKey)) {
-                position = data.getIntExtra(positionKey, 0);
+            if (data.hasExtra(SatelliteInfo.positionKey)) {
+                position = data.getIntExtra(SatelliteInfo.positionKey, 0);
             }
-            if (data.hasExtra(uuidKey)){
-                id = data.getStringExtra(uuidKey);
+            if (data.hasExtra(SatelliteInfo.uuidKey)){
+                id = data.getStringExtra(SatelliteInfo.uuidKey);
             }
         }
 
@@ -88,7 +87,7 @@ public class SatelliteListActivity extends AppCompatActivity {
             case SATELLITE_DETAIL_REQUEST_CODE:
                 if (id != null && id.length() > 0) {
                     sp.update(id, satelliteInfo);
-                    simpleItemRecyclerViewAdapter.notifyItemChanged(position);
+                    satelliteItemRecyclerViewAdapter.notifyItemChanged(position);
                 }
                 break;
             case NEW_SATELLITES_REQUEST_CODE:
@@ -96,7 +95,7 @@ public class SatelliteListActivity extends AppCompatActivity {
                     //  刷新当前activity界面数据
                     sp.addItem(satelliteInfo);
                     //RecyclerView列表进行UI数据更新
-                    simpleItemRecyclerViewAdapter.notifyItemInserted(position);
+                    satelliteItemRecyclerViewAdapter.notifyItemInserted(position);
                     //如果在第一项添加模拟数据需要调用 scrollToPosition（0）把列表移动到顶端（可选）
                     recyclerView.scrollToPosition(position);
                 // }
@@ -173,28 +172,26 @@ public class SatelliteListActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onKeyLongPress(int keyCode, KeyEvent event) {
-        // TODO: 2017/10/24 长按删除
-        final int position = 0;
-        final SatelliteInfo item = sp.ITEMS.get(position);
-        String confirmDelete = String.format(getString(R.string.confirm_delete_message),item.toString());
-        RandomDialog dialogBuilder = new RandomDialog(this);
-        dialogBuilder.onConfirm(confirmDelete, new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sp.deleteItem(item);
-                simpleItemRecyclerViewAdapter.notifyItemRemoved(position);
-            }
-        });
-        return super.onKeyLongPress(keyCode, event);
-    }
-
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         try {
             sp = new Satellites(this);
-            simpleItemRecyclerViewAdapter = new SimpleItemRecyclerViewAdapter(sp.ITEMS);
-            recyclerView.setAdapter(simpleItemRecyclerViewAdapter);
+            satelliteItemRecyclerViewAdapter = new SatelliteItemRecyclerViewAdapter(this, sp.ITEMS, mTwoPane);
+            /*
+            satelliteItemRecyclerViewAdapter.setOnItemClickListener(new SatelliteItemRecyclerViewAdapter.OnRecyclerViewItemClickListener() {
+                @Override
+                public void onItemClick(View view, int data) {
+                    Toast.makeText(SatelliteListActivity.this, "点击了"+data, Toast.LENGTH_SHORT).show();
+                }
+            });
+            satelliteItemRecyclerViewAdapter.setOnItemLongClickListener(new SatelliteItemRecyclerViewAdapter.OnRecyclerItemLongListener() {
+                @Override
+                public boolean onItemLongClick(View view, int position) {
+                    Toast.makeText(SatelliteListActivity.this, "长按了"+position, Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+            });
+            */
+            recyclerView.setAdapter(satelliteItemRecyclerViewAdapter);
         }catch (JSONException je){
             je.printStackTrace();
         }catch (IOException ie){
@@ -202,20 +199,43 @@ public class SatelliteListActivity extends AppCompatActivity {
         }
     }
 
-    public class SimpleItemRecyclerViewAdapter
-            extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
+    public class SatelliteItemRecyclerViewAdapter extends RecyclerView.Adapter<SatelliteItemRecyclerViewAdapter.ViewHolder>
+        /*implements View.OnClickListener, View.OnLongClickListener */{
+
+        // TODO: 2017/10/25 然并卵
+    /*
+    private OnRecyclerViewItemClickListener mOnItemClickListener = null;
+    private OnRecyclerItemLongListener mOnItemLongClickListener = null;
+    */
         private final List<SatelliteInfo> mValues;
+        private boolean mTwoPane;
+        private FragmentActivity activity;
+        // TODO: 2017/10/25 然并卵
+    /*
+    @Override
+    public void onClick(View v) {
+        if (mOnItemClickListener != null) {
+            //注意这里使用getTag方法获取数据
+            mOnItemClickListener.onItemClick(v, (Integer) v.getTag());
+        }
+    }
 
-        public SimpleItemRecyclerViewAdapter(List<SatelliteInfo> items) {
+    @Override
+    public boolean onLongClick(View v) {
+        return mOnItemLongClickListener != null && mOnItemLongClickListener.onItemLongClick(v, (Integer) v.getTag());
+    }
+    */
+
+        public SatelliteItemRecyclerViewAdapter(FragmentActivity activity, List<SatelliteInfo> items, boolean mTwoPane) {
             mValues = items;
+            this.mTwoPane = mTwoPane;
+            this.activity = activity;
         }
 
         @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.satellite_list_content, parent, false);
-            return new ViewHolder(view);
+        public int getItemCount() {
+            return mValues.size();
         }
 
         @Override
@@ -229,7 +249,7 @@ public class SatelliteListActivity extends AppCompatActivity {
             holder.mThresholdView.setText(holder.mItem.threshold);
             holder.mSymbolRateView.setText(holder.mItem.symbolRate);
             // holder.mComentView.setText(holder.mItem.comment);
-
+            // TODO: 2017/10/25 然并卵 只有这个靠谱
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -238,7 +258,7 @@ public class SatelliteListActivity extends AppCompatActivity {
                         arguments.putString(SatelliteDetailFragment.SATELLITE_ARG_ITEM_ID, holder.mItem.mId.toString());
                         SatelliteDetailFragment fragment = new SatelliteDetailFragment();
                         fragment.setArguments(arguments);
-                        getSupportFragmentManager().beginTransaction()
+                        activity.getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.satellite_detail_container, fragment)
                                 .commit();
                     } else {
@@ -246,18 +266,63 @@ public class SatelliteListActivity extends AppCompatActivity {
                         Intent intent = new Intent(context, SatelliteDetailActivity.class);
                         intent.putExtra(SatelliteDetailFragment.SATELLITE_ARG_ITEM_ID, holder.mItem.mId.toString());
 
+                        Toast.makeText(context, "点击了" + holder.mItem.mId.toString(), Toast.LENGTH_SHORT).show();
                         context.startActivity(intent);
                     }
                 }
             });
+
+            holder.mView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    Toast.makeText(view.getContext(), "长按了" + holder.mItem.mId.toString(), Toast.LENGTH_SHORT).show();
+
+                    String confirmDelete = String.format(view.getContext().getString(R.string.confirm_delete_message),holder.mItem.name);
+                    final RandomDialog dialogBuilder = new RandomDialog(view.getContext());
+                    dialogBuilder.onConfirm(confirmDelete, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            holder.mView.setVisibility(View.GONE);
+                            mValues.remove(holder.mItem);
+                            // 修改文件
+                            JsonLoad js = new JsonLoad(view.getContext(), SatelliteInfo.satelliteJsonFile);
+                            ArrayList<SatelliteInfo> al = new ArrayList<SatelliteInfo>();
+                            for (SatelliteInfo l:  mValues){
+                                al.add(l);
+                            }
+                            try {
+                                js.saveSatellites(al);
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            satelliteItemRecyclerViewAdapter.notifyItemChanged(holder.getAdapterPosition());
+                            dialogBuilder.getDialogBuilder().dismiss();
+                        }
+                    });
+                    return true;
+                }
+            });
+
         }
 
         @Override
-        public int getItemCount() {
-            return mValues.size();
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.satellite_list_content, parent, false);
+            ViewHolder vh =
+                    new ViewHolder(view /*, mOnItemClickListener,mOnItemLongClickListener*/);
+            // view.setOnClickListener(this);
+            // view.setOnLongClickListener(this);
+            return vh;
         }
 
-        public class ViewHolder extends RecyclerView.ViewHolder {
+        public class ViewHolder extends RecyclerView.ViewHolder /*implements View.OnClickListener,View.OnLongClickListener */{
+            // TODO: 2017/10/25 然并卵
+        /*
+        private OnRecyclerViewItemClickListener mOnItemClickListener = null;
+        private OnRecyclerItemLongListener mOnItemLong = null;
+        */
+
             public final View mView;
             // public final TextView mIdView;
             public final CustomTextView mNameView;
@@ -269,8 +334,12 @@ public class SatelliteListActivity extends AppCompatActivity {
             // public final TextView mComentView;
             public SatelliteInfo mItem;
 
-            public ViewHolder(View view) {
+            public ViewHolder(View view/*, OnRecyclerViewItemClickListener mListener, OnRecyclerItemLongListener longListener */) {
                 super(view);
+            /*
+            this.mOnItemClickListener = mListener;
+            this.mOnItemLong = longListener;
+            */
                 mView = view;
                 // mIdView = view.findViewById(R.id.id);
                 // assert mIdView != null;
@@ -294,6 +363,42 @@ public class SatelliteListActivity extends AppCompatActivity {
             public String toString() {
                 return super.toString() + " '" + mNameView.getText() + "'";
             }
+        /*
+        @Override
+        public void onClick(View v) {
+            if (mOnItemClickListener != null) {
+                //注意这里使用getTag方法获取数据
+                mOnItemClickListener.onItemClick(v, getAdapterPosition());
+            }
         }
+
+        @Override
+        public boolean onLongClick(View v) {
+            if(mOnItemLong != null){
+                mOnItemLong.onItemLongClick(v,getAdapterPosition());
+            }
+            return true;
+        }
+        */
+        }
+        // TODO: 2017/10/25 然并卵
+    /*
+    //define interface
+    public interface OnRecyclerViewItemClickListener {
+        void onItemClick(View view, int data);
+
     }
+    public interface OnRecyclerItemLongListener{
+        boolean onItemLongClick(View view,int position);
+    }
+
+    public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
+        this.mOnItemClickListener = listener;
+    }
+    public void setOnItemLongClickListener(OnRecyclerItemLongListener listener){
+        this.mOnItemLongClickListener =  listener;
+    }
+    */
+    }
+
 }

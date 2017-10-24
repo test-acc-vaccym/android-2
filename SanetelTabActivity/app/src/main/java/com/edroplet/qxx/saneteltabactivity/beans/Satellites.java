@@ -66,6 +66,7 @@ public class Satellites {
         ITEM_MAP.remove(satelliteInfo);
         satellites.remove(satelliteInfo);
     }
+
     private static SatelliteInfo createSatelliteParameterItem(int position) {
         try {
             return new SatelliteInfo(satellites.get(position).toJSON());

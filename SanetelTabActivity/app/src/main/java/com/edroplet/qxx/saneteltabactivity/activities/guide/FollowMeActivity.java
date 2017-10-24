@@ -25,6 +25,7 @@ import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentSaving;
 import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentSearchModeSetting;
 import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentSearching;
 import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
+import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomFAB;
 
@@ -91,7 +92,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follow_me);
-
+        ViewInject.inject(this, this);
         //新页面接收数据
         Bundle bundle = this.getIntent().getExtras();
         //接收name值

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/com.edroplet.qxx.saneteltabactivity">
+    <!-- 倒三角 -->
+    <!--item android:id="@+id/shape_inverted_triangle">
+        <rotate
+            android:fromDegrees="45"
+            android:toDegrees="45"
+            android:pivotX="135%"
+            android:pivotY="15%"
+            >
+            <shape android:shape="rectangle">
+                <solid android:color="#000000"/>
+            </shape>
+        </rotate>
+    </item-->
+    <item android:drawable="@drawable/reverse_triangle_g"
+        app:state_color_normal="true"/>
+    <item android:drawable="@drawable/reverse_triangle_r"
+        app:state_color_abnormal = "true"/>
+    <item android:drawable="@drawable/reverse_triangle_y"
+        app:state_color_special = "true"/>
+    <item app:state_color_operate="true"
+        android:drawable="@drawable/reverse_triangle_b"/>
+    <item app:state_color_disable="true"
+        android:drawable="@drawable/reverse_triangle_gray"/>
+</layer-list>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.SettingsPowerAmplifierEmitHelpActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/amplifier_help_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/amplifier_help_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_bar_height"
+            app:title="@string/settings_amplifier_emit_help_title"
+            android:background="@color/state_bar_background"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:navigationIcon="@drawable/back"/>
+    </android.support.design.widget.AppBarLayout>
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/settings_amplifier_emit_help_message"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+</LinearLayout>

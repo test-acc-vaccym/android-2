@@ -15,12 +15,18 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.adapters.CitiesRecyclerViewAdapter;
 import com.edroplet.qxx.saneteltabactivity.beans.Cities;
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
+import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.JsonLoad;
 import com.edroplet.qxx.saneteltabactivity.utils.RandomDialog;
 import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
@@ -28,12 +34,15 @@ import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
+import com.edroplet.qxx.saneteltabactivity.view.custom.SmoothCheckBox;
 
 import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * An activity representing a list of CityLocations. This activity
@@ -43,10 +52,10 @@ import java.util.List;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class CityLocationListActivity extends AppCompatActivity {
+public class CityLocationListActivity extends AppCompatActivity implements View.OnClickListener{
     public static final int NEW_CITY_REQUEST_CODE = 10010;
     public static final int CITY_DETAIL_REQUEST_CODE = 10011;
-    private SimpleItemRecyclerViewAdapter simpleItemRecyclerViewAdapter;
+    private CitiesRecyclerViewAdapter citiesRecyclerViewAdapter;
     private Cities ce;
     private RecyclerView recyclerView;
 
@@ -79,7 +88,7 @@ public class CityLocationListActivity extends AppCompatActivity {
             case CITY_DETAIL_REQUEST_CODE:
                 if (id != null && id.length() > 0) {
                     ce.update(id, locationInfo);
-                    simpleItemRecyclerViewAdapter.notifyItemChanged(position);
+                    citiesRecyclerViewAdapter.notifyItemChanged(position);
                 }
                 break;
             case NEW_CITY_REQUEST_CODE:
@@ -88,10 +97,10 @@ public class CityLocationListActivity extends AppCompatActivity {
                     //  刷新当前activity界面数据
                     ce.addItem(locationInfo);
                     //RecyclerView列表进行UI数据更新
-                    simpleItemRecyclerViewAdapter.notifyItemInserted(position);
+                    citiesRecyclerViewAdapter.notifyItemInserted(position);
                     //如果在第一项添加模拟数据需要调用 scrollToPosition（0）把列表移动到顶端（可选）
                     recyclerView.scrollToPosition(position);
-                    simpleItemRecyclerViewAdapter.notifyItemChanged(position);
+                    citiesRecyclerViewAdapter.notifyItemChanged(position);
                 }
                 // }
                 break;
@@ -101,17 +110,26 @@ public class CityLocationListActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == android.R.id.home) {
-            // This ID represents the Home or Up button. In the case of this
-            // activity, the Up button is shown. Use NavUtils to allow users
-            // to navigate up one level in the application structure. For
-            // more details, see the Navigation pattern on Android Design:
-            //
-            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
-            //
-            // NavUtils.navigateUpTo(this, new Intent(this, SatelliteListActivity.class));
-            this.finish();
-            return true;
+        switch (id) {
+            case android.R.id.home:
+                // This ID represents the Home or Up button. In the case of this
+                // activity, the Up button is shown. Use NavUtils to allow users
+                // to navigate up one level in the application structure. For
+                // more details, see the Navigation pattern on Android Design:
+                //
+                // http://developer.android.com/design/patterns/navigation.html#up-vs-back
+                //
+                // NavUtils.navigateUpTo(this, new Intent(this, SatelliteListActivity.class));
+                this.finish();
+                return true;
+            case R.id.delete_city:
+                //Map<Integer, Boolean> map = citiesRecyclerViewAdapter.getMap();
+                //for (int i = 0; i < map.size(); i++) {
+                    // map.put(i, true);
+                    citiesRecyclerViewAdapter.setShowBox();
+                    citiesRecyclerViewAdapter.notifyDataSetChanged();
+                //}
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -147,6 +165,39 @@ public class CityLocationListActivity extends AppCompatActivity {
                 startActivityForResult(new Intent(CityLocationListActivity.this, NewCityActivity.class), NEW_CITY_REQUEST_CODE);
             }
         });
+
+        findViewById(R.id.delete_city).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String confirmDelete = String.format(getString(R.string.confirm_delete_message),"所选项？");
+                final RandomDialog dialogBuilder = new RandomDialog(CityLocationListActivity.this);
+                dialogBuilder.onConfirm(confirmDelete, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Map<Integer, Boolean> map =  citiesRecyclerViewAdapter.getMap();
+                        for (int i = 0; i < map.size(); i++) {
+                            if (map.get(i))
+                            ce.ITEMS.remove(i);
+                        }
+                        // 修改文件
+                        JsonLoad js = new JsonLoad(view.getContext(), LocationInfo.citiesJsonFile);
+                        ArrayList<LocationInfo> al = new ArrayList<LocationInfo>();
+                        for (LocationInfo l:  ce.ITEMS){
+                            al.add(l);
+                        }
+                        try {
+                            js.saveCities(al);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                        // citiesRecyclerViewAdapter.notifyItemChanged(holder.getAdapterPosition());
+                        citiesRecyclerViewAdapter.notifyAll();
+                        dialogBuilder.getDialogBuilder().dismiss();
+                    }
+                });
+            }
+        });
+
         recyclerView = (RecyclerView)findViewById(R.id.city_list);
         assert recyclerView != null;
         setupRecyclerView(recyclerView);
@@ -162,25 +213,59 @@ public class CityLocationListActivity extends AppCompatActivity {
         recoveryCity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SystemServices.copyAssetsFiles2FileDir(CityLocationListActivity.this, LocationInfo.citiesJsonFile);
-                try {
-                    ce = new Cities(CityLocationListActivity.this,true);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-                simpleItemRecyclerViewAdapter.notifyDataSetChanged();
+                // SystemServices.copyAssetsFiles2FileDir(CityLocationListActivity.this, LocationInfo.citiesJsonFile);
+
+                CustomSP.putBoolean(getApplicationContext(), CustomSP.firstReadCities, true);
+//                try {
+//                    ce = new Cities(CityLocationListActivity.this,true);
+//                }catch (Exception e){
+//                    e.printStackTrace();
+//                }
+                ce.clear();
+                finish();
+                // citiesRecyclerViewAdapter.notifyDataSetChanged();
                 // SystemServices.restartAPP(CityLocationListActivity.this, 1000);
             }
         });
+
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         try {
             ce = new Cities(this);
-            simpleItemRecyclerViewAdapter = new SimpleItemRecyclerViewAdapter(ce.ITEMS);
+            citiesRecyclerViewAdapter = new CitiesRecyclerViewAdapter(ce.ITEMS, mTwoPane, this);
+            /** 在item中处理
+            citiesRecyclerViewAdapter.setRecyclerViewOnItemClickListener(new CitiesRecyclerViewAdapter.RecyclerViewOnItemClickListener(){
+                @Override
+                public void onItemClickListener(View view, int position) {
+                    if (mTwoPane) {
+                        Bundle arguments = new Bundle();
+                        arguments.putString(CityLocationDetailFragment.CITY_ARG_ITEM_ID, ce.ITEMS.get(position).getName());
+                        CityLocationDetailFragment fragment = new CityLocationDetailFragment();
+                        fragment.setArguments(arguments);
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.city_detail_container, fragment)
+                                .commit();
+                    } else {
+                        Context context = view.getContext();
+                        Intent intent = new Intent(context, CityLocationDetailActivity.class);
+                        intent.putExtra(CityLocationDetailFragment.CITY_ARG_ITEM_ID, ce.ITEMS.get(position).getName());
+                        startActivityForResult(intent, CityLocationListActivity.CITY_DETAIL_REQUEST_CODE);
+                    }
+                }
+
+                @Override
+                public boolean onItemLongClickListener(View view, int position) {
+                    citiesRecyclerViewAdapter.setShowBox();
+                    citiesRecyclerViewAdapter.notifyDataSetChanged();
+                    Toast.makeText(view.getContext(), "长按了" + ce.ITEMS.get(position).getName(), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+            });
+            */
             //为RecyclerView添加默认动画效果，测试不写也可以
             recyclerView.setItemAnimator(new DefaultItemAnimator());
-            recyclerView.setAdapter(simpleItemRecyclerViewAdapter);
+            recyclerView.setAdapter(citiesRecyclerViewAdapter);
         }catch (JSONException je){
             je.printStackTrace();
         }catch (IOException ioe){
@@ -188,104 +273,27 @@ public class CityLocationListActivity extends AppCompatActivity {
         }
     }
 
-    public class SimpleItemRecyclerViewAdapter
-            extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
-
-        private final List<LocationInfo> mValues;
-        public SimpleItemRecyclerViewAdapter(List<LocationInfo> items) {
-            mValues = items;
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.city_list_content, parent, false);
-            return new ViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mItem = mValues.get(position);
-            holder.mNameView.setText(mValues.get(position).getName());
-            holder.mLatitudeView.setText(String.valueOf(mValues.get(position).getLatitude()));
-            holder.mLongitudeView.setText(String.valueOf(mValues.get(position).getLongitude()));
-
-            holder.mView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mTwoPane) {
-                        Bundle arguments = new Bundle();
-                        arguments.putString(CityLocationDetailFragment.CITY_ARG_ITEM_ID, holder.mItem.getName());
-                        CityLocationDetailFragment fragment = new CityLocationDetailFragment();
-                        fragment.setArguments(arguments);
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.city_detail_container, fragment)
-                                .commit();
-                    } else {
-                        Context context = v.getContext();
-                        Intent intent = new Intent(context, CityLocationDetailActivity.class);
-                        intent.putExtra(CityLocationDetailFragment.CITY_ARG_ITEM_ID, holder.mItem.getName());
-                        startActivityForResult(intent, CITY_DETAIL_REQUEST_CODE);
-                    }
+    @Override
+    public void onClick(View v) {
+        //获取你选中的item
+        Map<Integer, Boolean> map = citiesRecyclerViewAdapter.getMap();
+        for (int i = 0; i < map.size(); i++) {
+            if (map.get(i)) {
+                if (mTwoPane) {
+                    Bundle arguments = new Bundle();
+                    arguments.putString(CityLocationDetailFragment.CITY_ARG_ITEM_ID, ce.ITEMS.get(i).getName());
+                    CityLocationDetailFragment fragment = new CityLocationDetailFragment();
+                    fragment.setArguments(arguments);
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.city_detail_container, fragment)
+                            .commit();
+                } else {
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, CityLocationDetailActivity.class);
+                    intent.putExtra(CityLocationDetailFragment.CITY_ARG_ITEM_ID, ce.ITEMS.get(i).getName());
+                    startActivityForResult(intent, CityLocationListActivity.CITY_DETAIL_REQUEST_CODE);
                 }
-            });
 
-            holder.mView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    Toast.makeText(view.getContext(), "长按了" + holder.mItem.getName(), Toast.LENGTH_SHORT).show();
-
-                    String confirmDelete = String.format(view.getContext().getString(R.string.confirm_delete_message),holder.mItem.getName());
-                    final RandomDialog dialogBuilder = new RandomDialog(view.getContext());
-                    dialogBuilder.onConfirm(confirmDelete, new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            holder.mView.setVisibility(View.GONE);
-                            mValues.remove(holder.mItem);
-                            ce.deleteItem(holder.mItem);
-                            // 修改文件
-                            JsonLoad js = new JsonLoad(view.getContext(), LocationInfo.citiesJsonFile);
-                            ArrayList<LocationInfo> al = new ArrayList<LocationInfo>();
-                            for (LocationInfo l:  mValues){
-                                al.add(l);
-                            }
-                            try {
-                                js.saveCities(al);
-                            }catch (Exception e){
-                                e.printStackTrace();
-                            }
-                            simpleItemRecyclerViewAdapter.notifyItemChanged(holder.getAdapterPosition());
-                            dialogBuilder.getDialogBuilder().dismiss();
-                        }
-                    });
-                    return true;
-                }
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return mValues.size();
-        }
-
-        public class ViewHolder extends RecyclerView.ViewHolder {
-            public final View mView;
-            public final TextView mNameView;
-            public final TextView mLatitudeView;
-            public final TextView mLongitudeView;
-            public LocationInfo mItem;
-
-            public ViewHolder(View view) {
-                super(view);
-                mView = view;
-                mNameView = (CustomTextView) view.findViewById(R.id.city_list_name);
-                mLatitudeView = (CustomTextView) view.findViewById(R.id.city_list_latitude);
-                mLongitudeView = (CustomTextView) view.findViewById(R.id.city_list_longitude);
-            }
-
-            @Override
-            public String toString() {
-                return super.toString() + " '" + mNameView.getText() + "'";
             }
         }
     }

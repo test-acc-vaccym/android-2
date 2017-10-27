@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/settings_power_amplifier_bottom_navigation_factory"
+        android:icon="@null"
+        android:title="@string/main_settings_amplifier_factory" />
+
+    <item
+        android:id="@+id/settings_power_amplifier_bottom_navigation_oscillator"
+        android:icon="@null"
+        android:title="@string/main_settings_amplifier_oscillator" />
+
+    <item
+        android:id="@+id/settings_power_amplifier_bottom_navigation_interfere"
+        android:icon="@null"
+        android:title="@string/main_settings_amplifier_interfere" />
+    <item
+        android:id="@+id/settings_power_amplifier_bottom_navigation_emit"
+        android:icon="@null"
+        android:title="@string/main_settings_amplifier_emit" />
+
+</menu>

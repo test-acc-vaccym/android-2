@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/workstation">
+    <!--ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:src="@mipmap/workstation"
+        android:contentDescription="@string/main_bottom_nav_start"
+        android:layout_gravity="center"/-->
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        android:id="@+id/main_start_launch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="@color/button_text"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/appIntro2BottomBarHeight"
+        android:text="@string/main_bottom_nav_start"
+        android:background="@color/button_blink"/>
+</RelativeLayout>

@@ -167,7 +167,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        loginAccount = new LoginAccount(this);
+        Intent intent = new Intent(this, SatelliteParametersActivity.class);
+        startActivity(intent);
+        finish();
+        return;
+        /*loginAccount = new LoginAccount(this);
         String account = loginAccount.GetAccount();
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -213,16 +217,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         spinner = (Spinner) findViewById(R.id.spinnerServerType);
 
         //将可选内容与ArrayAdapter连接起来
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,serverTypes);
+        // adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,serverTypes);
         //设置下拉列表的风格
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //将adapter 添加到spinner中
-        spinner.setAdapter(adapter);
+        //spinner.setAdapter(adapter);
         //添加事件Spinner事件监听
-        spinner.setOnItemSelectedListener(new SpinnerSelectedListener());
+        //spinner.setOnItemSelectedListener(new SpinnerSelectedListener());
         //设置默认值
         spinner.setVisibility(View.VISIBLE);
-
+        */
     }
 
     //使用数组形式操作

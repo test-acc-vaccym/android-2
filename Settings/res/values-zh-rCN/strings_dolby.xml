@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2012 Dolby Laboratories
+
+     This program is protected under international and U.S. copyright laws as
+     an unpublished work. This program is confidential and proprietary to the
+     copyright owners. Reproduction or disclosure, in whole or in part, or the
+     production of derivative works therefrom without the express permission of
+     the copyright owners is prohibited.
+
+                   Copyright (C) 2012 by Dolby Laboratories,
+                               All rights reserved.
+-->
+
+<resources>
+
+    <!-- DOLBY_DAP_GUI -->
+
+    <string name="sound_dolby_category_title">杜比</string>
+    <string name="sound_dolby_ds_launch_app">杜比数字+</string>
+    <string name="sound_dolby_ds_profile">音效模式</string>
+    <string name="sound_dolby_ds_profile_off">关</string>
+    <string name="dolby_profile_movie">电影</string>
+    <string name="dolby_profile_music">音乐</string>
+    <string name="dolby_profile_game">游戏</string>
+    <string name="dolby_profile_voice">语音</string>
+    <string name="dolby_profile_preset_1">自定义 1</string>
+    <string name="dolby_profile_preset_2">自定义 2</string>
+    <string name="dolby_on">开</string>
+    <string name="dolby_off">关</string>
+
+    <!-- DOLBY_DAP_GUI END -->
+
+</resources>

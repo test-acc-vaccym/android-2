@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/app_bar_height"
+    style="@style/manual_divider">
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/speed_info_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/ll_sc_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp"
+            android:paddingBottom="8dp"
+            android:orientation="vertical">
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:id="@+id/functions_view_pager_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:text="@string/main_bottom_nav_monitor"/>
+
+            <!--卫星信息-->
+            <include layout="@layout/satellite_info"/>
+            <!--天线信息-->
+            <include layout="@layout/antenna_info"/>
+
+            <!--位置信息-->
+            <include layout="@layout/location_info"/>
+
+            <!--功放信息-->
+            <include layout="@layout/amplifier_info"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

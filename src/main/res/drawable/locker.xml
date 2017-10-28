@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:statusbutton="http://schemas.android.com/apk/com.edroplet.qxx.saneteltabactivity">
+
+    <item
+        statusbutton:state_color_normal = "true"
+        android:drawable="@drawable/unlock"/>
+    <item
+        statusbutton:state_color_abnormal = "true"
+        android:drawable="@drawable/locked"/>
+    <item
+        statusbutton:state_color_special = "true"
+        android:drawable="@drawable/locked"/>
+</selector>

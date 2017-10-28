@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_wifi_setting_help"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.edroplet.qxx.saneteltabactivity.activities.main.MainWifiSettingHelpActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/guide_wifi_setting_help_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/status_bar_height"
+            app:title="@string/main_wifi_setting_help_title"
+            app:navigationIcon="@drawable/back"
+            android:background="@color/state_bar_background"
+            app:titleTextColor="@color/title_text"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_divider"
+            android:background="@color/gray"/>
+    </android.support.design.widget.AppBarLayout>
+    <ScrollView
+        android:layout_marginTop="@dimen/app_bar_height"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:text="@string/main_wifi_setting_help_message"/>
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

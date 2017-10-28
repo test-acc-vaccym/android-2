@@ -1,77 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/recycler_view_item_height"
-    android:orientation="horizontal">
-    <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-        android:id="@+id/id"
-        android:layout_width="0dp"
-        android:layout_weight="0.3"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:textSize="@dimen/list_item_text_size"
-        android:textAppearance="?attr/textAppearanceListItem" /-->
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-        android:id="@+id/name"
-        android:layout_width="0dp"
-        android:layout_weight="1.5"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/text_margin"
-        android:textSize="@dimen/list_item_text_size"
-        android:textAppearance="?attr/textAppearanceListItem" />
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-        android:id="@+id/polarization"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/text_margin"
-        android:textSize="@dimen/list_item_text_size"
-        android:textAppearance="?attr/textAppearanceListItem" />
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-        android:id="@+id/longitude"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/text_margin"
-        android:textSize="@dimen/list_item_text_size"
-        android:textAppearance="?attr/textAppearanceListItem" />
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-        android:id="@+id/beacon"
-        android:layout_width="0dp"
-        android:layout_weight="1.5"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/text_margin"
-        android:textSize="@dimen/list_item_text_size"
-        android:textAppearance="?attr/textAppearanceListItem" />
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-        android:id="@+id/threshold"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/text_margin"
-        android:textSize="@dimen/list_item_text_size"
-        android:textAppearance="?attr/textAppearanceListItem" />
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-        android:id="@+id/symbolRate"
-        android:layout_width="0dp"
-        android:layout_weight="1.5"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/text_margin"
-        android:textSize="@dimen/list_item_text_size"
-        android:textAppearance="?attr/textAppearanceListItem" />
-    <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-        android:id="@+id/comment"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:textSize="@dimen/list_item_text_size"
-        android:textAppearance="?attr/textAppearanceListItem" /-->
-    <CheckBox
-        android:layout_gravity="center_vertical"
-        android:layout_width="0dp"
-        android:layout_weight="0.4"
-        android:layout_height="match_parent"
-        android:visibility="invisible"
-        android:id="@+id/satellite_select_checkbox"/>
-</LinearLayout>
+<!--HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/satellite_list_width"
+    android:layout_height="@dimen/recycler_view_item_height"-->
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/recycler_view_item_height"
+        android:orientation="horizontal">
+        <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            android:id="@+id/id"
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:textSize="@dimen/list_item_text_size"
+            android:textAppearance="?attr/textAppearanceListItem" /-->
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/list_item_text_size"
+            android:padding="@dimen/no_padding"
+            android:textAppearance="?attr/textAppearanceListItem" />
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            android:id="@+id/polarization"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/text_margin"
+            android:textSize="@dimen/list_item_text_size"
+            android:padding="@dimen/no_padding"
+            android:textAppearance="?attr/textAppearanceListItem" />
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            android:id="@+id/longitude"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/list_item_text_size"
+            android:padding="@dimen/no_padding"
+            android:textAppearance="?attr/textAppearanceListItem" />
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            android:id="@+id/beacon"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/list_item_text_size"
+            android:padding="@dimen/no_padding"
+            android:textAppearance="?attr/textAppearanceListItem" />
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            android:id="@+id/threshold"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/list_item_text_size"
+            android:padding="@dimen/no_padding"
+            android:textAppearance="?attr/textAppearanceListItem" />
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            android:id="@+id/symbolRate"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/list_item_text_size"
+            android:padding="@dimen/no_padding"
+            android:textAppearance="?attr/textAppearanceListItem" />
+        <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            android:id="@+id/comment"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:textSize="@dimen/list_item_text_size"
+            android:textAppearance="?attr/textAppearanceListItem" /-->
+        <CheckBox
+            android:layout_gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            android:padding="@dimen/no_padding"
+            android:id="@+id/satellite_select_checkbox"/>
+    </LinearLayout>
+
+<!--/HorizontalScrollView-->

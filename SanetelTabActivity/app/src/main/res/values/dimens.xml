@@ -6,7 +6,11 @@
     <dimen name="pop_margin_horizontal">20dp</dimen>
     <dimen name="pop_margin_vertical">40dp</dimen>
 
-    <dimen name="fab_size">56dp</dimen>
+    <dimen name="fab_margin_top">110dp</dimen>
+    <dimen name="fab_margin_bottom">40dp</dimen>
+    <dimen name="fab_size">@dimen/fab_margin_bottom</dimen>
+    <dimen name="satellite_list_width">500dp</dimen>
+
     <dimen name="start_z">2dp</dimen>
     <dimen name="end_z">5dp</dimen>
 
@@ -15,7 +19,6 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="fab_margin_bottom">53dp</dimen>
     <dimen name="appbar_padding_top">2dp</dimen>
     <dimen name="title_font_size">16sp</dimen>
     <dimen name="toolbar_divider">2dp</dimen>
@@ -42,7 +45,6 @@
     <dimen name="guide_list_item_padding">5dp</dimen>
 
     <dimen name="drawable_center_spacing">2dp</dimen>
-    <dimen name="fab_margin_top">110dp</dimen>
     <!--主页面-->
     <dimen name="main_application_image_max_height">200dp</dimen>
     <dimen name="main_margin_top">10dp</dimen>

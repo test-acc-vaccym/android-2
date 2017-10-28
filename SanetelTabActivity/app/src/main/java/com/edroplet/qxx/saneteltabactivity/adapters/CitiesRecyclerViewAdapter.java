@@ -72,9 +72,9 @@ public class CitiesRecyclerViewAdapter extends RecyclerView.Adapter<CitiesRecycl
         }
     }
 
-    public void deleteItem(int position){
-        map.remove(position);
-        mValues.remove(position);
+    public void deleteItem(LocationInfo locationInfo){
+        map.remove(mValues.indexOf(locationInfo));
+        mValues.remove(locationInfo);
     }
 
     //绑定视图管理者

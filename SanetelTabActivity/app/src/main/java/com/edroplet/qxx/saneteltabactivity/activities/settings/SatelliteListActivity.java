@@ -47,15 +47,12 @@ import java.util.Map;
 public class SatelliteListActivity extends AppCompatActivity {
     public static final int NEW_SATELLITES_REQUEST_CODE = 11000;
     public static final int SATELLITE_DETAIL_REQUEST_CODE = 11001;
-
+    private boolean isShowSelect = false;
     private SatelliteItemRecyclerViewAdapter satelliteItemRecyclerViewAdapter;
     private Satellites satellites;
 
     @BindId((R.id.satellite_list))
     private RecyclerView recyclerView;
-
-    @BindId(R.id.satellite_list_fab)
-    private FloatingActionButton fab;
 
     @BindId(R.id.recover_satellite)
     private CustomButton recoverySatellites;
@@ -63,11 +60,11 @@ public class SatelliteListActivity extends AppCompatActivity {
     @BindId(R.id.satellite_select_button)
     private CustomButton satelliteSelectButton;
 
-    @BindId(R.id.add_city)
-    private CustomButton addCity;
+    @BindId(R.id.add_satellite)
+    private CustomButton addSatellite;
 
-    @BindId(R.id.delete_city)
-    private CustomButton deleteCity;
+    @BindId(R.id.delete_satellite)
+    private CustomButton deleteSatellite;
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -150,16 +147,8 @@ public class SatelliteListActivity extends AppCompatActivity {
             ab.setDisplayShowTitleEnabled(false);
         }
 
-        if (fab !=null)
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-            });
-
-        addCity.setOnClickListener(new View.OnClickListener() {
+        assert addSatellite != null;
+        addSatellite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivityForResult(new Intent(SatelliteListActivity.this, NewSatelliteActivity.class), NEW_SATELLITES_REQUEST_CODE);
@@ -189,7 +178,7 @@ public class SatelliteListActivity extends AppCompatActivity {
         satelliteSelectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (((CustomButton)view).getText() == getString(R.string.select_all)){
+                if (((CustomButton)view).getText().equals(getString(R.string.select_all))){
                     satelliteItemRecyclerViewAdapter.fillMap();
                     ((CustomButton)view).setText(R.string.select_none);
                 }else {
@@ -200,53 +189,73 @@ public class SatelliteListActivity extends AppCompatActivity {
             }
         });
 
-        deleteCity.setOnClickListener(new View.OnClickListener() {
+        deleteSatellite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String confirmDelete = String.format(getString(R.string.confirm_delete_message),"所选项？");
-                final RandomDialog dialogBuilder = new RandomDialog(SatelliteListActivity.this);
-                dialogBuilder.onConfirm(confirmDelete, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Map<Integer, Boolean> map =  satelliteItemRecyclerViewAdapter.getMap();
-                        for (int i = 0, j = 0; i < map.size(); i++,j++) {
-                            if (map.get(i)) {
-                                SatelliteInfo satelliteInfoToBeDeleted = satellites.getITEMS().get(i - j);
-                                satelliteItemRecyclerViewAdapter.deleteItem(satelliteInfoToBeDeleted);
-                                // satellites.deleteItem(i - j);
-                                satellites.deleteItem(satelliteInfoToBeDeleted);
-                            }
-                        }
-
-                        try {
-                            // 修改文件
-                            JsonLoad js = new JsonLoad(view.getContext(), SatelliteInfo.satelliteJsonFile);
-                            ArrayList<SatelliteInfo> al = new ArrayList<SatelliteInfo>();
-                            //for (SatelliteInfo l:  satellites.getITEMS()){
-                            //    al.add(l);
-                            //}
-                            al.addAll(satellites.getITEMS());
-                            js.saveSatellites(al);
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
-                        satelliteItemRecyclerViewAdapter.setmValues(satellites.getITEMS());
-                        satelliteItemRecyclerViewAdapter.initMap();
-                        toggleState();
-                        satelliteItemRecyclerViewAdapter.notifyDataSetChanged();
-                        recyclerView.scrollToPosition(0);
-                        satelliteSelectButton.setVisibility(View.INVISIBLE);
-                        // satelliteItemRecyclerViewAdapter.notifyAll();
-                        dialogBuilder.getDialogBuilder().dismiss();
+                final Map<Integer, Boolean> map = satelliteItemRecyclerViewAdapter.getMap();
+                int size = map.size();
+                boolean hasCheckedAny = false;
+                final List<Integer> checkedPosition = new ArrayList<>();
+                for (int i = size - 1; i >= 0; i--) {
+                    if (map.get(i)) {
+                        hasCheckedAny = true;
+                        checkedPosition.add(i);
                     }
-                });
+                }
+                if (isShowSelect && hasCheckedAny) {
+                    String confirmDelete = String.format(getString(R.string.confirm_delete_message), "所选项？");
+                    final RandomDialog dialogBuilder = new RandomDialog(SatelliteListActivity.this);
+                    dialogBuilder.onConfirm(confirmDelete, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            List<SatelliteInfo> items = satellites.getITEMS();
+                            for (int p: checkedPosition) {
+                                if (map.get(p)) {
+                                    SatelliteInfo satelliteInfoToBeDeleted = items.get(p);
+                                    satelliteItemRecyclerViewAdapter.deleteItem(satelliteInfoToBeDeleted);
+                                    satellites.deleteItem(satelliteInfoToBeDeleted);
+                                }
+                            }
+
+                            try {
+                                // 修改文件
+                                JsonLoad js = new JsonLoad(view.getContext(), SatelliteInfo.satelliteJsonFile);
+                                ArrayList<SatelliteInfo> al = new ArrayList<SatelliteInfo>();
+                                //for (SatelliteInfo l:  satellites.getITEMS()){
+                                //    al.add(l);
+                                //}
+                                al.addAll(satellites.getITEMS());
+                                js.saveSatellites(al);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            satelliteItemRecyclerViewAdapter.setmValues(satellites.getITEMS());
+                            satelliteItemRecyclerViewAdapter.initMap();
+                            toggleState();
+                            satelliteItemRecyclerViewAdapter.notifyDataSetChanged();
+                            recyclerView.scrollToPosition(0);
+                            // satelliteItemRecyclerViewAdapter.notifyAll();
+                            dialogBuilder.getDialogBuilder().dismiss();
+                        }
+                    });
+                }else{
+                    toggleState();
+                    satelliteItemRecyclerViewAdapter.notifyDataSetChanged();
+                }
             }
         });
     }
 
     private void toggleState(){
         satelliteItemRecyclerViewAdapter.setShowBox();
-        satelliteSelectButton.setVisibility(View.INVISIBLE);
+        if (isShowSelect) {
+            satelliteSelectButton.setVisibility(View.INVISIBLE);
+            isShowSelect = false;
+        }
+        else {
+            isShowSelect = true;
+            satelliteSelectButton.setVisibility(View.VISIBLE);
+        }
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
@@ -256,11 +265,11 @@ public class SatelliteListActivity extends AppCompatActivity {
             satelliteItemRecyclerViewAdapter.setRecyclerViewOnItemClickListener(new CitiesRecyclerViewAdapter.RecyclerViewOnItemClickListener() {
                 @Override
                 public void onItemClickListener(View view, int position) {
-                    Toast.makeText(SatelliteListActivity.this, "点击了"+satellites.getITEMS().get(position).name, Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(SatelliteListActivity.this, "点击了"+satellites.getITEMS().get(position).name, Toast.LENGTH_SHORT).show();
 
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putString(SatelliteDetailFragment.SATELLITE_ARG_ITEM_ID, satellites.getITEMS().get(position).name);
+                        arguments.putString(SatelliteDetailFragment.SATELLITE_ARG_ITEM_ID, satellites.getITEMS().get(position).mId.toString());
                         SatelliteDetailFragment fragment = new SatelliteDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
@@ -269,14 +278,14 @@ public class SatelliteListActivity extends AppCompatActivity {
                     } else {
                         Context context = view.getContext();
                         Intent intent = new Intent(context, SatelliteDetailActivity.class);
-                        intent.putExtra(SatelliteDetailFragment.SATELLITE_ARG_ITEM_ID, satellites.getITEMS().get(position).name);
+                        intent.putExtra(SatelliteDetailFragment.SATELLITE_ARG_ITEM_ID, satellites.getITEMS().get(position).mId.toString());
                         startActivityForResult(intent, SatelliteListActivity.SATELLITE_DETAIL_REQUEST_CODE);
                     }
                 }
 
                 @Override
                 public boolean onItemLongClickListener(View view, int position) {
-                    Toast.makeText(SatelliteListActivity.this, "长按了"+satellites.getITEMS().get(position).name, Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(SatelliteListActivity.this, "长按了"+satellites.getITEMS().get(position).name, Toast.LENGTH_SHORT).show();
                     satelliteSelectButton.setVisibility(View.VISIBLE);
                     satelliteItemRecyclerViewAdapter.setShowBox();
                     satelliteItemRecyclerViewAdapter.notifyDataSetChanged();

@@ -32,8 +32,12 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
 
         </android.support.v7.widget.Toolbar>
-
-        <LinearLayout
+        <!--HorizontalScrollView
+            android:layout_width="@dimen/satellite_list_width"
+            android:layout_height="wrap_content"
+            android:background="@color/button_blink"
+            android:padding="@dimen/no_padding"-->
+            <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
@@ -53,46 +57,46 @@
                 android:layout_width="0dp"
                 android:layout_weight="1.5"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin"
                 android:text="@string/satellite_name_key"
                 android:textSize="@dimen/list_item_title_size"
-                style="?android:attr/textAppearanceLarge"/>
+                android:padding="@dimen/no_padding"
+                style="?android:attr/textAppearanceMedium"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/polarization_title"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin"
                 android:textSize="@dimen/list_item_title_size"
                 android:text="@string/satellite_polarization_key"
-                style="?android:attr/textAppearanceLarge" />
+                android:padding="@dimen/no_padding"
+                style="?android:attr/textAppearanceMedium"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/longitude_title"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin"
                 android:text="@string/satellite_longitude_key"
                 android:textSize="@dimen/list_item_title_size"
-                style="?android:attr/textAppearanceLarge"/>
+                android:padding="@dimen/no_padding"
+                style="?android:attr/textAppearanceMedium"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/beacon_title"
                 android:layout_width="0dp"
                 android:layout_weight="1.5"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin"
                 android:text="@string/satellite_beacon_key"
                 android:textSize="@dimen/list_item_title_size"
-                style="?android:attr/textAppearanceLarge"/>
+                android:padding="@dimen/no_padding"
+                style="?android:attr/textAppearanceMedium"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/threshold_title"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin"
                 android:text="@string/satellite_threshold_key"
                 android:textSize="@dimen/list_item_title_size"
-                style="?android:attr/textAppearanceLarge"/>
+                android:padding="@dimen/no_padding"
+                style="?android:attr/textAppearanceMedium"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/symbolRate_title"
                 android:layout_width="0dp"
@@ -102,25 +106,29 @@
                 android:text="@string/satellite_symbol_rate_key"
                 android:textSize="@dimen/list_item_title_size"
                 style="?android:attr/textAppearanceLarge"/>
+
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                android:layout_gravity="center_vertical"
+                android:id="@+id/satellite_select_button"
                 android:layout_width="0dp"
-                android:layout_weight="0.4"
-                android:background="@color/button_blink"
-                android:visibility="invisible"
                 android:layout_height="match_parent"
-                android:text="@string/select_all"
-                android:id="@+id/satellite_select_button"/>
-            <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                android:id="@+id/comment_title"
-                android:layout_width="0dp"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin"
-                android:text="@string/satellite_comment_key"
-                android:textSize="@dimen/list_item_title_size"
-                android:textAppearance="?android:attr/textAppearance" /-->
+                android:background="@color/button_blink"
+                android:text="@string/select_all"
+                android:visibility="invisible"
+                android:padding="@dimen/no_padding"
+                style="?android:attr/textAppearanceMedium"/>
+                <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    android:id="@+id/comment_title"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:text="@string/satellite_comment_key"
+                    android:textSize="@dimen/list_item_title_size"
+                    android:textAppearance="?android:attr/textAppearance" /-->
         </LinearLayout>
+        <!--/HorizontalScrollView-->
     </android.support.design.widget.AppBarLayout>
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -160,14 +168,6 @@
             android:text="@string/delete_satellite"
             android:background="@color/button_blink"/>
     </LinearLayout>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/satellite_list_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin_bottom"
-        app:srcCompat="@android:drawable/ic_dialog_email"
-        android:visibility="gone"/>
 
 
 </android.support.design.widget.CoordinatorLayout>

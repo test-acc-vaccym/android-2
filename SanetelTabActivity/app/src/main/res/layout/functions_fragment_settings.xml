@@ -58,7 +58,7 @@
                     android:text="@string/main_settings_amplifier"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
 
-                <android.support.v4.widget.NestedScrollView
+                <HorizontalScrollView
                     android:id="@+id/main_settings_amplifier_nsv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -73,6 +73,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@color/button_blink"
+                            android:padding="@dimen/no_padding"
                             android:text="@string/main_settings_amplifier_factory"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             android:textColor="@color/button_text" />
@@ -82,6 +83,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/button_blink"
+                            android:padding="@dimen/no_padding"
                         android:text="@string/main_settings_amplifier_oscillator"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:textColor="@color/button_text" />
@@ -91,6 +93,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/button_blink"
+                        android:padding="@dimen/no_padding"
                         android:text="@string/main_settings_amplifier_interfere"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:textColor="@color/button_text" />
@@ -100,11 +103,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/button_blink"
+                        android:padding="@dimen/no_padding"
                         android:text="@string/main_settings_amplifier_emit"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:textColor="@color/button_text" />
                 </LinearLayout>
-                </android.support.v4.widget.NestedScrollView>
+                </HorizontalScrollView>
             </LinearLayout>
 
             <!--LNB-->

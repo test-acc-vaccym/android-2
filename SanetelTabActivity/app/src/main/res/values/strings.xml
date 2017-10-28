@@ -559,12 +559,14 @@
     <string name="settings_amplifier_manufacture_3">Mitec</string>
     <string name="settings_amplifier_manufacture_4">WaveLab</string>
     <string name="settings_amplifier_manufacture_5">Advantech</string>
-    <string name="settings_amplifier_manufacture_message_third_start">更换参数，点击</string>
+    <string name="settings_amplifier_manufacture_message_second">更换参数</string>
+    <string name="settings_amplifier_manufacture_message_third_start">点击</string>
     <string name="settings_amplifier_oscillator_value_1">12.80</string>
     <string name="settings_amplifier_oscillator_value_2">13.05</string>
     <string name="oscillator_unit">GHz</string>
     <string name="settings_amplifier_oscillator_value">本振值（GHz）</string>
-    <string name="settings_amplifier_oscillator_message_third_start">更换参数，点击</string>
+    <string name="settings_amplifier_oscillator_message_second">更换参数</string>
+    <string name="settings_amplifier_oscillator_message_third_start">点击</string>
     <string name="settings_amplifier_interfere_use">启用</string>
     <string name="settings_amplifier_interfere_disuse">不启用</string>
     <string name="settings_amplifier_emit_title">开关发射</string>

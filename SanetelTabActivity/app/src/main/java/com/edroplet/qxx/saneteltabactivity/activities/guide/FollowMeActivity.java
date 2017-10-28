@@ -328,6 +328,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
                     fab.setVisibility(View.INVISIBLE);
                     break;
             }
+            startPosition = position;
         }
 
         @Override

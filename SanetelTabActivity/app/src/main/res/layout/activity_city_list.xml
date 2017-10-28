@@ -35,8 +35,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
+            android:paddingLeft="@dimen/no_padding"
+            android:paddingRight="@dimen/no_padding"
             android:background="@color/satellite_list_header_background">
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:layout_width="0dp"
@@ -65,6 +65,15 @@
                 android:text="@string/city_detail_longitude_key"
                 android:textSize="@dimen/list_item_title_size"
                 style="?android:attr/textAppearanceLarge"/>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                android:layout_gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:background="@color/button_blink"
+                android:visibility="invisible"
+                android:layout_height="match_parent"
+                android:text="@string/select_all"
+                android:id="@+id/city_select_button"/>
             </LinearLayout>
     </android.support.design.widget.AppBarLayout>
 
@@ -72,6 +81,9 @@
         android:id="@+id/city_list_frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="@dimen/no_padding"
+        android:paddingLeft="2dp"
+        android:paddingStart="2dp"
         android:layout_marginBottom="@dimen/satellite_bottom_bar_height"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <include layout="@layout/city_list" />

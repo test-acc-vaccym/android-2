@@ -8,6 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
@@ -29,44 +33,38 @@ import java.util.Map;
 
 public class SatelliteItemRecyclerViewAdapter  extends RecyclerView.Adapter<SatelliteItemRecyclerViewAdapter.ViewHolder>  implements View.OnClickListener,View.OnLongClickListener{
 
-    // TODO: 2017/10/25 然并卵
-
-    private OnRecyclerViewItemClickListener mOnItemClickListener = null;
-    private OnRecyclerItemLongListener mOnItemLongClickListener = null;
-
-    private final List<SatelliteInfo> mValues;
+    private List<SatelliteInfo> mValues = new ArrayList<>();
     private boolean mTwoPane;
     private FragmentActivity activity;
     private Map<Integer, Boolean> map = new HashMap<>();
+    private boolean isShowBox = false;
+    private Context context;
     //接口实例
     private CitiesRecyclerViewAdapter.RecyclerViewOnItemClickListener onItemClickListener;
-    // TODO: 2017/10/25 然并卵
-
-    @Override
-    public void onClick(View v) {
-        if (mOnItemClickListener != null) {
-            //注意这里使用getTag方法获取数据
-            mOnItemClickListener.onItemClick(v, (Integer) v.getTag());
-        }
-    }
-
-    @Override
-    public boolean onLongClick(View v) {
-        return mOnItemLongClickListener != null && mOnItemLongClickListener.onItemLongClick(v, (Integer) v.getTag());
-    }
 
 
-    public SatelliteItemRecyclerViewAdapter(FragmentActivity activity, List<SatelliteInfo> items, boolean mTwoPane) {
-        mValues = items;
-        this.mTwoPane = mTwoPane;
-        this.activity = activity;
+    public SatelliteItemRecyclerViewAdapter(Context context, List<SatelliteInfo> items) {
+        this.context = context;
+        this.mValues.addAll(items);
         initMap();
     }
 
-    private void initMap(){
+    public void initMap(){
+        map.clear();
         for (int i = 0; i < getItemCount(); i++){
             map.put(i, false);
         }
+    }
+
+    public void fillMap(){
+        map.clear();
+        for (int i = 0; i < getItemCount(); i++){
+            map.put(i, true);
+        }
+    }
+
+    public void deleteItem(SatelliteInfo item){
+        mValues.remove(item);
     }
 
     @Override
@@ -74,8 +72,13 @@ public class SatelliteItemRecyclerViewAdapter  extends RecyclerView.Adapter<Sate
         return mValues.size();
     }
 
+    public void setmValues(List<SatelliteInfo> mValues) {
+        this.mValues.clear();
+        this.mValues.addAll(mValues);
+    }
+
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mItem = mValues.get(position);
         // holder.mIdView.setText(holder.mItem.id);
         holder.mNameView.setText(holder.mItem.name);
@@ -86,7 +89,39 @@ public class SatelliteItemRecyclerViewAdapter  extends RecyclerView.Adapter<Sate
         holder.mSymbolRateView.setText(holder.mItem.symbolRate);
         // holder.mComentView.setText(holder.mItem.comment);
 
-        // TODO: 2017/10/25 然并卵 只有这个靠谱
+        //长按显示/隐藏
+        if (isShowBox) {
+            holder.mCheckbox.setVisibility(View.VISIBLE);
+        } else {
+            holder.mCheckbox.setVisibility(View.INVISIBLE);
+        }
+
+        //设置Tag
+        holder.mView.setTag(position);
+
+        //设置checkBox改变监听
+        holder.mCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                //用map集合保存
+                map.put(position, isChecked);
+            }
+        });
+
+        // 设置CheckBox的状态
+        if (map.get(position) == null) {
+            map.put(position, false);
+        }
+
+        Animation animation = AnimationUtils.loadAnimation(context, R.anim.list_anim);
+        //设置checkBox显示的动画
+        if (isShowBox) {
+            holder.mCheckbox.startAnimation(animation);
+            holder.mCheckbox.setChecked(map.get(position));
+        }
+
+        // TODO: 2017/10/25 然并卵 只有这个靠谱， 但是不需要在这儿实现，再外面
+        /*
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,44 +174,27 @@ public class SatelliteItemRecyclerViewAdapter  extends RecyclerView.Adapter<Sate
                 return true;
             }
         });
+        */
 
     }
 
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.satellite_list_content, parent, false);
-        ViewHolder vh =
-                new ViewHolder(view , mOnItemClickListener,mOnItemLongClickListener);
-        view.setOnClickListener(this);
-        view.setOnLongClickListener(this);
-        return vh;
-    }
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener{
-        // TODO: 2017/10/25 然并卵
-
-        private OnRecyclerViewItemClickListener mOnItemClickListener = null;
-        private OnRecyclerItemLongListener mOnItemLong = null;
-
-
-        public final View mView;
+        private final View mView;
         // public final TextView mIdView;
-        public final CustomTextView mNameView;
-        public final CustomTextView mPolarizationView;
-        public final CustomTextView mLongitudeView;
-        public final CustomTextView mBeaconView;
-        public final CustomTextView mThresholdView;
-        public final CustomTextView mSymbolRateView;
-        // public final TextView mComentView;
-        public SatelliteInfo mItem;
+        private final CustomTextView mNameView;
+        private final CustomTextView mPolarizationView;
+        private final CustomTextView mLongitudeView;
+        private final CustomTextView mBeaconView;
+        private final CustomTextView mThresholdView;
+        private final CustomTextView mSymbolRateView;
+        private CheckBox mCheckbox;
 
-        public ViewHolder(View view, OnRecyclerViewItemClickListener mListener, OnRecyclerItemLongListener longListener) {
+        // public final TextView mComentView;
+        private SatelliteInfo mItem;
+
+        public ViewHolder(View view) {
             super(view);
-            /*
-            this.mOnItemClickListener = mListener;
-            this.mOnItemLong = longListener;
-            */
             mView = view;
             // mIdView = view.findViewById(R.id.id);
             // assert mIdView != null;
@@ -192,6 +210,9 @@ public class SatelliteItemRecyclerViewAdapter  extends RecyclerView.Adapter<Sate
             assert mThresholdView != null;
             mSymbolRateView = view.findViewById(R.id.symbolRate);
             assert mSymbolRateView != null;
+            mCheckbox = view.findViewById(R.id.satellite_select_checkbox);
+            assert mCheckbox != null;
+
             // mComentView = view.findViewById(R.id.comment);
             // assert mComentView != null;
         }
@@ -201,39 +222,50 @@ public class SatelliteItemRecyclerViewAdapter  extends RecyclerView.Adapter<Sate
             return super.toString() + " '" + mNameView.getText() + "'";
         }
 
-        @Override
-        public void onClick(View v) {
-            if (mOnItemClickListener != null) {
-                //注意这里使用getTag方法获取数据
-                mOnItemClickListener.onItemClick(v, getAdapterPosition());
-            }
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.satellite_list_content, parent, false);
+        ViewHolder vh =
+                new ViewHolder(view);
+        view.setOnClickListener(this);
+        view.setOnLongClickListener(this);
+        return vh;
+    }
+
+    //点击事件
+    @Override
+    public void onClick(View v) {
+        if (onItemClickListener != null) {
+            //注意这里使用getTag方法获取数据
+            onItemClickListener.onItemClickListener(v, (Integer) v.getTag());
         }
-
-        @Override
-        public boolean onLongClick(View v) {
-            if(mOnItemLong != null){
-                mOnItemLong.onItemLongClick(v,getAdapterPosition());
-            }
-            return true;
-        }
-
-    }
-    // TODO: 2017/10/25 然并卵
-
-    //define interface
-    public interface OnRecyclerViewItemClickListener {
-        void onItemClick(View view, int data);
-
-    }
-    public interface OnRecyclerItemLongListener{
-        boolean onItemLongClick(View view,int position);
     }
 
-    public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
-        this.mOnItemClickListener = listener;
-    }
-    public void setOnItemLongClickListener(OnRecyclerItemLongListener listener){
-        this.mOnItemLongClickListener =  listener;
+    //长按事件
+    @Override
+    public boolean onLongClick(View v) {
+        //不管显示隐藏，清空状态
+        initMap();
+        return onItemClickListener != null && onItemClickListener.onItemLongClickListener(v, (Integer) v.getTag());
     }
 
+    //设置点击事件
+    public void setRecyclerViewOnItemClickListener(CitiesRecyclerViewAdapter.RecyclerViewOnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    //设置是否显示CheckBox
+    public void setShowBox() {
+        //取反
+        isShowBox = !isShowBox;
+    }
+
+
+    //返回集合给MainActivity
+    public Map<Integer, Boolean> getMap() {
+        return map;
+    }
 }

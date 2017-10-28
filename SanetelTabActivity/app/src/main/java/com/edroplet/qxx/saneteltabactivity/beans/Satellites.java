@@ -27,12 +27,16 @@ public class Satellites {
     /**
      * An array of sample (dummy) items.
      */
-    public static final List<SatelliteInfo> ITEMS = new ArrayList<SatelliteInfo>();
+    private static final List<SatelliteInfo> ITEMS = new ArrayList<SatelliteInfo>();
 
     /**
      * A map of sample (dummy) items, by ID.
      */
     public static final Map<String, SatelliteInfo> ITEM_MAP = new HashMap<String, SatelliteInfo>();
+
+    public List<SatelliteInfo> getITEMS() {
+        return ITEMS;
+    }
 
     public int getItemCounts(){
         return satellites.size();
@@ -44,7 +48,7 @@ public class Satellites {
             JsonLoad jl = new JsonLoad(context, SatelliteInfo.satelliteJsonFile);
             satellites = jl.loadSatellite();
             for (int i = 0; i < getItemCounts(); i++) {
-                addItem(createSatelliteParameterItem(i));
+                addItem(createSatelliteParameterItem(i), false);
             }
         }
     }
@@ -54,13 +58,15 @@ public class Satellites {
             JsonLoad jl = new JsonLoad(context, SatelliteInfo.satelliteJsonFile);
             satellites = jl.loadSatellite();
             for (int i = 0; i < getItemCounts(); i++) {
-                addItem(createSatelliteParameterItem(i));
+                addItem(createSatelliteParameterItem(i), false);
             }
         }
     }
-    public void addItem(SatelliteInfo item) {
+    public void addItem(SatelliteInfo item, boolean isNew) {
         ITEMS.add(item);
         ITEM_MAP.put(item.mId.toString(), item);
+        if (isNew)
+            satellites.add(item);
     }
 
     public void clear(){
@@ -78,8 +84,14 @@ public class Satellites {
 
     public void deleteItem(SatelliteInfo satelliteInfo){
         ITEMS.remove(satelliteInfo);
-        ITEM_MAP.remove(satelliteInfo);
+        ITEM_MAP.remove(satelliteInfo.mId.toString());
         satellites.remove(satelliteInfo);
+    }
+
+    public void deleteItem(int position){
+        ITEMS.remove(position);
+        ITEM_MAP.remove(satellites.get(position).mId.toString());
+        satellites.remove(position);
     }
 
     private static SatelliteInfo createSatelliteParameterItem(int position) {

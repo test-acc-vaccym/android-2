@@ -102,6 +102,15 @@
                 android:text="@string/satellite_symbol_rate_key"
                 android:textSize="@dimen/list_item_title_size"
                 style="?android:attr/textAppearanceLarge"/>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                android:layout_gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:background="@color/button_blink"
+                android:visibility="invisible"
+                android:layout_height="match_parent"
+                android:text="@string/select_all"
+                android:id="@+id/satellite_select_button"/>
             <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/comment_title"
                 android:layout_width="0dp"

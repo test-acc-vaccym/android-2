@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,8 +36,7 @@ import java.util.Map;
 public class CitiesRecyclerViewAdapter extends RecyclerView.Adapter<CitiesRecyclerViewAdapter.ViewHolder>
         implements View.OnClickListener, View.OnLongClickListener {
 
-    private final List<LocationInfo> mValues;
-    private boolean mTwoPane;
+    private List<LocationInfo> mValues = new ArrayList<>();
     private FragmentActivity activity;
 
     //是否显示单选框,默认false
@@ -46,18 +47,34 @@ public class CitiesRecyclerViewAdapter extends RecyclerView.Adapter<CitiesRecycl
     private RecyclerViewOnItemClickListener onItemClickListener;
 
 
-    public CitiesRecyclerViewAdapter(List<LocationInfo> items, boolean mTwoPane, FragmentActivity activity) {
-        this.mValues = items;
-        this.mTwoPane = mTwoPane;
+    public CitiesRecyclerViewAdapter(List<LocationInfo> items, FragmentActivity activity) {
+        this.mValues.addAll(items);
         this.activity = activity;
         initMap();
     }
 
+    public void setmValues(List<LocationInfo> mValues) {
+        this.mValues.clear();
+        this.mValues.addAll(mValues);
+    }
+
     //初始化map集合,默认为不选中
-    private void initMap() {
+    public void initMap() {
+        map.clear();
         for (int i = 0; i < getItemCount(); i++) {
             map.put(i, false);
         }
+    }
+    public void fillMap(){
+        map.clear();
+        for (int i = 0; i < getItemCount(); i++) {
+            map.put(i, true);
+        }
+    }
+
+    public void deleteItem(int position){
+        map.remove(position);
+        mValues.remove(position);
     }
 
     //绑定视图管理者
@@ -75,21 +92,14 @@ public class CitiesRecyclerViewAdapter extends RecyclerView.Adapter<CitiesRecycl
             holder.checkBox.setVisibility(View.INVISIBLE);
         }
 
-        /** 后面在自定义视图中已经处理
-        Animation animation = AnimationUtils.loadAnimation(activity, R.anim.list_anim);
-        //设置checkBox显示的动画
-        if (isShowBox)
-            holder.checkBox.startAnimation(animation);
-         */
 
         //设置Tag
         holder.mView.setTag(position);
 
         //设置checkBox改变监听
-        holder.checkBox.setOnCheckedChangeListener(new SmoothCheckBox.OnCheckedChangeListener() {
-
+        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(SmoothCheckBox checkBox, boolean isChecked) {
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 //用map集合保存
                 map.put(position, isChecked);
             }
@@ -100,10 +110,20 @@ public class CitiesRecyclerViewAdapter extends RecyclerView.Adapter<CitiesRecycl
             map.put(position, false);
         }
         //设置checkBox显示的动画
+        /*
         if (isShowBox)
             holder.checkBox.setChecked(map.get(position), true);
         else
             holder.checkBox.setChecked(map.get(position), false);
+        */
+
+         Animation animation = AnimationUtils.loadAnimation(activity, R.anim.list_anim);
+         //设置checkBox显示的动画
+         if (isShowBox) {
+             holder.checkBox.startAnimation(animation);
+             holder.checkBox.setChecked(map.get(position));
+         }
+
 
         /** 这部分内容在activity中实现
         holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -173,7 +193,8 @@ public class CitiesRecyclerViewAdapter extends RecyclerView.Adapter<CitiesRecycl
         public final TextView mNameView;
         public final TextView mLatitudeView;
         public final TextView mLongitudeView;
-        private SmoothCheckBox checkBox;
+        //private SmoothCheckBox checkBox;
+        private CheckBox checkBox;
         public LocationInfo mItem;
 
         public ViewHolder(View view) {
@@ -214,7 +235,6 @@ public class CitiesRecyclerViewAdapter extends RecyclerView.Adapter<CitiesRecycl
     //长按事件
     @Override
     public boolean onLongClick(View v) {
-        this.isShowBox = true;
         //不管显示隐藏，清空状态
         initMap();
         return onItemClickListener != null && onItemClickListener.onItemLongClickListener(v, (Integer) v.getTag());

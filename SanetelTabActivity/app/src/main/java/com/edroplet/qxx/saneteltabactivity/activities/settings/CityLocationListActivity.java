@@ -52,15 +52,18 @@ import java.util.Map;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class CityLocationListActivity extends AppCompatActivity implements View.OnClickListener{
+public class CityLocationListActivity extends AppCompatActivity /*implements View.OnClickListener*/{
     public static final int NEW_CITY_REQUEST_CODE = 10010;
     public static final int CITY_DETAIL_REQUEST_CODE = 10011;
     private CitiesRecyclerViewAdapter citiesRecyclerViewAdapter;
-    private Cities ce;
+    private Cities cities;
     private RecyclerView recyclerView;
 
     @BindId(R.id.recover_city)
     private CustomButton recoveryCity;
+
+    @BindId(R.id.city_select_button)
+    private CustomButton citySelectButton;
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -87,7 +90,7 @@ public class CityLocationListActivity extends AppCompatActivity implements View.
         switch (requestCode){
             case CITY_DETAIL_REQUEST_CODE:
                 if (id != null && id.length() > 0) {
-                    ce.update(id, locationInfo);
+                    cities.update(id, locationInfo);
                     citiesRecyclerViewAdapter.notifyItemChanged(position);
                 }
                 break;
@@ -95,7 +98,7 @@ public class CityLocationListActivity extends AppCompatActivity implements View.
                 // if(resultCode== Activity.RESULT_OK){
                 if (locationInfo != null) {
                     //  刷新当前activity界面数据
-                    ce.addItem(locationInfo);
+                    cities.addItem(locationInfo,true);
                     //RecyclerView列表进行UI数据更新
                     citiesRecyclerViewAdapter.notifyItemInserted(position);
                     //如果在第一项添加模拟数据需要调用 scrollToPosition（0）把列表移动到顶端（可选）
@@ -175,29 +178,48 @@ public class CityLocationListActivity extends AppCompatActivity implements View.
                     @Override
                     public void onClick(View view) {
                         Map<Integer, Boolean> map =  citiesRecyclerViewAdapter.getMap();
-                        for (int i = 0; i < map.size(); i++) {
-                            if (map.get(i))
-                            ce.ITEMS.remove(i);
+                        for (int i = 0, j = 0; i < map.size(); i++,j++) {
+                            if (map.get(i)) {
+                                citiesRecyclerViewAdapter.deleteItem(i - j);
+                                cities.deleteItem(i - j);
+                            }
                         }
-                        // 修改文件
-                        JsonLoad js = new JsonLoad(view.getContext(), LocationInfo.citiesJsonFile);
-                        ArrayList<LocationInfo> al = new ArrayList<LocationInfo>();
-                        for (LocationInfo l:  ce.ITEMS){
-                            al.add(l);
-                        }
+
                         try {
+                            // 修改文件
+                            JsonLoad js = new JsonLoad(view.getContext(), LocationInfo.citiesJsonFile);
+                            ArrayList<LocationInfo> al = new ArrayList<LocationInfo>();
+                            al.addAll(cities.getITEMS());
                             js.saveCities(al);
                         }catch (Exception e){
                             e.printStackTrace();
                         }
-                        // citiesRecyclerViewAdapter.notifyItemChanged(holder.getAdapterPosition());
-                        citiesRecyclerViewAdapter.notifyAll();
+                        citiesRecyclerViewAdapter.setmValues(cities.getITEMS());
+                        citiesRecyclerViewAdapter.initMap();
+                        toggleState();
+                        citiesRecyclerViewAdapter.notifyDataSetChanged();
+                        recyclerView.scrollToPosition(0);
+                        citySelectButton.setVisibility(View.INVISIBLE);
+                        // citiesRecyclerViewAdapter.notifyAll();
                         dialogBuilder.getDialogBuilder().dismiss();
                     }
                 });
             }
         });
 
+        citySelectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (((CustomButton)view).getText() == getString(R.string.select_all)){
+                    citiesRecyclerViewAdapter.fillMap();
+                    ((CustomButton)view).setText(R.string.select_none);
+                }else {
+                    citiesRecyclerViewAdapter.initMap();
+                    ((CustomButton)view).setText(R.string.select_all);
+                }
+                citiesRecyclerViewAdapter.notifyDataSetChanged();
+            }
+        });
         recyclerView = (RecyclerView)findViewById(R.id.city_list);
         assert recyclerView != null;
         setupRecyclerView(recyclerView);
@@ -217,11 +239,11 @@ public class CityLocationListActivity extends AppCompatActivity implements View.
 
                 CustomSP.putBoolean(getApplicationContext(), CustomSP.firstReadCities, true);
 //                try {
-//                    ce = new Cities(CityLocationListActivity.this,true);
+//                    cities = new Cities(CityLocationListActivity.this,true);
 //                }catch (Exception e){
 //                    e.printStackTrace();
 //                }
-                ce.clear();
+                cities.clear();
                 finish();
                 // citiesRecyclerViewAdapter.notifyDataSetChanged();
                 // SystemServices.restartAPP(CityLocationListActivity.this, 1000);
@@ -230,17 +252,22 @@ public class CityLocationListActivity extends AppCompatActivity implements View.
 
     }
 
+    private void toggleState(){
+        citiesRecyclerViewAdapter.setShowBox();
+        citySelectButton.setVisibility(View.INVISIBLE);
+    }
+
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         try {
-            ce = new Cities(this);
-            citiesRecyclerViewAdapter = new CitiesRecyclerViewAdapter(ce.ITEMS, mTwoPane, this);
-            /** 在item中处理
+            cities = new Cities(this);
+            citiesRecyclerViewAdapter = new CitiesRecyclerViewAdapter(cities.getITEMS(), this);
+            /** 亦可在item中处理 */
             citiesRecyclerViewAdapter.setRecyclerViewOnItemClickListener(new CitiesRecyclerViewAdapter.RecyclerViewOnItemClickListener(){
                 @Override
                 public void onItemClickListener(View view, int position) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putString(CityLocationDetailFragment.CITY_ARG_ITEM_ID, ce.ITEMS.get(position).getName());
+                        arguments.putString(CityLocationDetailFragment.CITY_ARG_ITEM_ID, cities.getITEMS().get(position).getName());
                         CityLocationDetailFragment fragment = new CityLocationDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
@@ -249,20 +276,21 @@ public class CityLocationListActivity extends AppCompatActivity implements View.
                     } else {
                         Context context = view.getContext();
                         Intent intent = new Intent(context, CityLocationDetailActivity.class);
-                        intent.putExtra(CityLocationDetailFragment.CITY_ARG_ITEM_ID, ce.ITEMS.get(position).getName());
+                        intent.putExtra(CityLocationDetailFragment.CITY_ARG_ITEM_ID, cities.getITEMS().get(position).getName());
                         startActivityForResult(intent, CityLocationListActivity.CITY_DETAIL_REQUEST_CODE);
                     }
                 }
 
                 @Override
                 public boolean onItemLongClickListener(View view, int position) {
+                    citySelectButton.setVisibility(View.VISIBLE);
                     citiesRecyclerViewAdapter.setShowBox();
                     citiesRecyclerViewAdapter.notifyDataSetChanged();
-                    Toast.makeText(view.getContext(), "长按了" + ce.ITEMS.get(position).getName(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), "长按了" + cities.getITEMS().get(position).getName(), Toast.LENGTH_SHORT).show();
                     return true;
                 }
             });
-            */
+
             //为RecyclerView添加默认动画效果，测试不写也可以
             recyclerView.setItemAnimator(new DefaultItemAnimator());
             recyclerView.setAdapter(citiesRecyclerViewAdapter);
@@ -273,28 +301,4 @@ public class CityLocationListActivity extends AppCompatActivity implements View.
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        //获取你选中的item
-        Map<Integer, Boolean> map = citiesRecyclerViewAdapter.getMap();
-        for (int i = 0; i < map.size(); i++) {
-            if (map.get(i)) {
-                if (mTwoPane) {
-                    Bundle arguments = new Bundle();
-                    arguments.putString(CityLocationDetailFragment.CITY_ARG_ITEM_ID, ce.ITEMS.get(i).getName());
-                    CityLocationDetailFragment fragment = new CityLocationDetailFragment();
-                    fragment.setArguments(arguments);
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.city_detail_container, fragment)
-                            .commit();
-                } else {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, CityLocationDetailActivity.class);
-                    intent.putExtra(CityLocationDetailFragment.CITY_ARG_ITEM_ID, ce.ITEMS.get(i).getName());
-                    startActivityForResult(intent, CityLocationListActivity.CITY_DETAIL_REQUEST_CODE);
-                }
-
-            }
-        }
-    }
 }

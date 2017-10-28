@@ -6,8 +6,7 @@
     android:name="com.edroplet.qxx.saneteltabactivity.activities.settings.CityLocationListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
+    android:padding="@dimen/no_padding"
     app:layoutManager="LinearLayoutManager"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.CityLocationListActivity"
     tools:listitem="@layout/city_list_content" />

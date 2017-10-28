@@ -70,6 +70,8 @@
     <!--城市数据-->
     <string name="title_city_list">城市列表</string>
     <string name="title_city_detail">城市详情</string>
+    <string name="select_all">全选</string>
+    <string name="select_none">全不选</string>
 
     <!--卫星数据-->
     <string name="satellite_toolbar_title">卫星列表</string>

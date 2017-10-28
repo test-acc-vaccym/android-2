@@ -28,7 +28,7 @@ public class Cities {
     /**
      * An array of sample (dummy) items.
      */
-    public static final List<LocationInfo> ITEMS = new ArrayList<LocationInfo>();
+    private static final List<LocationInfo> ITEMS = new ArrayList<LocationInfo>();
 
     /**
      * A map of sample (dummy) items, by ID.
@@ -39,6 +39,10 @@ public class Cities {
         return cities.size();
     }
 
+    public List<LocationInfo> getITEMS() {
+        return ITEMS;
+    }
+
     public Cities(Context context) throws JSONException, IOException{
         mContext = context;
         if (cities == null || cities.size() == 0) {
@@ -46,7 +50,7 @@ public class Cities {
             cities = jl.loadCities();
             // Add some sample items.
             for (int i = 0; i < getItemCounts(); i++) {
-                addItem(createLocationInfo(i));
+                addItem(createLocationInfo(i), false);
             }
         }
     }
@@ -57,13 +61,16 @@ public class Cities {
             cities = jl.loadCities();
             // Add some sample items.
             for (int i = 0; i < getItemCounts(); i++) {
-                addItem(createLocationInfo(i));
+                addItem(createLocationInfo(i), false);
             }
         }
     }
-    public void addItem(LocationInfo item) {
+    public void addItem(LocationInfo item, boolean isNew) {
         ITEMS.add(item);
         ITEM_MAP.put(item.getName(), item);
+        if (isNew){
+            cities.add(item);
+        }
     }
 
     public void update(String id, LocationInfo locationInfo){
@@ -75,10 +82,16 @@ public class Cities {
         }
     }
 
-    public static void deleteItem(LocationInfo locationInfo){
+    public void deleteItem(LocationInfo locationInfo){
         ITEMS.remove(locationInfo);
-        ITEM_MAP.remove(locationInfo);
+        ITEM_MAP.remove(locationInfo.getName());
         cities.remove(locationInfo);
+    }
+
+    public void deleteItem(int position){
+        ITEMS.remove(position);
+        ITEM_MAP.remove(cities.get(position).getName());
+        cities.remove(position);
     }
 
     public void clear(){

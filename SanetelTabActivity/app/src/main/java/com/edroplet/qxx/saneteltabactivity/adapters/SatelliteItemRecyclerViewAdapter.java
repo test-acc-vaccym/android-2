@@ -87,7 +87,7 @@ public class SatelliteItemRecyclerViewAdapter  extends RecyclerView.Adapter<Sate
         if (isShowBox) {
             holder.mCheckbox.setVisibility(View.VISIBLE);
         } else {
-            holder.mCheckbox.setVisibility(View.INVISIBLE);
+            holder.mCheckbox.setVisibility(View.GONE);
         }
 
         //设置Tag

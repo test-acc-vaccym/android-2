@@ -70,7 +70,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="0.4"
                 android:background="@color/button_blink"
-                android:visibility="invisible"
+                android:visibility="gone"
                 android:layout_height="match_parent"
                 android:text="@string/select_all"
                 android:id="@+id/city_select_button"/>

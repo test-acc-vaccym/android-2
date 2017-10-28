@@ -115,7 +115,7 @@
                 android:layout_weight="1"
                 android:background="@color/button_blink"
                 android:text="@string/select_all"
-                android:visibility="invisible"
+                android:visibility="gone"
                 android:padding="@dimen/no_padding"
                 style="?android:attr/textAppearanceMedium"/>
                 <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView

@@ -89,7 +89,7 @@ public class CitiesRecyclerViewAdapter extends RecyclerView.Adapter<CitiesRecycl
         if (isShowBox) {
             holder.checkBox.setVisibility(View.VISIBLE);
         } else {
-            holder.checkBox.setVisibility(View.INVISIBLE);
+            holder.checkBox.setVisibility(View.GONE);
         }
 
 

@@ -249,7 +249,7 @@ public class SatelliteListActivity extends AppCompatActivity {
     private void toggleState(){
         satelliteItemRecyclerViewAdapter.setShowBox();
         if (isShowSelect) {
-            satelliteSelectButton.setVisibility(View.INVISIBLE);
+            satelliteSelectButton.setVisibility(View.GONE);
             isShowSelect = false;
         }
         else {

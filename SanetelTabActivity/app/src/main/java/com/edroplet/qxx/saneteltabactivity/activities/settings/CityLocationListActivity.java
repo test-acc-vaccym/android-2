@@ -272,7 +272,7 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
     private void toggleState(){
         citiesRecyclerViewAdapter.setShowBox();
         if (isShowSelect) {
-            citySelectButton.setVisibility(View.INVISIBLE);
+            citySelectButton.setVisibility(View.GONE);
             isShowSelect = false;
         }
         else {

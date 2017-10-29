@@ -19,6 +19,8 @@
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/back"
             android:background="@color/state_bar_background"
+            app:titleTextColor="@color/black"
+            app:titleTextAppearance="?android:attr/textAppearanceLarge"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -69,7 +71,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_width="0dp"
                 android:layout_weight="0.4"
-                android:background="@color/button_blink"
+                android:background="@drawable/button_background"
                 android:visibility="gone"
                 android:layout_height="match_parent"
                 android:text="@string/select_all"
@@ -101,7 +103,7 @@
             android:id="@+id/recover_city"
             android:drawableTop="@drawable/recover"
             android:text="@string/satellite_recover"
-            android:background="@color/button_blink"/>
+            android:background="@drawable/button_background"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -109,7 +111,7 @@
             android:id="@+id/add_city"
             android:drawableTop="@drawable/ic_dialer_fork_add_call"
             android:text="@string/add_city"
-            android:background="@color/button_blink"/>
+            android:background="@drawable/button_background"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -117,7 +119,7 @@
             android:id="@+id/delete_city"
             android:drawableTop="@drawable/ic_remove"
             android:text="@string/delete_city"
-            android:background="@color/button_blink"/>
+            android:background="@drawable/button_background"/>
     </LinearLayout>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/city_list_fab"

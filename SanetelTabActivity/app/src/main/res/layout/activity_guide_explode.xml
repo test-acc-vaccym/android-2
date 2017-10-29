@@ -18,9 +18,9 @@
         android:title="@string/follow_me_explode_help_title"
         app:navigationIcon="@drawable/back"
         android:background="@color/state_bar_background"
-        app:titleTextColor="@color/title_text"
         app:layout_scrollFlags="scroll|enterAlways"
-        app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+        app:titleTextColor="@color/black"
+        app:titleTextAppearance="?android:attr/textAppearanceLarge"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/toolbar_divider"

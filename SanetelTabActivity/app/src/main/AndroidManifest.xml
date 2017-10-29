@@ -218,6 +218,8 @@
             android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".activities.administrator.AdministratorActivity"
             android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".activities.administrator.AdministratorSettingsActivity"
+            android:windowSoftInputMode="stateHidden"/>
     </application>
 
 </manifest>

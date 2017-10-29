@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/no_padding"
+    android:layout_marginLeft="@dimen/no_padding"
+    android:layout_marginRight="@dimen/no_padding"
+    android:padding="@dimen/no_padding"
+    android:orientation="horizontal"
+    android:background="@color/button_blink" >
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+        android:id="@+id/firstIPField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ip_edit_dot"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+        android:id="@+id/secondIPField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ip_edit_dot"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+        android:id="@+id/thirdIPField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ip_edit_dot"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+        android:id="@+id/fourthIPField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:inputType="number"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</LinearLayout>

@@ -18,7 +18,9 @@
             app:title="@string/settings_reference_title"
             android:background="@color/state_bar_background"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:navigationIcon="@drawable/back"/>
+            app:navigationIcon="@drawable/back"
+            app:titleTextColor="@color/black"
+            app:titleTextAppearance="?android:attr/textAppearanceLarge"/>
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout

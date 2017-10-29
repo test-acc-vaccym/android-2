@@ -50,5 +50,5 @@
         app:drawable_height="@dimen/operate_button_height"
         app:drawable_width="@dimen/operate_button_height"
         app:state_color="operate"/>
-    <!--android:background="@color/button_blink"-->
+    <!--android:background="@drawable/button_background"-->
 </LinearLayout>

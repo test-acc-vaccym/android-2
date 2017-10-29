@@ -23,8 +23,8 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:navigationIcon="@drawable/back"
             app:title="@string/functions_monitor_help_title"
-            app:titleTextColor="@color/title_text"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+            app:titleTextColor="@color/black"
+            app:titleTextAppearance="?android:attr/textAppearanceLarge"/>
         <!--分割线-->
         <View
             android:layout_width="match_parent"

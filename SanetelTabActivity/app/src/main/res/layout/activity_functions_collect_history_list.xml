@@ -19,6 +19,8 @@
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/back"
             android:background="@color/state_bar_background"
+            app:titleTextColor="@color/black"
+            app:titleTextAppearance="?android:attr/textAppearanceLarge"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView

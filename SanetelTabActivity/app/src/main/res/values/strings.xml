@@ -594,5 +594,76 @@
     <!--天线重启-->
     <string name="settings_antenna_restart_button">▲ 重启</string>
     <string name="settings_antenna_restart_third_end">生效</string>
+    <!--管理员选项-->
+    <string name="administrator_selection">管理员选项</string>
+    <string name="administrator_antenna_incriminate">天线标定</string>
+    <string name="administrator_recovery_factory">恢复出厂</string>
+    <string name="administrator_antenna_type">天线类型</string>
+    <string name="administrator_wifi_name">WIFI名称</string>
+    <string name="administrator_ip_settings">IP设置</string>
+    <string name="administrator_network_protocol">网口协议</string>
+    <string name="administrator_serial_protocol">串口协议</string>
+    <string name="administrator_band_select">波段选择</string>
+    <string name="administrator_lnb_frequency_channel">LNB频段</string>
+    <string name="administrator_searching_range">寻星范围</string>
+    <!--天线标定-->
+    <!--恢复出厂-->
+    <string name="administrator_setting_recovery_factory_title">恢复出厂</string>
+    <string name="administrator_setting_recovery_factory_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当希望掉电存储信息恢复到设备出厂前的状态，可以采用此功能。\n
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;恢复出厂后后2秒，天线会自动重启。\n\n</string>
+    <string name="settings_to_be_working">生效</string>
+    <string name="administrator_setting_recovery_factory_third_button"> ▲恢复出厂</string>
+    <!--天线类型-->
+    <string name="administrator_setting_antenna_type_two_two"> 两轴两极化</string>
+    <string name="administrator_setting_antenna_type_two_one"> 两轴一极化</string>
+    <string name="administrator_setting_antenna_type_two_zero"> 两轴零极化</string>
+    <string name="administrator_setting_antenna_type_three_one"> 三轴一极化</string>
+    <string name="administrator_setting_antenna_type_three_zero"> 三轴零极化</string>
 
+    <!--10.5.6.	波段选择-->
+    <string name="administrator_setting_band_ku"> ku波段</string>
+    <string name="administrator_setting_band_ka"> ka波段</string>
+
+    <!--10.5.7.	LNB频段-->
+    <string name="administrator_setting_lnb_frequency_channel_1"> 13V</string>
+    <string name="administrator_setting_lnb_frequency_channel_2"> 13V 和22k</string>
+    <string name="administrator_setting_lnb_frequency_channel_3"> 18V</string>
+    <string name="administrator_setting_lnb_frequency_channel_4"> 18V和22k</string>
+
+    <!--寻星范围-->
+    <string name="administrator_setting_searching_range_1">±10°</string>
+    <string name="administrator_setting_searching_range_2">±15°</string>
+    <string name="administrator_setting_searching_range_3">±30°</string>
+    <string name="administrator_setting_searching_range_second_line">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;由于天线摆放是否正南、天线放置水平程度、方位零点误差、传动机构误差等多方面原因，寻星必须要在理论目标角度值附近扫描。寻星范围小，寻星速度快。</string>
+
+    <!--10.5.9.	WIFI名称-->
+    <string name="administrator_setting_wifi_name">名称</string>
+
+    <!--10.5.10.	IP设置-->
+    <string name="administrator_setting_ip_address">IP&#160;&#160;&#160;&#160;&#160;地址</string>
+    <string name="administrator_setting_ip_mask">子网掩码</string>
+    <string name="administrator_setting_ip_toast">请输入完整的IP</string>
+    <string name="administrator_setting_ip_valid_toast">请输入合法的ip地址</string>
+
+    <!--网络设置-->
+    <string name="administrator_setting_network_protocol_title">网络设置</string>
+    <string name="administrator_setting_network_protocol">应用协议</string>
+    <string name="administrator_setting_network_protocol_1">运行模式</string>
+    <string name="administrator_setting_network_protocol_2">调试模式</string>
+    <string name="administrator_setting_network_protocol_3">转发GPS报文</string>
+    <string name="administrator_setting_network_protocol_4">转发信标机报文</string>
+    <string name="administrator_setting_network_protocol_5">转发倾角计报文</string>
+    <string name="administrator_setting_network_protocol_6">转发功放报文</string>
+    <string name="administrator_setting_network_protocol_7">转发手持机报文</string>
+
+    <!--10.5.12.	串口设置-->
+    <string name="administrator_setting_serial_protocol_title">串口设置</string>
+    <string name="administrator_setting_serial_protocol_1">运行模式</string>
+    <string name="administrator_setting_serial_protocol_2">调试模式</string>
+    <string name="administrator_setting_serial_protocol_3">转发COM2 GPS报文</string>
+    <string name="administrator_setting_serial_protocol_4">转发COM3 信标机报文</string>
+    <string name="administrator_setting_serial_protocol_5">转发COM4 倾角计报文</string>
+    <string name="administrator_setting_serial_protocol_6">转发COM5 网络报文</string>
+    <string name="administrator_setting_serial_protocol_7">转发COM6 功放监控报文</string>
+    <string name="ip_edit_dot">.</string>
 </resources>

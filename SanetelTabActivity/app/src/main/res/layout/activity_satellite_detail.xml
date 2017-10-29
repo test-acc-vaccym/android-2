@@ -49,7 +49,9 @@
                 android:layout_height="?attr/actionBarSize"
                 app:navigationIcon="@drawable/back"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:titleTextColor="@color/black"
+                app:titleTextAppearance="?android:attr/textAppearanceLarge" />
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>

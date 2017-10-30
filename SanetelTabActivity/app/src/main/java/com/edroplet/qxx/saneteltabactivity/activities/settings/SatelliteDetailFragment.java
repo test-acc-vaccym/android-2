@@ -1,6 +1,7 @@
 package com.edroplet.qxx.saneteltabactivity.activities.settings;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
@@ -89,15 +90,39 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
         }
     }
 
+    /**
+     *  在Fragment里的onAttach()方法中获得Activity的Textview控件的引用,
+     */
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof SatelliteDetailActivity){
+            SatelliteDetailActivity activity = (SatelliteDetailActivity) context;
+            satelliteDetailSave = (CustomButton) activity.findViewById(R.id.satellite_detail_save);
+            satelliteDetailReturn = (CustomButton) activity.findViewById(R.id.satellite_detail_return);
+
+            assert satelliteDetailReturn != null;
+            assert satelliteDetailSave != null;
+
+            satelliteDetailSave.setOnClickListener(this);
+            satelliteDetailReturn.setOnClickListener(this);
+
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.settings_fragment_satellite_detail, container, false);
+
+        /*
         satelliteDetailSave = rootView.findViewById(R.id.satellite_detail_save);
         satelliteDetailReturn = rootView.findViewById(R.id.satellite_detail_return);
 
         satelliteDetailSave.setOnClickListener(this);
         satelliteDetailReturn.setOnClickListener(this);
+        */
 
         satelliteDetailUuid = rootView.findViewById(R.id.satellite_detail_uuid);
         satelliteDetailId = rootView.findViewById(R.id.id_detail);
@@ -129,6 +154,7 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
     public void onDestroy() {
         super.onDestroy();
     }
+
 
     @Override
     public void onClick(View v) {

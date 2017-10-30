@@ -83,6 +83,11 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2" />
+        <Spinner
+            android:id="@+id/latitude_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:entries="@array/latitude_unit"/>
     </LinearLayout>
 
     <LinearLayout
@@ -103,9 +108,14 @@
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="match_parent"/>
+        <Spinner
+            android:id="@+id/longitude_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:entries="@array/longitude_unit"/>
     </LinearLayout>
 
-    <LinearLayout
+    <!--LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -118,5 +128,5 @@
             android:id="@+id/city_detail_return"
             android:text="@string/main_me_error_report_return"
             style="@style/button_horizontal_style"/>
-    </LinearLayout>
+    </LinearLayout-->
 </LinearLayout>

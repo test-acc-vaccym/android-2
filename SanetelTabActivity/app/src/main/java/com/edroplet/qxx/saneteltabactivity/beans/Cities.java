@@ -24,7 +24,7 @@ import static android.content.ContentValues.TAG;
 public class Cities {
     private Context mContext;
     private static ArrayList<LocationInfo> cities;
-
+    private static ArrayList<Map<String,LocationInfo>> provinceObject;
     /**
      * An array of sample (dummy) items.
      */
@@ -94,6 +94,7 @@ public class Cities {
                     return;
                 }
             }
+            ITEM_MAP.put(id, locationInfo);
             ITEMS.set(itemIndex, locationInfo);
             cities.set(itemIndex, locationInfo);
         }

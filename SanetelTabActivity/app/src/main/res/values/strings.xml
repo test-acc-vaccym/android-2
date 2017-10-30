@@ -107,8 +107,8 @@
     <string name="city_detail_id_key">序号</string>
     <string name="city_detail_province">所属省份</string>
     <string name="city_detail_name_key">城市名称</string>
-    <string name="city_detail_longitude_key">经&#160;&#160;&#160;&#160;&#160;&#160;度°</string>
-    <string name="city_detail_latitude_key">纬&#160;&#160;&#160;&#160;&#160;&#160;度°</string>
+    <string name="city_detail_longitude_key">经&#160;&#160;&#160;&#160;度°</string>
+    <string name="city_detail_latitude_key">纬&#160;&#160;&#160;&#160;度°</string>
     <!--底部按钮-->
     <string name="satellite_recover">恢复出厂</string>
     <string name="add_satellite">增加卫星</string>

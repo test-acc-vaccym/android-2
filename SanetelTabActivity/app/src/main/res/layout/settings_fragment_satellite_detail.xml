@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:visibility="invisible">
+        android:visibility="gone">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             style="?android:attr/textAppearanceLarge"
             android:layout_width="0dp"
@@ -181,7 +181,7 @@
             android:layout_height="match_parent"/>
     </LinearLayout>
 
-    <LinearLayout
+    <!--LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -194,5 +194,5 @@
             android:id="@+id/satellite_detail_return"
             android:text="@string/main_me_error_report_return"
             style="@style/button_horizontal_style"/>
-    </LinearLayout>
+    </LinearLayout-->
 </LinearLayout>

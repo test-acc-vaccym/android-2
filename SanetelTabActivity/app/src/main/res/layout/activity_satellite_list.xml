@@ -60,7 +60,7 @@
                 android:layout_weight="1.5"
                 android:layout_height="wrap_content"
                 android:text="@string/satellite_name_key"
-                android:textSize="@dimen/list_item_title_size"
+                android:textSize="@dimen/list_item_text_size"
                 android:padding="@dimen/no_padding"
                 style="?android:attr/textAppearanceMedium"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -68,7 +68,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/list_item_title_size"
+                android:textSize="@dimen/list_item_text_size"
                 android:text="@string/satellite_polarization_key"
                 android:padding="@dimen/no_padding"
                 style="?android:attr/textAppearanceMedium"/>
@@ -78,16 +78,16 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/satellite_longitude_key"
-                android:textSize="@dimen/list_item_title_size"
+                android:textSize="@dimen/list_item_text_size"
                 android:padding="@dimen/no_padding"
                 style="?android:attr/textAppearanceMedium"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/beacon_title"
                 android:layout_width="0dp"
-                android:layout_weight="1.5"
+                android:layout_weight="1.7"
                 android:layout_height="wrap_content"
                 android:text="@string/satellite_beacon_key"
-                android:textSize="@dimen/list_item_title_size"
+                android:textSize="@dimen/list_item_text_size"
                 android:padding="@dimen/no_padding"
                 style="?android:attr/textAppearanceMedium"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -96,7 +96,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/satellite_threshold_key"
-                android:textSize="@dimen/list_item_title_size"
+                android:textSize="@dimen/list_item_text_size"
                 android:padding="@dimen/no_padding"
                 style="?android:attr/textAppearanceMedium"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -104,9 +104,9 @@
                 android:layout_width="0dp"
                 android:layout_weight="1.5"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin"
+                android:padding="@dimen/no_padding"
                 android:text="@string/satellite_symbol_rate_key"
-                android:textSize="@dimen/list_item_title_size"
+                android:textSize="@dimen/list_item_text_size"
                 style="?android:attr/textAppearanceLarge"/>
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton

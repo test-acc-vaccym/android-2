@@ -15,6 +15,16 @@
         <item>垂直</item>
     </string-array>
 
+    <string-array name="latitude_unit">
+        <item>°N</item>
+        <item>°S</item>
+    </string-array>
+
+    <string-array name="longitude_unit">
+        <item>°E</item>
+        <item>°W</item>
+    </string-array>
+
     <string-array name="province">
         <item>北京</item>
         <item>上海</item>

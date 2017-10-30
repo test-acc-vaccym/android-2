@@ -78,11 +78,11 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
         String id = "";
         LocationInfo locationInfo = null;
         if (null != data) {
-            if (data.hasExtra("city")) {
-                locationInfo = data.getParcelableExtra("city");
+            if (data.hasExtra(LocationInfo.objectKey)) {
+                locationInfo = data.getParcelableExtra(LocationInfo.objectKey);
             }
-            if (data.hasExtra("position")) {
-                position = data.getIntExtra("position", 0);
+            if (data.hasExtra(LocationInfo.positionKey)) {
+                position = data.getIntExtra(LocationInfo.positionKey, 0);
             }
             if (data.hasExtra(LocationInfo.JSON_ID_KEY)){
                 id = data.getStringExtra(LocationInfo.JSON_ID_KEY);
@@ -90,7 +90,7 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
         }
         switch (requestCode){
             case CITY_DETAIL_REQUEST_CODE:
-                if (id != null && id.length() > 0) {
+                if (id != null && id.length() > 0 && locationInfo != null) {
                     cities.update(id, locationInfo);
                     citiesRecyclerViewAdapter.setmValues(cities.getITEMS());
                     citiesRecyclerViewAdapter.notifyDataSetChanged();

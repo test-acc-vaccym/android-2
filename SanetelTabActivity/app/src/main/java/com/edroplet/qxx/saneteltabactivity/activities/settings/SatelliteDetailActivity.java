@@ -1,5 +1,6 @@
 package com.edroplet.qxx.saneteltabactivity.activities.settings;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -20,6 +21,9 @@ import com.edroplet.qxx.saneteltabactivity.beans.Satellites;
 import com.edroplet.qxx.saneteltabactivity.utils.GalleryOnTime;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 import java.util.Timer;
 
@@ -29,7 +33,7 @@ import java.util.Timer;
  * item details are presented side-by-side with a list of items
  * in a {@link SatelliteListActivity}.
  */
-public class SatelliteDetailActivity extends AppCompatActivity {
+public class SatelliteDetailActivity extends AppCompatActivity implements View.OnClickListener {
     private static int[] satellitesImages = {R.mipmap.satellite1, R.mipmap.satellite2, R.mipmap.satellite3};
     public CollapsingToolbarLayout collap;
     public AppBarLayout appBarLayout;
@@ -43,6 +47,33 @@ public class SatelliteDetailActivity extends AppCompatActivity {
     private
     FrameLayout frameLayout;
     private SatelliteInfo satelliteInfo;
+	
+	private View fragmentView;
+
+    @BindId(R.id.satellite_detail_save)
+    private CustomButton satelliteDetailSave;
+
+    @BindId(R.id.satellite_detail_return)
+    private CustomButton satelliteDetailReturn;
+	
+    @BindId(R.id.satellite_detail_uuid)
+    private CustomTextView satelliteDetailUuid;
+    @BindId(R.id.id_detail)
+    private CustomTextView satelliteDetailId;
+    @BindId(R.id.name_detail)
+    private CustomTextView satelliteDetailName;
+    @BindId(R.id.polarization_detail)
+    private CustomEditText satelliteDetailPlarization;
+    @BindId(R.id.beacon_detail)
+    private CustomEditText satelliteDetailBeacon;
+    @BindId(R.id.longitude_detail)
+    private CustomEditText satelliteDetailLongitude;
+    @BindId(R.id.threshold_detail)
+    private CustomEditText satelliteDetailThreshold;
+    @BindId(R.id.symbol_rate_detail)
+    private CustomEditText satelliteDetailSymbolRate;
+    @BindId(R.id.comment_detail)
+    private CustomEditText satelliteDetailComment;
 
     Timer timer;
     GalleryOnTime galleryOnTime;
@@ -53,6 +84,10 @@ public class SatelliteDetailActivity extends AppCompatActivity {
 
         ViewInject.inject(this, this);
 
+        /** 在fragment中监听
+        satelliteDetailSave.setOnClickListener(this);
+        satelliteDetailReturn.setOnClickListener(this);
+        */
         galleryOnTime = new GalleryOnTime(this);
         galleryOnTime.setFrameLayout(frameLayout);
         galleryOnTime.setImages(satellitesImages);
@@ -105,6 +140,7 @@ public class SatelliteDetailActivity extends AppCompatActivity {
         //
         if (savedInstanceState == null) {
             satelliteInfo = Satellites.ITEM_MAP.get(getIntent().getStringExtra(SatelliteDetailFragment.SATELLITE_ARG_ITEM_ID));
+            // 在Activity里动态加载Fragment
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
@@ -115,9 +151,57 @@ public class SatelliteDetailActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.satellite_detail_container, fragment)
                     .commit();
+            /** 此方法不可行
+            fragmentView = getSupportFragmentManager().findFragmentById(R.id.satellite_detail_container).getView();
+            if (fragmentView != null) {
+                satelliteDetailUuid = fragmentView.findViewById(R.id.satellite_detail_uuid);
+                satelliteDetailId = fragmentView.findViewById(R.id.id_detail);
+                satelliteDetailName = fragmentView.findViewById(R.id.name_detail);
+                satelliteDetailPlarization = fragmentView.findViewById(R.id.polarization_detail);
+                satelliteDetailBeacon = fragmentView.findViewById(R.id.beacon_detail);
+                satelliteDetailLongitude = fragmentView.findViewById(R.id.longitude_detail);
+                satelliteDetailThreshold = fragmentView.findViewById(R.id.threshold_detail);
+                satelliteDetailSymbolRate = fragmentView.findViewById(R.id.symbol_rate_detail);
+                satelliteDetailComment = fragmentView.findViewById(R.id.comment_detail);
+            }
+             */
         }
-
         // iv_satellite = (ImageView) findViewById(R.id.iv_satellite);
+    }
+
+    @Override
+    public void onClick(View v) {
+        /** 在activity中引入fragment的内容这里不可行
+        switch (v.getId()){
+            case R.id.satellite_detail_save:
+                if (satelliteDetailName != null) {
+                    // 修改保存
+                    Intent intent = new Intent();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(SatelliteInfo.objectKey,
+                            new SatelliteInfo(
+                                    satelliteDetailUuid.getText().toString(),
+                                    satelliteDetailId.getText().toString(),
+                                    satelliteDetailName.getText().toString(),
+                                    satelliteDetailPlarization.getText().toString(),
+                                    satelliteDetailLongitude.getText().toString(),
+                                    satelliteDetailBeacon.getText().toString(),
+                                    satelliteDetailThreshold.getText().toString(),
+                                    satelliteDetailSymbolRate.getText().toString(),
+                                    satelliteDetailComment.getText().toString()
+                            ));
+                    bundle.putString(SatelliteInfo.uuidKey, satelliteDetailUuid.getText().toString());
+
+                    intent.putExtras(bundle);
+                    setResult(SatelliteListActivity.SATELLITE_DETAIL_REQUEST_CODE, intent);
+                }
+                finish();
+                break;
+            case R.id.satellite_detail_return:
+                finish();
+                break;
+        }
+        */
     }
 
     @Override

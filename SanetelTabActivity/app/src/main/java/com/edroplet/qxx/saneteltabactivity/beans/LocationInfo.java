@@ -14,11 +14,13 @@ import java.util.UUID;
 
 public class LocationInfo implements Parcelable {
     public static final String citiesJsonFile = "city_location.json";
-    private String mId;            // 序号
+    private String mId;             // 序号
     private String province;        // 省份
     private String name;            // 城市
     private float longitude;        // 经度
-    private  float latitude;        // 纬度
+    private String longitudeUnit;   // 经度单位
+    private float latitude;         // 纬度
+    private String latitudeUnit;    // 纬度单位
 
     public static final String objectKey = "city";
     public static final String positionKey = "position";
@@ -56,6 +58,22 @@ public class LocationInfo implements Parcelable {
 
     public float getLatitude() {
         return latitude;
+    }
+
+    public String getLatitudeUnit() {
+        return latitudeUnit;
+    }
+
+    public String getLongitudeUnit() {
+        return longitudeUnit;
+    }
+
+    public void setLatitudeUnit(String latitudeUnit) {
+        this.latitudeUnit = latitudeUnit;
+    }
+
+    public void setLongitudeUnit(String longitudeUnit) {
+        this.longitudeUnit = longitudeUnit;
     }
 
     public float getLongitude() {
@@ -131,12 +149,30 @@ public class LocationInfo implements Parcelable {
                 this.name = "";
             }
             if (json.has(JSON_CITY_LATITUDE)) {
-                this.latitude = (float) json.getDouble(JSON_CITY_LATITUDE);
+                String jsonCityLatitude = json.getString(JSON_CITY_LATITUDE);
+                if (jsonCityLatitude.contains("°S")) {
+                    this.latitudeUnit = "°S";
+                    jsonCityLatitude = jsonCityLatitude.substring(0,jsonCityLatitude.length()-2);
+                } else if (jsonCityLatitude.contains("°N")) {
+                    this.latitudeUnit = "°N";
+                    jsonCityLatitude = jsonCityLatitude.substring(0,jsonCityLatitude.length()-2);
+                }
+                // this.latitude = (float) json.getDouble(JSON_CITY_LATITUDE);
+                this.latitude = Float.parseFloat(jsonCityLatitude);
             }else {
                 this.latitude = 0;
             }
             if (json.has(JSON_CITY_LONGITUDE)) {
-                this.longitude = (float) json.getDouble(JSON_CITY_LONGITUDE);
+                String jsonCityLongitude = json.getString(JSON_CITY_LONGITUDE);
+                if (jsonCityLongitude.contains("°W")) {
+                    this.longitudeUnit = "°W";
+                    jsonCityLongitude = jsonCityLongitude.substring(0,jsonCityLongitude.length()-2);
+                } else if (jsonCityLongitude.contains("°E")){
+                    this.longitudeUnit = "°E";
+                    jsonCityLongitude = jsonCityLongitude.substring(0,jsonCityLongitude.length()-2);
+                }
+                //  json.getString(JSON_CITY_LONGITUDE)
+                this.longitude = Float.parseFloat(jsonCityLongitude);
             }else {
                 this.longitude = 0;
             }
@@ -145,7 +181,6 @@ public class LocationInfo implements Parcelable {
             }else {
                 this.mId = UUID.randomUUID().toString();
             }
-
         }catch (JSONException je){
             je.printStackTrace();
         }
@@ -155,8 +190,8 @@ public class LocationInfo implements Parcelable {
         JSONObject json = new JSONObject();
         json.put(JSON_PROVENCE_NAME, this.province);
         json.put(JSON_CITY_NAME, this.name);
-        json.put(JSON_CITY_LATITUDE, this.latitude);
-        json.put(JSON_CITY_LONGITUDE, this.longitude);
+        json.put(JSON_CITY_LATITUDE, this.latitude + this.latitudeUnit);
+        json.put(JSON_CITY_LONGITUDE, this.longitude + this.longitudeUnit);
         return json;
     }
 

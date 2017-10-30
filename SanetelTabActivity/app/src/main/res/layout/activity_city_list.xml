@@ -42,6 +42,16 @@
             android:background="@color/satellite_list_header_background">
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text="@string/city_detail_province"
+                android:textSize="@dimen/list_item_title_size"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                style="?android:attr/textAppearanceLarge"/>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:layout_width="0dp"
                 android:layout_weight="1.5"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"

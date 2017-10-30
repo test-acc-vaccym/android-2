@@ -24,26 +24,27 @@ public class SatelliteInfo implements Serializable {
     public static final String uuidKey = "uuid";
 
     // 字段的key
-    public static final String JSON_ID = "序号";
-    public static final String JSON_NAME = "卫星名称";
-    public static final String JSON_POLARIZATION = "极化方式";
-    public static final String JSON_LONGITUDE = "卫星经度";
-    public static final String JSON_BEACON = "信标频率";
-    public static final String JSON_THRESHOLD = "门限";
-    public static final String JSON_SYMBOL_RATE = "符号率";
-    public static final String JSON_COMMENT = "备注";
+    private static final String JSON_UUID = "唯一序号";
+    private static final String JSON_ID = "序号";
+    private static final String JSON_NAME = "卫星名称";
+    private static final String JSON_POLARIZATION = "极化方式";
+    private static final String JSON_LONGITUDE = "卫星经度";
+    private static final String JSON_BEACON = "信标频率";
+    private static final String JSON_THRESHOLD = "门限";
+    private static final String JSON_SYMBOL_RATE = "符号率";
+    private static final String JSON_COMMENT = "备注";
 
     // 包含的字段
     public final UUID mId;
     public final String id;             // 序号
     public final String name;           // 卫星名称
-    public final String polarization;  // 极化
+    public final String polarization;   // 极化
     public final String longitude;      // 经度
     public final String beacon;         // 信标
     public final String threshold;      // 门限
     public final String symbolRate;     // 符号率
     public final String comment;        // 备注
-    public String agc;            // AGC电平
+    private String agc;                 // AGC电平
 
     public SatelliteInfo(String id, String name, String polarization, String longitude,
                          @Nullable String beacon, String threshold,
@@ -60,13 +61,38 @@ public class SatelliteInfo implements Serializable {
         this.comment = comment;
     }
 
+    public SatelliteInfo(String uuid, String id, String name, String polarization, String longitude,
+                         @Nullable String beacon, String threshold,
+                         @Nullable String symbolRate,
+                         @Nullable String comment) {
+        mId = UUID.fromString(uuid);
+        this.id = id;
+        this.name = name;
+        this.polarization = polarization;
+        this.longitude = longitude;
+        this.beacon = beacon;
+        this.threshold = threshold;
+        this.symbolRate = symbolRate;
+        this.comment = comment;
+    }
+
     public SatelliteInfo setAGC(String agc) {
         this.agc = agc;
         return this;
     }
 
     public SatelliteInfo(JSONObject json) throws JSONException{
-        mId = UUID.randomUUID();
+
+        if (json.has(JSON_UUID)) {
+            String jsonUuid = json.getString(JSON_UUID);
+            if (jsonUuid.length() > 0) {
+                mId = UUID.fromString(json.getString(JSON_UUID));
+            }else {
+                mId = UUID.randomUUID();
+            }
+        }else {
+            mId = UUID.randomUUID();
+        }
 
         if (json.has(JSON_ID)) {
             id = json.getString(JSON_ID);
@@ -113,6 +139,7 @@ public class SatelliteInfo implements Serializable {
 
     public JSONObject toJSON() throws JSONException {
         JSONObject json = new JSONObject();
+        json.put(JSON_UUID, mId.toString());
         json.put(JSON_ID, id);
         json.put(JSON_NAME, name);
         json.put(JSON_POLARIZATION, polarization);

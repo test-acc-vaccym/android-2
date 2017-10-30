@@ -98,6 +98,7 @@ public class AdministratorFragmentLNBFrequencyChannel extends Fragment {
                 selected = radioButton.getText().toString();
                 CustomSP.putString(getContext(), LNBFrequency, selected);
                 // todo send command
+                getActivity().finish();
             }
         });
 

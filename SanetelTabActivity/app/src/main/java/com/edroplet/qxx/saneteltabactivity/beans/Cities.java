@@ -50,7 +50,7 @@ public class Cities {
             cities = jl.loadCities();
             // Add some sample items.
             for (int i = 0; i < getItemCounts(); i++) {
-                addItem(createLocationInfo(i), false);
+                addItem(cities.get(i), false);
             }
         }
     }
@@ -61,7 +61,7 @@ public class Cities {
             cities = jl.loadCities();
             // Add some sample items.
             for (int i = 0; i < getItemCounts(); i++) {
-                addItem(createLocationInfo(i), false);
+                addItem(cities.get(i), false);
             }
         }
     }
@@ -73,12 +73,29 @@ public class Cities {
         }
     }
 
+    private int getIndex(String id){
+        int index = -1;
+        for (LocationInfo locationInfo: cities){
+            index++;
+            if (id.equals(locationInfo.getmId())){
+                return index;
+            }
+        }
+        return -1;
+    }
+
     public void update(String id, LocationInfo locationInfo){
         if (locationInfo !=null) {
-            int itemIndex = ITEMS.indexOf(locationInfo);
+            int itemIndex = cities.indexOf(locationInfo);
+            if (itemIndex == -1){
+                itemIndex = getIndex(id);
+                if (itemIndex == -1){
+                    addItem(locationInfo, true);
+                    return;
+                }
+            }
             ITEMS.set(itemIndex, locationInfo);
-            int position = cities.indexOf(locationInfo);
-            cities.set(position, locationInfo);
+            cities.set(itemIndex, locationInfo);
         }
     }
 

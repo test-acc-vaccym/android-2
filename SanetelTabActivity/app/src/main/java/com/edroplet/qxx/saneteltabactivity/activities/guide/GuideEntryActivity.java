@@ -25,28 +25,28 @@ public class GuideEntryActivity extends AppCompatActivity implements View.OnClic
         Bundle bundle = new Bundle();
         switch (view.getId()){
             case R.id.guide_main_button_explode:
-                bundle.putInt(FollowMeActivity.POSITION, 0 );
+                bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_EXPLODE.ordinal() );
                 break;
             case R.id.guide_main_button_location:
-                bundle.putInt(FollowMeActivity.POSITION, 1 );
+                bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_LOCATION.ordinal() );
                 break;
             case R.id.guide_main_button_destination:
-                bundle.putInt(FollowMeActivity.POSITION, 2 );
+                bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_DESTINATION.ordinal() );
                 break;
             case R.id.guide_main_button_search_mode:
-                bundle.putInt(FollowMeActivity.POSITION, 3 );
+                bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_SEARCH_MODE.ordinal() );
                 break;
             case R.id.guide_main_button_search:
-                bundle.putInt(FollowMeActivity.POSITION, 4 );
+                bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_SEARCHING.ordinal() );
                 break;
             case R.id.guide_main_button_lock:
-                bundle.putInt(FollowMeActivity.POSITION, 5 );
+                bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_LOCKER.ordinal() );
                 break;
             case R.id.guide_main_button_saving:
-                bundle.putInt(FollowMeActivity.POSITION, 6);
+                bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_SAVING.ordinal());
                 break;
             default:
-                bundle.putInt(FollowMeActivity.POSITION, 0 );
+                bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_EXPLODE.ordinal() );
                 break;
         }
         intent.putExtras(bundle);

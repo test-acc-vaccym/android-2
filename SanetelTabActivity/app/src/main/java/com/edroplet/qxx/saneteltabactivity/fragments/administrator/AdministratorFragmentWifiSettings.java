@@ -71,6 +71,8 @@ public class AdministratorFragmentWifiSettings extends Fragment {
             @Override
             public void onClick(View v) {
                 CustomSP.putString(context,WifiSettingsNameKey,wifiName.getText().toString());
+                // todo send command
+                getActivity().finish();
             }
         });
 

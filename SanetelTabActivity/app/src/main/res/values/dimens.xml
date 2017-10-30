@@ -69,7 +69,12 @@
     <dimen name="marginLeft">24dp</dimen>
     <dimen name="marginRight">24dp</dimen>
     <dimen name="message_marginTop">10dp</dimen>
+    <integer name="item_height">80</integer>
+    <integer name="title_size">24</integer>
+    <integer name="item_size">16</integer>
+    <integer name="button_size">18</integer>
+    <integer name="message_size">18</integer>
     <dimen name="input_marginTop">20dp</dimen>
-    <dimen name="input_marginLeft">26dp</dimen>
-    <dimen name="input_marginRight">26dp</dimen>
+    <dimen name="input_marginLeft">6dp</dimen>
+    <dimen name="input_marginRight">6dp</dimen>
 </resources>

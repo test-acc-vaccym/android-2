@@ -48,7 +48,7 @@ public class Satellites {
             JsonLoad jl = new JsonLoad(context, SatelliteInfo.satelliteJsonFile);
             satellites = jl.loadSatellite();
             for (int i = 0; i < getItemCounts(); i++) {
-                addItem(createSatelliteParameterItem(i), false);
+                addItem(satellites.get(i), false);
             }
         }
     }
@@ -58,7 +58,7 @@ public class Satellites {
             JsonLoad jl = new JsonLoad(context, SatelliteInfo.satelliteJsonFile);
             satellites = jl.loadSatellite();
             for (int i = 0; i < getItemCounts(); i++) {
-                addItem(createSatelliteParameterItem(i), false);
+                addItem(satellites.get(i), false);
             }
         }
     }
@@ -75,11 +75,28 @@ public class Satellites {
         ITEM_MAP.clear();
     }
 
+    private int getIndex(String id){
+        int index = -1;
+        for (SatelliteInfo satelliteInfo: satellites){
+            index++;
+            if (id.equals(satelliteInfo.mId.toString())){
+                return index;
+            }
+        }
+        return -1;
+    }
+
     public void update(String id, SatelliteInfo item){
         int index = satellites.indexOf(item);
+        if (index == -1){
+            index = getIndex(id);
+            if (index == -1){
+                addItem(item,true);
+                return;
+            }
+        }
         satellites.set(index, item);
-        int itemIndex = ITEMS.indexOf(item);
-        ITEMS.set(itemIndex, item);
+        ITEMS.set(index, item);
     }
 
     public void deleteItem(SatelliteInfo satelliteInfo){

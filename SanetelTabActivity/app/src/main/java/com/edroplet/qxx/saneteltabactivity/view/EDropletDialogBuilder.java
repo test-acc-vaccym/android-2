@@ -76,15 +76,15 @@ public class EDropletDialogBuilder {
     private int inputLineColor = Color.parseColor("#003333");
 
     private boolean hasDivider=true;//选择时，是否有分割线
-    private int dividerHeigh = 1;
+    private int dividerHeight = 1;
     private int dividerColor = Color.parseColor("#c1c1c1");
 
     private String[] items;
     private int itemColor = Color.parseColor("#333333");
     private int itemSize = 14;
     private int itemGravity = Gravity.LEFT;
-    private int itemHeigh = 50;
-    private boolean cancleable = true;
+    private int itemHeight = 50;
+    private boolean cancelable = true;
 
 
     public EDropletDialogBuilder(Context context) {
@@ -138,7 +138,7 @@ public class EDropletDialogBuilder {
                 .setMessage(message)
                 .setTitle(title)
                 .setView(customView)
-                .setCancelable(cancleable)
+                .setCancelable(cancelable)
                 .setNeutralButton(neutralButtonText,mNeutralButtonListener)
                 .setNegativeButton(negativeButtonText, mNegativeButtonListener)
                 .setPositiveButton(positiveButtonText, mPositiveButtonListener).create();
@@ -192,7 +192,7 @@ public class EDropletDialogBuilder {
         listView.setAdapter(adapter == null ? new AAdapter() : adapter);
         if (hasDivider) {
             listView.setDivider(new ColorDrawable(dividerColor));
-            listView.setDividerHeight(dividerHeigh);
+            listView.setDividerHeight(dividerHeight);
         } else {
             listView.setDividerHeight(0);
         }
@@ -338,7 +338,7 @@ public class EDropletDialogBuilder {
         public View getView(int position, View convertView, ViewGroup parent) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_layout, null);
             LinearLayout linearLayout = (LinearLayout) convertView.findViewById(R.id.ll);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dip2px(mContext, itemHeigh));
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dip2px(mContext, itemHeight));
             linearLayout.setLayoutParams(layoutParams);
             TextView itemView = (TextView) convertView.findViewById(R.id.text1);
             itemView.setText(items[position]);
@@ -381,8 +381,8 @@ public class EDropletDialogBuilder {
     /****************参数statr*****************/
 
 
-    public EDropletDialogBuilder setCancleable(boolean cancleable) {
-        this.cancleable = cancleable;
+    public EDropletDialogBuilder setCancelable(boolean cancelable) {
+        this.cancelable = cancelable;
         return this;
     }
 
@@ -543,8 +543,8 @@ public class EDropletDialogBuilder {
         return this;
     }
 
-    public EDropletDialogBuilder setDividerHeigh(int px) {
-        this.dividerHeigh = px;
+    public EDropletDialogBuilder setDividerHeight(int px) {
+        this.dividerHeight = px;
         return this;
     }
 
@@ -553,8 +553,8 @@ public class EDropletDialogBuilder {
         return this;
     }
 
-    public EDropletDialogBuilder setItemHeigh(int dp) {
-        this.itemHeigh = dp;
+    public EDropletDialogBuilder setItemHeight(int dp) {
+        this.itemHeight = dp;
         return this;
     }
 

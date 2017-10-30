@@ -36,6 +36,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo.satelliteJsonFile;
+
 /**
  * An activity representing a list of Cities. This activity
  * has different presentations for handset and tablet-size devices. On
@@ -94,7 +96,18 @@ public class SatelliteListActivity extends AppCompatActivity {
             case SATELLITE_DETAIL_REQUEST_CODE:
                 if (id != null && id.length() > 0) {
                     satellites.update(id, satelliteInfo);
-                    satelliteItemRecyclerViewAdapter.notifyItemChanged(position);
+                    satelliteItemRecyclerViewAdapter.setmValues(satellites.getITEMS());
+                    satelliteItemRecyclerViewAdapter.notifyDataSetChanged();
+                    // 保存到文件
+                    JsonLoad js = new JsonLoad(this, SatelliteInfo.satelliteJsonFile);
+                    ArrayList<SatelliteInfo> al = new ArrayList<SatelliteInfo>();
+                    al.addAll(satellites.getITEMS());
+                    try {
+                        js.saveSatellites(al);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
                 }
                 break;
             case NEW_SATELLITES_REQUEST_CODE:
@@ -219,7 +232,7 @@ public class SatelliteListActivity extends AppCompatActivity {
 
                             try {
                                 // 修改文件
-                                JsonLoad js = new JsonLoad(view.getContext(), SatelliteInfo.satelliteJsonFile);
+                                JsonLoad js = new JsonLoad(view.getContext(), satelliteJsonFile);
                                 ArrayList<SatelliteInfo> al = new ArrayList<SatelliteInfo>();
                                 //for (SatelliteInfo l:  satellites.getITEMS()){
                                 //    al.add(l);

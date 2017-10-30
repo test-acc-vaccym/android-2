@@ -87,6 +87,7 @@ public class AdministratorFragmentBandSelect extends Fragment {
                 selected = radioButton.getText().toString();
                 CustomSP.putString(getContext(), BandTypeKey, selected);
                 // todo send command
+                getActivity().finish();
             }
         });
 

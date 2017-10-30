@@ -106,6 +106,7 @@ public class AdministratorFragmentAntennaType extends Fragment {
                 selected = radioButton.getText().toString();
                 CustomSP.putString(getContext(), AntennaType, selected);
                 // todo send command
+                getActivity().finish();
             }
         });
 

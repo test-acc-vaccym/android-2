@@ -103,6 +103,7 @@ public class AdministratorFragmentNetworkProtocolSettings extends Fragment {
                 selected = radioButton.getText().toString();
                 CustomSP.putString(getContext(), NetworkProtocolKey, selected);
                 // todo send command
+                getActivity().finish();
             }
         });
 

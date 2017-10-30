@@ -44,6 +44,13 @@
     <string name="antenna_state_reset">复位</string>
     <string name="antenna_state_paused">停止</string>
     <string name="antenna_state_searching">寻星</string>
+    <string name="explode_confirm">你确定要展开吗？</string>
+    <string name="fold_confirm">你确定要展开吗？</string>
+    <string name="reset_confirm">你确定要复位吗？</string>
+    <string name="searching_confirm">开始寻星？</string>
+    <string name="switch_destination">切换目标星</string>
+    <string name="not_connected_wifi_prompt">没有连接设备\n请连接设备</string>
+
     <string name="antenna_state_init">初始</string>
     <string name="antenna_state_lock">锁星</string>
     <string name="antenna_state_abnormal">异常</string>
@@ -100,8 +107,8 @@
     <string name="city_detail_id_key">序号</string>
     <string name="city_detail_province">所属省份</string>
     <string name="city_detail_name_key">城市名称</string>
-    <string name="city_detail_longitude_key">东&#160;&#160;&#160;&#160;&#160;&#160;经°</string>
-    <string name="city_detail_latitude_key">北&#160;&#160;&#160;&#160;&#160;&#160;纬°</string>
+    <string name="city_detail_longitude_key">经&#160;&#160;&#160;&#160;&#160;&#160;度°</string>
+    <string name="city_detail_latitude_key">纬&#160;&#160;&#160;&#160;&#160;&#160;度°</string>
     <!--底部按钮-->
     <string name="satellite_recover">恢复出厂</string>
     <string name="add_satellite">增加卫星</string>
@@ -209,7 +216,7 @@
     <string name="main_monitor_satellite_polarization">极化方式</string>
     <string name="main_monitor_satellite_polarization_hint">水平</string>
     <string name="main_monitor_satellite_beacon">信标频率</string>
-    <string name="main_monitor_satellite_beacon_hint">12251.00</string>
+    <string name="main_monitor_satellite_beacon_hint">12251.000</string>
     <string name="main_monitor_satellite_agc">AGC电平</string>
     <string name="main_monitor_satellite_agc_hint">4.5</string>
     <!--天线信息-->
@@ -329,6 +336,7 @@
     <string name="follow_me_bottom_nav_main">引导主页</string>
     <string name="follow_me_bottom_nav_preview">上一步</string>
     <string name="follow_me_bottom_nav_next">下一步</string>
+    <string name="follow_me_bottom_nav_done">完成</string>
     <string name="follow_me_bottom_nav_monitor">监控页面</string>
     <string name="follow_me_last_page">已经是最后一步了</string>
     <string name="follow_me_first_page">您在第一步</string>

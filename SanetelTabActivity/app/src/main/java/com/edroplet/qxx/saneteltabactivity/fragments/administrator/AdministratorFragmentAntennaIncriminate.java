@@ -87,6 +87,8 @@ public class AdministratorFragmentAntennaIncriminate extends Fragment {
                 CustomSP.putString(context,AntennaIncriminateAzimuthKey,antennaIncriminateAzimuth.getText().toString());
                 CustomSP.putString(context,AntennaIncriminatePitchKey,antennaIncriminatePitch.getText().toString());
                 CustomSP.putString(context,AntennaIncriminatePolarizationKey,antennaIncriminatePolarization.getText().toString());
+                // todo send command
+                getActivity().finish();
             }
         });
 

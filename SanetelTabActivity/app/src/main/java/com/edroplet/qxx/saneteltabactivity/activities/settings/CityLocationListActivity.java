@@ -92,7 +92,18 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
             case CITY_DETAIL_REQUEST_CODE:
                 if (id != null && id.length() > 0) {
                     cities.update(id, locationInfo);
-                    citiesRecyclerViewAdapter.notifyItemChanged(position);
+                    citiesRecyclerViewAdapter.setmValues(cities.getITEMS());
+                    citiesRecyclerViewAdapter.notifyDataSetChanged();
+                    // 保存到文件
+                    JsonLoad js = new JsonLoad(this, LocationInfo.citiesJsonFile);
+                    ArrayList<LocationInfo> al = new ArrayList<LocationInfo>();
+                    al.addAll(cities.getITEMS());
+                    try {
+                        js.saveCities(al);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
                 }
                 break;
             case NEW_CITY_REQUEST_CODE:

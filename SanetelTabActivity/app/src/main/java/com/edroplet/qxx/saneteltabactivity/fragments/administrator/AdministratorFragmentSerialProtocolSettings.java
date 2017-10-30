@@ -103,6 +103,7 @@ public class AdministratorFragmentSerialProtocolSettings extends Fragment {
                 selected = radioButton.getText().toString();
                 CustomSP.putString(getContext(), SerialProtocolKey, selected);
                 // todo send command
+                getActivity().finish();
             }
         });
 

@@ -36,7 +36,7 @@
             android:layout_height="match_parent"
             android:padding="@dimen/list_detail_padding"
             android:text="@string/city_detail_province"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
             style="?android:attr/textAppearanceMedium"
             android:id="@+id/city_detail_province"
             android:layout_width="0dp"
@@ -103,5 +103,20 @@
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom">
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/city_detail_save"
+            android:text="@string/main_me_error_report_save"
+            style="@style/button_horizontal_style"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/city_detail_return"
+            android:text="@string/main_me_error_report_return"
+            style="@style/button_horizontal_style"/>
     </LinearLayout>
 </LinearLayout>

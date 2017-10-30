@@ -81,6 +81,7 @@ public class CitiesRecyclerViewAdapter extends RecyclerView.Adapter<CitiesRecycl
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mItem = mValues.get(position);
+        holder.mProvinceView.setText(mValues.get(position).getProvince());
         holder.mNameView.setText(mValues.get(position).getName());
         holder.mLatitudeView.setText(String.valueOf(mValues.get(position).getLatitude()));
         holder.mLongitudeView.setText(String.valueOf(mValues.get(position).getLongitude()));
@@ -190,6 +191,7 @@ public class CitiesRecyclerViewAdapter extends RecyclerView.Adapter<CitiesRecycl
     //视图管理
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
+        public final TextView mProvinceView;
         public final TextView mNameView;
         public final TextView mLatitudeView;
         public final TextView mLongitudeView;
@@ -200,6 +202,7 @@ public class CitiesRecyclerViewAdapter extends RecyclerView.Adapter<CitiesRecycl
         public ViewHolder(View view) {
             super(view);
             mView = view;
+            mProvinceView = (CustomTextView) view.findViewById(R.id.city_list_province);
             mNameView = (CustomTextView) view.findViewById(R.id.city_list_name);
             mLatitudeView = (CustomTextView) view.findViewById(R.id.city_list_latitude);
             mLongitudeView = (CustomTextView) view.findViewById(R.id.city_list_longitude);

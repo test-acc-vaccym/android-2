@@ -53,5 +53,13 @@ dependencies {
     compile 'com.isseiaoki:simplecropview:1.0.13'
     compile 'com.yongchun:com.yongchun.imageselector:1.1.0'
     compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    // 下载器
+    compile 'io.reactivex:rxjava:1.1.5'
+    compile 'io.reactivex:rxandroid:1.2.0'
+    compile 'com.squareup.okhttp3:okhttp:3.7.0'
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    // pdf阅读
+    compile 'com.joanzapata.pdfview:android-pdfview:1.0.4@aar'
+
     testCompile 'junit:junit:4.12'
 }

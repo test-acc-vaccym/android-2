@@ -56,6 +56,8 @@ public class AdministratorFragmentRecoveryFactory extends Fragment {
             @Override
             public void onClick(View v) {
 
+                // todo send command
+                getActivity().finish();
             }
         });
 

@@ -92,6 +92,7 @@ public class AdministratorFragmentSearchingRange extends Fragment {
                 selected = radioButton.getText().toString();
                 CustomSP.putString(getContext(), SearchingRangeKey, selected);
                 // todo send command
+                getActivity().finish();
             }
         });
 

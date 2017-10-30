@@ -14,7 +14,7 @@ import java.util.UUID;
 
 public class LocationInfo implements Parcelable {
     public static final String citiesJsonFile = "city_location.json";
-    private String mId = UUID.randomUUID().toString();            // 序号
+    private String mId;            // 序号
     private String province;        // 省份
     private String name;            // 城市
     private float longitude;        // 经度

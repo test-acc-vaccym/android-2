@@ -77,6 +77,8 @@ public class AdministratorFragmentIPSettings extends Fragment {
             public void onClick(View v) {
                 CustomSP.putString(context,IPSettingsAddressKey,ipAddress.getText());
                 CustomSP.putString(context,IPSettingsMaskKey,ipMask.getText());
+                // todo send command
+                getActivity().finish();
             }
         });
 

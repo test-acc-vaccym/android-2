@@ -68,10 +68,10 @@ public class IPEdit extends LinearLayout{
         return strBuild.toString();
     }
 
-    public void setText(@IdRes int resId){
-        String ipAddress = mParentContext.getString(resId);
-        setIps(ipAddress);
-    }
+//    public void setText(@IdRes int resId){
+//        String ipAddress = mParentContext.getString(resId);
+//        setIps(ipAddress);
+//    }
 
     public void setText(String ipAddress){
         setIps(ipAddress);

@@ -228,10 +228,10 @@ public class IPEditText extends LinearLayout {
         return firstIP + "." + secondIP + "." + thirdIP + "." + fourthIP;
     }
 
-    public void setText(@IdRes int resId){
-        String ipAddress = mContext.getString(resId);
-        setIps(ipAddress);
-    }
+//    public void setText(@IdRes int resId){
+//        String ipAddress = mContext.getString(resId);
+//        setIps(ipAddress);
+//    }
 
     public void setText(String ipAddress){
         setIps(ipAddress);

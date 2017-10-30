@@ -7,6 +7,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 /**
  * Created by qxs on 2017/9/15.
@@ -136,6 +139,13 @@ public class LocationInfo implements Parcelable {
         this.longitude = longitude;
     }
 
+    public static String StringFilter(String str) throws PatternSyntaxException {
+        String regEx = "[^0-9.]";
+        Pattern p = Pattern.compile(regEx);
+        Matcher m = p.matcher(str);
+        return m.replaceAll("").trim();
+    }
+
     public LocationInfo(JSONObject json) {
         try {
             if (json.has(JSON_PROVENCE_NAME)) {
@@ -157,8 +167,13 @@ public class LocationInfo implements Parcelable {
                     this.latitudeUnit = "°N";
                     jsonCityLatitude = jsonCityLatitude.substring(0,jsonCityLatitude.length()-2);
                 }
+                int index = jsonCityLatitude.indexOf(".");
+//                for (int i = index; i < jsonCityLatitude.length(); i ++){
+//                    if (jsonCityLatitude.)
+//                }
+                jsonCityLatitude = StringFilter(jsonCityLatitude);
                 // this.latitude = (float) json.getDouble(JSON_CITY_LATITUDE);
-                this.latitude = Float.parseFloat(jsonCityLatitude);
+                this.latitude = Float.parseFloat(StringFilter(jsonCityLatitude));
             }else {
                 this.latitude = 0;
             }
@@ -171,6 +186,7 @@ public class LocationInfo implements Parcelable {
                     this.longitudeUnit = "°E";
                     jsonCityLongitude = jsonCityLongitude.substring(0,jsonCityLongitude.length()-2);
                 }
+                jsonCityLongitude = StringFilter(jsonCityLongitude);
                 //  json.getString(JSON_CITY_LONGITUDE)
                 this.longitude = Float.parseFloat(jsonCityLongitude);
             }else {

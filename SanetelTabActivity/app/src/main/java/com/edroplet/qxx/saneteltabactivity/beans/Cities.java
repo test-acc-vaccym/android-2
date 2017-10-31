@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static android.content.ContentValues.TAG;
 
@@ -24,7 +25,7 @@ import static android.content.ContentValues.TAG;
 public class Cities {
     private Context mContext;
     private static ArrayList<LocationInfo> cities;
-    private static ArrayList<Map<String,LocationInfo>> provinceObject;
+    private static Map<String, ArrayList<LocationInfo>> provinceObjectMap = new HashMap<>();
     /**
      * An array of sample (dummy) items.
      */
@@ -61,13 +62,27 @@ public class Cities {
             cities = jl.loadCities();
             // Add some sample items.
             for (int i = 0; i < getItemCounts(); i++) {
-                addItem(cities.get(i), false);
+                LocationInfo iLocationInfo = cities.get(i);
+                addItem(iLocationInfo, false);
             }
         }
     }
+
     public void addItem(LocationInfo item, boolean isNew) {
         ITEMS.add(item);
         ITEM_MAP.put(item.getName(), item);
+
+        // 添加省份城市map数据
+        String province = item.getProvince();
+        ArrayList<LocationInfo> arrayList = provinceObjectMap.get(province);
+        if (arrayList == null){
+            ArrayList<LocationInfo> arrayList1 = new ArrayList<LocationInfo>();
+            arrayList1.add(item);
+            provinceObjectMap.put(province, arrayList1);
+        }else if (!arrayList.contains(item)) {
+            arrayList.add(item);
+            provinceObjectMap.put(province, arrayList);
+        }
         if (isNew){
             cities.add(item);
         }
@@ -97,7 +112,52 @@ public class Cities {
             ITEM_MAP.put(id, locationInfo);
             ITEMS.set(itemIndex, locationInfo);
             cities.set(itemIndex, locationInfo);
+
+            // 修改省份城市map数据
+            LocationInfo item = cities.get(itemIndex);
+            String province = item.getProvince();
+            ArrayList<LocationInfo> arrayList = provinceObjectMap.get(province);
+            // 如果包含有该map数据
+            if (arrayList != null){
+                // 获取position
+                for (LocationInfo locationInfo1: arrayList){
+                    // 找到城市名
+                    if (locationInfo1.getName().equals(item.getName())){
+                        // 修改节点数据
+                        arrayList.set(arrayList.indexOf(locationInfo1), item);
+                    }
+                }
+            }
         }
+    }
+
+    public String[] getProvinceArray(){
+        Set<String> set = provinceObjectMap.keySet();
+        String[] arr = new String[set.size()];
+        set.toArray(arr);
+        return arr;
+    }
+
+    public String[] getCitiesArray(String province){
+        ArrayList<LocationInfo>  locationInfos = provinceObjectMap.get(province);
+        String[] array = new String[locationInfos.size()];
+        int i = 0;
+        for (LocationInfo locationInfo : locationInfos) {
+            array[i++] = locationInfo.getName();
+        }
+        return array;
+    }
+
+    public LocationInfo getLocationInfoByProvinceCity(String province, String city){
+        ArrayList<LocationInfo>  locationInfos = provinceObjectMap.get(province);
+        if (locationInfos != null && locationInfos.size() > 0){
+            for (LocationInfo locationInfo : locationInfos) {
+                if (locationInfo.getName().equals(city)) {
+                    return locationInfo;
+                }
+            }
+        }
+        return null;
     }
 
     public void deleteItem(LocationInfo locationInfo){
@@ -110,12 +170,31 @@ public class Cities {
         ITEMS.remove(position);
         ITEM_MAP.remove(cities.get(position).getName());
         cities.remove(position);
+
+        // 删除省份城市map数据
+        LocationInfo item = cities.get(position);
+        String province = item.getProvince();
+        ArrayList<LocationInfo> arrayList = provinceObjectMap.get(province);
+        // 如果包含有该map数据
+        if (arrayList != null && arrayList.contains(item)){
+            // 删除该节点
+            arrayList.remove(item);
+            // 删除后节点还有数据
+            if (arrayList.size() > 0) {
+                provinceObjectMap.put(province, arrayList);
+            }else {
+                // 删除后节点没有数据，删除该map节点
+                provinceObjectMap.remove(province);
+            }
+        }
+
     }
 
     public void clear(){
         cities.clear();
         ITEMS.clear();
         ITEM_MAP.clear();
+        provinceObjectMap.clear();
     }
 
     private static LocationInfo createLocationInfo(int position) {

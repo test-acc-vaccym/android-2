@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static android.content.ContentValues.TAG;
 
@@ -24,6 +25,9 @@ import static android.content.ContentValues.TAG;
 public class Satellites {
     private Context mContext;
     private static ArrayList<SatelliteInfo> satellites;
+
+    private static Map<String, ArrayList<SatelliteInfo>> satellitesObjectMap = new HashMap<>();
+    
     /**
      * An array of sample (dummy) items.
      */
@@ -65,6 +69,19 @@ public class Satellites {
     public void addItem(SatelliteInfo item, boolean isNew) {
         ITEMS.add(item);
         ITEM_MAP.put(item.mId.toString(), item);
+
+        // 添加卫星极化map数据
+        String satelliteName = item.name;
+        ArrayList<SatelliteInfo> arrayList = satellitesObjectMap.get(satelliteName);
+        if (arrayList == null){
+            ArrayList<SatelliteInfo> arrayList1 = new ArrayList<SatelliteInfo>();
+            arrayList1.add(item);
+            satellitesObjectMap.put(satelliteName, arrayList1);
+        }else if (!arrayList.contains(item)) {
+            arrayList.add(item);
+            satellitesObjectMap.put(satelliteName, arrayList);
+        }
+        
         if (isNew)
             satellites.add(item);
     }
@@ -73,6 +90,36 @@ public class Satellites {
         satellites.clear();
         ITEMS.clear();
         ITEM_MAP.clear();
+        satellitesObjectMap.clear();
+    }
+
+    public String[] getSatelliteNameArray(){
+        Set<String> set = satellitesObjectMap.keySet();
+        String[] arr = new String[set.size()];
+        set.toArray(arr);
+        return arr;
+    }
+
+    public String[] getCitiesArray(String satelliteName){
+        ArrayList<SatelliteInfo>  locationInfos = satellitesObjectMap.get(satelliteName);
+        String[] array = new String[locationInfos.size()];
+        int i = 0;
+        for (SatelliteInfo satelliteInfo : locationInfos) {
+            array[i++] = satelliteInfo.name;
+        }
+        return array;
+    }
+
+    public SatelliteInfo getSatelliteInfoBySatelliteNameCity(String satelliteName, String city){
+        ArrayList<SatelliteInfo>  locationInfos = satellitesObjectMap.get(satelliteName);
+        if (locationInfos != null && locationInfos.size() > 0){
+            for (SatelliteInfo satelliteInfo : locationInfos) {
+                if (satelliteInfo.name.equals(city)) {
+                    return satelliteInfo;
+                }
+            }
+        }
+        return null;
     }
 
     private int getIndex(String id){
@@ -97,12 +144,46 @@ public class Satellites {
         }
         satellites.set(index, item);
         ITEMS.set(index, item);
+        ITEM_MAP.put(id, item);
+
+        // 修改省份城市map数据
+        LocationInfo item = cities.get(itemIndex);
+        String province = item.getSatelliteName();
+        ArrayList<LocationInfo> arrayList = provinceObjectMap.get(province);
+        // 如果包含有该map数据
+        if (arrayList != null){
+            // 获取position
+            for (LocationInfo locationInfo1: arrayList){
+                // 找到城市名
+                if (locationInfo1.getName().equals(item.getName())){
+                    // 修改节点数据
+                    arrayList.set(arrayList.indexOf(locationInfo1), item);
+                }
+            }
+        }
     }
 
     public void deleteItem(SatelliteInfo satelliteInfo){
         ITEMS.remove(satelliteInfo);
         ITEM_MAP.remove(satelliteInfo.mId.toString());
         satellites.remove(satelliteInfo);
+
+        // 删除卫星极化map数据
+        LocationInfo item = cities.get(position);
+        String province = item.getSatelliteName();
+        ArrayList<LocationInfo> arrayList = provinceObjectMap.get(province);
+        // 如果包含有该map数据
+        if (arrayList != null && arrayList.contains(item)){
+            // 删除该节点
+            arrayList.remove(item);
+            // 删除后节点还有数据
+            if (arrayList.size() > 0) {
+                provinceObjectMap.put(province, arrayList);
+            }else {
+                // 删除后节点没有数据，删除该map节点
+                provinceObjectMap.remove(province);
+            }
+        }
     }
 
     public void deleteItem(int position){

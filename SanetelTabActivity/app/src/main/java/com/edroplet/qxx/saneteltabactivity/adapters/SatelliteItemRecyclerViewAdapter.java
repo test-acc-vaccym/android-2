@@ -1,8 +1,6 @@
 package com.edroplet.qxx.saneteltabactivity.adapters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,14 +10,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteDetailActivity;
-import com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteDetailFragment;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
-import com.edroplet.qxx.saneteltabactivity.utils.JsonLoad;
-import com.edroplet.qxx.saneteltabactivity.utils.RandomDialog;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 import java.util.ArrayList;
@@ -64,6 +57,7 @@ public class SatelliteItemRecyclerViewAdapter  extends RecyclerView.Adapter<Sate
     }
 
     public void deleteItem(SatelliteInfo item){
+        map.remove(mValues.indexOf(item));
         mValues.remove(item);
     }
 
@@ -93,7 +87,7 @@ public class SatelliteItemRecyclerViewAdapter  extends RecyclerView.Adapter<Sate
         if (isShowBox) {
             holder.mCheckbox.setVisibility(View.VISIBLE);
         } else {
-            holder.mCheckbox.setVisibility(View.INVISIBLE);
+            holder.mCheckbox.setVisibility(View.GONE);
         }
 
         //设置Tag

@@ -6,7 +6,11 @@
     <dimen name="pop_margin_horizontal">20dp</dimen>
     <dimen name="pop_margin_vertical">40dp</dimen>
 
-    <dimen name="fab_size">56dp</dimen>
+    <dimen name="fab_margin_top">110dp</dimen>
+    <dimen name="fab_margin_bottom">40dp</dimen>
+    <dimen name="fab_size">@dimen/fab_margin_bottom</dimen>
+    <dimen name="satellite_list_width">500dp</dimen>
+
     <dimen name="start_z">2dp</dimen>
     <dimen name="end_z">5dp</dimen>
 
@@ -15,7 +19,6 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="fab_margin_bottom">53dp</dimen>
     <dimen name="appbar_padding_top">2dp</dimen>
     <dimen name="title_font_size">16sp</dimen>
     <dimen name="toolbar_divider">2dp</dimen>
@@ -32,7 +35,7 @@
     <dimen name="item_width">200dp</dimen>
     <dimen name="text_margin">2dp</dimen>
     <dimen name="list_item_title_size">18sp</dimen>
-    <dimen name="list_item_text_size">14sp</dimen>
+    <dimen name="list_item_text_size">13sp</dimen>
     <dimen name="list_detail_padding">5dp</dimen>
     <dimen name="recycler_view_item_height">30dp</dimen>
 
@@ -42,7 +45,6 @@
     <dimen name="guide_list_item_padding">5dp</dimen>
 
     <dimen name="drawable_center_spacing">2dp</dimen>
-    <dimen name="fab_margin_top">110dp</dimen>
     <!--主页面-->
     <dimen name="main_application_image_max_height">200dp</dimen>
     <dimen name="main_margin_top">10dp</dimen>
@@ -67,7 +69,12 @@
     <dimen name="marginLeft">24dp</dimen>
     <dimen name="marginRight">24dp</dimen>
     <dimen name="message_marginTop">10dp</dimen>
+    <integer name="item_height">80</integer>
+    <integer name="title_size">24</integer>
+    <integer name="item_size">16</integer>
+    <integer name="button_size">18</integer>
+    <integer name="message_size">18</integer>
     <dimen name="input_marginTop">20dp</dimen>
-    <dimen name="input_marginLeft">26dp</dimen>
-    <dimen name="input_marginRight">26dp</dimen>
+    <dimen name="input_marginLeft">6dp</dimen>
+    <dimen name="input_marginRight">6dp</dimen>
 </resources>

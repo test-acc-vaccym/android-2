@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/administrator_searching_range"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingEnd="@dimen/activity_horizontal_margin"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
+                    android:id="@+id/administrator_setting_searching_range_radio_group"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="@dimen/layout_padding_left"
+                    android:layout_marginLeft="@dimen/layout_padding_left">
+
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/administrator_setting_searching_range_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:text="@string/administrator_setting_searching_range_1"/>
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/administrator_setting_searching_range_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/administrator_setting_searching_range_2" />
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/administrator_setting_searching_range_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/administrator_setting_searching_range_3" />
+
+                </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
+            </LinearLayout>
+            <include layout="@layout/pop_dialog_blue"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

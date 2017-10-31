@@ -74,7 +74,7 @@ public class NDialog {
     private int inputLineColor = Color.parseColor("#003333");
 
     private boolean hasDivider=true;//选择时，是否有分割线
-    private int dividerHeigh = 1;
+    private int dividerHeight = 1;
     private int dividerColor = Color.parseColor("#c1c1c1");
 
     private String[] items;
@@ -82,7 +82,7 @@ public class NDialog {
     private int itemSize = 14;
     private int itemGravity = Gravity.LEFT;
     private int itemHeigh = 50;
-    private boolean cancleable = true;
+    private boolean cancelable = true;
 
 
 
@@ -110,7 +110,7 @@ public class NDialog {
                 .setPositiveTextColor(Color.parseColor("#ff0000"))
                 .setButtonCenter(false)
                 .setButtonSize(14)
-                .setCancleable(true)
+                .setCancelable(true)
                 .setOnConfirmListener(new NDialog.OnConfirmListener() {
                     @Override
                     public void onClick(int which) {
@@ -163,9 +163,9 @@ public class NDialog {
                 .setItems(new String[]{"aaa", "bbb", "ccc", "ddd"})
                 .setItemGravity(Gravity.LEFT)
                 .setItemColor(Color.parseColor("#000000"))
-                .setItemHeigh(50)
-                .setItemSize(16)
-                .setDividerHeigh(1)
+                .setItemHeight((int)mContext.getResources().getInteger(R.integer.item_height))
+                .setItemSize((int)mContext.getResources().getInteger(R.integer.item_size))
+                .setDividerHeight(1)
                 .setAdapter(null)
                 .setDividerColor(Color.parseColor("#c1c1c1"))
                 .setHasDivider(true)
@@ -198,7 +198,7 @@ public class NDialog {
                 .setMessage(message)
                 .setTitle(title)
                 .setView(customView)
-                .setCancelable(cancleable)
+                .setCancelable(cancelable)
                 .setNegativeButton(negativeButtonText, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -259,7 +259,7 @@ public class NDialog {
         listView.setAdapter(adapter == null ? new AAdapter() : adapter);
         if (hasDivider) {
             listView.setDivider(new ColorDrawable(dividerColor));
-            listView.setDividerHeight(dividerHeigh);
+            listView.setDividerHeight(dividerHeight);
         } else {
             listView.setDividerHeight(0);
         }
@@ -407,8 +407,8 @@ public class NDialog {
     /****************参数statr*****************/
 
 
-    public NDialog setCancleable(boolean cancleable) {
-        this.cancleable = cancleable;
+    public NDialog setCancelable(boolean cancelable) {
+        this.cancelable = cancelable;
         return this;
     }
 
@@ -559,8 +559,8 @@ public class NDialog {
         return this;
     }
 
-    public NDialog setDividerHeigh(int px) {
-        this.dividerHeigh = px;
+    public NDialog setDividerHeight(int px) {
+        this.dividerHeight = px;
         return this;
     }
 
@@ -569,7 +569,7 @@ public class NDialog {
         return this;
     }
 
-    public NDialog setItemHeigh(int dp) {
+    public NDialog setItemHeight(int dp) {
         this.itemHeigh = dp;
         return this;
     }

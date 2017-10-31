@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/app_bar_height"
         android:gravity="center"
         android:text="@string/antenna_state_exploded"
         android:textStyle="bold"

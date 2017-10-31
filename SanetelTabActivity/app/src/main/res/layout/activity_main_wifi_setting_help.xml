@@ -20,9 +20,9 @@
             app:title="@string/main_wifi_setting_help_title"
             app:navigationIcon="@drawable/back"
             android:background="@color/state_bar_background"
-            app:titleTextColor="@color/title_text"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+            app:titleTextColor="@color/black"
+            app:titleTextAppearance="?android:attr/textAppearanceLarge"
+            app:layout_scrollFlags="scroll|enterAlways"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/toolbar_divider"

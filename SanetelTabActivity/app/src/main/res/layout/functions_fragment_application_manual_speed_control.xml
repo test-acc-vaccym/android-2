@@ -144,7 +144,7 @@
             android:paddingTop="10dp"
             android:paddingBottom="8dp"
             android:orientation="vertical">
-            <include layout="@layout/speed_control_scroll_page"/>
+            <!--include layout="@layout/speed_control_scroll_page"/-->
             <include layout="@layout/speed_control_draw_top_scroll_page"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

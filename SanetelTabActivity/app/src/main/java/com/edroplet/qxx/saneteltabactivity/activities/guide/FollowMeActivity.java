@@ -27,12 +27,24 @@ import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentSearchin
 import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomFAB;
 
 import java.util.ArrayList;
 
 public class FollowMeActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String POSITION="position";
+
+
+    public static enum FOLLOWME_PAGES_INDEX{
+        INDEX_EXPLODE,
+        INDEX_LOCATION,
+        INDEX_DESTINATION,
+        INDEX_SEARCH_MODE,
+        INDEX_SEARCHING,
+        INDEX_LOCKER,
+        INDEX_SAVING
+    }
     private MainViewPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
 
@@ -56,7 +68,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
         if (mViewPager == null){
             return;
         }
-        int count = mViewPager.getAdapter().getCount();
+        int count = mSectionsPagerAdapter.getCount();
         int now = mViewPager.getCurrentItem();
         switch (view.getId()) {
             case R.id.follow_me_bottom_nav_main:
@@ -75,7 +87,10 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
             case R.id.follow_me_bottom_nav_next:
                 StatusBarControl.setTitle(getString(R.string.follow_me_bottom_nav_next));
                 if (now == count - 1) {
-                    Toast.makeText(this, getString(R.string.follow_me_last_page), Toast.LENGTH_SHORT).show();
+                    StatusBarControl.setTitle(getString(R.string.follow_me_bottom_nav_done));
+                    // Toast.makeText(this, getString(R.string.follow_me_last_page), Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(FollowMeActivity.this, FunctionsActivity.class));
+                    finish();
                 }else{
                     mViewPager.setCurrentItem(now + 1);
                 }
@@ -328,6 +343,14 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
                     fab.setVisibility(View.INVISIBLE);
                     break;
             }
+
+            if (position == mSectionsPagerAdapter.getCount() - 1){
+                ((CustomButton)findViewById(R.id.follow_me_bottom_nav_next)).setText(R.string.follow_me_bottom_nav_done);
+            }else {
+                ((CustomButton)findViewById(R.id.follow_me_bottom_nav_next)).setText(R.string.follow_me_bottom_nav_next);
+            }
+
+            startPosition = position;
         }
 
         @Override

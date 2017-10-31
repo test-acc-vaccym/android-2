@@ -39,7 +39,7 @@
             android:drawableTop="@drawable/speed_manual"
             android:text="@string/main_application_operate_speed"
             android:clickable="true"
-            android:background="@color/button_blink"/>
+            android:background="@drawable/button_background"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             android:id="@+id/main_application_manual_location"
             android:layout_width="0dp"
@@ -48,7 +48,7 @@
             android:drawableTop="@drawable/location_manual"
             android:text="@string/main_application_operate_location"
             android:clickable="true"
-            android:background="@color/button_blink"/>
+            android:background="@drawable/button_background"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             android:id="@+id/main_application_manual_calculate"
             android:layout_width="0dp"
@@ -57,6 +57,6 @@
             android:drawableTop="@drawable/calculate_manual"
             android:text="@string/main_application_operate_calculate"
             android:clickable="true"
-            android:background="@color/button_blink"/>
+            android:background="@drawable/button_background"/>
     </LinearLayout>
 </LinearLayout>

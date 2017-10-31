@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="48dp"
-        android:background="@color/button_blink" >
+        android:background="@drawable/button_background" >
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             android:id="@+id/btn_title_left"
             android:layout_width="24dp"

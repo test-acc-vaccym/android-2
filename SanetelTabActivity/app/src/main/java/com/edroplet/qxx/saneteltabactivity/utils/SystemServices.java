@@ -21,6 +21,7 @@ import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager.WifiLock;
 import android.widget.Toast;
 
+import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.main.MainWifiSettingHelpActivity;
 import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
@@ -50,7 +51,8 @@ public class SystemServices {
         String currentSSID = getConnectWifiSsid(context);
         if (!currentSSID.contains(ssid)) {
             final RandomDialog rd = new RandomDialog(context);
-            rd.onConfirmEDropletDialogBuilder("没有连接设备\n请连接设备" + ssid, new DialogInterface.OnClickListener(){
+            rd.onConfirmEDropletDialogBuilder(context.getString(R.string.not_connected_wifi_prompt) + ssid, "?",
+                    new DialogInterface.OnClickListener(){
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     startWifiManager(activity);
@@ -87,7 +89,7 @@ public class SystemServices {
         public void openWifi(Context context) {
             if (!mWifiManager.isWifiEnabled()) {
                 mWifiManager.setWifiEnabled(true);
-            }else if (mWifiManager.getWifiState() == 2) {
+            }else if (mWifiManager.getWifiState() == WifiManager.WIFI_STATE_ENABLING) {
                 Toast.makeText(context,"亲，Wifi正在开启，不用再开了", Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(context,"亲，Wifi已经开启,不用再开了", Toast.LENGTH_SHORT).show();
@@ -98,9 +100,9 @@ public class SystemServices {
         public void closeWifi(Context context) {
             if (mWifiManager.isWifiEnabled()) {
                 mWifiManager.setWifiEnabled(false);
-            }else if(mWifiManager.getWifiState() == 1){
+            }else if(mWifiManager.getWifiState() == WifiManager.WIFI_STATE_DISABLED){
                 Toast.makeText(context,"亲，Wifi已经关闭，不用再关了", Toast.LENGTH_SHORT).show();
-            }else if (mWifiManager.getWifiState() == 0) {
+            }else if (mWifiManager.getWifiState() == WifiManager.WIFI_STATE_DISABLING) {
                 Toast.makeText(context,"亲，Wifi正在关闭，不用再关了", Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(context,"请重新关闭", Toast.LENGTH_SHORT).show();
@@ -109,13 +111,13 @@ public class SystemServices {
 
         // 检查当前WIFI状态
         public void checkState(Context context) {
-            if (mWifiManager.getWifiState() == 0) {
+            if (mWifiManager.getWifiState() == WifiManager.WIFI_STATE_DISABLING) {
                 Toast.makeText(context,"Wifi正在关闭", Toast.LENGTH_SHORT).show();
-            } else if (mWifiManager.getWifiState() == 1) {
+            } else if (mWifiManager.getWifiState() == WifiManager.WIFI_STATE_DISABLED) {
                 Toast.makeText(context,"Wifi已经关闭", Toast.LENGTH_SHORT).show();
-            } else if (mWifiManager.getWifiState() == 2) {
+            } else if (mWifiManager.getWifiState() == WifiManager.WIFI_STATE_ENABLING) {
                 Toast.makeText(context,"Wifi正在开启", Toast.LENGTH_SHORT).show();
-            } else if (mWifiManager.getWifiState() == 3) {
+            } else if (mWifiManager.getWifiState() == WifiManager.WIFI_STATE_ENABLED) {
                 Toast.makeText(context,"Wifi已经开启", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(context,"没有获取到WiFi状态", Toast.LENGTH_SHORT).show();
@@ -163,9 +165,9 @@ public class SystemServices {
             // 得到配置好的网络连接
             mWifiConfiguration = mWifiManager.getConfiguredNetworks();
             if (results == null) {
-                if(mWifiManager.getWifiState()==3){
+                if(mWifiManager.getWifiState()== WifiManager.WIFI_STATE_ENABLED){
                     Toast.makeText(context,"当前区域没有无线网络", Toast.LENGTH_SHORT).show();
-                }else if(mWifiManager.getWifiState()==2){
+                }else if(mWifiManager.getWifiState()== WifiManager.WIFI_STATE_ENABLING){
                     Toast.makeText(context,"WiFi正在开启，请稍后重新点击扫描", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(context,"WiFi没有开启，无法扫描", Toast.LENGTH_SHORT).show();

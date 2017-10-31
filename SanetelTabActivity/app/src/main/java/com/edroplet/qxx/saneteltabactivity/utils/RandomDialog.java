@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo;
 import com.edroplet.qxx.saneteltabactivity.view.EDropletDialogBuilder;
 import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
@@ -108,17 +109,18 @@ public class RandomDialog {
     public AlertDialog.Builder getAlertDialog(){return alertDialogBuilder; }
 
     public void onConfirmEDropletDialogBuilder(String message,
+                                               String secondButtonText,
                                                final DialogInterface.OnClickListener btnOkListener,
                                                final DialogInterface.OnClickListener btnHelpListener){
         new EDropletDialogBuilder(context)
                 .setTitle(context.getResources().getString(R.string.operate_confirm_title))
-                .setTitleSize(24)
+                .setTitleSize(context.getResources().getInteger(R.integer.title_size))
                 .setTitleColor(Color.parseColor("#000000"))
                 .setTitleBold(true)
                 .setTitleCenter(true)
                 .setMessageCenter(true)
                 .setMessage(message)
-                .setMessageSize(20)
+                .setMessageSize(context.getResources().getInteger(R.integer.message_size))
                 .setMessageBold(true)
                 .setMessageColor(Color.parseColor("#000000"))
                 //  第一个按钮
@@ -128,12 +130,12 @@ public class RandomDialog {
                 //  第3个按钮 中间
                 .setNeutralTextColor(Color.BLUE)
                 .setButtonCenter(false)
-                .setButtonSize(24)
-                .setCancleable(false)
+                .setButtonSize(context.getResources().getInteger(R.integer.button_size))
+                .setCancelable(false)
                 //  第一个按钮
                 .setNeutralButton(context.getResources().getString(R.string.operate_confirm_ok), btnOkListener)
                 //  第二个按钮
-                .setPositiveButton("？", btnHelpListener)
+                .setPositiveButton(secondButtonText, btnHelpListener)
                 //  第3个按钮
                 .setNegativeButton(context.getResources().getString(R.string.operate_confirm_cancel), new DialogInterface.OnClickListener() {
                     @Override
@@ -172,21 +174,40 @@ public class RandomDialog {
                 .create(EDropletDialogBuilder.CONFIRM).show();
     }
 
-    public void onInputBuilder (String message,
-                                String hint,
-                                EDropletDialogBuilder.OnInputListener inputListener){
-        new EDropletDialogBuilder(context).setTitle(message)
-                .setInputHintText(hint)
+
+    public void inputDialog() {
+        new EDropletDialogBuilder(context).setTitle(context.getString(R.string.main_collect_data_new_input_message))
+                .setInputHintText(context.getString(R.string.main_collect_data_new_input_hint))
                 .setInputHintTextColor(Color.parseColor("#c1c1c1"))
                 .setInputText("")
                 .setInputTextColor(Color.parseColor("#333333"))
                 .setInputTextSize(14)
                 .setInputType(InputType.TYPE_CLASS_TEXT)
                 .setInputLineColor(Color.parseColor("#00ff00"))
-                .setNegativeButtonText(context.getResources().getString(R.string.operate_confirm_cancel))
+                .setPositiveButtonText(context.getString(R.string.operate_confirm_ok))
+                .setNegativeButtonText(context.getString(R.string.operate_confirm_cancel))
                 .setNegativeTextColor(Color.parseColor("#c1c1c1"))
-                .setOnInputListener(inputListener).create(EDropletDialogBuilder.INPUT).show();
+                .setOnInputListener(new EDropletDialogBuilder.OnInputListener() {
+                    @Override
+                    public void onClick(String inputText, int which) {
+                        //which,0代表NegativeButton，1代表PositiveButton
+                        if (which == 1) {
+                            if (inputText.length()>0) {
+                                CollectHistoryFileInfo collectHistoryFileInfo = new CollectHistoryFileInfo(context);
+                                collectHistoryFileInfo.setDateTime(DateTime.getCurrentDateTime()).setFileName(inputText).save();
+                                Toast.makeText(context, context.getString(R.string.create_new_file_complete) + inputText, Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(context, context.getString(R.string.create_new_file_canceled), Toast.LENGTH_SHORT).show();
+                            }
+                        }else {
+                            Toast.makeText(context, context.getString(R.string.create_new_file_canceled), Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                }).create(EDropletDialogBuilder.INPUT).show();
+
     }
+
 
     public void onSelectBuilder (String message,
                                  EDropletDialogBuilder.OnConfirmListener btnOkListener,
@@ -195,9 +216,9 @@ public class RandomDialog {
                 .setItems(new String[]{"aaa", "bbb", "ccc", "ddd"})
                 .setItemGravity(Gravity.LEFT)
                 .setItemColor(Color.parseColor("#000000"))
-                .setItemHeigh(50)
+                .setItemHeight(50)
                 .setItemSize(16)
-                .setDividerHeigh(1)
+                .setDividerHeight(1)
                 .setAdapter(null)
                 .setDividerColor(Color.parseColor("#c1c1c1"))
                 .setHasDivider(true)

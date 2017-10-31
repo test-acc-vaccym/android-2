@@ -12,6 +12,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:actionBarStyle">@style/CustomActionBarStyle</item>
         <item name="android:spinnerDropDownItemStyle">@style/mySpinnerItemStyle</item>
+        <item name="android:textColor">@color/black</item>
     </style>
     <style name="textViewStyle" parent="AppTheme">
         <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
@@ -130,9 +131,20 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/button_text</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/button_background</item>
         <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Large</item>
     </style>
 
+    <style name="focus_button_horizontal_style" parent="button_horizontal_style">
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:defaultFocusHighlightEnabled">true</item>
+    </style>
+
+    <style name="focus_button_vertical_style" parent="button_vertical_style">
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:defaultFocusHighlightEnabled">true</item>
+    </style>
+    
     <style name="text_horizontal_style" parent="Base.TextAppearance.AppCompat.Medium">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
@@ -162,7 +174,7 @@
         <item name="android:layout_height">0dp</item>
         <item name="android:textColor">@color/button_text</item>
         <item name="android:textStyle">bold</item>
-        <item name="background">@color/floating_action_button_touch_tint</item>
+        <item name="android:background">@drawable/button_background</item>
         <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Large</item>
         <item name="android:layout_marginLeft">@dimen/guide_list_padding_left</item>
         <item name="android:layout_marginStart">@dimen/guide_list_padding_left</item>
@@ -216,6 +228,7 @@
         <item name="android:textColor">@color/button_text</item>
         <item name="android:textAppearance">?attr/textAppearanceSearchResultTitle</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/button_background</item>
     </style>
 
     <!--垂直布局-->

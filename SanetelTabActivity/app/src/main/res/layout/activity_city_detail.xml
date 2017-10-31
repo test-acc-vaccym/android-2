@@ -46,6 +46,8 @@
                 android:id="@+id/city_detail_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                app:titleTextColor="@color/black"
+                app:titleTextAppearance="?android:attr/textAppearanceLarge"
                 app:navigationIcon="@drawable/back"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
@@ -60,6 +62,22 @@
         android:layout_marginLeft="@dimen/text_margin"
         android:layout_marginStart="@dimen/text_margin"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        app:layout_anchor="@id/city_detail_container"
+        app:layout_anchorGravity="bottom"
+        android:gravity="bottom">
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/city_detail_save"
+            android:text="@string/main_me_error_report_save"
+            style="@style/button_horizontal_style"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/city_detail_return"
+            android:text="@string/main_me_error_report_return"
+            style="@style/button_horizontal_style"/>
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/city_detail_fab"

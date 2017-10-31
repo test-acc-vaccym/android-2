@@ -9,7 +9,7 @@
     <!-- 往SDCard写入数据权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 在SDCard中创建与删除文件权限 -->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <!-- 发送邮件 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -19,6 +19,8 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 网络状态改变的权限 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
 
+    <!-- android中隐藏与显示软键盘以及不自动弹出键盘的方法 -->
+    <!-- android:windowSoftInputMode="stateHidden" -->
     <!-- 改变WiFi多播状态 -->
     <application
         android:allowBackup="true"
@@ -52,7 +54,8 @@
             android:name=".activities.functions.ManualActivity"
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/title_activity_manual"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.guide.GuideEntryActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -72,12 +75,14 @@
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/main_settings_amplifier"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.settings.SatelliteDetailActivity"
             android:label="@string/title_satellite_detail"
             android:parentActivityName=".activities.settings.SatelliteListActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteListActivity" />
@@ -85,40 +90,53 @@
         <activity
             android:name=".activities.guide.FollowMeActivity"
             android:label="@string/title_activity_follow_me"
-            android:parentActivityName=".activities.guide.GuideEntryActivity" />
+            android:parentActivityName=".activities.guide.GuideEntryActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.main.MainActivity"
-            android:label="@string/title_activity_main" />
+            android:label="@string/title_activity_main"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.main.MainMeLanguageActivity"
             android:label="@string/title_activity_main_me_language"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.main.MainMeAboutActivity"
             android:label="@string/main_me_about_title"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.main.MainMeAdviceActivity"
             android:label="@string/main_me_advice_title"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.main.MainMeAppActivity"
             android:label="@string/main_me_app_title"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.main.MainMeErrorReportActivity"
             android:label="@string/main_me_error_report_title"
             android:theme="@style/AppTheme.NoActionBar" />
         <!-- 图片选择 -->
-        <activity android:name="com.yongchun.library.view.ImageSelectorActivity" />
-        <activity android:name="com.yongchun.library.view.ImagePreviewActivity" />
-        <activity android:name="com.yongchun.library.view.ImageCropActivity" />
+        <activity
+            android:name="com.yongchun.library.view.ImageSelectorActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.yongchun.library.view.ImagePreviewActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.yongchun.library.view.ImageCropActivity"
+            android:windowSoftInputMode="stateHidden" />
         <!-- 文件选择 -->
         <activity
             android:name="com.ssa.afilechooser.FileChooserActivity2"
             android:exported="false"
             android:icon="@drawable/ic_chooser"
-            android:label="@string/choose_file">
+            android:label="@string/choose_file"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.GET_CONTENT" />
 
@@ -134,7 +152,8 @@
             android:enabled="@bool/use_activity"
             android:exported="true"
             android:icon="@drawable/ic_chooser"
-            android:label="@string/choose_file">
+            android:label="@string/choose_file"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.GET_CONTENT" />
 
@@ -160,32 +179,71 @@
         <activity
             android:name=".activities.settings.CityLocationListActivity"
             android:label="@string/title_citylocation_list"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.settings.CityLocationDetailActivity"
             android:label="@string/title_citylocation_detail"
             android:parentActivityName=".activities.settings.CityLocationListActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.edroplet.qxx.saneteltabactivity.activities.settings.CityLocationListActivity" />
         </activity>
         <activity
             android:name=".activities.guide.WifiManagerActivity"
-            android:label="wifi" />
-        <activity android:name=".activities.guide.GuideExplodeActivity" />
-        <activity android:name=".activities.guide.GuideLocationActivity" />
-        <activity android:name=".activities.functions.MonitorHelpActivity" />
-        <activity android:name=".activities.settings.AdministratorLoginActivity" />
-        <activity android:name=".activities.main.MainWifiSettingHelpActivity" />
-        <activity android:name=".activities.functions.FunctionsCollectHistoryFileListActivity" />
-        <activity android:name=".activities.settings.NewCityActivity" />
-        <activity android:name=".activities.settings.NewSatelliteActivity" />
-        <activity android:name=".activities.settings.ReferenceSatelliteActivity" />
-        <activity android:name=".activities.settings.LowNoiseBlockOscillatorActivity" />
-        <activity android:name=".activities.settings.AntennaRestartActivity" />
-        <activity android:name=".activities.settings.SettingsPowerAmplifierEmitHelpActivity" />
-        <activity android:name=".activities.administrator.AdministratorActivity"></activity>
+            android:label="wifi"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.guide.GuideExplodeActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.guide.GuideLocationActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.functions.MonitorHelpActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.settings.AdministratorLoginActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.main.MainWifiSettingHelpActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.functions.FunctionsCollectHistoryFileListActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.settings.NewCityActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.settings.NewSatelliteActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.settings.ReferenceSatelliteActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.settings.LowNoiseBlockOscillatorActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.settings.AntennaRestartActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.settings.SettingsPowerAmplifierEmitHelpActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.administrator.AdministratorActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.administrator.AdministratorSettingsActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".activities.main.MainMeAboutBrowserActivity"
+            android:windowSoftInputMode="stateHidden" />
+
+
+        <!--服务-->
+        <!--下载服务-->
+        <service android:name=".services.DownLoadService"/>
     </application>
 
 </manifest>

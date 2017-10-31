@@ -17,7 +17,9 @@
             app:title="@string/main_settings_lnb_oscillator"
             android:background="@color/state_bar_background"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:navigationIcon="@drawable/back"/>
+            app:navigationIcon="@drawable/back"
+            app:titleTextColor="@color/black"
+            app:titleTextAppearance="?android:attr/textAppearanceLarge"/>
     </android.support.design.widget.AppBarLayout>
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"

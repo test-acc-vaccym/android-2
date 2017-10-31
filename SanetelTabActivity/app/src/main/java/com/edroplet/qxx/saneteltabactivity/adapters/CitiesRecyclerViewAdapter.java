@@ -72,15 +72,16 @@ public class CitiesRecyclerViewAdapter extends RecyclerView.Adapter<CitiesRecycl
         }
     }
 
-    public void deleteItem(int position){
-        map.remove(position);
-        mValues.remove(position);
+    public void deleteItem(LocationInfo locationInfo){
+        map.remove(mValues.indexOf(locationInfo));
+        mValues.remove(locationInfo);
     }
 
     //绑定视图管理者
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mItem = mValues.get(position);
+        holder.mProvinceView.setText(mValues.get(position).getProvince());
         holder.mNameView.setText(mValues.get(position).getName());
         holder.mLatitudeView.setText(String.valueOf(mValues.get(position).getLatitude()));
         holder.mLongitudeView.setText(String.valueOf(mValues.get(position).getLongitude()));
@@ -89,7 +90,7 @@ public class CitiesRecyclerViewAdapter extends RecyclerView.Adapter<CitiesRecycl
         if (isShowBox) {
             holder.checkBox.setVisibility(View.VISIBLE);
         } else {
-            holder.checkBox.setVisibility(View.INVISIBLE);
+            holder.checkBox.setVisibility(View.GONE);
         }
 
 
@@ -190,6 +191,7 @@ public class CitiesRecyclerViewAdapter extends RecyclerView.Adapter<CitiesRecycl
     //视图管理
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
+        public final TextView mProvinceView;
         public final TextView mNameView;
         public final TextView mLatitudeView;
         public final TextView mLongitudeView;
@@ -200,6 +202,7 @@ public class CitiesRecyclerViewAdapter extends RecyclerView.Adapter<CitiesRecycl
         public ViewHolder(View view) {
             super(view);
             mView = view;
+            mProvinceView = (CustomTextView) view.findViewById(R.id.city_list_province);
             mNameView = (CustomTextView) view.findViewById(R.id.city_list_name);
             mLatitudeView = (CustomTextView) view.findViewById(R.id.city_list_latitude);
             mLongitudeView = (CustomTextView) view.findViewById(R.id.city_list_longitude);

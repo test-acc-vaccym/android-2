@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.AdministratorLoginActivity;
@@ -83,9 +84,8 @@ public class FunctionsFragmentSettings extends Fragment {
                 startActivity(intent);
             }
         });
-        StatusButton customImageButton = view.findViewById(R.id.main_settings_administrator);
-        customImageButton.setText(getString(R.string.main_settings_administrator));
-        customImageButton.setOnClickListener(new View.OnClickListener() {
+
+        view.findViewById(R.id.main_settings_administrator).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), AdministratorLoginActivity.class);

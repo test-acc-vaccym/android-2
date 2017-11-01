@@ -100,21 +100,21 @@ public class Satellites {
         return arr;
     }
 
-    public String[] getCitiesArray(String satelliteName){
-        ArrayList<SatelliteInfo>  locationInfos = satellitesObjectMap.get(satelliteName);
-        String[] array = new String[locationInfos.size()];
+    public String[] getSatellitePolarizationArray(String satelliteName){
+        ArrayList<SatelliteInfo>  satelliteInfos = satellitesObjectMap.get(satelliteName);
+        String[] array = new String[satelliteInfos.size()];
         int i = 0;
-        for (SatelliteInfo satelliteInfo : locationInfos) {
-            array[i++] = satelliteInfo.name;
+        for (SatelliteInfo satelliteInfo : satelliteInfos) {
+            array[i++] = satelliteInfo.polarization;
         }
         return array;
     }
 
-    public SatelliteInfo getSatelliteInfoBySatelliteNameCity(String satelliteName, String city){
-        ArrayList<SatelliteInfo>  locationInfos = satellitesObjectMap.get(satelliteName);
-        if (locationInfos != null && locationInfos.size() > 0){
-            for (SatelliteInfo satelliteInfo : locationInfos) {
-                if (satelliteInfo.name.equals(city)) {
+    public SatelliteInfo getSatelliteInfoBySatelliteNamePolarization(String satelliteName, String polarization){
+        ArrayList<SatelliteInfo>  satelliteInfos = satellitesObjectMap.get(satelliteName);
+        if (satelliteInfos != null && satelliteInfos.size() > 0){
+            for (SatelliteInfo satelliteInfo : satelliteInfos) {
+                if (satelliteInfo.polarization.equals(polarization)) {
                     return satelliteInfo;
                 }
             }
@@ -147,17 +147,16 @@ public class Satellites {
         ITEM_MAP.put(id, item);
 
         // 修改省份城市map数据
-        LocationInfo item = cities.get(itemIndex);
-        String province = item.getSatelliteName();
-        ArrayList<LocationInfo> arrayList = provinceObjectMap.get(province);
+        String name = item.name;
+        ArrayList<SatelliteInfo> arrayList = satellitesObjectMap.get(name);
         // 如果包含有该map数据
         if (arrayList != null){
             // 获取position
-            for (LocationInfo locationInfo1: arrayList){
+            for (SatelliteInfo satelliteInfo1: arrayList){
                 // 找到城市名
-                if (locationInfo1.getName().equals(item.getName())){
+                if (satelliteInfo1.polarization.equals(item.polarization)){
                     // 修改节点数据
-                    arrayList.set(arrayList.indexOf(locationInfo1), item);
+                    arrayList.set(arrayList.indexOf(satelliteInfo1), item);
                 }
             }
         }
@@ -169,19 +168,19 @@ public class Satellites {
         satellites.remove(satelliteInfo);
 
         // 删除卫星极化map数据
-        LocationInfo item = cities.get(position);
-        String province = item.getSatelliteName();
-        ArrayList<LocationInfo> arrayList = provinceObjectMap.get(province);
+        String name = satelliteInfo.name;
+
+        ArrayList<SatelliteInfo> arrayList = satellitesObjectMap.get(name);
         // 如果包含有该map数据
-        if (arrayList != null && arrayList.contains(item)){
+        if (arrayList != null && arrayList.contains(satelliteInfo)){
             // 删除该节点
-            arrayList.remove(item);
+            arrayList.remove(satelliteInfo);
             // 删除后节点还有数据
             if (arrayList.size() > 0) {
-                provinceObjectMap.put(province, arrayList);
+                satellitesObjectMap.put(name, arrayList);
             }else {
                 // 删除后节点没有数据，删除该map节点
-                provinceObjectMap.remove(province);
+                satellitesObjectMap.remove(name);
             }
         }
     }

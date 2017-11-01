@@ -1,5 +1,6 @@
 package com.edroplet.qxx.saneteltabactivity.activities.functions;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
@@ -14,7 +15,11 @@ import android.view.ViewGroup;
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteDetailActivity;
 import com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo;
+import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
+import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
+import com.will.ireader.IReaderMainActivity;
 
 import java.util.List;
 
@@ -27,6 +32,10 @@ import java.util.List;
  * item details side-by-side using two vertical panes.
  */
 public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity {
+    @BindId(R.id.main_collect_data_history_list_open)
+    CustomButton collectHistoryOpen;
+    @BindId(R.id.main_collect_data_history_list_delete)
+    CustomButton collectHistoryDelete;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -43,6 +52,13 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_functions_collect_history_list);
 
+        ViewInject.inject(this, this);
+        collectHistoryOpen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FunctionsCollectHistoryFileListActivity.this, IReaderMainActivity.class));
+            }
+        });
         Toolbar toolbar = (Toolbar) findViewById(R.id.history_list_toolbar);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();

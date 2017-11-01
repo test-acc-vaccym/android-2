@@ -244,6 +244,17 @@
         <!--服务-->
         <!--下载服务-->
         <service android:name=".services.DownLoadService"/>
+
+        <activity
+            android:name="com.will.ireader.IReaderMainActivity">
+            <!--intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter-->
+        </activity>
+        <activity android:name="com.will.ireader.page.PageActivity"/>
+        <activity android:name="com.will.ireader.chapter.ChapterActivity"/>
+
     </application>
 
 </manifest>

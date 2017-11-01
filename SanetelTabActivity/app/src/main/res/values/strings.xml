@@ -45,7 +45,7 @@
     <string name="antenna_state_paused">停止</string>
     <string name="antenna_state_searching">寻星</string>
     <string name="explode_confirm">你确定要展开吗？</string>
-    <string name="fold_confirm">你确定要展开吗？</string>
+    <string name="fold_confirm">你确定要收藏吗？</string>
     <string name="reset_confirm">你确定要复位吗？</string>
     <string name="searching_confirm">开始寻星？</string>
     <string name="switch_destination">切换目标星</string>
@@ -76,6 +76,7 @@
     <string name="create_new_file_canceled">您没有新建文件</string>
     <!--城市数据-->
     <string name="title_city_list">城市列表</string>
+    <string name="city_list_select_province">选择省份</string>
     <string name="title_city_detail">城市详情</string>
     <string name="select_all">全选</string>
     <string name="select_none">全不选</string>
@@ -316,6 +317,8 @@
     <string name="main_collect_data_history_list_title">历史文件</string>
     <string name="main_collect_data_history_list_name">文件名称</string>
     <string name="main_collect_data_history_list_date">时间</string>
+    <string name="main_collect_data_history_list_open">打开文件</string>
+    <string name="main_collect_data_history_list_delete">删除文件</string>
     <string name="main_collect_data_new">▯ 新建文件</string>
     <string name="main_collect_data_new_file_name">输入文件名称</string>
     <string name="main_collect_data_clear">▲清空</string>
@@ -462,7 +465,7 @@
     <string name="main_bottom_nav_me_about">关于卫通</string>
     <string name="main_bottom_nav_me_version">APP版本</string>
     <string name="main_bottom_nav_me_switch_device">切换设备</string>
-    <string name="main_bottom_nav_me_language_zh_cn">简中体文</string>
+    <string name="main_bottom_nav_me_language_zh_cn">简体中文</string>
     <string name="main_bottom_nav_me_language_english">English</string>
     <string name="main_me_font">修改字体</string>
     <string name="main_me_font_simhei">黑体</string>

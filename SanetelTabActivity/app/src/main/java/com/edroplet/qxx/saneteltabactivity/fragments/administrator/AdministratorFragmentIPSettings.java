@@ -67,7 +67,7 @@ public class AdministratorFragmentIPSettings extends Fragment {
         ipAddress.setText(address);
 
         ipMask = view.findViewById(R.id.administrator_setting_ip_mask);
-        String mask = CustomSP.getString(context,IPSettingsAddressKey, "");
+        String mask = CustomSP.getString(context,IPSettingsMaskKey, "");
         ipMask.setText(mask);
 
         thirdButton = view.findViewById(R.id.pop_dialog_third_button);

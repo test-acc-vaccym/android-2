@@ -62,7 +62,7 @@
     <dimen name="settings_linear_shadow_padding_left">20dp</dimen>
 
     <!--单选组-->
-    <dimen name="radio_group_width">100dp</dimen>
+    <dimen name="radio_group_width">120dp</dimen>
     <dimen name="radio_group_city_padding">10dp</dimen>
 
     <!--EDropletDialogBuilder-->

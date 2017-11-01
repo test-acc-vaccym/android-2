@@ -23,7 +23,7 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
  */
 
 public class AdministratorFragmentWifiSettings extends Fragment {
-    private static final String WifiSettingsNameKey = "deviceName";
+    public static final String WifiSettingsNameKey = "deviceName";
 
     private static final int[] icons = {R.drawable.antenna_exploded};
 

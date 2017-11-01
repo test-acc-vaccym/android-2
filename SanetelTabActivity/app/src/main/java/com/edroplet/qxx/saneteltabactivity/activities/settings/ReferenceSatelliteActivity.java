@@ -71,11 +71,12 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
         bundle.putBoolean(PopDialog.SHOWSECOND, true);
         bundle.putString(PopDialog.SECOND,getString(R.string.settings_reference_message_second_line));
         bundle.putBoolean(PopDialog.SHOWTHIRD, true);
-        String start = getString(R.string.follow_me_message_click);
-        bundle.putString(PopDialog.START,start);
+
+        bundle.putString(PopDialog.START,getString(R.string.follow_me_message_click));
+        bundle.putString(PopDialog.END,getString(R.string.settings_reference_message_third_end));
         popDialog.setBundle(bundle);
         popDialog.setSetFirstColor(true);
-        popDialog.setButtonText(this,getString(R.string.main_settings_administrator_password_third_button));
+        popDialog.setButtonText(this,getString(R.string.setting_button_text));
         popDialog.show();
         
     }

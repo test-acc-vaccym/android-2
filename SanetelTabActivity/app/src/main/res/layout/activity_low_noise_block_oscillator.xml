@@ -91,7 +91,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
-                        android:checked="true"
                         android:text="@string/settings_lnb_ku_value_1"/>
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:id="@+id/settings_lnb_ku_value_2"
@@ -116,6 +115,7 @@
                         android:layout_below="@id/settings_lnb_ku_value_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checked="true"
                         android:text="@string/settings_lnb_ku_value_5" />
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:id="@+id/settings_lnb_ku_value_6"

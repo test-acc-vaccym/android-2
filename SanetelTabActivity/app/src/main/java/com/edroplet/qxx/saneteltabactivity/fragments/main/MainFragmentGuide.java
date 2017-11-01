@@ -15,6 +15,8 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.guide.FollowMeActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.guide.GuideEntryActivity;
+import com.edroplet.qxx.saneteltabactivity.fragments.administrator.AdministratorFragmentWifiSettings;
+import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
 
 /**
@@ -34,6 +36,9 @@ public class MainFragmentGuide extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_main_guide, null);
+
+        device = CustomSP.getString(getContext(), AdministratorFragmentWifiSettings.WifiSettingsNameKey, device);
+
         /*
         view.findViewById(R.id.main_guide_iv).setOnClickListener(new View.OnClickListener() {
             @Override

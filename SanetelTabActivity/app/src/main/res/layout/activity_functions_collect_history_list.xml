@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteListActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -45,7 +46,7 @@
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/name_title"
                 android:layout_width="0dp"
-                android:layout_weight="1.5"
+                android:layout_weight="0.8"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/main_collect_data_history_list_name"
@@ -60,6 +61,10 @@
                 android:textSize="@dimen/list_item_title_size"
                 android:text="@string/main_collect_data_history_list_date"
                 style="?android:attr/textAppearanceLarge" />
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </android.support.design.widget.AppBarLayout>
     <FrameLayout
@@ -70,4 +75,17 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <include layout="@layout/collect_history_list" />
     </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            style="@style/button_horizontal_style"
+            android:id="@+id/main_collect_data_history_list_open"
+            android:text="@string/main_collect_data_history_list_open"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            style="@style/button_horizontal_style"
+            android:id="@+id/main_collect_data_history_list_delete"
+            android:text="@string/main_collect_data_history_list_delete"/>
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

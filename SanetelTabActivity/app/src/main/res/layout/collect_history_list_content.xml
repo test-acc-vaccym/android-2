@@ -6,7 +6,7 @@
     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
         android:id="@+id/collect_history_list_file_name"
         android:layout_width="0dp"
-        android:layout_weight="1.5"
+        android:layout_weight="0.8"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:textSize="@dimen/list_item_text_size"
@@ -19,4 +19,9 @@
         android:layout_margin="@dimen/text_margin"
         android:textSize="@dimen/list_item_text_size"
         android:textAppearance="?attr/textAppearanceListItem" />
+    <CheckBox
+        android:id="@+id/collect_history_list_check"
+        android:layout_width="0dp"
+        android:layout_weight="0.2"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

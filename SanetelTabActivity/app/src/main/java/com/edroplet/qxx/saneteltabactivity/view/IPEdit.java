@@ -78,7 +78,8 @@ public class IPEdit extends LinearLayout{
     }
 
     private void setIps(String ipAddress){
-        String[] ip = ipAddress.split(".");
+        // 这里是正则表达式，.和| 必须转义
+        String[] ip = ipAddress.split("\\.");
         if (ip.length == 4) {
             mIpAddrEdt1.setText(ip[0]);
             mIpAddrEdt2.setText(ip[1]);

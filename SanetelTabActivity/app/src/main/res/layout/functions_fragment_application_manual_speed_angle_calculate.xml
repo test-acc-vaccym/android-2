@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -15,14 +18,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.2"
+        android:layout_weight="1.5"
         android:orientation="vertical">
         <!--输入数据-->
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/angle_calculate_input_data"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,11 +33,11 @@
             android:layout_marginTop="2dp"
             android:orientation="horizontal">
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                android:padding="@dimen/no_padding"
                 android:layout_width="@dimen/radio_group_width"
                 android:layout_height="wrap_content"
                 android:text="@string/angle_calculate_satellite_select"
-                android:textColor="@color/blacklisted_call"/>
+                android:textColor="@color/blacklisted_call"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
             <Spinner
                 android:id="@+id/angle_calculate_spinner_satellites"
                 android:padding="@dimen/no_padding"
@@ -61,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/angle_calculate_local_location"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
         <!--单选框-->
         <RelativeLayout
             android:layout_width="match_parent"
@@ -76,12 +79,14 @@
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/angle_calculate_select_city" />
+                    android:text="@string/angle_calculate_select_city"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/angle_calculate_input_location"/>
+                    android:text="@string/angle_calculate_input_location"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
             </RadioGroup>
             <!--城市选择-->
             <LinearLayout
@@ -207,7 +212,6 @@
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:inputType="number|numberDecimal"
-                    android:padding="@dimen/no_padding"
                     android:hint="@string/location_control_setting_hint_val"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="0dp"
@@ -235,7 +239,6 @@
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:inputType="number|numberDecimal"
-                    android:padding="@dimen/no_padding"
                     android:hint="@string/location_control_setting_hint_val"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="0dp"
@@ -264,7 +267,6 @@
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:inputType="number|numberDecimal"
-                    android:padding="@dimen/no_padding"
                     android:hint="@string/location_control_setting_hint_val"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="0dp"
@@ -285,16 +287,20 @@
         android:orientation="horizontal"
         android:background="@color/bottom_tab_nav_background">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/angle_calculate_operate_calculate"
             style="@style/button_horizontal_style"
             android:layout_gravity="center_vertical"
             android:text="@string/angle_calculate_operate_calculate"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/angle_calculate_operate_clear"
             style="@style/button_horizontal_style"
             android:layout_gravity="center_vertical"
             android:text="@string/angle_calculate_operate_clear"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/angle_calculate_operate_use"
             style="@style/button_horizontal_style"
             android:layout_gravity="center_vertical"
             android:text="@string/angle_calculate_operate_use"/>
     </LinearLayout>
 </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

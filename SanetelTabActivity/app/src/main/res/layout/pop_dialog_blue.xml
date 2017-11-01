@@ -22,13 +22,13 @@
             android:layout_height="wrap_content"
             android:visibility="visible"
             android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
-            android:gravity="left|start"/>
+            android:gravity="center"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:id="@+id/pop_dialog_tv_second"
             style="@style/text_vertical_style"
             android:layout_height="wrap_content"
             android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
-            android:gravity="left|start"/>
+            android:gravity="center"/>
         <LinearLayout
             android:id="@+id/pop_dialog_third"
             style="@style/layout_vertical_style"

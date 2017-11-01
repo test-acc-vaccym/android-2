@@ -7,7 +7,7 @@
         android:id="@+id/top_movement"
         android:layout_marginTop="@dimen/main_margin_top"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="150dp"
         android:orientation="vertical">
         <!--运动方式-->
         <LinearLayout
@@ -43,7 +43,7 @@
         <LinearLayout
             android:layout_marginTop="@dimen/main_margin_top"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="110dp"
             android:orientation="vertical">
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:layout_height="0dp"
@@ -54,7 +54,7 @@
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
                 android:id="@+id/top_lactate_radio"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.5"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_marginStart="@dimen/layout_padding_left"
@@ -102,13 +102,16 @@
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                         android:id="@+id/top_custom_val"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_alignBottom="@id/top_custom_setting"
                         android:layout_toEndOf="@id/top_custom_setting"
                         android:layout_toRightOf="@id/top_custom_setting"
                         android:hint="@string/main_application_manual_speed_palstance_hint"
-                        android:inputType="number|numberDecimal"
-                        android:padding="0dp"/>
+                        android:paddingTop="@dimen/no_padding"
+                        android:paddingBottom="3dp"
+                        android:gravity="bottom"
+                        android:layout_gravity="bottom"
+                        android:inputType="number|numberDecimal"/>
                 </RelativeLayout>
             </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
 
@@ -125,6 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                android:id="@+id/manual_direction_left"
                 android:drawableTop="@drawable/arrow_left"
                 style="@style/focus_button_horizontal_style"
                 android:focusableInTouchMode="true"
@@ -132,10 +136,12 @@
                 android:text="@string/manual_direction"/>
             <!--android:background="@drawable/button_click_selector"-->
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                android:id="@+id/manual_pitch_up"
                 android:drawableTop="@drawable/arrow_up"
                 style="@style/focus_button_horizontal_style"
                 android:text="@string/manual_pitch"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                android:id="@+id/manual_polarization_up"
                 android:drawableTop="@drawable/arrow_right_up"
                 style="@style/focus_button_horizontal_style"
                 android:text="@string/manual_polarization"/>
@@ -144,14 +150,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                android:id="@+id/manual_direction_right"
                 android:drawableTop="@drawable/arrow_right"
                 style="@style/focus_button_horizontal_style"
                 android:text="@string/manual_direction"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                android:id="@+id/manual_pitch_down"
                 style="@style/focus_button_horizontal_style"
                 android:drawableTop="@drawable/arrow_down"
                 android:text="@string/manual_pitch" />
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                android:id="@+id/manual_polarization_down"
                 android:drawableTop="@drawable/arrow_left_down"
                 style="@style/focus_button_horizontal_style"
                 android:text="@string/manual_polarization"/>
@@ -164,6 +173,7 @@
                 android:clickable="false"
                 android:focusable="false"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                android:id="@+id/manual_pause"
                 android:drawableTop="@drawable/park_circle"
                 style="@style/focus_button_horizontal_style"
                 android:text="@string/manual_pause"/>

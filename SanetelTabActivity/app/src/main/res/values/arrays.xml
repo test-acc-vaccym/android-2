@@ -10,9 +10,19 @@
         <item>亚洲4号</item>
         <item>中星6A</item>
     </string-array>
-    <string-array name="satellites_local">
+    <string-array name="satellites_polarization">
         <item>水平</item>
         <item>垂直</item>
+    </string-array>
+
+    <string-array name="latitude_unit">
+        <item>°N</item>
+        <item>°S</item>
+    </string-array>
+
+    <string-array name="longitude_unit">
+        <item>°E</item>
+        <item>°W</item>
     </string-array>
 
     <string-array name="province">

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.edroplet.qxx.saneteltabactivity.activities.main.MainMeLanguageActivity"
+    tools:showIn="@layout/activity_main_me_language"
+    android:layout_marginStart="@dimen/guide_list_padding_left"
+    android:layout_marginLeft="@dimen/guide_list_padding_left">
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:textAlignment="textStart"
+            android:text="@string/main_bottom_nav_me_language_zh_cn"
+            android:button="@null"
+            android:drawableRight="@drawable/radio_button_checked"
+            android:drawableEnd="@drawable/radio_button_checked"
+            android:layout_marginEnd="@dimen/app_bar_height"
+            android:layout_marginRight="@dimen/app_bar_height"/>
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/app_bar_height"
+            android:layout_marginRight="@dimen/app_bar_height"
+            android:button="@null"
+            android:drawableEnd="@drawable/radio_button_checked"
+            android:drawableRight="@drawable/radio_button_checked"
+            android:text="@string/main_bottom_nav_me_language_english"
+            android:textAlignment="textStart" />
+    </RadioGroup>
+</LinearLayout>

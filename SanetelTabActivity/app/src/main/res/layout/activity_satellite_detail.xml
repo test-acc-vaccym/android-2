@@ -4,64 +4,92 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.SatelliteDetailActivity"
+    tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteDetailActivity"
     tools:ignore="MergeRootFrame">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/satellite_detail_app_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
+        android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/satellite_detail_toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginBottom="16dp"
             app:expandedTitleMarginStart="24dp"
-            app:expandedTitleTextAppearance="?android:attr/textAppearanceMedium"
+            app:expandedTitleTextAppearance="?android:attr/textAppearanceLarge"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/list_toolbar">
-            <ImageView
-                android:id="@+id/iv_satellite"
+
+            <FrameLayout android:layout_height="150dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:fitsSystemWindows="true"
-                android:src="@mipmap/s1"
-                android:scaleType="centerCrop" />
+                android:id="@+id/frameLayout_satellite">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.8"
+                    android:fitsSystemWindows="true"
+                    android:contentDescription="@string/detailed_incall_info_title"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/satellite1"/>
+                <Gallery android:layout_height="0dp"
+                    android:layout_width="match_parent"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/gallery01"
+                    android:spacing="5dp"/>
+            </FrameLayout>
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/detail_toolbar"
+                android:id="@+id/satellite_detail_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:navigationIcon="@drawable/back"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:titleTextColor="@color/black"
+                app:titleTextAppearance="?android:attr/textAppearanceLarge" />
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
-        android:id="@+id/city_detail_container"
+        android:id="@+id/satellite_detail_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/text_margin"
         android:layout_marginStart="@dimen/text_margin"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        app:layout_anchor="@id/satellite_detail_container"
+        app:layout_anchorGravity="bottom"
+        android:gravity="bottom">
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/satellite_detail_save"
+            android:text="@string/main_me_error_report_save"
+            style="@style/button_horizontal_style"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/satellite_detail_return"
+            android:text="@string/main_me_error_report_return"
+            style="@style/button_horizontal_style"/>
+    </LinearLayout>
+
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/satellite_detail_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|start"
-        android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@+id/city_detail_container"
+        android:layout_margin="@dimen/fab_margin_bottom"
+        app:layout_anchor="@id/satellite_detail_container"
         app:layout_anchorGravity="top|end"
         android:visibility="gone"
-        app:srcCompat="@android:drawable/stat_notify_chat" />
+        app:srcCompat="@mipmap/help"
+        android:background="@color/button_blink"/>
 
 </android.support.design.widget.CoordinatorLayout>

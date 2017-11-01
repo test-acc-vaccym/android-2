@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/main_margin_top">
-    <TextView
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/main_monitor_amplifier_info"
@@ -15,16 +17,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="@string/main_monitor_amplifier_status"
-                android:layout_height="wrap_content"/>
-            <TextView
+                android:textColor="@color/black_overlay"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/black_overlay"
                 android:text="@string/main_monitor_amplifier_value"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,15 +42,19 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
                 android:orientation="horizontal">
-                <TextView
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_status_state"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-                <TextView
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_monitor_amplifier_status_tv_state"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_amplifier_status_state_open"/>
             </LinearLayout>
@@ -51,16 +63,20 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <TextView
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_value_output"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-                <TextView
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_monitor_amplifier_tv_value_output"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
-                    android:hint="@string/main_monitor_amplifier_value_output"/>
+                    android:paddingEnd="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:hint="@string/main_monitor_amplifier_value_output_hint"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -71,33 +87,42 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
                 android:orientation="horizontal">
-                <TextView
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_status_temperature_state"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-                <TextView
+
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_monitor_amplifier_tv_temperature_state"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:hint="@string/main_monitor_amplifier_status_temperature_state_normal"/>
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="@string/main_monitor_amplifier_status_temperature_state_normal" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
                 android:orientation="horizontal">
-                <TextView
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_value_temperature"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-                <TextView
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_monitor_amplifier_tv_temperature"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
-                    android:hint="@string/main_monitor_amplifier_value_temperature"/>
+                    android:hint="@string/main_monitor_amplifier_value_temperature_hint"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -108,18 +133,27 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
                 android:orientation="horizontal">
-                <TextView
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_status_pll_state"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-                <TextView
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_monitor_amplifier_tv_status_pll"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_amplifier_status_pll_state_normal"/>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

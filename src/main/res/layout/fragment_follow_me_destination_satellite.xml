@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/status_bar_height"
+        android:gravity="center">
+        <!--目标星-->
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/status_bar_height"
+            android:text="@string/follow_me_destination_satellite_title"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+        <FrameLayout android:layout_height="150dp"
+            android:layout_width="fill_parent"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/destination_frameLayout_satellite">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.8"
+                android:fitsSystemWindows="true"
+                android:contentDescription="@string/detailed_incall_info_title"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/satellite1"/>
+            <Gallery android:layout_height="0dp"
+                android:layout_width="match_parent"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/gallery01"
+                android:spacing="5dp"/>
+        </FrameLayout>
+        <!--卫星选择-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/layout_padding_top"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <!--单选框-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!--单选组-->
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
+                    android:id="@+id/rbg_city"
+                    android:padding="@dimen/no_padding"
+                    android:layout_width="@dimen/radio_group_width"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/angle_calculate_satellite_select"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/angle_calculate_satellite_select"
+                        android:checked="true"/>
+
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/follow_me_destination_satellite_new"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/follow_me_destination_satellite_new"/>
+                </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
+                <!--卫星选择-->
+                <LinearLayout
+                    android:id="@+id/satellite_select"
+                    android:paddingLeft="@dimen/radio_group_city_padding"
+                    android:paddingStart="@dimen/radio_group_city_padding"
+                    android:layout_marginStart="@dimen/radio_group_width"
+                    android:layout_marginLeft="@dimen/radio_group_width"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true">
+
+                    <Spinner
+                        android:id="@+id/follow_me_destination_spinner_satellites_select"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/satellites" />
+
+                    <Spinner
+                        android:id="@+id/follow_me_destination_spinner_satellites_polarization_select"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/satellites_polarization" />
+                </LinearLayout>
+                <!--新卫星参数输入-->
+                <LinearLayout
+                    android:padding="@dimen/radio_group_city_padding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/satellite_select"
+                    android:layout_alignStart="@id/satellite_select"
+                    android:layout_below="@id/satellite_select"
+                    android:layout_alignEnd="@id/satellite_select"
+                    android:layout_alignRight="@id/satellite_select"
+                    android:orientation="vertical">
+                    <!--卫星名称-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/no_padding">
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/follow_me_destination_satellite_name" />
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                            android:id="@+id/follow_me_destination_satellite_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/no_padding"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+                    <!--极化方式-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/no_padding">
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/follow_me_destination_satellite_polarization" />
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                            android:id="@+id/follow_me_destination_satellite_polarization"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/no_padding"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+                    <!--卫星经度-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/no_padding">
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/follow_me_destination_satellite_longitude" />
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/no_padding"
+                            android:layout_weight="0.7" />
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center_vertical"
+                            android:layout_weight="0.3"
+                            android:text="@string/latitude_degree_unit" />
+                    </LinearLayout>
+                    <!--信标频率-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/no_padding">
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/follow_me_destination_satellite_beacon" />
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                            android:id="@+id/follow_me_destination_satellite_beacon"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/no_padding"
+                            android:layout_weight="0.6" />
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center_vertical"
+                            android:layout_weight="0.4"
+                            android:text="@string/frequency_unit" />
+                    </LinearLayout>
+                    <!--门    限-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/no_padding">
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/follow_me_destination_satellite_threshold" />
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                            android:id="@+id/follow_me_destination_satellite_threshold"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/no_padding"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+                    <!--DVB-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/no_padding">
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/follow_me_destination_satellite_dvb" />
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                            android:id="@+id/follow_me_destination_satellite_dvb"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/no_padding"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+        <include layout="@layout/pop_dialog_blue"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

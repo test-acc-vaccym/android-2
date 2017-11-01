@@ -12,6 +12,8 @@
 *.zip
 *.rar
 
+*.log
+
 AndroidUI-master
 App_BlueTooth
 BottomNavigation-master_v2

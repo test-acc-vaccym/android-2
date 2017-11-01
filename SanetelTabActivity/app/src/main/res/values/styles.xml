@@ -4,7 +4,6 @@
     <!--在Theme中隐藏现有的ActionBar-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
         <!--这是通过Style去设定icon-->
         <item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
         <!-- Customize your theme here. -->
@@ -12,16 +11,27 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:actionBarStyle">@style/CustomActionBarStyle</item>
+        <item name="android:spinnerDropDownItemStyle">@style/mySpinnerItemStyle</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="textViewStyle" parent="AppTheme">
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+    </style>
+    <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Medium</item>
     </style>
 
     <!-- 为 Theme 设置背景图 -->
-    <style name="AppStartTheme" parent="android:Theme">
+    <style name="AppStartTheme" parent="AppTheme">
         <!-- 为 Theme 设置透明属性 -->
         <item name="android:windowIsTranslucent">true</item>
+        <!--解决白屏的问题-->
         <!-- 为 Theme 设置背景图 -->
         <item name="android:windowBackground">@mipmap/welcome</item>
         <item name="android:windowNoTitle">true</item>
     </style>
+
     <style name="FullscreenTheme" parent="AppTheme">
         <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
         <item name="android:windowActionBarOverlay">true</item>
@@ -29,6 +39,7 @@
         <!--item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
         <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item-->
     </style>
+
     <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
     </style>
@@ -48,14 +59,16 @@
 
     <style name="guide_item_style" parent="Base.Widget.AppCompat.Button.Borderless">
         <item name="android:paddingTop">@dimen/guide_list_item_padding</item>
-        <item name="android:gravity">start|center_vertical</item>
-        <item name="android:layout_gravity">start</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">end|right</item>
         <item name="android:paddingLeft">@dimen/guide_list_item_padding</item>
-        <item name="android:textAppearance">?attr/textAppearanceSearchResultTitle</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Medium</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/button_background</item>
         <item name="android:clickable">false</item>
+        <item name="android:checkable">false</item>
+        <item name="android:focusable">false</item>
         <item name="android:layout_marginLeft">@dimen/guide_list_padding_left</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -63,12 +76,14 @@
     <style name="guide_item_flow_style" parent="Base.Widget.AppCompat.Button.Borderless">
         <item name="android:drawableRight">@drawable/process_ok</item>
         <item name="android:drawableEnd">@drawable/process_ok</item>
-        <item name="android:gravity">end|center_vertical</item>
-        <item name="android:layout_gravity">end</item>
+        <item name="android:paddingRight">30dp</item>
+        <item name="android:paddingEnd">30dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/button_background</item>
         <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:checkable">false</item>
     </style>
 
     <style name="guide_entry_list_style">
@@ -78,6 +93,7 @@
         <item name="android:layout_weight">1</item>
         <item name="android:clickable">true</item>
         <item name="android:orientation">horizontal</item>
+        <item name="android:background">@drawable/guide_main_item_background_color</item>
     </style>
 
     <style name="CustomActionBarStyle" parent="Widget.AppCompat.Light.ActionBar">
@@ -97,18 +113,72 @@
         <item name="android:padding">@dimen/spacing_medium</item>
         <item name="android:showDividers">middle</item>
     </style>
+
+    <style name="settings_linear_shadow" parent="linear_shadow">
+        <item name="android:paddingLeft">@dimen/layout_padding_left</item>
+        <item name="android:paddingStart">@dimen/layout_padding_left</item>
+    </style>
+
     <style name="manual_divider">
         <item name="android:divider">@drawable/spacer_medium</item>
         <item name="android:padding">@dimen/spacing_medium</item>
         <item name="android:showDividers">middle</item>
     </style>
-    <style name="button_style" parent="Base.Widget.AppCompat.Button.Borderless">
+
+    <style name="button_horizontal_style" parent="Base.Widget.AppCompat.Button.Borderless">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/button_text</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textAppearance">?attr/textAppearanceSearchResultTitle</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Large</item>
+    </style>
+
+    <style name="focus_button_horizontal_style" parent="button_horizontal_style">
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:defaultFocusHighlightEnabled">true</item>
+    </style>
+
+    <style name="focus_button_vertical_style" parent="button_vertical_style">
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:defaultFocusHighlightEnabled">true</item>
+    </style>
+    
+    <style name="text_horizontal_style" parent="Base.TextAppearance.AppCompat.Medium">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="pop_text_horizontal_style" parent="Base.TextAppearance.AppCompat.Medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+    <style name="text_vertical_style" parent="Base.TextAppearance.AppCompat.Medium">
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="button_vertical_style" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Large</item>
+        <item name="android:layout_marginLeft">@dimen/guide_list_padding_left</item>
+        <item name="android:layout_marginStart">@dimen/guide_list_padding_left</item>
+        <item name="android:gravity">left|start</item>
     </style>
 
     <style name="follow_me_navigation_bar" parent="Base.Widget.AppCompat.Button.Borderless">
@@ -147,4 +217,46 @@
         <item name="android:textAppearance">?attr/textAppearanceSearchResultTitle</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="pop_operate_bar_button_style" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginLeft">@dimen/no_padding</item>
+        <item name="android:layout_marginStart">@dimen/no_padding</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textAppearance">?attr/textAppearanceSearchResultTitle</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/button_background</item>
+    </style>
+
+    <!--垂直布局-->
+    <style name="layout_vertical_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingLeft">@dimen/layout_padding_left</item>
+        <!--<item name="android:layout_marginTop">@dimen/layout_padding_top</item>-->
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <!--水平布局-->
+    <style name="layout_horizontal_style">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingLeft">@dimen/layout_padding_left</item>
+    </style>
+
+    <style name="fileChooserName">
+        <item name="android:drawablePadding">@dimen/guide_list_item_padding</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:paddingLeft">@dimen/guide_list_item_padding</item>
+        <item name="android:paddingRight">@dimen/guide_list_item_padding</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+
 </resources>

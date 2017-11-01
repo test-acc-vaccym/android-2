@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.GuideEntryActivity">
+    tools:context="com.edroplet.qxx.saneteltabactivity.activities.guide.GuideEntryActivity">
     <android.support.v7.widget.Toolbar
         android:id="@+id/guide_tool_bar"
         android:layout_width="match_parent"
@@ -14,17 +14,21 @@
         android:layout_gravity="end"
         app:navigationIcon="@drawable/back"
         app:title="@null"
+        android:background="@color/title_background"
+        app:titleTextColor="@color/black"
+        app:titleTextAppearance="?android:attr/textAppearanceLarge"
         android:fitsSystemWindows="true">
-        <TextView
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:id="@+id/guide_toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="left|start"
             android:text="@string/follow_me_bottom_nav_main"
             android:textColor="@color/title_text"
             android:textStyle="bold"
-            android:textAppearance="?attr/textAppearanceSearchResultTitle"/>
-        <Button
+            android:textAppearance="?attr/textAppearanceSearchResultTitle"
+            tools:ignore="RtlHardcoded" />
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             android:id="@+id/guide_enter_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,11 +55,11 @@
             style="@style/linear_shadow">
             <!--android:layout_marginTop="@dimen/guide_list_padding_left"-->
             <LinearLayout
+                android:id="@+id/guide_main_button_explode"
                 style="@style/guide_entry_list_style">
-                <Button
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     style="@style/guide_item_flow_style"/>
-                <Button
-                    android:id="@+id/guide_main_button_explode"
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     android:drawableLeft="@drawable/satellite_vista"
                     android:drawableStart="@drawable/satellite_vista"
                     android:clickable="false"
@@ -63,67 +67,67 @@
                     style="@style/guide_item_style"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/guide_main_button_location"
                 style="@style/guide_entry_list_style">
-                <Button
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     style="@style/guide_item_flow_style"/>
-                <Button
-                    android:id="@+id/guide_main_button_location"
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     android:drawableLeft="@drawable/input"
                     android:drawableStart="@drawable/input"
                     android:text="@string/guide_main_location"
                     style="@style/guide_item_style"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/guide_main_button_destination"
                 style="@style/guide_entry_list_style">
-                <Button
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     style="@style/guide_item_flow_style"/>
-                <Button
-                    android:id="@+id/guide_main_button_destination"
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     android:drawableLeft="@drawable/satellites"
                     android:drawableStart="@drawable/satellites"
                     android:text="@string/guide_main_destination_satellite"
                     style="@style/guide_item_style"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/guide_main_button_search_mode"
                 style="@style/guide_entry_list_style">
-                <Button
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     style="@style/guide_item_flow_style"/>
-                <Button
-                    android:id="@+id/guide_main_button_search_mode"
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     android:drawableLeft="@drawable/searching_mode"
                     android:drawableStart="@drawable/searching_mode"
                     android:text="@string/guide_main_searching_mode"
                     style="@style/guide_item_style"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/guide_main_button_search"
                 style="@style/guide_entry_list_style">
-                <Button
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     style="@style/guide_item_flow_style"/>
 
-                <Button
-                    android:id="@+id/guide_main_button_search"
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     style="@style/guide_item_style"
                     android:drawableLeft="@drawable/guide_searching"
                     android:drawableStart="@drawable/guide_searching"
                     android:text="@string/guide_main_searching"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/guide_main_button_lock"
                 style="@style/guide_entry_list_style">
-                <Button
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     style="@style/guide_item_flow_style"/>
-                <Button
-                    android:id="@+id/guide_main_button_lock"
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     android:drawableLeft="@drawable/locked"
                     android:drawableStart="@drawable/locked"
                     android:text="@string/guide_main_lock"
                     style="@style/guide_item_style"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/guide_main_button_saving"
                 style="@style/guide_entry_list_style">
-                <Button
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     style="@style/guide_item_flow_style"/>
-                <Button
-                    android:id="@+id/guide_main_button_saving"
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                     android:drawableLeft="@drawable/saving"
                     android:drawableStart="@drawable/saving"
                     android:text="@string/guide_main_save"

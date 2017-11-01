@@ -2,96 +2,119 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <!--运动方式&角速度-->
     <LinearLayout
         android:id="@+id/top_movement"
         android:layout_marginTop="@dimen/main_margin_top"
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:orientation="vertical">
+        <!--运动方式-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:orientation="horizontal">
-            <TextView
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:text="@string/main_application_manual_speed_movement"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
-            <RadioGroup
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
+                android:id="@+id/main_application_manual_speed_movement_group_top"
                 android:layout_width="0dp"
                 android:layout_weight="2"
                 android:orientation="horizontal"
                 android:layout_height="match_parent">
-                <RadioButton
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    android:id="@+id/main_application_manual_speed_movement_step_top"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/main_application_manual_speed_movement_step"/>
-                <RadioButton
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    android:id="@+id/main_application_manual_speed_movement_continuous_top"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:checked="true"
                     android:text="@string/main_application_manual_speed_movement_continuous" />
-            </RadioGroup>
+            </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
         </LinearLayout>
+        <!--角速度-->
         <LinearLayout
             android:layout_marginTop="@dimen/main_margin_top"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="90dp"
             android:orientation="vertical">
-            <TextView
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:text="@string/main_application_manual_speed_palstance"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
+                android:id="@+id/top_lactate_radio"
                 android:layout_height="0dp"
-                android:layout_weight="1">
-                <RadioGroup
-                    android:id="@+id/lactate_radio"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content">
-                    <RadioButton
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/layout_padding_left"
+                android:layout_marginLeft="@dimen/layout_padding_left">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="0.1"/>
-                    <RadioButton
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="0.5"/>
-                    <RadioButton
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="1.0"/>
-                    <RadioButton
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/top_rd_three"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:checked="true"
                         android:text="3.0"/>
-                    <RadioButton
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/top_rd_five"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_toEndOf="@id/top_rd_three"
+                        android:layout_toRightOf="@id/top_rd_three"
                         android:text="5.0"/>
-                    <RadioButton
-                        android:id="@+id/custom_setting"
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/top_custom_setting"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"/>
-                </RadioGroup>
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@id/top_rd_five"
+                        android:layout_toRightOf="@id/top_rd_five"/>
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                        android:id="@+id/top_custom_val"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/top_custom_setting"
+                        android:layout_toEndOf="@id/top_custom_setting"
+                        android:layout_toRightOf="@id/top_custom_setting"
+                        android:hint="@string/main_application_manual_speed_palstance_hint"
+                        android:inputType="number|numberDecimal"
+                        android:padding="0dp"/>
+                </RelativeLayout>
+            </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
 
-                <EditText
-                    android:id="@+id/custom_val"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/lactate_radio"
-                    android:layout_toEndOf="@id/lactate_radio"
-                    android:layout_toRightOf="@id/lactate_radio"
-                    android:hint="1.0"
-                    android:inputType="number|numberDecimal"
-                    android:padding="0dp"/>
-            </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
+    <!--操作按键-->
     <LinearLayout
         android:layout_marginTop="@dimen/main_margin_top"
         android:orientation="vertical"
@@ -101,50 +124,52 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:drawableTop="@drawable/arrow_left"
-                style="@style/button_style"
+                style="@style/focus_button_horizontal_style"
+                android:focusableInTouchMode="true"
+                android:defaultFocusHighlightEnabled="true"
                 android:text="@string/manual_direction"/>
             <!--android:background="@drawable/button_click_selector"-->
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:drawableTop="@drawable/arrow_up"
-                style="@style/button_style"
+                style="@style/focus_button_horizontal_style"
                 android:text="@string/manual_pitch"/>
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:drawableTop="@drawable/arrow_right_up"
-                style="@style/button_style"
+                style="@style/focus_button_horizontal_style"
                 android:text="@string/manual_polarization"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:drawableTop="@drawable/arrow_right"
-                style="@style/button_style"
+                style="@style/focus_button_horizontal_style"
                 android:text="@string/manual_direction"/>
-            <Button
-                style="@style/button_style"
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                style="@style/focus_button_horizontal_style"
                 android:drawableTop="@drawable/arrow_down"
                 android:text="@string/manual_pitch" />
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:drawableTop="@drawable/arrow_left_down"
-                style="@style/button_style"
+                style="@style/focus_button_horizontal_style"
                 android:text="@string/manual_polarization"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <Button
-                style="@style/button_style"
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                style="@style/focus_button_horizontal_style"
                 android:clickable="false"
                 android:focusable="false"/>
-            <Button
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:drawableTop="@drawable/park_circle"
-                style="@style/button_style"
+                style="@style/focus_button_horizontal_style"
                 android:text="@string/manual_pause"/>
-            <!--android:background="@color/button_blink"-->
-            <Button
-                style="@style/button_style"
+            <!--android:background="@drawable/button_background"-->
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                style="@style/focus_button_horizontal_style"
                 android:clickable="false"
                 android:focusable="false"/>
         </LinearLayout>

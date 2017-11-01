@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.FollowMeActivity">
+    tools:context="com.edroplet.qxx.saneteltabactivity.activities.guide.FollowMeActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -18,12 +18,13 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/follow_me_content_toolbar"
             android:layout_width="match_parent"
-            app:titleTextAppearance="?attr/textAppearanceSearchResultTitle"
             android:layout_height="@dimen/status_bar_height"
             android:background="@color/state_bar_background"
-            app:layout_scrollFlags="scroll|enterAlways"
+            android:minHeight="96dp"
             app:navigationIcon="@drawable/back"
-            app:titleTextColor="@color/title_text">
+            app:titleTextColor="@color/black"
+            app:titleTextAppearance="?android:attr/textAppearanceLarge">
+            <!--app:layout_scrollFlags="scroll|enterAlways"-->
         </android.support.v7.widget.Toolbar>
         <!--分割线-->
         <View
@@ -35,17 +36,32 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/follow_me_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="fill_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_above="@+id/follow_me_navigation"/>
 
-    <android.support.design.widget.FloatingActionButton
+    <!--android.support.design.widget.FloatingActionButton
         android:id="@+id/follow_me_explode_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_menu_help"/>
+        android:layout_marginBottom="@dimen/fab_margin_bottom"
+        app:backgroundTint="@drawable/button_background"
+        app:srcCompat="@mipmap/help" /-->
+
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomFAB
+        android:id="@+id/follow_me_explode_fab"
+        android:layout_width="@dimen/fab_size"
+        android:layout_height="@dimen/fab_size"
+        android:src="@mipmap/help"
+        app:backgroundTint="@color/button_blink"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:layout_anchor="@id/follow_me_view_pager"
+        android:layout_gravity="bottom"
+        app:layout_anchorGravity="top|end"
+        app:pressedTranslationZ="12dp"
+        app:rippleColor="#a6a6a6" />
     <include layout="@layout/follow_me_bottom_navigation"/>
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

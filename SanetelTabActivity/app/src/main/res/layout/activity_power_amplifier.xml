@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.PowerAmplifierSettingsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/content_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/status_bar_height"
+            android:background="@color/state_bar_background"
+            app:titleTextColor="@color/black"
+            app:titleTextAppearance="?android:attr/textAppearanceLarge"
+            app:layout_scrollFlags="scroll|enterAlways">
+        </android.support.v7.widget.Toolbar>
+        <include android:id="@+id/operate_bar"
+            layout="@layout/operate_bar_top"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shadow"/>
+        <!--分割线-->
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_divider"
+        android:background="@color/gray"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/amplifier_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/app_bar_height"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <com.edroplet.qxx.saneteltabactivity.view.BottomNavigationViewEx
+        android:id="@+id/settings_power_amplifier_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:layout_gravity="bottom"
+        android:background="@color/title_background"
+        app:itemIconTint="@drawable/bottom_navigation_selector"
+        app:itemTextColor="@drawable/bottom_navigation_selector"
+        app:itemBackground="@color/title_background"
+        app:menu="@menu/menu_power_amplifier" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_above="@id/settings_power_amplifier_bottom_navigation"
+        android:background="@drawable/bottom_shadow" />
+
+    <!-- 搞不定 android.support.design.widget.TabLayout
+        android:id="@+id/power_amplifier_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:layout_below="@id/content_toolbar"
+        android:background="@color/bottom_tab_nav_background"
+        android:scrollbars="horizontal"
+        app:tabTextColor="@android:color/black"
+        app:tabSelectedTextColor="@color/tab_checked"
+        app:tabBackground="@android:color/white"
+        app:tabIndicatorColor="?attr/colorAccent"
+        app:tabPaddingStart="8dp"
+        app:tabPaddingEnd="8dp"
+        app:tabGravity="fill"
+        android:layout_gravity="bottom|end"/-->
+    <!--app:tabMode="scrollable"-->
+    <!--android.support.design.widget.FloatingActionButton
+        android:id="@+id/amplifier_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/fab_margin_bottom"
+        android:src="@mipmap/help"
+        app:backgroundTint="@drawable/button_background"
+        android:visibility="invisible"/-->
+
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomFAB
+        android:id="@+id/amplifier_fab"
+        android:layout_width="@dimen/fab_size"
+        android:layout_height="@dimen/fab_size"
+        android:src="@mipmap/help"
+        app:backgroundTint="@color/button_blink"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:layout_anchor="@id/amplifier_view_pager"
+        android:layout_gravity="bottom"
+        app:layout_anchorGravity="top|end"
+        app:pressedTranslationZ="12dp"
+        app:rippleColor="#a6a6a6" />
+</android.support.design.widget.CoordinatorLayout>

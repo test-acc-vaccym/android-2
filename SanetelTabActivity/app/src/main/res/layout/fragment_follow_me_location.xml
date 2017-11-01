@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/status_bar_height"
+        android:gravity="center">
+        <!--位置输入-->
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_bar_height"
+            android:text="@string/guide_main_location"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+
+        <FrameLayout android:layout_height="150dp"
+            android:layout_width="fill_parent"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/destination_frameLayout_location">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.8"
+                android:fitsSystemWindows="true"
+                android:contentDescription="@string/detailed_incall_info_title"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/satellites"/>
+            <Gallery android:layout_height="0dp"
+                android:layout_width="match_parent"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/gallery01"
+                android:spacing="5dp"/>
+        </FrameLayout>
+        <!--本地位置-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/layout_padding_top"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <!--单选框-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!--单选组-->
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
+                    android:id="@+id/rbg_city"
+                    android:padding="@dimen/no_padding"
+                    android:layout_width="@dimen/radio_group_width"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/follow_me_location_db_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/follow_me_location_db_city"
+                        android:checked="true"/>
+
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/follow_me_location_new_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/follow_me_location_new_city"/>
+                </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
+                <!--城市选择-->
+                <LinearLayout
+                    android:id="@+id/city_select"
+                    android:paddingLeft="@dimen/radio_group_city_padding"
+                    android:paddingStart="@dimen/radio_group_city_padding"
+                    android:layout_marginStart="@dimen/radio_group_width"
+                    android:layout_marginLeft="@dimen/radio_group_width"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true">
+
+                    <!--android:layout_toEndOf="@+id/rbg_city"-->
+                    <!--android:layout_toRightOf="@+id/rbg_city"-->
+
+                    <Spinner
+                        android:id="@+id/follow_me_spinner_province"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/province" />
+
+                    <Spinner
+                        android:id="@+id/follow_me_spinner_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/city" />
+                </LinearLayout>
+                <!--城市位置输入-->
+                <LinearLayout
+                    android:paddingLeft="@dimen/radio_group_city_padding"
+                    android:paddingStart="@dimen/radio_group_city_padding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/city_select"
+                    android:layout_alignStart="@id/city_select"
+                    android:layout_below="@id/city_select"
+                    android:layout_alignEnd="@id/city_select"
+                    android:layout_alignRight="@id/city_select"
+                    android:orientation="vertical">
+                     <!--省份-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/city_detail_province" />
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                            android:id="@+id/follow_me_location_et_new_province"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                    </LinearLayout>
+                    <!--// 城市-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/city_detail_name_key" />
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                            android:id="@+id/follow_me_location_et_new_city"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                    </LinearLayout>
+                    <!--// 经度-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/angle_calculate_local_longitude" />
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                            android:id="@+id/follow_me_location_et_new_longitude"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.2" />
+
+                        <Spinner
+                            android:id="@+id/follow_me_location_spinner_new_longitude_nit"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center_vertical"
+                            android:layout_weight="0.8"
+                            android:entries="@array/longitude_unit"/>
+                    </LinearLayout>
+                    <!--// 纬度-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/angle_calculate_local_latitude" />
+
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                            android:id="@+id/follow_me_location_et_new_latitude"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.2" />
+
+                        <Spinner
+                            android:id="@+id/follow_me_location_spinner_new_latitude_unit"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center_vertical"
+                            android:layout_weight="0.8"
+                            android:entries="@array/latitude_unit"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+        <include layout="@layout/pop_dialog_blue"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.LowNoiseBlockOscillatorActivity">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/lnb_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/lnb_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_bar_height"
+            app:title="@string/main_settings_lnb_oscillator"
+            android:background="@color/state_bar_background"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:navigationIcon="@drawable/back"/>
+    </android.support.design.widget.AppBarLayout>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/layout_lnb_ka"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_lnb_value"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingEnd="@dimen/activity_horizontal_margin"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                <!--单选框-->
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
+                    android:id="@+id/low_noise_block_oscillator_ka_radio_group"
+                    android:orientation="vertical"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium">
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/settings_lnb_ka_value_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/settings_lnb_ka_value_1"/>
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/settings_lnb_ka_value_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_lnb_ka_value_2" />
+                </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_lnb_ku"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_lnb_value"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingEnd="@dimen/activity_horizontal_margin"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
+                    android:id="@+id/low_noise_block_oscillator_ku_radio_group"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="@dimen/layout_padding_left"
+                    android:layout_marginLeft="@dimen/layout_padding_left">
+
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/settings_lnb_ku_value_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:checked="true"
+                        android:text="@string/settings_lnb_ku_value_1"/>
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/settings_lnb_ku_value_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/settings_lnb_ku_value_1"
+                        android:text="@string/settings_lnb_ku_value_2" />
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/settings_lnb_ku_value_3"
+                        android:layout_below="@id/settings_lnb_ku_value_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_lnb_ku_value_3" />
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/settings_lnb_ku_value_4"
+                        android:layout_below="@id/settings_lnb_ku_value_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_lnb_ku_value_4" />
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/settings_lnb_ku_value_5"
+                        android:layout_below="@id/settings_lnb_ku_value_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_lnb_ku_value_5" />
+                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/settings_lnb_ku_value_6"
+                        android:layout_below="@id/settings_lnb_ku_value_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_lnb_ku_value_6" />
+
+                    <!--单选-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                            android:id="@+id/settings_lnb_ku_value_7"
+                            android:layout_alignParentTop="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <!--卫星名-->
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                            android:id="@+id/top_custom_val"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/settings_lnb_ku_value_7"
+                            android:layout_toEndOf="@id/settings_lnb_ku_value_7"
+                            android:layout_toRightOf="@id/settings_lnb_ku_value_7"
+                            android:hint="@string/settings_lnb_ku_value_7"
+                            android:inputType="number|numberDecimal"
+                            android:padding="0dp"/>
+                    </RelativeLayout>
+                </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
+            </LinearLayout>
+            <include layout="@layout/pop_dialog_blue"
+                android:id="@+id/low_noise_block_oscillator_pop"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

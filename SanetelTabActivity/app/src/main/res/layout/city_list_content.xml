@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/recycler_view_item_height"
+    android:orientation="horizontal">
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        android:id="@+id/city_list_province"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/text_margin"
+        android:textSize="@dimen/list_item_text_size"
+        style="?attr/textAppearanceListItem"/>
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        android:id="@+id/city_list_name"
+        android:layout_width="0dp"
+        android:layout_weight="1.5"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/text_margin"
+        android:textSize="@dimen/list_item_text_size"
+        android:textAppearance="?attr/textAppearanceListItem" />
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        android:id="@+id/city_list_latitude"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/text_margin"
+        android:textSize="@dimen/list_item_text_size"
+        android:textAppearance="?attr/textAppearanceListItem" />
+    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        android:id="@+id/city_list_longitude"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/text_margin"
+        android:textSize="@dimen/list_item_text_size"
+        android:textAppearance="?attr/textAppearanceListItem" />
+    <!--com.edroplet.qxx.saneteltabactivity.view.custom.SmoothCheckBox
+        android:layout_gravity="center_vertical"
+        android:layout_width="0dp"
+        android:layout_weight="0.4"
+        android:layout_height="match_parent"
+        android:id="@+id/city_select_checkbox"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:stroke_width="3dp"/-->
+    <CheckBox
+        android:layout_width="0dp"
+        android:layout_weight="0.4"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:id="@+id/city_select_checkbox" />
+</LinearLayout>

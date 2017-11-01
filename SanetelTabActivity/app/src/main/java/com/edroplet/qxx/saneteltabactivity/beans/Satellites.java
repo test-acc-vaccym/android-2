@@ -25,7 +25,7 @@ import static android.content.ContentValues.TAG;
 public class Satellites {
     private Context mContext;
     private static ArrayList<SatelliteInfo> satellites;
-
+    private JsonLoad jl;
     private static Map<String, ArrayList<SatelliteInfo>> satellitesObjectMap = new HashMap<>();
     
     /**
@@ -49,7 +49,7 @@ public class Satellites {
     public Satellites(Context context) throws JSONException, IOException{
         mContext = context;
         if (satellites == null || satellites.size() == 0) {
-            JsonLoad jl = new JsonLoad(context, SatelliteInfo.satelliteJsonFile);
+            jl = new JsonLoad(context, SatelliteInfo.satelliteJsonFile);
             satellites = jl.loadSatellite();
             for (int i = 0; i < getItemCounts(); i++) {
                 addItem(satellites.get(i), false);
@@ -59,7 +59,7 @@ public class Satellites {
 
     public Satellites(Context context, boolean reload) throws JSONException, IOException {
         if (reload || satellites == null || satellites.size() == 0) {
-            JsonLoad jl = new JsonLoad(context, SatelliteInfo.satelliteJsonFile);
+            jl = new JsonLoad(context, SatelliteInfo.satelliteJsonFile);
             satellites = jl.loadSatellite();
             for (int i = 0; i < getItemCounts(); i++) {
                 addItem(satellites.get(i), false);
@@ -120,6 +120,12 @@ public class Satellites {
             }
         }
         return null;
+    }
+
+    public void save() throws JSONException, IOException{
+        if (jl != null && getItemCounts() > 0){
+            jl.saveSatellites(satellites);
+        }
     }
 
     private int getIndex(String id){

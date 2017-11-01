@@ -15,17 +15,20 @@
     android:layout_marginTop="@dimen/pop_margin_vertical"
     android:layout_marginBottom="@dimen/pop_margin_vertical"
     android:background="@drawable/pop"
-    android:layout_gravity="center"
-    android:gravity="center">
+    android:layout_gravity="center">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:id="@+id/pop_dialog_tv_first"
             style="@style/text_vertical_style"
+            android:layout_height="wrap_content"
             android:visibility="visible"
-            android:gravity="center"/>
+            android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
+            android:gravity="left|start"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:id="@+id/pop_dialog_tv_second"
             style="@style/text_vertical_style"
-            android:gravity="center"/>
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
+            android:gravity="left|start"/>
         <LinearLayout
             android:id="@+id/pop_dialog_third"
             style="@style/layout_vertical_style"
@@ -35,8 +38,9 @@
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/pop_dialog_tv_third_start"
                 style="@style/pop_text_horizontal_style"
+                android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
                 android:padding="@dimen/no_padding"
-                android:gravity="end|center"/>
+                android:gravity="end|center_vertical"/>
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:id="@+id/pop_dialog_third_button"
@@ -52,6 +56,7 @@
                 android:id="@+id/pop_dialog_tv_third_end"
                 style="@style/pop_text_horizontal_style"
                 android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
                 android:padding="@dimen/no_padding"
                 android:gravity="start|center_vertical"/>
         </LinearLayout>

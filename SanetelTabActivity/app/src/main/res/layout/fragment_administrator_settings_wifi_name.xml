@@ -14,6 +14,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/app_bar_height"
                 android:layout_height="@dimen/app_bar_height">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="wrap_content"

@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content">
 
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
-                        android:id="@+id/angle_calculate_satellite_select"
+                        android:id="@+id/follow_me_destination_satellite_select"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/angle_calculate_satellite_select"
@@ -121,8 +121,7 @@
                             android:id="@+id/follow_me_destination_satellite_name"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/no_padding"
-                            android:layout_weight="1" />
+                            android:layout_weight="2" />
                     </LinearLayout>
                     <!--极化方式-->
                     <LinearLayout
@@ -142,8 +141,7 @@
                             android:id="@+id/follow_me_destination_satellite_polarization"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/no_padding"
-                            android:layout_weight="1" />
+                            android:layout_weight="2" />
                     </LinearLayout>
                     <!--卫星经度-->
                     <LinearLayout
@@ -160,16 +158,16 @@
                             android:text="@string/follow_me_destination_satellite_longitude" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                            android:id="@+id/follow_me_destination_satellite_longitude"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/no_padding"
-                            android:layout_weight="0.7" />
+                            android:layout_weight="1.4" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start|center_vertical"
-                            android:layout_weight="0.3"
+                            android:layout_weight="0.6"
                             android:text="@string/latitude_degree_unit" />
                     </LinearLayout>
                     <!--信标频率-->
@@ -190,13 +188,12 @@
                             android:id="@+id/follow_me_destination_satellite_beacon"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/no_padding"
-                            android:layout_weight="0.6" />
+                            android:layout_weight="1.4" />
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start|center_vertical"
-                            android:layout_weight="0.4"
+                            android:layout_weight="0.6"
                             android:text="@string/frequency_unit" />
                     </LinearLayout>
                     <!--门    限-->
@@ -217,8 +214,7 @@
                             android:id="@+id/follow_me_destination_satellite_threshold"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/no_padding"
-                            android:layout_weight="1" />
+                            android:layout_weight="2" />
                     </LinearLayout>
                     <!--DVB-->
                     <LinearLayout
@@ -238,8 +234,7 @@
                             android:id="@+id/follow_me_destination_satellite_dvb"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/no_padding"
-                            android:layout_weight="1" />
+                            android:layout_weight="2" />
                     </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>

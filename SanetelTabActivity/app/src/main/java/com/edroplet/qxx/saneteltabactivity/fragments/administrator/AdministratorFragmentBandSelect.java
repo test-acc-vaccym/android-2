@@ -72,7 +72,7 @@ public class AdministratorFragmentBandSelect extends Fragment {
         radioButtonKa = view.findViewById(R.id.administrator_setting_band_ka);
         radioButtonKu = view.findViewById(R.id.administrator_setting_band_ku);
 
-        String type = CustomSP.getString(getContext(),BandTypeKey,getString(R.string.administrator_setting_band_ka));
+        String type = CustomSP.getString(getContext(),BandTypeKey,getString(R.string.administrator_setting_band_ku));
         if (type.equals(getString(R.string.administrator_setting_band_ka))){
             radioButtonKa.setChecked(true);
         }else{

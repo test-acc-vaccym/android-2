@@ -42,6 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
+        android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
         android:text="@string/settings_antenna_restart_message"
         android:paddingBottom="@dimen/main_margin_top"
         android:textAppearance="?android:attr/textAppearanceMedium"/>

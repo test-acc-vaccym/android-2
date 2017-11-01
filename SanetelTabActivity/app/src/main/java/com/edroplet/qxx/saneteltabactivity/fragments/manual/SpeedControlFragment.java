@@ -42,10 +42,14 @@ public class SpeedControlFragment extends Fragment {
                 Snackbar.make(v, "Don't click me.please!.", Snackbar.LENGTH_SHORT).show();
             }
         });
+
+        /** 只取上下结构 这段舍弃
         CustomRadioButton crbStep = view.findViewById(R.id.main_application_manual_speed_movement_step);
         crbStep.setOnCheckedChangeListener(mOnCheckedChangeListener);
         CustomRadioButton crbContinuous = view.findViewById(R.id.main_application_manual_speed_movement_continuous);
         crbContinuous.setOnCheckedChangeListener(mOnCheckedChangeListener);
+        */
+
         CustomRadioButton crbStepTop = view.findViewById(R.id.main_application_manual_speed_movement_step_top);
         crbStepTop.setOnCheckedChangeListener(mOnCheckedChangeListener);
         CustomRadioButton crbContinuousTop = view.findViewById(R.id.main_application_manual_speed_movement_continuous_top);

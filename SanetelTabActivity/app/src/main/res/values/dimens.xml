@@ -2,6 +2,9 @@
     <dimen name="no_padding">0dp</dimen>
     <dimen name="pop_height">450dp</dimen>
     <dimen name="splash_version_font_size">16sp</dimen>
+    <dimen name="spinner_custom_item_vertical_padding">5dp</dimen>
+
+    <dimen name="line_spacing_multiplier">1.5</dimen>
 
     <dimen name="pop_margin_horizontal">20dp</dimen>
     <dimen name="pop_margin_vertical">40dp</dimen>
@@ -60,7 +63,7 @@
 
     <!--单选组-->
     <dimen name="radio_group_width">100dp</dimen>
-    <dimen name="radio_group_city_padding">20dp</dimen>
+    <dimen name="radio_group_city_padding">10dp</dimen>
 
     <!--EDropletDialogBuilder-->
     <dimen name="title_size">16dp</dimen>

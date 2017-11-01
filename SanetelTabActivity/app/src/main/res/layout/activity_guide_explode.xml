@@ -33,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
             android:text="@string/follow_me_explode_help_message"/>
     </ScrollView>
 </LinearLayout>

@@ -28,5 +28,7 @@ public class CustomEditText extends AppCompatEditText {
         if (!isInEditMode()) {
             setTypeface(ChangeTypeFace.getSimHei(this.getContext()));
         }
+        // 3dp or 1.5倍
+        setLineSpacing(3,1.5f);
     }
 }

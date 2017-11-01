@@ -26,6 +26,8 @@ public class Cities {
     private Context mContext;
     private static ArrayList<LocationInfo> cities;
     private static Map<String, ArrayList<LocationInfo>> provinceObjectMap = new HashMap<>();
+    private JsonLoad jl;
+
     /**
      * An array of sample (dummy) items.
      */
@@ -47,7 +49,7 @@ public class Cities {
     public Cities(Context context) throws JSONException, IOException{
         mContext = context;
         if (cities == null || cities.size() == 0) {
-            JsonLoad jl = new JsonLoad(context, LocationInfo.citiesJsonFile);
+            jl = new JsonLoad(context, LocationInfo.citiesJsonFile);
             cities = jl.loadCities();
             // Add some sample items.
             for (int i = 0; i < getItemCounts(); i++) {
@@ -58,7 +60,7 @@ public class Cities {
     public Cities(Context context, boolean reload) throws JSONException, IOException{
         mContext = context;
         if (reload || cities == null || cities.size() == 0) {
-            JsonLoad jl = new JsonLoad(context, LocationInfo.citiesJsonFile);
+            jl = new JsonLoad(context, LocationInfo.citiesJsonFile);
             cities = jl.loadCities();
             // Add some sample items.
             for (int i = 0; i < getItemCounts(); i++) {
@@ -195,6 +197,12 @@ public class Cities {
         ITEMS.clear();
         ITEM_MAP.clear();
         provinceObjectMap.clear();
+    }
+
+    public void save() throws JSONException, IOException{
+        if (jl != null && getItemCounts() > 0){
+            jl.saveCities(cities);
+        }
     }
 
     private static LocationInfo createLocationInfo(int position) {

@@ -20,13 +20,19 @@
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="@string/main_monitor_amplifier_status"
-                android:layout_height="wrap_content"/>
+                android:textColor="@color/black_overlay"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/black_overlay"
                 android:text="@string/main_monitor_amplifier_value"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,7 +54,7 @@
                     android:id="@+id/main_monitor_amplifier_status_tv_state"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:gravity="center_vertical|right|end"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_amplifier_status_state_open"/>
             </LinearLayout>
@@ -66,7 +72,7 @@
                     android:id="@+id/main_monitor_amplifier_tv_value_output"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:gravity="center_vertical|right|end"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:paddingEnd="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -95,7 +101,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center_vertical|right|end"
+                    android:gravity="center"
                     android:hint="@string/main_monitor_amplifier_status_temperature_state_normal" />
             </LinearLayout>
             <LinearLayout
@@ -114,7 +120,7 @@
                     android:id="@+id/main_monitor_amplifier_tv_temperature"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:gravity="center_vertical|right|end"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_amplifier_value_temperature_hint"/>
             </LinearLayout>
@@ -139,7 +145,7 @@
                     android:id="@+id/main_monitor_amplifier_tv_status_pll"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:gravity="center_vertical|right|end"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_amplifier_status_pll_state_normal"/>
             </LinearLayout>

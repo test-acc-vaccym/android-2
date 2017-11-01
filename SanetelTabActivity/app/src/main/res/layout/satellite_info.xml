@@ -20,7 +20,7 @@
             android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -32,7 +32,7 @@
                     android:id="@+id/main_monitor_satellite_tv_name"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:gravity="center_vertical|right|end"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_satellite_name_hint"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -55,7 +55,7 @@
                     android:id="@+id/main_monitor_satellite_tv_longitude"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:gravity="center_vertical|right|end"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_satellite_longitude_hint"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -72,7 +72,7 @@
             android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -84,7 +84,7 @@
                     android:id="@+id/main_monitor_satellite_tv_beacon"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:gravity="center_vertical|right|end"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_satellite_beacon_hint"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -108,7 +108,7 @@
                     android:id="@+id/main_monitor_satellite_tv_polarization"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:gravity="center_vertical|right|end"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_satellite_polarization_hint"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -124,7 +124,7 @@
             android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -137,7 +137,7 @@
                     android:id="@+id/main_monitor_satellite_tv_agc"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:gravity="center_vertical|right|end"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_satellite_agc_hint"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView

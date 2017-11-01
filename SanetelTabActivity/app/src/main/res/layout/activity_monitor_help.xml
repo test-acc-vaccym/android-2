@@ -45,6 +45,7 @@
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
             android:text="@string/functions_monitor_help_message"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
     </LinearLayout>

@@ -238,24 +238,26 @@
         <activity
             android:name=".activities.administrator.AdministratorSettingsActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".activities.main.MainMeAboutBrowserActivity"
+        <activity
+            android:name=".activities.main.MainMeAboutBrowserActivity"
             android:windowSoftInputMode="stateHidden" />
 
+        <!-- 服务 -->
+        <!-- 下载服务 -->
+        <service android:name=".services.DownLoadService" />
 
-        <!--服务-->
-        <!--下载服务-->
-        <service android:name=".services.DownLoadService"/>
+        <activity android:name="com.will.ireader.IReaderMainActivity">
 
-        <activity
-            android:name="com.will.ireader.IReaderMainActivity">
-            <!--intent-filter>
+            <!--
+            intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter-->
+            </intent-filter
+            -->
         </activity>
-        <activity android:name="com.will.ireader.page.PageActivity"/>
-        <activity android:name="com.will.ireader.chapter.ChapterActivity"/>
-
+        <activity android:name="com.will.ireader.page.PageActivity" />
+        <activity android:name="com.will.ireader.chapter.ChapterActivity" />
+        <activity android:name=".activities.functions.ReaderTextActivity"></activity>
     </application>
 
 </manifest>

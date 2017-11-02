@@ -75,7 +75,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <include layout="@layout/collect_history_list" />
     </FrameLayout>
-    <LinearLayout
+    <!--LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
         app:layout_behavior="@string/bottom_sheet_behavior">
@@ -87,5 +87,5 @@
             style="@style/button_horizontal_style"
             android:id="@+id/main_collect_data_history_list_delete"
             android:text="@string/main_collect_data_history_list_delete"/>
-    </LinearLayout>
+    </LinearLayout-->
 </android.support.design.widget.CoordinatorLayout>

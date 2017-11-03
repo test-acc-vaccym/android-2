@@ -1,5 +1,6 @@
 package com.edroplet.qxx.saneteltabactivity.activities.functions;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
 import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
+import com.edroplet.qxx.saneteltabactivity.beans.PresetAngleInfo;
 import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
 import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 import com.edroplet.qxx.saneteltabactivity.fragments.manual.AngleCalculateFragment;
@@ -67,25 +69,35 @@ public class ManualActivity extends AppCompatActivity {
         public void onPageScrollStateChanged(int state) { }
     };
     public static String POSITION = "position";
+    public static String PRESET_AZIMUTH = "azimuth";
+    public static String PRESET_PITCH = "pitch";
+    public static String PRESET_POLARIZATION = "polarization";
+    private float azimuth = 0.000f;
+    private float pitch = 0.000f;
+    private float polarization = 0.000f;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual);
-        Bundle bundle = this.getIntent().getExtras();
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
 
         StatusBarControl.setupToolbar(this, R.id.main_content_toolbar);
         OperateBarControl.setupOperatorBar(this);
 
         viewPager = (ViewPager) findViewById(R.id.manual_viewpager);
         viewPager.addOnPageChangeListener(mOnPageChangeListener);
+
+        if(bundle != null && bundle.containsKey(PRESET_AZIMUTH))
+            azimuth = bundle.getFloat(PRESET_AZIMUTH);
+        if(bundle != null && bundle.containsKey(PRESET_PITCH))
+            pitch = bundle.getFloat(PRESET_PITCH);
+        if(bundle != null && bundle.containsKey(PRESET_POLARIZATION))
+            polarization = bundle.getFloat(PRESET_POLARIZATION);
+
         setupViewPager(viewPager);
-        //禁止ViewPager滑动
-        //        viewPager.setOnTouchListener(new View.OnTouchListener() {
-        //            @Override
-        //            public boolean onTouch(View v, MotionEvent event) {
-        //                return true;
-        //            }
-        //        });
+
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.manual_navigation);
         //默认 >3 的选中效果会影响ViewPager的滑动切换时的效果，故利用反射去掉
@@ -105,6 +117,7 @@ public class ManualActivity extends AppCompatActivity {
         }else if (position >= adapter.getCount()){
             position = adapter.getCount() - 1;
         }
+
         viewPager.setCurrentItem(position);
     }
 
@@ -112,7 +125,11 @@ public class ManualActivity extends AppCompatActivity {
         adapter = new MainViewPagerAdapter(getSupportFragmentManager());
 
         adapter.addFragment(SpeedControlFragment.newInstance(new AntennaInfo()));
-        adapter.addFragment(LocationControlFragment.newInstance(new AntennaInfo()));
+
+        PresetAngleInfo presetAngleInfo = new PresetAngleInfo();
+        presetAngleInfo.setAzimuth(azimuth).setPitch(pitch).setPolarization(polarization);
+        adapter.addFragment(LocationControlFragment.newInstance(presetAngleInfo));
+
         adapter.addFragment(AngleCalculateFragment.newInstance(new AntennaInfo()));
         viewPager.setAdapter(adapter);
     }

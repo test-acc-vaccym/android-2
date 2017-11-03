@@ -6,7 +6,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +20,9 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 import com.mcxtzhang.swipemenulib.SwipeMenuLayout;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by qxx on 2017/11/2.
@@ -26,12 +32,17 @@ public class CollectHistoryRecyclerViewAdapter extends RecyclerView.Adapter<Coll
 
     private Context mContext;
     private LayoutInflater mInfalter;
+    private boolean showCheckbox;
 
     private final List<CollectHistoryFileInfo> mValues;
+    private Map<Integer, Boolean> checkboxMap = new HashMap<>();
 
-    public CollectHistoryRecyclerViewAdapter(Context context, List<CollectHistoryFileInfo> items) {
+    public CollectHistoryRecyclerViewAdapter(Context context, List<CollectHistoryFileInfo> items, boolean showCheckBox) {
         this.mContext = context;
         this. mValues = items;
+        this.showCheckbox = showCheckBox;
+
+        initMap();
         mInfalter = LayoutInflater.from(context);
     }
 
@@ -45,13 +56,41 @@ public class CollectHistoryRecyclerViewAdapter extends RecyclerView.Adapter<Coll
         return new CollectHistoryViewHolder(mInfalter.inflate(R.layout.collect_history_list_content, parent, false));
     }
 
+    //返回集合给MainActivity
+    public Map<Integer, Boolean> getMap() {
+        return checkboxMap;
+    }
 
     @Override
     public void onBindViewHolder(final CollectHistoryViewHolder holder, final int position) {
         ((SwipeMenuLayout) holder.itemView).setIos(false).setLeftSwipe(position % 2 == 0 ? true : false);//这句话关掉IOS阻塞式交互效果 并依次打开左滑右滑
 
-        holder.mNameView.setText(holder.mItem.getFileName());
-        holder.mDateView.setText(holder.mItem.getDateTime());
+        holder.mNameView.setText(mValues.get(position).getFileName());
+        holder.mDateView.setText(mValues.get(position).getDateTime());
+
+        Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.list_anim);
+
+        if (showCheckbox) {
+            holder.checkBoxView.setVisibility(View.VISIBLE);
+            holder.checkBoxView.startAnimation(animation);
+            holder.checkBoxView.setChecked(checkboxMap.get(position));
+        } else {
+            holder.checkBoxView.setVisibility(View.GONE);
+        }
+
+        //设置checkBox改变监听
+        holder.checkBoxView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                //用map集合保存
+                checkboxMap.put(position, isChecked);
+            }
+        });
+
+        // 设置CheckBox的状态
+        if (checkboxMap.get(position) == null) {
+            checkboxMap.put(position, false);
+        }
 
         //验证长按
         holder.mNameView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -135,10 +174,10 @@ public class CollectHistoryRecyclerViewAdapter extends RecyclerView.Adapter<Coll
     class CollectHistoryViewHolder extends RecyclerView.ViewHolder {
         CustomTextView mNameView;
         CustomTextView mDateView;
-        CollectHistoryFileInfo mItem;
         CustomButton btnOpen;
         CustomButton btnDelete;
         CustomButton btnDeleteAll;
+        CheckBox checkBoxView;
 
         public CollectHistoryViewHolder(View itemView) {
             super(itemView);
@@ -147,6 +186,7 @@ public class CollectHistoryRecyclerViewAdapter extends RecyclerView.Adapter<Coll
             btnOpen = (CustomButton) itemView.findViewById(R.id.main_collect_data_history_list_open);
             btnDelete = (CustomButton) itemView.findViewById(R.id.main_collect_data_history_list_delete);
             btnDeleteAll = (CustomButton) itemView.findViewById(R.id.main_collect_data_history_list_delete_all);
+            checkBoxView = itemView.findViewById(R.id.collect_history_list_check);
         }
 
         @Override
@@ -154,4 +194,20 @@ public class CollectHistoryRecyclerViewAdapter extends RecyclerView.Adapter<Coll
             return super.toString() + "'" + mNameView.getText() + "'";
         }
     }
+
+
+    //初始化map集合,默认为不选中
+    public void initMap() {
+        checkboxMap.clear();
+        for (int i = 0; i < getItemCount(); i++) {
+            checkboxMap.put(i, false);
+        }
+    }
+    public void fillMap(){
+        checkboxMap.clear();
+        for (int i = 0; i < getItemCount(); i++) {
+            checkboxMap.put(i, true);
+        }
+    }
+
 }

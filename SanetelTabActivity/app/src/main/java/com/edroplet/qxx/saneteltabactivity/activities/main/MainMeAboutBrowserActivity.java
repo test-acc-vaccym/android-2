@@ -76,8 +76,8 @@ public class MainMeAboutBrowserActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            pdfView.fromFile(outFile)
-                    // pdfView.fromAsset(pdfName)
+            // pdfView.fromFile(outFile)
+                    pdfView.fromAsset(pdfName)
                     //.fromFile("")指定加载某个文件
                     //指定加载某一页
                 /*.pages(0, 1,2, 3, 4, 5)*/

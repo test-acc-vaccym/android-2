@@ -30,6 +30,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsCollectHistoryFileListActivity.KEY_IS_SELECT;
 import static com.yongchun.library.view.ImageSelectorActivity.REQUEST_OUTPUT;
 
 /**
@@ -172,6 +173,7 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
             case R.id.main_me_error_report_history:
                 noResult = false;
                 intent = new Intent(this, FunctionsCollectHistoryFileListActivity.class);
+                intent.putExtra(KEY_IS_SELECT, true);
                 startActivityForResult(intent, REQUEST_HISTORY_FILES);
                 break;
             default:

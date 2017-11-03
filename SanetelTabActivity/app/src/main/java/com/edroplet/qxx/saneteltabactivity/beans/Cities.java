@@ -162,6 +162,11 @@ public class Cities {
         return null;
     }
 
+    public List<LocationInfo> getLocationInfosByProvince(String province){
+        ArrayList<LocationInfo>  locationInfos = provinceObjectMap.get(province);
+        return locationInfos;
+    }
+
     public void deleteItem(LocationInfo locationInfo){
         ITEMS.remove(locationInfo);
         ITEM_MAP.remove(locationInfo.getName());

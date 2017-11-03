@@ -61,6 +61,17 @@
                 android:textSize="@dimen/list_item_title_size"
                 android:text="@string/main_collect_data_history_list_date"
                 style="?android:attr/textAppearanceLarge" />
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                android:id="@+id/polarization_title_select_all_or_not"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:textSize="@dimen/list_item_title_size"
+                android:text="@string/select_all"
+                android:background="@color/button_blink"
+                style="?android:attr/textAppearanceLarge"
+                android:visibility="gone"/>
             <View
                 android:layout_width="0dp"
                 android:layout_weight="0.2"
@@ -75,17 +86,19 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <include layout="@layout/collect_history_list" />
     </FrameLayout>
-    <!--LinearLayout
+    <LinearLayout
+        android:id="@+id/collect_history_list_operator"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
-        app:layout_behavior="@string/bottom_sheet_behavior">
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        android:visibility="gone">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             style="@style/button_horizontal_style"
-            android:id="@+id/main_collect_data_history_list_open"
-            android:text="@string/main_collect_data_history_list_open"/>
+            android:id="@+id/main_collect_data_history_list_select_ok"
+            android:text="@string/main_collect_data_history_list_select_ok"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             style="@style/button_horizontal_style"
-            android:id="@+id/main_collect_data_history_list_delete"
-            android:text="@string/main_collect_data_history_list_delete"/>
-    </LinearLayout-->
+            android:id="@+id/main_collect_data_history_list_select_cancel"
+            android:text="@string/main_collect_data_history_list_select_cancel"/>
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

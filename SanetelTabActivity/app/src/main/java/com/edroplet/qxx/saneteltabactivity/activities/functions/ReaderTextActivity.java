@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.services.AsyncTextLoadTask;
@@ -73,7 +74,7 @@ public class ReaderTextActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String fileName = null;
-        if (intent != null) {
+        if (intent != null && intent.hasExtra(ReadTextFilename)) {
             fileName = intent.getStringExtra(ReadTextFilename);
         }
         readTextScroll.setOnScrollChangedListener(new BorderScrollView.OnScrollChangedListener(){
@@ -104,6 +105,7 @@ public class ReaderTextActivity extends AppCompatActivity {
             }
         }catch(Exception ex){
             ex.printStackTrace();
+            Toast.makeText(this, ex.toString(), Toast.LENGTH_LONG);
         }
     }
 

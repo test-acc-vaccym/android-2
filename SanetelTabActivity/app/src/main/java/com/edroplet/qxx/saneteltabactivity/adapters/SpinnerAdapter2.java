@@ -39,7 +39,7 @@ public class SpinnerAdapter2 extends ArrayAdapter {
         TextView text = (TextView) convertView
                 .findViewById(textViewResourceId);
         text.setText(target[position]);
-        text.setBackgroundColor(Color.GREEN);
+        text.setBackgroundColor(Color.TRANSPARENT);
         text.setTextAppearance(context, android.R.style.TextAppearance_Medium);
         return convertView;
     }
@@ -58,7 +58,7 @@ public class SpinnerAdapter2 extends ArrayAdapter {
         TextView text = (TextView) convertView
                 .findViewById(android.R.id.text1);
         text.setText(target[position]);
-        text.setBackgroundColor(Color.RED);
+        text.setBackgroundColor(Color.GREEN);
         text.setTextAppearance(context, android.R.style.TextAppearance_Medium);
         return convertView;
     }

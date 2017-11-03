@@ -238,6 +238,7 @@
             android:layout_gravity="center"
             android:focusedByDefault="true"
             android:focusableInTouchMode="true"
+            android:focusable="true"
             android:defaultFocusHighlightEnabled="true"
             android:text="@string/location_control_rotate_start" />
     </LinearLayout>

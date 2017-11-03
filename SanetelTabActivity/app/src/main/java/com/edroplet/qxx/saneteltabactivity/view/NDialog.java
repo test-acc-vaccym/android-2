@@ -30,6 +30,8 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo;
 import com.edroplet.qxx.saneteltabactivity.utils.DateTime;
 
+import java.io.IOException;
+
 /**
  * Created by necer on 2017/5/23.
  */
@@ -143,8 +145,12 @@ public class NDialog {
                         if (which == 1) {
                             if (inputText.length()>0) {
                                 CollectHistoryFileInfo collectHistoryFileInfo = new CollectHistoryFileInfo(mContext);
-                                collectHistoryFileInfo.setDateTime(DateTime.getCurrentDateTime()).setFileName(inputText).save();
-                                Toast.makeText(mContext, mContext.getString(R.string.create_new_file_complete) + inputText, Toast.LENGTH_SHORT).show();
+                                try {
+                                    collectHistoryFileInfo.setDateTime(DateTime.getCurrentDateTime()).setFileName(inputText).save();
+                                    Toast.makeText(mContext, mContext.getString(R.string.create_new_file_complete) + inputText, Toast.LENGTH_SHORT).show();
+                                }catch (IOException e) {
+                                    Toast.makeText(mContext, e.toString(), Toast.LENGTH_SHORT).show();
+                                }
                             }else {
                                 Toast.makeText(mContext, mContext.getString(R.string.create_new_file_canceled), Toast.LENGTH_SHORT).show();
                             }

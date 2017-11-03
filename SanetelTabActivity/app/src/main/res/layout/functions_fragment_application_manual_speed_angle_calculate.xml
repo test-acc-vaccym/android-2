@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.5"
+        android:layout_marginBottom="@dimen/layout_padding_top"
         android:orientation="vertical">
         <!--输入数据-->
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -80,6 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/angle_calculate_select_city"
+                    android:checked="true"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
@@ -95,6 +97,7 @@
                 android:paddingStart="@dimen/radio_group_city_padding"
                 android:layout_marginStart="@dimen/radio_group_width"
                 android:layout_marginLeft="@dimen/radio_group_width"
+                android:layout_marginBottom="@dimen/layout_padding_top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -140,16 +143,18 @@
                         android:text="@string/angle_calculate_local_longitude" />
 
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                        android:id="@+id/angle_calculate_local_longitude"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <Spinner
+                        android:id="@+id/angle_calculate_local_longitude_unit"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start|center_vertical"
                         android:layout_weight="1"
-                        android:text="@string/latitude_degree_unit" />
+                        android:entries="@array/longitude_unit" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -163,16 +168,18 @@
                         android:text="@string/angle_calculate_local_latitude" />
 
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                        android:id="@+id/angle_calculate_local_latitude"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <Spinner
+                        android:id="@+id/angle_calculate_local_latitude_unit"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start|center_vertical"
                         android:layout_weight="1"
-                        android:text="@string/longitude_degree_unit" />
+                        android:entries="@array/latitude_unit" />
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
@@ -183,6 +190,7 @@
         android:layout_height="0dp"
         android:layout_weight="3"
         android:layout_marginTop="@dimen/layout_padding_top"
+        android:layout_marginBottom="@dimen/layout_padding_top"
         android:orientation="vertical">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:layout_width="match_parent"

@@ -320,6 +320,8 @@
     <string name="main_collect_data_history_list_open">打开文件</string>
     <string name="main_collect_data_history_list_delete">删除文件</string>
     <string name="main_collect_data_history_list_delete_all">删除所有</string>
+    <string name="main_collect_data_history_list_select_ok">确认</string>
+    <string name="main_collect_data_history_list_select_cancel">取消</string>
     <string name="main_collect_data_new">▯ 新建文件</string>
     <string name="main_collect_data_new_file_name">输入文件名称</string>
     <string name="main_collect_data_clear">▲清空</string>
@@ -402,7 +404,7 @@
     <string name="follow_me_destination_satellite_longitude">卫星经度</string>
     <string name="follow_me_destination_satellite_beacon">信标频率</string>
     <string name="follow_me_destination_satellite_threshold">门&#160;&#160;&#160;&#160;&#160;&#160;限</string>
-    <string name="follow_me_destination_satellite_dvb">DVB&#160;&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="follow_me_destination_satellite_dvb">符&#160;&#160;&#160;号&#160;&#160;&#160;率</string>
 
     <!--引导页寻星模式-->
     <string name="follow_me_search_mode_title">寻星模式</string>

@@ -67,7 +67,7 @@ public class GuideFragmentDestination extends Fragment {
     CustomEditText satelliteBeacon;
 
     @BindId(R.id.follow_me_destination_satellite_threshold)
-        CustomEditText satelliteThreshold;
+    CustomEditText satelliteThreshold;
 
     @BindId(R.id.follow_me_destination_satellite_dvb) CustomEditText satelliteDvb;
 

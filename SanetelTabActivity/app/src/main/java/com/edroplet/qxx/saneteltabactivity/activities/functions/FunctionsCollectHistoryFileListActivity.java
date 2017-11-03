@@ -16,22 +16,25 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteDetailActivity;
 import com.edroplet.qxx.saneteltabactivity.adapters.CollectHistoryRecyclerViewAdapter;
 import com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo;
+import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 import com.mcxtzhang.swipemenulib.SwipeMenuLayout;
-import com.will.ireader.IReaderMainActivity;
 
 import java.io.File;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static com.ssa.afilechooser.FileChooserActivity2.PATHS;
 
@@ -43,7 +46,8 @@ import static com.ssa.afilechooser.FileChooserActivity2.PATHS;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity {
+public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity implements View.OnClickListener{
+    public static  final String KEY_IS_SELECT = "KEY_IS_SELECT";
 
     /** 做成滑动菜单
     @BindId(R.id.main_collect_data_history_list_open)
@@ -54,11 +58,29 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity {
     @BindId(R.id.collect_history_list)
     private RecyclerView mRv;
 
+    @BindId(R.id.main_collect_data_history_list_select_ok)
+    CustomButton selectOk;
+
+    @BindId(R.id.main_collect_data_history_list_select_cancel)
+    CustomButton selectCancel;
+
+    @BindId(R.id.collect_history_list_check)
+    CheckBox checkBoxView;
+
+    @BindId(R.id.collect_history_list_operator)
+    LinearLayout linearLayoutOperator;
+
+    @BindId(R.id.polarization_title_select_all_or_not)
+    CustomButton selectAllOrNot;
+
     private LinearLayoutManager mLayoutManager;
     private List<CollectHistoryFileInfo> mDatas;
 
     private CollectHistoryRecyclerViewAdapter mAdapter;
     private Context context;
+
+    // 是否选择
+    boolean isSelect;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -76,7 +98,24 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_functions_collect_history_list);
 
         ViewInject.inject(this, this);
+
         context = this;
+        Intent intent = getIntent();
+
+        if (intent.hasExtra (KEY_IS_SELECT))
+            isSelect = intent.getBooleanExtra(KEY_IS_SELECT, false);
+
+
+        if (isSelect){
+            selectOk.setOnClickListener(this);
+            selectCancel.setOnClickListener(this);
+            selectAllOrNot.setOnClickListener(this);
+            linearLayoutOperator.setVisibility(View.VISIBLE);
+            selectAllOrNot.setVisibility(View.VISIBLE);
+        }else {
+            linearLayoutOperator.setVisibility(View.GONE);
+            selectAllOrNot.setVisibility(View.GONE);
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.history_list_toolbar);
         setSupportActionBar(toolbar);
@@ -93,22 +132,29 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity {
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         try {
-            CollectHistoryFileInfo collectHistoryFileInfo = new CollectHistoryFileInfo(this);
+            final CollectHistoryFileInfo collectHistoryFileInfo = new CollectHistoryFileInfo(this);
             mDatas = collectHistoryFileInfo.getList();
-            mAdapter = new CollectHistoryRecyclerViewAdapter(this, mDatas);
+            mAdapter = new CollectHistoryRecyclerViewAdapter(this, mDatas, isSelect);
             mAdapter.setOnSwipListener(new CollectHistoryRecyclerViewAdapter.onSwipeListener() {
                 @Override
                 public void onDel(int pos) {
                     if (pos >= 0 && pos < mDatas.size()) {
                         Toast.makeText(FunctionsCollectHistoryFileListActivity.this, "删除:" + pos, Toast.LENGTH_SHORT).show();
+                        // 删除文件
+                        deleteFile(mDatas.get(pos).getFileName());
+
                         mDatas.remove(pos);
                         mAdapter.notifyItemRemoved(pos);//推荐用这个
+                        try {
+                            collectHistoryFileInfo.saveHistoryFileList(mDatas);
+                        }catch (Exception e){
+                            Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
+                        }
+
                         //如果删除时，不使用mAdapter.notifyItemRemoved(pos)，则删除没有动画效果，
                         //且如果想让侧滑菜单同时关闭，需要同时调用 ((SwipeMenuLayout) holder.itemView).quickClose();
                         //mAdapter.notifyDataSetChanged();
 
-                        // 删除文件
-                        deleteFile(mDatas.get(pos).getFileName());
                     }
                 }
 
@@ -123,23 +169,10 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity {
                 @Override
                 public void onDelAll() {
                     Toast.makeText(FunctionsCollectHistoryFileListActivity.this, "删除所有", Toast.LENGTH_SHORT).show();
-                    mDatas.clear();
-                    mAdapter.notifyDataSetChanged();//推荐用这个
 
                     // 删除文件
                     File file =  context.getFilesDir();
                     if (file.exists()) { // 判断文件是否存在
-                        /*
-                        if (file.isFile()) { // 判断是否是文件
-                            file.delete(); // delete()方法 你应该知道 是删除的意思;
-                        } else if (file.isDirectory()) { // 否则如果它是一个目录
-                            File files[] = file.listFiles(); // 声明目录下所有的文件 files[];
-                            for (int i = 0; i < files.length; i++) { // 遍历目录下所有的文件
-                                context.deleteFile(files[i].getName()); // 把每个文件 用这个方法进行迭代
-                            }
-                        }
-                        file.delete();
-                        */
                         for (CollectHistoryFileInfo fileInfo: mDatas){
                             deleteFile(fileInfo.getFileName());
                         }
@@ -147,11 +180,19 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity {
                     } else {
                         Log.e("OnDel", "文件不存在！\n");
                     }
+                    mDatas.clear();
+                    mAdapter.notifyDataSetChanged();//推荐用这个
+
+                    try {
+                        collectHistoryFileInfo.saveHistoryFileList(mDatas);
+                    }catch (Exception e){
+                        Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
+                    }
                 }
             });
             recyclerView.setAdapter(mAdapter);
 
-            recyclerView.setLayoutManager(mLayoutManager = new GridLayoutManager(this, 2));
+            recyclerView.setLayoutManager(mLayoutManager = new GridLayoutManager(this, 1));
             //6 2016 10 21 add , 增加viewChache 的 get()方法，
             // 可以用在：当点击外部空白处时，关闭正在展开的侧滑菜单。我个人觉得意义不大，
             mRv.setOnTouchListener(new View.OnTouchListener() {
@@ -183,4 +224,40 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.main_collect_data_history_list_select_ok:
+                // 获取选中项
+                final Map<Integer, Boolean> map = mAdapter.getMap();
+                int size = map.size();
+                boolean hasCheckedAny = false;
+                final List<String> checkedFile = new ArrayList<>();
+
+                for (int i = size - 1; i >= 0; i--) {
+                    if (map.get(i)) {
+                        hasCheckedAny = true;
+                        checkedFile.add(mDatas.get(i).getFileName());
+                    }
+                }
+                if (hasCheckedAny){
+                    Intent intent = new Intent();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("files",  (Serializable)checkedFile);
+                    intent.putExtras(bundle);
+                    setResult(RESULT_OK, intent);
+                }
+                finish();
+                break;
+            case R.id.main_collect_data_history_list_select_cancel:
+                finish();
+                break;
+            case R.id.polarization_title_select_all_or_not:
+                if (selectAllOrNot.getText() == getString(R.string.select_all))
+                    selectAllOrNot.setText(R.string.select_none);
+                else
+                    selectAllOrNot.setText(R.string.select_all);
+                break;
+        }
+    }
 }

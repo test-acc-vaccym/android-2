@@ -54,7 +54,9 @@ public class AsyncTextLoadTask extends AsyncTask<Object, String, String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        activity.getReaderTextContent().setText(result);
+        if (result.length() > 0) {
+            activity.getReaderTextContent().setText(result);
+        }
         new Handler().postDelayed(new Runnable() {
 
             @Override

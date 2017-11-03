@@ -16,6 +16,8 @@ import com.edroplet.qxx.saneteltabactivity.view.EDropletDialogBuilder;
 import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
+import java.io.IOException;
+
 /**
  * Created by qxs on 2017/10/15.
  */
@@ -194,8 +196,12 @@ public class RandomDialog {
                         if (which == 1) {
                             if (inputText.length()>0) {
                                 CollectHistoryFileInfo collectHistoryFileInfo = new CollectHistoryFileInfo(context);
-                                collectHistoryFileInfo.setDateTime(DateTime.getCurrentDateTime()).setFileName(inputText).save();
-                                Toast.makeText(context, context.getString(R.string.create_new_file_complete) + inputText, Toast.LENGTH_SHORT).show();
+                                try {
+                                    collectHistoryFileInfo.setDateTime(DateTime.getCurrentDateTime()).setFileName(inputText).save();
+                                    Toast.makeText(context, context.getString(R.string.create_new_file_complete) + inputText, Toast.LENGTH_SHORT).show();
+                                }catch (IOException ioe){
+                                    Toast.makeText(context, ioe.toString(), Toast.LENGTH_SHORT).show();
+                                }
                             }else {
                                 Toast.makeText(context, context.getString(R.string.create_new_file_canceled), Toast.LENGTH_SHORT).show();
                             }

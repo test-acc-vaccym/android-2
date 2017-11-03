@@ -86,7 +86,7 @@ public class MainMeAppActivity extends AppCompatActivity implements View.OnClick
                 gotoURL(this, BrowseUrl);
                 break;
             case R.id.main_me_app_download:
-                // TODO 保存到本地缓存
+
                 // http://www.sanetel.com/Content.aspx?PartNodeId=24
                 intent = new Intent(MainMeAppActivity.this, MainMeAboutBrowserActivity.class);
                 intent.putExtra(KEY_PDF_NAME,  P120PdfName);

@@ -17,13 +17,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.adapters.CitiesRecyclerViewAdapter;
+import com.edroplet.qxx.saneteltabactivity.adapters.SpinnerAdapter2;
 import com.edroplet.qxx.saneteltabactivity.beans.Cities;
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
@@ -66,6 +69,9 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
     @BindId(R.id.city_select_button)
     private CustomButton citySelectButton;
 
+    @BindId(R.id.city_list_select_province)
+    Spinner cityListSelectProvince;
+
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
@@ -103,7 +109,6 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
                     }catch (Exception e){
                         e.printStackTrace();
                     }
-
                 }
                 break;
             case NEW_CITY_REQUEST_CODE:
@@ -149,6 +154,8 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
         return super.onOptionsItemSelected(item);
     }
 
+    String selectedProvince;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -165,6 +172,30 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
             // 设置居中的时候不能含有原标题
             ab.setDisplayShowTitleEnabled(false);
         }
+
+        try {
+            cities = new Cities(this);
+            String[] provinceArray = cities.getProvinceArray();
+            if (provinceArray.length > 0) selectedProvince = provinceArray[0];
+            cityListSelectProvince.setAdapter(new SpinnerAdapter2(this, android.R.layout.simple_list_item_1, android.R.id.text1, provinceArray));
+        }catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
+            finish();
+        }
+
+        cityListSelectProvince.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedProvince = (String)cityListSelectProvince.getItemAtPosition(position);
+                citiesRecyclerViewAdapter.setmValues(cities.getLocationInfosByProvince(selectedProvince));
+                citiesRecyclerViewAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.city_list_fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -294,8 +325,10 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         try {
+            if (null == cities || cities.getItemCounts() == 0)
             cities = new Cities(this);
-            citiesRecyclerViewAdapter = new CitiesRecyclerViewAdapter(cities.getITEMS(), this);
+            // citiesRecyclerViewAdapter = new CitiesRecyclerViewAdapter(cities.getITEMS(), this);
+            citiesRecyclerViewAdapter = new CitiesRecyclerViewAdapter(cities.getLocationInfosByProvince(selectedProvince), this);
             /** 亦可在item中处理 */
             citiesRecyclerViewAdapter.setRecyclerViewOnItemClickListener(new CitiesRecyclerViewAdapter.RecyclerViewOnItemClickListener(){
                 @Override

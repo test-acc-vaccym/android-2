@@ -2,6 +2,11 @@ package com.edroplet.qxx.saneteltabactivity.beans;
 
 import android.app.Activity;
 import android.content.Context;
+import android.widget.Toast;
+
+import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
+import com.edroplet.qxx.saneteltabactivity.utils.DateTime;
+import com.edroplet.qxx.saneteltabactivity.utils.FileUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -10,7 +15,10 @@ import org.json.JSONObject;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintStream;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -24,6 +32,7 @@ public class CollectHistoryFileInfo {
     private String dateTime;
     private Context context;
     private static final String historyJsonFileName = "historyFileInfo.json";
+    private static final String KEY_NEWEST_COLLECT_FILE = "KEY_NEWEST_COLLECT_FILE";
 
     public CollectHistoryFileInfo setDateTime(String dateTime) {
         this.dateTime = dateTime;
@@ -88,6 +97,26 @@ public class CollectHistoryFileInfo {
         }
     }
 
+    public void saveHistoryFileList(List <CollectHistoryFileInfo> collectHistoryFileInfos) throws JSONException, IOException{
+        JSONArray array = new JSONArray();
+        for (CollectHistoryFileInfo chf : collectHistoryFileInfos)
+            array.put(chf.toJson());
+
+        Writer writer = null;
+        try {
+            OutputStream out = context.openFileOutput(historyJsonFileName,
+                    Context.MODE_PRIVATE);
+            writer = new OutputStreamWriter(out);
+            writer.write(array.toString());
+        } finally {
+            if (writer != null) {
+                writer.close();
+            }
+        }
+    }
+
+    public static final String SAMPLEDATA=",0.00,45.94,171.86,171.86,161.94,45.95,171.83,171.90,1,173.76,1.90,-0.69,116.802383,39.168365,60.0,1,954.000,0.20,0.00,53,1,0,0,0,0,0,0,0.0,0,2017,07,27,13,06,05,199*ff\n";
+
     public List<CollectHistoryFileInfo> getList(){
         List<CollectHistoryFileInfo> collectHistoryFileInfos = new ArrayList<CollectHistoryFileInfo>();
         try {
@@ -104,34 +133,35 @@ public class CollectHistoryFileInfo {
         return collectHistoryFileInfos;
     }
 
-    public void save(){
-        FileOutputStream out = null;
-        PrintStream ps = null;
-        try {
-            JSONArray array = new JSONArray();
-            array.put(toJson());
+    public void save() throws IOException{
 
-            List<CollectHistoryFileInfo> l = getList();
-            if (l != null && l.size() > 0) {
-                for (CollectHistoryFileInfo collectHistoryFileInfo : l)
-                    array.put(collectHistoryFileInfo.toJson());
-            }
+        JSONArray array = new JSONArray();
+        array.put(toJson());
 
-            out = context.openFileOutput(historyJsonFileName, Context.MODE_PRIVATE);
-            ps = new PrintStream(out);
-            ps.println(array.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (out != null) {
-                try {
-                    out.close();
-                    ps.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+        List<CollectHistoryFileInfo> l = getList();
+        if (l != null && l.size() > 0) {
+            for (CollectHistoryFileInfo collectHistoryFileInfo : l)
+                array.put(collectHistoryFileInfo.toJson());
         }
 
+        FileUtils.saveFile(context, historyJsonFileName, Context.MODE_PRIVATE, array.toString());
+
+        // 创建新文件
+        FileUtils.saveFile(context, fileName, Context.MODE_PRIVATE, DateTime.getCurrentDateTime() + SAMPLEDATA);
+        setNewestCollectFile();
+
+    }
+
+    private void setNewestCollectFile(){
+        CustomSP.putString(context, KEY_NEWEST_COLLECT_FILE, fileName);
+    }
+
+    public String getNewestCollectFile(){
+        return CustomSP.getString(context, KEY_NEWEST_COLLECT_FILE, null);
+    }
+
+    public void clearFile() throws IOException{
+        String newestFilename = getNewestCollectFile();
+         FileUtils.saveFile(context, newestFilename, Context.MODE_PRIVATE, "");
     }
 }

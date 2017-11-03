@@ -54,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // 根据上面发送过去的请求吗来区别
         switch (requestCode) {
-            case 10086:
+            case SystemServices.REQUEST_WIFI_CONNECT_HELP:
                 SystemServices.checkConnectedSsid(this,MainFragmentGuide.device, this);
                 break;
-            case 10000:
+            case SystemServices.REQUEST_WIFI_CONNECT_MANAGER:
                 Toast.makeText(this, getString(R.string.main_connected_ssid_prompt) + SystemServices.getConnectWifiSsid(this), Toast.LENGTH_SHORT).show();
             default:
                 break;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,6 +10,7 @@
     android:divider="@drawable/divider">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/main_me_advice_appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/appbar_padding_top"
@@ -35,8 +36,8 @@
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/welcome_install_wire_scroll"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:layout_below="@id/main_me_advice_appbar">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -139,52 +140,56 @@
             <!--添加照片-->
                 <LinearLayout
                     style="@style/layout_vertical_style"
-                    android:orientation="horizontal">
+                    android:layout_weight="3"
+                    android:layout_gravity="start|left"
+                    android:gravity="start|left"
+                    android:padding="@dimen/no_padding"
+                    android:orientation="vertical">
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                         android:id="@+id/main_me_advice_photo"
                         android:text="@string/main_me_advice_photo"
-                        style="@style/button_horizontal_style"
-                        android:layout_weight="0.5"
+                        style="@style/button_vertical_style"
+                        android:layout_weight="1"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:layout_gravity="start|left|center_vertical"
                         android:gravity="start|left|center_vertical"/>
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                         android:id="@+id/main_me_advice_photo_list"
-                        style="@style/text_horizontal_style"
+                        style="@style/text_vertical_style"
+                        android:layout_weight="2"
                         app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:gravity="start|left"/>
             </LinearLayout>
             <!--故障描述-->
-            <LinearLayout
-                style="@style/layout_vertical_style"
-                android:orientation="vertical"
-                android:layout_weight="3">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                    android:text="@string/main_me_advice_description"
-                    style="@style/text_vertical_style"
-                    android:layout_weight="0.3"
-                    android:gravity="start|left"
-                    app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-                    android:id="@+id/main_me_advice_description"
-                    style="@style/text_vertical_style"
-                    app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-            </LinearLayout>
-            <!--底部栏-->
-            <LinearLayout
-                style="@style/layout_vertical_style">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                    android:id="@+id/main_me_advice_commit"
-                    style="@style/button_horizontal_style"
-                    android:text="@string/main_me_advice_commit"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                    android:id="@+id/main_me_advice_save"
-                    style="@style/button_horizontal_style"
-                    android:text="@string/main_me_advice_save"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                    android:id="@+id/main_me_advice_return"
-                    style="@style/button_horizontal_style"
-                    android:text="@string/main_me_advice_return"/>
-            </LinearLayout>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                android:id="@+id/main_me_advice_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/main_me_advice_description"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:paddingStart="@dimen/layout_padding_left"
+                android:paddingLeft="@dimen/layout_padding_left"
+                android:gravity="center_horizontal"
+                android:layout_weight="5"
+                app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
-</LinearLayout>
+    <!--底部栏-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:layout_alignParentBottom="true">
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/main_me_advice_commit"
+            style="@style/button_horizontal_style"
+            android:text="@string/main_me_advice_commit"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/main_me_advice_save"
+            style="@style/button_horizontal_style"
+            android:text="@string/main_me_advice_save"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/main_me_advice_return"
+            style="@style/button_horizontal_style"
+            android:text="@string/main_me_advice_return"/>
+    </LinearLayout>
+</RelativeLayout>

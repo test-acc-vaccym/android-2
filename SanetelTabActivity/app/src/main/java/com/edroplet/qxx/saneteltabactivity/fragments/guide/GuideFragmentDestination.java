@@ -138,6 +138,12 @@ public class GuideFragmentDestination extends Fragment {
                     satellitePolarizationSelect.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, polarizationArray));
                     // 读取配置中的值
                     selectedPolarization = CustomSP.getString(getContext(), DESTINATION_SATELLITE_POLARIZATION_KEY, polarizationArray[0]);
+                    for(int i=0; i<polarizationArray.length; i++){
+                        if(selectedPolarization.equals(polarizationArray[i])){
+                            satellitePolarizationSelect.setSelection(i,true);
+                            break;
+                        }
+                    }
                     SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(selectedName, selectedPolarization);
                     if (satelliteInfo != null) {
                         satelliteName.setText(satelliteInfo.name);
@@ -146,7 +152,7 @@ public class GuideFragmentDestination extends Fragment {
                         satelliteBeacon.setText(satelliteInfo.beacon);
                         satelliteThreshold.setText(satelliteInfo.threshold);
                         // todo dvb数据哪里来
-                        // satelliteDvb.setText(satelliteInfo.name);
+                        satelliteDvb.setText(satelliteInfo.symbolRate);
                     }
                 }
 
@@ -182,7 +188,7 @@ public class GuideFragmentDestination extends Fragment {
                             satelliteBeacon.setText(satelliteInfo.beacon);
                             satelliteThreshold.setText(satelliteInfo.threshold);
                             // todo dvb数据哪里来
-                            // satelliteDvb.setText(satelliteInfo.name);
+                            satelliteDvb.setText(satelliteInfo.symbolRate);
                         }
                     }
                 }
@@ -207,7 +213,7 @@ public class GuideFragmentDestination extends Fragment {
                         satelliteBeacon.setText(satelliteInfo.beacon);
                         satelliteThreshold.setText(satelliteInfo.threshold);
                         // todo dvb数据哪里来
-                        // satelliteDvb.setText(satelliteInfo.name);
+                        satelliteDvb.setText(satelliteInfo.symbolRate);
                     }
                 }
             }
@@ -229,7 +235,7 @@ public class GuideFragmentDestination extends Fragment {
                                 satelliteLongitude.getText().toString(),
                                 satelliteBeacon.getText().toString(),
                                 satelliteThreshold.getText().toString(),
-                                null,null), true);
+                                satelliteDvb.getText().toString(),null), true);
                         try {
                             satellites.save();
                         }catch (Exception e){

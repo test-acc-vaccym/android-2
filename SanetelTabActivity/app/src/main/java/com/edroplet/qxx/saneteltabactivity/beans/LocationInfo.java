@@ -32,8 +32,8 @@ public class LocationInfo implements Parcelable {
     public static final String JSON_ID_KEY = "id";
     public static final String JSON_PROVENCE_NAME = "省份";
     public static final String JSON_CITY_NAME = "地名";
-    public static final String JSON_CITY_LATITUDE = "北纬°";
-    public static final String JSON_CITY_LONGITUDE = "东经°";
+    public static final String JSON_CITY_LATITUDE = "纬度°";
+    public static final String JSON_CITY_LONGITUDE = "经度°";
 
     public void setName(String name) {
         this.name = name;
@@ -160,11 +160,11 @@ public class LocationInfo implements Parcelable {
             }
             if (json.has(JSON_CITY_LATITUDE)) {
                 String jsonCityLatitude = json.getString(JSON_CITY_LATITUDE);
-                if (jsonCityLatitude.contains("°S")) {
-                    this.latitudeUnit = "°S";
+                if (jsonCityLatitude.contains("S")) {
+                    this.latitudeUnit = "S";
                     jsonCityLatitude = jsonCityLatitude.substring(0,jsonCityLatitude.length()-2);
-                } else if (jsonCityLatitude.contains("°N")) {
-                    this.latitudeUnit = "°N";
+                } else if (jsonCityLatitude.contains("N")) {
+                    this.latitudeUnit = "N";
                     jsonCityLatitude = jsonCityLatitude.substring(0,jsonCityLatitude.length()-2);
                 }
                 int index = jsonCityLatitude.indexOf(".");
@@ -179,11 +179,11 @@ public class LocationInfo implements Parcelable {
             }
             if (json.has(JSON_CITY_LONGITUDE)) {
                 String jsonCityLongitude = json.getString(JSON_CITY_LONGITUDE);
-                if (jsonCityLongitude.contains("°W")) {
-                    this.longitudeUnit = "°W";
+                if (jsonCityLongitude.contains("W")) {
+                    this.longitudeUnit = "W";
                     jsonCityLongitude = jsonCityLongitude.substring(0,jsonCityLongitude.length()-2);
-                } else if (jsonCityLongitude.contains("°E")){
-                    this.longitudeUnit = "°E";
+                } else if (jsonCityLongitude.contains("E")){
+                    this.longitudeUnit = "E";
                     jsonCityLongitude = jsonCityLongitude.substring(0,jsonCityLongitude.length()-2);
                 }
                 jsonCityLongitude = StringFilter(jsonCityLongitude);
@@ -212,7 +212,7 @@ public class LocationInfo implements Parcelable {
     }
 
     public static class BDState {
-        public static final int NONLOCATED = 0;
+        public static final int NOTLOCATED = 0;
         public static  final int LOCATED = 1;
     }
 }

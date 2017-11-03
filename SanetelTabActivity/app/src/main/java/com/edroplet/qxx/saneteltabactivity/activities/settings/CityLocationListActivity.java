@@ -90,7 +90,7 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
         }
         switch (requestCode){
             case CITY_DETAIL_REQUEST_CODE:
-                if (id != null && id.length() > 0 && locationInfo != null) {
+                if (RESULT_OK == resultCode && id != null && id.length() > 0 && locationInfo != null) {
                     cities.update(id, locationInfo);
                     citiesRecyclerViewAdapter.setmValues(cities.getITEMS());
                     citiesRecyclerViewAdapter.notifyDataSetChanged();
@@ -107,10 +107,10 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
                 }
                 break;
             case NEW_CITY_REQUEST_CODE:
-                // if(resultCode== Activity.RESULT_OK){
-                if (locationInfo != null) {
+                if (resultCode == RESULT_OK && locationInfo != null) {
                     //  刷新当前activity界面数据
                     cities.addItem(locationInfo,true);
+                    citiesRecyclerViewAdapter.setmValues(cities.getITEMS());
                     //RecyclerView列表进行UI数据更新
                     citiesRecyclerViewAdapter.notifyItemInserted(position);
                     //如果在第一项添加模拟数据需要调用 scrollToPosition（0）把列表移动到顶端（可选）

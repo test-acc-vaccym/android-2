@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
@@ -33,6 +35,8 @@ import static android.content.Context.WIFI_SERVICE;
  */
 
 public class SystemServices {
+    public static final int REQUEST_WIFI_CONNECT_MANAGER = 10000;
+    public static final int REQUEST_WIFI_CONNECT_HELP = 10001;
     public static String getConnectWifiSsid(Context context){
         WifiManager wifiManager = (WifiManager) context.getSystemService(WIFI_SERVICE);
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
@@ -44,7 +48,7 @@ public class SystemServices {
         // context.startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));//进入无线网络配置界面
         Intent intent= new Intent(Settings.ACTION_WIFI_SETTINGS);//进入无线网络配置界面
         // Intent intent= new Intent(activity, WifiManagerActivity.class);
-        activity.startActivityForResult(intent,10000);//进入无线网络配置界面
+        activity.startActivityForResult(intent,REQUEST_WIFI_CONNECT_MANAGER);//进入无线网络配置界面
     }
 
     public static void checkConnectedSsid(final Context context, String ssid, final Activity activity){
@@ -60,11 +64,23 @@ public class SystemServices {
             }, new DialogInterface.OnClickListener(){
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    activity.startActivityForResult(new Intent(context, MainWifiSettingHelpActivity.class), 10086);
+                    activity.startActivityForResult(new Intent(context, MainWifiSettingHelpActivity.class), REQUEST_WIFI_CONNECT_HELP);
                 }
             });
         }
     }
+
+    public  static boolean isConnectedToInternet(Context context){
+        ConnectivityManager connectivityManager = (ConnectivityManager)(context.getSystemService(Context.CONNECTIVITY_SERVICE));
+        if (connectivityManager != null){
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            if (networkInfo != null){
+                return networkInfo.isAvailable();
+            }
+        }
+        return false;
+    }
+
     public static class WifiAdmin {
         // 定义WifiManager对象
         private WifiManager mWifiManager;
@@ -323,7 +339,7 @@ public class SystemServices {
     }
 
     public static int getBDState(){
-        return LocationInfo.BDState.NONLOCATED;
+        return LocationInfo.BDState.NOTLOCATED;
     }
 
     public static int getLockerState() {

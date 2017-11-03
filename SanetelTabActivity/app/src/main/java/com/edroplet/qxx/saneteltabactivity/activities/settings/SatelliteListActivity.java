@@ -94,7 +94,7 @@ public class SatelliteListActivity extends AppCompatActivity {
 
         switch (requestCode){
             case SATELLITE_DETAIL_REQUEST_CODE:
-                if (id != null && id.length() > 0) {
+                if (resultCode == RESULT_OK && id != null && id.length() > 0) {
                     satellites.update(id, satelliteInfo);
                     satelliteItemRecyclerViewAdapter.setmValues(satellites.getITEMS());
                     satelliteItemRecyclerViewAdapter.notifyDataSetChanged();
@@ -112,10 +112,11 @@ public class SatelliteListActivity extends AppCompatActivity {
                 break;
             case NEW_SATELLITES_REQUEST_CODE:
                 // if(resultCode== Activity.RESULT_OK){
-                if (satelliteInfo != null) {
+                if (resultCode == RESULT_OK && satelliteInfo != null) {
                     //  刷新当前activity界面数据
                     satellites.addItem(satelliteInfo, true);
                     //RecyclerView列表进行UI数据更新
+                    satelliteItemRecyclerViewAdapter.setmValues(satellites.getITEMS());
                     satelliteItemRecyclerViewAdapter.notifyItemInserted(position);
                     //如果在第一项添加模拟数据需要调用 scrollToPosition（0）把列表移动到顶端（可选）
                     recyclerView.scrollToPosition(position);

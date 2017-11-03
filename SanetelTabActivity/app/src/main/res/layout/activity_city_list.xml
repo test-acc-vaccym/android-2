@@ -98,6 +98,7 @@
                 android:visibility="gone"
                 android:layout_height="match_parent"
                 android:text="@string/select_all"
+                android:textSize="@dimen/list_item_text_size"
                 android:id="@+id/city_select_button"
                 style="?attr/textAppearanceListItem"/>
             </LinearLayout>

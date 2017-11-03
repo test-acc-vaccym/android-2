@@ -450,9 +450,9 @@
     <string name="follow_me_saving_title">节能操作</string>
     <string name="follow_me_saving_open_first_line">节能状态：开启</string>
     <string name="follow_me_saving_close_first_line">节能状态：关闭</string>
-    <string name="follow_me_saving_second_line">锁星后，锁紧机构锁紧产生的力矩来代替电机的保持力矩，保持方位和俯仰静止。节能70%。</string>
+    <string name="follow_me_saving_second_line">&#160;&#160;&#160;&#160;锁星后，锁紧机构锁紧产生的力矩来代替电机的保持力矩，保持方位和俯仰静止。节能70%。</string>
     <string name="follow_me_saving_third_start">点击</string>
-    <string name="follow_me_saving_third_end">无需锁紧，直接点击下一步。</string>
+    <string name="follow_me_saving_third_end">无需节能，点击完成。</string>
 
     <!--主页面-->
     <string name="main_follow_me">跟我来</string>
@@ -483,7 +483,8 @@
     <string name="main_me_error_report_serial_number">产品序列号</string>
     <string name="main_me_error_report_serial_number_hint">P120-201708001</string>
     <string name="main_me_error_report_filename">文件名称</string>
-    <string name="main_me_error_report_attach">添加附件（历史文件）</string>
+    <string name="main_me_error_report_attach">添加附件</string>
+    <string name="main_me_error_report_history">历史文件</string>
     <string name="main_me_error_report_photo">添加照片</string>
     <string name="main_me_error_report_description">故障描述</string>
     <string name="main_me_error_report_commit">提交</string>
@@ -500,7 +501,7 @@
     <string name="main_me_advice_serial_number">产品序列号</string>
     <string name="main_me_advice_filename">文件名称</string>
     <string name="main_me_advice_photo">添加照片</string>
-    <string name="main_me_advice_description">故障描述</string>
+    <string name="main_me_advice_description">意见输入区</string>
     <string name="main_me_advice_commit">提交</string>
     <string name="main_me_advice_save">保存</string>
     <string name="main_me_advice_return">返回</string>

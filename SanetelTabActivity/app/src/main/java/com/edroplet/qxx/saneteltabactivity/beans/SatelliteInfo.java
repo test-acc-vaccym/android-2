@@ -139,7 +139,7 @@ public class SatelliteInfo implements Serializable {
 
     public JSONObject toJSON() throws JSONException {
         JSONObject json = new JSONObject();
-        json.put(JSON_UUID, mId.toString());
+        // json.put(JSON_UUID, mId.toString());
         json.put(JSON_ID, id);
         json.put(JSON_NAME, name);
         json.put(JSON_POLARIZATION, polarization);

@@ -63,7 +63,7 @@ public class NewSatelliteActivity extends AppCompatActivity {
                     bundle.putInt(SatelliteInfo.positionKey,satellites.size() - 1);
                     Intent intent = new Intent();
                     intent.putExtras(bundle);
-                    setResult(SatelliteListActivity.NEW_SATELLITES_REQUEST_CODE, intent);
+                    setResult(RESULT_OK, intent);
 
                 }catch (Exception e){
                     e.printStackTrace();

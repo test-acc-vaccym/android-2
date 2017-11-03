@@ -15,6 +15,7 @@ import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 import com.yongchun.library.view.ImageSelectorActivity;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
 //        fragment.setArguments(args);
 //        return fragment;
 //    }
-
+    ArrayList<String> images;
     @BindId(R.id.main_me_advice_email_receive)
     private CustomEditText adviceEmailReceive;
 
@@ -49,18 +50,18 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
     private CustomEditText adviceFileName;
 
     @BindId(R.id.main_me_advice_photo_list)
-    private CustomEditText advicePhoto;
+    private CustomTextView advicePhoto;
 
     @BindId(R.id.main_me_advice_description)
     private CustomEditText adviceDescription;
 
-    private static final String KEY_ADVICE_EMAIL_RECEIVE = "adviceEmailReceive";
-    private static final String KEY_ADVICE_EMAIL_SEND = "adviceEmailSend";
-    private static final String KEY_ADVICE_NAME= "adviceName";
-    private static final String KEY_ADVICE_PHOTO= "advicePhoto";
-    private static final String KEY_ADVICE_PHONE= "advicePhone";
-    private static final String KEY_ADVICE_FILENAME= "adviceFileName";
-    private static final String KEY_ADVICE_DESCRIPTION= "adviceDescription";
+    private static final String KEY_ADVICE_EMAIL_RECEIVE = "KEY_ADVICE_EMAIL_RECEIVE";
+    private static final String KEY_ADVICE_EMAIL_SEND = "KEY_ADVICE_EMAIL_RECEIVE";
+    private static final String KEY_ADVICE_NAME= "KEY_ADVICE_EMAIL_RECEIVE";
+    private static final String KEY_ADVICE_PHOTO= "KEY_ADVICE_EMAIL_RECEIVE";
+    private static final String KEY_ADVICE_PHONE= "KEY_ADVICE_EMAIL_RECEIVE";
+    private static final String KEY_ADVICE_FILENAME= "KEY_ADVICE_EMAIL_RECEIVE";
+    private static final String KEY_ADVICE_DESCRIPTION= "KEY_ADVICE_EMAIL_RECEIVE";
 
     @Override
     public void onCreate (Bundle savedInstanceState) {
@@ -130,8 +131,9 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == RESULT_OK && requestCode == ImageSelectorActivity.REQUEST_IMAGE){
-            ArrayList<String> images = (ArrayList<String>) data.getSerializableExtra(ImageSelectorActivity.REQUEST_OUTPUT);
+            images = (ArrayList<String>) data.getSerializableExtra(ImageSelectorActivity.REQUEST_OUTPUT);
             // todo get images then do something
+            advicePhoto.setText(images.toString());
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

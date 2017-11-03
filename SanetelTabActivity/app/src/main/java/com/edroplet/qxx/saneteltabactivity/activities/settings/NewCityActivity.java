@@ -54,7 +54,7 @@ public class NewCityActivity extends AppCompatActivity {
                     bundle.putInt("position",cities.size() - 1);
                     Intent intent = new Intent();
                     intent.putExtras(bundle);
-                    setResult(CityLocationListActivity.NEW_CITY_REQUEST_CODE, intent);
+                    setResult(RESULT_OK, intent);
                 }catch (Exception e){
                     e.printStackTrace();
                 }

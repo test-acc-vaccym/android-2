@@ -119,7 +119,6 @@
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                     android:id="@+id/main_me_error_report_serial_number"
                     style="@style/text_horizontal_style"
-                    android:padding="@dimen/no_padding"
                     android:hint="@string/main_me_error_report_serial_number_hint"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
             </LinearLayout>
@@ -156,6 +155,26 @@
                     android:id="@+id/main_me_error_report_attach_files"
                     style="@style/text_vertical_style"/>
             </LinearLayout>
+            <!--添加附件-->
+            <LinearLayout
+                style="@style/layout_vertical_style"
+                android:layout_weight="2"
+                android:layout_gravity="start|left"
+                android:gravity="start|left"
+                android:orientation="vertical">
+
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                    android:id="@+id/main_me_error_report_history"
+                    style="@style/button_vertical_style"
+                    android:layout_width="wrap_content"
+                    android:gravity="start|left"
+                    android:padding="@dimen/no_padding"
+                    android:text="@string/main_me_error_report_history"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    android:id="@+id/main_me_error_report_history_files"
+                    style="@style/text_vertical_style"/>
+            </LinearLayout>
             <!--添加照片-->
             <LinearLayout
                 style="@style/layout_vertical_style"
@@ -175,28 +194,16 @@
                     style="@style/text_vertical_style"/>
             </LinearLayout>
             <!--故障描述-->
-            <LinearLayout
-                style="@style/layout_vertical_style"
-                android:orientation="vertical"
-                android:layout_gravity="start|left"
-                android:layout_weight="3">
-                <LinearLayout
-                    style="@style/layout_vertical_style"
-                    android:padding="@dimen/no_padding"
-                    android:layout_weight="0.5">
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                        android:text="@string/main_me_error_report_description"
-                        style="@style/text_horizontal_style"
-                        android:layout_weight="0.5"/>
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                        style="@style/text_horizontal_style"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-                </LinearLayout>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-                    android:id="@+id/main_me_error_report_description"
-                    style="@style/text_vertical_style"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-            </LinearLayout>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                android:id="@+id/main_me_error_report_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/main_me_error_report_description"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:paddingStart="@dimen/layout_padding_left"
+                android:paddingLeft="@dimen/layout_padding_left"
+                android:gravity="center_horizontal"
+                android:layout_weight="5"/>
             <LinearLayout
                 style="@style/layout_vertical_style">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton

@@ -178,7 +178,7 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
                 bundle.putString(SatelliteInfo.uuidKey, satelliteDetailUuid.getText().toString());
 
                 intent.putExtras(bundle);
-                getActivity().setResult(SatelliteListActivity.SATELLITE_DETAIL_REQUEST_CODE,intent);
+                getActivity().setResult(Activity.RESULT_OK,intent);
                 getActivity().finish();
                 break;
             case R.id.satellite_detail_return:

@@ -257,7 +257,8 @@
         </activity>
         <activity android:name="com.will.ireader.page.PageActivity" />
         <activity android:name="com.will.ireader.chapter.ChapterActivity" />
-        <activity android:name=".activities.functions.ReaderTextActivity"></activity>
+        <activity android:name=".activities.functions.ReaderTextActivity" />
+        <activity android:name=".activities.main.MainMePdfBrowserActivity"></activity>
     </application>
 
 </manifest>

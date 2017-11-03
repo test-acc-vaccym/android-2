@@ -162,6 +162,12 @@ public class GuideFragmentLocation extends Fragment {
                     spinnerLocationCity.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, citiesArray));
                     // 读取配置中的值
                     selectedCity = CustomSP.getString(getContext(), LOCATION_CITY_KEY, citiesArray[0]);
+                    for(int i=0; i<citiesArray.length; i++){
+                        if(selectedCity.equals(citiesArray[i])){
+                            spinnerLocationCity.setSelection(i,true);
+                            break;
+                        }
+                    }
                     LocationInfo locationInfo = cities.getLocationInfoByProvinceCity(selectedProvince, selectedCity);
                     if (locationInfo != null) {
                         newProvince.setText(locationInfo.getProvince());

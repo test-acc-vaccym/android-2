@@ -30,7 +30,10 @@ import com.mcxtzhang.swipemenulib.SwipeMenuLayout;
 import com.will.ireader.IReaderMainActivity;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.List;
+
+import static com.ssa.afilechooser.FileChooserActivity2.PATHS;
 
 /**
  * An activity representing a list of Cities. This activity
@@ -167,6 +170,17 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity {
         }catch (Exception je){
             je.printStackTrace();
         }
+    }
+    /**
+     * Finish this Activity with a result code and URI of the selected file.
+     *
+     * @param files The file selected.
+     */
+    private void finishWithResults(List<File> files) {
+        Intent intent = new Intent();
+        intent.putExtra(PATHS, (Serializable) files);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
 }

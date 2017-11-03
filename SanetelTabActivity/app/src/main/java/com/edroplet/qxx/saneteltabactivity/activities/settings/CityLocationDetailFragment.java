@@ -108,7 +108,7 @@ public class CityLocationDetailFragment extends Fragment implements View.OnClick
                 bundle.putParcelable(LocationInfo.objectKey, mItem);
                 Intent intent = new Intent();
                 intent.putExtras(bundle);
-                getActivity().setResult(CityLocationListActivity.CITY_DETAIL_REQUEST_CODE, intent);
+                getActivity().setResult(Activity.RESULT_OK, intent);
                 getActivity().finish();
                 break;
             case R.id.city_detail_return:

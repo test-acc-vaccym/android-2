@@ -29,6 +29,7 @@ import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.mcxtzhang.swipemenulib.SwipeMenuLayout;
+import com.ssa.afilechooser.FileChooserActivity2;
 
 import java.io.File;
 import java.io.Serializable;
@@ -217,7 +218,7 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity i
      *
      * @param files The file selected.
      */
-    private void finishWithResults(List<File> files) {
+    private void finishWithResults(List<String> files) {
         Intent intent = new Intent();
         intent.putExtra(PATHS, (Serializable) files);
         setResult(RESULT_OK, intent);
@@ -241,11 +242,7 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity i
                     }
                 }
                 if (hasCheckedAny){
-                    Intent intent = new Intent();
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("files",  (Serializable)checkedFile);
-                    intent.putExtras(bundle);
-                    setResult(RESULT_OK, intent);
+                    finishWithResults(checkedFile);
                 }
                 finish();
                 break;
@@ -253,10 +250,14 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity i
                 finish();
                 break;
             case R.id.polarization_title_select_all_or_not:
-                if (selectAllOrNot.getText() == getString(R.string.select_all))
+                if (selectAllOrNot.getText() == getString(R.string.select_all)) {
+                    mAdapter.fillMap();
                     selectAllOrNot.setText(R.string.select_none);
-                else
+                }else {
                     selectAllOrNot.setText(R.string.select_all);
+                    mAdapter.initMap();
+                }
+                mAdapter.notifyDataSetChanged();
                 break;
         }
     }

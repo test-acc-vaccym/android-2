@@ -11,22 +11,26 @@
         android:gravity="center"
         android:text="@string/follow_me_search_mode_title"
         android:textStyle="bold"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
     <!--寻星模式-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="@dimen/layout_padding_top"
+        android:paddingBottom="@dimen/layout_padding_top"
         android:orientation="vertical">
         <!--寻星模式-->
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/follow_me_search_mode_title"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
         <!--单选框-->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/layout_padding_top"
+            android:paddingBottom="@dimen/layout_padding_top">
             <!--单选组-->
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
                 android:id="@+id/rbg_search_mode"
@@ -39,6 +43,7 @@
                     android:id="@+id/follow_me_search_mode_beacon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/follow_me_search_mode_beacon"
                     android:checked="true"/>
 
@@ -46,6 +51,7 @@
                     android:id="@+id/follow_me_search_mode_dvb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/follow_me_search_mode_dvb"/>
             </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
         </RelativeLayout>

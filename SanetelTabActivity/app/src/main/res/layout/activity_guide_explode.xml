@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    style="@style/linear_no_shadow"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.guide.GuideExplodeActivity">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -32,7 +33,7 @@
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
             android:text="@string/follow_me_explode_help_message"/>
     </ScrollView>

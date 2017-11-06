@@ -3,6 +3,7 @@ package com.edroplet.qxx.saneteltabactivity.beans;
 import android.content.Context;
 import android.util.Log;
 
+import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.JsonLoad;
 
 import org.json.JSONException;
@@ -62,6 +63,7 @@ public class Cities {
         if (reload || cities == null || cities.size() == 0) {
             jl = new JsonLoad(context, LocationInfo.citiesJsonFile);
             cities = jl.loadCities();
+            provinceObjectMap.put(mContext.getString(R.string.key_province_all),cities);
             // Add some sample items.
             for (int i = 0; i < getItemCounts(); i++) {
                 LocationInfo iLocationInfo = cities.get(i);
@@ -71,22 +73,27 @@ public class Cities {
     }
 
     public void addItem(LocationInfo item, boolean isNew) {
-        ITEMS.add(item);
-        ITEM_MAP.put(item.getName(), item);
+        // 城市是唯一的，所以没有的城市才会添加
+        String cityName = item.getName();
+        if (ITEM_MAP.get(cityName) == null) {
+            ITEMS.add(item);
+            ITEM_MAP.put(cityName, item);
 
-        // 添加省份城市map数据
-        String province = item.getProvince();
-        ArrayList<LocationInfo> arrayList = provinceObjectMap.get(province);
-        if (arrayList == null){
-            ArrayList<LocationInfo> arrayList1 = new ArrayList<LocationInfo>();
-            arrayList1.add(item);
-            provinceObjectMap.put(province, arrayList1);
-        }else if (!arrayList.contains(item)) {
-            arrayList.add(item);
-            provinceObjectMap.put(province, arrayList);
-        }
-        if (isNew){
-            cities.add(item);
+            // 添加省份城市map数据
+            String province = item.getProvince();
+            ArrayList<LocationInfo> arrayList = provinceObjectMap.get(province);
+            if (arrayList == null) {
+                ArrayList<LocationInfo> arrayList1 = new ArrayList<LocationInfo>();
+                arrayList1.add(item);
+                provinceObjectMap.put(province, arrayList1);
+            } else if (!arrayList.contains(item)) {
+                arrayList.add(item);
+                provinceObjectMap.put(province, arrayList);
+            }
+            if (isNew) {
+                cities.add(item);
+                provinceObjectMap.put(mContext.getString(R.string.key_province_all), cities);
+            }
         }
     }
 
@@ -115,10 +122,12 @@ public class Cities {
             ITEMS.set(itemIndex, locationInfo);
             cities.set(itemIndex, locationInfo);
 
+
             // 修改省份城市map数据
             LocationInfo item = cities.get(itemIndex);
             String province = item.getProvince();
             ArrayList<LocationInfo> arrayList = provinceObjectMap.get(province);
+            provinceObjectMap.put(mContext.getString(R.string.key_province_all),cities);
             // 如果包含有该map数据
             if (arrayList != null){
                 // 获取position
@@ -171,6 +180,22 @@ public class Cities {
         ITEMS.remove(locationInfo);
         ITEM_MAP.remove(locationInfo.getName());
         cities.remove(locationInfo);
+        provinceObjectMap.put(mContext.getString(R.string.key_province_all),cities);
+
+        String province = locationInfo.getProvince();
+        ArrayList<LocationInfo> arrayList = provinceObjectMap.get(province);
+        // 如果包含有该map数据
+        if (arrayList != null && arrayList.contains(locationInfo)){
+            // 删除该节点
+            arrayList.remove(locationInfo);
+            // 删除后节点还有数据
+            if (arrayList.size() > 0) {
+                provinceObjectMap.put(province, arrayList);
+            }else {
+                // 删除后节点没有数据，删除该map节点
+                provinceObjectMap.remove(province);
+            }
+        }
     }
 
     public void deleteItem(int position){
@@ -179,6 +204,7 @@ public class Cities {
         cities.remove(position);
 
         // 删除省份城市map数据
+        provinceObjectMap.put(mContext.getString(R.string.key_province_all),cities);
         LocationInfo item = cities.get(position);
         String province = item.getProvince();
         ArrayList<LocationInfo> arrayList = provinceObjectMap.get(province);

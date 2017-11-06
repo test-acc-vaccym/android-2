@@ -2,17 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/main_margin_top">
+    android:layout_marginTop="@dimen/layout_padding_top">
     <!--天线信息-->
     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/main_monitor_antenna_info"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/sub_layout_padding_top">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,7 +27,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_antenna_prepare_azimuth"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_monitor_antenna_tv_prepare_azimuth"
                     android:layout_width="0dp"
@@ -50,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_antenna_azimuth"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_monitor_antenna_tv_azimuth"
                     android:layout_width="0dp"
@@ -79,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_antenna_prepare_pitch"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_monitor_antenna_tv_prepare_pitch"
                     android:layout_width="0dp"
@@ -103,7 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_antenna_pitch"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_monitor_antenna_tv_pitch"
                     android:layout_width="0dp"
@@ -132,7 +133,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_antenna_prepare_polarization"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_monitor_antenna_tv_prepare_polarization"
                     android:layout_width="0dp"
@@ -156,7 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_antenna_polarization"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_monitor_antenna_tv_polarization"
                     android:layout_width="0dp"

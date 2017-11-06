@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    style="@style/linear_no_shadow"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.ReferenceSatelliteActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -35,7 +36,7 @@
             android:paddingStart="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingEnd="@dimen/activity_horizontal_margin"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceLarge" />
         <!--单选-->
         <RelativeLayout
             android:layout_width="match_parent"
@@ -44,31 +45,28 @@
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
                 android:id="@+id/reference_satellite_select_radio_group"
                 android:orientation="vertical"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium">
+                android:layout_width="@dimen/radio_group_width_medium"
+                android:layout_height="wrap_content">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                     android:id="@+id/reference_satellite_select_mode_direct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/settings_reference_mode_direct"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                     android:id="@+id/reference_satellite_select_mode_refernce"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/settings_reference_mode_reference" />
             </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
             <!--卫星名-->
             <LinearLayout
                 android:orientation="horizontal"
                 android:id="@+id/reference_satellite_select_spinner"
-                android:paddingLeft="@dimen/radio_group_city_padding"
-                android:paddingStart="@dimen/radio_group_city_padding"
-                android:paddingEnd="@dimen/radio_group_city_padding"
-                android:paddingRight="@dimen/radio_group_city_padding"
-                android:layout_marginStart="@dimen/radio_group_width"
-                android:layout_marginLeft="@dimen/radio_group_width"
+                android:layout_marginStart="@dimen/radio_group_width_medium"
+                android:layout_marginLeft="@dimen/radio_group_width_medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -78,11 +76,14 @@
                     android:id="@+id/reference_satellite_select_satellites"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    style="?android:attr/spinnerStyle"
                     android:entries="@array/satellites"/>
                 <Spinner
                     android:id="@+id/reference_satellite_select_satellites_polarization"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:entries="@array/satellites_polarization"/>
             </LinearLayout>
         </RelativeLayout>
@@ -92,10 +93,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/layout_padding_left"
+        android:paddingLeft="@dimen/layout_padding_left"
         android:orientation="vertical">
 
         <!--卫星经度 信标频率-->
@@ -110,15 +109,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/settings_reference_latitude"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                    android:id="@+id/settings_reference_latitude"
+                    android:id="@+id/settings_reference_longitude"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:textColor="@color/text_11"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_satellite_longitude_hint"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -126,19 +127,20 @@
                     android:layout_weight="0.4"
                     android:gravity="center"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/text_11"
                     android:text="@string/latitude_degree_unit"/>
             </LinearLayout>
             <!--信标频率-->
-            <LinearLayout
+            <!--LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1.5"
+                android:layout_weight="1.3"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/settings_reference_beacon"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/settings_reference_beacon"
                     android:layout_width="0dp"
@@ -152,7 +154,35 @@
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:text="@string/frequency_unit"/>
-            </LinearLayout>
+            </LinearLayout-->
+        </LinearLayout>
+
+        <!--信标频率-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_reference_beacon"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:id="@+id/settings_reference_beacon"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/text_11"
+                android:layout_height="wrap_content"
+                android:hint="@string/main_monitor_satellite_beacon_hint"/>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_11"
+                android:text="@string/frequency_unit"/>
         </LinearLayout>
         <!--AG门 限 DVB符号率-->
         <LinearLayout
@@ -166,25 +196,28 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/settings_reference_ag"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/settings_reference_ag"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:layout_height="wrap_content"
-                    android:hint="@string/main_monitor_satellite_polarization_hint"/>
+                    android:textColor="@color/text_11"
+                    android:hint="@string/main_monitor_satellite_agc_hint"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="0.4"
                     android:gravity="center"
+                    android:textColor="@color/text_11"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
             <!--DVB符号率-->
-            <LinearLayout
+            <!--LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1.5"
                 android:layout_height="wrap_content"
@@ -194,7 +227,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/settings_reference_dvb"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/settings_reference_dvb"
                     android:layout_width="0dp"
@@ -208,7 +241,35 @@
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:text="@string/voltage_unit"/>
-            </LinearLayout>
+            </LinearLayout-->
+        </LinearLayout>
+
+        <!--DVB符号率-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_reference_dvb"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:id="@+id/settings_reference_dvb"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_11"
+                android:hint="@string/main_monitor_satellite_dvb_hint"/>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_11"
+                android:text="@string/voltage_unit"/>
         </LinearLayout>
     </LinearLayout>
     <!--提示信息-->

@@ -51,14 +51,14 @@ public class AdministratorFragmentLNBFrequencyChannel extends Fragment {
                                                                        int icon, String buttonText, String thirdLineEnd) {
         Bundle args = new Bundle();
         AdministratorFragmentLNBFrequencyChannel fragment = new AdministratorFragmentLNBFrequencyChannel();
-        args.putBoolean(PopDialog.SHOWFIRST,showFirst);
+        args.putBoolean(PopDialog.SHOW_FIRST,showFirst);
         args.putString(PopDialog.FIRST, firstLine);
-        args.putBoolean(PopDialog.SHOWSECOND,showSecond);
+        args.putBoolean(PopDialog.SHOW_SECOND,showSecond);
         args.putString(PopDialog.SECOND, secondLine);
-        args.putBoolean(PopDialog.SHOWTHIRD,showThird);
+        args.putBoolean(PopDialog.SHOW_THIRD,showThird);
         args.putString(PopDialog.START, thirdLineStart);
-        args.putInt("icon", icon);
-        args.putString(PopDialog.BUTTONTEXT, buttonText);
+        args.putInt(PopDialog.ICON, icon);
+        args.putString(PopDialog.BUTTON_TEXT, buttonText);
         args.putString(PopDialog.END, thirdLineEnd);
         fragment.setArguments(args);
         return fragment;
@@ -110,7 +110,7 @@ public class AdministratorFragmentLNBFrequencyChannel extends Fragment {
             popDialog.setBundle(bundle);
             popDialog.setSetFirstColor(true);
 
-            int icon = bundle.getInt("icon", -1);
+            int icon = bundle.getInt(PopDialog.ICON, -1);
             if (icon >= 0) {
                 popDialog.setDrawable(ContextCompat.getDrawable(getContext(),icons[0]));
             }

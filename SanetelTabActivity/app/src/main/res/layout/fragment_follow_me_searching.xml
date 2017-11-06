@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textStyle="bold"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/follow_me_searching_title"/>
     <LinearLayout
         android:id="@+id/follow_me_searching_satellite_info"
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/main_monitor_satellite_agc"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </LinearLayout>
     <include layout="@layout/pop_dialog_blue"/>
 </LinearLayout>

@@ -113,18 +113,19 @@ public class RandomDialog {
     public void onConfirmEDropletDialogBuilder(String message,
                                                String secondButtonText,
                                                final DialogInterface.OnClickListener btnOkListener,
-                                               final DialogInterface.OnClickListener btnHelpListener){
+                                               final DialogInterface.OnClickListener btnHelpListener,
+                                               final DialogInterface.OnClickListener btnCancelClickListener){
         new EDropletDialogBuilder(context)
                 .setTitle(context.getResources().getString(R.string.operate_confirm_title))
                 .setTitleSize(context.getResources().getInteger(R.integer.title_size))
-                .setTitleColor(Color.parseColor("#000000"))
+                //.setTitleColor(Color.parseColor("#000000"))
                 .setTitleBold(true)
                 .setTitleCenter(true)
                 .setMessageCenter(true)
                 .setMessage(message)
                 .setMessageSize(context.getResources().getInteger(R.integer.message_size))
                 .setMessageBold(true)
-                .setMessageColor(Color.parseColor("#000000"))
+                //.setMessageColor(Color.parseColor("#000000"))
                 //  第一个按钮
                 .setNegativeTextColor(Color.BLUE)
                 //  第二个按钮 最后一个
@@ -139,14 +140,7 @@ public class RandomDialog {
                 //  第二个按钮
                 .setPositiveButton(secondButtonText, btnHelpListener)
                 //  第3个按钮
-                .setNegativeButton(context.getResources().getString(R.string.operate_confirm_cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        //  提示信息
-                        Toast toast = Toast.makeText(context, "你选择了取消", Toast.LENGTH_SHORT);
-                        toast.show();
-                    }
-                })
+                .setNegativeButton(context.getResources().getString(R.string.operate_confirm_cancel), btnCancelClickListener)
                 /*
                 .setOnConfirmListener(new EDropletDialogBuilder.OnConfirmListener() {
                     @Override

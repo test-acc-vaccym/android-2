@@ -19,7 +19,7 @@
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:text="@string/main_application_manual_speed_movement"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
                 android:id="@+id/main_application_manual_speed_movement_group_top"
                 android:layout_width="0dp"
@@ -50,7 +50,7 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:text="@string/main_application_manual_speed_palstance"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
                 android:id="@+id/top_lactate_radio"
                 android:layout_height="0dp"

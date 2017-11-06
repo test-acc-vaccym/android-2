@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    style="@style/linear_no_shadow"
     tools:context=".activities.settings.NewCityActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -40,7 +41,7 @@
             android:orientation="horizontal"
             android:visibility="invisible">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-            style="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_gravity="right|end"
@@ -48,7 +49,7 @@
             android:padding="@dimen/list_detail_padding"
             android:text="@string/satellite_detail_id_key"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-            style="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/id_city_new"
             android:layout_width="0dp"
             android:layout_weight="2"
@@ -60,7 +61,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                style="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_gravity="right|end"
@@ -68,7 +69,7 @@
                 android:padding="@dimen/list_detail_padding"
                 android:text="@string/city_detail_province"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-                style="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/city_new_provence"
                 android:layout_width="0dp"
                 android:layout_weight="2"
@@ -79,7 +80,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                style="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_gravity="right|end"
@@ -87,7 +88,7 @@
                 android:padding="@dimen/list_detail_padding"
                 android:text="@string/city_detail_name_key"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-                style="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/city_new_name"
                 android:layout_width="0dp"
                 android:layout_weight="2"
@@ -99,7 +100,7 @@
             android:orientation="horizontal">
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                style="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="right|end"
@@ -109,18 +110,24 @@
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                 android:id="@+id/city_new_latitude"
-                style="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:inputType="number|numberDecimal"
-                android:layout_weight="2" />
+                android:layout_weight="1.5" />
+            <Spinner
+                android:id="@+id/city_new_latitude_unit"
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:layout_height="match_parent"
+                android:entries="@array/latitude_unit"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                style="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_gravity="right|end"
@@ -128,12 +135,18 @@
                 android:padding="@dimen/list_detail_padding"
                 android:text="@string/city_detail_longitude_key"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-                style="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/city_new_longitude"
                 android:layout_width="0dp"
-                android:layout_weight="2"
+                android:layout_weight="1.5"
                 android:inputType="number|numberDecimal"
                 android:layout_height="match_parent"/>
+            <Spinner
+                android:id="@+id/city_new_longitude_unit"
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:layout_height="match_parent"
+                android:entries="@array/longitude_unit"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -152,7 +165,7 @@
             android:textColor="@color/button_text"
             android:gravity="center"
             android:text="@string/main_me_error_report_commit"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             android:id="@+id/city_new_button_cancel"
             android:layout_width="0dp"
@@ -162,6 +175,6 @@
             android:textColor="@color/button_text"
             android:gravity="center"
             android:text="@string/operate_confirm_cancel"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
     </LinearLayout>
 </LinearLayout>

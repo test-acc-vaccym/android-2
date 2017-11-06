@@ -146,7 +146,8 @@
                         android:id="@+id/angle_calculate_local_longitude"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:inputType="number|numberDecimal" />
 
                     <Spinner
                         android:id="@+id/angle_calculate_local_longitude_unit"
@@ -171,7 +172,8 @@
                         android:id="@+id/angle_calculate_local_latitude"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:inputType="number|numberDecimal" />
 
                     <Spinner
                         android:id="@+id/angle_calculate_local_latitude_unit"
@@ -196,7 +198,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/angle_calculate_calculate_result"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -211,7 +213,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/location_control_setting_azimuth"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     tools:ignore="NestedWeights" />
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                     android:id="@+id/main_application_manual_angle_calculate_tv_setting_azimuth"
@@ -227,7 +229,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/angle_degree_unit"
                     android:layout_gravity="start"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
             </LinearLayout>
             <LinearLayout
                 android:layout_height="0dp"
@@ -239,7 +241,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/location_control_setting_pitch"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                     android:id="@+id/main_application_manual_angle_calculate_tv_setting_pitch"
                     android:layout_width="0dp"
@@ -254,7 +256,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/angle_degree_unit"
                     android:layout_gravity="start"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
             </LinearLayout>
             <LinearLayout
                 android:layout_height="0dp"
@@ -266,7 +268,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/location_control_setting_polarization"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     tools:ignore="NestedWeights" />
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                     android:id="@+id/main_application_manual_angle_calculate_tv_setting_polarization"
@@ -282,7 +284,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/angle_degree_unit"
                     android:layout_gravity="start"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

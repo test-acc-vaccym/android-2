@@ -8,15 +8,10 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
-import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -28,15 +23,15 @@ public class GuideFragmentSearchModeSetting extends Fragment {
                                                              int icon, String buttonText, String thirdLineEnd) {
         Bundle args = new Bundle();
         GuideFragmentSearchModeSetting fragment = new GuideFragmentSearchModeSetting();
-        args.putBoolean("showFirst",showFirst);
-        args.putString("first", firstLine);
-        args.putBoolean("showSecond",showSecond);
-        args.putString("second", secondLine);
-        args.putBoolean("showThird",showThird);
-        args.putString("start", thirdLineStart);
-        args.putInt("icon", icon);
-        args.putString("buttonText", buttonText);
-        args.putString("end", thirdLineEnd);
+        args.putBoolean(PopDialog.SHOW_FIRST,showFirst);
+        args.putString(PopDialog.FIRST, firstLine);
+        args.putBoolean(PopDialog.SHOW_SECOND,showSecond);
+        args.putString(PopDialog.SECOND, secondLine);
+        args.putBoolean(PopDialog.SHOW_THIRD,showThird);
+        args.putString(PopDialog.START, thirdLineStart);
+        args.putInt(PopDialog.ICON, icon);
+        args.putString(PopDialog.BUTTON_TEXT, buttonText);
+        args.putString(PopDialog.END, thirdLineEnd);
         fragment.setArguments(args);
         return fragment;
     }
@@ -64,7 +59,7 @@ public class GuideFragmentSearchModeSetting extends Fragment {
             popDialog.setBundle(bundle);
             popDialog.setSetFirstColor(true);
 
-            int icon = bundle.getInt("icon", -1);
+            int icon = bundle.getInt(PopDialog.ICON, -1);
             if (icon == 0) {
 //                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
 //                        ImageUtil.textAsBitmap(context,context.getString(

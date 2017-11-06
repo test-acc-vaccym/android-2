@@ -72,6 +72,8 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
     @BindId(R.id.city_list_select_province)
     Spinner cityListSelectProvince;
 
+    String selectedProvince;
+
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
@@ -98,7 +100,17 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
             case CITY_DETAIL_REQUEST_CODE:
                 if (RESULT_OK == resultCode && id != null && id.length() > 0 && locationInfo != null) {
                     cities.update(id, locationInfo);
-                    citiesRecyclerViewAdapter.setmValues(cities.getITEMS());
+                    citiesRecyclerViewAdapter.setmValues(cities.getLocationInfosByProvince(selectedProvince));
+//                    List<LocationInfo> newList = citiesRecyclerViewAdapter.getValues();
+//                    int i = 0;
+//                    for (LocationInfo info: newList) {
+//                        if (info.getName().equals(locationInfo.getName())) {
+//                            newList.set(i, locationInfo);
+//                            break;
+//                        }
+//                        i++;
+//                    }
+//                    citiesRecyclerViewAdapter.setmValues(newList);
                     citiesRecyclerViewAdapter.notifyDataSetChanged();
                     // 保存到文件
                     JsonLoad js = new JsonLoad(this, LocationInfo.citiesJsonFile);
@@ -115,12 +127,21 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
                 if (resultCode == RESULT_OK && locationInfo != null) {
                     //  刷新当前activity界面数据
                     cities.addItem(locationInfo,true);
-                    citiesRecyclerViewAdapter.setmValues(cities.getITEMS());
+                    cityListSelectProvince.setAdapter(new SpinnerAdapter2(this,
+                            android.R.layout.simple_list_item_1,
+                            android.R.id.text1, cities.getProvinceArray()));
+                    citiesRecyclerViewAdapter.setmValues(cities.getLocationInfosByProvince(selectedProvince));
+                    // citiesRecyclerViewAdapter.setmValues(citiesRecyclerViewAdapter.getValues());
                     //RecyclerView列表进行UI数据更新
-                    citiesRecyclerViewAdapter.notifyItemInserted(position);
-                    //如果在第一项添加模拟数据需要调用 scrollToPosition（0）把列表移动到顶端（可选）
-                    recyclerView.scrollToPosition(position);
-                    citiesRecyclerViewAdapter.notifyItemChanged(position);
+                    if (locationInfo.getProvince().equals(selectedProvince)) {
+//                        citiesRecyclerViewAdapter.notifyItemInserted(position);
+//                        //如果在第一项添加模拟数据需要调用 scrollToPosition（0）把列表移动到顶端（可选）
+//                        recyclerView.scrollToPosition(position);
+//                        citiesRecyclerViewAdapter.notifyItemChanged(position);
+                        citiesRecyclerViewAdapter.notifyDataSetChanged();
+                    }else {
+                        citiesRecyclerViewAdapter.notifyDataSetChanged();
+                    }
                 }
                 // }
                 break;
@@ -142,20 +163,10 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
                 // NavUtils.navigateUpTo(this, new Intent(this, SatelliteListActivity.class));
                 this.finish();
                 return true;
-            case R.id.delete_city:
-                //Map<Integer, Boolean> map = citiesRecyclerViewAdapter.getMap();
-                //for (int i = 0; i < map.size(); i++) {
-                    // map.put(i, true);
-                    citiesRecyclerViewAdapter.setShowBox();
-                    citiesRecyclerViewAdapter.notifyDataSetChanged();
-                //}
-                break;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    String selectedProvince;
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -188,7 +199,10 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedProvince = (String)cityListSelectProvince.getItemAtPosition(position);
-                citiesRecyclerViewAdapter.setmValues(cities.getLocationInfosByProvince(selectedProvince));
+                List<LocationInfo> infoList = cities.getLocationInfosByProvince(selectedProvince);
+                if (infoList != null) {
+                    citiesRecyclerViewAdapter.setmValues(infoList);
+                }
                 citiesRecyclerViewAdapter.notifyDataSetChanged();
             }
             @Override
@@ -233,11 +247,12 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
                     dialogBuilder.onConfirm(confirmDelete, new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            List<LocationInfo> items = cities.getITEMS();
+                            List<LocationInfo> items = citiesRecyclerViewAdapter.getValues();
                             for (int i: checkedPosition) {
                                 if (map.get(i)) {
-                                    citiesRecyclerViewAdapter.deleteItem(items.get(i));
-                                    cities.deleteItem(i);
+                                    LocationInfo item = items.get(i);
+                                    citiesRecyclerViewAdapter.deleteItem(item);
+                                    cities.deleteItem(item);
                                 }
                             }
 
@@ -245,14 +260,37 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
                                 // 修改文件
                                 JsonLoad js = new JsonLoad(view.getContext(), LocationInfo.citiesJsonFile);
                                 ArrayList<LocationInfo> al = new ArrayList<LocationInfo>();
+                                // 修改整个文件所以这样
                                 al.addAll(cities.getITEMS());
                                 js.saveCities(al);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-                            citiesRecyclerViewAdapter.setmValues(cities.getITEMS());
-                            citiesRecyclerViewAdapter.initMap();
+                            // 现在只修改当前视图，所以这样
                             toggleState();
+                            // 数据库可能已经更新，所以需要重新更新spinner
+                            String[] provinceArray = cities.getProvinceArray();
+                            boolean isClear = true;
+                            for (String pro:provinceArray){
+                                if (pro.equals(selectedProvince)){
+                                    isClear = false;
+                                    break;
+                                }
+                            }
+                            if (isClear && provinceArray.length > 0) {
+                                selectedProvince = provinceArray[0];
+                                cityListSelectProvince.setAdapter(new SpinnerAdapter2(CityLocationListActivity.this,
+                                        android.R.layout.simple_list_item_1,
+                                        android.R.id.text1,
+                                        provinceArray));
+
+                                citiesRecyclerViewAdapter.setmValues(cities.getLocationInfosByProvince(selectedProvince));
+                                citiesRecyclerViewAdapter.initMap();
+                                cityListSelectProvince.setSelection(0);
+                            }else{
+                                citiesRecyclerViewAdapter.setmValues(null);
+                                Toast.makeText(CityLocationListActivity.this,"EMPTY!", Toast.LENGTH_LONG);
+                            }
                             citiesRecyclerViewAdapter.notifyDataSetChanged();
                             recyclerView.scrollToPosition(0);
                             // citiesRecyclerViewAdapter.notifyAll();
@@ -335,7 +373,7 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
                 public void onItemClickListener(View view, int position) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putString(CityLocationDetailFragment.CITY_ARG_ITEM_ID, cities.getITEMS().get(position).getName());
+                        arguments.putString(CityLocationDetailFragment.CITY_ARG_ITEM_ID, citiesRecyclerViewAdapter.getValues().get(position).getName());
                         CityLocationDetailFragment fragment = new CityLocationDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
@@ -344,17 +382,20 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
                     } else {
                         Context context = view.getContext();
                         Intent intent = new Intent(context, CityLocationDetailActivity.class);
-                        intent.putExtra(CityLocationDetailFragment.CITY_ARG_ITEM_ID, cities.getITEMS().get(position).getName());
+                        intent.putExtra(CityLocationDetailFragment.CITY_ARG_ITEM_ID, citiesRecyclerViewAdapter.getValues().get(position).getName());
                         startActivityForResult(intent, CityLocationListActivity.CITY_DETAIL_REQUEST_CODE);
                     }
                 }
 
                 @Override
                 public boolean onItemLongClickListener(View view, int position) {
+                    // toggleState();
+                    isShowSelect = true;
                     citySelectButton.setVisibility(View.VISIBLE);
                     citiesRecyclerViewAdapter.setShowBox();
+                    citiesRecyclerViewAdapter.initMap();
                     citiesRecyclerViewAdapter.notifyDataSetChanged();
-                    Toast.makeText(view.getContext(), "长按了" + cities.getITEMS().get(position).getName(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), "长按了" + citiesRecyclerViewAdapter.getValues().get(position).getName(), Toast.LENGTH_SHORT).show();
                     return true;
                 }
             });

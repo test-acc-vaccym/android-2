@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.CityLocationDetailActivity"
-    tools:ignore="MergeRootFrame">
+    tools:ignore="MergeRootFrame"
+    style="@style/linear_no_shadow">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/city_detail_app_bar"

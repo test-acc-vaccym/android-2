@@ -4,8 +4,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/app_bar_height"
-    style="@style/manual_divider">
+    android:layout_marginBottom="@dimen/functions_fragment_margin_bottom"
+    style="@style/manual_divider"
+    android:background="@drawable/guide_main_item_background_color">
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/speed_info_scroll"
         android:layout_width="match_parent"
@@ -29,7 +30,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/main_settings_reference"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -56,7 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/main_settings_amplifier"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
 
                 <HorizontalScrollView
                     android:id="@+id/main_settings_amplifier_nsv"
@@ -75,7 +76,7 @@
                             android:background="@drawable/button_background"
                             android:padding="@dimen/no_padding"
                             android:text="@string/main_settings_amplifier_factory"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/button_text" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
@@ -85,7 +86,7 @@
                         android:background="@drawable/button_background"
                             android:padding="@dimen/no_padding"
                         android:text="@string/main_settings_amplifier_oscillator"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/button_text" />
 
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
@@ -95,7 +96,7 @@
                         android:background="@drawable/button_background"
                         android:padding="@dimen/no_padding"
                         android:text="@string/main_settings_amplifier_interfere"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/button_text" />
 
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
@@ -105,7 +106,7 @@
                         android:background="@drawable/button_background"
                         android:padding="@dimen/no_padding"
                         android:text="@string/main_settings_amplifier_emit"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/button_text" />
                 </LinearLayout>
                 </HorizontalScrollView>
@@ -120,7 +121,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/main_settings_lnb"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -132,7 +133,7 @@
                         android:background="@drawable/button_background"
                         android:text="@string/main_settings_lnb_oscillator"
                         android:textColor="@color/button_text"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -145,7 +146,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/main_settings_antenna"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -157,7 +158,7 @@
                         android:background="@drawable/button_background"
                         android:text="@string/main_settings_antenna_restart"
                         android:textColor="@color/button_text"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -170,7 +171,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/main_settings_database"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -183,7 +184,7 @@
                         android:background="@drawable/button_background"
                         android:text="@string/main_settings_database_city"
                         android:textColor="@color/button_text"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
 
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                         android:id="@+id/main_settings_database_satellites"
@@ -192,7 +193,7 @@
                         android:background="@drawable/button_background"
                         android:text="@string/main_settings_database_satellites"
                         android:textColor="@color/button_text"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -206,7 +207,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/main_settings_advance"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -219,7 +220,7 @@
                         android:layout_height="@dimen/app_bar_height"
                         android:layout_width="@dimen/app_bar_height"
                         android:textColor="@color/button_text"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:drawableStart="@drawable/settings"
                         android:drawableLeft="@drawable/settings"
                         android:layout_marginLeft="@dimen/status_button_margin_left"

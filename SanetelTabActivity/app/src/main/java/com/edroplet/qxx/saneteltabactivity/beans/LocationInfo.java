@@ -3,6 +3,8 @@ package com.edroplet.qxx.saneteltabactivity.beans;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -102,7 +104,9 @@ public class LocationInfo implements Parcelable {
         dest.writeString(province);
         dest.writeString(name);
         dest.writeFloat(longitude);
+        dest.writeString(longitudeUnit);
         dest.writeFloat(latitude);
+        dest.writeString(latitudeUnit);
     }
 
     public static final Parcelable.Creator<LocationInfo> CREATOR = new Creator<LocationInfo>(){
@@ -112,8 +116,10 @@ public class LocationInfo implements Parcelable {
             String province = source.readString();
             String name = source.readString();
             float longitude = source.readFloat();
+            String longitudeUnit = source.readString();
             float latitude  = source.readFloat();
-            LocationInfo li = new LocationInfo(id, province, name, latitude, longitude);
+            String latitudeUnit = source.readString();
+            LocationInfo li = new LocationInfo(id, province, name, latitude, latitudeUnit, longitude, longitudeUnit);
             return li;
         }
 
@@ -123,20 +129,23 @@ public class LocationInfo implements Parcelable {
         }
     };
 
-    public LocationInfo(String name, float latitude, float longitude){
-        this(null, name, latitude, longitude);
+    public LocationInfo(String name, float latitude, String latitudeUnit,  float longitude, String longitudeUnit){
+        this(null, name, latitude, latitudeUnit, longitude, longitudeUnit);
     }
 
-    public LocationInfo(String province, String name, float latitude, float longitude){
-        this(UUID.randomUUID().toString(), province, name, latitude, longitude);
+    public LocationInfo(String province, String name, float latitude, String latitudeUnit,  float longitude, String longitudeUnit){
+        this(UUID.randomUUID().toString(), province, name, latitude, latitudeUnit, longitude, longitudeUnit);
     }
 
-    public LocationInfo(String id, String province, String name, float latitude, float longitude){
+    public LocationInfo(String id, String province, String name, float latitude, String latitudeUnit,  float longitude, String longitudeUnit){
         this.mId = id;
         this.province = province;
         this.name = name;
         this.latitude = latitude;
+        this.latitudeUnit = latitudeUnit;
         this.longitude = longitude;
+        this.longitudeUnit = longitudeUnit;
+
     }
 
     public static String StringFilter(String str) throws PatternSyntaxException {
@@ -160,11 +169,11 @@ public class LocationInfo implements Parcelable {
             }
             if (json.has(JSON_CITY_LATITUDE)) {
                 String jsonCityLatitude = json.getString(JSON_CITY_LATITUDE);
-                if (jsonCityLatitude.contains("S")) {
-                    this.latitudeUnit = "S";
+                if (jsonCityLatitude.endsWith("°S")) {
+                    this.latitudeUnit = "°S";
                     jsonCityLatitude = jsonCityLatitude.substring(0,jsonCityLatitude.length()-2);
-                } else if (jsonCityLatitude.contains("N")) {
-                    this.latitudeUnit = "N";
+                } else if (jsonCityLatitude.endsWith("°N")) {
+                    this.latitudeUnit = "°N";
                     jsonCityLatitude = jsonCityLatitude.substring(0,jsonCityLatitude.length()-2);
                 }
                 int index = jsonCityLatitude.indexOf(".");
@@ -173,22 +182,22 @@ public class LocationInfo implements Parcelable {
 //                }
                 jsonCityLatitude = StringFilter(jsonCityLatitude);
                 // this.latitude = (float) json.getDouble(JSON_CITY_LATITUDE);
-                this.latitude = Float.parseFloat(StringFilter(jsonCityLatitude));
+                this.latitude = ConvertUtil.convertToFloat(StringFilter(jsonCityLatitude), 0.0f);
             }else {
                 this.latitude = 0;
             }
             if (json.has(JSON_CITY_LONGITUDE)) {
                 String jsonCityLongitude = json.getString(JSON_CITY_LONGITUDE);
-                if (jsonCityLongitude.contains("W")) {
-                    this.longitudeUnit = "W";
+                if (jsonCityLongitude.endsWith("°W")) {
+                    this.longitudeUnit = "°W";
                     jsonCityLongitude = jsonCityLongitude.substring(0,jsonCityLongitude.length()-2);
-                } else if (jsonCityLongitude.contains("E")){
-                    this.longitudeUnit = "E";
+                } else if (jsonCityLongitude.endsWith("°E")){
+                    this.longitudeUnit = "°E";
                     jsonCityLongitude = jsonCityLongitude.substring(0,jsonCityLongitude.length()-2);
                 }
                 jsonCityLongitude = StringFilter(jsonCityLongitude);
                 //  json.getString(JSON_CITY_LONGITUDE)
-                this.longitude = Float.parseFloat(jsonCityLongitude);
+                this.longitude = ConvertUtil.convertToFloat(jsonCityLongitude,0.0f);
             }else {
                 this.longitude = 0;
             }

@@ -6,8 +6,10 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.Space;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.AlertDialogLayout;
 import android.text.TextPaint;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -23,6 +25,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.edroplet.qxx.saneteltabactivity.R;
@@ -66,6 +69,10 @@ public class EDropletDialogBuilder {
     private boolean isTitleCenter;//标题是否居中
     private boolean isTitleBold = true;
 
+    private int titleBackgroundColor = Color.WHITE;
+    private int messageBackgroundColor = Color.WHITE;
+    private int dialogBackgroundColor = Color.WHITE;
+    private int buttonBackgroundColor = Color.WHITE;
 
     private String inputText;
     private int inputTextSize = 15;
@@ -89,6 +96,11 @@ public class EDropletDialogBuilder {
 
     public EDropletDialogBuilder(Context context) {
         this.mContext = context;
+        titleBackgroundColor = ContextCompat.getColor(mContext, R.color.operate_confirm_divider_color);
+        messageColor = ContextCompat.getColor(mContext, R.color.operate_confirm_message_color);
+        dialogBackgroundColor = ContextCompat.getColor(mContext, R.color.operate_confirm_divider_color);
+        dividerColor = ContextCompat.getColor(mContext, R.color.defDividerColor);
+        buttonBackgroundColor  = ContextCompat.getColor(mContext, R.color.defTextColor);
     }
 
     private OnConfirmListener onConfirmListener;
@@ -187,7 +199,7 @@ public class EDropletDialogBuilder {
     }
 
     private void setListViewStyle(final AlertDialog alertDialog) {
-
+        // R.layout.choice_layout
         ListView listView = (ListView) customView.findViewById(R.id.listview);
         listView.setAdapter(adapter == null ? new AAdapter() : adapter);
         if (hasDivider) {
@@ -208,7 +220,7 @@ public class EDropletDialogBuilder {
     }
 
     private void setInputStyle() {
-
+        // R.layout.input_layout
         mEditText = (EditText) customView.findViewById(R.id.input);
         inputLine = customView.findViewById(R.id.input_line);
 
@@ -224,17 +236,29 @@ public class EDropletDialogBuilder {
         inputLine.setBackgroundColor(inputLineColor);
 
     }
+
     private Button positiveButton;
     private Button negativeButton;
     private Button neutralButton;
+
     private void setButtonStyle(AlertDialog alertDialog) {
+        Window window = alertDialog.getWindow();
+        // abc_alert_dialog_button_bar_material.xml
+        // C:\Users\yonghuming\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.0.0-alpha1.aar\845d5e8af19752f0a4aea565ccfe1f5d\res\layout\abc_alert_dialog_material.xml
+        ScrollView buttonPanel = (ScrollView) window.findViewById(R.id.buttonPanel);
+        if (buttonPanel != null){
+            buttonPanel.setBackgroundColor(dialogBackgroundColor);
+        }
         positiveButton = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
         negativeButton = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
         neutralButton = alertDialog.getButton(DialogInterface.BUTTON_NEUTRAL);
 
         neutralButton.setText(neutralButtonText);
+        neutralButton.setBackgroundColor(buttonBackgroundColor);
         negativeButton.setText(negativeButtonText);
+        negativeButton.setBackgroundColor(buttonBackgroundColor);
         positiveButton.setText(positiveButtonText);
+        positiveButton.setBackgroundColor(buttonBackgroundColor);
 
         negativeButton.setTextColor(negativeTextColor);
         positiveButton.setTextColor(positiveTextColor);
@@ -247,7 +271,6 @@ public class EDropletDialogBuilder {
             neutralButton.setVisibility(View.VISIBLE);
         }
         if (isButtonCenter) {
-            Window window = alertDialog.getWindow();
             Button button3 = (Button) window.findViewById(android.R.id.button3);
             Space space = (Space) window.findViewById(R.id.spacer);
 
@@ -263,9 +286,14 @@ public class EDropletDialogBuilder {
     private void setTitleStyle(AlertDialog alertDialog) {
         Window window = alertDialog.getWindow();
         TextView titleView = (TextView) window.findViewById(R.id.alertTitle);
+        LinearLayout titleTemplate = window.findViewById(R.id.title_template);
 
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, titleSize);
+
+        // 标题背景
         titleView.setTextColor(titleColor);
+        if (titleTemplate != null)
+            titleTemplate.setBackgroundColor(titleBackgroundColor);
         // set bold
         TextPaint textPaint = titleView.getPaint();
         textPaint.setFakeBoldText(true);
@@ -282,6 +310,10 @@ public class EDropletDialogBuilder {
     private void setMessageStyle(AlertDialog alertDialog) {
         Window window = alertDialog.getWindow();
         TextView messageView = (TextView) window.findViewById(android.R.id.message);
+        AlertDialogLayout parentPanel = window.findViewById(R.id.parentPanel);
+        if (parentPanel != null){
+            parentPanel.setBackgroundColor(messageBackgroundColor);
+        }
 
         messageView.setTextSize(TypedValue.COMPLEX_UNIT_SP, messageSize);
         messageView.setTextColor(messageColor);

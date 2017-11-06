@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 import static com.edroplet.qxx.saneteltabactivity.activities.main.MainMeAboutBrowserActivity.BrowseUrl;
@@ -53,7 +54,7 @@ public class MainMeAppActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_main_me_app);
+        setContentView(R.layout.activity_main_me_app);
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_me_app_toolbar);
         toolbar.setTitle(R.string.main_me_app_title);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -93,9 +94,10 @@ public class MainMeAppActivity extends AppCompatActivity implements View.OnClick
                 intent.putExtra(KEY_DOWNLOAD_URL, SanetenDownloadUrl);
                 break;
             case R.id.main_me_app_recovery:
-                // todo 提交
+                SystemServices.restoreAPP(this, 2000);
                 break;
             case R.id.main_me_app_update:
+                // todo 升级
                 // intent = new Intent(getContext(), Context.AUDIO_SERVICE);
                 break;
             default:

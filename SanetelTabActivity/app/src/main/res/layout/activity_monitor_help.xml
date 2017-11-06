@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    style="@style/linear_no_shadow"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.functions.MonitorHelpActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -47,6 +48,6 @@
             android:layout_height="match_parent"
             android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
             android:text="@string/functions_monitor_help_message"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </LinearLayout>
 </LinearLayout>

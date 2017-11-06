@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    style="@style/linear_no_shadow"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.functions.ManualActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -49,11 +50,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/ic_launcher"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/main_status_version_software_version"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_me_app_version"
                     android:layout_width="match_parent"

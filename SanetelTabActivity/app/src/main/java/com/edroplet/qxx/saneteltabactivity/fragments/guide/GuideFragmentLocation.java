@@ -7,6 +7,7 @@ import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +23,11 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.adapters.SpinnerAdapter2;
 import com.edroplet.qxx.saneteltabactivity.beans.Cities;
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
+import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.GalleryOnTime;
 import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
+import com.edroplet.qxx.saneteltabactivity.utils.InputFilterMinMax;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
@@ -71,18 +74,21 @@ public class GuideFragmentLocation extends Fragment {
 
     public static GuideFragmentLocation newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                     String secondLine, boolean showThird, String thirdLineStart,
-                                                    int icon, String buttonText, String thirdLineEnd) {
+                                                    int icon, String buttonText, String thirdLineEnd,
+                                                    boolean showForth, String forth) {
         Bundle args = new Bundle();
         GuideFragmentLocation fragment = new GuideFragmentLocation();
-        args.putBoolean("showFirst",showFirst);
-        args.putString("first", firstLine);
-        args.putBoolean("showSecond",showSecond);
-        args.putString("second", secondLine);
-        args.putBoolean("showThird",showThird);
-        args.putString("start", thirdLineStart);
-        args.putInt("icon", icon);
-        args.putString("buttonText", buttonText);
-        args.putString("end", thirdLineEnd);
+        args.putBoolean(PopDialog.SHOW_FIRST,showFirst);
+        args.putString(PopDialog.FIRST, firstLine);
+        args.putBoolean(PopDialog.SHOW_SECOND,showSecond);
+        args.putString(PopDialog.SECOND, secondLine);
+        args.putBoolean(PopDialog.SHOW_THIRD,showThird);
+        args.putString(PopDialog.START, thirdLineStart);
+        args.putInt(PopDialog.ICON, icon);
+        args.putString(PopDialog.BUTTON_TEXT, buttonText);
+        args.putString(PopDialog.END, thirdLineEnd);
+        args.putBoolean(PopDialog.SHOW_FORTH,showForth);
+        args.putString(PopDialog.FORTH, forth);
         fragment.setArguments(args);
         return fragment;
     }
@@ -121,7 +127,7 @@ public class GuideFragmentLocation extends Fragment {
         if (bundle != null) {
             popDialog.setBundle(bundle);
             popDialog.setSetFirstColor(true);
-            int icon = bundle.getInt("icon", -1);
+            int icon = bundle.getInt(PopDialog.ICON, -1);
             if (icon >= 0) {
                 popDialog.setButtonText(context, getString(R.string.setting_button_text));
             }
@@ -143,7 +149,10 @@ public class GuideFragmentLocation extends Fragment {
         newLatitude = view.findViewById(R.id.follow_me_location_et_new_latitude);
         newLongitudeUnit = view.findViewById(R.id.follow_me_location_spinner_new_longitude_nit);
         newLatitudeUnit = view.findViewById(R.id.follow_me_location_spinner_new_latitude_unit);
-        
+
+        newLongitude.setFilters(new InputFilter[]{ new InputFilterMinMax("-180", "180")});
+        newLatitude.setFilters(new InputFilter[]{ new InputFilterMinMax("-90", "90")});
+
         try {
             cities = new Cities(getContext());
             String[] provincesArray = cities.getProvinceArray();
@@ -248,12 +257,15 @@ public class GuideFragmentLocation extends Fragment {
             public void onClick(View v) {
                 @IdRes int checkedId = customRadioGroupWithCustomRadioButton.getCheckedRadioButtonId();
                 switch (checkedId){
-                    case R.id.follow_me_destination_satellite_new:
+                    case R.id.follow_me_location_new_city:
+                        selectedProvince = newProvince.getText().toString();
+                        selectedCity = newCity.getText().toString();
                         // 添加新城市
-                        cities.addItem(new LocationInfo(newProvince.getText().toString(),
-                                newCity.getText().toString(),
-                                Float.parseFloat(newLatitude.getText().toString()),
-                                Float.parseFloat(newLongitude.getText().toString())), true);
+                        cities.addItem(new LocationInfo(selectedProvince, selectedCity,
+                                ConvertUtil.convertToFloat(newLatitude.getText().toString(), 0.00f),
+                                newLatitudeUnit.getSelectedItem().toString(),
+                                ConvertUtil.convertToFloat(newLongitude.getText().toString(), 0.00f),
+                                newLongitudeUnit.getSelectedItem().toString()), true);
                         try {
                             cities.save();
                         }catch (Exception e){
@@ -276,8 +288,13 @@ public class GuideFragmentLocation extends Fragment {
             ViewParent vp = compoundButton.getParent();
             CustomRadioGroupWithCustomRadioButton edGroup = (CustomRadioGroupWithCustomRadioButton) vp;
             int childCount = edGroup.getChildCount();
+            int buttonId = compoundButton.getId();
+            if (b){
+                edGroup.setCheckedId(buttonId);
+            }
             for (int i = 0; i < childCount; i++){
-                if (edGroup.getChildAt(i).getId() != compoundButton.getId()){
+                int childId = edGroup.getChildAt(i).getId();
+                if (childId != buttonId){
                     CustomRadioButton rdButton =  (CustomRadioButton)edGroup.getChildAt(i);
                     if (b && rdButton.isChecked()){
                         rdButton.setChecked(false);
@@ -289,7 +306,11 @@ public class GuideFragmentLocation extends Fragment {
 
     @Override
     public void onDestroy() {
-        timer.cancel();
+        if (timer != null) {
+            timer.cancel();
+            timer.purge();
+            timer = null;
+        }
         super.onDestroy();
     }
 }

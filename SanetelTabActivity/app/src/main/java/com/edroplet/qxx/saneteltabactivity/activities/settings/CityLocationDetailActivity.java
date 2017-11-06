@@ -139,7 +139,11 @@ public class CityLocationDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        timer.cancel();
+        if (timer != null) {
+            timer.cancel();
+            timer.purge();
+            timer = null;
+        }
         super.onDestroy();
     }
 

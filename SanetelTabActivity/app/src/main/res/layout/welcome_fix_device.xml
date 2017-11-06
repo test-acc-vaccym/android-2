@@ -11,7 +11,7 @@
         android:layout_height="@dimen/app_bar_height"
         android:gravity="center"
         android:text="@string/welcome_fix_device"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/welcome_install_wire_scroll"
@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/welcome_fix_device_detail"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

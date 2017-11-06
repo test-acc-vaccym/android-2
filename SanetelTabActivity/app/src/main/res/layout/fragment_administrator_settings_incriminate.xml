@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/administrator_antenna_incriminate"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/main_application_manual_speed_azimuth"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 tools:ignore="NestedWeights" />
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/main_application_manual_speed_azimuth"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:layout_width="0dp"
@@ -48,7 +48,7 @@
                 android:layout_gravity="start"
                 android:layout_weight="0.2"
                 android:text="@string/angle_degree_unit"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
 
         <LinearLayout
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/main_application_manual_speed_pitch"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 tools:ignore="NestedWeights" />
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/main_application_manual_speed_pitch"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:layout_width="0dp"
@@ -79,7 +79,7 @@
                 android:layout_gravity="start"
                 android:layout_weight="0.2"
                 android:text="@string/angle_degree_unit"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
 
         <LinearLayout
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/main_application_manual_speed_polarization"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                 android:id="@+id/administrator_antenna_incriminate_polarization"
@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/main_application_manual_speed_polarization"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:layout_width="0dp"
@@ -109,7 +109,7 @@
                 android:layout_gravity="start"
                 android:layout_weight="0.2"
                 android:text="@string/angle_degree_unit"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
 
     </LinearLayout>

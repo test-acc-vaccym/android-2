@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/app_bar_height">
     <LinearLayout
-        android:orientation="vertical" android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/app_bar_height">
+        style="@style/linear_shadow">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -16,7 +18,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="@dimen/layout_padding_top"
+            android:paddingBottom="@dimen/layout_padding_top">
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -28,36 +32,38 @@
                 android:orientation="vertical">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/radio_group_item_height"
                     android:checked="true"
                     android:id="@+id/settings_amplifier_oscillator_value_1"
-                    android:text="@string/settings_amplifier_oscillator_value_1"/>
+                    android:text="@string/settings_amplifier_oscillator_value_1"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/radio_group_item_height"
                     android:id="@+id/settings_amplifier_oscillator_value_2"
-                    android:text="@string/settings_amplifier_oscillator_value_2"/>
+                    android:text="@string/settings_amplifier_oscillator_value_2"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="@dimen/radio_group_item_height">
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/radio_group_item_height"
                         android:id="@+id/settings_amplifier_oscillator_value_3"/>
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                         android:id="@+id/settings_amplifier_oscillator_custom_value"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/radio_group_item_height"
                         android:layout_toEndOf="@id/settings_amplifier_oscillator_value_3"
-                        android:layout_toRightOf="@id/settings_amplifier_oscillator_value_3"/>
+                        android:layout_toRightOf="@id/settings_amplifier_oscillator_value_3"
+                        android:inputType="number|numberDecimal"
+                        android:hint="@string/settings_amplifier_oscillator_value_1"
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
                 </RelativeLayout>
             </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
         </LinearLayout>
 
         <include layout="@layout/pop_dialog_blue"
-            android:id="@+id/amplifier_oscillator_pop"
-            android:layout_height="150dp"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="@dimen/app_bar_height"/>
+            android:id="@+id/amplifier_oscillator_pop"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

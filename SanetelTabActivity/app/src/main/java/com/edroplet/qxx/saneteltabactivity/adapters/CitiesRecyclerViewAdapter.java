@@ -53,9 +53,18 @@ public class CitiesRecyclerViewAdapter extends RecyclerView.Adapter<CitiesRecycl
         initMap();
     }
 
-    public void setmValues(List<LocationInfo> mValues) {
-        this.mValues.clear();
-        this.mValues.addAll(mValues);
+    public void setmValues(List<LocationInfo> mv) {
+        if (mv == null && mValues == null){
+            return;
+        }else if (mv == null && mValues != null){
+            mValues.clear();
+        }else if (mValues != null) {
+            this.mValues.clear();
+            this.mValues.addAll(mv);
+        }else {
+            mValues = new ArrayList<>();
+            this.mValues.addAll(mv);
+        }
     }
 
     //初始化map集合,默认为不选中
@@ -185,7 +194,13 @@ public class CitiesRecyclerViewAdapter extends RecyclerView.Adapter<CitiesRecycl
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        if (mValues != null)
+            return mValues.size();
+        return 0;
+    }
+
+    public List<LocationInfo> getValues() {
+        return mValues;
     }
 
     //视图管理

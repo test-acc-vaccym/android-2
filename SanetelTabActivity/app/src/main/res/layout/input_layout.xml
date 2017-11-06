@@ -7,18 +7,18 @@
     <EditText
         android:id="@+id/input"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/app_bar_height"
         android:background="@null"
         android:layout_marginLeft="@dimen/input_marginLeft"
         android:layout_marginRight="@dimen/input_marginRight"
         android:layout_marginTop="@dimen/input_marginTop"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/input_text_size"
         />
     <View
         android:id="@+id/input_line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#c1c1c1"
+        android:background="@color/input_under_line"
         android:layout_marginLeft="@dimen/marginLeft"
         android:layout_marginRight="@dimen/marginRight"
         android:layout_marginTop="2dp"

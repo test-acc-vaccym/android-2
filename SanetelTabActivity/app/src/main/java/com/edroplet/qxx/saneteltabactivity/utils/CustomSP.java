@@ -20,6 +20,7 @@ public class CustomSP {
     public static  final String firstReadCities = "firstReadCities";
     public static  final String showWelcome = "showWelcome";
     public static  final String searchingMode = "searchingMode";
+    public static final String WifiSettingsNameKey = "deviceName";
 
     public static final String searchingModeBeacon = "beacon";
     public static final String searchingModeDVB = "dvb";
@@ -78,5 +79,10 @@ public class CustomSP {
         editor.putStringSet(key,val);
         editor.apply();
     }
-
+    public static void clear(Context context){
+        SharedPreferences sharedPreferences= context.getSharedPreferences(spFileName, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+    }
 }

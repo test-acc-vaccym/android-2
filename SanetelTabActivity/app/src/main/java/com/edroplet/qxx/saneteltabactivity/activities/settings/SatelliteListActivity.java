@@ -300,7 +300,7 @@ public class SatelliteListActivity extends AppCompatActivity {
                 @Override
                 public boolean onItemLongClickListener(View view, int position) {
                     // Toast.makeText(SatelliteListActivity.this, "长按了"+satellites.getITEMS().get(position).name, Toast.LENGTH_SHORT).show();
-                    satelliteSelectButton.setVisibility(View.VISIBLE);
+                    toggleState();
                     satelliteItemRecyclerViewAdapter.setShowBox();
                     satelliteItemRecyclerViewAdapter.notifyDataSetChanged();
                     return true;

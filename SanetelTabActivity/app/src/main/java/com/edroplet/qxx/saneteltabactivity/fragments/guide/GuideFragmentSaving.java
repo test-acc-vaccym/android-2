@@ -24,18 +24,20 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 public class GuideFragmentSaving extends Fragment {
     public static GuideFragmentSaving newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                   String secondLine, boolean showThird, String thirdLineStart,
-                                                  int icon, String buttonText, String thirdLineEnd) {
+                                                  int icon, String buttonText, String thirdLineEnd, boolean showForth, String forth) {
         Bundle args = new Bundle();
         GuideFragmentSaving fragment = new GuideFragmentSaving();
-        args.putBoolean("showFirst",showFirst);
-        args.putString("first", firstLine);
-        args.putBoolean("showSecond",showSecond);
-        args.putString("second", secondLine);
-        args.putBoolean("showThird",showThird);
-        args.putString("start", thirdLineStart);
-        args.putInt("icon", icon);
-        args.putString("buttonText", buttonText);
-        args.putString("end", thirdLineEnd);
+        args.putBoolean(PopDialog.SHOW_FIRST,showFirst);
+        args.putString(PopDialog.FIRST, firstLine);
+        args.putBoolean(PopDialog.SHOW_SECOND,showSecond);
+        args.putString(PopDialog.SECOND, secondLine);
+        args.putBoolean(PopDialog.SHOW_THIRD,showThird);
+        args.putString(PopDialog.START, thirdLineStart);
+        args.putInt(PopDialog.ICON, icon);
+        args.putString(PopDialog.BUTTON_TEXT, buttonText);
+        args.putString(PopDialog.END, thirdLineEnd);
+        args.putBoolean(PopDialog.SHOW_FORTH, showForth);
+        args.putString(PopDialog.FORTH, forth);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,7 +58,7 @@ public class GuideFragmentSaving extends Fragment {
             popDialog.setBundle(bundle);
             popDialog.setSetFirstColor(true);
 
-            int icon = bundle.getInt("icon", -1);
+            int icon = bundle.getInt(PopDialog.ICON, -1);
             if (icon == 0) {
 //                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
 //                        ImageUtil.textAsBitmap(context,context.getString(

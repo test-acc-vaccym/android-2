@@ -227,7 +227,10 @@ public class StatusButton extends CustomButton {
             // setEnabled(true);
         }else {
             color = ContextCompat.getColor(getContext(), R.color.operate_disabled_color);
-            setClickable(false);
+            // 不需要设置为不可点击，只要设置为灰色
+            // setClickable(false);
+            setClickable(true);
+            setFocusable(true);
         }
         // 设置字体颜色
         setTextColor(color);
@@ -352,7 +355,7 @@ public class StatusButton extends CustomButton {
     public NiftyDialogBuilder getDialogBuilder(){
         return dialogBuilder;
     }
-    public boolean onConfirm(String message, View.OnClickListener listener){
+    public boolean onConfirm(String message, View.OnClickListener listener, String buttonOkText){
         final String []type = {"Fadein", "Slideleft", "Slidetop", "SlideBottom", "Slideright", "Fall", "Newspager", "Fliph", "Flipv", "RotateBottom", "RotateLeft", "Slit", "Shake", "Sidefill"};
         int i= (int) (type.length*Math.random());
         Effectstype effect = null;
@@ -373,6 +376,9 @@ public class StatusButton extends CustomButton {
             case 13:effect= Effectstype.Shake;break;
         }
         Context mContext = getContext();
+        if (buttonOkText == null || buttonOkText.length() == 0){
+            buttonOkText = getResources().getString(R.string.operate_confirm_ok);
+        }
         dialogBuilder = NiftyDialogBuilder.getInstance(getContext());
         dialogBuilder
                 // 重点设置
@@ -390,7 +396,7 @@ public class StatusButton extends CustomButton {
                 // 设置是否模态，默认false，表示模态，
                 //要求必须采取行动才能继续进行剩下的操作 | isCancelable(true)
                 .isCancelableOnTouchOutside(true)
-                .withButton1Text(getResources().getString(R.string.operate_confirm_ok))             //设置按钮1的文本
+                .withButton1Text(buttonOkText)             //设置按钮1的文本
                 .withButton2Text(getResources().getString(R.string.operate_confirm_cancel))         //设置按钮2的文本
                 .setButton1Click(listener)
                 .setButton2Click(new View.OnClickListener() {

@@ -72,6 +72,7 @@ public class MailUtil {
         intent.setType("*");
         intent.setType("message/rfc882");
         Intent.createChooser(intent, activity.getString(R.string.choose_mail_client));
+        // intent.setClassName(com.android.email, com.android.email.activity.ComposeActivityEmail);
         activity.startActivity(intent);
     }
 

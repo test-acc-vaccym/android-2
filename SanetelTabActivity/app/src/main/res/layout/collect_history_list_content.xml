@@ -40,27 +40,17 @@
     </LinearLayout>
     <!-- 以下都是侧滑菜单的内容依序排列 -->
     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        style="@style/swipe_button_style"
         android:id="@+id/main_collect_data_history_list_open"
-        android:layout_width="60dp"
-        android:layout_height="match_parent"
-        android:background="@color/green"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="@string/main_collect_data_history_list_open"
-        android:textColor="@android:color/white"/>
+        android:text="@string/main_collect_data_history_list_open"/>
 
     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        style="@style/swipe_button_style"
         android:id="@+id/main_collect_data_history_list_delete"
-        android:layout_width="60dp"
-        android:layout_height="match_parent"
-        android:background="@color/yellow"
-        android:text="@string/main_collect_data_history_list_delete"
-        android:textColor="@android:color/white"/>
+        android:text="@string/main_collect_data_history_list_delete"/>
+
     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        style="@style/swipe_button_style"
         android:id="@+id/main_collect_data_history_list_delete_all"
-        android:layout_width="60dp"
-        android:layout_height="match_parent"
-        android:background="@color/mb_red"
-        android:text="@string/main_collect_data_history_list_delete_all"
-        android:textColor="@android:color/white"/>
+        android:text="@string/main_collect_data_history_list_delete_all"/>
 </com.mcxtzhang.swipemenulib.SwipeMenuLayout>

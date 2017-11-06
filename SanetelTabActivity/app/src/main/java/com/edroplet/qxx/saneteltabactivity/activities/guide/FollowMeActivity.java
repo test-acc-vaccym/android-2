@@ -1,5 +1,7 @@
 package com.edroplet.qxx.saneteltabactivity.activities.guide;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -24,6 +26,7 @@ import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentLocker;
 import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentSaving;
 import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentSearchModeSetting;
 import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentSearching;
+import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
@@ -31,6 +34,10 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomFAB;
 
 import java.util.ArrayList;
+
+import static com.edroplet.qxx.saneteltabactivity.activities.guide.FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_EXPLODE;
+import static com.edroplet.qxx.saneteltabactivity.activities.main.MainActivity.defaultDeviceName;
+import static com.edroplet.qxx.saneteltabactivity.utils.CustomSP.WifiSettingsNameKey;
 
 public class FollowMeActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String POSITION="position";
@@ -207,11 +214,12 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
             //    case LocationInfo.BDState.NOTLOCATED:
             guideFragmentLocation.add(GuideFragmentLocation.newInstance(true, getString(R.string.follow_me_location_state_not_locate),
                     true, getString(R.string.follow_me_location_state_not_locate_second_line),
-                    true, getString(R.string.follow_me_message_click), 0, null, getString(R.string.follow_me_forever)));
+                    true, getString(R.string.follow_me_message_click), 0, null, getString(R.string.follow_me_forever), false, null));
             //       break;
             //   case LocationInfo.BDState.LOCATED:
             guideFragmentLocation.add(GuideFragmentLocation.newInstance(true, getString(R.string.follow_me_location_state_locate),
-                    true, getString(R.string.follow_me_location_state_locate_second_line), false, null, -1, null, null));
+                    false, null, false, null, -1, null, null,
+                    true, getString(R.string.follow_me_location_state_locate_forth_line)));
             //       break;
             //}
             mSectionsPagerAdapter.addFragment(guideFragmentLocation.get(bdState));
@@ -288,12 +296,12 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
             //    case 0:
             guideFragmentSaving.add(GuideFragmentSaving.newInstance(true, getString(R.string.follow_me_saving_open_first_line),
                     true, getString(R.string.follow_me_saving_second_line),
-                    true, getString(R.string.follow_me_saving_third_start), 0, null, getString(R.string.follow_me_saving_third_end)));
+                    true, getString(R.string.follow_me_saving_third_start), 0, null, null, true,getString(R.string.follow_me_saving_third_end)));
             //       break;
             //    case 1:
             guideFragmentSaving.add(GuideFragmentSaving.newInstance(true, getString(R.string.follow_me_saving_close_first_line),
                     true, getString(R.string.follow_me_saving_second_line),
-                    true, getString(R.string.follow_me_saving_third_start), 0, null, getString(R.string.follow_me_saving_third_end)));
+                    true, getString(R.string.follow_me_saving_third_start), 0, null, null, true, getString(R.string.follow_me_saving_third_end)));
             //       break;
             //}
 
@@ -331,14 +339,23 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
     }
     private MenuItem menuItem;
 
+    final Context context = FollowMeActivity.this;
+    final DialogInterface.OnClickListener mCancelClickListener = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface arg0, int arg1) {
+            Toast.makeText(context, context.getString(R.string.cancel_button_prompt), Toast.LENGTH_SHORT).show();
+        }
+    };
+
     private ViewPager.OnPageChangeListener mOnPageChangeListener = new ViewPager.OnPageChangeListener(){
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             switch (position){
-                case 0:
-                case 1:
+                case 0: // 展开
+                case 1: // 位置输入
                     fab.setVisibility(View.VISIBLE);
                     break;
+                case 2: // 目标星
                 default:
                     fab.setVisibility(View.INVISIBLE);
                     break;
@@ -355,6 +372,19 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
 
         @Override
         public void onPageSelected(int position) {
+            /** 吴鹏说进入后就不要判断了
+            final Context context = FollowMeActivity.this;
+
+            switch (position){
+                case 0: // 展开
+                case 2: // 目标星
+                    SystemServices.checkConnectedSsid(context, CustomSP.getString(context,
+                            WifiSettingsNameKey, defaultDeviceName), FollowMeActivity.this, mCancelClickListener,
+             SystemServices.REQUEST_WIFI_CONNECT_MANAGER);
+                    break;
+            }
+             */
+
         }
 
         @Override

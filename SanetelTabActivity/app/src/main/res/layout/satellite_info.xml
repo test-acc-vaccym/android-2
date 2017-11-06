@@ -3,31 +3,32 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/main_margin_top">
+    android:layout_marginTop="@dimen/layout_padding_top">
     <!--卫星信息-->
     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/main_monitor_satellite_info"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/sub_layout_padding_top">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1.2"
+                android:layout_weight="@dimen/two_element_the_bigger_weight"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_name"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_monitor_satellite_tv_name"
                     android:layout_width="0dp"
@@ -50,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_longitude"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_monitor_satellite_tv_longitude"
                     android:layout_width="0dp"
@@ -63,6 +64,7 @@
                     android:layout_weight="0.4"
                     android:gravity="center"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/text_11"
                     android:text="@string/latitude_degree_unit"/>
             </LinearLayout>
         </LinearLayout>
@@ -72,14 +74,14 @@
             android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1.2"
+                android:layout_weight="@dimen/two_element_the_bigger_weight"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_beacon"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_monitor_satellite_tv_beacon"
                     android:layout_width="0dp"
@@ -92,6 +94,7 @@
                     android:layout_weight="0.4"
                     android:gravity="center"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/text_11"
                     android:text="@string/frequency_unit"/>
             </LinearLayout>
             <LinearLayout
@@ -103,7 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_polarization"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_monitor_satellite_tv_polarization"
                     android:layout_width="0dp"
@@ -124,7 +127,7 @@
             android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1.2"
+                android:layout_weight="@dimen/two_element_the_bigger_weight"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -132,11 +135,11 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_agc"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_monitor_satellite_tv_agc"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_weight="0.6"
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_satellite_agc_hint"/>
@@ -144,6 +147,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="0.4"
                     android:gravity="center"
+                    android:textColor="@color/text_11"
                     android:layout_height="wrap_content"
                     android:text="@string/voltage_unit"/>
             </LinearLayout>

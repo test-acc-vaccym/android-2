@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    style="@style/linear_no_shadow"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteListActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -62,7 +63,7 @@
                 android:text="@string/satellite_name_key"
                 android:textSize="@dimen/list_item_text_size"
                 android:padding="@dimen/no_padding"
-                style="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/polarization_title"
                 android:layout_width="0dp"
@@ -71,7 +72,7 @@
                 android:textSize="@dimen/list_item_text_size"
                 android:text="@string/satellite_polarization_key"
                 android:padding="@dimen/no_padding"
-                style="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/longitude_title"
                 android:layout_width="0dp"
@@ -80,7 +81,7 @@
                 android:text="@string/satellite_longitude_key"
                 android:textSize="@dimen/list_item_text_size"
                 android:padding="@dimen/no_padding"
-                style="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/beacon_title"
                 android:layout_width="0dp"
@@ -89,7 +90,7 @@
                 android:text="@string/satellite_beacon_key"
                 android:textSize="@dimen/list_item_text_size"
                 android:padding="@dimen/no_padding"
-                style="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/threshold_title"
                 android:layout_width="0dp"
@@ -98,7 +99,7 @@
                 android:text="@string/satellite_threshold_key"
                 android:textSize="@dimen/list_item_text_size"
                 android:padding="@dimen/no_padding"
-                style="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/symbolRate_title"
                 android:layout_width="0dp"
@@ -120,7 +121,7 @@
                 android:visibility="gone"
                 android:padding="@dimen/no_padding"
                 android:textSize="@dimen/list_item_text_size"
-                style="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/comment_title"
                     android:layout_width="0dp"

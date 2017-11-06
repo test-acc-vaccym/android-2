@@ -66,24 +66,38 @@ public class Satellites {
             }
         }
     }
-    public void addItem(SatelliteInfo item, boolean isNew) {
-        ITEMS.add(item);
-        ITEM_MAP.put(item.mId.toString(), item);
 
-        // 添加卫星极化map数据
-        String satelliteName = item.name;
-        ArrayList<SatelliteInfo> arrayList = satellitesObjectMap.get(satelliteName);
-        if (arrayList == null){
-            ArrayList<SatelliteInfo> arrayList1 = new ArrayList<SatelliteInfo>();
-            arrayList1.add(item);
-            satellitesObjectMap.put(satelliteName, arrayList1);
-        }else if (!arrayList.contains(item)) {
-            arrayList.add(item);
-            satellitesObjectMap.put(satelliteName, arrayList);
+    private boolean isContainSatelliteInItems(SatelliteInfo item){
+        for (SatelliteInfo s: ITEMS){
+            // 相同卫星名称和极化方式算一个卫星
+            if (s.name .equals(item.name) && (s.polarization.equals(item.polarization))) {
+                return true;
+            }
         }
+        return false;
+    }
+
+    public void addItem(SatelliteInfo item, boolean isNew) {
         
-        if (isNew)
-            satellites.add(item);
+        // 是否存在， 不存在才添加
+        if (!isContainSatelliteInItems(item)) {
+            ITEMS.add(item);
+            ITEM_MAP.put(item.mId.toString(), item);
+
+            // 添加卫星极化map数据
+            String satelliteName = item.name;
+            ArrayList<SatelliteInfo> arrayList = satellitesObjectMap.get(satelliteName);
+            if (arrayList == null) {
+                ArrayList<SatelliteInfo> arrayList1 = new ArrayList<SatelliteInfo>();
+                arrayList1.add(item);
+                satellitesObjectMap.put(satelliteName, arrayList1);
+            } else if (!arrayList.contains(item)) {
+                arrayList.add(item);
+                satellitesObjectMap.put(satelliteName, arrayList);
+            }
+            if (isNew)
+                satellites.add(item);
+        }
     }
 
     public void clear(){

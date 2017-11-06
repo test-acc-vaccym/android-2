@@ -28,11 +28,15 @@ public class PopDialog {
     private boolean setThirdColor = false;
     private boolean showSecond = false;
     private boolean showThird = false;
+    private boolean showForth = false;
+
     private String first = null;
     private String second = null;
     private String thirdStart = null;
     private String thirdEnd = null;
     private Drawable drawable = null;
+    private String forth = null;
+
     private @ColorInt int firstLineColor = Color.RED;
     private String buttonText = null;
 
@@ -74,7 +78,7 @@ public class PopDialog {
     public PopDialog(Context context){
         this.context = context;
     }
-
+    // 3排数据
     public PopDialog(View view, Context context, Bundle bundle, boolean showInfo, boolean showFirst,
                      boolean showSecond, boolean showThird, String first, String second,
                      String start, Drawable drawable, String end){
@@ -92,27 +96,53 @@ public class PopDialog {
         this.context = context;
     }
 
+    // 四排数据
+    public PopDialog(View view, Context context, Bundle bundle, boolean showInfo, boolean showFirst,
+                     boolean showSecond, boolean showThird, String first, String second,
+                     String start, Drawable drawable, String end, boolean showForth, String forth){
+        this.view = view;
+        this.bundle = bundle;
+        this.showInfo = showInfo;
+        this.showFirst = showFirst;
+        this.showSecond = showSecond;
+        this.showThird = showThird;
+        this.first = first;
+        this.second = second;
+        this.thirdStart = start;
+        this.thirdEnd = end;
+        this.drawable = drawable;
+        this.context = context;
+        this.showForth = showForth;
+        this.forth = forth;
+    }
+
     public static final String START = "start";
     public static final String FIRST = "first";
     public static final String SECOND = "second";
     public static final String END = "end";
-    public static final String BUTTONTEXT = "buttonText";
-    public static final String SHOWINFO = "showInfo";
-    public static final String SHOWFIRST = "showFirst";
-    public static final String SHOWSECOND = "showSecond";
-    public static final String SHOWTHIRD = "showThird";
+    public static final String ICON = "icon";
+    public static final String BUTTON_TEXT = "buttonText";
+    public static final String SHOW_INFO = "showInfo";
+    public static final String SHOW_FIRST = "showFirst";
+    public static final String SHOW_SECOND = "showSecond";
+    public static final String SHOW_THIRD = "showThird";
+    public static final String SHOW_FORTH = "showForth";
+    public static final String FORTH = "forth";
 
     public View show(){
         if (this.bundle != null){
-            this.showInfo = bundle.getBoolean(SHOWINFO, false);
-            this.showFirst = bundle.getBoolean(SHOWFIRST, false);
-            this.showSecond = bundle.getBoolean(SHOWSECOND, false);
-            this.showThird = bundle.getBoolean(SHOWTHIRD, false);
+            this.showInfo = bundle.getBoolean(SHOW_INFO, false);
+            this.showFirst = bundle.getBoolean(SHOW_FIRST, false);
+            this.showSecond = bundle.getBoolean(SHOW_SECOND, false);
+            this.showThird = bundle.getBoolean(SHOW_THIRD, false);
+            this.showForth = bundle.getBoolean(SHOW_FORTH, false);
+
             this.first = bundle.getString(FIRST, null);
             this.second = bundle.getString(SECOND, null);
             this.thirdStart = bundle.getString(START, null);
             this.thirdEnd = bundle.getString(END, null);
-            this.buttonText = bundle.getString(BUTTONTEXT,this.buttonText);
+            this.buttonText = bundle.getString(BUTTON_TEXT,this.buttonText);
+            this.forth = bundle.getString(FORTH, null);
         }
 
         if (this.view != null) {
@@ -195,6 +225,19 @@ public class PopDialog {
                 // ll.setLayoutParams(new LinearLayout.LayoutParams(0,0,0));
                 ll.setVisibility(View.GONE);
             }
+
+            // 第四行
+            CustomTextView forthTextView = this.view.findViewById(R.id.pop_dialog_tv_forth);
+            if (forthTextView != null && this.forth != null && this.forth.length() > 0) {
+                forthTextView.setText(this.forth);
+                if (this.setThirdColor){
+                    forthTextView.setTextColor(this.firstLineColor);
+                }
+                forthTextView.setVisibility(View.VISIBLE);
+            } else if (forthTextView != null){
+                forthTextView.setVisibility(View.GONE);
+            }
+
         }
         return this.view;
     }

@@ -7,7 +7,8 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.main.MainActivity"
-    android:divider="@drawable/divider">
+    android:divider="@drawable/divider"
+    style="@style/linear_no_shadow">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -66,7 +67,7 @@
                     style="@style/text_horizontal_style"
                     android:focusable="false"
                     android:gravity="start|left"
-                    app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    app:titleTextAppearance="?android:attr/textAppearanceMedium"/>
             </LinearLayout>
             <!--电话-->
             <LinearLayout
@@ -81,7 +82,7 @@
                     android:text="@string/main_me_about_phone_number"
                     style="@style/text_horizontal_style"
                     android:gravity="start|left"
-                    app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    app:titleTextAppearance="?android:attr/textAppearanceMedium"/>
             </LinearLayout>
             <!--传真-->
             <LinearLayout
@@ -96,7 +97,7 @@
                     android:text="@string/main_me_about_fax_number"
                     style="@style/text_horizontal_style"
                     android:gravity="start|left"
-                    app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    app:titleTextAppearance="?android:attr/textAppearanceMedium"/>
             </LinearLayout>
 
             <!--EMAIL-->
@@ -113,7 +114,7 @@
                     android:text="@string/main_me_about_email_address"
                     style="@style/text_horizontal_style"
                     android:gravity="start|left"
-                    app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    app:titleTextAppearance="?android:attr/textAppearanceMedium"/>
             </LinearLayout>
 
             <!--官网-->
@@ -130,7 +131,7 @@
                     android:text="@string/main_me_about_official_site_url"
                     style="@style/text_horizontal_style"
                     android:gravity="start|left"
-                    app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    app:titleTextAppearance="?android:attr/textAppearanceMedium"/>
             </LinearLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

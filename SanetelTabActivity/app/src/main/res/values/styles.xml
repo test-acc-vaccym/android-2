@@ -19,7 +19,7 @@
     </style>
     <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
         <item name="android:textColor">@color/black</item>
-        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Medium</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
 
     <!-- 为 Theme 设置背景图 -->
@@ -62,7 +62,7 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">end|right</item>
         <item name="android:paddingLeft">@dimen/guide_list_item_padding</item>
-        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Medium</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/button_background</item>
@@ -112,6 +112,18 @@
         <item name="android:divider">@drawable/spacer_medium</item>
         <item name="android:padding">@dimen/spacing_medium</item>
         <item name="android:showDividers">middle</item>
+        <item name="android:paddingTop">@dimen/layout_padding_top</item>
+        <item name="android:paddingBottom">@dimen/layout_padding_top</item>
+    </style>
+
+    <style name="linear_no_shadow">
+        <item name="android:shadowColor">#ff000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:background">@drawable/item_background_color</item>
+        <item name="android:paddingTop">@dimen/layout_padding_top</item>
+        <item name="android:paddingBottom">@dimen/layout_padding_top</item>
     </style>
 
     <style name="settings_linear_shadow" parent="linear_shadow">
@@ -132,7 +144,7 @@
         <item name="android:textColor">@color/button_text</item>
         <item name="android:textStyle">bold</item>
         <item name="android:background">@drawable/button_background</item>
-        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Large</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
     </style>
 
     <style name="focus_button_horizontal_style" parent="button_horizontal_style">
@@ -151,6 +163,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
+        <item name="android:lineSpacingMultiplier">@dimen/line_spacing_multiplier</item>
     </style>
 
     <style name="pop_text_horizontal_style" parent="Base.TextAppearance.AppCompat.Medium">
@@ -158,6 +171,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">start</item>
+        <item name="android:lineSpacingMultiplier">@dimen/line_spacing_multiplier</item>
     </style>
 
     <style name="text_vertical_style" parent="Base.TextAppearance.AppCompat.Medium">
@@ -166,6 +180,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
+        <item name="android:lineSpacingMultiplier">@dimen/line_spacing_multiplier</item>
     </style>
 
     <style name="button_vertical_style" parent="Base.Widget.AppCompat.Button.Borderless">
@@ -175,7 +190,7 @@
         <item name="android:textColor">@color/button_text</item>
         <item name="android:textStyle">bold</item>
         <item name="android:background">@drawable/button_background</item>
-        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Large</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
         <item name="android:layout_marginLeft">@dimen/guide_list_padding_left</item>
         <item name="android:layout_marginStart">@dimen/guide_list_padding_left</item>
         <item name="android:gravity">left|start</item>
@@ -257,6 +272,73 @@
         <item name="android:paddingLeft">@dimen/guide_list_item_padding</item>
         <item name="android:paddingRight">@dimen/guide_list_item_padding</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+
+    <style name="swipe_button_style">
+        <item name="android:layout_width">@dimen/swipe_button_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:background">@drawable/guide_main_item_background_color</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceListItem</item>
+    </style>
+
+    <!--自定义单选框的style-->
+    <style name="radio_group_custom_item_first_filed_horizontal_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:padding">@dimen/no_padding</item>
+    </style>
+    <style name="radio_group_custom_item_edit_horizontal_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1.5</item>
+    </style>
+    <style name="radio_group_custom_item_third_filed_horizontal_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:layout_gravity">start|center_vertical</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/no_padding</item>
+        <item name="android:layout_weight">0.6</item>
+    </style>
+
+    <style name="weChat_radio_button_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
+        <!--<item name="android:checked">true</item>-->
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/bottom_tab_nav_background</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+
+    <style name="AppIntroButtonStyleCompat" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+    <style name="AppIntroDefaultHeading" parent="TextAppearance.AppCompat.Display1">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/appIntroHeadingTextSize</item>
+    </style>
+    <style name="AppIntroDefaultPadding">
+        <item name="android:paddingTop">@dimen/appIntroDefaultPaddingTop</item>
+        <item name="android:paddingLeft">@dimen/appIntroDefaultPaddingLeft</item>
+        <item name="android:paddingRight">@dimen/appIntroDefaultPaddingRight</item>
+        <item name="android:paddingBottom">@dimen/appIntroDefaultPaddingBottom</item>
+    </style>
+    <style name="AppIntroDefaultPadding.Intro1">
+        <item name="android:paddingBottom">@dimen/appIntroDefaultPaddingBottomIntro1</item>
+    </style>
+    <style name="AppIntroDefaultPadding.Intro2">
+        <item name="android:paddingBottom">@dimen/appIntroDefaultPaddingBottomIntro2</item>
+    </style>
+    <style name="AppIntroDefaultText" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
 </resources>

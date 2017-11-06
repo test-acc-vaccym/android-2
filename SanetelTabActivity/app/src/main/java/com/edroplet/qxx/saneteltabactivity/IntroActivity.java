@@ -2,6 +2,7 @@ package com.edroplet.qxx.saneteltabactivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,8 +16,7 @@ import com.edroplet.qxx.saneteltabactivity.activities.main.MainActivity;
 import com.edroplet.qxx.saneteltabactivity.fragments.welcome.WelcomeCheckDevice;
 import com.edroplet.qxx.saneteltabactivity.fragments.welcome.WelcomeFixDevice;
 import com.edroplet.qxx.saneteltabactivity.fragments.welcome.WelcomeInstallWire;
-import com.github.paolorotolo.appintro.AppIntro;
-//import com.github.paolorotolo.appintro.AppIntroFragment;
+import com.edroplet.qxx.saneteltabactivity.view.appintro.AppIntro;
 
 import java.util.Date;
 import java.util.Random;
@@ -57,7 +57,7 @@ public class IntroActivity extends AppIntro {
         setProgressButtonEnabled(true);
         // setProgressIndicator();
         setDoneText(getText(R.string.guide_done));
-        setDoneTextTypeface("fonts/msyhbd.ttc");
+        setDoneTextTypeface(Typeface.DEFAULT.toString());
         setColorDoneText(ContextCompat.getColor(getBaseContext(),R.color.button_text));
         setBackButtonVisibilityWithDone(true);
         // Turn vibration on and set intensity.

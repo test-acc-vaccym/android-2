@@ -16,7 +16,7 @@
             android:text="@string/follow_me_destination_satellite_title"
             android:gravity="center"
             android:textStyle="bold"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
         <FrameLayout android:layout_height="150dp"
             android:layout_width="fill_parent"
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -58,6 +58,7 @@
                         android:id="@+id/follow_me_destination_satellite_select"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/angle_calculate_satellite_select"
                         android:checked="true"/>
 
@@ -65,6 +66,7 @@
                         android:id="@+id/follow_me_destination_satellite_new"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/follow_me_destination_satellite_new"/>
                 </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
                 <!--卫星选择-->
@@ -94,7 +96,8 @@
                 </LinearLayout>
                 <!--新卫星参数输入-->
                 <LinearLayout
-                    android:padding="@dimen/radio_group_city_padding"
+                    android:paddingStart="@dimen/radio_group_city_padding"
+                    android:paddingLeft="@dimen/radio_group_city_padding"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@id/satellite_select"
@@ -115,13 +118,12 @@
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:gravity="center"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/follow_me_destination_satellite_name" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                             android:id="@+id/follow_me_destination_satellite_name"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2" />
+                            style="@style/radio_group_custom_item_edit_horizontal_style"/>
                     </LinearLayout>
                     <!--极化方式-->
                     <LinearLayout
@@ -135,13 +137,13 @@
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:gravity="center"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/follow_me_destination_satellite_polarization" />
 
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                        <Spinner
                             android:id="@+id/follow_me_destination_satellite_polarization"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2" />
+                            style="@style/radio_group_custom_item_edit_horizontal_style"
+                            android:entries="@array/satellites_polarization"/>
                     </LinearLayout>
                     <!--卫星经度-->
                     <LinearLayout
@@ -155,19 +157,17 @@
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:gravity="center"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/follow_me_destination_satellite_longitude" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                             android:id="@+id/follow_me_destination_satellite_longitude"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1.4" />
+                            style="@style/radio_group_custom_item_edit_horizontal_style"
+                            android:layout_weight="0.9"
+                            android:inputType="number|numberDecimal"/>
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start|center_vertical"
-                            android:layout_weight="0.6"
+                            style="@style/radio_group_custom_item_third_filed_horizontal_style"
                             android:text="@string/latitude_degree_unit" />
                     </LinearLayout>
                     <!--信标频率-->
@@ -182,18 +182,16 @@
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:gravity="center"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/follow_me_destination_satellite_beacon" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                             android:id="@+id/follow_me_destination_satellite_beacon"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1.4" />
+                            style="@style/radio_group_custom_item_edit_horizontal_style"
+                            android:layout_weight="0.9"
+                            android:inputType="number|numberDecimal"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start|center_vertical"
-                            android:layout_weight="0.6"
+                            style="@style/radio_group_custom_item_third_filed_horizontal_style"
                             android:text="@string/frequency_unit" />
                     </LinearLayout>
                     <!--门    限-->
@@ -208,13 +206,13 @@
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:gravity="center"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/follow_me_destination_satellite_threshold" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                             android:id="@+id/follow_me_destination_satellite_threshold"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2" />
+                            style="@style/radio_group_custom_item_edit_horizontal_style"
+                            android:inputType="number|numberDecimal"/>
                     </LinearLayout>
                     <!--DVB-->
                     <LinearLayout
@@ -227,14 +225,14 @@
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
+                            android:gravity="left|start"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/follow_me_destination_satellite_dvb" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                             android:id="@+id/follow_me_destination_satellite_dvb"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2" />
+                            style="@style/radio_group_custom_item_edit_horizontal_style"
+                            android:inputType="number|numberDecimal"/>
                     </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>

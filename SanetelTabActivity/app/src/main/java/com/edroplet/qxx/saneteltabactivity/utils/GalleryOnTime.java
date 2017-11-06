@@ -62,7 +62,9 @@ public class GalleryOnTime {
     };
 
     public void setImageView() {
-
+        if (null == timer){
+            timer = new Timer();
+        }
         timer.schedule(new TimerTask(){
             @Override
             public void run(){

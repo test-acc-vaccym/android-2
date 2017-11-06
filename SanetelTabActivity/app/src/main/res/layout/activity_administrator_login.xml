@@ -6,6 +6,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="@dimen/no_padding"
+    style="@style/linear_no_shadow"
     tools:context=".activities.settings.AdministratorLoginActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -57,6 +58,8 @@
                     android:gravity="start|center_vertical"
                     android:layout_marginStart="@dimen/activity_horizontal_margin"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:text="@string/main_settings_administrator_password"
                     android:textColor="@color/black"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
@@ -69,13 +72,12 @@
             </LinearLayout>
 
         <View
+            android:layout_marginTop="@dimen/status_bar_height"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#000" />
-        <include layout="@layout/pop_dialog"
-            android:id="@+id/administrator_login_pop"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"/>
+            android:layout_height="2dp"
+            android:background="@color/gray" />
+        <include layout="@layout/pop_dialog_blue"
+            android:id="@+id/administrator_login_pop"/>
         </LinearLayout>
 </LinearLayout>
 

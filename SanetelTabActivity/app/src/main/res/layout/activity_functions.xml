@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    style="@style/linear_no_shadow"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -15,7 +16,7 @@
         android:paddingTop="@dimen/appbar_padding_top"
         android:theme="@style/AppTheme.AppBarOverlay">
         <android.support.v7.widget.Toolbar
-            android:id="@+id/main_content_toolbar"
+            android:id="@+id/functions_content_toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/status_bar_height"
             app:titleTextColor="@color/black"
@@ -25,7 +26,7 @@
             <!--app:layout_scrollFlags="scroll|enterAlways"-->
         </android.support.v7.widget.Toolbar>
 
-        <include android:id="@+id/main_operate_bar"
+        <include android:id="@+id/functions_operate_bar"
             layout="@layout/operate_bar_top"/>
         <!--分割线-->
         <View
@@ -34,20 +35,82 @@
             android:background="@color/gray"/>
     </android.support.design.widget.AppBarLayout>
     <android.support.v4.view.ViewPager
-        android:id="@+id/main_viewpager"
+        android:id="@+id/functions_viewpager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/status_bar_height"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-    <android.support.design.widget.BottomNavigationView
+    <!--android.support.design.widget.BottomNavigationView
         android:id="@+id/main_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:menu="@menu/function_pages_navigation"
         app:itemBackground="@color/bottom_tab_nav_background"
-        app:itemTextColor="@color/tab_unchecked"/>
+        app:itemTextColor="@color/tab_unchecked"/-->
+
+    <com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioGroup
+        android:id="@+id/functions_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/status_bar_height"
+        android:orientation="horizontal"
+        app:layout_anchor="@id/functions_viewpager"
+        android:layout_gravity="bottom"
+        app:layout_anchorGravity="bottom">
+
+        <com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioButton
+            style="@style/weChat_radio_button_style"
+            android:id="@+id/functions_navigation_monitor"
+            android:checked="true"
+            android:text="@string/main_bottom_nav_monitor"
+            app:defocus_icon="@drawable/monitor"
+            app:focus_color="@color/weChat_button_focus_color"
+            app:defocus_color="@color/weChat_radio_button_deFocus_color"
+            app:focus_icon="@drawable/monitor_focus"
+            app:icon_width="@dimen/weChat_icon_width"
+            app:icon_height="@dimen/weChat_icon_height"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioButton
+            style="@style/weChat_radio_button_style"
+            android:id="@+id/functions_navigation_application"
+            android:text="@string/main_bottom_nav_application"
+            app:defocus_icon="@drawable/application"
+            app:focus_color="@color/weChat_button_focus_color"
+            app:defocus_color="@color/weChat_radio_button_deFocus_color"
+            app:focus_icon="@drawable/application_focus"
+            app:icon_width="@dimen/weChat_icon_width"
+            app:icon_height="@dimen/weChat_icon_height"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioButton
+            style="@style/weChat_radio_button_style"
+            android:id="@+id/functions_navigation_status"
+            android:text="@string/main_bottom_nav_status"
+            app:defocus_icon="@drawable/status"
+            app:focus_color="@color/weChat_button_focus_color"
+            app:defocus_color="@color/weChat_radio_button_deFocus_color"
+            app:focus_icon="@drawable/status_focus"
+            app:icon_width="@dimen/weChat_icon_width"
+            app:icon_height="@dimen/weChat_icon_height"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioButton
+            style="@style/weChat_radio_button_style"
+            android:id="@+id/functions_navigation_collect"
+            android:text="@string/main_bottom_nav_collect"
+            app:defocus_icon="@drawable/record"
+            app:focus_color="@color/weChat_button_focus_color"
+            app:defocus_color="@color/weChat_radio_button_deFocus_color"
+            app:focus_icon="@drawable/record_focus"
+            app:icon_width="@dimen/weChat_icon_width"
+            app:icon_height="@dimen/weChat_icon_height"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioButton
+            style="@style/weChat_radio_button_style"
+            android:id="@+id/functions_navigation_settings"
+            android:text="@string/main_bottom_nav_settings"
+            app:defocus_icon="@drawable/settings"
+            app:focus_color="@color/weChat_button_focus_color"
+            app:defocus_color="@color/weChat_radio_button_deFocus_color"
+            app:focus_icon="@drawable/settings_focus"
+            app:icon_width="@dimen/weChat_icon_width"
+            app:icon_height="@dimen/weChat_icon_height"/>
+    </com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioGroup>
         <!--app:itemIconTint="@color/yellow"-->
         <!--android:background="?android:attr/windowBackground"-->
     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomFAB
@@ -59,7 +122,7 @@
         app:borderWidth="0dp"
         app:elevation="6dp"
         app:fabSize="normal"
-        app:layout_anchor="@id/main_viewpager"
+        app:layout_anchor="@id/functions_viewpager"
         android:layout_gravity="bottom"
         app:layout_anchorGravity="top|end"
         app:pressedTranslationZ="12dp"

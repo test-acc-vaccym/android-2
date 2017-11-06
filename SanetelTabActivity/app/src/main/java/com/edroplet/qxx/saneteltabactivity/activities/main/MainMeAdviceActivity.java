@@ -2,16 +2,14 @@ package com.edroplet.qxx.saneteltabactivity.activities.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
+import com.edroplet.qxx.saneteltabactivity.utils.mail.MailUtil;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
@@ -19,6 +17,7 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 import com.yongchun.library.view.ImageSelectorActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -55,18 +54,22 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
     @BindId(R.id.main_me_advice_description)
     private CustomEditText adviceDescription;
 
+    @BindId(R.id.main_me_advice_email_customer)
+    private CustomEditText adviceCustomer;
+
     private static final String KEY_ADVICE_EMAIL_RECEIVE = "KEY_ADVICE_EMAIL_RECEIVE";
-    private static final String KEY_ADVICE_EMAIL_SEND = "KEY_ADVICE_EMAIL_RECEIVE";
-    private static final String KEY_ADVICE_NAME= "KEY_ADVICE_EMAIL_RECEIVE";
-    private static final String KEY_ADVICE_PHOTO= "KEY_ADVICE_EMAIL_RECEIVE";
-    private static final String KEY_ADVICE_PHONE= "KEY_ADVICE_EMAIL_RECEIVE";
-    private static final String KEY_ADVICE_FILENAME= "KEY_ADVICE_EMAIL_RECEIVE";
-    private static final String KEY_ADVICE_DESCRIPTION= "KEY_ADVICE_EMAIL_RECEIVE";
+    private static final String KEY_ADVICE_EMAIL_SEND = "KEY_ADVICE_EMAIL_SEND";
+    private static final String KEY_ADVICE_NAME= "KEY_ADVICE_NAME";
+    private static final String KEY_ADVICE_PHOTO= "KEY_ADVICE_PHOTO";
+    private static final String KEY_ADVICE_PHONE= "KEY_ADVICE_PHONE";
+    private static final String KEY_ADVICE_FILENAME= "KEY_ADVICE_FILENAME";
+    private static final String KEY_ADVICE_DESCRIPTION= "KEY_ADVICE_DESCRIPTION";
+    private static final String KEY_ADVICE_CUSTOMER= "KEY_ADVICE_CUSTOMER";
 
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_main_me_advice);
+        setContentView(R.layout.activity_main_me_advice);
         ViewInject.inject(this, this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_me_advice_toolbar);
@@ -80,12 +83,13 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
         // 初始化
         // 从缓存读取数据
         adviceDescription.setText(CustomSP.getString(this, KEY_ADVICE_DESCRIPTION,""));
-        adviceEmailReceive.setText(CustomSP.getString(this, KEY_ADVICE_EMAIL_RECEIVE,getString(R.string.main_me_advice_email_receive)));
+        adviceEmailReceive.setText(CustomSP.getString(this, KEY_ADVICE_EMAIL_RECEIVE,getString(R.string.main_me_advice_email_receive_address)));
         adviceEmailSend.setText(CustomSP.getString(this, KEY_ADVICE_EMAIL_SEND,""));
         adviceFileName.setText(CustomSP.getString(this, KEY_ADVICE_FILENAME,""));
         adviceName.setText(CustomSP.getString(this, KEY_ADVICE_NAME,""));
         advicePhone.setText(CustomSP.getString(this, KEY_ADVICE_PHONE,""));
         advicePhoto.setText(CustomSP.getString(this, KEY_ADVICE_PHOTO,""));
+        adviceCustomer.setText(CustomSP.getString(this, KEY_ADVICE_CUSTOMER,""));
 
         findViewById(R.id.main_me_advice_return).setOnClickListener(this);
         findViewById(R.id.main_me_advice_save).setOnClickListener(this);
@@ -111,9 +115,33 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
                 CustomSP.putString(this, KEY_ADVICE_EMAIL_SEND, adviceEmailSend.getText().toString());
                 CustomSP.putString(this, KEY_ADVICE_EMAIL_RECEIVE, adviceEmailReceive.getText().toString());
                 CustomSP.putString(this, KEY_ADVICE_DESCRIPTION, adviceDescription.getText().toString());
+                CustomSP.putString(this, KEY_ADVICE_CUSTOMER,adviceCustomer.getText().toString());
                 break;
             case R.id.main_me_advice_commit:
                 // todo 提交
+                ArrayList<String> al = new ArrayList<String>();
+                String photoList = advicePhoto.getText().toString();
+                if (advicePhoto != null && photoList.length() > 0) {
+                    al.addAll(ConvertUtil.string2List(photoList,","));
+                }
+
+                String content = getString(R.string.main_me_advice_name) + ": " + adviceName.getText().toString() + "\n"; // 姓名
+                content = content + getString(R.string.main_me_email_customer) + ": " + adviceCustomer.getText().toString() + "\n"; // 电话
+                content = content + getString(R.string.main_me_advice_phone) + ": " + advicePhoto.getText().toString() + "\n"; // 电话
+                content = content + adviceDescription.getText().toString();
+
+                String subject = adviceFileName.getText().toString();
+                if (subject == null || subject.length() ==0){
+                    subject = getString(R.string.main_me_error_report_title);
+                }
+                MailUtil.sendMailMultiAttach(this,
+                        adviceEmailSend.getText().toString().split(";"),
+                        null, // 抄送
+                        null, // 密送
+                        subject, // 主题
+                        content, // 内容
+                        al); // 附件
+
                 break;
             case R.id.main_me_advice_photo:
                 // intent = new Intent(getContext(), Context.AUDIO_SERVICE);

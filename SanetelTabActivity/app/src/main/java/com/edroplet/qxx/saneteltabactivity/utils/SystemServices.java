@@ -8,9 +8,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -18,15 +20,21 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager.WifiLock;
+import android.view.View;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.main.MainWifiSettingHelpActivity;
 import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
+import com.edroplet.qxx.saneteltabactivity.beans.LockerInfo;
+import com.edroplet.qxx.saneteltabactivity.beans.SavingInfo;
 
 import static android.content.Context.WIFI_SERVICE;
 
@@ -37,6 +45,9 @@ import static android.content.Context.WIFI_SERVICE;
 public class SystemServices {
     public static final int REQUEST_WIFI_CONNECT_MANAGER = 10000;
     public static final int REQUEST_WIFI_CONNECT_HELP = 10001;
+    public static final int REQUEST_WIFI_CONNECT_MANAGER_DIRECT_IN = 10002;
+    public static final String XWWT_PREFIX = "XWWT-";
+
     public static String getConnectWifiSsid(Context context){
         WifiManager wifiManager = (WifiManager) context.getSystemService(WIFI_SERVICE);
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
@@ -44,29 +55,31 @@ public class SystemServices {
         Log.d("SSID",wifiInfo.getSSID());
         return wifiInfo.getSSID();
     }
-    public static void startWifiManager(Activity activity){
+    public static void startWifiManager(Activity activity, int requestId){
         // context.startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));//进入无线网络配置界面
         Intent intent= new Intent(Settings.ACTION_WIFI_SETTINGS);//进入无线网络配置界面
         // Intent intent= new Intent(activity, WifiManagerActivity.class);
-        activity.startActivityForResult(intent,REQUEST_WIFI_CONNECT_MANAGER);//进入无线网络配置界面
+        activity.startActivityForResult(intent, requestId);//进入无线网络配置界面
     }
 
-    public static void checkConnectedSsid(final Context context, String ssid, final Activity activity){
+    public static void checkConnectedSsid(final Context context, String ssid, final Activity activity,
+                                          DialogInterface.OnClickListener onCancelClickListener,
+                                          final int requestId){
         String currentSSID = getConnectWifiSsid(context);
-        if (!currentSSID.contains(ssid)) {
-            final RandomDialog rd = new RandomDialog(context);
-            rd.onConfirmEDropletDialogBuilder(context.getString(R.string.not_connected_wifi_prompt) + ssid, "?",
+        if (!currentSSID.startsWith(XWWT_PREFIX)) {
+            final RandomDialog randomDialog = new RandomDialog(context);
+            randomDialog.onConfirmEDropletDialogBuilder(context.getString(R.string.not_connected_wifi_prompt) + ssid, "?",
                     new DialogInterface.OnClickListener(){
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    startWifiManager(activity);
+                    startWifiManager(activity, requestId);
                 }
             }, new DialogInterface.OnClickListener(){
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     activity.startActivityForResult(new Intent(context, MainWifiSettingHelpActivity.class), REQUEST_WIFI_CONNECT_HELP);
                 }
-            });
+            },onCancelClickListener);
         }
     }
 
@@ -343,11 +356,11 @@ public class SystemServices {
     }
 
     public static int getLockerState() {
-        return 1;
+        return LockerInfo.LOCKER_STATE_UNLOCK;
     }
 
     public static int getSavingState(){
-        return 0;
+        return SavingInfo.SAVING_STATE_OPEN;
     }
 
     public static void copyAssetsFiles2FileDir(Context context,String filename){
@@ -392,7 +405,7 @@ public class SystemServices {
      * @param context
      * @param Delayed 延迟多少毫秒
      */
-    public static void restartAPP(Context context,long Delayed){
+    public static void restartAPP(final Context context,long Delayed){
 
         /**开启一个新的服务，用来重启本APP
         Intent intent1=new Intent(context,KillSelfService.class);
@@ -412,10 +425,72 @@ public class SystemServices {
         System.exit(0);
         * */
 
-        Intent i = context.getPackageManager()
-                .getLaunchIntentForPackage(context.getPackageName());
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        context.startActivity(i);
+        TimerTask task = new TimerTask(){
+            public void run(){
+                Intent i = context.getPackageManager()
+                        .getLaunchIntentForPackage(context.getPackageName());
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                context.startActivity(i);
+            }
+        };
+        Timer timer = new Timer();
+        timer.schedule(task, Delayed);
     }
 
+    public static void delay(long delay){
+        try { Thread.sleep(delay); } catch (InterruptedException e) {}
+        /*
+        new Handler().postDelayed(new Runnable(){
+            public void run() {
+                //execute the task
+            }
+        }, delay);
+        */
+    }
+    public static void restoreAPP(final Context context, long Delayed){
+
+        // 删除缓存
+        File privateCacheDir = context.getCacheDir();
+        String[] cacheFiles = privateCacheDir.list();
+        for (String f : cacheFiles){
+                FileUtils.DeleteFolder(f);
+        }
+
+        // 删除files
+        String[] files = context.fileList();
+        for (String f : files){
+            context.deleteFile(f);
+            // FileUtils.DeleteFolder(f);
+        }
+        // 删除database
+        String[] privateDatabaseDir = context.databaseList();
+        for (String f : privateDatabaseDir){
+            // FileUtils.DeleteFolder(f);
+            context.deleteDatabase(f);
+        }
+
+        // 删除 shared_prefs目录
+        CustomSP.clear(context);
+        clearSharedPreferences(context);
+
+        // 删除自定义dir
+
+        // 重启app
+        restartAPP(context,  Delayed);
+    }
+
+    public static void clearSharedPreferences(Context ctx){
+        File dir = new File(ctx.getFilesDir().getParent() + "/shared_prefs/");
+        String[] children = dir.list();
+        for (int i = 0; i < children.length; i++) {
+            // clear each of the prefrances
+            ctx.getSharedPreferences(children[i].replace(".xml", ""), Context.MODE_PRIVATE).edit().clear().commit();
+        }
+        // Make sure it has enough time to save all the commited changes
+        try { Thread.sleep(1000); } catch (InterruptedException e) {}
+        for (int i = 0; i < children.length; i++) {
+            // delete the files
+            new File(dir, children[i]).delete();
+        }
+    }
 }

@@ -25,15 +25,15 @@ public class GuideFragmentLocker extends Fragment {
                                                   int icon, String buttonText, String thirdLineEnd) {
         Bundle args = new Bundle();
         GuideFragmentLocker fragment = new GuideFragmentLocker();
-        args.putBoolean("showFirst",showFirst);
-        args.putString("first", firstLine);
-        args.putBoolean("showSecond",showSecond);
-        args.putString("second", secondLine);
-        args.putBoolean("showThird",showThird);
-        args.putString("start", thirdLineStart);
-        args.putInt("icon", icon);
-        args.putString("buttonText", buttonText);
-        args.putString("end", thirdLineEnd);
+        args.putBoolean(PopDialog.SHOW_FIRST,showFirst);
+        args.putString(PopDialog.FIRST, firstLine);
+        args.putBoolean(PopDialog.SHOW_SECOND,showSecond);
+        args.putString(PopDialog.SECOND, secondLine);
+        args.putBoolean(PopDialog.SHOW_THIRD,showThird);
+        args.putString(PopDialog.START, thirdLineStart);
+        args.putInt(PopDialog.ICON, icon);
+        args.putString(PopDialog.BUTTON_TEXT, buttonText);
+        args.putString(PopDialog.END, thirdLineEnd);
         fragment.setArguments(args);
         return fragment;
     }

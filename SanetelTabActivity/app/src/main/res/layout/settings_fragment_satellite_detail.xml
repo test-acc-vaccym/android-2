@@ -11,7 +11,7 @@
         android:orientation="horizontal"
         android:visibility="gone">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-            style="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_gravity="right|end"
@@ -19,7 +19,7 @@
             android:padding="@dimen/list_detail_padding"
             android:text="@string/satellite_detail_uuid_key"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-            style="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/satellite_detail_uuid"
             android:layout_width="0dp"
             android:layout_weight="2"
@@ -31,7 +31,7 @@
         android:orientation="horizontal"
         android:visibility="invisible">
     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-        style="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_gravity="right|end"
@@ -39,7 +39,7 @@
         android:padding="@dimen/list_detail_padding"
         android:text="@string/satellite_detail_id_key"/>
     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-        style="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/id_detail"
         android:layout_width="0dp"
         android:layout_weight="2"
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-            style="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_gravity="right|end"
@@ -58,7 +58,7 @@
             android:padding="@dimen/list_detail_padding"
             android:text="@string/satellite_detail_name_key"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-            style="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/name_detail"
             android:layout_width="0dp"
             android:layout_weight="2"
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-            style="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_gravity="right|end"
@@ -77,10 +77,11 @@
             android:padding="@dimen/list_detail_padding"
             android:text="@string/satellite_detail_longitude_key"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-            style="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/longitude_detail"
             android:layout_width="0dp"
             android:layout_weight="2"
+            android:inputType="numberDecimal|number"
             android:layout_height="match_parent"/>
     </LinearLayout>
     <LinearLayout
@@ -88,15 +89,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-            style="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_gravity="right|end"
             android:layout_height="match_parent"
             android:padding="@dimen/list_detail_padding"
             android:text="@string/satellite_detail_polarization_key"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-            style="?android:attr/textAppearanceMedium"
+        <Spinner
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/polarization_detail"
             android:layout_width="0dp"
             android:layout_weight="2"
@@ -107,7 +108,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-            style="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_gravity="right|end"
@@ -115,10 +116,11 @@
             android:padding="@dimen/list_detail_padding"
             android:text="@string/satellite_detail_beacon_key"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-            style="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/beacon_detail"
             android:layout_width="0dp"
             android:layout_weight="2"
+            android:inputType="numberDecimal|number"
             android:layout_height="match_parent"/>
     </LinearLayout>
     <LinearLayout
@@ -126,7 +128,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-            style="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_gravity="right|end"
@@ -134,10 +136,11 @@
             android:padding="@dimen/list_detail_padding"
             android:text="@string/satellite_detail_threshold_key"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-            style="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/threshold_detail"
             android:layout_width="0dp"
             android:layout_weight="2"
+            android:inputType="numberDecimal|number"
             android:layout_height="match_parent"/>
     </LinearLayout>
     <LinearLayout
@@ -145,7 +148,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-            style="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_gravity="right|end"
@@ -154,10 +157,11 @@
             android:text="@string/satellite_detail_symbol_rate_key"
             android:textIsSelectable="true"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-            style="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/symbol_rate_detail"
             android:layout_width="0dp"
             android:layout_weight="2"
+            android:inputType="numberDecimal|number"
             android:layout_height="match_parent"/>
     </LinearLayout>
     <LinearLayout
@@ -165,7 +169,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-            style="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_gravity="right|end"
@@ -174,7 +178,7 @@
             android:text="@string/satellite_detail_comment_key"
             android:textIsSelectable="true" />
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-            style="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/comment_detail"
             android:layout_width="0dp"
             android:layout_weight="2"

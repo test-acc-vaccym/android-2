@@ -6,6 +6,8 @@
 
     <dimen name="line_spacing_multiplier">1.5</dimen>
 
+    <dimen name="pop_hire_height">300dp</dimen>
+    <dimen name="pop_item_margin_vertical">16dp</dimen>
     <dimen name="pop_margin_horizontal">20dp</dimen>
     <dimen name="pop_margin_vertical">40dp</dimen>
 
@@ -57,20 +59,27 @@
     <!--引导页-->
     <dimen name="guide_entry_list_margin_top">5dp</dimen>
     <!--layout之间的间隔-->
+    <dimen name="sub_layout_padding_top">6dp</dimen>
     <dimen name="layout_padding_top">12dp</dimen>
     <dimen name="layout_padding_left">10dp</dimen>
     <dimen name="settings_linear_shadow_padding_left">20dp</dimen>
 
     <!--单选组-->
     <dimen name="radio_group_width">120dp</dimen>
+    <dimen name="radio_group_width_medium">150dp</dimen>
+    <dimen name="radio_group_width_hdpi">200dp</dimen>
+    <dimen name="radio_group_item_height">40dp</dimen>
     <dimen name="radio_group_city_padding">10dp</dimen>
 
     <!--EDropletDialogBuilder-->
     <dimen name="title_size">16dp</dimen>
     <dimen name="button_size">14dp</dimen>
-    <dimen name="text_size">14sp</dimen>
+    <dimen name="input_text_size">18sp</dimen>
+    <dimen name="select_text_size">16sp</dimen>
     <dimen name="marginLeft">24dp</dimen>
     <dimen name="marginRight">24dp</dimen>
+    <dimen name="input_marginLeft">24dp</dimen>
+    <dimen name="input_marginRight">24dp</dimen>
     <dimen name="message_marginTop">10dp</dimen>
     <integer name="item_height">80</integer>
     <integer name="title_size">24</integer>
@@ -78,6 +87,27 @@
     <integer name="button_size">18</integer>
     <integer name="message_size">18</integer>
     <dimen name="input_marginTop">20dp</dimen>
-    <dimen name="input_marginLeft">6dp</dimen>
-    <dimen name="input_marginRight">6dp</dimen>
+
+    <!--侧滑菜单-->
+    <dimen name="swipe_button_height">60dp</dimen>
+    <dimen name="swipe_button_width">120dp</dimen>
+
+    <!--卫星信息页面-->
+    <dimen name="two_element_the_bigger_weight">1.4</dimen>
+
+    <dimen name="functions_fragment_margin_bottom">50dp</dimen>
+
+    <dimen name="weChat_icon_width">20dp</dimen>
+    <dimen name="weChat_icon_height">20dp</dimen>
+
+    <dimen name="appIntro2BottomBarHeight">80dp</dimen>
+    <dimen name="appIntroBottomBarHeight">64dp</dimen>
+    <dimen name="appIntroDefaultPaddingBottom">16dp</dimen>
+    <dimen name="appIntroDefaultPaddingBottomIntro1">80dp</dimen>
+    <dimen name="appIntroDefaultPaddingBottomIntro2">96dp</dimen>
+    <dimen name="appIntroDefaultPaddingLeft">16dp</dimen>
+    <dimen name="appIntroDefaultPaddingRight">16dp</dimen>
+    <dimen name="appIntroDefaultPaddingTop">40dp</dimen>
+    <dimen name="appIntroHeadingTextSize">28dp</dimen>
+
 </resources>

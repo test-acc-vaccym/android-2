@@ -93,7 +93,9 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
                 new NDialog(getContext()).inputDialog();
                 break;
             case R.id.main_collect_data_start:
-
+                if (null == timer){
+                    timer = new Timer();
+                }
                 timer.schedule(new TimerTask(){
                     @Override
                     public void run(){
@@ -113,7 +115,11 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
 
                 break;
             case R.id.main_collect_data_stop:
-                timer.cancel();
+                if(timer!= null) {
+                    timer.cancel();
+                    timer.purge();
+                    timer = null;
+                }
                 break;
             case R.id.main_collect_data_save:
                 break;

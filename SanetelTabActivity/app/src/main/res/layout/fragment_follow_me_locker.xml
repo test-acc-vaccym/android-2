@@ -14,7 +14,25 @@
             android:gravity="center"
             android:text="@string/follow_me_locker_title"
             android:textStyle="bold"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <FrameLayout android:layout_height="150dp"
+            android:layout_width="fill_parent"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/follow_me_locker_frameLayout">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:contentDescription="@string/detailed_incall_info_title"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/locker"/>
+            <Gallery android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/follow_me_locker_gallery"
+                android:spacing="5dp"/>
+        </FrameLayout>
 
         <include layout="@layout/pop_dialog_blue"/>
     </LinearLayout>

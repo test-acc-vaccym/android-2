@@ -28,16 +28,16 @@ public class GuideFragmentSearching extends Fragment {
                                                      String thirdLineStart, int icon, String buttonText, String thirdLineEnd) {
         Bundle args = new Bundle();
         GuideFragmentSearching fragment = new GuideFragmentSearching();
-        args.putBoolean("showInfo",showInfo);
-        args.putBoolean("showFirst",showFirst);
-        args.putString("first", firstLine);
-        args.putBoolean("showSecond",showSecond);
-        args.putString("second", secondLine);
-        args.putBoolean("showThird",showThird);
-        args.putString("start", thirdLineStart);
-        args.putInt("icon", icon);
-        args.putString("buttonText", buttonText);
-        args.putString("end", thirdLineEnd);
+        args.putBoolean(PopDialog.SHOW_INFO,showInfo);
+        args.putBoolean(PopDialog.SHOW_FIRST,showFirst);
+        args.putString(PopDialog.FIRST, firstLine);
+        args.putBoolean(PopDialog.SHOW_SECOND,showSecond);
+        args.putString(PopDialog.SECOND, secondLine);
+        args.putBoolean(PopDialog.SHOW_THIRD,showThird);
+        args.putString(PopDialog.START, thirdLineStart);
+        args.putInt(PopDialog.ICON, icon);
+        args.putString(PopDialog.BUTTON_TEXT, buttonText);
+        args.putString(PopDialog.END, thirdLineEnd);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,7 +56,7 @@ public class GuideFragmentSearching extends Fragment {
             popDialog.setBundle(bundle);
             popDialog.setSetFirstColor(true);
             Context context = getContext();
-            int icon = bundle.getInt("icon", -1);
+            int icon = bundle.getInt(PopDialog.ICON, -1);
             if (icon == 1) {
 //                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
 //                        ImageUtil.textAsBitmap(context,context.getString(

@@ -42,8 +42,8 @@ public class SettingsFragmentAmplifierManufacture extends Fragment {
         popDialog.setView(view);
         Context context = getContext();
         Bundle bundle = new Bundle();
-        bundle.putBoolean(PopDialog.SHOWSECOND, true);
-        bundle.putBoolean(PopDialog.SHOWTHIRD, true);
+        bundle.putBoolean(PopDialog.SHOW_SECOND, true);
+        bundle.putBoolean(PopDialog.SHOW_THIRD, true);
         bundle.putString(PopDialog.SECOND, context.getString(R.string.settings_amplifier_manufacture_message_second));
         bundle.putString(PopDialog.START, context.getString(R.string.settings_amplifier_manufacture_message_third_start));
         bundle.putString(PopDialog.END, context.getString(R.string.follow_me_forever));

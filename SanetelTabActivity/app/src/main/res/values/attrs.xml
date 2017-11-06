@@ -17,6 +17,9 @@
         <attr name="focus_icon" format="reference"/>
         <attr name="defocus_icon" format="reference"/>
         <attr name="focus_color" format="color"/>
+        <attr name="defocus_color" format="color"/>
+        <attr name="icon_width" format="dimension|reference|integer"/>
+        <attr name="icon_height" format="dimension|reference|integer"/>
     </declare-styleable>
     <declare-styleable name="CoordinatorTabLayout">
         <attr name="contentScrim" format="color" />

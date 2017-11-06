@@ -45,8 +45,8 @@ import static com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentL
 
 public class GuideFragmentDestination extends Fragment {
     private static int[] satellitesImages = {R.mipmap.satellite1, R.mipmap.satellite2, R.mipmap.satellite3};
-    private static final String DESTINATION_SATELLITE_NAME_KEY = "DESTINATION_SATELLITE_NAME_KEY";
-    private static final String DESTINATION_SATELLITE_POLARIZATION_KEY = "DESTINATION_SATELLITE_POLARIZATION_KEY";
+    public static final String DESTINATION_SATELLITE_NAME_KEY = "DESTINATION_SATELLITE_NAME_KEY";
+    public static final String DESTINATION_SATELLITE_POLARIZATION_KEY = "DESTINATION_SATELLITE_POLARIZATION_KEY";
 
     @BindId(R.id.follow_me_destination_spinner_satellites_select)
     Spinner satelliteSelect;
@@ -58,7 +58,7 @@ public class GuideFragmentDestination extends Fragment {
     CustomEditText satelliteName;
 
     @BindId(R.id.follow_me_destination_satellite_polarization)
-    CustomEditText satellitePolarization;
+    Spinner satellitePolarization;
 
     @BindId(R.id.follow_me_destination_satellite_longitude)
     CustomEditText satelliteLongitude;
@@ -86,15 +86,15 @@ public class GuideFragmentDestination extends Fragment {
                                                        int icon, String buttonText, String thirdLineEnd) {
         Bundle args = new Bundle();
         GuideFragmentDestination fragment = new GuideFragmentDestination();
-        args.putBoolean("showFirst",showFirst);
-        args.putString("first", firstLine);
-        args.putBoolean("showSecond",showSecond);
-        args.putString("second", secondLine);
-        args.putBoolean("showThird",showThird);
-        args.putString("start", thirdLineStart);
-        args.putInt("icon", icon);
-        args.putString("buttonText", buttonText);
-        args.putString("end", thirdLineEnd);
+        args.putBoolean(PopDialog.SHOW_FIRST,showFirst);
+        args.putString(PopDialog.FIRST, firstLine);
+        args.putBoolean(PopDialog.SHOW_SECOND,showSecond);
+        args.putString(PopDialog.SECOND, secondLine);
+        args.putBoolean(PopDialog.SHOW_THIRD,showThird);
+        args.putString(PopDialog.START, thirdLineStart);
+        args.putInt(PopDialog.ICON, icon);
+        args.putString(PopDialog.BUTTON_TEXT, buttonText);
+        args.putString(PopDialog.END, thirdLineEnd);
         fragment.setArguments(args);
         return fragment;
     }
@@ -147,7 +147,12 @@ public class GuideFragmentDestination extends Fragment {
                     SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(selectedName, selectedPolarization);
                     if (satelliteInfo != null) {
                         satelliteName.setText(satelliteInfo.name);
-                        satellitePolarization.setText(satelliteInfo.polarization);
+                        for(int i=0; i<polarizationArray.length; i++){
+                            if(selectedPolarization.equals(polarizationArray[i])){
+                                satellitePolarization.setSelection(i,true);
+                                break;
+                            }
+                        }
                         satelliteLongitude.setText(satelliteInfo.longitude);
                         satelliteBeacon.setText(satelliteInfo.beacon);
                         satelliteThreshold.setText(satelliteInfo.threshold);
@@ -183,7 +188,13 @@ public class GuideFragmentDestination extends Fragment {
                         SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(selectedName, selectedPolarization);
                         if (satelliteInfo != null) {
                             satelliteName.setText(satelliteInfo.name);
-                            satellitePolarization.setText(satelliteInfo.polarization);
+
+                            for(int i=0; i<polarizationArray.length; i++){
+                                if(selectedPolarization.equals(polarizationArray[i])){
+                                    satellitePolarization.setSelection(i,true);
+                                    break;
+                                }
+                            }
                             satelliteLongitude.setText(satelliteInfo.longitude);
                             satelliteBeacon.setText(satelliteInfo.beacon);
                             satelliteThreshold.setText(satelliteInfo.threshold);
@@ -208,7 +219,14 @@ public class GuideFragmentDestination extends Fragment {
                     SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(selectedName, selectedPolarization);
                     if (satelliteInfo != null) {
                         satelliteName.setText(satelliteInfo.name);
-                        satellitePolarization.setText(satelliteInfo.polarization);
+                        String[] polarizationArray = satellites.getSatellitePolarizationArray(selectedName);
+                        for(int i=0; i<polarizationArray.length; i++){
+                            if(selectedPolarization.equals(polarizationArray[i])){
+                                satellitePolarization.setSelection(i,true);
+                                break;
+                            }
+                        }
+
                         satelliteLongitude.setText(satelliteInfo.longitude);
                         satelliteBeacon.setText(satelliteInfo.beacon);
                         satelliteThreshold.setText(satelliteInfo.threshold);
@@ -228,10 +246,12 @@ public class GuideFragmentDestination extends Fragment {
                 @IdRes int checkedId = customRadioGroupWithCustomRadioButton.getCheckedRadioButtonId();
                 switch (checkedId){
                     case R.id.follow_me_destination_satellite_new:
+                        selectedName = satelliteName.getText().toString();
+                        selectedPolarization = satellitePolarization.getSelectedItem().toString();
                         // 添加新城市
                         satellites.addItem(new SatelliteInfo(satellites.getItemCounts()+"",
-                                satelliteName.getText().toString(),
-                                satellitePolarization.getText().toString(),
+                                selectedName,
+                                selectedPolarization,
                                 satelliteLongitude.getText().toString(),
                                 satelliteBeacon.getText().toString(),
                                 satelliteThreshold.getText().toString(),
@@ -276,7 +296,7 @@ public class GuideFragmentDestination extends Fragment {
             popDialog.setBundle(bundle);
             popDialog.setSetFirstColor(true);
 
-            int icon = bundle.getInt("icon", -1);
+            int icon = bundle.getInt(PopDialog.ICON, -1);
             if (icon >= 0) {
 //                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
 //                        ImageUtil.textAsBitmap(context,context.getString(
@@ -290,7 +310,11 @@ public class GuideFragmentDestination extends Fragment {
 
     @Override
     public void onDestroy() {
-        timer.cancel();
+        if (timer != null) {
+            timer.cancel();
+            timer.purge();
+            timer = null;
+        }
         super.onDestroy();
     }
 }

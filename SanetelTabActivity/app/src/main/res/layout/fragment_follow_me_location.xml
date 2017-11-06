@@ -15,7 +15,7 @@
             android:text="@string/guide_main_location"
             android:gravity="center"
             android:textStyle="bold"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
         <FrameLayout android:layout_height="150dp"
             android:layout_width="fill_parent"
@@ -59,13 +59,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/follow_me_location_db_city"
-                        android:checked="true"/>
+                        android:checked="true"
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
 
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:id="@+id/follow_me_location_new_city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/follow_me_location_new_city"/>
+                        android:text="@string/follow_me_location_new_city"
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
                 </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
                 <!--城市选择-->
                 <LinearLayout
@@ -115,12 +117,12 @@
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/city_detail_province" />
+                            android:text="@string/city_detail_province"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                             android:id="@+id/follow_me_location_et_new_province"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            style="@style/radio_group_custom_item_edit_horizontal_style"
                             android:layout_weight="1" />
 
                     </LinearLayout>
@@ -132,12 +134,12 @@
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/city_detail_name_key" />
+                            android:text="@string/city_detail_name_key"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                             android:id="@+id/follow_me_location_et_new_city"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            style="@style/radio_group_custom_item_edit_horizontal_style"
                             android:layout_weight="1" />
 
                     </LinearLayout>
@@ -150,13 +152,14 @@
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/angle_calculate_local_longitude" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                             android:id="@+id/follow_me_location_et_new_longitude"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1.2" />
+                            style="@style/radio_group_custom_item_edit_horizontal_style"
+                            android:layout_weight="1.2"
+                            android:inputType="number|numberDecimal"/>
 
                         <Spinner
                             android:id="@+id/follow_me_location_spinner_new_longitude_nit"
@@ -175,13 +178,14 @@
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/angle_calculate_local_latitude" />
 
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                             android:id="@+id/follow_me_location_et_new_latitude"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1.2" />
+                            style="@style/radio_group_custom_item_edit_horizontal_style"
+                            android:layout_weight="1.2"
+                            android:inputType="number|numberDecimal"/>
 
                         <Spinner
                             android:id="@+id/follow_me_location_spinner_new_latitude_unit"

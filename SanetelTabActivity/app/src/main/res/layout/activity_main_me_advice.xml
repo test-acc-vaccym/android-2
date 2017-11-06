@@ -7,7 +7,8 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.main.MainActivity"
-    android:divider="@drawable/divider">
+    android:divider="@drawable/divider"
+    style="@style/linear_no_shadow">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/main_me_advice_appbar"
@@ -56,12 +57,11 @@
                     android:padding="@dimen/appbar_padding_top"
                     android:gravity="start|left"/>
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:id="@+id/main_me_advice_email_receive"
                     style="@style/text_horizontal_style"
-                    android:focusable="false"
                     android:text="@string/main_me_error_report_email_receive_address"
-                    app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+                    app:titleTextAppearance="?android:attr/textAppearanceMedium" />
             </LinearLayout>
             <!--发送邮箱-->
             <LinearLayout
@@ -76,9 +76,27 @@
                     android:gravity="start|left"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                     android:id="@+id/main_me_advice_email_send_address"
-                    android:hint="@string/main_me_advice_email_receive_address"
+                    android:hint="@string/main_me_advice_email_send_address"
                     style="@style/text_horizontal_style"
-                    app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    app:titleTextAppearance="?android:attr/textAppearanceMedium"/>
+            </LinearLayout>
+            <!--用户单位-->
+            <LinearLayout
+                style="@style/layout_vertical_style">
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    android:text="@string/main_me_email_customer"
+                    style="@style/text_horizontal_style"
+                    android:layout_weight="0.5"
+                    tools:layout_editor_absoluteY="16dp"
+                    tools:layout_editor_absoluteX="16dp"
+                    android:padding="@dimen/appbar_padding_top"
+                    android:gravity="start|left"/>
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                    android:id="@+id/main_me_advice_email_customer"
+                    style="@style/text_horizontal_style"
+                    android:paddingTop="@dimen/no_padding"
+                    android:paddingBottom="@dimen/no_padding"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
             </LinearLayout>
             <!--姓    名-->
             <LinearLayout
@@ -92,7 +110,7 @@
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                     android:id="@+id/main_me_advice_name"
                     style="@style/text_horizontal_style"
-                    app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    app:titleTextAppearance="?android:attr/textAppearanceMedium"/>
             </LinearLayout>
             <!--电    话-->
             <LinearLayout
@@ -106,23 +124,10 @@
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                     android:id="@+id/main_me_advice_phone"
                     style="@style/text_horizontal_style"
-                    app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:inputType="number"
+                    android:maxLength="12"
+                    app:titleTextAppearance="?android:attr/textAppearanceMedium"/>
             </LinearLayout>
-            <!--产品序列号-->
-            <!--LinearLayout
-                style="@style/layout_vertical_style">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                    android:text="@string/main_me_advice_serial_number"
-                    style="@style/text_horizontal_style"
-                    android:layout_weight="0.6"
-                    tools:layout_editor_absoluteY="16dp"
-                    tools:layout_editor_absoluteX="16dp"
-                    android:padding="@dimen/appbar_padding_top"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-                    android:id="@+id/main_me_advice_serial_number"
-                    style="@style/text_horizontal_style"
-                    app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
-            </LinearLayout-->
             <!--文件名称-->
             <LinearLayout
                 style="@style/layout_vertical_style">
@@ -135,7 +140,7 @@
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                     android:id="@+id/main_me_advice_filename"
                     style="@style/text_horizontal_style"
-                    app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    app:titleTextAppearance="?android:attr/textAppearanceMedium"/>
             </LinearLayout>
             <!--添加照片-->
                 <LinearLayout
@@ -150,14 +155,14 @@
                         android:text="@string/main_me_advice_photo"
                         style="@style/button_vertical_style"
                         android:layout_weight="1"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_gravity="start|left|center_vertical"
                         android:gravity="start|left|center_vertical"/>
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                         android:id="@+id/main_me_advice_photo_list"
                         style="@style/text_vertical_style"
                         android:layout_weight="2"
-                        app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        app:titleTextAppearance="?android:attr/textAppearanceMedium"
                         android:gravity="start|left"/>
             </LinearLayout>
             <!--故障描述-->
@@ -166,12 +171,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/main_me_advice_description"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:paddingStart="@dimen/layout_padding_left"
                 android:paddingLeft="@dimen/layout_padding_left"
                 android:gravity="center_horizontal"
                 android:layout_weight="5"
-                app:titleTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                android:layout_marginBottom="@dimen/app_bar_height"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
     <!--底部栏-->

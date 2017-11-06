@@ -11,6 +11,12 @@
     <color name="operate_confirm_dialog_color">#BBEEDD</color>
     <color name="operate_disabled_color">#757575</color>
 
+    <!--e droplet dialog Builder-->
+    <color name="defTextColor">#afbbeedd</color>
+    <color name="defDividerColor">#11000000</color>
+    <color name="defMsgColor">#FFFFFFFF</color>
+    <color name="defDialogColor">#FFE74C3C</color>
+
     <color name="satellite_list_header_background">@color/operate_bar_background</color>
 
     <color name="guide_item_background_start">#E0EFCF</color>
@@ -47,6 +53,8 @@
     <color name="button_text">#0000ff</color>
     <color name="content_text">#000000</color>
 
+    <color name="input_under_line">#c1c1c1</color>
+
 
     <color name="gray">#ffdedede</color>
     <color name="blue">#ff0099cc</color>
@@ -71,4 +79,6 @@
     <color name="grey">#607D8B</color>
     <color name="orange">#F57C00</color>
 
+    <color name="weChat_radio_button_deFocus_color">#757575</color>
+    <color name="weChat_button_focus_color">#50ba26</color>
 </resources>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/linear_no_shadow"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.main.MainMePdfBrowserActivity">
     <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/pdfView"

@@ -70,7 +70,7 @@ public class MainMeAboutBrowserActivity extends AppCompatActivity {
             File outFile = new File(getCacheDir(), pdfName + "-pdfview.pdf");
             try {
                 FileInputStream fileInputStream = openFileInput(pdfName);
-                FileUtils.inputstreamtofile(fileInputStream,outFile);
+                FileUtils.inputStreamToFile(fileInputStream,outFile);
            // FileUtils.copy(openFileInput(pdfName), outFile);
             }catch (Exception e){
                 e.printStackTrace();

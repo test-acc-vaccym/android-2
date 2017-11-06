@@ -44,9 +44,6 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
 
     private MenuItem menuItem;
 
-    @BindId(R.id.administrator_settings_fab)
-    private CustomFAB customFAB;
-
     @BindId(R.id.administrator_settings_toolbar)
     private Toolbar toolbar;
 
@@ -72,11 +69,6 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                if (position == 0){
-                    customFAB.setVisibility(View.VISIBLE);
-                }else {
-                    customFAB.setVisibility(View.INVISIBLE);
-                }
                 toolbar.setTitle(TITLE[position]);
             }
 
@@ -103,15 +95,6 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
             }
         }
 
-        OperateBarControl.setupOperatorBar(this);
-
-        customFAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AdministratorSettingsActivity.this, MonitorHelpActivity.class);
-                startActivity(intent);
-            }
-        });
 
         viewPager.setCurrentItem(startPosition);
     }

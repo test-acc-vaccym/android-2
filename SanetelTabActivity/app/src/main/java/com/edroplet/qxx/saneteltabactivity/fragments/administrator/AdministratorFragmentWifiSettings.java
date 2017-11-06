@@ -14,16 +14,18 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.InputFilterMinMax;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
+import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
+
+import static com.edroplet.qxx.saneteltabactivity.utils.CustomSP.WifiSettingsNameKey;
 
 /**
  * Created by qxs on 2017/9/19.
  */
 
 public class AdministratorFragmentWifiSettings extends Fragment {
-    public static final String WifiSettingsNameKey = "deviceName";
 
     private static final int[] icons = {R.drawable.antenna_exploded};
 
@@ -36,14 +38,14 @@ public class AdministratorFragmentWifiSettings extends Fragment {
                                                                 int icon, String buttonText, String thirdLineEnd) {
         Bundle args = new Bundle();
         AdministratorFragmentWifiSettings fragment = new AdministratorFragmentWifiSettings();
-        args.putBoolean(PopDialog.SHOWFIRST,showFirst);
+        args.putBoolean(PopDialog.SHOW_FIRST,showFirst);
         args.putString(PopDialog.FIRST, firstLine);
-        args.putBoolean(PopDialog.SHOWSECOND,showSecond);
+        args.putBoolean(PopDialog.SHOW_SECOND,showSecond);
         args.putString(PopDialog.SECOND, secondLine);
-        args.putBoolean(PopDialog.SHOWTHIRD,showThird);
+        args.putBoolean(PopDialog.SHOW_THIRD,showThird);
         args.putString(PopDialog.START, thirdLineStart);
-        args.putInt("icon", icon);
-        args.putString(PopDialog.BUTTONTEXT, buttonText);
+        args.putInt(PopDialog.ICON, icon);
+        args.putString(PopDialog.BUTTON_TEXT, buttonText);
         args.putString(PopDialog.END, thirdLineEnd);
         fragment.setArguments(args);
         return fragment;
@@ -70,7 +72,11 @@ public class AdministratorFragmentWifiSettings extends Fragment {
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomSP.putString(context,WifiSettingsNameKey,wifiName.getText().toString());
+                String wifiSSID = wifiName.getText().toString();
+                // 确保WiFi名称以xwwt开头
+                if (!wifiSSID.toUpperCase().startsWith(SystemServices.XWWT_PREFIX))
+                    wifiSSID = SystemServices.XWWT_PREFIX + wifiSSID;
+                CustomSP.putString(context,WifiSettingsNameKey,wifiSSID);
                 // todo send command
                 getActivity().finish();
             }
@@ -84,7 +90,7 @@ public class AdministratorFragmentWifiSettings extends Fragment {
             popDialog.setBundle(bundle);
             popDialog.setSetFirstColor(true);
 
-            int icon = bundle.getInt("icon", -1);
+            int icon = bundle.getInt(PopDialog.ICON, -1);
             if (icon >= 0) {
                 popDialog.setDrawable(ContextCompat.getDrawable(context,icons[0]));
             }

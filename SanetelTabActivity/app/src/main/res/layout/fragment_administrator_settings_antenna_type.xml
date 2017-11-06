@@ -34,17 +34,19 @@
                     android:layout_marginStart="@dimen/layout_padding_left"
                     android:layout_marginLeft="@dimen/layout_padding_left">
 
+                    <!--android:focusable="false"-->
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_antenna_type_two_two"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
-                        android:checked="true"
+                        android:focusable="false"
                         android:text="@string/administrator_setting_antenna_type_two_two"/>
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_antenna_type_two_one"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checked="true"
                         android:layout_below="@id/administrator_setting_antenna_type_two_two"
                         android:text="@string/administrator_setting_antenna_type_two_one" />
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
@@ -52,18 +54,21 @@
                         android:layout_below="@id/administrator_setting_antenna_type_two_one"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:focusable="false"
                         android:text="@string/administrator_setting_antenna_type_two_zero" />
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_antenna_type_three_one"
                         android:layout_below="@id/administrator_setting_antenna_type_two_zero"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:focusable="false"
                         android:text="@string/administrator_setting_antenna_type_three_one" />
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_antenna_type_three_zero"
                         android:layout_below="@id/administrator_setting_antenna_type_three_one"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:focusable="false"
                         android:text="@string/administrator_setting_antenna_type_three_zero" />
 
                 </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>

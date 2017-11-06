@@ -9,8 +9,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.adapters.SpinnerAdapter2;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.Satellites;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
@@ -51,7 +53,7 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
     @BindId(R.id.name_detail)
     private CustomTextView satelliteDetailName;
     @BindId(R.id.polarization_detail)
-    private CustomEditText satelliteDetailPlarization;
+    private Spinner satelliteDetailPlarization;
     @BindId(R.id.beacon_detail)
     private CustomEditText satelliteDetailBeacon;
     @BindId(R.id.longitude_detail)
@@ -111,6 +113,8 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
         }
     }
 
+    Satellites satellites;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -139,12 +143,26 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
             satelliteDetailUuid.setText(mItem.mId.toString());
             satelliteDetailId.setText(mItem.id);
             satelliteDetailName.setText(mItem.toString());
-            satelliteDetailPlarization.setText(mItem.polarization);
             satelliteDetailBeacon.setText(mItem.beacon);
             satelliteDetailLongitude.setText(mItem.longitude);
             satelliteDetailThreshold.setText(mItem.threshold);
             satelliteDetailSymbolRate.setText(mItem.symbolRate);
             satelliteDetailComment.setText(mItem.comment);
+
+            try {
+                satellites = new Satellites(getContext());
+                String[] polarizationArray = satellites.getSatellitePolarizationArray(mItem.name);
+                satelliteDetailPlarization.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, polarizationArray));
+
+                for(int i=0; i<polarizationArray.length; i++){
+                    if(mItem.polarization.equals(polarizationArray[i])){
+                        satelliteDetailPlarization.setSelection(i,true);
+                        break;
+                    }
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
         return rootView;
@@ -168,7 +186,7 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
                                 satelliteDetailUuid.getText().toString(),
                                 satelliteDetailId.getText().toString(),
                                 satelliteDetailName.getText().toString(),
-                                satelliteDetailPlarization.getText().toString(),
+                                satelliteDetailPlarization.getSelectedItem().toString(),
                                 satelliteDetailLongitude.getText().toString(),
                                 satelliteDetailBeacon.getText().toString(),
                                 satelliteDetailThreshold.getText().toString(),

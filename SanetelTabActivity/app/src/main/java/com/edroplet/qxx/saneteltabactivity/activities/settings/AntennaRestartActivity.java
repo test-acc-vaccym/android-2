@@ -28,7 +28,7 @@ public class AntennaRestartActivity extends AppCompatActivity {
 
         popDialog.setView(findViewById(R.id.main_settings_antenna_restart_pop));
         Bundle bundle = new Bundle();
-        bundle.putBoolean(PopDialog.SHOWTHIRD, true);
+        bundle.putBoolean(PopDialog.SHOW_THIRD, true);
         bundle.putString(PopDialog.START,getString(R.string.follow_me_message_click));
         bundle.putString(PopDialog.END,getString(R.string.settings_antenna_restart_third_end));
         popDialog.setBundle(bundle);

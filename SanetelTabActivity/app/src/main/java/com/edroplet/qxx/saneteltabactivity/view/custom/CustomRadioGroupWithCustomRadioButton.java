@@ -128,7 +128,7 @@ public class CustomRadioGroupWithCustomRadioButton extends LinearLayout {
         }
         setCheckedId(id);
     }
-    private void setCheckedId(int id) {
+    public void setCheckedId(int id) {
         mCheckedId = id;
         if (mOnCheckedChangeListener != null) {
             mOnCheckedChangeListener.onCheckedChanged(this, mCheckedId);
@@ -154,6 +154,7 @@ public class CustomRadioGroupWithCustomRadioButton extends LinearLayout {
     public int getCheckedRadioButtonId() {
         return mCheckedId;
     }
+
     /**
      * <p>
      * Clears the selection. When the selection is cleared, no radio button in

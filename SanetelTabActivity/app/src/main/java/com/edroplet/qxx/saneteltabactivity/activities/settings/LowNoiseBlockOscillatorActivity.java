@@ -107,9 +107,9 @@ public class LowNoiseBlockOscillatorActivity extends AppCompatActivity {
 
         popDialog.setView(findViewById(R.id.low_noise_block_oscillator_pop));
         Bundle bundle = new Bundle();
-        bundle.putBoolean(PopDialog.SHOWSECOND, true);
+        bundle.putBoolean(PopDialog.SHOW_SECOND, true);
         bundle.putString(PopDialog.SECOND,getString(R.string.settings_lnb_message_first_line));
-        bundle.putBoolean(PopDialog.SHOWTHIRD, true);
+        bundle.putBoolean(PopDialog.SHOW_THIRD, true);
         bundle.putString(PopDialog.START,getString(R.string.follow_me_message_click));
         bundle.putString(PopDialog.END,getString(R.string.follow_me_forever));
         popDialog.setBundle(bundle);

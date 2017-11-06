@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.Satellites;
 import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
+import com.edroplet.qxx.saneteltabactivity.utils.InputFilterMinMax;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
@@ -102,9 +104,9 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
                         + satelliteDvb + satelliteThreshold - cityLongitude - cityLatitude));
                 break;
             case R.id.angle_calculate_operate_clear:
+                tvAzimuth.setText("");
                 tvPitch.setText("");
                 tvPolarization.setText("");
-                tvPitch.setText("");
                 localLongitude.setText("");
                 localLatitude.setText("");
                 break;
@@ -240,6 +242,9 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
         localLatitudeUnit = view.findViewById(R.id.angle_calculate_local_latitude_unit);
         localLongitude = view.findViewById(R.id.angle_calculate_local_longitude);
         localLongitudeUnit = view.findViewById(R.id.angle_calculate_local_longitude_unit);
+
+        localLongitude.setFilters(new InputFilter[]{ new InputFilterMinMax("-180", "180")});
+        localLatitude.setFilters(new InputFilter[]{ new InputFilterMinMax("-90", "90")});
 
         localLatitudeUnit.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1,
                 android.R.id.text1, getContext().getResources().getStringArray(R.array.latitude_unit)));

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.View;
+import android.widget.Spinner;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
@@ -29,6 +30,12 @@ public class NewCityActivity extends AppCompatActivity {
     @BindId(R.id.city_new_latitude)
     private CustomEditText cityLatitudeView;
 
+    @BindId(R.id.city_new_latitude_unit)
+    private Spinner cityLatitudeUnitView;
+
+    @BindId(R.id.city_new_longitude_unit)
+    private Spinner cityLongitudeUnitView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +53,9 @@ public class NewCityActivity extends AppCompatActivity {
                     ArrayList<LocationInfo> cities = jl.loadCities();
                     LocationInfo newLocation = new LocationInfo(cityProvenceView.getText().toString(), cityNameView.getText().toString(),
                             ConvertUtil.convertToFloat(cityLatitudeView.getText().toString(), 0),
-                            ConvertUtil.convertToFloat(cityLongitudeView.getText().toString(), 0));
+                            cityLatitudeUnitView.getSelectedItem().toString(),
+                            ConvertUtil.convertToFloat(cityLongitudeView.getText().toString(), 0),
+                            cityLongitudeUnitView.getSelectedItem().toString());
                     cities.add(newLocation);
                     jl.saveCities(cities);
                     Bundle bundle = new Bundle();

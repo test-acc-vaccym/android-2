@@ -13,6 +13,8 @@
     <string-array name="satellites_polarization">
         <item>水平</item>
         <item>垂直</item>
+        <item>左旋</item>
+        <item>右旋</item>
     </string-array>
 
     <string-array name="latitude_unit">
@@ -40,8 +42,6 @@
         <item>上海</item>
         <item>天津</item>
         <item>长沙</item>
-        <item>
-            武汉
-        </item>
+        <item>武汉</item>
     </array>
 </resources>

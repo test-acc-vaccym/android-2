@@ -107,9 +107,6 @@ public class MainFragmentMe extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_main_me, null);
-        Toolbar toolbar = (Toolbar) view.findViewById(R.id.main_me_toolbar);
-        toolbar.setTitle(R.string.main_bottom_nav_me);
-        toolbar.setTitleTextAppearance(getContext(), android.R.style.TextAppearance_Large);
         Context context = getContext();
         int languageIndex = CustomSP.getInt(context, CustomSP.globalLanguage, 0);
         int fontIndex = CustomSP.getInt(context, CustomSP.globalFont, 1);
@@ -117,13 +114,6 @@ public class MainFragmentMe extends Fragment implements View.OnClickListener{
         languageOnClick = new RadioOnClick(languageIndex);
         fontOnClick = new RadioOnClick(fontIndex);
 
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().finish();
-            }
-        });
         CustomButton language = (CustomButton) view.findViewById(R.id.main_bottom_nav_me_language);
         CustomButton font = view.findViewById(R.id.main_me_font);
         areas[0]=getString(languages[0]);
@@ -182,7 +172,8 @@ public class MainFragmentMe extends Fragment implements View.OnClickListener{
                             @Override
                             public void onClick(View view) {
                                 // TODO 切换设备
-                                SystemServices.startWifiManager(getActivity());
+                                SystemServices.startWifiManager(getActivity(),
+                                        SystemServices.REQUEST_WIFI_CONNECT_MANAGER);
                                 builder.dismiss();
                             }
                         })
@@ -204,5 +195,10 @@ public class MainFragmentMe extends Fragment implements View.OnClickListener{
             startActivity(intent);
             // getActivity().finish();
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

@@ -212,7 +212,11 @@ public class SatelliteDetailActivity extends AppCompatActivity implements View.O
 
     @Override
     protected void onDestroy() {
-        timer.cancel();
+        if (timer != null) {
+            timer.cancel();
+            timer.purge();
+            timer = null;
+        }
         super.onDestroy();
     }
 

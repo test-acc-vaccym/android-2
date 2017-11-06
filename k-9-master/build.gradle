@@ -1,0 +1,24 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
+    }
+}
+
+project.ext {
+    testCoverage = project.hasProperty('testCoverage')
+    optimizeForDevelopment = project.hasProperty('optimizeForDevelopment') && optimizeForDevelopment == 'true'
+}
+
+subprojects {
+    project.plugins.whenPluginAdded { plugin ->
+        if ("com.android.build.gradle.AppPlugin".equals(plugin.class.name) ||
+                "com.android.build.gradle.LibraryPlugin".equals(plugin.class.name)) {
+            project.android.dexOptions.preDexLibraries = !rootProject.hasProperty('disablePreDex')
+        }
+    }
+}

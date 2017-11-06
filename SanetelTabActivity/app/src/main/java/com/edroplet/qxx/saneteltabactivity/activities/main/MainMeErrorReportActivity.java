@@ -43,7 +43,7 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
 
 
     @BindId(R.id.main_me_error_report_email_receive)
-    private CustomEditText errorReportEmailReceive;
+    private CustomTextView errorReportEmailReceive;
 
     @BindId(R.id.main_me_error_report_email_send_address)
     private CustomEditText errorReportEmailSend;
@@ -124,7 +124,8 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
         // 初始化
         // 从缓存读取数据
         errorReportDescription.setText(CustomSP.getString(this, KEY_ERROR_REPORT_DESCRIPTION,""));
-        errorReportEmailReceive.setText(CustomSP.getString(this, KEY_ERROR_REPORT_EMAIL_RECEIVE,getString(R.string.main_me_error_report_email_receive_address)));
+        errorReportEmailReceive.setText(CustomSP.getString(this, KEY_ERROR_REPORT_EMAIL_RECEIVE,
+                getString(R.string.main_me_error_report_email_receive_address)));
         errorReportEmailSend.setText(CustomSP.getString(this, KEY_ERROR_REPORT_EMAIL_SEND,""));
         errorReportFileName.setText(CustomSP.getString(this, KEY_ERROR_REPORT_FILENAME,""));
         errorReportName.setText(CustomSP.getString(this, KEY_ERROR_REPORT_NAME,""));

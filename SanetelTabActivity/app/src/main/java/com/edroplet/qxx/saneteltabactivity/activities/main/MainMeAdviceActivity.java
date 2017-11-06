@@ -34,7 +34,7 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
 //    }
     ArrayList<String> images;
     @BindId(R.id.main_me_advice_email_receive)
-    private CustomEditText adviceEmailReceive;
+    private CustomTextView adviceEmailReceive;
 
     @BindId(R.id.main_me_advice_email_send_address)
     private CustomEditText adviceEmailSend;

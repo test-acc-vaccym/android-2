@@ -61,6 +61,8 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.2.0'
     compile 'com.squareup.okhttp3:okhttp:3.7.0'
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
+
+    compile 'com.tamic.fastdownloader:Android-FastDownloader:1.0.3'
     // pdf阅读
     // 已经过时
     compile 'com.joanzapata.pdfview:android-pdfview:1.0.4@aar'
@@ -76,4 +78,8 @@ dependencies {
     // 滑动删除
     compile 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
     testCompile 'junit:junit:4.12'
+    // NoClassDefFoundError: Failed resolution of: Lokhttp3/internal/Platform
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }

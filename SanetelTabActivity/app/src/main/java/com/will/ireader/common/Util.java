@@ -2,7 +2,7 @@ package com.will.ireader.common;
 
 import android.widget.Toast;
 
-import com.will.ireader.base.MyApplication;
+import com.edroplet.qxx.saneteltabactivity.DropletBaseApplication;
 import com.will.ireader.bean.Book;
 
 import org.mozilla.universalchardet.UniversalDetector;
@@ -21,7 +21,7 @@ public class Util {
     private static Toast mToast;
     public static void makeToast(String message){
         if(mToast == null){
-            mToast = Toast.makeText(MyApplication.getGlobalContext(),"",Toast.LENGTH_SHORT);
+            mToast = Toast.makeText(DropletBaseApplication.getGlobalContext(),"",Toast.LENGTH_SHORT);
         }
         mToast.setText(message);
         mToast.show();
@@ -46,7 +46,7 @@ public class Util {
         return detector.getDetectedCharset();
     }
     public static int getPXWithDP(int dp){
-        float density = MyApplication.getGlobalContext().getResources().getDisplayMetrics().density;
+        float density = DropletBaseApplication.getGlobalContext().getResources().getDisplayMetrics().density;
         return (int)(dp*density);
     }
 }

@@ -3,7 +3,7 @@ package com.will.ireader.common;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.will.ireader.base.MyApplication;
+import com.edroplet.qxx.saneteltabactivity.DropletBaseApplication;
 import com.will.ireader.bean.Book;
 
 /**
@@ -11,9 +11,9 @@ import com.will.ireader.bean.Book;
  */
 
 public class SPHelper {
-    private SharedPreferences config = MyApplication.getGlobalContext().getSharedPreferences("config", Context.MODE_PRIVATE);
+    private SharedPreferences config = DropletBaseApplication.getGlobalContext().getSharedPreferences("config", Context.MODE_PRIVATE);
     private SharedPreferences.Editor configEditor = config.edit();
-    private SharedPreferences bookmark = MyApplication.getGlobalContext().getSharedPreferences("bookmark",Context.MODE_PRIVATE);
+    private SharedPreferences bookmark = DropletBaseApplication.getGlobalContext().getSharedPreferences("bookmark",Context.MODE_PRIVATE);
     private SharedPreferences.Editor bookmarkEditor = bookmark.edit();
     private static SPHelper instance;
 

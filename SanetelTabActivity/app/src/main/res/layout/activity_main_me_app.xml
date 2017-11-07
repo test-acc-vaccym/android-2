@@ -76,8 +76,12 @@
                     android:id="@+id/main_me_app_update_state"
                     style="@style/text_horizontal_style"
                     android:padding="@dimen/no_padding"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/green_70"
                     android:text="@string/main_me_app_update_state_checking"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/app_update_status_text_size"
+                    android:gravity="start|left"
                     android:visibility="gone"/>
             </LinearLayout>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton

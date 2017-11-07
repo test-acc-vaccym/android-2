@@ -3,7 +3,7 @@ package com.will.ireader.db;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.will.ireader.base.MyApplication;
+import com.edroplet.qxx.saneteltabactivity.DropletBaseApplication;
 
 /**
  * Created by Will on 2016/1/31.
@@ -26,7 +26,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
             "chapter_byte_position integer," +
             "chapter_name)";
     public DBOpenHelper(){
-        super(MyApplication.getGlobalContext(),NAME,null,VERSION);
+        super(DropletBaseApplication.getGlobalContext(),NAME,null,VERSION);
     }
     @Override
     public void onCreate(SQLiteDatabase db){

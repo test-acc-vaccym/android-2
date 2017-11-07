@@ -1,17 +1,28 @@
 package com.edroplet.qxx.saneteltabactivity.activities.main;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.services.DownLoadService;
+import com.edroplet.qxx.saneteltabactivity.utils.DateTime;
 import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
+import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
+import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
+
+import java.lang.ref.WeakReference;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.edroplet.qxx.saneteltabactivity.activities.main.MainMeAboutBrowserActivity.BrowseUrl;
 import static com.edroplet.qxx.saneteltabactivity.activities.main.MainMeAboutBrowserActivity.KEY_DOWNLOAD_URL;
@@ -24,14 +35,8 @@ import static com.edroplet.qxx.saneteltabactivity.activities.main.MainMeAboutBro
  */
 
 public class MainMeAppActivity extends AppCompatActivity implements View.OnClickListener{
-//
-//    public static MainMeAdviceActivity newInstance(String info) {
-//        Bundle args = new Bundle();
-//        MainMeAdviceActivity fragment = new MainMeAdviceActivity();
-//        args.putString("info", info);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
+
+    private DownLoadService downLoadService;
 
     /**
      * 返回应用程序的版本号
@@ -55,6 +60,8 @@ public class MainMeAppActivity extends AppCompatActivity implements View.OnClick
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_me_app);
+        ViewInject.inject(this,this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_me_app_toolbar);
         toolbar.setTitle(R.string.main_me_app_title);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -78,9 +85,87 @@ public class MainMeAppActivity extends AppCompatActivity implements View.OnClick
         activity.startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
 
+    @BindId(R.id.main_me_app_update_state)
+    private CustomTextView appUpdateState;
+
+
+    public static final String KEY_UPDATE_STATE = "KEY_UPDATE_STATE";
+
+    private static class updateHandler extends Handler{
+        private final WeakReference<MainMeAppActivity> mActivity;
+        updateHandler(MainMeAppActivity activity){
+            mActivity = new WeakReference<MainMeAppActivity>(activity);
+        }
+        private static String dots = ".";
+        @Override
+        public void handleMessage(Message msg) {
+            MainMeAppActivity activity = mActivity.get();
+            int  updateProgress = 0;
+            if (msg.what == 0) {
+                updateProgress = msg.getData().getInt(KEY_UPDATE_STATE);
+            }else{
+                updateProgress = msg.what;
+            }
+
+            if (activity != null){
+                if (updateProgress <= 0) {
+                    activity.appUpdateState.setText(activity.getString(R.string.main_me_app_update_state_checking));
+                }else if (updateProgress >= 100){
+                    activity.appUpdateState.setText(activity.getString(R.string.main_me_app_update_state_complete));
+                }else {
+                    dots = dots + ".";
+
+                    String progress = String.format(activity.getString(R.string.main_me_app_update_state_downloading),
+                            updateProgress, dots);
+
+                    activity.appUpdateState.setText(progress);
+                }
+            }
+        }
+    }
+
+    private  final updateHandler handler = new updateHandler(this);
+
+    private  final Runnable runner = new Runnable() {
+        @Override
+        public void run() {
+            int updateProgress = 0;
+            if (downLoadService != null) {
+                updateProgress = downLoadService.getPreProgress();
+            }
+            Message message = new Message();
+            Bundle bundle = new Bundle();
+            bundle.putInt(KEY_UPDATE_STATE, updateProgress);
+            message.setData(bundle);
+            handler.sendMessage(message);
+        }
+    };
+
+    private Timer mTimer;
+    private void setTimerTask() {
+        if (null == mTimer) {
+            mTimer = new Timer();
+        }
+        mTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                int updateProgress = 0;
+                if (downLoadService != null) {
+                    updateProgress = downLoadService.getPreProgress();
+                }
+                Message message = new Message();
+                message.what = updateProgress;
+                handler.sendMessage(message);
+            }
+        }, 1000, 1000/* 表示1000毫秒之後，每隔1000毫秒執行一次 */);
+    }
+
+
+    Intent downloadIntent;
     @Override
     public void onClick(View view) {
         Intent intent = null;
+        boolean skip = false;
         switch(view.getId()){
             case R.id.main_me_app_browse:
                 // 20170617170632522.pdf
@@ -97,14 +182,31 @@ public class MainMeAppActivity extends AppCompatActivity implements View.OnClick
                 SystemServices.restoreAPP(this, 2000);
                 break;
             case R.id.main_me_app_update:
+                skip = true;
                 // todo 升级
-                // intent = new Intent(getContext(), Context.AUDIO_SERVICE);
+                appUpdateState.setVisibility(View.VISIBLE);
+                downloadIntent = new Intent(MainMeAppActivity.this,DownLoadService.class);
+                startService(downloadIntent);
+                setTimerTask();
+                //  handler.postDelayed(runner, 1000);
                 break;
             default:
                 break;
         }
-        if (intent != null) {
+        if (!skip && intent != null) {
             startActivity(intent);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (mTimer != null){
+            mTimer.purge();
+            mTimer.cancel();
+            mTimer = null;
+        }
+        appUpdateState.setVisibility(View.GONE);
+        stopService(downloadIntent);
+        super.onDestroy();
     }
 }

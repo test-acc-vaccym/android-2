@@ -143,4 +143,13 @@
         <attr name="columnSize" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="PracticalRecyclerView">
+        <attr name="empty_layout" format="reference" />
+        <attr name="error_layout" format="reference" />
+        <attr name="loading_layout" format="reference" />
+        <attr name="load_more_layout" format="reference" />
+        <attr name="no_more_layout" format="reference" />
+        <attr name="load_more_failed_layout" format="reference" />
+    </declare-styleable>
+
 </resources>

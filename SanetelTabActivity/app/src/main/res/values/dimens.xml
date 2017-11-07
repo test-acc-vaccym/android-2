@@ -63,6 +63,7 @@
     <dimen name="layout_padding_top">12dp</dimen>
     <dimen name="layout_padding_left">10dp</dimen>
     <dimen name="settings_linear_shadow_padding_left">20dp</dimen>
+    <dimen name="app_update_status_text_size">20sp</dimen>
 
     <!--单选组-->
     <dimen name="radio_group_width">120dp</dimen>
@@ -110,4 +111,7 @@
     <dimen name="appIntroDefaultPaddingTop">40dp</dimen>
     <dimen name="appIntroHeadingTextSize">28dp</dimen>
 
+    <dimen name="down_item_icon">40dip</dimen>
+    <dimen name="down_item_name_text_size">12dip</dimen>
+    <dimen name="down_item_status_width_size">35dip</dimen>
 </resources>

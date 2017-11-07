@@ -12,11 +12,19 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.control.DLFrameCallback;
 import com.edroplet.qxx.saneteltabactivity.utils.downloadmanager.fileload.FileCallback;
 import com.edroplet.qxx.saneteltabactivity.utils.downloadmanager.fileload.FileResponseBody;
+import com.tamic.rx.fastdown.callback.IDLCallback;
+import com.tamic.rx.fastdown.client.DLClientFactory;
+import com.tamic.rx.fastdown.content.DownLoadInfo;
+import com.tamic.rx.fastdown.core.DownLoadInfoFactory;
+import com.tamic.rx.fastdown.core.Download;
+import com.tamic.rx.fastdown.core.Priority;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
@@ -26,6 +34,8 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.http.GET;
+
+import static com.tamic.rx.fastdown.client.Type.NORMAL;
 
 
 /**
@@ -41,7 +51,7 @@ public class DownLoadService extends Service {
     /**
      * 目标文件存储的文件名
      */
-    private String destFileName = "shan_yao.apk";
+    private String destFileName = "4b6d9a8a-c32a-11e7-b07b-90e2ba73b3f0.zip";
 
     private Context mContext;
     private int preProgress = 0;
@@ -57,21 +67,27 @@ public class DownLoadService extends Service {
         return super.onStartCommand(intent, flags, startId);
     }
 
+    public int getPreProgress() {
+        return preProgress;
+    }
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
 
+    // private static final String baseUrl = "http://112.124.9.133:8080/parking-app-admin-1.0/android/manager/adminVersion/";
+    private static final String baseUrl = "http://123.59.23.183/assets/2000004/"; // 4b6d9a8a-c32a-11e7-b07b-90e2ba73b3f0.zip
     /**
      * 下载文件
      */
-    private void loadFile() {
+    private void loadFile1() {
         initNotification();
         if (retrofit == null) {
             retrofit = new Retrofit.Builder();
         }
-        retrofit.baseUrl("http://112.124.9.133:8080/parking-app-admin-1.0/android/manager/adminVersion/")
+        retrofit.baseUrl(baseUrl)
                 .client(initOkHttpClient())
                 .build()
                 .create(IFileLoad.class)
@@ -83,7 +99,7 @@ public class DownLoadService extends Service {
                         Log.e("zs", "请求成功");
                         // 安装软件
                         cancelNotification();
-                        installApk(file);
+                        // installApk(file);
                     }
 
                     @Override
@@ -98,6 +114,21 @@ public class DownLoadService extends Service {
                         cancelNotification();
                     }
                 });
+    }
+
+    void loadFile() {
+        initNotification();
+        new Download.Builder()
+                .url(baseUrl+destFileName)
+                .priority(Priority.HIGH)
+                .savepath(destFileDir)
+                .isImplicit(false) // 是否显示UI
+                .channel(3000)
+                .client(DLClientFactory.createClient(NORMAL, this))
+                // .setCallback(new DLFrameCallback())
+                .setCallback(idlCallback)
+                .build(this)
+                .start();
     }
 
     public interface IFileLoad {
@@ -147,7 +178,7 @@ public class DownLoadService extends Service {
         builder = new NotificationCompat.Builder(mContext)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentText("0%")
-                .setContentTitle("华清泊车更新")
+                .setContentTitle("星网卫通APP下载进度")
                 .setProgress(100, 0, false);
         notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFY_ID, builder.build());
@@ -172,4 +203,49 @@ public class DownLoadService extends Service {
     public void cancelNotification() {
         notificationManager.cancel(NOTIFY_ID);
     }
+
+    private IDLCallback idlCallback =  new IDLCallback() {
+        @Override
+        public void onStart(String key, long fileLength, long downloaded, String savePath, String filenNme) {
+
+        }
+
+        @Override
+        public void onSuccess(String key, long fileLength, long downloaded, String savePath, String filenNme, long aSpeed, String aAppiconName) {
+
+            cancelNotification();
+        }
+
+        @Override
+        public void onAppSuccess(String key, long fileLength, long downloaded, String savePath, String filenNme, long aSpeed, String aAppiconName, int downloadType, int appType) {
+
+        }
+
+        @Override
+        public void onFail(String key, long downloaded, String savePath, String filenNme, String aErrinfo) {
+            cancelNotification();
+        }
+
+        @Override
+        public void onCancel(String key, long fileLength, long downloaded, String savePath, String filenNme) {
+            cancelNotification();
+        }
+
+        @Override
+        public void onPause(String key, long fileLength, long downloaded, String savePath, String filenNme) {
+
+        }
+
+        @Override
+        public void onDownloading(String key, long fileLength, long downloadLength, long speed, String fileName, int downloadType) {
+
+            Log.e("DownloadService", downloadLength + "----" + fileLength);
+            updateNotification(downloadLength * 100 / fileLength);
+        }
+
+        @Override
+        public void onRefresh(List<DownLoadInfo> infos) {
+
+        }
+    };
 }

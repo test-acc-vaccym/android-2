@@ -22,9 +22,12 @@
     <!-- android中隐藏与显示软键盘以及不自动弹出键盘的方法 -->
     <!-- android:windowSoftInputMode="stateHidden" -->
     <!-- 改变WiFi多播状态 -->
-    <application
-        android:name="com.will.ireader.base.MyApplication"
+
+    <!--被tools:replace="android:allowBackup"替换-->
+    <application xmlns:tools="http://schemas.android.com/tools"
+        tools:replace="android:allowBackup,android:icon, android:theme"
         android:allowBackup="true"
+        android:name=".DropletBaseApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -258,7 +261,11 @@
         <activity android:name="com.will.ireader.page.PageActivity" />
         <activity android:name="com.will.ireader.chapter.ChapterActivity" />
         <activity android:name=".activities.functions.ReaderTextActivity" />
-        <activity android:name=".activities.main.MainMePdfBrowserActivity"></activity>
+        <activity android:name=".activities.main.MainMePdfBrowserActivity" />
+
+        <service
+            android:name=".services.CommunicateWithDeviceService"
+            android:exported="false"></service>
     </application>
 
 </manifest>

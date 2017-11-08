@@ -84,6 +84,8 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
 
         dvbSymbolRate.setInputType(InputType.TYPE_CLASS_NUMBER);
         dvbSymbolRate.setFilters(new InputFilter[]{new InputFilterFloat(6000,30000)});
+        agThrehold.setFilters(new InputFilter[]{new InputFilterFloat(0, 10.0f)});
+        beacon.setFilters(new InputFilter[]{new InputFilterFloat(10750, 40000)});
 
         referenceToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

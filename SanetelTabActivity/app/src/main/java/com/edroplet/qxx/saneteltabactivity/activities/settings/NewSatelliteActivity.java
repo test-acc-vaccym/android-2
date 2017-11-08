@@ -44,7 +44,8 @@ public class NewSatelliteActivity extends AppCompatActivity {
         ViewInject.inject(this, this);
 
         satelliteLongitudeView.setFilters(new InputFilter[]{ new InputFilterFloat("-180.000", "180.000")});
-
+        satelliteThresholdView.setFilters(new InputFilter[]{new InputFilterFloat(0, 10.0f)});
+        satelliteBeaconView.setFilters(new InputFilter[]{new InputFilterFloat(10750, 40000)});
         satelliteSymbolRateView.setFilters(new InputFilter[]{new InputFilterFloat(6000, 30000)});
 
         findViewById(R.id.satellites_new_button_commit).setOnClickListener(new View.OnClickListener() {

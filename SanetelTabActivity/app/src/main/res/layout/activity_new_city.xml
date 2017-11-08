@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    style="@style/linear_no_shadow"
+    style="@style/linear_no_shadow_no_padding"
     tools:context=".activities.settings.NewCityActivity">
 
     <android.support.design.widget.AppBarLayout

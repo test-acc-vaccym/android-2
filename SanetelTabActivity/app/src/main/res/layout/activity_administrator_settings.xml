@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/status_bar_height"
-        style="@style/linear_no_shadow"
+        style="@style/linear_no_shadow_no_padding"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 

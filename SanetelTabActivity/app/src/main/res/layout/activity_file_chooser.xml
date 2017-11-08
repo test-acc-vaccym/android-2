@@ -1,13 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    style="@style/linear_no_shadow" >
-    <include
+    style="@style/linear_no_shadow_no_padding">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/file_select_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/file_select_title_bar" />
+        android:layout_gravity="end"
+        app:navigationIcon="@drawable/back"
+        app:title="@null"
+        app:titleTextColor="@color/black"
+        app:titleTextAppearance="?android:attr/textAppearanceLarge"
+        android:background="@color/title_background"
+        android:fitsSystemWindows="true">
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            android:id="@+id/file_select_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|start"
+            android:text="@string/select_files"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/file_select_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/finish"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="@drawable/top_right_button"
+            android:layout_gravity="end"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"/>
+    </android.support.v7.widget.Toolbar>
+
     <LinearLayout
         android:id="@+id/content"
         android:layout_width="match_parent"

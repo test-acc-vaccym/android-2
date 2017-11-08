@@ -9,7 +9,7 @@ import android.widget.Spinner;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
-import com.edroplet.qxx.saneteltabactivity.utils.InputFilterMinMax;
+import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.utils.JsonLoad;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
@@ -43,7 +43,9 @@ public class NewSatelliteActivity extends AppCompatActivity {
         // 初始化
         ViewInject.inject(this, this);
 
-        satelliteLongitudeView.setFilters(new InputFilter[]{ new InputFilterMinMax("-180", "180")});
+        satelliteLongitudeView.setFilters(new InputFilter[]{ new InputFilterFloat("-180.000", "180.000")});
+
+        satelliteSymbolRateView.setFilters(new InputFilter[]{new InputFilterFloat(6000, 30000)});
 
         findViewById(R.id.satellites_new_button_commit).setOnClickListener(new View.OnClickListener() {
             @Override

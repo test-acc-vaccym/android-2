@@ -8,7 +8,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.main.MainActivity"
     android:divider="@drawable/divider"
-    style="@style/linear_no_shadow">
+    style="@style/linear_no_shadow_no_padding">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

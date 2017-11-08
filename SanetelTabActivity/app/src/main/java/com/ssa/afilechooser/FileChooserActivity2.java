@@ -30,18 +30,24 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentManager.BackStackEntry;
 import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Main Activity that handles the FileListFragments
@@ -50,6 +56,9 @@ import java.util.List;
  * @author SunShan'ai 
  */
 public class FileChooserActivity2 extends FragmentActivity implements OnBackStackChangedListener, FileListFragment2.Callbacks {
+
+    @BindView(R.id.file_select_tool_bar)
+    Toolbar toolbar;
 
     public static final String PATH = "path";
     public static final String PATHS = "paths";
@@ -67,14 +76,23 @@ public class FileChooserActivity2 extends FragmentActivity implements OnBackStac
     };
 
     private String mPath;
-    private Button mBtnLeft;
-    private Button mBtnRight;
+
+    @BindView(R.id.file_select_complete)
+    CustomButton mBtnRight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file_chooser);
-        initActivityTitleUI();
+        ButterKnife.bind(this);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         mFragmentManager = getSupportFragmentManager();
         mFragmentManager.addOnBackStackChangedListener(this);
 
@@ -134,7 +152,6 @@ public class FileChooserActivity2 extends FragmentActivity implements OnBackStac
             actionBar.setDisplayHomeAsUpEnabled(hasBackStack);
             actionBar.setHomeButtonEnabled(hasBackStack);
         }
-
         return true;
     }
 
@@ -157,10 +174,6 @@ public class FileChooserActivity2 extends FragmentActivity implements OnBackStac
         mFragmentManager.beginTransaction().add(R.id.content, fragment).commit();
     }
 
-    private void initActivityTitleUI() {
-        mBtnLeft = (Button) findViewById(R.id.btn_title_left);
-        mBtnRight = (Button) findViewById(R.id.btn_title_right);
-    }
 
     /**
      * "Replace" the existing Fragment with a new one using given path. We're
@@ -250,12 +263,12 @@ public class FileChooserActivity2 extends FragmentActivity implements OnBackStac
         }
     }
 
-    public Button getBtnLeft() {
-        return mBtnLeft != null ? mBtnLeft : (Button) findViewById(R.id.btn_title_left);
+    public Toolbar getToolbar() {
+        return toolbar;
     }
 
     public Button getBtnRight() {
-        return mBtnRight != null ? mBtnRight : (Button) findViewById(R.id.btn_title_right);
+        return mBtnRight;
     }
 
     /**

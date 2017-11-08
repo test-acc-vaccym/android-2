@@ -9,9 +9,8 @@ import android.widget.Spinner;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
-import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
-import com.edroplet.qxx.saneteltabactivity.utils.InputFilterMinMax;
+import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.utils.JsonLoad;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
@@ -42,8 +41,8 @@ public class NewCityActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_city);
         // 初始化
         ViewInject.inject(this, this);
-        cityLongitudeView.setFilters(new InputFilter[]{ new InputFilterMinMax("-180", "180")});
-        cityLatitudeView.setFilters(new InputFilter[]{ new InputFilterMinMax("-90", "90")});
+        cityLongitudeView.setFilters(new InputFilter[]{ new InputFilterFloat("-180", "180")});
+        cityLatitudeView.setFilters(new InputFilter[]{ new InputFilterFloat("-90", "90")});
 
         findViewById(R.id.city_new_button_commit).setOnClickListener(new View.OnClickListener() {
             @Override

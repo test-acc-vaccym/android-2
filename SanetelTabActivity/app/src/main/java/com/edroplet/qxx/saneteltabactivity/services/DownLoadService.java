@@ -12,11 +12,15 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.adapters.download.DownloadAdapter;
 import com.edroplet.qxx.saneteltabactivity.control.DLFrameCallback;
+import com.edroplet.qxx.saneteltabactivity.services.down.DLDownloadListener;
+import com.edroplet.qxx.saneteltabactivity.services.down.DownloadInit;
 import com.edroplet.qxx.saneteltabactivity.utils.downloadmanager.fileload.FileCallback;
 import com.edroplet.qxx.saneteltabactivity.utils.downloadmanager.fileload.FileResponseBody;
 import com.tamic.rx.fastdown.callback.IDLCallback;
 import com.tamic.rx.fastdown.client.DLClientFactory;
+import com.tamic.rx.fastdown.client.Type;
 import com.tamic.rx.fastdown.content.DownLoadInfo;
 import com.tamic.rx.fastdown.core.DownLoadInfoFactory;
 import com.tamic.rx.fastdown.core.Download;
@@ -63,6 +67,7 @@ public class DownLoadService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         mContext = this;
+        init();
         loadFile();
         return super.onStartCommand(intent, flags, startId);
     }
@@ -79,6 +84,29 @@ public class DownLoadService extends Service {
 
     // private static final String baseUrl = "http://112.124.9.133:8080/parking-app-admin-1.0/android/manager/adminVersion/";
     private static final String baseUrl = "http://123.59.23.183/assets/2000004/"; // 4b6d9a8a-c32a-11e7-b07b-90e2ba73b3f0.zip
+
+    public static DownloadAdapter downloadAdapter;
+    private void init() {
+
+        DownloadInit.init(getBaseContext());
+
+        new Download.ConfigBuilder<>()
+                .addMaxCount(5)
+                .downloadListener(new DLDownloadListener(this.getBaseContext()))
+                .baseClient(DLClientFactory.createClient(Type.NORMAL, getBaseContext()))
+                .newbuild(this, downloadAdapter);
+       /* RxDownloadManager manager = RxDownloadManager.getInstance();
+        manager.init(getBaseContext(), null);
+        manager.setContext(getBaseContext());
+        manager.setListener(new DLDownloadListener(getBaseContext()));
+
+
+        DLNormalCallback normalCallback = new DLNormalCallback();
+        if (manager.getClient() != null) {
+            manager.getClient().setCallback(normalCallback);
+        }*/
+
+    }
     /**
      * 下载文件
      */
@@ -212,7 +240,6 @@ public class DownLoadService extends Service {
 
         @Override
         public void onSuccess(String key, long fileLength, long downloaded, String savePath, String filenNme, long aSpeed, String aAppiconName) {
-
             cancelNotification();
         }
 

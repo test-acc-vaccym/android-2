@@ -150,7 +150,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             tools:ignore="NestedWeights" />
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-                            android:id="@+id/main_application_manual_location_tv_setting_azimuth"
+                            android:id="@+id/main_application_manual_location_edit_setting_azimuth"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
@@ -179,7 +179,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             tools:ignore="NestedWeights" />
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-                            android:id="@+id/main_application_manual_location_tv_setting_pitch"
+                            android:id="@+id/main_application_manual_location_edit_setting_pitch"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
@@ -208,7 +208,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             tools:ignore="NestedWeights" />
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-                            android:id="@+id/main_application_manual_location_tv_setting_polarization"
+                            android:id="@+id/main_application_manual_location_edit_setting_polarization"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"

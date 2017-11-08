@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/linear_no_shadow">
+    style="@style/linear_no_shadow_no_padding">
     <ProgressBar
         android:layout_width="@dimen/app_bar_height"
         android:layout_height="@dimen/app_bar_height"

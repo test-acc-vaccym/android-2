@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.main.MainActivity"
-    style="@style/linear_no_shadow">
+    style="@style/linear_no_shadow_no_padding">
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/welcome_install_wire_scroll"

@@ -6,7 +6,7 @@
     android:fitsSystemWindows="true"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.CityLocationDetailActivity"
     tools:ignore="MergeRootFrame"
-    style="@style/linear_no_shadow">
+    style="@style/linear_no_shadow_no_padding">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/city_detail_app_bar"

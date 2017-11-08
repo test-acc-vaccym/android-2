@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    style="@style/linear_no_shadow"
+    style="@style/linear_no_shadow_no_padding"
     tools:context=".activities.settings.NewSatelliteActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -173,7 +173,9 @@
                 android:id="@+id/satellites_new_symbol_rate"
                 android:layout_width="0dp"
                 android:layout_weight="2"
-                android:inputType="number|numberDecimal"
+                android:inputType="number"
+                android:hint="@string/satellite_detail_symbol_rate_hint"
+                android:textColorHint="@color/mb_red"
                 android:layout_height="match_parent"/>
         </LinearLayout>
         <LinearLayout

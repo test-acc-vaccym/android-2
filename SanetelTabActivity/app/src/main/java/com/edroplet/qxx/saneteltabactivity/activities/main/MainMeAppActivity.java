@@ -206,7 +206,8 @@ public class MainMeAppActivity extends AppCompatActivity implements View.OnClick
             mTimer = null;
         }
         appUpdateState.setVisibility(View.GONE);
-        stopService(downloadIntent);
+        if (null != downloadIntent)
+            stopService(downloadIntent);
         super.onDestroy();
     }
 }

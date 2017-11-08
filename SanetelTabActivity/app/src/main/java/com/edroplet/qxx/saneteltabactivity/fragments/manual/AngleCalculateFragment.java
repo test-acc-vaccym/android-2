@@ -22,8 +22,7 @@ import com.edroplet.qxx.saneteltabactivity.beans.PresetAngleInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.Satellites;
 import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
-import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
-import com.edroplet.qxx.saneteltabactivity.utils.InputFilterMinMax;
+import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
@@ -81,6 +80,9 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
         tvAzimuth = view.findViewById(R.id.main_application_manual_angle_calculate_tv_setting_azimuth);
         tvPitch = view.findViewById(R.id.main_application_manual_angle_calculate_tv_setting_pitch);
         tvPolarization = view.findViewById(R.id.main_application_manual_angle_calculate_tv_setting_polarization);
+        tvAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
+        tvPitch.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
+        tvPolarization.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
 
         // 按键
         view.findViewById(R.id.angle_calculate_operate_calculate).setOnClickListener(this);
@@ -243,8 +245,8 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
         localLongitude = view.findViewById(R.id.angle_calculate_local_longitude);
         localLongitudeUnit = view.findViewById(R.id.angle_calculate_local_longitude_unit);
 
-        localLongitude.setFilters(new InputFilter[]{ new InputFilterMinMax("-180", "180")});
-        localLatitude.setFilters(new InputFilter[]{ new InputFilterMinMax("-90", "90")});
+        localLongitude.setFilters(new InputFilter[]{ new InputFilterFloat("-180", "180")});
+        localLatitude.setFilters(new InputFilter[]{ new InputFilterFloat("-90", "90")});
 
         localLatitudeUnit.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1,
                 android.R.id.text1, getContext().getResources().getStringArray(R.array.latitude_unit)));

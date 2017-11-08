@@ -4,6 +4,8 @@ import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.InputFilter;
+import android.text.InputType;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.RadioButton;
@@ -16,6 +18,7 @@ import com.edroplet.qxx.saneteltabactivity.beans.Satellites;
 import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentLocation;
 import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
+import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
@@ -78,6 +81,10 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
         ViewInject.inject(this, this);
 
         initView();
+
+        dvbSymbolRate.setInputType(InputType.TYPE_CLASS_NUMBER);
+        dvbSymbolRate.setFilters(new InputFilter[]{new InputFilterFloat(6000,30000)});
+
         referenceToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -45,8 +45,8 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
     @BindId(R.id.main_me_advice_phone)
     private CustomEditText advicePhone;
 
-    @BindId(R.id.main_me_advice_filename)
-    private CustomEditText adviceFileName;
+    @BindId(R.id.main_me_advice_subject)
+    private CustomEditText adviceSubject;
 
     @BindId(R.id.main_me_advice_photo_list)
     private CustomTextView advicePhoto;
@@ -85,7 +85,7 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
         adviceDescription.setText(CustomSP.getString(this, KEY_ADVICE_DESCRIPTION,""));
         adviceEmailReceive.setText(CustomSP.getString(this, KEY_ADVICE_EMAIL_RECEIVE,getString(R.string.main_me_advice_email_receive_address)));
         adviceEmailSend.setText(CustomSP.getString(this, KEY_ADVICE_EMAIL_SEND,""));
-        adviceFileName.setText(CustomSP.getString(this, KEY_ADVICE_FILENAME,""));
+        adviceSubject.setText(CustomSP.getString(this, KEY_ADVICE_FILENAME,""));
         adviceName.setText(CustomSP.getString(this, KEY_ADVICE_NAME,""));
         advicePhone.setText(CustomSP.getString(this, KEY_ADVICE_PHONE,""));
         advicePhoto.setText(CustomSP.getString(this, KEY_ADVICE_PHOTO,""));
@@ -111,7 +111,7 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
                 CustomSP.putString(this, KEY_ADVICE_PHOTO, advicePhoto.getText().toString());
                 CustomSP.putString(this, KEY_ADVICE_PHONE, advicePhone.getText().toString());
                 CustomSP.putString(this, KEY_ADVICE_NAME, adviceName.getText().toString());
-                CustomSP.putString(this, KEY_ADVICE_FILENAME, adviceFileName.getText().toString());
+                CustomSP.putString(this, KEY_ADVICE_FILENAME, adviceSubject.getText().toString());
                 CustomSP.putString(this, KEY_ADVICE_EMAIL_SEND, adviceEmailSend.getText().toString());
                 CustomSP.putString(this, KEY_ADVICE_EMAIL_RECEIVE, adviceEmailReceive.getText().toString());
                 CustomSP.putString(this, KEY_ADVICE_DESCRIPTION, adviceDescription.getText().toString());
@@ -130,7 +130,7 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
                 content = content + getString(R.string.main_me_advice_phone) + ": " + advicePhoto.getText().toString() + "\n"; // 电话
                 content = content + adviceDescription.getText().toString();
 
-                String subject = adviceFileName.getText().toString();
+                String subject = adviceSubject.getText().toString();
                 if (subject == null || subject.length() ==0){
                     subject = getString(R.string.main_me_error_report_title);
                 }

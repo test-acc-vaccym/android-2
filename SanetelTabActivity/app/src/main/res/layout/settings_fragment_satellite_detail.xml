@@ -161,7 +161,9 @@
             android:id="@+id/symbol_rate_detail"
             android:layout_width="0dp"
             android:layout_weight="2"
-            android:inputType="numberDecimal|number"
+            android:inputType="number"
+            android:hint="@string/satellite_detail_symbol_rate_hint"
+            android:textColorHint="@color/mb_red"
             android:layout_height="match_parent"/>
     </LinearLayout>
     <LinearLayout

@@ -204,8 +204,8 @@ public class FileListFragment2 extends ListFragment implements LoaderManager.Loa
         if (null == mActivity) {
             return;
         }
-        mActivity.getBtnLeft().setOnClickListener(new OnClickListener() {
 
+        mActivity.getToolbar().setNavigationOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().finish();

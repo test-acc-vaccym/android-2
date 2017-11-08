@@ -12,12 +12,13 @@ import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
-import com.edroplet.qxx.saneteltabactivity.utils.InputFilterMinMax;
+import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
-import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
+
+import butterknife.BindView;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -29,7 +30,8 @@ public class AdministratorFragmentAntennaIncriminate extends Fragment {
     private static final String AntennaIncriminatePolarizationKey = "antennaIncriminatePolarization";
     private static final int[] icons = {R.drawable.antenna_exploded};
 
-    private CustomButton thirdButton;
+    @BindView(R.id.pop_dialog_third_button)
+    CustomButton thirdButton;
 
     private CustomEditText antennaIncriminateAzimuth;
     private CustomEditText antennaIncriminatePitch;
@@ -68,9 +70,9 @@ public class AdministratorFragmentAntennaIncriminate extends Fragment {
         antennaIncriminatePitch = view.findViewById(R.id.administrator_antenna_incriminate_tv_pitch);
         antennaIncriminatePolarization = view.findViewById(R.id.administrator_antenna_incriminate_polarization);
 
-        antennaIncriminateAzimuth.setFilters(new InputFilter[]{new InputFilterMinMax(0.0, 180.0)});
-        antennaIncriminatePitch.setFilters(new InputFilter[]{new InputFilterMinMax(0.0, 180.0)});
-        antennaIncriminatePolarization.setFilters(new InputFilter[]{new InputFilterMinMax(0.0, 180.0)});
+        antennaIncriminateAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(0.0, 360.0)});
+        antennaIncriminatePitch.setFilters(new InputFilter[]{new InputFilterFloat(0.0, 360.0)});
+        antennaIncriminatePolarization.setFilters(new InputFilter[]{new InputFilterFloat(0.0, 360.0)});
 
         String Azimuth = CustomSP.getString(context,AntennaIncriminateAzimuthKey, "");
         antennaIncriminateAzimuth.setText(Azimuth);

@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    style="@style/linear_no_shadow"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteListActivity">
+    style="@style/linear_no_shadow_no_padding">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/history_list_app_bar"

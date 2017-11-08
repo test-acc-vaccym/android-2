@@ -12,26 +12,34 @@ import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
-import com.edroplet.qxx.saneteltabactivity.utils.InputFilterMinMax;
+import com.edroplet.qxx.saneteltabactivity.utils.InputFilterStartsWith;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 import static com.edroplet.qxx.saneteltabactivity.utils.CustomSP.WifiSettingsNameKey;
+import static com.edroplet.qxx.saneteltabactivity.utils.SystemServices.XWWT_PREFIX;
 
 /**
  * Created by qxs on 2017/9/19.
  */
 
 public class AdministratorFragmentWifiSettings extends Fragment {
+    @BindView(R.id.administrator_setting_wifi_name)
+    CustomEditText wifiName;
 
     private static final int[] icons = {R.drawable.antenna_exploded};
 
     private CustomButton thirdButton;
 
-    private CustomEditText wifiName;
+    private Unbinder unbinder;
+
 
     public static AdministratorFragmentWifiSettings newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                                 String secondLine, boolean showThird, String thirdLineStart,
@@ -59,10 +67,11 @@ public class AdministratorFragmentWifiSettings extends Fragment {
             return null;
         }
 
+        unbinder = ButterKnife.bind(this, view);
+
         final Context context = getContext();
 
-        ViewInject.inject(getActivity(), getActivity());
-        wifiName = view.findViewById(R.id.administrator_setting_wifi_name);
+        wifiName.setFilters(new InputFilter[]{new InputFilterStartsWith(XWWT_PREFIX)});
 
         String deviceName = CustomSP.getString(context,WifiSettingsNameKey, "");
         wifiName.setText(deviceName);
@@ -74,8 +83,8 @@ public class AdministratorFragmentWifiSettings extends Fragment {
             public void onClick(View v) {
                 String wifiSSID = wifiName.getText().toString();
                 // 确保WiFi名称以xwwt开头
-                if (!wifiSSID.toUpperCase().startsWith(SystemServices.XWWT_PREFIX))
-                    wifiSSID = SystemServices.XWWT_PREFIX + wifiSSID;
+                if (!wifiSSID.toUpperCase().startsWith(XWWT_PREFIX))
+                    wifiSSID = XWWT_PREFIX + wifiSSID;
                 CustomSP.putString(context,WifiSettingsNameKey,wifiSSID);
                 // todo send command
                 getActivity().finish();
@@ -96,5 +105,11 @@ public class AdministratorFragmentWifiSettings extends Fragment {
             }
         }
         return popDialog.show();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

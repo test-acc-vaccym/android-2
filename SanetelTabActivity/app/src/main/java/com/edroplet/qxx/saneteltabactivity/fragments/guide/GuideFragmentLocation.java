@@ -26,15 +26,13 @@ import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
 import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.GalleryOnTime;
-import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
-import com.edroplet.qxx.saneteltabactivity.utils.InputFilterMinMax;
+import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 import java.util.Timer;
 
@@ -150,8 +148,8 @@ public class GuideFragmentLocation extends Fragment {
         newLongitudeUnit = view.findViewById(R.id.follow_me_location_spinner_new_longitude_nit);
         newLatitudeUnit = view.findViewById(R.id.follow_me_location_spinner_new_latitude_unit);
 
-        newLongitude.setFilters(new InputFilter[]{ new InputFilterMinMax("-180", "180")});
-        newLatitude.setFilters(new InputFilter[]{ new InputFilterMinMax("-90", "90")});
+        newLongitude.setFilters(new InputFilter[]{ new InputFilterFloat("-180.0", "180.0")});
+        newLatitude.setFilters(new InputFilter[]{ new InputFilterFloat("-90.0", "90.0")});
 
         try {
             cities = new Cities(getContext());

@@ -9,6 +9,7 @@ import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.Satellites;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.GalleryOnTime;
+import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
@@ -116,6 +118,7 @@ public class GuideFragmentDestination extends Fragment {
         satelliteBeacon = view.findViewById(R.id.follow_me_destination_satellite_beacon);
         satelliteThreshold = view.findViewById(R.id.follow_me_destination_satellite_threshold);
         satelliteDvb = view.findViewById(R.id.follow_me_destination_satellite_dvb);
+        satelliteDvb.setFilters(new InputFilter[]{new InputFilterFloat(6000,30000)});
 
         thirdButton = view.findViewById(R.id.pop_dialog_third_button);
         customRadioGroupWithCustomRadioButton = view.findViewById(R.id.rbg_city);

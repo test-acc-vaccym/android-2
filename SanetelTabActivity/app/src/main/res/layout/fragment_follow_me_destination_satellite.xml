@@ -232,7 +232,9 @@
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                             android:id="@+id/follow_me_destination_satellite_dvb"
                             style="@style/radio_group_custom_item_edit_horizontal_style"
-                            android:inputType="number|numberDecimal"/>
+                            android:inputType="number"
+                            android:hint="@string/satellite_detail_symbol_rate_hint"
+                            android:textColorHint="@color/mb_red"/>
                     </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>

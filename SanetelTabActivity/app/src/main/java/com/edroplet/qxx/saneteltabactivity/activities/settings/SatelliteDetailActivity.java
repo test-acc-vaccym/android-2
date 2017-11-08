@@ -50,12 +50,13 @@ public class SatelliteDetailActivity extends AppCompatActivity implements View.O
 	
 	private View fragmentView;
 
+	/*
     @BindId(R.id.satellite_detail_save)
     private CustomButton satelliteDetailSave;
 
     @BindId(R.id.satellite_detail_return)
     private CustomButton satelliteDetailReturn;
-	
+
     @BindId(R.id.satellite_detail_uuid)
     private CustomTextView satelliteDetailUuid;
     @BindId(R.id.id_detail)
@@ -74,6 +75,7 @@ public class SatelliteDetailActivity extends AppCompatActivity implements View.O
     private CustomEditText satelliteDetailSymbolRate;
     @BindId(R.id.comment_detail)
     private CustomEditText satelliteDetailComment;
+    */
 
     Timer timer;
     GalleryOnTime galleryOnTime;

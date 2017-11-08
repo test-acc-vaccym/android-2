@@ -57,7 +57,7 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
     @BindId(R.id.main_me_error_report_serial_number)
     private CustomEditText errorReportSerialNumber;
 
-    @BindId(R.id.main_me_error_report_filename)
+    @BindId(R.id.main_me_error_report_subject)
     private CustomEditText errorReportFileName;
 
     @BindId(R.id.main_me_error_report_attach_files)

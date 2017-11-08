@@ -20,37 +20,10 @@ public class DropletBaseApplication extends Application {
     public void onCreate(){
         super.onCreate();
         mContext = getApplicationContext();
-        init();
+        // init();
     }
     public static Context getGlobalContext(){
         return mContext;
     }
 
-    public static DownloadAdapter downloadAdapter;
-    private void init() {
-
-        DownloadInit.init(getBaseContext());
-
-        new Download.ConfigBuilder<>()
-                .addMaxCount(5)
-                .downloadListener(new DLDownloadListener(this.getBaseContext()))
-                .baseClient(DLClientFactory.createClient(Type.NORMAL, getBaseContext()))
-                .newbuild(this, downloadAdapter);
-       /* RxDownloadManager manager = RxDownloadManager.getInstance();
-        manager.init(getBaseContext(), null);
-        manager.setContext(getBaseContext());
-        manager.setListener(new DLDownloadListener(getBaseContext()));
-
-
-        DLNormalCallback normalCallback = new DLNormalCallback();
-        if (manager.getClient() != null) {
-            manager.getClient().setCallback(normalCallback);
-        }*/
-
-
-
-
-
-
-    }
 }

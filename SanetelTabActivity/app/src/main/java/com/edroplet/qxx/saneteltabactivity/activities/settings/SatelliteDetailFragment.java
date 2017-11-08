@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.adapters.SpinnerAdapter2;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.Satellites;
+import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
@@ -136,6 +138,9 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
         satelliteDetailLongitude = rootView.findViewById(R.id.longitude_detail);
         satelliteDetailThreshold = rootView.findViewById(R.id.threshold_detail);
         satelliteDetailSymbolRate = rootView.findViewById(R.id.symbol_rate_detail);
+
+        satelliteDetailSymbolRate.setFilters(new InputFilter[]{new InputFilterFloat(6000,30000)});
+        
         satelliteDetailComment = rootView.findViewById(R.id.comment_detail);
 
         // Show the dummy content as text in a TextView.

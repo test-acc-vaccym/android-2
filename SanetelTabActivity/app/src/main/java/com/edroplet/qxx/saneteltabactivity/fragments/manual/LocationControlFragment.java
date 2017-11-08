@@ -3,6 +3,7 @@ package com.edroplet.qxx.saneteltabactivity.fragments.manual;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.PresetAngleInfo;
+import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
@@ -43,10 +45,14 @@ public class LocationControlFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.functions_fragment_application_manual_location_control, null);
 
-        etAzimuth =  view.findViewById(R.id.main_application_manual_location_tv_setting_azimuth);
-        etPitch =  view.findViewById(R.id.main_application_manual_location_tv_setting_pitch);
-        etPolarization =  view.findViewById(R.id.main_application_manual_location_tv_setting_polarization);
+        etAzimuth =  view.findViewById(R.id.main_application_manual_location_edit_setting_azimuth);
+        etPitch =  view.findViewById(R.id.main_application_manual_location_edit_setting_pitch);
+        etPolarization =  view.findViewById(R.id.main_application_manual_location_edit_setting_polarization);
 
+        etAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
+        etPitch.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
+        etPolarization.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
+        
         tvAzimuth = view.findViewById(R.id.main_application_manual_location_tv_azimuth);
         tvPitch = view.findViewById(R.id.main_application_manual_location_tv_pitch);
         tvPolarization = view.findViewById(R.id.main_application_manual_location_tv_polarization);

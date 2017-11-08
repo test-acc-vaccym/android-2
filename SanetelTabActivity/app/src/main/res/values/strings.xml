@@ -108,6 +108,7 @@
     <string name="satellite_detail_beacon_key">信标频率</string>
     <string name="satellite_detail_threshold_key">门&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;限</string>
     <string name="satellite_detail_symbol_rate_key">符&#160;&#160;号&#160;&#160;率</string>
+    <string name="satellite_detail_symbol_rate_hint">单位kbps,范围6000-30000，整数</string>
     <string name="satellite_detail_comment_key">备&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;注</string>
 
     <!--城市-->
@@ -155,8 +156,11 @@
     <string name="main_application_operate_calculate">预置角计算</string>
     <string name="main_application_manual_speed_info">当前数值</string>
     <string name="main_application_manual_speed_azimuth">方位角</string>
+    <string name="main_application_manual_speed_azimuth_hint">0.00</string>
     <string name="main_application_manual_speed_pitch">俯仰角</string>
+    <string name="main_application_manual_speed_pitch_hint">0.00</string>
     <string name="main_application_manual_speed_polarization">极化角</string>
+    <string name="main_application_manual_speed_polarization_hint">0.00</string>
     <string name="main_application_manual_speed_agc">AGC电平</string>
     <string name="main_application_manual_speed_movement">运动方式:</string>
     <string name="main_application_manual_speed_movement_step">步进</string>
@@ -493,7 +497,7 @@
     <string name="main_me_error_report_phone">用户电话</string>
     <string name="main_me_error_report_serial_number">产品序列号</string>
     <string name="main_me_error_report_serial_number_hint">P120-201708001</string>
-    <string name="main_me_error_report_filename">文件名称</string>
+    <string name="main_me_error_report_subject">邮件主题</string>
     <string name="main_me_error_report_attach">添加附件</string>
     <string name="main_me_error_report_history">历史文件</string>
     <string name="main_me_error_report_photo">添加照片</string>
@@ -511,7 +515,7 @@
     <string name="main_me_email_customer">用户单位</string>
     <string name="main_me_advice_name">姓&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;名</string>
     <string name="main_me_advice_phone">电&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;话</string>
-    <string name="main_me_advice_filename">文件名称</string>
+    <string name="main_me_advice_subject">邮件主题</string>
     <string name="main_me_advice_photo">添加照片</string>
     <string name="main_me_advice_description">意见输入区</string>
     <string name="main_me_advice_commit">提交</string>
@@ -570,6 +574,7 @@
     <string name="settings_reference_beacon">信标频率</string>
     <string name="settings_reference_ag">AG门 限</string>
     <string name="settings_reference_dvb">DVB符号率</string>
+    <string name="settings_reference_dvb_unit">kbps</string>
     <string name="settings_reference_message_second_line">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当目标星存在信标不稳定等特定情况，直接寻星困难，才选择参考星寻星。</string>
     <string name="settings_reference_message_third_end">永久生效</string>
     <string name="settings_reference_message_forth"> </string>

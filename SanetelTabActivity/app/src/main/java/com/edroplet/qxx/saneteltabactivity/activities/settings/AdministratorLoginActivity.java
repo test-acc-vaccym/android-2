@@ -77,6 +77,7 @@ public class AdministratorLoginActivity extends AppCompatActivity implements Loa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administrator_login);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.administrator_login_toolbar);
         toolbar.setTitle(R.string.main_settings_administrator_login_title);
         toolbar.setNavigationOnClickListener(new OnClickListener() {

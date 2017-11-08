@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    style="@style/linear_no_shadow"
+    style="@style/linear_no_shadow_no_padding"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.SettingsPowerAmplifierEmitHelpActivity">
 
     <android.support.design.widget.AppBarLayout

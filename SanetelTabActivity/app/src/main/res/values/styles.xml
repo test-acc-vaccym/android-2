@@ -116,14 +116,12 @@
         <item name="android:paddingBottom">@dimen/layout_padding_top</item>
     </style>
 
-    <style name="linear_no_shadow">
+    <style name="linear_no_shadow_no_padding">
         <item name="android:shadowColor">#ff000000</item>
         <item name="android:shadowDx">0</item>
         <item name="android:shadowDy">2</item>
         <item name="android:shadowRadius">1</item>
         <item name="android:background">@drawable/item_background_color</item>
-        <item name="android:paddingTop">@dimen/layout_padding_top</item>
-        <item name="android:paddingBottom">@dimen/layout_padding_top</item>
     </style>
 
     <style name="settings_linear_shadow" parent="linear_shadow">

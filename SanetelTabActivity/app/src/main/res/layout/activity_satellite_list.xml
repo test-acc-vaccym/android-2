@@ -143,6 +143,7 @@
         <include layout="@layout/satellite_list" />
     </FrameLayout>
     <LinearLayout
+        android:id="@+id/satellite_list_head"
         android:layout_width="match_parent"
         android:layout_height="@dimen/satellite_bottom_bar_height"
         android:background="@color/bottom_tab_nav_background"

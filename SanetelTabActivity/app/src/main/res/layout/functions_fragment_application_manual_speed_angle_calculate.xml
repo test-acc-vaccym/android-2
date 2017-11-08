@@ -147,7 +147,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:inputType="number|numberDecimal" />
+                        android:inputType="numberSigned|numberDecimal" />
 
                     <Spinner
                         android:id="@+id/angle_calculate_local_longitude_unit"
@@ -173,7 +173,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:inputType="number|numberDecimal" />
+                        android:inputType="numberSigned|numberDecimal" />
 
                     <Spinner
                         android:id="@+id/angle_calculate_local_latitude_unit"
@@ -221,7 +221,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
-                    android:inputType="number|numberDecimal"
+                    android:inputType="numberSigned|numberDecimal"
                     android:hint="@string/location_control_setting_hint_val"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="0dp"
@@ -248,7 +248,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
-                    android:inputType="number|numberDecimal"
+                    android:inputType="numberSigned|numberDecimal"
                     android:hint="@string/location_control_setting_hint_val"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="0dp"
@@ -276,7 +276,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
-                    android:inputType="number|numberDecimal"
+                    android:inputType="numberSigned|numberDecimal"
                     android:hint="@string/location_control_setting_hint_val"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="0dp"

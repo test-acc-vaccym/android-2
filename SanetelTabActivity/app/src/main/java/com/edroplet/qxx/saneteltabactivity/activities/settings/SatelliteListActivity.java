@@ -251,7 +251,7 @@ public class SatelliteListActivity extends AppCompatActivity {
                             // satelliteItemRecyclerViewAdapter.notifyAll();
                             dialogBuilder.getDialogBuilder().dismiss();
                         }
-                    });
+                    }, getString(R.string.operate_confirm_ok));
                 }else{
                     toggleState();
                     satelliteItemRecyclerViewAdapter.notifyDataSetChanged();

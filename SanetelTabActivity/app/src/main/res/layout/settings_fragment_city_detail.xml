@@ -80,7 +80,7 @@
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
             android:id="@+id/city_detail_latitude"
             style="@style/radio_group_custom_item_edit_horizontal_style"
-            android:inputType="number|numberDecimal"/>
+            android:inputType="numberSigned|numberDecimal"/>
         <Spinner
             android:id="@+id/latitude_unit"
             android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
             android:id="@+id/city_detail_longitude"
             style="@style/radio_group_custom_item_edit_horizontal_style"
-            android:inputType="number|numberDecimal"/>
+            android:inputType="numberSigned|numberDecimal"/>
         <Spinner
             android:id="@+id/longitude_unit"
             android:layout_width="wrap_content"

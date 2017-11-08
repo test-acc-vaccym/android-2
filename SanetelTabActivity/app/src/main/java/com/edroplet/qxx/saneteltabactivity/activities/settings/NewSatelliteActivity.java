@@ -1,19 +1,30 @@
 package com.edroplet.qxx.saneteltabactivity.activities.settings;
 
+import android.content.Context;
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
+import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.utils.JsonLoad;
+import com.edroplet.qxx.saneteltabactivity.utils.RandomDialog;
+import com.edroplet.qxx.saneteltabactivity.view.EDropletDialogBuilder;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
+import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
+import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
 import java.util.ArrayList;
 import java.util.StringTokenizer;
@@ -34,7 +45,8 @@ public class NewSatelliteActivity extends AppCompatActivity {
     @BindId(R.id.satellites_new_comment)
     private CustomEditText satelliteCommentView;
 
-
+    private boolean inputError;
+    private Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,36 +54,47 @@ public class NewSatelliteActivity extends AppCompatActivity {
 
         // 初始化
         ViewInject.inject(this, this);
+        mContext = this;
 
         satelliteLongitudeView.setFilters(new InputFilter[]{ new InputFilterFloat("-180.000", "180.000")});
         satelliteThresholdView.setFilters(new InputFilter[]{new InputFilterFloat(0, 10.0f)});
-        satelliteBeaconView.setFilters(new InputFilter[]{new InputFilterFloat(10750, 40000)});
-        satelliteSymbolRateView.setFilters(new InputFilter[]{new InputFilterFloat(6000, 30000)});
+        satelliteBeaconView.setFilters(new InputFilter[]{new InputFilterFloat(0, 40000)});
+        satelliteBeaconView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                TextView tv = (TextView)v;
+                if (!hasFocus){
+                    if (tv.length() > 0 &&  ConvertUtil.convertToFloat(tv.getText().toString(),0.0f)< 10750){
+                        tv.setText("");
+                        // tv.setError(getString(R.string.value_error));
+                        inputError = true;
+                    }
+                }
+            }
+        });
+        satelliteSymbolRateView.setFilters(new InputFilter[]{new InputFilterFloat(0, 30000)});
+        satelliteSymbolRateView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                TextView tv = (TextView)v;
+                if (!hasFocus){
+                    if (tv.length() > 0 &&  ConvertUtil.convertToFloat(tv.getText().toString(),0.0f)< 6000){
+                        tv.setText("");
+                        // tv.setError(getString(R.string.value_error));
+                        inputError = true;
+                    }
+                }
+            }
+        });
 
         findViewById(R.id.satellites_new_button_commit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                JsonLoad jl = new JsonLoad(NewSatelliteActivity.this, SatelliteInfo.satelliteJsonFile);
-                try {
-                    ArrayList<SatelliteInfo> satellites = jl.loadSatellite();
-                    SatelliteInfo newSatellite = new SatelliteInfo(String.valueOf(satellites.size()),satelliteNameView.getText().toString(),
-                            satellitePolarizationView.getSelectedItem().toString(), satelliteLongitudeView.getText().toString(),
-                            satelliteBeaconView.getText().toString(), satelliteThresholdView.getText().toString(),
-                            satelliteSymbolRateView.getText().toString(), satelliteCommentView.getText().toString());
-                    satellites.add(newSatellite);
-                    jl.saveSatellites(satellites);
-
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable(SatelliteInfo.objectKey,newSatellite);
-                    bundle.putInt(SatelliteInfo.positionKey,satellites.size() - 1);
-                    Intent intent = new Intent();
-                    intent.putExtras(bundle);
-                    setResult(RESULT_OK, intent);
-
-                }catch (Exception e){
-                    e.printStackTrace();
+                if (inputError){
+                    // RandomDialog randomDialog = new RandomDialog(mContext);
+                    // randomDialog.onConfirm();
                 }
-                finish();
+                doCommit();
             }
         });
 
@@ -81,5 +104,30 @@ public class NewSatelliteActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private boolean doCommit(){
+        JsonLoad jl = new JsonLoad(NewSatelliteActivity.this, SatelliteInfo.satelliteJsonFile);
+        try {
+            ArrayList<SatelliteInfo> satellites = jl.loadSatellite();
+            SatelliteInfo newSatellite = new SatelliteInfo(String.valueOf(satellites.size()),satelliteNameView.getText().toString(),
+                    satellitePolarizationView.getSelectedItem().toString(), satelliteLongitudeView.getText().toString(),
+                    satelliteBeaconView.getText().toString(), satelliteThresholdView.getText().toString(),
+                    satelliteSymbolRateView.getText().toString(), satelliteCommentView.getText().toString());
+            satellites.add(newSatellite);
+            jl.saveSatellites(satellites);
+
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(SatelliteInfo.objectKey,newSatellite);
+            bundle.putInt(SatelliteInfo.positionKey,satellites.size() - 1);
+            Intent intent = new Intent();
+            intent.putExtras(bundle);
+            setResult(RESULT_OK, intent);
+            finish();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 }

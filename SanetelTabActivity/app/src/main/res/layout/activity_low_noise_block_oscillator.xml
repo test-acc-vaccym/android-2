@@ -143,7 +143,7 @@
                             android:layout_toEndOf="@id/settings_lnb_ku_value_7"
                             android:layout_toRightOf="@id/settings_lnb_ku_value_7"
                             android:hint="@string/settings_lnb_ku_value_7"
-                            android:inputType="number|numberDecimal"
+                            android:inputType="numberSigned|numberDecimal"
                             android:padding="0dp"/>
                     </RelativeLayout>
                 </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>

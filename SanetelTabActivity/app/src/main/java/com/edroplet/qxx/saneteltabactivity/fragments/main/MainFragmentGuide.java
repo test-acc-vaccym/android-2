@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.IntegerRes;
@@ -21,6 +23,7 @@ import com.edroplet.qxx.saneteltabactivity.activities.guide.FollowMeActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.guide.GuideEntryActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.main.MainActivity;
 import com.edroplet.qxx.saneteltabactivity.fragments.administrator.AdministratorFragmentWifiSettings;
+import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
 
@@ -35,14 +38,8 @@ import static com.edroplet.qxx.saneteltabactivity.utils.SystemServices.REQUEST_W
 
 public class MainFragmentGuide extends Fragment implements View.OnClickListener{
 
-    private DialogInterface.OnClickListener mCancelClickListener = new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface arg0, int arg1) {
-            Toast.makeText(getContext(), getString(R.string.cancel_button_prompt), Toast.LENGTH_SHORT).show();
-            // TODO: 2017/11/5 取消选择后的处理
-            // startActivity(new Intent(getContext(), FunctionsActivity.class));
-        }
-    };
+    private DialogInterface.OnClickListener mCancelClickListener;
+    private Context context;
 
     public static MainFragmentGuide newInstance(String info) {
         Bundle args = new Bundle();
@@ -63,6 +60,38 @@ public class MainFragmentGuide extends Fragment implements View.OnClickListener{
             }
         });
         */
+        context = getContext();
+        String skipCancel= "false";
+
+        try {
+            ApplicationInfo appInfo = context.getPackageManager()
+                    .getApplicationInfo(context.getPackageName(),
+                            PackageManager.GET_META_DATA);
+            skipCancel=appInfo.metaData.getString("skip_cancel");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+        boolean skipToContinue = ConvertUtil.convertToBool(skipCancel, false);
+
+        if (!skipToContinue) {
+            mCancelClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface arg0, int arg1) {
+                    Toast.makeText(getContext(), getString(R.string.cancel_button_prompt), Toast.LENGTH_SHORT).show();
+                    // TODO: 2017/11/5 取消选择后的处理
+                    jumpToFollowMe();
+                }
+            };
+        }else {
+            mCancelClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface arg0, int arg1) {
+                    startActivity(new Intent(getContext(), FunctionsActivity.class));
+                }
+            };
+        }
         view.findViewById(R.id.guide_main_button_explode).setOnClickListener(this);
         view.findViewById(R.id.guide_main_button_location).setOnClickListener(this);
         view.findViewById(R.id.guide_main_button_destination).setOnClickListener(this);
@@ -92,42 +121,7 @@ public class MainFragmentGuide extends Fragment implements View.OnClickListener{
             String ssid = SystemServices.getConnectWifiSsid(getContext());
             if (ssid.toUpperCase().startsWith(SystemServices.XWWT_PREFIX)){
                 Toast.makeText(getContext(), getString(R.string.main_connected_ssid_prompt) + ssid, Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(getActivity(), FollowMeActivity.class);
-                Bundle bundle = new Bundle();
-                boolean skip = false;
-
-                switch (clickedId){
-                    case R.id.guide_main_button_explode:
-                        bundle.putInt(FollowMeActivity.POSITION, 0 );
-                        break;
-                    case R.id.guide_main_button_location:
-                        bundle.putInt(FollowMeActivity.POSITION, 1 );
-                        break;
-                    case R.id.guide_main_button_destination:
-                        bundle.putInt(FollowMeActivity.POSITION, 2 );
-                        break;
-                    case R.id.guide_main_button_search_mode:
-                        bundle.putInt(FollowMeActivity.POSITION, 3 );
-                        break;
-                    case R.id.guide_main_button_search:
-                        bundle.putInt(FollowMeActivity.POSITION, 4 );
-                        break;
-                    case R.id.guide_main_button_lock:
-                        bundle.putInt(FollowMeActivity.POSITION, 5 );
-                        break;
-                    case R.id.guide_main_button_saving:
-                        bundle.putInt(FollowMeActivity.POSITION, 6);
-                        break;
-                    default:
-                        skip = true;
-                        break;
-                }
-                if (!skip) {
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-                }
-
+                jumpToFollowMe();
             }else {
                 SystemServices.checkConnectedSsid(getContext(),
                         CustomSP.getString(getContext(), WifiSettingsNameKey, defaultDeviceName),
@@ -140,5 +134,44 @@ public class MainFragmentGuide extends Fragment implements View.OnClickListener{
 
     public int getClickedId() {
         return clickedId;
+    }
+
+    private boolean jumpToFollowMe(){
+
+        Intent intent = new Intent(getActivity(), FollowMeActivity.class);
+        Bundle bundle = new Bundle();
+        boolean skip = false;
+
+        switch (clickedId){
+            case R.id.guide_main_button_explode:
+                bundle.putInt(FollowMeActivity.POSITION, 0 );
+                break;
+            case R.id.guide_main_button_location:
+                bundle.putInt(FollowMeActivity.POSITION, 1 );
+                break;
+            case R.id.guide_main_button_destination:
+                bundle.putInt(FollowMeActivity.POSITION, 2 );
+                break;
+            case R.id.guide_main_button_search_mode:
+                bundle.putInt(FollowMeActivity.POSITION, 3 );
+                break;
+            case R.id.guide_main_button_search:
+                bundle.putInt(FollowMeActivity.POSITION, 4 );
+                break;
+            case R.id.guide_main_button_lock:
+                bundle.putInt(FollowMeActivity.POSITION, 5 );
+                break;
+            case R.id.guide_main_button_saving:
+                bundle.putInt(FollowMeActivity.POSITION, 6);
+                break;
+            default:
+                skip = true;
+                break;
+        }
+        if (!skip) {
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+        return true;
     }
 }

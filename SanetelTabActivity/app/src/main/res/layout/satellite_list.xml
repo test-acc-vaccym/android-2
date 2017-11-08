@@ -10,4 +10,6 @@
     android:layout_marginRight="6dp"
     app:layoutManager="LinearLayoutManager"
     tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteListActivity"
-    tools:listitem="@layout/satellite_list_content" />
+    tools:listitem="@layout/satellite_list_content"
+    android:divider="#2F4F4F"
+    android:dividerHeight="1dp" />

@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.adapters.SpinnerAdapter2;
@@ -83,9 +86,34 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
         initView();
 
         dvbSymbolRate.setInputType(InputType.TYPE_CLASS_NUMBER);
-        dvbSymbolRate.setFilters(new InputFilter[]{new InputFilterFloat(6000,30000)});
+        dvbSymbolRate.setFilters(new InputFilter[]{new InputFilterFloat(0,30000)});
+        dvbSymbolRate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                TextView tv = (TextView)v;
+                if (!hasFocus){
+                    if (tv.length() > 0 &&  ConvertUtil.convertToFloat(tv.getText().toString(),0.0f)< 6000){
+                        tv.setText("");
+                        // tv.setError(getString(R.string.value_error));
+                    }
+                }
+            }
+        });
+
         agThrehold.setFilters(new InputFilter[]{new InputFilterFloat(0, 10.0f)});
-        beacon.setFilters(new InputFilter[]{new InputFilterFloat(10750, 40000)});
+        beacon.setFilters(new InputFilter[]{new InputFilterFloat(0, 40000)});
+        beacon.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                TextView tv = (TextView)v;
+                if (!hasFocus){
+                    if (tv.length() > 0 &&  ConvertUtil.convertToFloat(tv.getText().toString(),0.0f)< 10750){
+                        tv.setText("");
+                        // tv.setError(getString(R.string.value_error));
+                    }
+                }
+            }
+        });
 
         referenceToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

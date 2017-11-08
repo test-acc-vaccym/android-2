@@ -29,7 +29,7 @@ public class RandomDialog {
     public RandomDialog(Context context){
         this.context = context;
     }
-    public boolean onConfirm(String message, View.OnClickListener listener){
+    public boolean onConfirm(String message, View.OnClickListener listener, String buttonOkText){
         final String []type = {"Fadein", "Slideleft", "Slidetop", "SlideBottom", "Slideright", "Fall", "Newspager", "Fliph", "Flipv", "RotateBottom", "RotateLeft", "Slit", "Shake", "Sidefill"};
         int i= (int) (type.length*Math.random());
         Effectstype effect = null;
@@ -66,7 +66,7 @@ public class RandomDialog {
                 // 设置是否模态，默认false，表示模态，
                 //要求必须采取行动才能继续进行剩下的操作 | isCancelable(true)
                 .isCancelableOnTouchOutside(true)
-                .withButton1Text(context.getResources().getString(R.string.operate_confirm_ok))             //设置按钮1的文本
+                .withButton1Text(buttonOkText)             //设置按钮1的文本
                 .withButton2Text(context.getResources().getString(R.string.operate_confirm_cancel))         //设置按钮2的文本
                 .setButton1Click(listener)
                 .setButton2Click(new View.OnClickListener() {

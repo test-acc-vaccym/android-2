@@ -106,11 +106,13 @@
     <string name="satellite_detail_polarization_key">极化方式</string>
     <string name="satellite_detail_longitude_key">卫星经度</string>
     <string name="satellite_detail_beacon_key">信标频率</string>
+    <string name="satellite_detail_beacon_hint">10750~40000</string>
     <string name="satellite_detail_threshold_key">门&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;限</string>
+    <string name="satellite_detail_threshold_hint">0.0~10.0</string>
     <string name="satellite_detail_symbol_rate_key">符&#160;&#160;号&#160;&#160;率</string>
-    <string name="satellite_detail_symbol_rate_hint">单位kbps,范围6000-30000，整数</string>
+    <string name="satellite_detail_symbol_rate_hint">整数6000~30000,单位kbps</string>
     <string name="satellite_detail_comment_key">备&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;注</string>
-
+    <string name="input_error_dialog_message">您的某些输入有误，确认继续？</string>
     <!--城市-->
     <string name="city_detail_id_key">序号</string>
     <string name="city_detail_province">所属省份</string>
@@ -736,4 +738,5 @@
     <string name="title_activity_downbase">基础测试页面</string>
     <string name="title_activity_downlist">下载列表</string>
 
+    <string name="value_error">数值错误，请看提示</string>
 </resources>

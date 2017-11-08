@@ -57,6 +57,14 @@
             android:padding="@dimen/no_padding"
             android:textAppearance="?attr/textAppearanceListItem" />
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            android:id="@+id/carrier"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/list_item_text_size"
+            android:padding="@dimen/no_padding"
+            android:textAppearance="?attr/textAppearanceListItem" />
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:id="@+id/symbolRate"
             android:layout_width="0dp"
             android:layout_weight="1.5"
@@ -64,14 +72,6 @@
             android:textSize="@dimen/list_item_text_size"
             android:padding="@dimen/no_padding"
             android:textAppearance="?attr/textAppearanceListItem" />
-        <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-            android:id="@+id/comment"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:textSize="@dimen/list_item_text_size"
-            android:textAppearance="?attr/textAppearanceListItem" /-->
         <CheckBox
             android:layout_gravity="center_vertical"
             android:layout_width="0dp"

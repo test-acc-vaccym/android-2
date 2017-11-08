@@ -164,11 +164,11 @@
                             android:id="@+id/follow_me_destination_satellite_longitude"
                             style="@style/radio_group_custom_item_edit_horizontal_style"
                             android:layout_weight="0.9"
-                            android:inputType="number|numberDecimal"/>
+                            android:inputType="numberSigned|numberDecimal"/>
 
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                        <Spinner
                             style="@style/radio_group_custom_item_third_filed_horizontal_style"
-                            android:text="@string/latitude_degree_unit" />
+                            android:entries="@array/longitude_unit"/>
                     </LinearLayout>
                     <!--信标频率-->
                     <LinearLayout
@@ -189,7 +189,8 @@
                             android:id="@+id/follow_me_destination_satellite_beacon"
                             style="@style/radio_group_custom_item_edit_horizontal_style"
                             android:layout_weight="0.9"
-                            android:inputType="number|numberDecimal"/>
+                            android:inputType="number|numberDecimal"
+                            android:hint="@string/satellite_detail_beacon_hint"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                             style="@style/radio_group_custom_item_third_filed_horizontal_style"
                             android:text="@string/frequency_unit" />
@@ -212,7 +213,8 @@
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                             android:id="@+id/follow_me_destination_satellite_threshold"
                             style="@style/radio_group_custom_item_edit_horizontal_style"
-                            android:inputType="number|numberDecimal"/>
+                            android:inputType="number|numberDecimal"
+                            android:hint="@string/satellite_detail_threshold_hint"/>
                     </LinearLayout>
                     <!--DVB-->
                     <LinearLayout
@@ -232,9 +234,12 @@
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                             android:id="@+id/follow_me_destination_satellite_dvb"
                             style="@style/radio_group_custom_item_edit_horizontal_style"
+                            android:layout_weight="0.9"
                             android:inputType="number"
-                            android:hint="@string/satellite_detail_symbol_rate_hint"
-                            android:textColorHint="@color/mb_red"/>
+                            android:hint="@string/satellite_detail_symbol_rate_hint"/>
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            style="@style/radio_group_custom_item_third_filed_horizontal_style"
+                            android:text="@string/settings_reference_dvb_unit"/>
                     </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>

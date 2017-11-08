@@ -159,7 +159,7 @@
                             android:id="@+id/follow_me_location_et_new_longitude"
                             style="@style/radio_group_custom_item_edit_horizontal_style"
                             android:layout_weight="1.2"
-                            android:inputType="number|numberDecimal"/>
+                            android:inputType="numberSigned|numberDecimal"/>
 
                         <Spinner
                             android:id="@+id/follow_me_location_spinner_new_longitude_nit"
@@ -185,7 +185,7 @@
                             android:id="@+id/follow_me_location_et_new_latitude"
                             style="@style/radio_group_custom_item_edit_horizontal_style"
                             android:layout_weight="1.2"
-                            android:inputType="number|numberDecimal"/>
+                            android:inputType="numberSigned|numberDecimal"/>
 
                         <Spinner
                             android:id="@+id/follow_me_location_spinner_new_latitude_unit"

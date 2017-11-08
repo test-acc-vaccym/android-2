@@ -113,7 +113,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:inputType="number|numberDecimal"
+                android:inputType="numberSigned|numberDecimal"
                 android:layout_weight="1.5" />
             <Spinner
                 android:id="@+id/city_new_latitude_unit"
@@ -139,7 +139,7 @@
                 android:id="@+id/city_new_longitude"
                 android:layout_width="0dp"
                 android:layout_weight="1.5"
-                android:inputType="number|numberDecimal"
+                android:inputType="numberSigned|numberDecimal"
                 android:layout_height="match_parent"/>
             <Spinner
                 android:id="@+id/city_new_longitude_unit"

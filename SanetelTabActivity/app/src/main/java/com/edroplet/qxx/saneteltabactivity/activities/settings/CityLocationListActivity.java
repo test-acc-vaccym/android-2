@@ -296,7 +296,7 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
                             // citiesRecyclerViewAdapter.notifyAll();
                             dialogBuilder.getDialogBuilder().dismiss();
                         }
-                    });
+                    }, getString(R.string.operate_confirm_ok));
                 } else {
                     toggleState();
                     citiesRecyclerViewAdapter.notifyDataSetChanged();

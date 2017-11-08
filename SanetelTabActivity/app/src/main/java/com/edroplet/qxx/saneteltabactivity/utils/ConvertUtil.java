@@ -50,6 +50,18 @@ public class ConvertUtil {
         }
     }
 
+    //把String转化为boolean
+    public static boolean convertToBool(String number, boolean defaultValue) {
+        if (TextUtils.isEmpty(number)) {
+            return defaultValue;
+        }
+        try {
+            return Boolean.parseBoolean(number);
+        } catch (Exception e) {
+            return defaultValue;
+        }
+    }
+
     /**  * 定义分割常量 （#在集合中的含义是每个元素的分割，|主要用于map类型的集合用于key与value中的分割）  */
     private static final String SEP1 = "#";
     private static final String SEP2 = "|";

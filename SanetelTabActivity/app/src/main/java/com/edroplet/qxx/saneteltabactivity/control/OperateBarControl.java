@@ -22,9 +22,11 @@ import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 
 /**
  * Created by qxs on 2017/9/19.
+ * 快捷键
  */
 
 public class OperateBarControl {
+    private static RandomDialog randomDialog;
     public static void setupOperatorBar(final AppCompatActivity activity){
 
         final StatusButton sbExploded = (StatusButton)  activity.findViewById(R.id.button_operate_explode);
@@ -32,6 +34,9 @@ public class OperateBarControl {
 
         final String buttonOkText = activity.getString(R.string.operate_confirm_ok);
         boolean clickable = true;
+
+        randomDialog = new RandomDialog(activity);
+
         if( SystemServices.getAntennaState() == AntennaInfo.AntennaStatus.EXPLODED ||
                 SystemServices.getAntennaState() == AntennaInfo.AntennaStatus.FOLDED){
             clickable = false;
@@ -52,7 +57,7 @@ public class OperateBarControl {
                 @Override
                 public void onClick(View v) {
                     if (canOperate(activity, sbExploded)) {
-                        sbExploded.onConfirm(activity.getString(R.string.explode_confirm), new View.OnClickListener() {
+                        randomDialog.onConfirm(activity.getString(R.string.explode_confirm), new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 // TODO 处理确定事件
@@ -60,7 +65,7 @@ public class OperateBarControl {
                                 if (sbFold != null) {
                                     sbFold.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
                                 }
-                                sbExploded.getDialogBuilder().dismiss();
+                                randomDialog.getDialogBuilder().dismiss();
                             }
                         }, buttonOkText);
                     }
@@ -78,7 +83,7 @@ public class OperateBarControl {
                 @Override
                 public void onClick(View v) {
                     if (canOperate(activity, sbFold)) {
-                        sbFold.onConfirm(activity.getString(R.string.fold_confirm), new View.OnClickListener() {
+                        randomDialog.onConfirm(activity.getString(R.string.fold_confirm), new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 // 设置为不可点击状态
@@ -86,7 +91,7 @@ public class OperateBarControl {
                                 if (sbExploded != null) {
                                     sbExploded.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
                                 }
-                                sbFold.getDialogBuilder().dismiss();
+                                randomDialog.getDialogBuilder().dismiss();
                             }
                         }, buttonOkText);
                     }
@@ -94,48 +99,42 @@ public class OperateBarControl {
             });
         }
         final StatusButton sbPause = (StatusButton) activity.findViewById(R.id.button_operate_pause);
-        if (sbPause != null)
-            if (clickable){
+        if (sbPause != null) {
+            if (clickable) {
                 sbPause.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
-            }else {
+            } else {
                 sbPause.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
             }
             sbPause.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (canOperate(activity, sbPause)) {
-                        //sbPause.onConfirm("暂停？", new View.OnClickListener() {
-                        //    @Override
-                        //    public void onClick(View v) {
-                        //        sbPause.getDialogBuilder().dismiss();
-                        //    }
-                        //});
                         // todo 直接停止，不需要确认
                     }
                 }
             });
-
+        }
         final StatusButton sbReset = (StatusButton) activity.findViewById(R.id.button_operate_reset);
-        if (sbReset != null)
-            if (clickable){
+        if (sbReset != null) {
+            if (clickable) {
                 sbReset.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
-            }else {
+            } else {
                 sbReset.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
             }
             sbReset.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (canOperate(activity, sbReset)) {
-                        sbReset.onConfirm(activity.getString(R.string.reset_confirm), new View.OnClickListener() {
+                        randomDialog.onConfirm(activity.getString(R.string.reset_confirm), new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                sbReset.getDialogBuilder().dismiss();
+                                randomDialog.getDialogBuilder().dismiss();
                             }
                         }, buttonOkText);
                     }
                 }
             });
-
+        }
         final DialogInterface.OnClickListener mCancelClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
@@ -191,10 +190,10 @@ public class OperateBarControl {
         if (satelliteStatus == AntennaInfo.AntennaStatus.EXPLODED || satelliteStatus == AntennaInfo.AntennaStatus.FOLDED){
 
             statusButton.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
-            statusButton.onConfirm(context.getString(R.string.explode_bind_confirm), new View.OnClickListener() {
+            randomDialog.onConfirm(context.getString(R.string.explode_bind_confirm), new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    statusButton.getDialogBuilder().dismiss();
+                    randomDialog.getDialogBuilder().dismiss();
                 }
             }, buttonOkText);
             return false;
@@ -205,10 +204,10 @@ public class OperateBarControl {
         // 锁紧机构状态判断
         if (lockerStatus == LockerInfo.LOCKER_STATE_LOCKED){
             statusButton.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
-            statusButton.onConfirm(context.getString(R.string.locker_bind_confirm), new View.OnClickListener() {
+            randomDialog.onConfirm(context.getString(R.string.locker_bind_confirm), new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    statusButton.getDialogBuilder().dismiss();
+                    randomDialog.getDialogBuilder().dismiss();
                 }
             }, buttonOkText);
             return false;
@@ -221,11 +220,11 @@ public class OperateBarControl {
         if (savingStatus == SavingInfo.SAVING_STATE_OPEN){
             buttonOkText = context.getString(R.string.saving_bind_quit);
             statusButton.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
-            statusButton.onConfirm(context.getString(R.string.saving_bind_confirm), new View.OnClickListener() {
+            randomDialog.onConfirm(context.getString(R.string.saving_bind_confirm), new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     // TODO: 2017/11/5 发送退出节能的命令
-                    statusButton.getDialogBuilder().dismiss();
+                    randomDialog.getDialogBuilder().dismiss();
                 }
             }, buttonOkText);
             return false;

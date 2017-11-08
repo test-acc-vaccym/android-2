@@ -22,6 +22,7 @@ import java.util.Map;
 
 /**
  * Created by qxs on 2017/10/26.
+ * 卫星列表
  */
 
 public class SatelliteItemRecyclerViewAdapter  extends RecyclerView.Adapter<SatelliteItemRecyclerViewAdapter.ViewHolder>  implements View.OnClickListener,View.OnLongClickListener{

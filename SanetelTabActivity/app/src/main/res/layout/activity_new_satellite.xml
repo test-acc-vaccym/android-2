@@ -92,7 +92,7 @@
                 android:id="@+id/satellites_new_longitude"
                 android:layout_width="0dp"
                 android:layout_weight="2"
-                android:inputType="number|numberDecimal"
+                android:inputType="numberSigned|numberDecimal"
                 android:layout_height="match_parent"/>
         </LinearLayout>
         <LinearLayout
@@ -133,6 +133,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="2"
                 android:inputType="number|numberDecimal"
+                android:hint="@string/satellite_detail_beacon_hint"
                 android:layout_height="match_parent"/>
         </LinearLayout>
         <LinearLayout
@@ -152,6 +153,7 @@
                 android:id="@+id/satellites_new_threshold"
                 android:layout_width="0dp"
                 android:layout_weight="2"
+                android:hint="@string/satellite_detail_threshold_hint"
                 android:inputType="number|numberDecimal"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -175,7 +177,6 @@
                 android:layout_weight="2"
                 android:inputType="number"
                 android:hint="@string/satellite_detail_symbol_rate_hint"
-                android:textColorHint="@color/mb_red"
                 android:layout_height="match_parent"/>
         </LinearLayout>
         <LinearLayout

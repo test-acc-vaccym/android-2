@@ -1,0 +1,627 @@
+Index: ytu/mush/hlistview/HolderAdapter.java
+===================================================================
+--- ytu/mush/hlistview/HolderAdapter.java	(revision 0)
++++ ytu/mush/hlistview/HolderAdapter.java	(revision 14)
+@@ -0,0 +1,143 @@
+package com.ytu.mush.hlistview;
+
+import java.util.List;
+
+import com.ytu.mush.hlistview.MyHScrollView.OnScrollChangedListener;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.HorizontalScrollView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+public class HolderAdapter extends BaseAdapter {
+	private static final String TAG = "HolderAdapter";
+
+	/**
+	 * List中的数据
+	 */
+	private List<Data> currentData;
+	/**
+	 * ListView头部
+	 */
+	private RelativeLayout mHead;
+	/**
+	 * layout ID 
+	 */
+	private int id_row_layout;
+	private LayoutInflater mInflater;
+
+	int[] colors = { Color.rgb(102, 102, 51), Color.rgb(153, 153, 51) };
+	// int[] colors = { Color.BLACK, Color.BLACK };
+
+	public HolderAdapter(Context context, int id_row_layout,
+			List<Data> currentData, RelativeLayout mHead) {
+		Log.v(TAG + ".HolderAdapter", " 初始化");
+		
+		this.id_row_layout = id_row_layout;
+		this.mInflater = LayoutInflater.from(context);
+		this.currentData = currentData;
+		this.mHead = mHead;
+
+	}
+
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return this.currentData.size();
+	}
+
+	public Object getItem(int position) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public long getItemId(int position) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/**
+	 * 向List中添加数据
+	 * 
+	 * @param items
+	 */
+	public void addItem(List<Data> items) {
+		for (Data item : items) {
+			currentData.add(item);
+		}
+	}
+
+	/**
+	 * 清空当List中的数据
+	 */
+	public void cleanAll() {
+		this.currentData.clear();
+	}
+
+	public View getView(int position, View convertView, ViewGroup parentView) {
+		ViewHolder holder = null;
+		if (convertView == null) {
+			convertView = mInflater.inflate(id_row_layout, null);
+			holder = new ViewHolder();
+
+			MyHScrollView scrollView1 = (MyHScrollView) convertView
+					.findViewById(R.id.horizontalScrollView1);
+
+			holder.scrollView = scrollView1;
+			holder.txt1 = (TextView) convertView.findViewById(R.id.textView1);
+			holder.txt2 = (TextView) convertView.findViewById(R.id.textView2);
+			holder.txt3 = (TextView) convertView.findViewById(R.id.textView3);
+			holder.txt4 = (TextView) convertView.findViewById(R.id.textView4);
+			holder.txt5 = (TextView) convertView.findViewById(R.id.textView5);
+
+			MyHScrollView headSrcrollView = (MyHScrollView) mHead
+					.findViewById(R.id.horizontalScrollView1);
+			headSrcrollView
+					.AddOnScrollChangedListener(new OnScrollChangedListenerImp(
+							scrollView1));
+
+			convertView.setTag(holder);
+			// 隔行变色
+			convertView.setBackgroundColor(colors[position % 2]);
+			// mHolderList.add(holder);
+		} else {
+			// 隔行变色
+			convertView.setBackgroundColor(colors[position % 2]);
+			holder = (ViewHolder) convertView.getTag();
+		}
+		holder.txt1.setText(currentData.get(position).getStr1() + 1 + "列");
+		holder.txt2.setText(currentData.get(position).getStr1() + 2 + "列");
+		holder.txt3.setText(currentData.get(position).getStr1() + 3 + "列");
+		holder.txt4.setText(currentData.get(position).getStr1() + 4 + "列");
+		holder.txt5.setText(currentData.get(position).getStr1() + 5 + "列");
+
+		return convertView;
+	}
+
+	class OnScrollChangedListenerImp implements OnScrollChangedListener {
+		MyHScrollView mScrollViewArg;
+
+		public OnScrollChangedListenerImp(MyHScrollView scrollViewar) {
+			mScrollViewArg = scrollViewar;
+		}
+
+		public void onScrollChanged(int l, int t, int oldl, int oldt) {
+			mScrollViewArg.smoothScrollTo(l, t);
+		}
+	};
+
+	class ViewHolder {
+		TextView txt1;
+		TextView txt2;
+		TextView txt3;
+		TextView txt4;
+		TextView txt5;
+		HorizontalScrollView scrollView;
+	}
+
+}
+Index: ytu/mush/hlistview/InterceptScrollContainer.java
+===================================================================
+--- ytu/mush/hlistview/InterceptScrollContainer.java	(revision 0)
++++ ytu/mush/hlistview/InterceptScrollContainer.java	(revision 14)
+@@ -0,0 +1,34 @@
+package com.ytu.mush.hlistview;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.widget.LinearLayout;
+
+
+public class InterceptScrollContainer extends LinearLayout {
+	private static final String TAG = "InterceptScrollContainer";
+
+	public InterceptScrollContainer(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		// TODO Auto-generated constructor stub
+	}
+
+	public InterceptScrollContainer(Context context) {
+		super(context);
+		// TODO Auto-generated constructor stub
+	}
+
+	/* (non-Javadoc)
+	 * @see android.view.ViewGroup#onInterceptTouchEvent(android.view.MotionEvent)
+	 * 拦截TouchEvent
+	 */
+	@Override
+	public boolean onInterceptTouchEvent(MotionEvent ev) {
+		// TODO Auto-generated method stub
+		Log.i(TAG,"onInterceptTouchEvent");
+		return true;
+		//return super.onInterceptTouchEvent(ev);
+	}
+}
+Index: ytu/mush/hlistview/LoadStateInterface.java
+===================================================================
+--- ytu/mush/hlistview/LoadStateInterface.java	(revision 0)
++++ ytu/mush/hlistview/LoadStateInterface.java	(revision 14)
+@@ -0,0 +1,8 @@
++package com.ytu.mush.hlistview;
++
++import java.util.List;
++
++public interface LoadStateInterface {
++	/* 加载完成 */
++	public void onLoadComplete(List<Data> remotDate);
++}
+Index: ytu/mush/hlistview/MainActivity.java
+===================================================================
+--- ytu/mush/hlistview/MainActivity.java	(revision 0)
++++ ytu/mush/hlistview/MainActivity.java	(revision 14)
+@@ -0,0 +1,184 @@
++package com.ytu.mush.hlistview;
++
++import java.util.List;
++
++
++
++import android.app.Activity;
++import android.graphics.Color;
++import android.os.Bundle;
++import android.os.Handler;
++import android.util.Log;
++import android.view.LayoutInflater;
++import android.view.MotionEvent;
++import android.view.View;
++import android.widget.AbsListView;
++import android.widget.AdapterView;
++import android.widget.HorizontalScrollView;
++import android.widget.LinearLayout;
++import android.widget.ListView;
++import android.widget.RelativeLayout;
++import android.widget.Toast;
++import android.widget.AbsListView.OnScrollListener;
++import android.widget.AdapterView.OnItemClickListener;
++
++public class MainActivity extends Activity implements OnScrollListener {
++	private static final String TAG = "InfoActivity";
++	ListView mListView1;
++	RelativeLayout mHead;
++	LinearLayout main;
++	HolderAdapter holderAdapter;
++	private int last_item_position;// 最后item的位置
++	private boolean isLoading = false;// 是否加载过,控制加载次数
++	private int currentPage = 1;// 当前页,默认为1
++	private int pageSize = 20;// 每页显示十条信息
++	private View loadingView;// 加载视图的布局
++
++	public void onCreate(Bundle savedInstanceState) {
++		super.onCreate(savedInstanceState);
++		setContentView(R.layout.activity_main);
++
++		mHead = (RelativeLayout) findViewById(R.id.head);
++		mHead.setFocusable(true);
++		mHead.setClickable(true);
++		mHead.setBackgroundColor(Color.BLACK);
++		mHead.setOnTouchListener(new ListViewAndHeadViewTouchLinstener());
++
++		// 加载视图布局
++		loadingView = LayoutInflater.from(this).inflate(
++				R.layout.list_page_load, null);
++
++		mListView1 = (ListView) findViewById(R.id.listView1);
++		mListView1.setOnTouchListener(new ListViewAndHeadViewTouchLinstener());
++		mListView1.setCacheColorHint(0);
++		// 添加底部加载视图
++		mListView1.addFooterView(loadingView);
++		// 滚动条监听
++		mListView1.setOnScrollListener(this);
++
++		// 创建当前用于显示视图的数据
++		List<Data> currentData = RemoteDataUtil.createUpdateData(currentPage,
++				pageSize);
++		currentPage = currentPage + 1;
++
++		/*
++		 * List<Data> datas = new ArrayList<Data>();
++		 * 
++		 * for (int i = 0; i < 10; i++) { Data data = new Data(); data.setStr1(i
++		 * + "行"); data.setStr2(i + ""); data.setStr3(i + ""); data.setStr4(i +
++		 * ""); data.setStr5(i + ""); data.setStr6(i + ""); data.setStr7(i +
++		 * ""); data.setStr8(i + ""); datas.add(data); }
++		 */
++		holderAdapter = new HolderAdapter(this, R.layout.item, currentData,
++				mHead);
++		mListView1.setAdapter(holderAdapter);
++		// OnClick监听
++		mListView1.setOnItemClickListener(new OnItemClickListener() {
++
++			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
++					long arg3) {
++				// TODO Auto-generated method stub
++				Log.i("MainActivity ListView", "onItemClick Event");
++				Toast.makeText(MainActivity.this, "点了第" + arg2 + "个",
++						Toast.LENGTH_SHORT).show();
++			}
++		});
++
++	}
++
++	class ListViewAndHeadViewTouchLinstener implements View.OnTouchListener {
++
++		public boolean onTouch(View arg0, MotionEvent arg1) {
++			// 当在列头 和 listView控件上touch时，将这个touch的事件分发给 ScrollView
++			HorizontalScrollView headSrcrollView = (HorizontalScrollView) mHead
++					.findViewById(R.id.horizontalScrollView1);
++			HorizontalScrollView headSrcrollView2 = (HorizontalScrollView) mHead
++					.findViewById(R.id.horizontalScrollView1);
++			headSrcrollView.onTouchEvent(arg1);
++			headSrcrollView2.onTouchEvent(arg1);
++			return false;
++		}
++	}
++
++	public void onScroll(AbsListView view, int firstVisibleItem,
++			int visibleItemCount, int totalItemCount) {
++
++		last_item_position = firstVisibleItem + visibleItemCount - 1;
++
++		if (last_item_position == totalItemCount - 2) {
++			// 这里控制当焦点落在某一个位置时,开始加载.
++			// 当前是在第9个位置开始加载,改为totalItemCount-1
++			// 则会在第10个位置开始加载
++
++			/**
++			 * Loading 标记当前视图是否处于加载中,如果正在加载(isLoading=true)就不执行更新操作
++			 * 加载完成后isLoading=false,在 loadingHandler 中改变状态
++			 */
++			if (!isLoading) {
++
++				// 开启一个线程加载数据
++				isLoading = true;
++				RemoteDataUtil.setRemoteDataByPage(currentPage, pageSize,
++						new LoadStateInterface() {
++							public void onLoadComplete(List<Data> remotDate) {
++								holderAdapter.addItem(remotDate);
++								handler.sendEmptyMessage(0);
++							}
++						});
++			}
++			;
++		}
++		;
++
++		// 当ListView没有FooterView时,添加FooterView(---loadingView---)
++		if (mListView1.getFooterViewsCount() == 0) {
++			handler.sendEmptyMessage(1);
++		}
++	}
++
++	Handler handler = new Handler() {
++		public void handleMessage(android.os.Message msg) {
++			switch (msg.what) {
++			case 0: {
++				// 更新
++				holderAdapter.notifyDataSetChanged();
++				// 删除FooterView
++				mListView1.removeFooterView(loadingView);
++				// 进入下一页，此时视图未加载.
++				isLoading = false;
++				// 当前页自加
++				currentPage = currentPage + 1;
++				break;
++			}
++			case 1: {
++				mListView1.addFooterView(loadingView);
++				break;
++			}
++			default: {
++				Log.w(TAG, "未知的Handler Message:" + msg.obj.toString());
++			}
++			}
++
++		};
++	};
++
++	public void onScrollStateChanged(AbsListView view, int scrollState) {
++		// TODO Auto-generated method stub
++
++	}
++
++	/**
++	 * 监听ListView的OnItemClick事件
++	 * 
++	 * @param arg0
++	 * @param arg1
++	 * @param arg2
++	 * @param arg3
++	 */
++	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
++		// TODO Auto-generated method stub
++		Log.i("MainActivity ListView", "onItemClick Event");
++		Toast.makeText(MainActivity.this, "点了第" + arg2 + "个",
++				Toast.LENGTH_SHORT).show();
++	}
++}
+Index: ytu/mush/hlistview/RemoteDataUtil.java
+===================================================================
+--- ytu/mush/hlistview/RemoteDataUtil.java	(revision 0)
++++ ytu/mush/hlistview/RemoteDataUtil.java	(revision 14)
+@@ -0,0 +1,59 @@
++package com.ytu.mush.hlistview;
++
++import java.util.ArrayList;
++import java.util.List;
++
++/**
++ * @author Mush
++ *
++ */
++public class RemoteDataUtil {
++
++	/**
++	 * @param currentPage
++	 * @param pageSize
++	 * @return 模拟网络数据
++	 */
++	public static List<Data> createUpdateData(int currentPage, int pageSize) {
++		List<Data> list = new ArrayList<Data>();
++		for (int i = (currentPage - 1) * pageSize; i < currentPage * pageSize; i++) {
++			Data data = new Data();
++			data.setStr1(i + "行");
++			data.setStr2(i + "");
++			data.setStr3(i + "");
++			data.setStr4(i + "");
++			data.setStr5(i + "");
++			data.setStr6(i + "");
++			data.setStr7(i + "");
++			data.setStr8(i + "");
++			list.add(data);
++		}
++		return list;
++	}
++
++	// 模拟联接网络以及从网络中获取数据花费的时间
++	public static void setRemoteDataByPage(final int currentPage,
++			final int pageSize, final LoadStateInterface onLoadComplete) {
++		new Thread() {
++			@Override
++			public void run() {
++				// TODO Auto-generated method stub
++				super.run();
++
++				try {
++					Thread.sleep(1000);
++				} catch (InterruptedException e) {
++					// TODO Auto-generated catch block
++					e.printStackTrace();
++				}
++				// 获取当前要更新的数据
++				List<Data> updateDataList = createUpdateData(currentPage,
++						pageSize);
++				// 需要更新的数据加入当前数据集合
++				onLoadComplete.onLoadComplete(updateDataList);
++
++			}
++		}.start();
++
++	}
++}
+Index: ytu/mush/hlistview/MyHScrollView.java
+===================================================================
+--- ytu/mush/hlistview/MyHScrollView.java	(revision 0)
++++ ytu/mush/hlistview/MyHScrollView.java	(revision 14)
+@@ -0,0 +1,103 @@
++package com.ytu.mush.hlistview;
++
++import java.util.ArrayList;
++import java.util.List;
++
++import android.content.Context;
++import android.util.AttributeSet;
++import android.view.MotionEvent;
++import android.widget.HorizontalScrollView;
++
++/*
++ * 自定义的 滚动控件
++ * 重载了 onScrollChanged（滚动条变化）,监听每次的变化通知给 观察(此变化的)观察者
++ * 可使用 AddOnScrollChangedListener 来订阅本控件的 滚动条变化
++ * */
++public class MyHScrollView extends HorizontalScrollView {
++	ScrollViewObserver mScrollViewObserver = new ScrollViewObserver();
++
++	public MyHScrollView(Context context, AttributeSet attrs, int defStyle) {
++		super(context, attrs, defStyle);
++		// TODO Auto-generated constructor stub
++	}
++
++	public MyHScrollView(Context context, AttributeSet attrs) {
++		super(context, attrs);
++		// TODO Auto-generated constructor stub
++	}
++
++	public MyHScrollView(Context context) {
++		super(context);
++		// TODO Auto-generated constructor stub
++	}
++	
++	@Override
++	public boolean onTouchEvent(MotionEvent ev) {
++		return super.onTouchEvent(ev);
++		//return false;
++	}
++
++	@Override
++	protected void onScrollChanged(int l, int t, int oldl, int oldt) {
++		/*
++		 * 当滚动条移动后，引发 滚动事件。通知给观察者，观察者会传达给其他的。
++		 */
++		if (mScrollViewObserver != null) {
++			mScrollViewObserver.NotifyOnScrollChanged(l, t, oldl, oldt);
++		}
++		super.onScrollChanged(l, t, oldl, oldt);
++	}
++
++	/*
++	 * 订阅 本控件 的 滚动条变化事件
++	 * */
++	public void AddOnScrollChangedListener(OnScrollChangedListener listener) {
++		mScrollViewObserver.AddOnScrollChangedListener(listener);
++	}
++
++	/*
++	 * 取消 订阅 本控件 的 滚动条变化事件
++	 * */
++	public void RemoveOnScrollChangedListener(OnScrollChangedListener listener) {
++		mScrollViewObserver.RemoveOnScrollChangedListener(listener);
++	}
++
++	/*
++	 * 当发生了滚动事件时
++	 */
++	public static interface OnScrollChangedListener {
++		public void onScrollChanged(int l, int t, int oldl, int oldt);
++	}
++
++	/*
++	 * 观察者
++	 */
++	public static class ScrollViewObserver {
++		List<OnScrollChangedListener> mList;
++
++		public ScrollViewObserver() {
++			super();
++			mList = new ArrayList<OnScrollChangedListener>();
++		}
++
++		public void AddOnScrollChangedListener(OnScrollChangedListener listener) {
++			mList.add(listener);
++		}
++
++		public void RemoveOnScrollChangedListener(
++				OnScrollChangedListener listener) {
++			mList.remove(listener);
++		}
++
++		public void NotifyOnScrollChanged(int l, int t, int oldl, int oldt) {
++			if (mList == null || mList.size() == 0) {
++				return;
++			}
++			for (int i = 0; i < mList.size(); i++) {
++				if (mList.get(i) != null) {
++					mList.get(i).onScrollChanged(l, t, oldl, oldt);
++				}
++			}
++		}
++	}
++}
+Index: ytu/mush/hlistview/Data.java
+===================================================================
+--- ytu/mush/hlistview/Data.java	(revision 0)
++++ ytu/mush/hlistview/Data.java	(revision 14)
+@@ -0,0 +1,61 @@
++package com.ytu.mush.hlistview;
++
++public class Data {
++	private String str1;
++	private String str2;
++	private String str3;
++	private String str4;
++	private String str5;
++	private String str6;
++	private String str7;
++	private String str8;
++	public String getStr1() {
++		return str1;
++	}
++	public void setStr1(String str1) {
++		this.str1 = str1;
++	}
++	public String getStr2() {
++		return str2;
++	}
++	public void setStr2(String str2) {
++		this.str2 = str2;
++	}
++	public String getStr3() {
++		return str3;
++	}
++	public void setStr3(String str3) {
++		this.str3 = str3;
++	}
++	public String getStr4() {
++		return str4;
++	}
++	public void setStr4(String str4) {
++		this.str4 = str4;
++	}
++	public String getStr5() {
++		return str5;
++	}
++	public void setStr5(String str5) {
++		this.str5 = str5;
++	}
++	public String getStr6() {
++		return str6;
++	}
++	public void setStr6(String str6) {
++		this.str6 = str6;
++	}
++	public String getStr7() {
++		return str7;
++	}
++	public void setStr7(String str7) {
++		this.str7 = str7;
++	}
++	public String getStr8() {
++		return str8;
++	}
++	public void setStr8(String str8) {
++		this.str8 = str8;
++	}
++
++}

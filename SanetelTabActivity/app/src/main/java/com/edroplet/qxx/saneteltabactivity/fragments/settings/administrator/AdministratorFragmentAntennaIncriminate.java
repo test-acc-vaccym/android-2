@@ -1,4 +1,4 @@
-package com.edroplet.qxx.saneteltabactivity.fragments.administrator;
+package com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator;
 
 import android.content.Context;
 import android.os.Bundle;

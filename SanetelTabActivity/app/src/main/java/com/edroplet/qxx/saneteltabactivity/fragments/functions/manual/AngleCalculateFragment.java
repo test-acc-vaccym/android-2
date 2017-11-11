@@ -1,10 +1,9 @@
-package com.edroplet.qxx.saneteltabactivity.fragments.manual;
+package com.edroplet.qxx.saneteltabactivity.fragments.functions.manual;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,14 +17,12 @@ import com.edroplet.qxx.saneteltabactivity.adapters.SpinnerAdapter2;
 import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.Cities;
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
-import com.edroplet.qxx.saneteltabactivity.beans.PresetAngleInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.Satellites;
 import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 /**
  * Created by qxs on 2017/9/19.

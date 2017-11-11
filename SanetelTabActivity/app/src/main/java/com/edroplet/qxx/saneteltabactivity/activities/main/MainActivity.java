@@ -1,41 +1,31 @@
 package com.edroplet.qxx.saneteltabactivity.activities.main;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsActivity;
 import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
-import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
 import com.edroplet.qxx.saneteltabactivity.fragments.main.MainFragmentGuide;
 import com.edroplet.qxx.saneteltabactivity.fragments.main.MainFragmentMe;
-import com.edroplet.qxx.saneteltabactivity.fragments.main.MainFragmentStart;
-import com.edroplet.qxx.saneteltabactivity.fragments.manual.AngleCalculateFragment;
-import com.edroplet.qxx.saneteltabactivity.fragments.manual.LocationControlFragment;
-import com.edroplet.qxx.saneteltabactivity.fragments.manual.SpeedControlFragment;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 import com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioGroup;
-import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
 import static com.edroplet.qxx.saneteltabactivity.utils.CustomSP.WifiSettingsNameKey;
 
 public class MainActivity extends AppCompatActivity {
-    public static String defaultDeviceName = "xwwt-XXX";
+    public static String defaultDeviceName = "XWWT-XXX";
 
     private ViewPager viewPager;
     private WeChatRadioGroup gradualRadioGroup;

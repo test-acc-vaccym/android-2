@@ -1,9 +1,7 @@
 package com.edroplet.qxx.saneteltabactivity.activities.administrator;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,22 +9,19 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.activities.functions.MonitorHelpActivity;
 import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
-import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
-import com.edroplet.qxx.saneteltabactivity.fragments.administrator.AdministratorFragmentAntennaIncriminate;
-import com.edroplet.qxx.saneteltabactivity.fragments.administrator.AdministratorFragmentAntennaType;
-import com.edroplet.qxx.saneteltabactivity.fragments.administrator.AdministratorFragmentBandSelect;
-import com.edroplet.qxx.saneteltabactivity.fragments.administrator.AdministratorFragmentIPSettings;
-import com.edroplet.qxx.saneteltabactivity.fragments.administrator.AdministratorFragmentLNBFrequencyChannel;
-import com.edroplet.qxx.saneteltabactivity.fragments.administrator.AdministratorFragmentNetworkProtocolSettings;
-import com.edroplet.qxx.saneteltabactivity.fragments.administrator.AdministratorFragmentRecoveryFactory;
-import com.edroplet.qxx.saneteltabactivity.fragments.administrator.AdministratorFragmentSearchingRange;
-import com.edroplet.qxx.saneteltabactivity.fragments.administrator.AdministratorFragmentSerialProtocolSettings;
-import com.edroplet.qxx.saneteltabactivity.fragments.administrator.AdministratorFragmentWifiSettings;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentAntennaIncriminate;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentAntennaType;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentBandSelect;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentIPSettings;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentLNBFrequencyChannel;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentNetworkProtocolSettings;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentRecoveryFactory;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentSearchingRange;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentSerialProtocolSettings;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentWifiSettings;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomFAB;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomViewPager;
 
 public class AdministratorSettingsActivity extends AppCompatActivity {

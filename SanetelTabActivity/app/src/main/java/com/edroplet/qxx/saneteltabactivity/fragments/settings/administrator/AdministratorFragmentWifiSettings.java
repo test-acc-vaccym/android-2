@@ -1,43 +1,49 @@
-package com.edroplet.qxx.saneteltabactivity.fragments.administrator;
+package com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
+import com.edroplet.qxx.saneteltabactivity.utils.InputFilterStartsWith;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
-import com.edroplet.qxx.saneteltabactivity.view.IPEdit;
-import com.edroplet.qxx.saneteltabactivity.view.IPEditText;
-import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
+import static com.edroplet.qxx.saneteltabactivity.utils.CustomSP.WifiSettingsNameKey;
+import static com.edroplet.qxx.saneteltabactivity.utils.SystemServices.XWWT_PREFIX;
 
 /**
  * Created by qxs on 2017/9/19.
  */
 
-public class AdministratorFragmentIPSettings extends Fragment {
-    private static final String IPSettingsAddressKey = "ipAddress";
-    private static final String IPSettingsMaskKey = "ipMask";
+public class AdministratorFragmentWifiSettings extends Fragment {
+    @BindView(R.id.administrator_setting_wifi_name)
+    CustomEditText wifiName;
 
     private static final int[] icons = {R.drawable.antenna_exploded};
 
     private CustomButton thirdButton;
 
-    private IPEdit ipAddress;
-    private IPEdit ipMask;
+    private Unbinder unbinder;
 
-    public static AdministratorFragmentIPSettings newInstance(boolean showFirst, String firstLine, boolean showSecond,
-                                                              String secondLine, boolean showThird, String thirdLineStart,
-                                                              int icon, String buttonText, String thirdLineEnd) {
+
+    public static AdministratorFragmentWifiSettings newInstance(boolean showFirst, String firstLine, boolean showSecond,
+                                                                String secondLine, boolean showThird, String thirdLineStart,
+                                                                int icon, String buttonText, String thirdLineEnd) {
         Bundle args = new Bundle();
-        AdministratorFragmentIPSettings fragment = new AdministratorFragmentIPSettings();
+        AdministratorFragmentWifiSettings fragment = new AdministratorFragmentWifiSettings();
         args.putBoolean(PopDialog.SHOW_FIRST,showFirst);
         args.putString(PopDialog.FIRST, firstLine);
         args.putBoolean(PopDialog.SHOW_SECOND,showSecond);
@@ -54,29 +60,30 @@ public class AdministratorFragmentIPSettings extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_administrator_settings_ip_settings, null);
+        final View view = inflater.inflate(R.layout.fragment_administrator_settings_wifi_name, null);
         if (view == null){
             return null;
         }
 
+        unbinder = ButterKnife.bind(this, view);
+
         final Context context = getContext();
 
-        ViewInject.inject(getActivity(), getActivity());
-        ipAddress = view.findViewById(R.id.administrator_setting_ip_address);
-        String address = CustomSP.getString(context,IPSettingsAddressKey, "");
-        ipAddress.setText(address);
+        wifiName.setFilters(new InputFilter[]{new InputFilterStartsWith(XWWT_PREFIX)});
 
-        ipMask = view.findViewById(R.id.administrator_setting_ip_mask);
-        String mask = CustomSP.getString(context,IPSettingsMaskKey, "");
-        ipMask.setText(mask);
+        String deviceName = CustomSP.getString(context,WifiSettingsNameKey, "");
+        wifiName.setText(deviceName);
 
         thirdButton = view.findViewById(R.id.pop_dialog_third_button);
 
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomSP.putString(context,IPSettingsAddressKey,ipAddress.getText());
-                CustomSP.putString(context,IPSettingsMaskKey,ipMask.getText());
+                String wifiSSID = wifiName.getText().toString();
+                // 确保WiFi名称以xwwt开头
+                if (!wifiSSID.toUpperCase().startsWith(XWWT_PREFIX))
+                    wifiSSID = XWWT_PREFIX + wifiSSID;
+                CustomSP.putString(context,WifiSettingsNameKey,wifiSSID);
                 // todo send command
                 getActivity().finish();
             }
@@ -96,5 +103,11 @@ public class AdministratorFragmentIPSettings extends Fragment {
             }
         }
         return popDialog.show();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

@@ -8,7 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
@@ -16,9 +15,9 @@ import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.PresetAngleInfo;
 import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
 import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
-import com.edroplet.qxx.saneteltabactivity.fragments.manual.AngleCalculateFragment;
-import com.edroplet.qxx.saneteltabactivity.fragments.manual.LocationControlFragment;
-import com.edroplet.qxx.saneteltabactivity.fragments.manual.SpeedControlFragment;
+import com.edroplet.qxx.saneteltabactivity.fragments.functions.manual.AngleCalculateFragment;
+import com.edroplet.qxx.saneteltabactivity.fragments.functions.manual.LocationControlFragment;
+import com.edroplet.qxx.saneteltabactivity.fragments.functions.manual.SpeedControlFragment;
 import com.edroplet.qxx.saneteltabactivity.utils.BottomNavigationViewHelper;
 
 public class ManualActivity extends AppCompatActivity {

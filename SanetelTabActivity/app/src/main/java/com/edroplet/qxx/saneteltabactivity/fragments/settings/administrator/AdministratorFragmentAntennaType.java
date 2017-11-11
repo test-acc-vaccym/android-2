@@ -1,4 +1,4 @@
-package com.edroplet.qxx.saneteltabactivity.fragments.administrator;
+package com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,33 +21,42 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCusto
  * Created by qxs on 2017/9/19.
  */
 
-public class AdministratorFragmentSearchingRange extends Fragment {
-    private static final String SearchingRangeKey = "searchingRange";
+public class AdministratorFragmentAntennaType extends Fragment {
+    private static final String AntennaType = "antennaType";
     private  final int[] icons = {R.drawable.antenna_exploded };
 
     @BindId(R.id.pop_dialog_third_button)
     private CustomButton thirdButton;
 
-    @BindId(R.id.administrator_setting_searching_range_radio_group)
+    @BindId(R.id.administrator_settings_antenna_type_radio_group)
     private CustomRadioGroupWithCustomRadioButton radioGroupWithCustomRadioButton;
 
-    @BindId(R.id.administrator_setting_searching_range_1)
-    private CustomRadioButton radioButtonRange1;
+    @BindId(R.id.administrator_setting_antenna_type_two_two)
+    private CustomRadioButton radioButtonTwoTwo;
 
-    @BindId(R.id.administrator_setting_searching_range_2)
-    private CustomRadioButton radioButtonRange2;
+    @BindId(R.id.administrator_setting_antenna_type_two_one)
+    private CustomRadioButton radioButtonTwoOne;
 
-    @BindId(R.id.administrator_setting_searching_range_3)
-    private CustomRadioButton radioButtonRange3;
+
+    @BindId(R.id.administrator_setting_antenna_type_two_zero)
+    private CustomRadioButton radioButtonTwoZero;
+
+
+    @BindId(R.id.administrator_setting_antenna_type_three_one)
+    private CustomRadioButton radioButtonThreeOne;
+
+
+    @BindId(R.id.administrator_setting_antenna_type_three_zero)
+    private CustomRadioButton radioButtonThreeZero;
 
     private CustomRadioButton radioButton;
     private String selected;
 
-    public static AdministratorFragmentSearchingRange newInstance(boolean showFirst, String firstLine, boolean showSecond,
-                                                                  String secondLine, boolean showThird, String thirdLineStart,
-                                                                  int icon, String buttonText, String thirdLineEnd) {
+    public static AdministratorFragmentAntennaType newInstance(boolean showFirst, String firstLine, boolean showSecond,
+                                                               String secondLine, boolean showThird, String thirdLineStart,
+                                                               int icon, String buttonText, String thirdLineEnd) {
         Bundle args = new Bundle();
-        AdministratorFragmentSearchingRange fragment = new AdministratorFragmentSearchingRange();
+        AdministratorFragmentAntennaType fragment = new AdministratorFragmentAntennaType();
         args.putBoolean(PopDialog.SHOW_FIRST,showFirst);
         args.putString(PopDialog.FIRST, firstLine);
         args.putBoolean(PopDialog.SHOW_SECOND,showSecond);
@@ -64,33 +73,38 @@ public class AdministratorFragmentSearchingRange extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_administrator_settings_searching_range, null);
+        final View view = inflater.inflate(R.layout.fragment_administrator_settings_antenna_type, null);
         if (view == null){
             return null;
         }
         ViewInject.inject(getActivity(), getContext());
 
         thirdButton = view.findViewById(R.id.pop_dialog_third_button);
-        radioButtonRange1 = view.findViewById(R.id.administrator_setting_searching_range_1);
-        radioButtonRange2 = view.findViewById(R.id.administrator_setting_searching_range_2);
-        radioButtonRange3 = view.findViewById(R.id.administrator_setting_searching_range_3);
+        radioButtonTwoTwo = view.findViewById(R.id.administrator_setting_antenna_type_two_two);
+        radioButtonTwoOne = view.findViewById(R.id.administrator_setting_antenna_type_two_one);
+        radioButtonTwoZero = view.findViewById(R.id.administrator_setting_antenna_type_two_zero);
+        radioButtonThreeOne = view.findViewById(R.id.administrator_setting_antenna_type_three_one);
+        radioButtonThreeZero = view.findViewById(R.id.administrator_setting_antenna_type_three_zero);
 
-        String type = CustomSP.getString(getContext(),SearchingRangeKey,getString(R.string.administrator_setting_searching_range_1));
-        if (type.equals(getString(R.string.administrator_setting_searching_range_1))){
-            radioButtonRange1.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_searching_range_2))){
-            radioButtonRange2.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_searching_range_3))){
-            radioButtonRange3.setChecked(true);
+        String type = CustomSP.getString(getContext(),AntennaType,getString(R.string.administrator_setting_antenna_type_two_two));
+        if (type.equals(getString(R.string.administrator_setting_antenna_type_two_two))){
+            radioButtonTwoTwo.setChecked(true);
+        }else if (type.equals(getString(R.string.administrator_setting_antenna_type_two_one))){
+            radioButtonTwoOne.setChecked(true);
+        }else if (type.equals(getString(R.string.administrator_setting_antenna_type_two_zero))){
+            radioButtonTwoZero.setChecked(true);
+        }else if (type.equals(getString(R.string.administrator_setting_antenna_type_three_one))){
+            radioButtonThreeOne.setChecked(true);
+        }else if (type.equals(getString(R.string.administrator_setting_antenna_type_three_zero))){
+            radioButtonThreeZero.setChecked(true);
         }
-
-        radioGroupWithCustomRadioButton = view.findViewById(R.id.administrator_setting_searching_range_radio_group);
+        radioGroupWithCustomRadioButton = view.findViewById(R.id.administrator_settings_antenna_type_radio_group);
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 radioButton = (CustomRadioButton)view.findViewById(radioGroupWithCustomRadioButton.getCheckedRadioButtonId());
                 selected = radioButton.getText().toString();
-                CustomSP.putString(getContext(), SearchingRangeKey, selected);
+                CustomSP.putString(getContext(), AntennaType, selected);
                 // todo send command
                 getActivity().finish();
             }

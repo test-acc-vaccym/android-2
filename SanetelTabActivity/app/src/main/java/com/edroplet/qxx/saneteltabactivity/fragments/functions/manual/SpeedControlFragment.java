@@ -1,4 +1,4 @@
-package com.edroplet.qxx.saneteltabactivity.fragments.manual;
+package com.edroplet.qxx.saneteltabactivity.fragments.functions.manual;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,14 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.widget.CompoundButton;
-import android.widget.LinearLayout;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
 
 import static com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentLocation.mOnCheckedChangeListener;
 

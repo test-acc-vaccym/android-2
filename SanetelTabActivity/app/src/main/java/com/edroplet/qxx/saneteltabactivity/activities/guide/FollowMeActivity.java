@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsActivity;
+import com.edroplet.qxx.saneteltabactivity.activities.main.MainActivity;
 import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
 import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
 import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
@@ -79,7 +80,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
         int now = mViewPager.getCurrentItem();
         switch (view.getId()) {
             case R.id.follow_me_bottom_nav_main:
-                startActivity(new Intent(FollowMeActivity.this, GuideEntryActivity.class));
+                startActivity(new Intent(FollowMeActivity.this, MainActivity.class));
                 StatusBarControl.setTitle(getString(R.string.follow_me_bottom_nav_main));
                 finish();
                 break;

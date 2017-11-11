@@ -1,7 +1,6 @@
-package com.edroplet.qxx.saneteltabactivity.fragments.administrator;
+package com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator;
 
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -12,7 +11,6 @@ import android.view.ViewGroup;
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
-import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 
 /**

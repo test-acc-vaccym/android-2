@@ -10,14 +10,31 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by qxs on 2017/9/19.
  */
 
 public class GuideFragmentSearchModeSetting extends Fragment {
+
+    private static final String KEY_SEARCHING_MODE = "KEY_SEARCHING_MODE";
+
+    @BindView(R.id.pop_dialog_third_button)
+    CustomButton thirdButton;
+
+    @BindView(R.id.follow_me_search_mode_beacon)
+    CustomRadioButton crbSearchModeBeacon;
+
+    @BindView(R.id.follow_me_search_mode_dvb)
+    CustomRadioButton crbSearchModeDvb;
+
     public static GuideFragmentSearchModeSetting newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                              String secondLine, boolean showThird, String thirdLineStart,
                                                              int icon, String buttonText, String thirdLineEnd) {
@@ -44,15 +61,35 @@ public class GuideFragmentSearchModeSetting extends Fragment {
         if (view == null){
             return null;
         }
+        ButterKnife.bind(this, view);
+
+        thirdButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 2017/11/11 设置寻星模式，发送命令
+                if (crbSearchModeBeacon.isChecked()){
+                    CustomSP.putInt(getContext(),KEY_SEARCHING_MODE, 0);
+                } else {
+                    CustomSP.putInt(getContext(), KEY_SEARCHING_MODE, 1);
+                }
+
+            }
+        });
+
         // 单选组的选择互斥
-        CustomRadioButton crbSearchModeBeacon = view.findViewById(R.id.follow_me_search_mode_beacon);
-        CustomRadioButton crbSearchModeDvb = view.findViewById(R.id.follow_me_search_mode_dvb);
         crbSearchModeBeacon.setOnCheckedChangeListener(GuideFragmentLocation.mOnCheckedChangeListener);
         crbSearchModeDvb.setOnCheckedChangeListener(GuideFragmentLocation.mOnCheckedChangeListener);
+
+        if(CustomSP.getInt(getContext(), KEY_SEARCHING_MODE, 0) == 0){
+            crbSearchModeBeacon.setChecked(true);
+        }else {
+            crbSearchModeDvb.setChecked(true);
+        }
 
         Context context = getContext();
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);
+        popDialog.setContext(context);
 
         Bundle bundle = getArguments();
         if (bundle != null) {

@@ -22,7 +22,7 @@ public final class DownloadInit {
 
     public static void init(Context aContext) {
         //设置点击栏目知想打开的页面
-        RxConstants.CLASSNAME = "MainActivty";
+        RxConstants.CLASSNAME = "MainMeAppActivity";
 
         RxDownloadManager manager = RxDownloadManager.getInstance();
         manager.init(aContext, new DownloadAdapter());

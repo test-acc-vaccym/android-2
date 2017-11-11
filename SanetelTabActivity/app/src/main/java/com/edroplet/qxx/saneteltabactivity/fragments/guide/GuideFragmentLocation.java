@@ -120,6 +120,7 @@ public class GuideFragmentLocation extends Fragment {
 
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);
+        popDialog.setContext(context);
         // 位置输入
         Bundle bundle = getArguments();
         if (bundle != null) {

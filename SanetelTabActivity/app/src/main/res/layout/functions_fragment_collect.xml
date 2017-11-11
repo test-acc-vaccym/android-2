@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="@dimen/functions_fragment_margin_bottom"
+    android:layout_marginBottom="@dimen/app_bar_height"
     style="@style/manual_divider"
     android:background="@drawable/guide_main_item_background_color">
 

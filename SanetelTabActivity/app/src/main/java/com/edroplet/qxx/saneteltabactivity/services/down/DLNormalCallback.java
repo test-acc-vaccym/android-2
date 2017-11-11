@@ -1,8 +1,10 @@
 package com.edroplet.qxx.saneteltabactivity.services.down;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.edroplet.qxx.saneteltabactivity.activities.main.MainMeAppActivity;
 import com.tamic.rx.fastdown.RxConstants;
 import com.tamic.rx.fastdown.DLToastManager;
 import com.tamic.rx.fastdown.callback.IDLCallback;

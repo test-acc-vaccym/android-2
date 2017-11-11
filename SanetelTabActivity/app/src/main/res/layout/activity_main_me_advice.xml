@@ -48,7 +48,7 @@
             <!--接收邮箱：support@sanetel.com-->
             <LinearLayout
                 style="@style/layout_vertical_style">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
                     android:text="@string/main_me_error_report_email_receive"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.5"
@@ -66,22 +66,24 @@
             <!--发送邮箱-->
             <LinearLayout
                 style="@style/layout_vertical_style">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
                     android:text="@string/main_me_error_report_email_send"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.5"
                     android:padding="@dimen/appbar_padding_top"
                     android:inputType="textEmailAddress"
                     android:gravity="start|left"/>
+
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                     android:id="@+id/main_me_advice_email_send_address"
+                    style="@style/text_horizontal_style"
                     android:text="@string/main_me_advice_email_send_address"
-                    style="@style/text_horizontal_style"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
             </LinearLayout>
             <!--用户单位-->
             <LinearLayout
                 style="@style/layout_vertical_style">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
                     android:text="@string/main_me_email_customer"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.5"
@@ -96,7 +98,7 @@
             <!--姓    名-->
             <LinearLayout
                 style="@style/layout_vertical_style">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
                     android:text="@string/main_me_advice_name"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.5"
@@ -111,7 +113,7 @@
             <!--电    话-->
             <LinearLayout
                 style="@style/layout_vertical_style">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
                     android:text="@string/main_me_advice_phone"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.5"
@@ -126,7 +128,7 @@
             <!--文件名称-->
             <LinearLayout
                 style="@style/layout_vertical_style">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
                     android:text="@string/main_me_advice_subject"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.5"

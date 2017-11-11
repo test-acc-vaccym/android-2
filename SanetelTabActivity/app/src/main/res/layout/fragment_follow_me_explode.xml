@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
-        android:gravity="center"
-        android:text="@string/antenna_state_exploded"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
-    <include layout="@layout/pop_dialog_blue"/>
-</LinearLayout>
+        android:layout_height="match_parent">
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_bar_height"
+            android:gravity="center"
+            android:text="@string/antenna_state_exploded"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+        <include layout="@layout/pop_dialog_blue"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

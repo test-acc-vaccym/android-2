@@ -293,6 +293,7 @@ public class GuideFragmentDestination extends Fragment {
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);
         Context context = getContext();
+        popDialog.setContext(context);
 
         Bundle bundle = getArguments();
         if (bundle != null) {

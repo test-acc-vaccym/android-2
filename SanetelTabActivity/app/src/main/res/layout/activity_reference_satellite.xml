@@ -243,7 +243,33 @@
                     android:text="@string/voltage_unit"/>
             </LinearLayout-->
         </LinearLayout>
-
+        <!--载波频率-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_reference_carrier"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:id="@+id/settings_reference_carrier"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_11"
+                android:hint="@string/main_monitor_satellite_carrier_hint"/>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_11"
+                android:text="@string/settings_reference_carrier_unit"/>
+        </LinearLayout>
         <!--DVB符号率-->
         <LinearLayout
             android:layout_width="match_parent"
@@ -262,7 +288,7 @@
                 android:gravity="center"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_11"
-                android:hint="@string/main_monitor_satellite_dvb_hint"/>
+                android:hint="@string/settings_reference_dvb_hint"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:layout_width="0dp"
                 android:layout_weight="0.4"

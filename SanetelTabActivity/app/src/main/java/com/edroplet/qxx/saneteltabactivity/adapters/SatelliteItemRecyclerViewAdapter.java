@@ -62,6 +62,22 @@ public class SatelliteItemRecyclerViewAdapter  extends RecyclerView.Adapter<Sate
         mValues.remove(item);
     }
 
+    /**
+     * 向List中添加数据
+     *
+     * @param items
+     */
+    public void addItem(List<SatelliteInfo> items){
+        this.mValues.addAll(items);
+    }
+
+    /**
+     * 清空当List中的数据
+     */
+    public void cleanAll() {
+        this.mValues.clear();
+    }
+
     @Override
     public int getItemCount() {
         return mValues.size();

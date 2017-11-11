@@ -13,7 +13,11 @@ import android.widget.LinearLayout;
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -38,6 +42,9 @@ public class GuideFragmentLocker extends Fragment {
         return fragment;
     }
 
+    @BindView(R.id.pop_dialog_third_button)
+    CustomButton thirdButton;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,9 +52,19 @@ public class GuideFragmentLocker extends Fragment {
         if (view == null){
             return null;
         }
+        ButterKnife.bind(this, view);
+
+        thirdButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 2017/11/11  设置锁紧
+                // send command
+            }
+        });
+
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);
-
+        popDialog.setContext(getContext());
         Bundle bundle = getArguments();
         if (bundle != null) {
             popDialog.setBundle(bundle);

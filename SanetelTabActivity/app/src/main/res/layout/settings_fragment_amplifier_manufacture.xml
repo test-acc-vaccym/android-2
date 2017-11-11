@@ -55,19 +55,24 @@
                     android:layout_height="@dimen/radio_group_item_height"
                     android:id="@+id/settings_amplifier_manufacture_5"
                     android:text="@string/settings_amplifier_manufacture_5"/>
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/radio_group_item_height"
+                    android:id="@+id/settings_amplifier_manufacture_6"
+                    android:text="@string/settings_amplifier_manufacture_6"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/radio_group_item_height">
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/radio_group_item_height"
-                        android:id="@+id/settings_amplifier_manufacture_6"/>
+                        android:id="@+id/settings_amplifier_manufacture_7"/>
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                         android:id="@+id/settings_amplifier_manufacture_custom_value"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/radio_group_item_height"
-                        android:layout_toEndOf="@id/settings_amplifier_manufacture_6"
-                        android:layout_toRightOf="@id/settings_amplifier_manufacture_6"/>
+                        android:layout_toEndOf="@id/settings_amplifier_manufacture_7"
+                        android:layout_toRightOf="@id/settings_amplifier_manufacture_7"/>
                 </RelativeLayout>
             </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
         </LinearLayout>

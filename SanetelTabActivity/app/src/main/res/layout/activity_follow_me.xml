@@ -37,7 +37,7 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/follow_me_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_above="@+id/follow_me_navigation"/>
 

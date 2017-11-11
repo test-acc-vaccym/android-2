@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
@@ -33,22 +34,52 @@ public class OperateBarControl {
         final StatusButton sbFold = (StatusButton) activity.findViewById(R.id.button_operate_fold);
 
         final String buttonOkText = activity.getString(R.string.operate_confirm_ok);
-        boolean clickable = true;
+        boolean explodeClickable = true; // 展开
+        boolean manualClickable = true; // 手动
+        boolean searchClickable = true; // 寻星
+        boolean resetClickable = true; // 复位
+        boolean foldClickable = true; // 收藏
 
         randomDialog = new RandomDialog(activity);
-
-        if( SystemServices.getAntennaState() == AntennaInfo.AntennaStatus.EXPLODED ||
-                SystemServices.getAntennaState() == AntennaInfo.AntennaStatus.FOLDED){
-            clickable = false;
+        // 当天线处于已收藏状态时，手动、寻星、复位、收藏快捷键为灰色，不能操作。只有展开快捷键能够操作。
+        if(SystemServices.getAntennaState() == AntennaInfo.AntennaStatus.FOLDED){
+            manualClickable = false;
+            searchClickable = false;
+            resetClickable = false;
+            foldClickable = false;
+        }else if (SystemServices.getAntennaState() == AntennaInfo.AntennaStatus.EXPLODED ){
+            //  当天线处于已展开状态时，展开和复位快捷键为灰色，不能操作。只有手动、寻星、收藏快捷键能够操作。
+            explodeClickable = false;
+            resetClickable = false;
+        }else if (SystemServices.getAntennaState() == AntennaInfo.AntennaStatus.EXPLODING
+                || SystemServices.getAntennaState() == AntennaInfo.AntennaStatus.INIT
+                || SystemServices.getAntennaState() == AntennaInfo.AntennaStatus.FOLDING){
+            // 当天线处于展开中、初始、收藏中，所有快捷键为灰色，不能操作。
+            explodeClickable = false;
+            manualClickable = false;
+            searchClickable = false;
+            resetClickable = false;
+            foldClickable = false;
         }
+        // 当锁紧机构处于锁紧时，快捷键为灰色，不能操作。
         if (SystemServices.getLockerState() == LockerInfo.LOCKER_STATE_LOCKED){
-            clickable = false;
+            explodeClickable = false;
+            manualClickable = false;
+            searchClickable = false;
+            resetClickable = false;
+            foldClickable = false;
         }
+        // 当节能处于开启时，快捷键为灰色，不能操作。
         if (SystemServices.getSavingState() == SavingInfo.SAVING_STATE_OPEN){
-            clickable = false;
+            explodeClickable = false;
+            manualClickable = false;
+            searchClickable = false;
+            resetClickable = false;
+            foldClickable = false;
         }
+
         if (sbExploded != null) {
-            if (clickable){
+            if (explodeClickable){
                 sbExploded.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
             }else {
                 sbExploded.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
@@ -74,7 +105,7 @@ public class OperateBarControl {
             });
         }
         if (sbFold!=null){
-            if (clickable){
+            if (foldClickable){
                 sbFold.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
             }else {
                 sbFold.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
@@ -100,7 +131,7 @@ public class OperateBarControl {
         }
         final StatusButton sbPause = (StatusButton) activity.findViewById(R.id.button_operate_pause);
         if (sbPause != null) {
-            if (clickable) {
+            if (manualClickable) {
                 sbPause.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
             } else {
                 sbPause.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
@@ -116,7 +147,7 @@ public class OperateBarControl {
         }
         final StatusButton sbReset = (StatusButton) activity.findViewById(R.id.button_operate_reset);
         if (sbReset != null) {
-            if (clickable) {
+            if (resetClickable) {
                 sbReset.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
             } else {
                 sbReset.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
@@ -144,7 +175,7 @@ public class OperateBarControl {
 
         final StatusButton sbSearch = (StatusButton) activity.findViewById(R.id.button_operate_search);
         if (sbSearch != null) {
-            if (clickable){
+            if (searchClickable){
                 sbSearch.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
             }else {
                 sbSearch.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
@@ -186,20 +217,62 @@ public class OperateBarControl {
     private static boolean canOperate(Context context, final StatusButton statusButton){
         String buttonOkText = context.getString(R.string.operate_confirm_ok);
         int satelliteStatus = SystemServices.getAntennaState();
-        // 天线状态判断
-        if (satelliteStatus == AntennaInfo.AntennaStatus.EXPLODED || satelliteStatus == AntennaInfo.AntennaStatus.FOLDED){
 
-            statusButton.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
-            randomDialog.onConfirm(context.getString(R.string.explode_bind_confirm), new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    randomDialog.getDialogBuilder().dismiss();
+        @IdRes int resId = statusButton.getId();
+        switch (satelliteStatus){
+            case AntennaInfo.AntennaStatus.EXPLODED:
+                if (resId == R.id.button_operate_explode || resId == R.id.button_operate_reset) {
+                    statusButton.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
+                    randomDialog.onConfirm(context.getString(R.string.antenna_exploded_bind_confirm), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            randomDialog.getDialogBuilder().dismiss();
+                        }
+                    }, buttonOkText);
+                    return false;
                 }
-            }, buttonOkText);
-            return false;
-        }else{
-            statusButton.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
+                break;
+            case AntennaInfo.AntennaStatus.INIT:
+                statusButton.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
+                randomDialog.onConfirm(context.getString(R.string.antenna_init_bind_confirm), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        randomDialog.getDialogBuilder().dismiss();
+                    }
+                }, buttonOkText);
+                return false;
+            case AntennaInfo.AntennaStatus.EXPLODING:
+                statusButton.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
+                randomDialog.onConfirm(context.getString(R.string.antenna_exploding_bind_confirm), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        randomDialog.getDialogBuilder().dismiss();
+                    }
+                }, buttonOkText);
+                return false;
+            case AntennaInfo.AntennaStatus.FOLDING:
+                statusButton.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
+                randomDialog.onConfirm(context.getString(R.string.antenna_folding_bind_confirm), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        randomDialog.getDialogBuilder().dismiss();
+                    }
+                }, buttonOkText);
+                return false;
+            case AntennaInfo.AntennaStatus.FOLDED:
+                if (resId != R.id.button_operate_explode) {
+                    statusButton.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
+                    randomDialog.onConfirm(context.getString(R.string.antenna_folded_bind_confirm), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            randomDialog.getDialogBuilder().dismiss();
+                        }
+                    }, buttonOkText);
+                    return false;
+                }
+                break;
         }
+
         int lockerStatus = SystemServices.getLockerState();
         // 锁紧机构状态判断
         if (lockerStatus == LockerInfo.LOCKER_STATE_LOCKED){
@@ -211,8 +284,6 @@ public class OperateBarControl {
                 }
             }, buttonOkText);
             return false;
-        }else{
-            statusButton.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
         }
 
         // 节能状态判断
@@ -228,9 +299,9 @@ public class OperateBarControl {
                 }
             }, buttonOkText);
             return false;
-        }else {
-            statusButton.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
         }
+
+        statusButton.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
         return true;
     }
 }

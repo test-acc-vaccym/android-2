@@ -35,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
         </LinearLayout>
+        <!--功放状态-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,6 +81,7 @@
                     android:hint="@string/main_monitor_amplifier_value_output_hint"/>
             </LinearLayout>
         </LinearLayout>
+        <!--自动温控-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -126,6 +128,7 @@
                     android:hint="@string/main_monitor_amplifier_value_temperature_hint"/>
             </LinearLayout>
         </LinearLayout>
+        <!--锁相环-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -137,7 +140,7 @@
                 android:paddingEnd="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_status_pll_state"
@@ -149,6 +152,37 @@
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_amplifier_status_pll_state_normal"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"/>
+        </LinearLayout>
+        <!--邻星保护-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal">
+                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_monitor_amplifier_status_satellite__protect_state"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    android:id="@+id/main_monitor_amplifier_status_satellite__protect_state"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/main_monitor_amplifier_status_satellite__protect_state_open"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"

@@ -1,58 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.main.MainActivity"
     style="@style/linear_no_shadow_no_padding">
-
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/welcome_install_wire_scroll"
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_marginTop="@dimen/app_bar_height"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.edroplet.qxx.saneteltabactivity.activities.main.MainActivity">
+
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/main_me_font"
+            style="@style/button_vertical_style"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                android:id="@+id/main_me_font"
-                style="@style/button_vertical_style"
-                android:layout_width="match_parent"
-                android:text="@string/main_me_font"/>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                android:id="@+id/main_bottom_nav_me_language"
-                style="@style/button_vertical_style"
-                android:layout_width="match_parent"
-                android:text="@string/main_bottom_nav_me_language"/>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                android:id="@+id/main_bottom_nav_me_error_report"
-                style="@style/button_vertical_style"
-                android:layout_width="match_parent"
-                android:text="@string/main_bottom_nav_me_error_report"/>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                android:id="@+id/main_bottom_nav_me_advices"
-                style="@style/button_vertical_style"
-                android:layout_width="match_parent"
-                android:text="@string/main_bottom_nav_me_advices"/>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                android:id="@+id/main_bottom_nav_me_about"
-                style="@style/button_vertical_style"
-                android:layout_width="match_parent"
-                android:text="@string/main_bottom_nav_me_about"/>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                android:id="@+id/main_bottom_nav_me_version"
-                style="@style/button_vertical_style"
-                android:layout_width="match_parent"
-                android:text="@string/main_bottom_nav_me_version"/>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                android:id="@+id/main_bottom_nav_me_switch_device"
-                style="@style/button_vertical_style"
-                android:layout_width="match_parent"
-                android:text="@string/main_bottom_nav_me_switch_device"/>
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
-</LinearLayout>
+            android:text="@string/main_me_font"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/main_bottom_nav_me_language"
+            style="@style/button_vertical_style"
+            android:layout_width="match_parent"
+            android:text="@string/main_bottom_nav_me_language"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/main_bottom_nav_me_error_report"
+            style="@style/button_vertical_style"
+            android:layout_width="match_parent"
+            android:text="@string/main_bottom_nav_me_error_report"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/main_bottom_nav_me_advices"
+            style="@style/button_vertical_style"
+            android:layout_width="match_parent"
+            android:text="@string/main_bottom_nav_me_advices"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/main_bottom_nav_me_about"
+            style="@style/button_vertical_style"
+            android:layout_width="match_parent"
+            android:text="@string/main_bottom_nav_me_about"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/main_bottom_nav_me_version"
+            style="@style/button_vertical_style"
+            android:layout_width="match_parent"
+            android:text="@string/main_bottom_nav_me_version"/>
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/main_bottom_nav_me_switch_device"
+            style="@style/button_vertical_style"
+            android:layout_width="match_parent"
+            android:text="@string/main_bottom_nav_me_switch_device"/>
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

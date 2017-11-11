@@ -5,12 +5,12 @@
     <!--底部阴影-->
     <View
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="@dimen/follow_me_shadow_height"
         android:background="@drawable/bottom_shadow" />
     <LinearLayout
         android:id="@+id/follow_me_navigation"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
+        android:layout_height="@dimen/follow_me_navigation_height"
         android:orientation="horizontal"
         android:background="@color/bottom_tab_nav_background"
         android:layout_gravity="bottom"

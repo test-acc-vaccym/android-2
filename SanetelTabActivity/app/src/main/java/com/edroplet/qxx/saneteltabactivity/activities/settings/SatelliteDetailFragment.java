@@ -24,6 +24,9 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * A fragment representing a single City detail screen.
  * This fragment is either contained in a {@link SatelliteListActivity}
@@ -42,30 +45,30 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
      */
     private SatelliteInfo mItem;
 
-    @BindId(R.id.satellite_detail_save)
-    private CustomButton satelliteDetailSave;
+    @BindView(R.id.satellite_detail_save)
+    CustomButton satelliteDetailSave;
 
-    @BindId(R.id.satellite_detail_return)
-    private CustomButton satelliteDetailReturn;
+    @BindView(R.id.satellite_detail_return)
+    CustomButton satelliteDetailReturn;
 
-    @BindId(R.id.satellite_detail_uuid)
-    private CustomTextView satelliteDetailUuid;
-    @BindId(R.id.id_detail)
-    private CustomTextView satelliteDetailId;
-    @BindId(R.id.name_detail)
-    private CustomTextView satelliteDetailName;
-    @BindId(R.id.polarization_detail)
-    private Spinner satelliteDetailPlarization;
-    @BindId(R.id.beacon_detail)
-    private CustomEditText satelliteDetailBeacon;
-    @BindId(R.id.longitude_detail)
-    private CustomEditText satelliteDetailLongitude;
-    @BindId(R.id.threshold_detail)
-    private CustomEditText satelliteDetailThreshold;
-    @BindId(R.id.symbol_rate_detail)
-    private CustomEditText satelliteDetailSymbolRate;
-    @BindId(R.id.comment_detail)
-    private CustomEditText satelliteDetailComment;
+    @BindView(R.id.satellite_detail_uuid)
+    CustomTextView satelliteDetailUuid;
+    @BindView(R.id.id_detail)
+    CustomTextView satelliteDetailId;
+    @BindView(R.id.name_detail)
+    CustomTextView satelliteDetailName;
+    @BindView(R.id.polarization_detail)
+    Spinner satelliteDetailPlarization;
+    @BindView(R.id.beacon_detail)
+    CustomEditText satelliteDetailBeacon;
+    @BindView(R.id.longitude_detail)
+    CustomEditText satelliteDetailLongitude;
+    @BindView(R.id.threshold_detail)
+    CustomEditText satelliteDetailThreshold;
+    @BindView(R.id.symbol_rate_detail)
+    CustomEditText satelliteDetailSymbolRate;
+    @BindView(R.id.comment_detail)
+    CustomEditText satelliteDetailComment;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -122,6 +125,8 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.settings_fragment_satellite_detail, container, false);
 
+        ButterKnife.bind(this, rootView);
+
         /*
         satelliteDetailSave = rootView.findViewById(R.id.satellite_detail_save);
         satelliteDetailReturn = rootView.findViewById(R.id.satellite_detail_return);
@@ -129,15 +134,6 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
         satelliteDetailSave.setOnClickListener(this);
         satelliteDetailReturn.setOnClickListener(this);
         */
-
-        satelliteDetailUuid = rootView.findViewById(R.id.satellite_detail_uuid);
-        satelliteDetailId = rootView.findViewById(R.id.id_detail);
-        satelliteDetailName = rootView.findViewById(R.id.name_detail);
-        satelliteDetailPlarization = rootView.findViewById(R.id.polarization_detail);
-        satelliteDetailBeacon = rootView.findViewById(R.id.beacon_detail);
-        satelliteDetailLongitude = rootView.findViewById(R.id.longitude_detail);
-        satelliteDetailThreshold = rootView.findViewById(R.id.threshold_detail);
-        satelliteDetailSymbolRate = rootView.findViewById(R.id.symbol_rate_detail);
 
         satelliteDetailSymbolRate.setFilters(new InputFilter[]{new InputFilterFloat(6000,30000)});
         

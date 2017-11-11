@@ -104,6 +104,7 @@ public class AdministratorLoginActivity extends AppCompatActivity implements Loa
 
 //        View view = LayoutInflater.from(this).inflate(R.layout.activity_administrator_login, null);
         popDialog.setView(findViewById(R.id.administrator_login_pop));
+        popDialog.setContext(this);
         Bundle bundle = new Bundle();
         String start = getString(R.string.main_settings_administrator_password_third_start);
         bundle.putBoolean(PopDialog.SHOW_FIRST, true);

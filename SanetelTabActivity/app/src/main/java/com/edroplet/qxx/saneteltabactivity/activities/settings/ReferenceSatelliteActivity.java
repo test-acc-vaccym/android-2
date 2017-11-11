@@ -162,6 +162,7 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
         PopDialog popDialog = new PopDialog(this);
 
         popDialog.setView(findViewById(R.id.settings_reference_satellite_pop));
+        popDialog.setContext(this);
         Bundle bundle = new Bundle();
         bundle.putBoolean(PopDialog.SHOW_SECOND, true);
         bundle.putString(PopDialog.SECOND,getString(R.string.settings_reference_message_second_line));

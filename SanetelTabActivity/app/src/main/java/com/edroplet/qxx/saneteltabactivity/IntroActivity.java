@@ -57,7 +57,7 @@ public class IntroActivity extends AppIntro {
         setProgressButtonEnabled(true);
         // setProgressIndicator();
         setDoneText(getText(R.string.guide_done));
-        setDoneTextTypeface(Typeface.DEFAULT.toString());
+        setDoneTextTypeface("msyhbd.ttc");
         setColorDoneText(ContextCompat.getColor(getBaseContext(),R.color.button_text));
         setBackButtonVisibilityWithDone(true);
         // Turn vibration on and set intensity.

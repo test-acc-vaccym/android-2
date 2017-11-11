@@ -113,7 +113,7 @@
                         android:orientation="horizontal"
                         android:padding="@dimen/no_padding">
 
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
@@ -132,7 +132,7 @@
                         android:orientation="horizontal"
                         android:padding="@dimen/no_padding">
 
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
@@ -142,7 +142,9 @@
 
                         <Spinner
                             android:id="@+id/follow_me_destination_satellite_polarization"
-                            style="@style/radio_group_custom_item_edit_horizontal_style"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.45"
                             android:entries="@array/satellites_polarization"/>
                     </LinearLayout>
                     <!--卫星经度-->
@@ -152,7 +154,7 @@
                         android:orientation="horizontal"
                         android:padding="@dimen/no_padding">
 
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
@@ -177,7 +179,7 @@
                         android:orientation="horizontal"
                         android:padding="@dimen/no_padding">
 
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
@@ -202,7 +204,7 @@
                         android:orientation="horizontal"
                         android:padding="@dimen/no_padding">
 
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
@@ -216,6 +218,29 @@
                             android:inputType="number|numberDecimal"
                             android:hint="@string/satellite_detail_threshold_hint"/>
                     </LinearLayout>
+                    <!--载波-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="left|start"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/satellite_detail_carrier"
+                            android:textIsSelectable="true"/>
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                            android:id="@+id/follow_me_destination_satellite_carrier"
+                            style="@style/radio_group_custom_item_edit_horizontal_style"
+                            android:layout_weight="0.9"
+                            android:hint="@string/satellite_detail_carrier_hint"
+                            android:inputType="number"/>
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            style="@style/radio_group_custom_item_third_filed_horizontal_style"
+                            android:text="@string/settings_reference_carrier_unit"/>
+                    </LinearLayout>
                     <!--DVB-->
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -223,7 +248,7 @@
                         android:orientation="horizontal"
                         android:padding="@dimen/no_padding">
 
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"

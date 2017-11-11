@@ -76,12 +76,14 @@ public class AntennaInfo implements Parcelable {
     }
 
     public static class AntennaStatus{
-        public static final int EXPLODED = 0;
-        public static final int FOLDED = 1;
-        public static final int PAUSE = 2;
-        public static final int SEARCHING = 3;
-        public static final int RECYCLED = 4;
-        public static final int EXPLODING = 5;
+        public static final int INIT = 0;
+        public static final int EXPLODING = 1;
+        public static final int EXPLODED = 2;
+        public static final int FOLDING = 3;
+        public static final int FOLDED = 4;
+        public static final int PAUSE = 5;
+        public static final int SEARCHING = 6;
+        public static final int RECYCLED = 7;
 
     }
 }

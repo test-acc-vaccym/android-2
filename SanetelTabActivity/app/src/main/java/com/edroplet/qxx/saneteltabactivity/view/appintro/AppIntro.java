@@ -11,8 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.view.appintro.AppIntroBase;
-import com.edroplet.qxx.saneteltabactivity.view.appintro.util.CustomFontCache;
+import com.edroplet.qxx.saneteltabactivity.utils.ChangeTypeFace;
 import com.edroplet.qxx.saneteltabactivity.view.appintro.util.LogHelper;
 
 public abstract class AppIntro extends AppIntroBase {
@@ -70,9 +69,7 @@ public abstract class AppIntro extends AppIntroBase {
      */
     public void setSkipTextTypeface(@Nullable final String typeURL) {
         TextView skipText = (TextView) findViewById(R.id.skip);
-        if (CustomFontCache.get(typeURL, this) != null) {
-            skipText.setTypeface(CustomFontCache.get(typeURL, this));
-        }
+        skipText.setTypeface(ChangeTypeFace.getSimHei(this));
     }
 
     /**
@@ -94,9 +91,7 @@ public abstract class AppIntro extends AppIntroBase {
      */
     public void setDoneTextTypeface(@Nullable final String typeURL) {
         TextView doneText = (TextView) findViewById(R.id.done);
-        if (CustomFontCache.get(typeURL, this) != null) {
-            doneText.setTypeface(CustomFontCache.get(typeURL, this));
-        }
+        doneText.setTypeface(ChangeTypeFace.getSimHei(this));
     }
 
     /**

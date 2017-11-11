@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_update_version_file_download_url">http://124.250.52.44/assets/2000001/version.xml</string>
     <string name="app_name">星网卫通</string>
     <string name="action_settings">帮助</string>
     <string name="section_format">Hello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section: %1$d</string>
@@ -53,7 +54,11 @@
     <string name="switch_destination">切换目标星</string>
     <string name="not_connected_wifi_prompt">没有连接设备\n请连接设备</string>
 
-    <string name="explode_bind_confirm">当天线处于展开、收藏时，不能操作</string>
+    <string name="antenna_init_bind_confirm">初始化中,不能操作</string>
+    <string name="antenna_exploding_bind_confirm">当天线正在展开中,不能操作</string>
+    <string name="antenna_exploded_bind_confirm">当天线已经展开,不能操作</string>
+    <string name="antenna_folding_bind_confirm">当天线正在收藏中,不能操作</string>
+    <string name="antenna_folded_bind_confirm">当天线已经收藏,不能操作</string>
     <string name="locker_bind_confirm">当锁紧机构处于锁紧时，不能操作\n请将方位手刹松开，天线才能运动</string>
     <string name="saving_bind_confirm">当节能处于开启时，不能操作\n请先▲退出节能天线才能运动</string>
     <string name="saving_bind_quit">退出</string>
@@ -97,28 +102,31 @@
     <string name="satellite_longitude_key">经度</string>
     <string name="satellite_beacon_key">信标</string>
     <string name="satellite_threshold_key">门限</string>
+    <string name="satellite_carrier_key">载波</string>
     <string name="satellite_symbol_rate_key">符号率</string>
 
     <!--卫星-->
     <string name="satellite_detail_uuid_key">UUID</string>
-    <string name="satellite_detail_id_key">序&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;号</string>
+    <string name="satellite_detail_id_key">序号</string>
     <string name="satellite_detail_name_key">卫星名称</string>
     <string name="satellite_detail_polarization_key">极化方式</string>
     <string name="satellite_detail_longitude_key">卫星经度</string>
     <string name="satellite_detail_beacon_key">信标频率</string>
     <string name="satellite_detail_beacon_hint">10750~40000</string>
-    <string name="satellite_detail_threshold_key">门&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;限</string>
+    <string name="satellite_detail_threshold_key">门限</string>
     <string name="satellite_detail_threshold_hint">0.0~10.0</string>
-    <string name="satellite_detail_symbol_rate_key">符&#160;&#160;号&#160;&#160;率</string>
+    <string name="satellite_detail_carrier">载波频率</string>
+    <string name="satellite_detail_carrier_hint">10750~40000</string>
+    <string name="satellite_detail_symbol_rate_key">符号率</string>
     <string name="satellite_detail_symbol_rate_hint">整数6000~30000,单位kbps</string>
-    <string name="satellite_detail_comment_key">备&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;注</string>
+    <string name="satellite_detail_comment_key">备注</string>
     <string name="input_error_dialog_message">您的某些输入有误，确认继续？</string>
     <!--城市-->
     <string name="city_detail_id_key">序号</string>
     <string name="city_detail_province">所属省份</string>
     <string name="city_detail_name_key">城市名称</string>
-    <string name="city_detail_longitude_key">经&#160;&#160;&#160;&#160;度°</string>
-    <string name="city_detail_latitude_key">纬&#160;&#160;&#160;&#160;度°</string>
+    <string name="city_detail_longitude_key">经度°</string>
+    <string name="city_detail_latitude_key">纬度°</string>
     <string name="key_province_all">所有省份</string>
 
     <!--底部按钮-->
@@ -218,7 +226,9 @@
     <!--监视页面说明-->
     <string name="functions_monitor_help_title">监视页面说明</string>
     <string name="functions_monitor_help_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;快捷按钮行：包括展开、手动、寻星、复位、收藏五个天线快捷动作。\n
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当天线处于展开、收藏时，快捷键为灰色，不能操作。\n
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当天线处于已收藏状态时，手动、寻星、复位、收藏快捷键为灰色，不能操作。只有展开快捷键能够操作。\n
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当天线处于展开中、初始、收藏中，所有快捷键为灰色，不能操作。\n
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当天线处于已展开状态时，展开和复位快捷键为灰色，不能操作。只有手动、寻星、收藏快捷键能够操作。\n
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当锁紧机构处于锁紧时，快捷键为灰色，不能操作。\n
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当节能处于开启时，快捷键为灰色，不能操作。\n
 </string>
@@ -231,10 +241,11 @@
     <string name="main_monitor_satellite_polarization">极化方式</string>
     <string name="main_monitor_satellite_polarization_hint">水平</string>
     <string name="main_monitor_satellite_beacon">信标频率</string>
-    <string name="main_monitor_satellite_beacon_hint">12251.000</string>
+    <string name="main_monitor_satellite_beacon_hint">12259.000</string>
     <string name="main_monitor_satellite_agc">AGC电平</string>
-    <string name="main_monitor_satellite_agc_hint">4.5</string>
-    <string name="main_monitor_satellite_dvb_hint">0.0</string>
+    <string name="main_monitor_satellite_agc_hint">0.18</string>
+    <string name="main_monitor_satellite_carrier">载波频率</string>
+    <string name="main_monitor_satellite_carrier_hint">12254.000</string>
     <!--天线信息-->
     <string name="main_monitor_antenna_info">天线信息</string>
     <string name="main_monitor_antenna_prepare_azimuth">预置方位角</string>
@@ -260,9 +271,12 @@
     <string name="main_monitor_amplifier_status_temperature_state">自动温控</string>
     <string name="main_monitor_amplifier_status_temperature_state_normal">正常</string>
     <string name="main_monitor_amplifier_status_temperature_state_abnormal">异常</string>
-    <string name="main_monitor_amplifier_status_pll_state">锁相环&#160;&#160;&#160;&#160;</string>
+    <string name="main_monitor_amplifier_status_pll_state">锁&#160;&#160;相&#160;&#160;环</string>
     <string name="main_monitor_amplifier_status_pll_state_normal">正常</string>
     <string name="main_monitor_amplifier_status_pll_state_abnormal">异常</string>
+    <string name="main_monitor_amplifier_status_satellite__protect_state">邻星保护</string>
+    <string name="main_monitor_amplifier_status_satellite__protect_state_open">开启</string>
+    <string name="main_monitor_amplifier_status_satellite__protect_state_close">开启</string>
     <string name="main_monitor_amplifier_value_output">输出</string>
     <string name="main_monitor_amplifier_value_output_hint">0.0</string>
     <string name="main_monitor_amplifier_value_temperature">温度</string>
@@ -301,10 +315,10 @@
     <string name="main_status_communicate_internet">网络通信</string>
     <string name="main_status_communicate_serial_port">串口通信</string>
     <string name="main_status_communicate_bd">BD/GPS</string>
-    <string name="main_status_communicate_beacon">信&#160;&#160;标&#160;&#160;机</string>
-    <string name="main_status_communicate_clinometer">倾&#160;&#160;角&#160;&#160;计</string>
-    <string name="main_status_communicate_power">功&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;放</string>
-    <string name="main_status_communicate_lnb">L&#160;&#160;N&#160;&#160;B&#160;&#160;&#160;&#160;</string>
+    <string name="main_status_communicate_beacon">信标机</string>
+    <string name="main_status_communicate_clinometer">倾角计</string>
+    <string name="main_status_communicate_power">功放</string>
+    <string name="main_status_communicate_lnb">LNB</string>
 
     <!--设备状况-->
     <string name="main_status_device">设备状况</string>
@@ -413,13 +427,13 @@
     <!--引导页目标性-->
     <string name="follow_me_destination_second_line">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;请您从数据库中选择目标星；如果数据库没有目标星，请输入卫星参数。新卫星将保持于数据库。</string>
     <string name="follow_me_destination_satellite_title">目标星</string>
-    <string name="follow_me_destination_satellite_new">新卫星参数输入：</string>
+    <string name="follow_me_destination_satellite_new">新卫星参数输入</string>
     <string name="follow_me_destination_satellite_name">卫星名称</string>
     <string name="follow_me_destination_satellite_polarization">极化方式</string>
     <string name="follow_me_destination_satellite_longitude">卫星经度</string>
     <string name="follow_me_destination_satellite_beacon">信标频率</string>
-    <string name="follow_me_destination_satellite_threshold">门&#160;&#160;&#160;&#160;&#160;&#160;限</string>
-    <string name="follow_me_destination_satellite_dvb">符&#160;&#160;号&#160;&#160;率</string>
+    <string name="follow_me_destination_satellite_threshold">门限</string>
+    <string name="follow_me_destination_satellite_dvb">符号率</string>
 
     <!--引导页寻星模式-->
     <string name="follow_me_search_mode_title">寻星模式</string>
@@ -495,7 +509,7 @@
     <string name="main_me_error_report_email_receive">接收邮箱</string>
     <string name="main_me_error_report_email_receive_address">support@sanetel.com</string>
     <string name="main_me_error_report_email_send">发送邮箱</string>
-    <string name="main_me_error_report_name">姓&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;名</string>
+    <string name="main_me_error_report_name">姓名</string>
     <string name="main_me_error_report_phone">用户电话</string>
     <string name="main_me_error_report_serial_number">产品序列号</string>
     <string name="main_me_error_report_serial_number_hint">P120-201708001</string>
@@ -515,8 +529,8 @@
     <string name="main_me_advice_email_send">发送邮箱</string>
     <string name="main_me_advice_email_send_address">user@sanetel.com</string>
     <string name="main_me_email_customer">用户单位</string>
-    <string name="main_me_advice_name">姓&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;名</string>
-    <string name="main_me_advice_phone">电&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;话</string>
+    <string name="main_me_advice_name">姓名</string>
+    <string name="main_me_advice_phone">电话</string>
     <string name="main_me_advice_subject">邮件主题</string>
     <string name="main_me_advice_photo">添加照片</string>
     <string name="main_me_advice_description">意见输入区</string>
@@ -533,9 +547,9 @@
     <string name="main_me_about_fax">传真</string>
     <string name="main_me_about_fax_number">010-87838866</string>
     <string name="main_me_about_email">EMAIL:</string>
-    <string name="main_me_about_email_address">sale@sanetel.com（产品咨询）</string>
+    <string name="main_me_about_email_address">sale@sanetel.com</string>
     <string name="main_me_about_official_site">官网</string>
-    <string name="main_me_about_official_site_url">www.sanetel.com（产品咨询）</string>
+    <string name="main_me_about_official_site_url">www.sanetel.com</string>
     <!--确认切换设备-->
     <string name="main_me_switch_device_confirm">确定要连接其他天线或其他类型设备吗？</string>
 
@@ -544,8 +558,11 @@
     <string name="main_me_app_version">%1$s</string>
     <string name="main_me_app_update">APP版本更新</string>
     <string name="main_me_app_update_state_checking">检查中……</string>
-    <string name="main_me_app_update_state_downloading">下载中,进度[ %1$d ] %2$s</string>
-    <string name="main_me_app_update_state_complete">完成</string>
+    <string name="main_me_app_update_state_downloading">下载中[ %1$d %%] %2$s</string>
+    <string name="main_me_app_update_state_download_failed">更新失败</string>
+    <string name="main_me_app_update_state_verify_failed">校验失败</string>
+    <string name="main_me_app_update_state_install_failed">安装失败</string>
+    <string name="main_me_app_update_state_complete">完成,并将自动安装</string>
     <string name="main_me_app_recovery">APP恢复出厂</string>
     <string name="main_me_app_browse">APP使用说明书在线浏览</string>
     <string name="main_me_app_download">APP使用说明书下载</string>
@@ -576,7 +593,10 @@
     <string name="settings_reference_beacon">信标频率</string>
     <string name="settings_reference_ag">AG门 限</string>
     <string name="settings_reference_dvb">DVB符号率</string>
+    <string name="settings_reference_dvb_hint">0.0</string>
     <string name="settings_reference_dvb_unit">kbps</string>
+    <string name="settings_reference_carrier">载波频率</string>
+    <string name="settings_reference_carrier_unit">KHz</string>
     <string name="settings_reference_message_second_line">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当目标星存在信标不稳定等特定情况，直接寻星困难，才选择参考星寻星。</string>
     <string name="settings_reference_message_third_end">永久生效</string>
     <string name="settings_reference_message_forth"> </string>
@@ -594,12 +614,13 @@
     <string name="settings_amplifier_manufacture_3">Mitec</string>
     <string name="settings_amplifier_manufacture_4">WaveLab</string>
     <string name="settings_amplifier_manufacture_5">Advantech</string>
+    <string name="settings_amplifier_manufacture_6">Sanetel</string>
     <string name="settings_amplifier_manufacture_message_second">更换参数</string>
     <string name="settings_amplifier_manufacture_message_third_start">点击</string>
-    <string name="settings_amplifier_oscillator_value_1">12.80</string>
-    <string name="settings_amplifier_oscillator_value_2">13.05</string>
-    <string name="oscillator_unit">GHz</string>
-    <string name="settings_amplifier_oscillator_value">本振值（GHz）</string>
+    <string name="settings_amplifier_oscillator_value_1">12800</string>
+    <string name="settings_amplifier_oscillator_value_2">13050</string>
+    <string name="oscillator_unit">MHz</string>
+    <string name="settings_amplifier_oscillator_value">本振值（MHz）</string>
     <string name="settings_amplifier_oscillator_message_second">更换参数</string>
     <string name="settings_amplifier_oscillator_message_third_start">点击</string>
     <string name="settings_amplifier_interfere_use">启用</string>
@@ -680,7 +701,7 @@
     <string name="administrator_setting_wifi_name_hint">请以“XWWT-”开头,否则将自动添加.不能超过27个字符</string>
 
     <!--10.5.10.	IP设置-->
-    <string name="administrator_setting_ip_address">IP&#160;&#160;地&#160;&#160;址</string>
+    <string name="administrator_setting_ip_address">IP地址</string>
     <string name="administrator_setting_ip_mask">子网掩码</string>
     <string name="administrator_setting_ip_toast">请输入完整的IP</string>
     <string name="administrator_setting_ip_valid_toast">请输入合法的ip地址</string>
@@ -728,6 +749,7 @@
     <string name="loading">加载中…</string>
     <string name="no_more">-----我是有底线的-----</string>
     <string name="title_activity_down_load_add">自定义下载</string>
+    <string name="up_to_date">你的APP已经是最新版本，无须更新</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">url</string>

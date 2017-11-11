@@ -25,6 +25,8 @@ import android.net.Uri;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsCollectHistoryFileListActivity.KEY_IS_SELECT;
 import static com.edroplet.qxx.saneteltabactivity.utils.CustomSP.WifiSettingsNameKey;
@@ -41,6 +43,7 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
     ArrayList<File> files;
     Uri attache;
 
+    Timer timer = new Timer();
 
     @BindId(R.id.main_me_error_report_email_receive)
     private CustomTextView errorReportEmailReceive;
@@ -142,6 +145,13 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
         errorReportPhotoButton.setOnClickListener(this);
         errorReportAttachButton.setOnClickListener(this);
         errorReportHistoryhButton.setOnClickListener(this);
+
+        timer.schedule(new TimerTask(){
+            @Override
+            public void run() {
+
+            }
+        }, 60000);
     }
 
     @Override
@@ -153,18 +163,7 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
                 this.finish();
                 break;
             case R.id.main_me_error_report_save:
-                // 保存到本地缓存
-                CustomSP.putString(this, KEY_ERROR_REPORT_PHOTO, errorReportPhoto.getText().toString());
-                CustomSP.putString(this, KEY_ERROR_REPORT_PHONE, errorReportPhone.getText().toString());
-                CustomSP.putString(this, KEY_ERROR_REPORT_NAME, errorReportName.getText().toString());
-                CustomSP.putString(this, KEY_ERROR_REPORT_FILENAME, errorReportFileName.getText().toString());
-                CustomSP.putString(this, KEY_ERROR_REPORT_EMAIL_SEND, errorReportEmailSend.getText().toString());
-                CustomSP.putString(this, KEY_ERROR_REPORT_EMAIL_RECEIVE, errorReportEmailReceive.getText().toString());
-                CustomSP.putString(this, KEY_ERROR_REPORT_DESCRIPTION, errorReportDescription.getText().toString());
-                CustomSP.putString(this, KEY_ERROR_REPORT_ATTACH_FILES, errorReportAttach.getText().toString());
-                CustomSP.putString(this, KEY_ERROR_REPORT_HISTORY_FILES, errorReportHistoryFiles.getText().toString());
-                CustomSP.putString(this, KEY_ERROR_REPORT_SERIAL_NUMBER, errorReportSerialNumber.getText().toString());
-                CustomSP.putString(this, KEY_ERROR_REPORT_CUSTOMER,errorReportCustomer.getText().toString());
+                onSave();
                 break;
             case R.id.main_me_error_report_commit:
                 // todo 提交
@@ -252,5 +251,21 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
             attache = data.getData();
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void onSave(){
+
+        // 保存到本地缓存
+        CustomSP.putString(this, KEY_ERROR_REPORT_PHOTO, errorReportPhoto.getText().toString());
+        CustomSP.putString(this, KEY_ERROR_REPORT_PHONE, errorReportPhone.getText().toString());
+        CustomSP.putString(this, KEY_ERROR_REPORT_NAME, errorReportName.getText().toString());
+        CustomSP.putString(this, KEY_ERROR_REPORT_FILENAME, errorReportFileName.getText().toString());
+        CustomSP.putString(this, KEY_ERROR_REPORT_EMAIL_SEND, errorReportEmailSend.getText().toString());
+        CustomSP.putString(this, KEY_ERROR_REPORT_EMAIL_RECEIVE, errorReportEmailReceive.getText().toString());
+        CustomSP.putString(this, KEY_ERROR_REPORT_DESCRIPTION, errorReportDescription.getText().toString());
+        CustomSP.putString(this, KEY_ERROR_REPORT_ATTACH_FILES, errorReportAttach.getText().toString());
+        CustomSP.putString(this, KEY_ERROR_REPORT_HISTORY_FILES, errorReportHistoryFiles.getText().toString());
+        CustomSP.putString(this, KEY_ERROR_REPORT_SERIAL_NUMBER, errorReportSerialNumber.getText().toString());
+        CustomSP.putString(this, KEY_ERROR_REPORT_CUSTOMER,errorReportCustomer.getText().toString());
     }
 }

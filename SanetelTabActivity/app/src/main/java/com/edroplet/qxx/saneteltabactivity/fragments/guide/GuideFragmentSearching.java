@@ -16,13 +16,20 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by qxs on 2017/9/19.
  */
 
 public class GuideFragmentSearching extends Fragment {
+    @BindView(R.id.pop_dialog_third_button)
+    CustomButton thirdButton;
+    
     public static GuideFragmentSearching newInstance(boolean showInfo,boolean showFirst, String firstLine,
                                                      boolean showSecond, String secondLine, boolean showThird,
                                                      String thirdLineStart, int icon, String buttonText, String thirdLineEnd) {
@@ -49,6 +56,14 @@ public class GuideFragmentSearching extends Fragment {
         if (view == null){
             return null;
         }
+        ButterKnife.bind(this, view);
+
+        thirdButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 2017/11/11  开始寻星
+            }
+        });
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);
         Bundle bundle = getArguments();
@@ -56,6 +71,7 @@ public class GuideFragmentSearching extends Fragment {
             popDialog.setBundle(bundle);
             popDialog.setSetFirstColor(true);
             Context context = getContext();
+            popDialog.setContext(context);
             int icon = bundle.getInt(PopDialog.ICON, -1);
             if (icon == 1) {
 //                popDialog.setDrawable(ImageUtil.bitmapToDrawable(

@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/follow_me_searching_title"/>
     <LinearLayout
-        android:id="@+id/follow_me_searching_satellite_info"
-        android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
-        <include layout="@layout/antenna_info" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/main_monitor_satellite_agc"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/follow_me_searching_title"/>
+        <LinearLayout
+            android:id="@+id/follow_me_searching_satellite_info"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+            <include layout="@layout/antenna_info" />
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_monitor_satellite_agc"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+        </LinearLayout>
+        <include layout="@layout/pop_dialog_blue"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
     </LinearLayout>
-    <include layout="@layout/pop_dialog_blue"/>
-</LinearLayout>
+</android.support.v4.widget.NestedScrollView>

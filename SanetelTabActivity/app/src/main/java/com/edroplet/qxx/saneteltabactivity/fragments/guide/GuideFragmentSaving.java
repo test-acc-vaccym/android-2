@@ -15,13 +15,20 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by qxs on 2017/9/19.
  */
 
 public class GuideFragmentSaving extends Fragment {
+    @BindView(R.id.pop_dialog_third_button)
+    CustomButton thirdButton;
+
     public static GuideFragmentSaving newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                   String secondLine, boolean showThird, String thirdLineStart,
                                                   int icon, String buttonText, String thirdLineEnd, boolean showForth, String forth) {
@@ -49,9 +56,20 @@ public class GuideFragmentSaving extends Fragment {
         if (view == null){
             return null;
         }
+        ButterKnife.bind(this, view);
+
+        thirdButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 2017/11/11  设置节能
+                // send command
+            }
+        });
+
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);
         Context context = getContext();
+        popDialog.setContext(context);
 
         Bundle bundle = getArguments();
         if (bundle != null) {

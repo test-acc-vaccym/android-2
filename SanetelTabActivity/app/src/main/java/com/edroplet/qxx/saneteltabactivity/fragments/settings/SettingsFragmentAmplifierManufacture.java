@@ -41,6 +41,7 @@ public class SettingsFragmentAmplifierManufacture extends Fragment {
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);
         Context context = getContext();
+        popDialog.setContext(context);
         Bundle bundle = new Bundle();
         bundle.putBoolean(PopDialog.SHOW_SECOND, true);
         bundle.putBoolean(PopDialog.SHOW_THIRD, true);

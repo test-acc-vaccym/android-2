@@ -10,6 +10,10 @@ import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -35,6 +39,9 @@ public class GuideFragmentExplode extends Fragment {
         return fragment;
     }
 
+    @BindView(R.id.pop_dialog_third_button)
+    CustomButton thirdButton;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,8 +49,20 @@ public class GuideFragmentExplode extends Fragment {
         if (view == null){
             return null;
         }
+        ButterKnife.bind(this, view);
+
+        thirdButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 2017/11/11  设置天线动作
+                // send command
+            }
+        });
+        // TODO: 2017/11/11 获取天线状态
+
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);
+        popDialog.setContext(getContext());
 
         Bundle bundle = getArguments();
         if (bundle != null) {

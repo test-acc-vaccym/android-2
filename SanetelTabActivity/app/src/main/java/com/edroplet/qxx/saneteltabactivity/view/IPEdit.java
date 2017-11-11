@@ -242,6 +242,7 @@ public class IPEdit extends LinearLayout{
     {
         textView.setBackgroundDrawable(null);
         textView.setText(".");
+        textView.setGravity(Gravity.CENTER);
     }
 
     private void seftLayout()

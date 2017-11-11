@@ -13,9 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.utils.ChangeTypeFace;
 import com.edroplet.qxx.saneteltabactivity.view.appintro.ISlideBackgroundColorHolder;
 import com.edroplet.qxx.saneteltabactivity.view.appintro.ISlideSelectionListener;
-import com.edroplet.qxx.saneteltabactivity.view.appintro.util.CustomFontCache;
 import com.edroplet.qxx.saneteltabactivity.view.appintro.util.LogHelper;
 
 public abstract class AppIntroBaseFragment extends Fragment implements ISlideSelectionListener,
@@ -90,18 +90,14 @@ public abstract class AppIntroBaseFragment extends Fragment implements ISlideSel
             t.setTextColor(titleColor);
         }
         if (titleTypeface != null) {
-            if (CustomFontCache.get(titleTypeface, getContext()) != null) {
-                t.setTypeface(CustomFontCache.get(titleTypeface, getContext()));
-            }
+            t.setTypeface(ChangeTypeFace.getSimHei(getContext()));
         }
         d.setText(description);
         if (descColor != 0) {
             d.setTextColor(descColor);
         }
         if (descTypeface != null) {
-            if (CustomFontCache.get(descTypeface, getContext()) != null) {
-                d.setTypeface(CustomFontCache.get(descTypeface, getContext()));
-            }
+            d.setTypeface(ChangeTypeFace.getSimHei(getContext()));
         }
         i.setImageResource(drawable);
         mainLayout.setBackgroundColor(bgColor);

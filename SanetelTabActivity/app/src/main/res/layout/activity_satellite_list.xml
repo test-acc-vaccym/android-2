@@ -100,6 +100,15 @@
                 android:textSize="@dimen/list_item_text_size"
                 android:padding="@dimen/no_padding"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    android:id="@+id/carrier_title"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/no_padding"
+                    android:text="@string/satellite_carrier_key"
+                    android:textSize="@dimen/list_item_text_size"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/symbolRate_title"
                 android:layout_width="0dp"
@@ -108,7 +117,7 @@
                 android:padding="@dimen/no_padding"
                 android:text="@string/satellite_symbol_rate_key"
                 android:textSize="@dimen/list_item_text_size"
-                style="?android:attr/textAppearanceLarge"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:id="@+id/satellite_select_button"

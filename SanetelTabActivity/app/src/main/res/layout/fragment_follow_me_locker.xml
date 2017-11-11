@@ -34,6 +34,9 @@
                 android:spacing="5dp"/>
         </FrameLayout>
 
-        <include layout="@layout/pop_dialog_blue"/>
+        <include layout="@layout/pop_dialog_blue"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

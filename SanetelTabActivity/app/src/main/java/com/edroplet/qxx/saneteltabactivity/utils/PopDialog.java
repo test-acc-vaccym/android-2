@@ -200,11 +200,13 @@ public class PopDialog {
                     thirdButton.setCompoundDrawables(this.drawable,
                             null,null,null);
                     thirdButton.setText(this.buttonText);
+                    /*
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                         thirdButton.setTextAppearance(android.R.style.TextAppearance_DeviceDefault_Large);
                     else {
                         thirdButton.setTextAppearance(context, android.R.style.TextAppearance_DeviceDefault_Large);
                     }
+                    */
                     thirdButton.setTextColor(ContextCompat.getColor(context, R.color.button_text));
                     thirdButton.setVisibility(View.VISIBLE);
                 } else {

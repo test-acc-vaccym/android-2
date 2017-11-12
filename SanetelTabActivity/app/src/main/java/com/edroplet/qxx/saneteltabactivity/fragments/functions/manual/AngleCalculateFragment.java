@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 
 import com.edroplet.qxx.saneteltabactivity.R;
@@ -27,6 +28,7 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCusto
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnFocusChange;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -42,8 +44,6 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
     private Cities cities;
     private String selectedProvince;
     private String selectedCity;
-
-    CustomRadioGroupWithCustomRadioButton customRadioGroupWithCustomRadioButton;
 
     //
     // 本地位置
@@ -100,9 +100,17 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
         ButterKnife.bind(this,view);
         AntennaInfo antennaInfo = getArguments().getParcelable("antennaInfo");
 
-        tvAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
-        tvPitch.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
-        tvPolarization.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
+        tvAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(-360,360,3)});
+        tvPitch.setFilters(new InputFilter[]{new InputFilterFloat(-360,360,3)});
+        tvPolarization.setFilters(new InputFilter[]{new InputFilterFloat(-360,360,3)});
+
+        localLongitude.setOnFocusChangeListener(onInpuFocusChangeListener);
+        localLongitudeUnit.setOnFocusChangeListener(onInpuFocusChangeListener);
+        localLatitude.setOnFocusChangeListener(onInpuFocusChangeListener);
+        localLatitudeUnit.setOnFocusChangeListener(onInpuFocusChangeListener);
+
+        spinnerLocationProvince.setOnFocusChangeListener(onSelectFocusChangeListener);
+        spinnerLocationCity.setOnFocusChangeListener(onSelectFocusChangeListener);
 
         // 按键
         calculate.setOnClickListener(this);
@@ -113,17 +121,45 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
         initCitySelect(view);
         return view;
     }
+    @BindView(R.id.city_select_choice)
+    RadioButton choiceSelect;
+
+    @BindView(R.id.city_input_choice)
+    RadioButton choiceInput;
+
+    private View.OnFocusChangeListener onInpuFocusChangeListener = new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            if (hasFocus){
+                choiceInput.setChecked(true);
+                choiceSelect.setChecked(false);
+            }
+        }
+    };
+
+    private View.OnFocusChangeListener onSelectFocusChangeListener = new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            if (hasFocus){
+                choiceInput.setChecked(false);
+                choiceSelect.setChecked(true);
+            }
+        }
+    };
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.angle_calculate_operate_calculate:
-                tvAzimuth.setText(String.valueOf(satelliteLongitude + satelliteLatitude + satelliteBeacon
-                        + satelliteDvb + satelliteThreshold + cityLongitude + cityLatitude));
-                tvPitch.setText(String.valueOf(satelliteLongitude + satelliteLatitude + satelliteBeacon
-                        + satelliteDvb + satelliteThreshold + cityLongitude - cityLatitude));
-                tvPolarization.setText(String.valueOf(satelliteLongitude + satelliteLatitude + satelliteBeacon
-                        + satelliteDvb + satelliteThreshold - cityLongitude - cityLatitude));
+                float a = (satelliteLongitude + satelliteLatitude + satelliteBeacon
+                        + satelliteDvb + satelliteThreshold + cityLongitude + cityLatitude)%360;
+                tvAzimuth.setText(String.valueOf(a));
+                float b = (satelliteLongitude + satelliteLatitude + satelliteBeacon
+                        + satelliteDvb + satelliteThreshold + cityLongitude - cityLatitude)%360;
+                tvPitch.setText(String.valueOf(b));
+                float c = (satelliteLongitude - satelliteLatitude - satelliteBeacon
+                        - satelliteDvb + satelliteThreshold - cityLongitude - cityLatitude)%360;
+                tvPolarization.setText(String.valueOf(c));
                 break;
             case R.id.angle_calculate_operate_clear:
                 tvAzimuth.setText("");

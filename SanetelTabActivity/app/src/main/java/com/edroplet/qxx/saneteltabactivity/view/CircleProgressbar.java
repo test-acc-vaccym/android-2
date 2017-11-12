@@ -247,7 +247,7 @@ public class CircleProgressbar extends AppCompatTextView
         int deleteWidth = progressLineWidth + outLineWidth;
         mArcRect.set(bounds.left + deleteWidth / 2, bounds.top + deleteWidth / 2, bounds.right - deleteWidth / 2, bounds.bottom - deleteWidth / 2);
 
-        canvas.drawArc(mArcRect, 0, 360 * progress / 100, false, mPaint);
+        canvas.drawArc(mArcRect, -360, 360 * progress / 100, false, mPaint);
     }
 
     @Override

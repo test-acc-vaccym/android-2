@@ -27,13 +27,13 @@
                 android:text="@string/settings_amplifier_oscillator_value"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
+                android:id="@+id/settings_amplifier_oscillator_group"
                 android:layout_width="@dimen/radio_group_width"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/radio_group_item_height"
-                    android:checked="true"
                     android:id="@+id/settings_amplifier_oscillator_value_1"
                     android:text="@string/settings_amplifier_oscillator_value_1"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>

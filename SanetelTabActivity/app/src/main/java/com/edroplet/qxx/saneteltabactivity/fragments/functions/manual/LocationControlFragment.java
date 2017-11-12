@@ -34,7 +34,7 @@ public class LocationControlFragment extends Fragment {
     public static LocationControlFragment newInstance(PresetAngleInfo presetAngleInfo) {
 
         Bundle args = new Bundle();
-        args.putSerializable("presetAngleInfo",presetAngleInfo);
+        args.putSerializable(KEY_CALCULATED_PREPARE_ANGULAR_INFO,presetAngleInfo);
         LocationControlFragment fragment = new LocationControlFragment();
         fragment.setArguments(args);
         return fragment;
@@ -69,9 +69,9 @@ public class LocationControlFragment extends Fragment {
         context = getContext();
 
 
-        etAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
-        etPitch.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
-        etPolarization.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
+        etAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(-360,360,3)});
+        etPitch.setFilters(new InputFilter[]{new InputFilterFloat(-360,360,3)});
+        etPolarization.setFilters(new InputFilter[]{new InputFilterFloat(-360,360,3)});
 
         PresetAngleInfo presetAngleInfo = (PresetAngleInfo) getArguments().getSerializable(KEY_CALCULATED_PREPARE_ANGULAR_INFO);
         if (presetAngleInfo != null){

@@ -86,7 +86,7 @@ public class AdministratorFragmentAntennaType extends Fragment {
         radioButtonThreeOne = view.findViewById(R.id.administrator_setting_antenna_type_three_one);
         radioButtonThreeZero = view.findViewById(R.id.administrator_setting_antenna_type_three_zero);
 
-        String type = CustomSP.getString(getContext(),AntennaType,getString(R.string.administrator_setting_antenna_type_two_two));
+        String type = CustomSP.getString(getContext(),AntennaType,getString(R.string.administrator_setting_antenna_type_two_one));
         if (type.equals(getString(R.string.administrator_setting_antenna_type_two_two))){
             radioButtonTwoTwo.setChecked(true);
         }else if (type.equals(getString(R.string.administrator_setting_antenna_type_two_one))){

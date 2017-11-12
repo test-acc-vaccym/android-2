@@ -70,9 +70,9 @@ public class AdministratorFragmentAntennaIncriminate extends Fragment {
         antennaIncriminatePitch = view.findViewById(R.id.administrator_antenna_incriminate_tv_pitch);
         antennaIncriminatePolarization = view.findViewById(R.id.administrator_antenna_incriminate_polarization);
 
-        antennaIncriminateAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(0.0, 360.0)});
-        antennaIncriminatePitch.setFilters(new InputFilter[]{new InputFilterFloat(0.0, 360.0)});
-        antennaIncriminatePolarization.setFilters(new InputFilter[]{new InputFilterFloat(0.0, 360.0)});
+        antennaIncriminateAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(-360.0, 360.0)});
+        antennaIncriminatePitch.setFilters(new InputFilter[]{new InputFilterFloat(-360.0, 360.0)});
+        antennaIncriminatePolarization.setFilters(new InputFilter[]{new InputFilterFloat(-360.0, 360.0)});
 
         String Azimuth = CustomSP.getString(context,AntennaIncriminateAzimuthKey, "");
         antennaIncriminateAzimuth.setText(Azimuth);

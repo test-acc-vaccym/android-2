@@ -33,7 +33,7 @@ public class FunctionsFragmentMonitor extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.functions_fragment_monitor, null);
         CustomTextView tvAntennaAzimuthInfo = (CustomTextView) view.findViewById(R.id.antenna_info_tv_azimuth);
-        tvAntennaAzimuthInfo.setFilters(new InputFilter[]{new InputFilterFloat(0.0, 360.0)});
+        tvAntennaAzimuthInfo.setFilters(new InputFilter[]{new InputFilterFloat(-360.0, 360.0)});
         tvAntennaAzimuthInfo.setText(getArguments().getString(AntennaAzimuthInfo));
         return view;
     }

@@ -11,6 +11,8 @@
     <dimen name="pop_margin_horizontal">20dp</dimen>
     <dimen name="pop_margin_vertical">40dp</dimen>
 
+    <dimen name="bottom_nav_height">30dp</dimen>
+
     <dimen name="fab_margin_top">110dp</dimen>
     <dimen name="fab_margin_bottom">40dp</dimen>
     <dimen name="fab_size">@dimen/fab_margin_bottom</dimen>

@@ -28,6 +28,7 @@ import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAm
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifierManufacture;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifierOscillator;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifiereEmit;
+import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
 import com.edroplet.qxx.saneteltabactivity.view.BottomNavigationViewEx;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
@@ -94,31 +95,29 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
                 startPosition = COUNT - 1;
             }
         }
+        bottomNavigationView.setItemHeight(ImageUtil.dip2px(this, 40));
         bottomNavigationView.enableAnimation(false);
         bottomNavigationView.enableItemShiftingMode(false);
         bottomNavigationView.enableShiftingMode(false);
-        bottomNavigationView.setTextSize(18);
-        bottomNavigationView.setIconSize(1,1);
+        bottomNavigationView.setTextSize(20);
+        bottomNavigationView.setIconSize(0,0);
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        fab.setVisibility(View.INVISIBLE);
                         switch (item.getItemId()) {
                             case R.id.settings_power_amplifier_bottom_navigation_factory:
                                 mViewPager.setCurrentItem(0);
-                                fab.setVisibility(View.INVISIBLE);
                                 break;
                             case R.id.settings_power_amplifier_bottom_navigation_oscillator:
                                 mViewPager.setCurrentItem(1);
-                                fab.setVisibility(View.INVISIBLE);
                                 break;
                             case R.id.settings_power_amplifier_bottom_navigation_interfere:
                                 mViewPager.setCurrentItem(2);
-                                fab.setVisibility(View.INVISIBLE);
                                 break;
                             case R.id.settings_power_amplifier_bottom_navigation_emit:
                                 mViewPager.setCurrentItem(3);
-                                fab.setVisibility(View.VISIBLE);
                         }
                         return false;
                     }
@@ -147,11 +146,6 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                if (position == 3){
-                    fab.setVisibility(View.VISIBLE);
-                }else {
-                    fab.setVisibility(View.INVISIBLE);
-                }
             }
 
             @Override
@@ -170,35 +164,6 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
             }
         });
 
-        /* mTabLayout.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-
-        mTabLayout.setupWithViewPager(mViewPager);
-
-        if (mTabLayout.getChildCount() > 4)
-            mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        else
-            mTabLayout.setTabMode(TabLayout.MODE_FIXED);
-
-        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-
-                if (tab.getPosition() == 3){
-                    fab.setVisibility(View.VISIBLE);
-                }else {
-                    fab.setVisibility(View.INVISIBLE);
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-            }
-        });
-        */
         // 初始化快捷键
         OperateBarControl.setupOperatorBar(this);
         return this;

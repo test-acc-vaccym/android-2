@@ -28,7 +28,6 @@
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:id="@+id/settings_amplifier_interfere_use"
                     android:text="@string/settings_amplifier_interfere_use"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>

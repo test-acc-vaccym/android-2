@@ -42,13 +42,13 @@
         android:id="@+id/amplifier_view_pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/app_bar_height"
+        android:layout_marginBottom="@dimen/bottom_nav_height"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <com.edroplet.qxx.saneteltabactivity.view.BottomNavigationViewEx
         android:id="@+id/settings_power_amplifier_bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
+        android:layout_height="@dimen/bottom_nav_height"
         android:layout_gravity="bottom"
         android:background="@color/title_background"
         app:itemIconTint="@drawable/bottom_navigation_selector"

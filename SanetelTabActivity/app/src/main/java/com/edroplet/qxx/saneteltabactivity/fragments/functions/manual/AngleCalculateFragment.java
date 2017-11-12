@@ -21,43 +21,66 @@ import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.Satellites;
 import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by qxs on 2017/9/19.
  */
 
 public class AngleCalculateFragment extends Fragment implements View.OnClickListener {
-    
     // 本地位置
-    private Spinner spinnerLocationProvince;
-    private Spinner spinnerLocationCity;
+    @BindView(R.id.angle_calculate_spinner_province)
+    Spinner spinnerLocationProvince;
+    @BindView(R.id.angle_calculate_spinner_city)
+    Spinner spinnerLocationCity;
+
     private Cities cities;
     private String selectedProvince;
     private String selectedCity;
 
-    private CustomRadioGroupWithCustomRadioButton customRadioGroupWithCustomRadioButton;
+    CustomRadioGroupWithCustomRadioButton customRadioGroupWithCustomRadioButton;
 
     //
     // 本地位置
-    private CustomEditText localLongitude;
-    private CustomEditText localLatitude;
-    private Spinner localLongitudeUnit;
-    private Spinner localLatitudeUnit;
+    @BindView(R.id.angle_calculate_local_longitude)
+    CustomEditText localLongitude;
+    @BindView(R.id.angle_calculate_local_latitude)
+    CustomEditText localLatitude;
+    @BindView(R.id.angle_calculate_local_longitude_unit)
+    Spinner localLongitudeUnit;
+    @BindView(R.id.angle_calculate_local_latitude_unit)
+    Spinner localLatitudeUnit;
 
     // 卫星选择
+    @BindView(R.id.angle_calculate_spinner_satellites)
     Spinner satelliteSelect;
+    @BindView(R.id.angle_calculate_spinner_satellites_local)
     Spinner satellitePolarizationSelect;
+
     private Satellites satellites;
     private String selectedName;
     private String selectedPolarization;
 
     // 计算结果
-    private CustomEditText tvAzimuth;
-    private CustomEditText tvPitch;
-    private CustomEditText tvPolarization;
+    @BindView(R.id.main_application_manual_angle_calculate_tv_setting_azimuth)
+    CustomEditText tvAzimuth;
+    @BindView(R.id.main_application_manual_angle_calculate_tv_setting_pitch)
+    CustomEditText tvPitch;
+    @BindView(R.id.main_application_manual_angle_calculate_tv_setting_polarization)
+    CustomEditText tvPolarization;
 
+    // 按键
+    @BindView(R.id.angle_calculate_operate_calculate)
+    CustomButton calculate;
+    @BindView(R.id.angle_calculate_operate_use)
+    CustomButton use;
+    @BindView(R.id.angle_calculate_operate_clear)
+    CustomButton clear;
 
     public static AngleCalculateFragment newInstance(AntennaInfo antennaInfo) {
         Bundle args = new Bundle();
@@ -71,20 +94,20 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.functions_fragment_application_manual_speed_angle_calculate, null);
+        if (view == null){
+            return null;
+        }
+        ButterKnife.bind(this,view);
         AntennaInfo antennaInfo = getArguments().getParcelable("antennaInfo");
 
-
-        tvAzimuth = view.findViewById(R.id.main_application_manual_angle_calculate_tv_setting_azimuth);
-        tvPitch = view.findViewById(R.id.main_application_manual_angle_calculate_tv_setting_pitch);
-        tvPolarization = view.findViewById(R.id.main_application_manual_angle_calculate_tv_setting_polarization);
         tvAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
         tvPitch.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
         tvPolarization.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
 
         // 按键
-        view.findViewById(R.id.angle_calculate_operate_calculate).setOnClickListener(this);
-        view.findViewById(R.id.angle_calculate_operate_clear).setOnClickListener(this);
-        view.findViewById(R.id.angle_calculate_operate_use).setOnClickListener(this);
+        calculate.setOnClickListener(this);
+        clear.setOnClickListener(this);
+        use.setOnClickListener(this);
 
         initSatelliteSelect(view);
         initCitySelect(view);
@@ -143,16 +166,12 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
     private float satelliteBeacon = 0.000f;
     private float satelliteDvb = 0.000f;
     private float satelliteThreshold = 0.000f;
-
-    private String satellitePolarization = "";
+    private String satellitePolarization = "水平";
 
     private float cityLongitude = 0.000f;
     private float cityLatitude = 0.000f;
 
     private void initSatelliteSelect(View view){
-        satelliteSelect = view.findViewById(R.id.angle_calculate_spinner_satellites);
-        satellitePolarizationSelect =  view.findViewById(R.id.angle_calculate_spinner_satellites_local);
-
         try {
             satellites = new Satellites(getContext());
             String[] satelliteNameArray = satellites.getSatelliteNameArray();
@@ -235,12 +254,6 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
 
     private void initCitySelect(View view){
 
-        spinnerLocationProvince = view.findViewById(R.id.angle_calculate_spinner_province);
-        spinnerLocationCity = view.findViewById(R.id.angle_calculate_spinner_city);
-        localLatitude = view.findViewById(R.id.angle_calculate_local_latitude);
-        localLatitudeUnit = view.findViewById(R.id.angle_calculate_local_latitude_unit);
-        localLongitude = view.findViewById(R.id.angle_calculate_local_longitude);
-        localLongitudeUnit = view.findViewById(R.id.angle_calculate_local_longitude_unit);
 
         localLongitude.setFilters(new InputFilter[]{ new InputFilterFloat("-180", "180")});
         localLatitude.setFilters(new InputFilter[]{ new InputFilterFloat("-90", "90")});

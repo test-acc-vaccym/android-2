@@ -145,6 +145,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.45"
+                            android:textAlignment="center"
                             android:entries="@array/satellites_polarization"/>
                     </LinearLayout>
                     <!--卫星经度-->

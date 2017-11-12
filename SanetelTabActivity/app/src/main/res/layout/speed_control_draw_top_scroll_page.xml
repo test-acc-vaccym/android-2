@@ -52,7 +52,7 @@
                 android:text="@string/main_application_manual_speed_palstance"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
-                android:id="@+id/top_lactate_radio"
+                android:id="@+id/top_angular_velocity_radio_group"
                 android:layout_height="0dp"
                 android:layout_weight="1.5"
                 android:orientation="vertical"
@@ -64,14 +64,17 @@
                     android:layout_height="0dp"
                     android:layout_weight="1">
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/top_angular_velocity_1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="0.1"/>
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/top_angular_velocity_2"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="0.5"/>
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                        android:id="@+id/top_angular_velocity_3"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="1.0"/>
@@ -81,31 +84,31 @@
                     android:layout_height="0dp"
                     android:layout_weight="1">
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
-                        android:id="@+id/top_rd_three"
+                        android:id="@+id/top_angular_velocity_4"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:checked="true"
                         android:text="3.0"/>
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
-                        android:id="@+id/top_rd_five"
+                        android:id="@+id/top_angular_velocity_5"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_toEndOf="@id/top_rd_three"
-                        android:layout_toRightOf="@id/top_rd_three"
+                        android:layout_toEndOf="@id/top_angular_velocity_4"
+                        android:layout_toRightOf="@id/top_angular_velocity_4"
                         android:text="5.0"/>
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
-                        android:id="@+id/top_custom_setting"
+                        android:id="@+id/top_angular_velocity_6"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_toEndOf="@id/top_rd_five"
-                        android:layout_toRightOf="@id/top_rd_five"/>
+                        android:layout_toEndOf="@id/top_angular_velocity_5"
+                        android:layout_toRightOf="@id/top_angular_velocity_5"/>
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-                        android:id="@+id/top_custom_val"
+                        android:id="@+id/top_angular_velocity_custom_val"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_alignBottom="@id/top_custom_setting"
-                        android:layout_toEndOf="@id/top_custom_setting"
-                        android:layout_toRightOf="@id/top_custom_setting"
+                        android:layout_alignBottom="@id/top_angular_velocity_6"
+                        android:layout_toEndOf="@id/top_angular_velocity_6"
+                        android:layout_toRightOf="@id/top_angular_velocity_6"
                         android:hint="@string/main_application_manual_speed_palstance_hint"
                         android:paddingTop="@dimen/no_padding"
                         android:paddingBottom="3dp"

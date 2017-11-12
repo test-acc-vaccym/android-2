@@ -247,33 +247,10 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
                     true, getString(R.string.follow_me_searching_second_line),
                     true, getString(R.string.follow_me_searching_third_start), 1, null, null));
             //break;
-            // 寻星中
-            //case 1:
-            guideFragmentSearching.add(GuideFragmentSearching.newInstance(true, true, getString(R.string.follow_me_searching_ing_first_line),
-                    true, getString(R.string.follow_me_searching_ing_second_line),
-                    true, getString(R.string.follow_me_searching_ing_third_start), 2, null, null));
-            //break;
-            // 锁星
-            //case 2:
-            guideFragmentSearching.add(GuideFragmentSearching.newInstance(true, true, getString(R.string.follow_me_searching_lock_first_line),
-                    true, getString(R.string.follow_me_searching_lock_second_line),
-                    true, getString(R.string.follow_me_searching_lock_third_start), -1, null, null));
-            //break;
-            // 重设参数
-            //case 3:
-            guideFragmentSearching.add(GuideFragmentSearching.newInstance(true, true, getString(R.string.follow_me_searching_timeout_first_line),
-                    true, getString(R.string.follow_me_searching_timeout_second_line),
-                    true, getString(R.string.follow_me_searching_timeout_third_start), 3,
-                    null, getString(R.string.follow_me_searching_timeout_third_end)));
-            //break;
-            // 故障报告
-            //case 4:
-            guideFragmentSearching.add(GuideFragmentSearching.newInstance(true, true, getString(R.string.follow_me_searching_error_first_line),
-                    true, getString(R.string.follow_me_searching_error_second_line),
-                    true, getString(R.string.follow_me_searching_error_third_start), 4, null, null));
+
             //break;
             //}
-            mSectionsPagerAdapter.addFragment(guideFragmentSearching.get(satelliteStatus));
+            mSectionsPagerAdapter.addFragment(guideFragmentSearching.get(0));
 
             // 4.3.7.	锁紧操作
             int lockerState = SystemServices.getLockerState();

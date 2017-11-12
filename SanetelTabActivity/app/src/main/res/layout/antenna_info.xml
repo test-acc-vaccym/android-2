@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/layout_antenna_info"
     android:layout_marginTop="@dimen/layout_padding_top">
     <!--天线信息-->
     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -29,7 +30,7 @@
                     android:text="@string/main_monitor_antenna_prepare_azimuth"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                    android:id="@+id/main_monitor_antenna_tv_prepare_azimuth"
+                    android:id="@+id/antenna_info_tv_prepare_azimuth"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -53,7 +54,7 @@
                     android:text="@string/main_monitor_antenna_azimuth"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                    android:id="@+id/main_monitor_antenna_tv_azimuth"
+                    android:id="@+id/antenna_info_tv_azimuth"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -82,7 +83,7 @@
                     android:text="@string/main_monitor_antenna_prepare_pitch"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                    android:id="@+id/main_monitor_antenna_tv_prepare_pitch"
+                    android:id="@+id/antenna_info_tv_prepare_pitch"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -106,7 +107,7 @@
                     android:text="@string/main_monitor_antenna_pitch"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                    android:id="@+id/main_monitor_antenna_tv_pitch"
+                    android:id="@+id/antenna_info_tv_pitch"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -135,7 +136,7 @@
                     android:text="@string/main_monitor_antenna_prepare_polarization"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                    android:id="@+id/main_monitor_antenna_tv_prepare_polarization"
+                    android:id="@+id/antenna_info_tv_prepare_polarization"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -159,7 +160,7 @@
                     android:text="@string/main_monitor_antenna_polarization"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                    android:id="@+id/main_monitor_antenna_tv_polarization"
+                    android:id="@+id/antenna_info_tv_polarization"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"

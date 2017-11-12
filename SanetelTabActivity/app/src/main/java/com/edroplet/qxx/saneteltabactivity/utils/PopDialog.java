@@ -148,7 +148,7 @@ public class PopDialog {
         if (this.view != null) {
             CustomTextView firstLine = this.view.findViewById(R.id.pop_dialog_tv_first);
             // 是否显示卫星信息
-            LinearLayout satelliteInfo = this.view.findViewById(R.id.follow_me_searching_satellite_info);
+            LinearLayout satelliteInfo = this.view.findViewById(R.id.follow_me_searching_antenna_info);
             if (satelliteInfo != null) {
                 if (this.showInfo) {
                     satelliteInfo.setVisibility(View.VISIBLE);

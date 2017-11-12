@@ -67,6 +67,7 @@ public class ManualActivity extends AppCompatActivity {
         @Override
         public void onPageScrollStateChanged(int state) { }
     };
+
     public static String POSITION = "position";
     public static String PRESET_AZIMUTH = "azimuth";
     public static String PRESET_PITCH = "pitch";

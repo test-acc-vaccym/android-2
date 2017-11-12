@@ -67,9 +67,10 @@ public class SettingsFragmentAmplifierOscillator extends Fragment {
         if (checkedId == 0)
             checkedId = R.id.settings_amplifier_oscillator_value_1;
 
-        CustomRadioButton radioButton = (CustomRadioButton)view.findViewById(checkedId);
-        if (radioButton != null)
+        if (view.findViewById(checkedId) instanceof CustomRadioButton ) {
+            CustomRadioButton radioButton = (CustomRadioButton) view.findViewById(checkedId);
             radioButton.setChecked(true);
+        }
 
         if (checkedId == R.id.settings_amplifier_oscillator_value_3)
             oscillatorCustomValue.setText(CustomSP.getString(context,Key_amplifier_oscillator_value,""));

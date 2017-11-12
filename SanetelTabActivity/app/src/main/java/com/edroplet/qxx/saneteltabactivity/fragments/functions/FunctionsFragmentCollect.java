@@ -17,6 +17,7 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsCollectHistoryFileListActivity;
 import com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
+import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.DateTime;
 import com.edroplet.qxx.saneteltabactivity.utils.FileUtils;
 import com.edroplet.qxx.saneteltabactivity.utils.RandomDialog;
@@ -29,6 +30,7 @@ import java.util.TimerTask;
 
 import static android.content.Context.MODE_APPEND;
 import static com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsCollectHistoryFileListActivity.KEY_IS_SELECT;
+import static com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo.KEY_NEWEST_COLLECT_FILE;
 import static com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo.SAMPLEDATA;
 
 /**
@@ -68,6 +70,7 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
     CollectHistoryFileInfo collectHistoryFileInfo;
     @Override
     public void onClick(View view) {
+        String newestFile = CustomSP.getString(getContext(),KEY_NEWEST_COLLECT_FILE,"");
         switch (view.getId()){
             case R.id.main_collect_data_history:
                 Intent intent = new Intent(getActivity(), FunctionsCollectHistoryFileListActivity.class);
@@ -75,24 +78,13 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
                 startActivity(intent);
                 break;
             case R.id.main_collect_data_new:
-//                RandomDialog randomDialog = new RandomDialog(getContext());
-//                randomDialog.onInputBuilder(getString(R.string.main_collect_data_new_input_message),
-//                        getString(R.string.main_collect_data_new_input_hint),
-//
-//                        new EDropletDialogBuilder.OnInputListener() {
-//                            @Override
-//                            public void onClick(String inputText, int which) {
-//                                //which,0代表NegativeButton，1代表PositiveButton
-//                                Toast.makeText(getContext(), "输入了: " + inputText, Toast.LENGTH_SHORT).show();
-//                                if (which == 0){
-//                                    CollectHistoryFileInfo collectHistoryFileInfo = new CollectHistoryFileInfo(getContext());
-//                                    collectHistoryFileInfo.setDateTime(DateTime.getCurrentDateTime()).setFileName(inputText).save();
-//                                }
-//                            }
-//                        });
                 new NDialog(getContext()).inputDialog();
                 break;
             case R.id.main_collect_data_start:
+                if (newestFile.isEmpty()){
+                    Toast.makeText(getContext(),getText(R.string.main_collect_data_no_file_prompt),Toast.LENGTH_SHORT).show();
+                    break;
+                }
                 if (null == timer){
                     timer = new Timer();
                 }
@@ -115,6 +107,10 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
 
                 break;
             case R.id.main_collect_data_stop:
+                if (newestFile.isEmpty()){
+                    Toast.makeText(getContext(),getText(R.string.main_collect_data_no_file_prompt),Toast.LENGTH_SHORT).show();
+                    break;
+                }
                 if(timer!= null) {
                     timer.cancel();
                     timer.purge();
@@ -122,9 +118,16 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
                 }
                 break;
             case R.id.main_collect_data_save:
+                if (newestFile.isEmpty()){
+                    Toast.makeText(getContext(),getText(R.string.main_collect_data_no_file_prompt),Toast.LENGTH_SHORT).show();
+                    break;
+                }
                 break;
             case R.id.main_collect_data_clear:
-
+                if (newestFile.isEmpty()){
+                    Toast.makeText(getContext(),getText(R.string.main_collect_data_no_file_prompt),Toast.LENGTH_SHORT).show();
+                    break;
+                }
                 if (collectHistoryFileInfo == null){
                     collectHistoryFileInfo = new CollectHistoryFileInfo(getContext());
                 }

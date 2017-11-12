@@ -6,7 +6,9 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="@dimen/recycler_view_item_height"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp">
         <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:id="@+id/id"
             android:layout_width="0dp"
@@ -18,7 +20,7 @@
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:id="@+id/name"
             android:layout_width="0dp"
-            android:layout_weight="1.5"
+            android:layout_weight="1.8"
             android:layout_height="match_parent"
             android:textSize="@dimen/list_item_text_size"
             android:padding="@dimen/no_padding"

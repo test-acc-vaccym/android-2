@@ -35,30 +35,17 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
 
         </android.support.v7.widget.Toolbar>
-        <!--HorizontalScrollView
-            android:layout_width="@dimen/satellite_list_width"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_background"
-            android:padding="@dimen/no_padding"-->
+
             <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
             android:background="@color/satellite_list_header_background">
-            <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                android:id="@+id/id_title"
-                android:layout_width="0dp"
-                android:layout_weight="0.3"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin"
-                android:text="@string/satellite_id_key"
-                android:textSize="@dimen/list_item_title_size"
-                android:textAppearance="?attr/textAppearanceListItem" /-->
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/name_title"
                 android:layout_width="0dp"
-                android:layout_weight="1.5"
+                android:layout_weight="1.8"
                 android:layout_height="wrap_content"
                 android:text="@string/satellite_name_key"
                 android:textSize="@dimen/list_item_text_size"
@@ -131,15 +118,6 @@
                 android:padding="@dimen/no_padding"
                 android:textSize="@dimen/list_item_text_size"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
-                <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                    android:id="@+id/comment_title"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/text_margin"
-                    android:text="@string/satellite_comment_key"
-                    android:textSize="@dimen/list_item_title_size"
-                    android:textAppearance="?android:attr/textAppearance" /-->
         </LinearLayout>
         <!--/HorizontalScrollView-->
     </android.support.design.widget.AppBarLayout>

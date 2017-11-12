@@ -13,6 +13,7 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.activities.main.MainMeAboutBrowserActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.main.MainMeAppActivity;
 import com.edroplet.qxx.saneteltabactivity.adapters.download.DownloadAdapter;
 import com.edroplet.qxx.saneteltabactivity.control.DLFrameCallback;
@@ -20,30 +21,18 @@ import com.edroplet.qxx.saneteltabactivity.services.down.DLDownloadListener;
 import com.edroplet.qxx.saneteltabactivity.services.down.DLNormalCallback;
 import com.edroplet.qxx.saneteltabactivity.services.down.DownloadInit;
 import com.edroplet.qxx.saneteltabactivity.utils.FileUtils;
-import com.edroplet.qxx.saneteltabactivity.utils.downloadmanager.fileload.FileCallback;
-import com.edroplet.qxx.saneteltabactivity.utils.downloadmanager.fileload.FileResponseBody;
 import com.edroplet.qxx.saneteltabactivity.utils.update.AppVersion;
 import com.tamic.rx.fastdown.RxConstants;
-import com.tamic.rx.fastdown.callback.IDLCallback;
 import com.tamic.rx.fastdown.client.DLClientFactory;
-import com.tamic.rx.fastdown.client.Type;
-import com.tamic.rx.fastdown.content.DownLoadInfo;
-import com.tamic.rx.fastdown.core.DownLoadInfoFactory;
 import com.tamic.rx.fastdown.core.Download;
 import com.tamic.rx.fastdown.core.Priority;
 import com.tamic.rx.fastdown.core.RxDownLoadCenter;
 import com.tamic.rx.fastdown.core.RxDownloadManager;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Response;
-
+import static com.edroplet.qxx.saneteltabactivity.activities.main.MainMeAboutBrowserActivity.KEY_DOWNLOAD_URL;
 import static com.tamic.rx.fastdown.client.Type.NORMAL;
 
 
@@ -52,11 +41,12 @@ import static com.tamic.rx.fastdown.client.Type.NORMAL;
  */
 public class DownLoadService extends Service {
 
+    public static final String KEY_TARGET_DIR="KEY_TARGET_DIR";
     /**
      * 目标文件存储的文件夹路径
      */
     private String  destFileDir = Environment.getExternalStorageDirectory().getAbsolutePath() +
-            File.separator + "M_DEFAULT_DIR";
+            File.separator + "Download";
     /**
      * 目标文件存储的文件名
      */
@@ -68,10 +58,11 @@ public class DownLoadService extends Service {
     private NotificationCompat.Builder builder;
     private NotificationManager notificationManager;
 
-    // private static final String baseUrl = "http://112.124.9.133:8080/parking-app-admin-1.0/android/manager/adminVersion/";
+    private String downloadUrl;
     private  String baseUrl = "http://123.59.23.183/assets/2000004/"; // 4b6d9a8a-c32a-11e7-b07b-90e2ba73b3f0.zip
     String sha1 = "";
     String apkFileFullPath;
+    boolean downloadPdf;
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -79,15 +70,23 @@ public class DownLoadService extends Service {
         Bundle bundle = intent.getExtras();
         if (bundle != null){
             AppVersion appVersion = (AppVersion)bundle.getSerializable("appVersion");
-            destFileName = appVersion.getApkName();
-            sha1 = appVersion.getSha1();
-            baseUrl = appVersion.getUrl();
+            if (appVersion != null) {
+                destFileName = appVersion.getApkName();
+                sha1 = appVersion.getSha1();
+                baseUrl = appVersion.getUrl();
+                downloadUrl = baseUrl+destFileName + "?hash=" + sha1+"&tag="+tagUuid;
+            }
+            String pdfDownloadUrl = bundle.getString(KEY_DOWNLOAD_URL);
+            if (pdfDownloadUrl !=null && !pdfDownloadUrl.isEmpty()){
+                downloadUrl = pdfDownloadUrl;
+                downloadPdf = true;
+            }
         }
         init();
         return super.onStartCommand(intent, flags, startId);
     }
 
-    private final String tag = UUID.randomUUID().toString();
+    private final String tagUuid = UUID.randomUUID().toString();
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -111,10 +110,17 @@ public class DownLoadService extends Service {
             public void onDownloading(String key, long filelength, long downloaded, long speed, String filename, int downloadType) {
                 super.onDownloading(key, filelength, downloaded, speed, filename, downloadType);
                 // 只有本文件下载的时候才广播
-                if (key.contains(tag)) {
+                if (key.contains(tagUuid)) {
                     preProgress = (int) (downloaded * 100 / filelength);
                     // 发送广播通知Activity
                     Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
+                    sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, preProgress);
+                    getApplicationContext().sendBroadcast(sendIntent);
+                }
+                if (downloadPdf){
+                    preProgress = (int) (downloaded * 100 / filelength);
+                    // 发送广播通知Activity
+                    Intent sendIntent = new Intent(MainMeAboutBrowserActivity.SERVICE_PDF_DOWNLOAD_RECEIVER);
                     sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, preProgress);
                     getApplicationContext().sendBroadcast(sendIntent);
                 }
@@ -123,7 +129,7 @@ public class DownLoadService extends Service {
             @Override
             public void onAppSuccess(String tag, long fileLength, long downloaded, String savePath, String filenNme, long aSpeed, String aAppiconName, int downloadType, int appType) {
                 super.onAppSuccess(tag, fileLength, downloaded, savePath, filenNme, aSpeed, aAppiconName, downloadType, appType);
-                if (tag.contains(tag)) {
+                if (!downloadPdf && tag.contains(tagUuid)) {
                     // 发送广播通知Activity
                     Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
                     if (FileUtils.getFileSHA1(apkFileFullPath).equals(sha1)) {
@@ -141,9 +147,14 @@ public class DownLoadService extends Service {
             @Override
             public void onFail(String tag, long downloaded, String aFilepath, String aFilename, String aErrinfo) {
                 super.onFail(tag, downloaded, aFilepath, aFilename, aErrinfo);
-                if (tag.contains(tag)) {
+                if (tag.contains(tagUuid)) {
                     // 发送广播通知Activity
                     Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
+                    sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, -1);
+                    getApplicationContext().sendBroadcast(sendIntent);
+                }else if (downloadPdf){
+                    // 发送广播通知Activity
+                    Intent sendIntent = new Intent(MainMeAboutBrowserActivity.SERVICE_PDF_DOWNLOAD_RECEIVER);
                     sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, -1);
                     getApplicationContext().sendBroadcast(sendIntent);
                 }
@@ -153,7 +164,7 @@ public class DownLoadService extends Service {
             @Override
             public void onSuccess(String tag, long fileLength, long downloaded, String savePath, String filenNme, long aSpeed, String aAppiconName) {
                 super.onSuccess(tag, fileLength, downloaded, savePath, filenNme, aSpeed, aAppiconName);
-                if (tag.contains(tag)) {
+                if (!downloadPdf && tag.contains(tagUuid)) {
                     // 发送广播通知Activity
                     Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
                     if (FileUtils.getFileSHA1(apkFileFullPath).equals(sha1)) {
@@ -165,6 +176,12 @@ public class DownLoadService extends Service {
                         sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, -3);
                         getApplicationContext().sendBroadcast(sendIntent);
                     }
+                }else if (downloadPdf){
+                    // 发送广播通知Activity
+                    Intent sendIntent = new Intent(MainMeAboutBrowserActivity.SERVICE_PDF_DOWNLOAD_RECEIVER);
+                    sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, 100);
+                    sendIntent.putExtra(KEY_TARGET_DIR, destFileDir);
+                    getApplicationContext().sendBroadcast(sendIntent);
                 }
             }
         };
@@ -179,7 +196,6 @@ public class DownLoadService extends Service {
         /**
          * 下载文件
          */
-        String downloadUrl = baseUrl+destFileName + "?hash=" + sha1+"&tag="+tag;
 
         new Download.Builder()
                 .url(downloadUrl)
@@ -187,30 +203,11 @@ public class DownLoadService extends Service {
                 .savepath(destFileDir)
                 .isImplicit(false) // 是否显示UI
                 .channel(3000)
-                .tag(tag)
+                .tag(tagUuid)
                 .client(DLClientFactory.createClient(NORMAL, this))
                 //  .setCallback(idlCallback)
                 .build(this)
                 .start();
-        // loadFile();
-        /*
-        DownloadInit.init(getBaseContext());
-        new Download.ConfigBuilder<>()
-                .addMaxCount(5)
-                .downloadListener(new DLDownloadListener(this.getBaseContext()))
-                .baseClient(DLClientFactory.createClient(Type.NORMAL, getBaseContext()))
-                .newbuild(this, downloadAdapter);
-       RxDownloadManager manager = RxDownloadManager.getInstance();
-        manager.init(getBaseContext(), null);
-        manager.setContext(getBaseContext());
-        manager.setListener(new DLDownloadListener(getBaseContext()));
-
-
-        DLNormalCallback normalCallback = new DLNormalCallback();
-        if (manager.getClient() != null) {
-            manager.getClient().setCallback(normalCallback);
-        }*/
-
     }
     /**
      * 安装软件
@@ -227,98 +224,10 @@ public class DownLoadService extends Service {
     }
 
     /**
-     * 初始化OkHttpClient
-     *
-     * @return
-     */
-    private OkHttpClient initOkHttpClient() {
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.connectTimeout(100000, TimeUnit.SECONDS);
-        builder.networkInterceptors().add(new Interceptor() {
-            @Override
-            public Response intercept(Chain chain) throws IOException {
-                Response originalResponse = chain.proceed(chain.request());
-                return originalResponse
-                        .newBuilder()
-                        .body(new FileResponseBody(originalResponse))
-                        .build();
-            }
-        });
-        return builder.build();
-    }
-
-    /**
-     * 初始化Notification通知
-     */
-    public void initNotification() {
-        builder = new NotificationCompat.Builder(mContext)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentText("0%")
-                .setContentTitle("星网卫通APP下载进度")
-                .setProgress(100, 0, false);
-        notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(NOTIFY_ID, builder.build());
-    }
-
-    /**
-     * 更新通知
-     */
-    public void updateNotification(long progress) {
-        int currProgress = (int) progress;
-        if (preProgress < currProgress) {
-            builder.setContentText(progress + "%");
-            builder.setProgress(100, (int) progress, false);
-            notificationManager.notify(NOTIFY_ID, builder.build());
-        }
-        preProgress = (int) progress;
-    }
-
-    /**
      * 取消通知
      */
     public void cancelNotification() {
         notificationManager.cancel(NOTIFY_ID);
     }
 
-    private IDLCallback idlCallback =  new IDLCallback() {
-        @Override
-        public void onStart(String key, long fileLength, long downloaded, String savePath, String filenNme) {
-
-        }
-
-        @Override
-        public void onSuccess(String key, long fileLength, long downloaded, String savePath, String filenNme, long aSpeed, String aAppiconName) {
-            cancelNotification();
-        }
-
-        @Override
-        public void onAppSuccess(String key, long fileLength, long downloaded, String savePath, String filenNme, long aSpeed, String aAppiconName, int downloadType, int appType) {
-
-        }
-
-        @Override
-        public void onFail(String key, long downloaded, String savePath, String filenNme, String aErrinfo) {
-            cancelNotification();
-        }
-
-        @Override
-        public void onCancel(String key, long fileLength, long downloaded, String savePath, String filenNme) {
-            cancelNotification();
-        }
-
-        @Override
-        public void onPause(String key, long fileLength, long downloaded, String savePath, String filenNme) {
-
-        }
-
-        @Override
-        public void onDownloading(String key, long fileLength, long downloadLength, long speed, String fileName, int downloadType) {
-            Log.e("DownloadService", downloadLength + "----" + fileLength);
-        }
-
-        @Override
-        public void onRefresh(List<DownLoadInfo> infos) {
-
-        }
-    };
 }

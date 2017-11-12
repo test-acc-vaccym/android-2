@@ -359,6 +359,7 @@
     <string name="main_collect_data_save">▲保存</string>
     <string name="main_collect_data_new_input_message">输入文件名称</string>
     <string name="main_collect_data_new_input_hint">001</string>
+    <string name="main_collect_data_no_file_prompt">没有文件，请先新建文件</string>
 
     <!--管理员设置-->
     <string name="main_settings_administrator_password_title">管理员密码</string>

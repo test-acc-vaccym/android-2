@@ -32,7 +32,7 @@ public class CollectHistoryFileInfo {
     private String dateTime;
     private Context context;
     private static final String historyJsonFileName = "historyFileInfo.json";
-    private static final String KEY_NEWEST_COLLECT_FILE = "KEY_NEWEST_COLLECT_FILE";
+    public static final String KEY_NEWEST_COLLECT_FILE = "KEY_NEWEST_COLLECT_FILE";
 
     public CollectHistoryFileInfo setDateTime(String dateTime) {
         this.dateTime = dateTime;

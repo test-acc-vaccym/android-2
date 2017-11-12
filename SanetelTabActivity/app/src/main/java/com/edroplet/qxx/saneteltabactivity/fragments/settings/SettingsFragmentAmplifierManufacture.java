@@ -92,9 +92,10 @@ public class SettingsFragmentAmplifierManufacture extends Fragment {
                 manufactureCustomValue.setText(CustomSP.getString(getContext(),KEY_amplifier_manufacture,""));
                 break;
             default:
-                CustomRadioButton radioButton = (CustomRadioButton)view.findViewById(checkedId);
-                if (radioButton != null)
+                if (view.findViewById(checkedId) instanceof CustomRadioButton ) {
+                    CustomRadioButton radioButton = (CustomRadioButton) view.findViewById(checkedId);
                     radioButton.setChecked(true);
+                }
                 break;
         }
 

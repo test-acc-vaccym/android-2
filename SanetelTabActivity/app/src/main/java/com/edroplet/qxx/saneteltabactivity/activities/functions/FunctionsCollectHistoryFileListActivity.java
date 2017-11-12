@@ -24,18 +24,18 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteDetailActivity;
 import com.edroplet.qxx.saneteltabactivity.adapters.CollectHistoryRecyclerViewAdapter;
 import com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo;
-import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
-import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.mcxtzhang.swipemenulib.SwipeMenuLayout;
-import com.ssa.afilechooser.FileChooserActivity2;
 
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.ssa.afilechooser.FileChooserActivity2.PATHS;
 
@@ -51,27 +51,27 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity i
     public static  final String KEY_IS_SELECT = "KEY_IS_SELECT";
 
     /** 做成滑动菜单
-    @BindId(R.id.main_collect_data_history_list_open)
+    @BindView(R.id.main_collect_data_history_list_open)
     CustomButton collectHistoryOpen;
-    @BindId(R.id.main_collect_data_history_list_delete)
+    @BindView(R.id.main_collect_data_history_list_delete)
     CustomButton collectHistoryDelete;
      */
-    @BindId(R.id.collect_history_list)
-    private RecyclerView mRv;
+    @BindView(R.id.collect_history_list)
+    RecyclerView mRv;
 
-    @BindId(R.id.main_collect_data_history_list_select_ok)
+    @BindView(R.id.main_collect_data_history_list_select_ok)
     CustomButton selectOk;
 
-    @BindId(R.id.main_collect_data_history_list_select_cancel)
+    @BindView(R.id.main_collect_data_history_list_select_cancel)
     CustomButton selectCancel;
 
-    @BindId(R.id.collect_history_list_check)
+    @BindView(R.id.collect_history_list_check)
     CheckBox checkBoxView;
 
-    @BindId(R.id.collect_history_list_operator)
+    @BindView(R.id.collect_history_list_operator)
     LinearLayout linearLayoutOperator;
 
-    @BindId(R.id.polarization_title_select_all_or_not)
+    @BindView(R.id.polarization_title_select_all_or_not)
     CustomButton selectAllOrNot;
 
     private LinearLayoutManager mLayoutManager;
@@ -98,7 +98,7 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity i
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_functions_collect_history_list);
 
-        ViewInject.inject(this, this);
+        ButterKnife.bind(this);
 
         context = this;
         Intent intent = getIntent();

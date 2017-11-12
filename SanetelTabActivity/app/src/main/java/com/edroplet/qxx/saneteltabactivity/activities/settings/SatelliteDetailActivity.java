@@ -165,8 +165,7 @@ public class SatelliteDetailActivity extends AppCompatActivity implements View.O
                 satelliteDetailThreshold = fragmentView.findViewById(R.id.threshold_detail);
                 satelliteDetailSymbolRate = fragmentView.findViewById(R.id.symbol_rate_detail);
                 satelliteDetailComment = fragmentView.findViewById(R.id.comment_detail);
-            }
-             */
+            }*/
         }
         // iv_satellite = (ImageView) findViewById(R.id.iv_satellite);
     }

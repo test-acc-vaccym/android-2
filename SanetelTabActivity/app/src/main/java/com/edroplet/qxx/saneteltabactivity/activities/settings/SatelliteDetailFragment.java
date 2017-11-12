@@ -45,10 +45,7 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
      */
     private SatelliteInfo mItem;
 
-    @BindView(R.id.satellite_detail_save)
     CustomButton satelliteDetailSave;
-
-    @BindView(R.id.satellite_detail_return)
     CustomButton satelliteDetailReturn;
 
     @BindView(R.id.satellite_detail_uuid)

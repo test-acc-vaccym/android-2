@@ -1,6 +1,7 @@
 package com.edroplet.qxx.saneteltabactivity.control.download;
 
-import com.edroplet.qxx.saneteltabactivity.view.download.PracticalRecyclerView;
+
+import com.edroplet.qxx.saneteltabactivity.view.recyclerview.PracticalRecyclerView;
 
 /**
  * Created by liuyongkui726 on 2016-12-21.

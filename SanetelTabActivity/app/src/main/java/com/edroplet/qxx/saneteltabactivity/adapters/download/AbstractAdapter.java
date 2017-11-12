@@ -8,7 +8,6 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.edroplet.qxx.saneteltabactivity.view.download.AbstractViewHolder;
 import com.edroplet.qxx.saneteltabactivity.beans.download.*;
 import com.tamic.rx.fastdown.widget.DownItemType;
 

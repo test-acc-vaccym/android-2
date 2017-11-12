@@ -2,7 +2,7 @@
  * @author Leestar54 
  * http://www.cnblogs.com/leestar54
  */
-package com.edroplet.qxx.saneteltabactivity.utils.update;
+package com.edroplet.qxx.saneteltabactivity.beans;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;

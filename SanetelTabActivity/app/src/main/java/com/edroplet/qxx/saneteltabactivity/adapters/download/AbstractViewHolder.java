@@ -1,4 +1,4 @@
-package com.edroplet.qxx.saneteltabactivity.view.download;
+package com.edroplet.qxx.saneteltabactivity.adapters.download;
 
 import android.view.LayoutInflater;
 import android.view.View;

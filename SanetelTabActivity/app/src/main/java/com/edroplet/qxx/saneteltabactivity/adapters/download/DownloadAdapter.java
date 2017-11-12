@@ -3,7 +3,6 @@ package com.edroplet.qxx.saneteltabactivity.adapters.download;
 import android.util.Log;
 import android.view.ViewGroup;
 
-import com.edroplet.qxx.saneteltabactivity.view.download.DownloadViewHolder;
 import com.tamic.rx.fastdown.content.DownLoadInfo;
 import com.tamic.rx.fastdown.core.RxDownloadManager;
 import com.tamic.rx.fastdown.listener.IUIDownHandler;

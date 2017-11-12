@@ -19,10 +19,10 @@ import android.view.Gravity;
 import android.view.View;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.AppVersion;
 import com.edroplet.qxx.saneteltabactivity.services.DownLoadService;
 import com.edroplet.qxx.saneteltabactivity.utils.FileUtils;
 import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
-import com.edroplet.qxx.saneteltabactivity.utils.update.AppVersion;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;

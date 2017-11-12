@@ -172,7 +172,7 @@
         </activity>
         <!-- If you want to use the Storage Access Framework (API 19+), -->
         <provider
-            android:name="com.ianhanniballake.localstorage.LocalStorageProvider"
+            android:name=".utils.LocalStorageProvider"
             android:authorities="com.ianhanniballake.localstorage.documents"
             android:enabled="@bool/use_provider"
             android:exported="true"
@@ -252,17 +252,14 @@
         <!-- 下载服务 -->
         <service android:name=".services.DownLoadService" />
 
-        <activity android:name="com.will.ireader.IReaderMainActivity">
-
-            <!--
-            intent-filter>
+        <!--activity android:name="com.will.ireader.IReaderMainActivity">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter
-            -->
+            </intent-filter>
         </activity>
         <activity android:name="com.will.ireader.page.PageActivity" />
-        <activity android:name="com.will.ireader.chapter.ChapterActivity" />
+        <activity android:name="com.will.ireader.chapter.ChapterActivity" /-->
         <activity android:name=".activities.functions.ReaderTextActivity" />
 
         <service

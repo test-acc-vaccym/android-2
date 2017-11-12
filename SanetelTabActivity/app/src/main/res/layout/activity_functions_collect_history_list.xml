@@ -46,7 +46,7 @@
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/name_title"
                 android:layout_width="0dp"
-                android:layout_weight="0.8"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/main_collect_data_history_list_name"
@@ -55,7 +55,7 @@
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/polarization_title"
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.5"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:textSize="@dimen/list_item_title_size"

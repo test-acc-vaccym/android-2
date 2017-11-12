@@ -1,4 +1,4 @@
-package com.edroplet.qxx.saneteltabactivity.view.download;
+package com.edroplet.qxx.saneteltabactivity.adapters.download;
 
 import android.content.Context;
 import android.support.annotation.DrawableRes;
@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.view.download.AbstractViewHolder;
 import com.tamic.rx.fastdown.DLMimeType;
 import com.tamic.rx.fastdown.content.DownLoadInfo;
 import com.tamic.rx.fastdown.core.RxDownLoadCenter;
@@ -92,7 +91,7 @@ public class DownloadViewHolder extends AbstractViewHolder<DownLoadInfo> {
                 break;
 
             case DLMimeType.TXT:
-                mImg.setBackgroundResource(R.drawable.txt);
+                mImg.setBackgroundResource(R.drawable.file);
 
                 break;
 
@@ -133,7 +132,7 @@ public class DownloadViewHolder extends AbstractViewHolder<DownLoadInfo> {
                 break;
 
             case PAUSED:
-                setSatus(R.drawable.status_pused, "继续");
+                setSatus(R.drawable.status_paused, "继续");
                 mSpeed.setText("已暂停，点击继续");
                 break;
 
@@ -150,7 +149,7 @@ public class DownloadViewHolder extends AbstractViewHolder<DownLoadInfo> {
                 break;
 
             case READY:
-                setSatus(R.drawable.status_pused, "等待中");
+                setSatus(R.drawable.status_paused, "等待中");
                 mSpeed.setText("任务正在排队中，请稍后....");
                 mSize.setVisibility(View.INVISIBLE);
                 break;

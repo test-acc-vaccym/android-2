@@ -122,7 +122,7 @@
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                     android:id="@+id/main_me_advice_phone"
                     style="@style/text_horizontal_style"
-                    android:inputType="phone"
+                    android:inputType="number"
                     app:titleTextAppearance="?android:attr/textAppearanceMedium"/>
             </LinearLayout>
             <!--文件名称-->

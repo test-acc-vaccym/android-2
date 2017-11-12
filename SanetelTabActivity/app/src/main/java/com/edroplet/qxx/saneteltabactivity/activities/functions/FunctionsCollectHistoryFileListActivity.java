@@ -65,9 +65,6 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity i
     @BindView(R.id.main_collect_data_history_list_select_cancel)
     CustomButton selectCancel;
 
-    @BindView(R.id.collect_history_list_check)
-    CheckBox checkBoxView;
-
     @BindView(R.id.collect_history_list_operator)
     LinearLayout linearLayoutOperator;
 

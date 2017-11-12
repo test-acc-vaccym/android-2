@@ -19,6 +19,8 @@ import java.security.MessageDigest;
  */
 
 public class FileUtils {
+    public static long FILE_LIMIT = 10485760; // 10MB
+
     public static void inputStreamToFile(InputStream ins, File file)throws FileNotFoundException, IOException {
         OutputStream os = new FileOutputStream(file);
         int bytesRead = 0;
@@ -111,7 +113,7 @@ public class FileUtils {
     }
 
 
-    public String getSDPath() {
+    public static String getSDPath() {
         String sdPath = "";
         //判断SDCard是否存在并且可读写
         if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
@@ -125,7 +127,7 @@ public class FileUtils {
      * @param fileName
      * @return
      */
-    public boolean isFileExist(String fileName){
+    public static boolean isFileExist(String fileName){
         File file = new File(getSDPath() + fileName);
         return file.exists();
     }
@@ -250,5 +252,44 @@ public class FileUtils {
             returnVal += Integer.toString(( hashBytes[i] & 0xff) + 0x100, 16).substring(1);
         }
         return returnVal.toLowerCase();
+    }
+
+    /**
+     * 获取指定文件大小
+     * @param file
+     * @return
+     * @throws Exception 　　
+     */
+    public static long getFileSize(File file) throws Exception {
+        long size = 0;
+        if (file.exists()) {
+            FileInputStream fis = new FileInputStream(file);
+            size = fis.available();
+        } else {
+            file.createNewFile();
+        }
+        return size;
+    }
+
+    /**
+     * 获取指定文件大小
+     * @param filePath
+     * @return
+     * @throws Exception 　　
+     */
+    public static long getFileSize(String filePath) {
+        long size = 0;
+        try {
+            File file = new File(filePath);
+            if (file.exists()) {
+                FileInputStream fis = new FileInputStream(file);
+                size = fis.available();
+            } else {
+                file.createNewFile();
+            }
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+        return size;
     }
 }

@@ -1,7 +1,11 @@
 package com.edroplet.qxx.saneteltabactivity.activities.main;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -11,6 +15,7 @@ import com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsCollect
 import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.mail.MailUtil;
+import com.edroplet.qxx.saneteltabactivity.utils.mail.Send2EmailUtil;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
@@ -21,6 +26,7 @@ import com.ssa.afilechooser.utils.FileUtils2;
 import com.yongchun.library.view.ImageSelectorActivity;
 
 import android.net.Uri;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -46,37 +52,37 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
     Timer timer = new Timer();
 
     @BindId(R.id.main_me_error_report_email_receive)
-    private CustomTextView errorReportEmailReceive;
+    private static CustomTextView errorReportEmailReceive;
 
     @BindId(R.id.main_me_error_report_email_send_address)
-    private CustomEditText errorReportEmailSend;
+    private static CustomEditText errorReportEmailSend;
 
     @BindId(R.id.main_me_error_report_name)
-    private CustomEditText errorReportName;
+    private static CustomEditText errorReportName;
 
     @BindId(R.id.main_me_error_report_phone)
-    private CustomEditText errorReportPhone;
+    private static CustomEditText errorReportPhone;
 
     @BindId(R.id.main_me_error_report_serial_number)
-    private CustomEditText errorReportSerialNumber;
+    private static CustomEditText errorReportSerialNumber;
 
     @BindId(R.id.main_me_error_report_subject)
-    private CustomEditText errorReportFileName;
+    private static CustomEditText errorReportFileName;
 
     @BindId(R.id.main_me_error_report_attach_files)
-    private CustomTextView errorReportAttach;
+    private static CustomTextView errorReportAttach;
 
     @BindId(R.id.main_me_error_report_history_files)
-    private CustomTextView errorReportHistoryFiles;
+    private static CustomTextView errorReportHistoryFiles;
 
     @BindId(R.id.main_me_error_report_photo_files)
-    private CustomTextView errorReportPhoto;
+    private static CustomTextView errorReportPhoto;
 
     @BindId(R.id.main_me_error_report_description)
-    private CustomEditText errorReportDescription;
+    private static CustomEditText errorReportDescription;
 
     @BindId(R.id.main_me_error_report_email_customer)
-    private CustomEditText errorReportCustomer;
+    private static CustomEditText errorReportCustomer;
 
     // 按键区
     @BindId(R.id.main_me_error_report_attach)
@@ -109,6 +115,8 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
     private static final String KEY_ERROR_REPORT_DESCRIPTION= "KEY_ERROR_REPORT_DESCRIPTION";
     private static final String KEY_ERROR_REPORT_CUSTOMER= "KEY_ERROR_REPORT_CUSTOMER";
 
+    private static int schedule;
+    private static Context context;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -116,6 +124,8 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
         setContentView(R.layout.activity_main_me_error_report);
 
         ViewInject.inject(this, this);
+        context = this;
+        schedule = getResources().getInteger(R.integer.save_data_schedule_timer);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_me_error_report_toolbar);
         toolbar.setTitle(R.string.main_me_error_report_title);toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -129,7 +139,7 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
         errorReportDescription.setText(CustomSP.getString(this, KEY_ERROR_REPORT_DESCRIPTION,""));
         errorReportEmailReceive.setText(CustomSP.getString(this, KEY_ERROR_REPORT_EMAIL_RECEIVE,
                 getString(R.string.main_me_error_report_email_receive_address)));
-        errorReportEmailSend.setText(CustomSP.getString(this, KEY_ERROR_REPORT_EMAIL_SEND,""));
+        errorReportEmailSend.setText(CustomSP.getString(this, KEY_ERROR_REPORT_EMAIL_SEND,getString(R.string.main_me_advice_email_send_address)));
         errorReportFileName.setText(CustomSP.getString(this, KEY_ERROR_REPORT_FILENAME,""));
         errorReportName.setText(CustomSP.getString(this, KEY_ERROR_REPORT_NAME,""));
         errorReportPhone.setText(CustomSP.getString(this, KEY_ERROR_REPORT_PHONE,""));
@@ -149,9 +159,16 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
         timer.schedule(new TimerTask(){
             @Override
             public void run() {
-
+                Message message = new Message();
+                Bundle bundle = new Bundle();
+                handler.sendMessage(message);
+                try {
+                    Thread.sleep(schedule);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        }, 60000);
+        }, schedule);
     }
 
     @Override
@@ -167,32 +184,12 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
                 break;
             case R.id.main_me_error_report_commit:
                 // todo 提交
-                ArrayList<String> al = new ArrayList<String>();
-                String attach = errorReportAttach.getText().toString();
-                if (attach != null && attach.length() > 0) {
-                    al.addAll(ConvertUtil.string2List(attach,","));
+                try {
+                    sendMailTask = new SendMailTask();
+                    sendMailTask.execute(view);
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
-                String photo = errorReportPhoto.getText().toString();
-                if (photo != null && photo.length() > 0) {
-                    al.addAll(ConvertUtil.string2List(photo,","));
-                }
-                String content = getString(R.string.main_me_error_report_name) + ": " + errorReportName.getText().toString() + "\n"; // 姓名
-                content = content + getString(R.string.main_me_email_customer) + ": " + errorReportCustomer.getText().toString() + "\n"; // 用户单位
-                content = content + getString(R.string.main_me_error_report_phone) + ": " + errorReportPhone.getText().toString() + "\n"; // 电话
-                content = content + getString(R.string.main_me_error_report_serial_number) + ": " + errorReportSerialNumber.getText().toString() + "\n"; // 序列号
-                content = content + errorReportDescription.getText().toString();
-
-                String subject = errorReportFileName.getText().toString();
-                if (subject == null || subject.length() ==0){
-                    subject = getString(R.string.main_me_error_report_title);
-                }
-                MailUtil.sendMailMultiAttach(this,
-                        errorReportEmailSend.getText().toString().split(";"),
-                        null, // 抄送
-                        null, // 密送
-                        subject, // 主题
-                        content, // 内容
-                        al); // 附件
                 break;
             case R.id.main_me_error_report_photo:
                 noResult = false;
@@ -253,19 +250,97 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void onSave(){
+    private static void onSave(){
 
         // 保存到本地缓存
-        CustomSP.putString(this, KEY_ERROR_REPORT_PHOTO, errorReportPhoto.getText().toString());
-        CustomSP.putString(this, KEY_ERROR_REPORT_PHONE, errorReportPhone.getText().toString());
-        CustomSP.putString(this, KEY_ERROR_REPORT_NAME, errorReportName.getText().toString());
-        CustomSP.putString(this, KEY_ERROR_REPORT_FILENAME, errorReportFileName.getText().toString());
-        CustomSP.putString(this, KEY_ERROR_REPORT_EMAIL_SEND, errorReportEmailSend.getText().toString());
-        CustomSP.putString(this, KEY_ERROR_REPORT_EMAIL_RECEIVE, errorReportEmailReceive.getText().toString());
-        CustomSP.putString(this, KEY_ERROR_REPORT_DESCRIPTION, errorReportDescription.getText().toString());
-        CustomSP.putString(this, KEY_ERROR_REPORT_ATTACH_FILES, errorReportAttach.getText().toString());
-        CustomSP.putString(this, KEY_ERROR_REPORT_HISTORY_FILES, errorReportHistoryFiles.getText().toString());
-        CustomSP.putString(this, KEY_ERROR_REPORT_SERIAL_NUMBER, errorReportSerialNumber.getText().toString());
-        CustomSP.putString(this, KEY_ERROR_REPORT_CUSTOMER,errorReportCustomer.getText().toString());
+        CustomSP.putString(context, KEY_ERROR_REPORT_PHOTO, errorReportPhoto.getText().toString());
+        CustomSP.putString(context, KEY_ERROR_REPORT_PHONE, errorReportPhone.getText().toString());
+        CustomSP.putString(context, KEY_ERROR_REPORT_NAME, errorReportName.getText().toString());
+        CustomSP.putString(context, KEY_ERROR_REPORT_FILENAME, errorReportFileName.getText().toString());
+        CustomSP.putString(context, KEY_ERROR_REPORT_EMAIL_SEND, errorReportEmailSend.getText().toString());
+        CustomSP.putString(context, KEY_ERROR_REPORT_EMAIL_RECEIVE, errorReportEmailReceive.getText().toString());
+        CustomSP.putString(context, KEY_ERROR_REPORT_DESCRIPTION, errorReportDescription.getText().toString());
+        CustomSP.putString(context, KEY_ERROR_REPORT_ATTACH_FILES, errorReportAttach.getText().toString());
+        CustomSP.putString(context, KEY_ERROR_REPORT_HISTORY_FILES, errorReportHistoryFiles.getText().toString());
+        CustomSP.putString(context, KEY_ERROR_REPORT_SERIAL_NUMBER, errorReportSerialNumber.getText().toString());
+        CustomSP.putString(context, KEY_ERROR_REPORT_CUSTOMER,errorReportCustomer.getText().toString());
+    }
+
+    private final Handler handler = new ErrorReportHandler();
+
+    private static class ErrorReportHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            onSave();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (timer !=null){
+            timer.purge();
+            timer.cancel();
+            timer = null;
+        }
+        super.onDestroy();
+    }
+
+    private SendMailTask sendMailTask;
+
+    private class SendMailTask extends AsyncTask<Object, String, String>{
+        @Override
+        protected String doInBackground(Object... objects) {
+
+            ArrayList<String> al = new ArrayList<String>();
+            String attach = errorReportAttach.getText().toString();
+            if (attach != null && attach.length() > 0) {
+                al.addAll(ConvertUtil.string2List(attach,","));
+            }
+            String photo = errorReportPhoto.getText().toString();
+            if (photo != null && photo.length() > 0) {
+                al.addAll(ConvertUtil.string2List(photo,","));
+            }
+            String history = errorReportHistoryFiles.getText().toString();
+            if (history != null && history.length() > 0) {
+                al.addAll(ConvertUtil.string2List(history,","));
+            }
+
+            String content = getString(R.string.main_me_error_report_name) + ": " + errorReportName.getText().toString() + "\n"; // 姓名
+            content = content + getString(R.string.main_me_email_customer) + ": " + errorReportCustomer.getText().toString() + "\n"; // 用户单位
+            content = content + getString(R.string.main_me_error_report_phone) + ": " + errorReportPhone.getText().toString() + "\n"; // 电话
+            content = content + getString(R.string.main_me_error_report_serial_number) + ": " + errorReportSerialNumber.getText().toString() + "\n"; // 序列号
+            content = content + errorReportDescription.getText().toString();
+
+            String subject = errorReportFileName.getText().toString();
+            if (subject == null || subject.length() ==0){
+                subject = getString(R.string.main_me_error_report_title);
+            }
+
+            try {
+                /*
+                   String[] to = new String[]{"3328018955@qq.com","sanetel_user@126.com"};
+                   boolean sucess =  Send2EmailUtil.getInstance().sendMail("sanetel_user@126.com", to, null, subject, content, al);
+                   if (sucess){
+                       Toast.makeText(MainMeErrorReportActivity.this,"发送成功",Toast.LENGTH_SHORT).show();
+                   }else {
+                       Toast.makeText(MainMeErrorReportActivity.this,"发送失败",Toast.LENGTH_SHORT).show();
+                   }
+                Send2EmailUtil.getInstance().send_email(content);
+                */
+
+
+                MailUtil.sendMailMultiAttach(MainMeErrorReportActivity.this,
+                        errorReportEmailSend.getText().toString().split(";"),
+                        null, // 抄送
+                        null, // 密送
+                        subject, // 主题
+                        content, // 内容
+                        al); // 附件
+
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+            return null;
+        }
     }
 }

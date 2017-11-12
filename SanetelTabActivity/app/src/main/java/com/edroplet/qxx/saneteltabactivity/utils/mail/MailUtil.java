@@ -66,6 +66,9 @@ public class MailUtil {
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
         ArrayList<Uri> fileUris = new ArrayList<Uri>();
         for (String file: filePath) {
+            if (!file.startsWith("file://")){
+                file = "file://" + file;
+            }
             fileUris.add(Uri.parse(file));
         }
         intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, fileUris);

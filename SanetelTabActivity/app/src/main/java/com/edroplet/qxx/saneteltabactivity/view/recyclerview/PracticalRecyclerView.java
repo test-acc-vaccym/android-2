@@ -1,4 +1,4 @@
-package com.edroplet.qxx.saneteltabactivity.view.download;
+package com.edroplet.qxx.saneteltabactivity.view.recyclerview;
 
 import android.annotation.TargetApi;
 import android.content.Context;

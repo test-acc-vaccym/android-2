@@ -1,7 +1,10 @@
 package com.edroplet.qxx.saneteltabactivity.activities.main;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -18,6 +21,8 @@ import com.yongchun.library.view.ImageSelectorActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -34,28 +39,28 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
 //    }
     ArrayList<String> images;
     @BindId(R.id.main_me_advice_email_receive)
-    private CustomTextView adviceEmailReceive;
+    private static CustomTextView adviceEmailReceive;
 
     @BindId(R.id.main_me_advice_email_send_address)
-    private CustomEditText adviceEmailSend;
+    private static CustomEditText adviceEmailSend;
 
     @BindId(R.id.main_me_advice_name)
-    private CustomEditText adviceName;
+    private static CustomEditText adviceName;
 
     @BindId(R.id.main_me_advice_phone)
-    private CustomEditText advicePhone;
+    private static CustomEditText advicePhone;
 
     @BindId(R.id.main_me_advice_subject)
-    private CustomEditText adviceSubject;
+    private static CustomEditText adviceSubject;
 
     @BindId(R.id.main_me_advice_photo_list)
-    private CustomTextView advicePhoto;
+    private static CustomTextView advicePhoto;
 
     @BindId(R.id.main_me_advice_description)
-    private CustomEditText adviceDescription;
+    private static CustomEditText adviceDescription;
 
     @BindId(R.id.main_me_advice_email_customer)
-    private CustomEditText adviceCustomer;
+    private static CustomEditText adviceCustomer;
 
     private static final String KEY_ADVICE_EMAIL_RECEIVE = "KEY_ADVICE_EMAIL_RECEIVE";
     private static final String KEY_ADVICE_EMAIL_SEND = "KEY_ADVICE_EMAIL_SEND";
@@ -66,11 +71,17 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
     private static final String KEY_ADVICE_DESCRIPTION= "KEY_ADVICE_DESCRIPTION";
     private static final String KEY_ADVICE_CUSTOMER= "KEY_ADVICE_CUSTOMER";
 
+    private static int schedule;
+    private static Context context;
+    private Timer timer = new Timer();
+
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_me_advice);
         ViewInject.inject(this, this);
+        context = this;
+        schedule = getResources().getInteger(R.integer.save_data_schedule_timer);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_me_advice_toolbar);
         toolbar.setTitle(R.string.main_me_advice_title);
@@ -84,7 +95,7 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
         // 从缓存读取数据
         adviceDescription.setText(CustomSP.getString(this, KEY_ADVICE_DESCRIPTION,""));
         adviceEmailReceive.setText(CustomSP.getString(this, KEY_ADVICE_EMAIL_RECEIVE,getString(R.string.main_me_advice_email_receive_address)));
-        adviceEmailSend.setText(CustomSP.getString(this, KEY_ADVICE_EMAIL_SEND,""));
+        adviceEmailSend.setText(CustomSP.getString(this, KEY_ADVICE_EMAIL_SEND,getString(R.string.main_me_advice_email_send_address)));
         adviceSubject.setText(CustomSP.getString(this, KEY_ADVICE_FILENAME,""));
         adviceName.setText(CustomSP.getString(this, KEY_ADVICE_NAME,""));
         advicePhone.setText(CustomSP.getString(this, KEY_ADVICE_PHONE,""));
@@ -95,6 +106,21 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
         findViewById(R.id.main_me_advice_save).setOnClickListener(this);
         findViewById(R.id.main_me_advice_commit).setOnClickListener(this);
         findViewById(R.id.main_me_advice_photo).setOnClickListener(this);
+
+        timer.schedule(new TimerTask(){
+            @Override
+            public void run() {
+                Message message = new Message();
+                Bundle bundle = new Bundle();
+                handler.sendMessage(message);
+                try {
+                    Thread.sleep(schedule);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, schedule);
+
     }
 
     @Override
@@ -108,14 +134,7 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.main_me_advice_save:
                 // 保存到本地缓存
-                CustomSP.putString(this, KEY_ADVICE_PHOTO, advicePhoto.getText().toString());
-                CustomSP.putString(this, KEY_ADVICE_PHONE, advicePhone.getText().toString());
-                CustomSP.putString(this, KEY_ADVICE_NAME, adviceName.getText().toString());
-                CustomSP.putString(this, KEY_ADVICE_FILENAME, adviceSubject.getText().toString());
-                CustomSP.putString(this, KEY_ADVICE_EMAIL_SEND, adviceEmailSend.getText().toString());
-                CustomSP.putString(this, KEY_ADVICE_EMAIL_RECEIVE, adviceEmailReceive.getText().toString());
-                CustomSP.putString(this, KEY_ADVICE_DESCRIPTION, adviceDescription.getText().toString());
-                CustomSP.putString(this, KEY_ADVICE_CUSTOMER,adviceCustomer.getText().toString());
+                onSave();
                 break;
             case R.id.main_me_advice_commit:
                 // todo 提交
@@ -164,5 +183,34 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
             advicePhoto.setText(images.toString());
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private static void onSave(){
+        CustomSP.putString(context, KEY_ADVICE_PHOTO, advicePhoto.getText().toString());
+        CustomSP.putString(context, KEY_ADVICE_PHONE, advicePhone.getText().toString());
+        CustomSP.putString(context, KEY_ADVICE_NAME, adviceName.getText().toString());
+        CustomSP.putString(context, KEY_ADVICE_FILENAME, adviceSubject.getText().toString());
+        CustomSP.putString(context, KEY_ADVICE_EMAIL_SEND, adviceEmailSend.getText().toString());
+        CustomSP.putString(context, KEY_ADVICE_EMAIL_RECEIVE, adviceEmailReceive.getText().toString());
+        CustomSP.putString(context, KEY_ADVICE_DESCRIPTION, adviceDescription.getText().toString());
+        CustomSP.putString(context, KEY_ADVICE_CUSTOMER,adviceCustomer.getText().toString());
+    }
+
+    private final Handler handler = new ErrorReportHandler();
+    private static class ErrorReportHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            onSave();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (timer !=null){
+            timer.purge();
+            timer.cancel();
+            timer = null;
+        }
+        super.onDestroy();
     }
 }

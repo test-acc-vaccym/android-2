@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
 
 public class GuideFragmentSearchModeSetting extends Fragment {
 
-    private static final String KEY_SEARCHING_MODE = "KEY_SEARCHING_MODE";
+    public static final String KEY_SEARCHING_MODE = "KEY_SEARCHING_MODE";
 
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;

@@ -2,6 +2,7 @@ package com.edroplet.qxx.saneteltabactivity.activities.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,10 +30,13 @@ import android.net.Uri;
 import android.widget.Toast;
 
 import java.io.File;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import butterknife.BindView;
 
 import static com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsCollectHistoryFileListActivity.KEY_IS_SELECT;
 import static com.edroplet.qxx.saneteltabactivity.utils.CustomSP.WifiSettingsNameKey;
@@ -56,6 +60,9 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
 
     @BindId(R.id.main_me_error_report_email_send_address)
     private static CustomEditText errorReportEmailSend;
+
+    @BindId(R.id.main_me_error_report_user_mail)
+    private static CustomEditText errorReportUserEmail;
 
     @BindId(R.id.main_me_error_report_name)
     private static CustomEditText errorReportName;
@@ -103,6 +110,9 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
     @BindId(R.id.main_me_error_report_commit)
     CustomButton errorReportCommitButton;
 
+    @BindId(R.id.submit_result)
+    CustomTextView submitResult;
+
     private static final String KEY_ERROR_REPORT_EMAIL_RECEIVE = "KEY_ERROR_REPORT_EMAIL_RECEIVE";
     private static final String KEY_ERROR_REPORT_EMAIL_SEND = "KEY_ERROR_REPORT_EMAIL_SEND";
     private static final String KEY_ERROR_REPORT_NAME= "KEY_ERROR_REPORT_NAME";
@@ -114,6 +124,7 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
     private static final String KEY_ERROR_REPORT_FILENAME= "KEY_ERROR_REPORT_FILENAME";
     private static final String KEY_ERROR_REPORT_DESCRIPTION= "KEY_ERROR_REPORT_DESCRIPTION";
     private static final String KEY_ERROR_REPORT_CUSTOMER= "KEY_ERROR_REPORT_CUSTOMER";
+    private static final String KEY_ERROR_REPORT_USER_MAIL= "KEY_ERROR_REPORT_USER_MAIL";
 
     private static int schedule;
     private static Context context;
@@ -140,6 +151,7 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
         errorReportEmailReceive.setText(CustomSP.getString(this, KEY_ERROR_REPORT_EMAIL_RECEIVE,
                 getString(R.string.main_me_error_report_email_receive_address)));
         errorReportEmailSend.setText(CustomSP.getString(this, KEY_ERROR_REPORT_EMAIL_SEND,getString(R.string.main_me_advice_email_send_address)));
+        errorReportUserEmail.setText(CustomSP.getString(this, KEY_ERROR_REPORT_USER_MAIL,""));
         errorReportFileName.setText(CustomSP.getString(this, KEY_ERROR_REPORT_FILENAME,""));
         errorReportName.setText(CustomSP.getString(this, KEY_ERROR_REPORT_NAME,""));
         errorReportPhone.setText(CustomSP.getString(this, KEY_ERROR_REPORT_PHONE,""));
@@ -258,6 +270,7 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
         CustomSP.putString(context, KEY_ERROR_REPORT_NAME, errorReportName.getText().toString());
         CustomSP.putString(context, KEY_ERROR_REPORT_FILENAME, errorReportFileName.getText().toString());
         CustomSP.putString(context, KEY_ERROR_REPORT_EMAIL_SEND, errorReportEmailSend.getText().toString());
+        CustomSP.putString(context, KEY_ERROR_REPORT_USER_MAIL, errorReportUserEmail.getText().toString());
         CustomSP.putString(context, KEY_ERROR_REPORT_EMAIL_RECEIVE, errorReportEmailReceive.getText().toString());
         CustomSP.putString(context, KEY_ERROR_REPORT_DESCRIPTION, errorReportDescription.getText().toString());
         CustomSP.putString(context, KEY_ERROR_REPORT_ATTACH_FILES, errorReportAttach.getText().toString());
@@ -288,6 +301,7 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
     private SendMailTask sendMailTask;
 
     private class SendMailTask extends AsyncTask<Object, String, String>{
+
         @Override
         protected String doInBackground(Object... objects) {
 
@@ -306,6 +320,7 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
             }
 
             String content = getString(R.string.main_me_error_report_name) + ": " + errorReportName.getText().toString() + "\n"; // 姓名
+            content = content + getString(R.string.main_me_error_report_user_mail) + ": " + errorReportUserEmail.getText().toString() + "\n"; // 用户邮箱
             content = content + getString(R.string.main_me_email_customer) + ": " + errorReportCustomer.getText().toString() + "\n"; // 用户单位
             content = content + getString(R.string.main_me_error_report_phone) + ": " + errorReportPhone.getText().toString() + "\n"; // 电话
             content = content + getString(R.string.main_me_error_report_serial_number) + ": " + errorReportSerialNumber.getText().toString() + "\n"; // 序列号
@@ -317,7 +332,7 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
             }
 
             try {
-                /*
+                if (false) {
                    String[] to = new String[]{"3328018955@qq.com","sanetel_user@126.com"};
                    boolean sucess =  Send2EmailUtil.getInstance().sendMail("sanetel_user@126.com", to, null, subject, content, al);
                    if (sucess){
@@ -325,20 +340,38 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
                    }else {
                        Toast.makeText(MainMeErrorReportActivity.this,"发送失败",Toast.LENGTH_SHORT).show();
                    }
-                Send2EmailUtil.getInstance().send_email(content);
-                */
-
-
-                MailUtil.sendMailMultiAttach(MainMeErrorReportActivity.this,
-                        errorReportEmailSend.getText().toString().split(";"),
-                        null, // 抄送
-                        null, // 密送
-                        subject, // 主题
-                        content, // 内容
-                        al); // 附件
-
+                    /*
+                    Send2EmailUtil.getInstance().send_email(content);
+                    */
+                }else {
+                    if (true) {
+                        MailUtil.sendMailMultiAttach(MainMeErrorReportActivity.this,
+                                errorReportEmailSend.getText().toString().split(";"),
+                                null, // 抄送
+                                null, // 密送
+                                subject, // 主题
+                                content, // 内容
+                                al); // 附件
+                    }else {
+                        String[] array = (String[])al.toArray(new String[al.size()]);
+                        boolean result = MailUtil.sendMail(getBaseContext(), "sanetel_user@126.com",
+                                "sanetel_!@#","smtp.126.com", "sanetel_user@126.com",
+                                "3328018955@qq.com", null, "故障报告", content, subject, array);
+                        if (result){
+                            // TODO: 2017/11/13 清除
+                            submitResult.setVisibility(View.VISIBLE);
+                            submitResult.setText("发送成功");
+                            return "发送成功";
+                        }else {
+                            submitResult.setVisibility(View.VISIBLE);
+                            submitResult.setText("发送失败");
+                            return "发送失败";
+                        }
+                    }
+                }
             } catch (Exception e){
                 e.printStackTrace();
+                return e.toString();
             }
             return null;
         }

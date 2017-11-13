@@ -52,9 +52,9 @@ public class NewCityActivity extends AppCompatActivity {
                     ArrayList<LocationInfo> cities = jl.loadCities();
                     LocationInfo newLocation = new LocationInfo(cityProvenceView.getText().toString(), cityNameView.getText().toString(),
                             ConvertUtil.convertToFloat(cityLatitudeView.getText().toString(), 0),
-                            cityLatitudeUnitView.getSelectedItem().toString(),
+                            cityLatitudeUnitView.getSelectedItemPosition(),
                             ConvertUtil.convertToFloat(cityLongitudeView.getText().toString(), 0),
-                            cityLongitudeUnitView.getSelectedItem().toString());
+                            cityLongitudeUnitView.getSelectedItemPosition());
                     cities.add(newLocation);
                     jl.saveCities(cities);
                     Bundle bundle = new Bundle();

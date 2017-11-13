@@ -10,8 +10,8 @@ import javax.mail.PasswordAuthentication;
 
 public class PopupAuthenticator extends Authenticator {
     public PasswordAuthentication getPasswordAuthentication() {
-        String username = "cqhcp"; //163邮箱登录帐号
-        String pwd = "12345"; //登录密码
+        String username = "sanetel_user@126.com"; //163邮箱登录帐号
+        String pwd = "sanetel828415"; //登录密码
         return new PasswordAuthentication(username, pwd);
     }
 }

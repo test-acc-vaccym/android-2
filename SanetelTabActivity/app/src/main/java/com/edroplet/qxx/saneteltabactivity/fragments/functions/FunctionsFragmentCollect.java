@@ -2,10 +2,14 @@ package com.edroplet.qxx.saneteltabactivity.fragments.functions;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -27,6 +31,7 @@ import com.edroplet.qxx.saneteltabactivity.utils.RandomDialog;
 import com.edroplet.qxx.saneteltabactivity.view.EDropletDialogBuilder;
 import com.edroplet.qxx.saneteltabactivity.view.NDialog;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.Timer;
@@ -84,17 +89,19 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
                 startActivity(intent);
                 break;
             case R.id.main_collect_data_new:
-                if (collectHistoryFileInfo == null){
-                    collectHistoryFileInfo = new CollectHistoryFileInfo(context);
-                }
-                new NDialog(context).inputDialog();
+
+                // 6.0在权限管理方面更加全面，在读写外置存储的时候不仅要在manifest中静态授权，还需要在代码中动态授权。
+                // 在Activity中发起权限请求：
+                //ActivityCompat.requestPermissions(getActivity(), new String[]{android
+                //        .Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                onConfirm();
                 break;
             case R.id.main_collect_data_start:
                 if (newestFile.isEmpty()){
                     Toast.makeText(context,getText(R.string.main_collect_data_no_file_prompt),Toast.LENGTH_SHORT).show();
                     break;
                 }
-                if (FileUtils.isFileExist(newestFile)){
+                if (!FileUtils.isFileExist(newestFile)){
                     Toast.makeText(context,getText(R.string.main_collect_data_file_not_exist_prompt),Toast.LENGTH_SHORT).show();
                     break;
                 }
@@ -113,6 +120,22 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
                         Bundle bundle = new Bundle();
                         bundle.putString("message",DateTime.getCurrentDateTime());
                         message.setData(bundle);
+
+                        // TODO: 2017/11/3  通信
+                        try {
+                            if (collectHistoryFileInfo == null){
+                                collectHistoryFileInfo = new CollectHistoryFileInfo(context);
+                            }
+                            String newestFile = collectHistoryFileInfo.getNewestCollectFile();
+                            if (FileUtils.isFileExist(newestFile) && FileUtils.getFileSize(newestFile) < FileUtils.FILE_LIMIT) {
+                                // TODO: 2017/11/12 接收数据
+                                FileUtils.saveFile(newestFile, DateTime.getCurrentDateTime() + SAMPLEDATA, true);
+                            } else {
+                                Toast.makeText(context, context.getString(R.string.main_collect_data_file_full_prompt), Toast.LENGTH_LONG).show();
+                            }
+                        }catch (IOException e){
+                            Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
+                        }
                         handler.sendMessage(message);
                         try {
                             Thread.sleep(schedule);
@@ -180,24 +203,57 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
         public void handleMessage(Message msg) {
             FragmentActivity activity = mActivity.get();
             if (activity != null) {
-                // TODO: 2017/11/3  通信
-                try {
-                    if (collectHistoryFileInfo == null){
-                        collectHistoryFileInfo = new CollectHistoryFileInfo(context);
-                    }
-                    String newestFile = collectHistoryFileInfo.getNewestCollectFile();
-                    if (FileUtils.isFileExist(newestFile) &&FileUtils.getFileSize(newestFile) < FileUtils.FILE_LIMIT) {
-                        // TODO: 2017/11/12 接收数据
-                        FileUtils.saveFile(context, newestFile, MODE_APPEND, msg.getData().getString("message") + SAMPLEDATA);
-                    } else {
-                        Toast.makeText(context, context.getString(R.string.main_collect_data_file_full_prompt), Toast.LENGTH_LONG).show();
-                    }
-                }catch (IOException e){
-                    Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
-                }
             }
             super.handleMessage(msg);
         }
     }
 
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        //super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case 1:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //创建文件夹
+                    /**
+                     if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                     File file = new File(Environment.getExternalStorageDirectory() + "/aa/bb/");
+                     if (!file.exists()) {
+                     Log.d("jim", "path1 create:" + file.mkdirs());
+                     }
+                     }
+                     */
+                    onConfirm();
+                    break;
+                }
+            }
+        }
+
+        private void onConfirm(){
+            if (collectHistoryFileInfo == null) {
+                collectHistoryFileInfo = new CollectHistoryFileInfo(context);
+            }
+            new NDialog(context).inputDialog(new NDialog.OnInputListener() {
+                @Override
+                public void onClick(String inputText, int which) {
+                    //which,0代表NegativeButton，1代表PositiveButton
+                    if (which == 1) {
+                        if (inputText.length() > 0) {
+                            try {
+                                collectHistoryFileInfo.setDateTime(DateTime.getCurrentDateTime()).setFileName(inputText).save();
+                                Toast.makeText(context, context.getString(R.string.create_new_file_complete) + inputText, Toast.LENGTH_SHORT).show();
+                            } catch (IOException e) {
+                                Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(context, context.getString(R.string.create_new_file_canceled), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(context, context.getString(R.string.create_new_file_canceled), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
 }

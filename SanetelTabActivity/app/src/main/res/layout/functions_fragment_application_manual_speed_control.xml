@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
-        xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/manual_divider">
+    android:layout_height="wrap_content"
+    style="@style/manual_divider">
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
             android:id="@+id/functions_view_pager_title"
             android:layout_width="match_parent"
@@ -153,9 +149,7 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="8dp"
                 android:orientation="vertical">
-                <!--include layout="@layout/speed_control_scroll_page"/-->
                 <include layout="@layout/speed_control_draw_top_scroll_page"/>
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
     </LinearLayout>
-</android.support.v4.widget.NestedScrollView>

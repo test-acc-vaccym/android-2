@@ -24,6 +24,7 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteDetailActivity;
 import com.edroplet.qxx.saneteltabactivity.adapters.CollectHistoryRecyclerViewAdapter;
 import com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo;
+import com.edroplet.qxx.saneteltabactivity.utils.FileUtils;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.mcxtzhang.swipemenulib.SwipeMenuLayout;
@@ -139,7 +140,8 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity i
                     if (pos >= 0 && pos < mDatas.size()) {
                         Toast.makeText(FunctionsCollectHistoryFileListActivity.this, "删除:" + pos, Toast.LENGTH_SHORT).show();
                         // 删除文件
-                        deleteFile(mDatas.get(pos).getFileName());
+                        // deleteFile(mDatas.get(pos).getFileName());
+                        FileUtils.deleteFile(mDatas.get(pos).getFileName());
 
                         mDatas.remove(pos);
                         mAdapter.notifyItemRemoved(pos);//推荐用这个
@@ -172,9 +174,11 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity i
                     File file =  context.getFilesDir();
                     if (file.exists()) { // 判断文件是否存在
                         for (CollectHistoryFileInfo fileInfo: mDatas){
-                            deleteFile(fileInfo.getFileName());
+                            // deleteFile(fileInfo.getFileName());
+                            if (FileUtils.isFileExist(fileInfo.getFileName())) {
+                                FileUtils.deleteFile(fileInfo.getFileName());
+                            }
                         }
-
                     } else {
                         Log.e("OnDel", "文件不存在！\n");
                     }

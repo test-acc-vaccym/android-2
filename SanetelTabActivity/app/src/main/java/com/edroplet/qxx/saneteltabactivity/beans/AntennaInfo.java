@@ -1,7 +1,12 @@
 package com.edroplet.qxx.saneteltabactivity.beans;
 
+import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
+
+import static com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo.AntennaStatus.INIT;
 
 /**
  * Created by qxs on 2017/9/15.
@@ -84,6 +89,12 @@ public class AntennaInfo implements Parcelable {
         public static final int PAUSE = 5;
         public static final int SEARCHING = 6;
         public static final int RECYCLED = 7;
-
+    }
+    private static final String KEY_ANTENNA_STATE="KEY_ANTENNA_STATE";
+    public static int getAntennaState(Context context){
+        return CustomSP.getInt(context,KEY_ANTENNA_STATE,INIT);
+    }
+    public static void setAntennaState(Context context, int antennaState){
+        CustomSP.putInt(context,KEY_ANTENNA_STATE,antennaState);
     }
 }

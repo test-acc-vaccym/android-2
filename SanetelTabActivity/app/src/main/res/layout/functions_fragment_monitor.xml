@@ -22,8 +22,10 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/main_bottom_nav_monitor"/>
 
-        <!--卫星信息-->
-        <include layout="@layout/satellite_info"/>
+        <!--信标卫星信息-->
+        <include layout="@layout/beacon_satellite_info"/>
+        <!--DVB卫星信息-->
+        <include layout="@layout/dvb_satellite_info"/>
         <!--天线信息-->
         <include layout="@layout/antenna_info"/>
 

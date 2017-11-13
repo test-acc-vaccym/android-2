@@ -46,6 +46,9 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
     @BindId(R.id.administrator_wifi_name)
     private CustomButton administratorWifiName;
 
+    @BindId(R.id.administrator_amplifier_monitor)
+    private CustomButton administratorAmplifierMonitor;
+
     @BindId(R.id.administrator_toolbar)
     private Toolbar administratorToolbar;
 
@@ -71,6 +74,7 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
         administratorBandSelect.setOnClickListener(this);
         administratorLnbFrequencyChannle.setOnClickListener(this);
         administratorSearhingRange.setOnClickListener(this);
+        administratorAmplifierMonitor.setOnClickListener(this);
     }
 
     @Override
@@ -106,6 +110,9 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
                 break;
             case R.id.administrator_searching_range:
                 intent.putExtra(AdministratorSettingsPosition, 9);
+                break;
+            case R.id.administrator_amplifier_monitor:
+                intent.putExtra(AdministratorSettingsPosition, 10);
                 break;
             default:
                 break;

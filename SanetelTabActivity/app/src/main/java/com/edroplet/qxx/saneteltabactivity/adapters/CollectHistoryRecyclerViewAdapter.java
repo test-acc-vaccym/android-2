@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo;
+import com.edroplet.qxx.saneteltabactivity.utils.FileUtils;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 import com.mcxtzhang.swipemenulib.SwipeMenuLayout;
@@ -65,7 +66,7 @@ public class CollectHistoryRecyclerViewAdapter extends RecyclerView.Adapter<Coll
     public void onBindViewHolder(final CollectHistoryViewHolder holder, final int position) {
         ((SwipeMenuLayout) holder.itemView).setIos(false).setLeftSwipe(position % 2 == 0 ? true : false);//这句话关掉IOS阻塞式交互效果 并依次打开左滑右滑
 
-        holder.mNameView.setText(mValues.get(position).getFileName());
+        holder.mNameView.setText(FileUtils.getBaseName(mValues.get(position).getFileName()));
         holder.mDateView.setText(mValues.get(position).getDateTime());
 
         Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.list_anim);

@@ -18,6 +18,10 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.main.MainActivity;
 import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
+import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
+import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
+import com.edroplet.qxx.saneteltabactivity.beans.LockerInfo;
+import com.edroplet.qxx.saneteltabactivity.beans.SavingInfo;
 import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
 import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentDestination;
@@ -123,7 +127,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
         if (bundle != null) {
             position = bundle.getInt(POSITION);
         }
-        OperateBarControl.setupOperatorBar(this);
+        // OperateBarControl.setupOperatorBar(this);
         StatusBarControl.setupToolbar(this, R.id.follow_me_content_toolbar);
         findViewById(R.id.follow_me_bottom_nav_main).setOnClickListener(this);
         findViewById(R.id.follow_me_bottom_nav_preview).setOnClickListener(this);
@@ -206,11 +210,11 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
             // break;
             // }
 
-            mSectionsPagerAdapter.addFragment(guideFragmentExplode.get(SystemServices.getAntennaState()));
+            mSectionsPagerAdapter.addFragment(guideFragmentExplode.get(AntennaInfo.getAntennaState(this)));
 
             // 位置输入
             // 获取gps定位信息
-            int bdState = SystemServices.getBDState();
+            int bdState = LocationInfo.getBDState(this);
             // switch (bdState){
             //    case LocationInfo.BDState.NOTLOCATED:
             guideFragmentLocation.add(GuideFragmentLocation.newInstance(true, getString(R.string.follow_me_location_state_not_locate),
@@ -238,7 +242,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
 
             mSectionsPagerAdapter.addFragment(guideFragmentSearchModeSetting.get(0));
             // 4.3.6.	寻星操作
-            int satelliteStatus = SystemServices.getAntennaState();
+            int satelliteStatus = AntennaInfo.getAntennaState(this);
 
             //switch (satelliteStatus){
             // 开始寻星
@@ -253,7 +257,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
             mSectionsPagerAdapter.addFragment(guideFragmentSearching.get(0));
 
             // 4.3.7.	锁紧操作
-            int lockerState = SystemServices.getLockerState();
+            int lockerState = LockerInfo.getLockerState(this);
             //switch (lockerState){
             //case 0:
             guideFragmentLocker.add(GuideFragmentLocker.newInstance(true, getString(R.string.follow_me_locker_open_first_line),
@@ -269,7 +273,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
             mSectionsPagerAdapter.addFragment(guideFragmentLocker.get(lockerState));
 
             // 4.3.8.	节能操作
-            int savingState = SystemServices.getSavingState();
+            int savingState = SavingInfo.getSavingState(this);
             //switch (savingState){
             //    case 0:
             guideFragmentSaving.add(GuideFragmentSaving.newInstance(true, getString(R.string.follow_me_saving_open_first_line),

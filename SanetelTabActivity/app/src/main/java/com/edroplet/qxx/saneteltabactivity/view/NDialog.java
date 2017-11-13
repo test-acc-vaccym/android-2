@@ -126,7 +126,7 @@ public class NDialog {
 
     }
 
-    public void inputDialog() {
+    public void inputDialog(OnInputListener onInputListener) {
         new NDialog(mContext).setTitle(mContext.getString(R.string.main_collect_data_new_input_message))
                 .setInputHintText(mContext.getString(R.string.main_collect_data_new_input_hint))
                 .setInputHintTextColor(Color.parseColor("#c1c1c1"))
@@ -138,28 +138,7 @@ public class NDialog {
                 .setPositiveButtonText(mContext.getString(R.string.operate_confirm_ok))
                 .setNegativeButtonText(mContext.getString(R.string.operate_confirm_cancel))
                 .setNegativeTextColor(Color.parseColor("#c1c1c1"))
-                .setOnInputListener(new NDialog.OnInputListener() {
-                    @Override
-                    public void onClick(String inputText, int which) {
-                        //which,0代表NegativeButton，1代表PositiveButton
-                        if (which == 1) {
-                            if (inputText.length()>0) {
-                                CollectHistoryFileInfo collectHistoryFileInfo = new CollectHistoryFileInfo(mContext);
-                                try {
-                                    collectHistoryFileInfo.setDateTime(DateTime.getCurrentDateTime()).setFileName(inputText).save();
-                                    Toast.makeText(mContext, mContext.getString(R.string.create_new_file_complete) + inputText, Toast.LENGTH_SHORT).show();
-                                }catch (IOException e) {
-                                    Toast.makeText(mContext, e.toString(), Toast.LENGTH_SHORT).show();
-                                }
-                            }else {
-                                Toast.makeText(mContext, mContext.getString(R.string.create_new_file_canceled), Toast.LENGTH_SHORT).show();
-                            }
-                        }else {
-                            Toast.makeText(mContext, mContext.getString(R.string.create_new_file_canceled), Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                }).create(NDialog.INPUT).show();
+                .setOnInputListener(onInputListener).create(NDialog.INPUT).show();
 
     }
 

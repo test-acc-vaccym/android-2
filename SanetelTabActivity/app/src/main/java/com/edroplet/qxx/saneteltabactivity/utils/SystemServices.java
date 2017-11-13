@@ -347,22 +347,6 @@ public class SystemServices {
         }
     }
 
-    public static int getAntennaState(){
-        return AntennaInfo.AntennaStatus.EXPLODED;
-    }
-
-    public static int getBDState(){
-        return LocationInfo.BDState.NOTLOCATED;
-    }
-
-    public static int getLockerState() {
-        return LockerInfo.LOCKER_STATE_UNLOCK;
-    }
-
-    public static int getSavingState(){
-        return SavingInfo.SAVING_STATE_OPEN;
-    }
-
     public static void copyAssetsFiles2FileDir(Context context,String filename){
         InputStream is=null;
         Writer writer = null;

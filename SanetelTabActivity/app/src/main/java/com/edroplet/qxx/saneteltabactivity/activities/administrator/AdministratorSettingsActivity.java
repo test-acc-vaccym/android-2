@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentAmplifierMonitor;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentAntennaIncriminate;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentAntennaType;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentBandSelect;
@@ -32,7 +33,7 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
             R.string.administrator_wifi_name, R.string.administrator_ip_settings,
             R.string.administrator_network_protocol, R.string.administrator_serial_protocol,
             R.string.administrator_band_select, R.string.administrator_lnb_frequency_channel,
-            R.string.administrator_searching_range};
+            R.string.administrator_searching_range, R.string.administrator_amplifier_monitor};
 
     @BindId(R.id.administrator_settings_viewpager)
     private CustomViewPager viewPager;
@@ -107,7 +108,8 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
                 false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
         adapter.addFragment(AdministratorFragmentWifiSettings.newInstance(false,null,
-                false, null, true, getString(R.string.follow_me_message_click),-1,
+                true, getString(R.string.administrator_setting_wifi_name_second_line),
+                true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
         adapter.addFragment(AdministratorFragmentIPSettings.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
@@ -126,6 +128,9 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
         adapter.addFragment(AdministratorFragmentSearchingRange.newInstance(false,null,
                 true, getString(R.string.administrator_setting_searching_range_second_line), true, getString(R.string.follow_me_message_click),-1,
+                getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
+        adapter.addFragment(AdministratorFragmentAmplifierMonitor.newInstance(false,null,
+                false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
 
         viewPager.setAdapter(adapter);

@@ -93,7 +93,7 @@
 
     <!--侧滑菜单-->
     <dimen name="swipe_button_height">60dp</dimen>
-    <dimen name="swipe_button_width">120dp</dimen>
+    <dimen name="swipe_button_width">80dp</dimen>
 
     <!--卫星信息页面-->
     <dimen name="two_element_the_bigger_weight">1.4</dimen>
@@ -120,4 +120,6 @@
 
     <dimen name="follow_me_shadow_height">5dp</dimen>
     <dimen name="follow_me_navigation_height">43dp</dimen>
+
+    <dimen name="spinner_lower_height">38dp</dimen>
 </resources>

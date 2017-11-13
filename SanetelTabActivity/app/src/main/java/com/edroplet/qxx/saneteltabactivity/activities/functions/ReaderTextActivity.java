@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.services.AsyncTextLoadTask;
+import com.edroplet.qxx.saneteltabactivity.utils.FileUtils;
 import com.edroplet.qxx.saneteltabactivity.view.BorderScrollView;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
@@ -96,12 +97,17 @@ public class ReaderTextActivity extends AppCompatActivity {
         });
 
         try{
-            if (!fileName.isEmpty()) {
-                toolbar.setTitle(fileName);
+            if (fileName != null && !fileName.isEmpty()) {
+                toolbar.setTitle(FileUtils.getBaseName(fileName));
+                // 从assets中获取
                 // InputStream is = context.getAssets().open(fileName);
-                FileInputStream fis = context.openFileInput(fileName);
+                // 从私有目录获取
+                // FileInputStream fis = context.openFileInput(fileName);
+                // 从绝对路径获取
+                FileInputStream fis = new FileInputStream(fileName);
                 br = new BufferedReader(new InputStreamReader(fis));
-                new AsyncTextLoadTask(context, br).execute();
+                asyncTextLoadTask = new AsyncTextLoadTask(context, br);
+                asyncTextLoadTask.execute();
             }
         }catch(Exception ex){
             ex.printStackTrace();
@@ -109,12 +115,16 @@ public class ReaderTextActivity extends AppCompatActivity {
         }
     }
 
+    private AsyncTextLoadTask asyncTextLoadTask;
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if(null != br){
             try {
                 br.close();
+                if (asyncTextLoadTask != null){
+                    asyncTextLoadTask.cancel(true);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

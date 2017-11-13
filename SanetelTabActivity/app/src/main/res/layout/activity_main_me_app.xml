@@ -95,18 +95,18 @@
                 android:text="@string/main_me_app_recovery"
                 android:gravity="start|left|center_vertical"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                android:id="@+id/main_me_app_browse"
-                style="@style/button_vertical_style"
-                android:layout_width="match_parent"
-                android:padding="@dimen/no_padding"
-                android:text="@string/main_me_app_browse"
-                android:gravity="start|left|center_vertical"/>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                 android:id="@+id/main_me_app_download"
                 style="@style/button_vertical_style"
                 android:padding="@dimen/no_padding"
                 android:layout_width="match_parent"
                 android:text="@string/main_me_app_download"
+                android:gravity="start|left|center_vertical"/>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                android:id="@+id/main_me_app_browse"
+                style="@style/button_vertical_style"
+                android:layout_width="match_parent"
+                android:padding="@dimen/no_padding"
+                android:text="@string/main_me_app_browse"
                 android:gravity="start|left|center_vertical"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

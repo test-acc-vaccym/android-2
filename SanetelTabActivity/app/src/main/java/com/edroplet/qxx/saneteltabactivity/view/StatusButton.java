@@ -244,7 +244,8 @@ public class StatusButton extends CustomButton {
             break;
             case R.id.status_bar_button_antenna_state:
                 if (mButtonState == BUTTON_STATE_NORMAL) setText(R.string.antenna_state_exploded);
-                else if (mButtonState == BUTTON_STATE_ABNORMAL) setText(R.string.antenna_state_abnormal);
+                else if (mButtonState == BUTTON_STATE_ABNORMAL) setText(R.string.antenna_state_folded);
+                else setText(R.string.antenna_state_abnormal);
                 break;
             case R.id.status_bar_button_bd_state:
                 if (mButtonState == BUTTON_STATE_NORMAL) setText(R.string.bd_state_enabled);
@@ -255,7 +256,7 @@ public class StatusButton extends CustomButton {
                 else setText(R.string.locker_state_locked);
                 break;
             case R.id.status_bar_button_power_state:
-                if (mButtonState != BUTTON_STATE_NORMAL) setText(R.string.power_state_saved);
+                if (mButtonState != BUTTON_STATE_ABNORMAL) setText(R.string.power_state_saved);
                 else setText(R.string.power_state_charged);
                 break;
         }

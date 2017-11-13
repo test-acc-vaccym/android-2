@@ -102,8 +102,8 @@ public class CityLocationDetailFragment extends Fragment implements View.OnClick
                 mItem.setLongitude(ConvertUtil.convertToFloat(cityDetailLongitude.getText().toString(), 0f));
                 mItem.setProvince(province.getText().toString());
                 mItem.setName(cityName.getText().toString());
-                mItem.setLatitudeUnit(latitudeUnit.getSelectedItem().toString());
-                mItem.setLongitudeUnit(longitudeUnit.getSelectedItem().toString());
+                mItem.setLatitudeUnit(latitudeUnit.getSelectedItemPosition());
+                mItem.setLongitudeUnit(longitudeUnit.getSelectedItemPosition());
 
                 bundle.putParcelable(LocationInfo.objectKey, mItem);
                 Intent intent = new Intent();
@@ -155,20 +155,8 @@ public class CityLocationDetailFragment extends Fragment implements View.OnClick
             cityDetailLatitude.setText(String.valueOf(mItem.getLatitude()));
             cityDetailLongitude.setText(String.valueOf(mItem.getLongitude()));
 
-            String[]  longitudeUnits = getContext().getResources().getStringArray(R.array.longitude_unit);
-            String longitudeUnitString = mItem.getLongitudeUnit();
-
-            if (longitudeUnitString != null && longitudeUnitString.equals(longitudeUnits[1]))
-                longitudeUnit.setSelection(1);
-            else
-                longitudeUnit.setSelection(0);
-
-            String[]  latitudeUnits = getContext().getResources().getStringArray(R.array.latitude_unit);
-            String latitudeUnitString = mItem.getLongitudeUnit();
-            if (latitudeUnitString != null && latitudeUnitString.equals(latitudeUnits[1]))
-                latitudeUnit.setSelection(1);
-            else
-                latitudeUnit.setSelection(0);
+            longitudeUnit.setSelection(mItem.getLongitudeUnit());
+            latitudeUnit.setSelection(mItem.getLongitudeUnit());
 
         }
         return rootView;

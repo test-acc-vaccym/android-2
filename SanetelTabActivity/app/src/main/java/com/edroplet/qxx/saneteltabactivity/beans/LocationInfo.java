@@ -1,9 +1,11 @@
 package com.edroplet.qxx.saneteltabactivity.beans;
 
+import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
+import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,9 +25,9 @@ public class LocationInfo implements Parcelable {
     private String province;        // 省份
     private String name;            // 城市
     private float longitude;        // 经度
-    private String longitudeUnit;   // 经度单位
+    private int longitudeUnitPosition;   // 经度单位
     private float latitude;         // 纬度
-    private String latitudeUnit;    // 纬度单位
+    private int latitudeUnitPosition;    // 纬度单位
 
     public static final String objectKey = "city";
     public static final String positionKey = "position";
@@ -65,20 +67,20 @@ public class LocationInfo implements Parcelable {
         return latitude;
     }
 
-    public String getLatitudeUnit() {
-        return latitudeUnit;
+    public int getLatitudeUnit() {
+        return latitudeUnitPosition;
     }
 
-    public String getLongitudeUnit() {
-        return longitudeUnit;
+    public int getLongitudeUnit() {
+        return longitudeUnitPosition;
     }
 
-    public void setLatitudeUnit(String latitudeUnit) {
-        this.latitudeUnit = latitudeUnit;
+    public void setLatitudeUnit(int latitudeUnitPosition) {
+        this.latitudeUnitPosition = latitudeUnitPosition;
     }
 
-    public void setLongitudeUnit(String longitudeUnit) {
-        this.longitudeUnit = longitudeUnit;
+    public void setLongitudeUnit(int longitudeUnitPosition) {
+        this.longitudeUnitPosition = longitudeUnitPosition;
     }
 
     public float getLongitude() {
@@ -104,9 +106,9 @@ public class LocationInfo implements Parcelable {
         dest.writeString(province);
         dest.writeString(name);
         dest.writeFloat(longitude);
-        dest.writeString(longitudeUnit);
+        dest.writeInt(longitudeUnitPosition);
         dest.writeFloat(latitude);
-        dest.writeString(latitudeUnit);
+        dest.writeInt(latitudeUnitPosition);
     }
 
     public static final Parcelable.Creator<LocationInfo> CREATOR = new Creator<LocationInfo>(){
@@ -116,10 +118,10 @@ public class LocationInfo implements Parcelable {
             String province = source.readString();
             String name = source.readString();
             float longitude = source.readFloat();
-            String longitudeUnit = source.readString();
+            int longitudeUnitPosition = source.readInt();
             float latitude  = source.readFloat();
-            String latitudeUnit = source.readString();
-            LocationInfo li = new LocationInfo(id, province, name, latitude, latitudeUnit, longitude, longitudeUnit);
+            int latitudeUnitPosition = source.readInt();
+            LocationInfo li = new LocationInfo(id, province, name, latitude, latitudeUnitPosition, longitude, longitudeUnitPosition);
             return li;
         }
 
@@ -129,22 +131,22 @@ public class LocationInfo implements Parcelable {
         }
     };
 
-    public LocationInfo(String name, float latitude, String latitudeUnit,  float longitude, String longitudeUnit){
-        this(null, name, latitude, latitudeUnit, longitude, longitudeUnit);
+    public LocationInfo(String name, float latitude, int latitudeUnitPosition,  float longitude, int longitudeUnitPosition){
+        this(null, name, latitude, latitudeUnitPosition, longitude, longitudeUnitPosition);
     }
 
-    public LocationInfo(String province, String name, float latitude, String latitudeUnit,  float longitude, String longitudeUnit){
-        this(UUID.randomUUID().toString(), province, name, latitude, latitudeUnit, longitude, longitudeUnit);
+    public LocationInfo(String province, String name, float latitude, int latitudeUnitPosition,  float longitude, int longitudeUnitPosition){
+        this(UUID.randomUUID().toString(), province, name, latitude, latitudeUnitPosition, longitude, longitudeUnitPosition);
     }
 
-    public LocationInfo(String id, String province, String name, float latitude, String latitudeUnit,  float longitude, String longitudeUnit){
+    public LocationInfo(String id, String province, String name, float latitude, int latitudeUnitPosition,  float longitude, int longitudeUnitPosition){
         this.mId = id;
         this.province = province;
         this.name = name;
         this.latitude = latitude;
-        this.latitudeUnit = latitudeUnit;
+        this.latitudeUnitPosition = latitudeUnitPosition;
         this.longitude = longitude;
-        this.longitudeUnit = longitudeUnit;
+        this.longitudeUnitPosition = longitudeUnitPosition;
 
     }
 
@@ -169,17 +171,14 @@ public class LocationInfo implements Parcelable {
             }
             if (json.has(JSON_CITY_LATITUDE)) {
                 String jsonCityLatitude = json.getString(JSON_CITY_LATITUDE);
-                if (jsonCityLatitude.endsWith("°S")) {
-                    this.latitudeUnit = "°S";
+                if (jsonCityLatitude.endsWith(latitudeString[1])) {
+                    this.latitudeUnitPosition = 1;
                     jsonCityLatitude = jsonCityLatitude.substring(0,jsonCityLatitude.length()-2);
-                } else if (jsonCityLatitude.endsWith("°N")) {
-                    this.latitudeUnit = "°N";
+                } else if (jsonCityLatitude.endsWith(latitudeString[0])) {
+                    this.latitudeUnitPosition = 0;
                     jsonCityLatitude = jsonCityLatitude.substring(0,jsonCityLatitude.length()-2);
                 }
-                int index = jsonCityLatitude.indexOf(".");
-//                for (int i = index; i < jsonCityLatitude.length(); i ++){
-//                    if (jsonCityLatitude.)
-//                }
+
                 jsonCityLatitude = StringFilter(jsonCityLatitude);
                 // this.latitude = (float) json.getDouble(JSON_CITY_LATITUDE);
                 this.latitude = ConvertUtil.convertToFloat(StringFilter(jsonCityLatitude), 0.0f);
@@ -188,11 +187,11 @@ public class LocationInfo implements Parcelable {
             }
             if (json.has(JSON_CITY_LONGITUDE)) {
                 String jsonCityLongitude = json.getString(JSON_CITY_LONGITUDE);
-                if (jsonCityLongitude.endsWith("°W")) {
-                    this.longitudeUnit = "°W";
+                if (jsonCityLongitude.endsWith(longitudeString[1])) {
+                    this.longitudeUnitPosition = 1;
                     jsonCityLongitude = jsonCityLongitude.substring(0,jsonCityLongitude.length()-2);
-                } else if (jsonCityLongitude.endsWith("°E")){
-                    this.longitudeUnit = "°E";
+                } else if (jsonCityLongitude.endsWith(longitudeString[0])){
+                    this.longitudeUnitPosition = 0;
                     jsonCityLongitude = jsonCityLongitude.substring(0,jsonCityLongitude.length()-2);
                 }
                 jsonCityLongitude = StringFilter(jsonCityLongitude);
@@ -215,13 +214,24 @@ public class LocationInfo implements Parcelable {
         JSONObject json = new JSONObject();
         json.put(JSON_PROVENCE_NAME, this.province);
         json.put(JSON_CITY_NAME, this.name);
-        json.put(JSON_CITY_LATITUDE, this.latitude + this.latitudeUnit);
-        json.put(JSON_CITY_LONGITUDE, this.longitude + this.longitudeUnit);
+        json.put(JSON_CITY_LATITUDE, this.latitude + latitudeString[this.latitudeUnitPosition]);
+        json.put(JSON_CITY_LONGITUDE, this.longitude + longitudeString[this.longitudeUnitPosition]);
         return json;
     }
+
+    public static final String[] longitudeString = {"°E", "°W"};
+    public static final String[] latitudeString = {"°N", "°S"};
 
     public static class BDState {
         public static final int NOTLOCATED = 0;
         public static  final int LOCATED = 1;
+    }
+
+    private static final String KEY_BD_STATE="KEY_BD_STATE";
+    public static int getBDState(Context context){
+        return CustomSP.getInt(context,KEY_BD_STATE, BDState.NOTLOCATED);
+    }
+    public static void setBDState(Context context, int bdState){
+        CustomSP.getInt(context,KEY_BD_STATE, bdState);
     }
 }

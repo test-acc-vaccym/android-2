@@ -182,8 +182,8 @@ public class GuideFragmentLocation extends Fragment {
                         newCity.setText(locationInfo.getName());
                         newLatitude.setText(locationInfo.getLatitude()+"");
                         newLongitude.setText(locationInfo.getLongitude()+"");
-                        newLatitudeUnit.setSelection(0);
-                        newLongitudeUnit.setSelection(0);
+                        newLatitudeUnit.setSelection(locationInfo.getLatitudeUnit());
+                        newLongitudeUnit.setSelection(locationInfo.getLongitudeUnit());
                     }
                 }
 
@@ -262,9 +262,9 @@ public class GuideFragmentLocation extends Fragment {
                         // 添加新城市
                         cities.addItem(new LocationInfo(selectedProvince, selectedCity,
                                 ConvertUtil.convertToFloat(newLatitude.getText().toString(), 0.00f),
-                                newLatitudeUnit.getSelectedItem().toString(),
+                                newLatitudeUnit.getSelectedItemPosition(),
                                 ConvertUtil.convertToFloat(newLongitude.getText().toString(), 0.00f),
-                                newLongitudeUnit.getSelectedItem().toString()), true);
+                                newLongitudeUnit.getSelectedItemPosition()), true);
                         try {
                             cities.save();
                         }catch (Exception e){

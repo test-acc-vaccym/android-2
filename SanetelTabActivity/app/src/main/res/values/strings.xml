@@ -42,7 +42,10 @@
     <string name="communication_state_connected">连接</string>
     <string name="communication_state_disconnected">断开</string>
     <!--天线状态-->
+    <string name="antenna_state_init">初始</string>
+    <string name="antenna_state_exploding">展开中</string>
     <string name="antenna_state_exploded">展开</string>
+    <string name="antenna_state_folding">收藏中</string>
     <string name="antenna_state_folded">收藏</string>
     <string name="antenna_state_reset">复位</string>
     <string name="antenna_state_paused">停止</string>
@@ -60,9 +63,8 @@
     <string name="antenna_folding_bind_confirm">当天线正在收藏中,不能操作</string>
     <string name="antenna_folded_bind_confirm">当天线已经收藏,不能操作</string>
     <string name="locker_bind_confirm">当锁紧机构处于锁紧时，不能操作\n请将方位手刹松开，天线才能运动</string>
-    <string name="saving_bind_confirm">当节能处于开启时，不能操作\n请先▲退出节能天线才能运动</string>
+    <string name="saving_bind_confirm">当节能处于开启时，不能操作\n请先退出节能天线才能运动</string>
     <string name="saving_bind_quit">退出</string>
-    <string name="antenna_state_init">初始</string>
     <string name="antenna_state_lock">锁星</string>
     <string name="antenna_state_abnormal">异常</string>
 
@@ -402,7 +404,7 @@
     </string>
 
     <string name="main_wifi_setting_help_title">WI-FI设置说明</string>
-    <string name="main_wifi_setting_help_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;便携站提供AP热点，WIFI名称：P120-3-201708001。其中P120-3为产品类型；201708001为产品序列号。\n
+    <string name="main_wifi_setting_help_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;便携站提供AP热点，WIFI名称：XWWT-P120-3-201708001。其中“XWWT-”为星网卫通设备标识, P120-3为产品类型；201708001为产品序列号。\n
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;由于便携站支持DHCP协议，系统会自动对智能终端自动分配IP地址。\n
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;自此便携站和智能终端之间的局域网已经建立。之后，APP会自动建立SOKET连接，以TCP客户端模式实现数据交换。\n
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;用户在下次进入APP时（智能设备在没有切换过WIFI名称），无需再次连接。\n
@@ -516,7 +518,7 @@
     <string name="main_me_error_report_name">姓名</string>
     <string name="main_me_error_report_phone">用户电话</string>
     <string name="main_me_error_report_serial_number">产品序列号</string>
-    <string name="main_me_error_report_serial_number_hint">P120-201708001</string>
+    <string name="main_me_error_report_serial_number_hint">XWWT-P120-201708001</string>
     <string name="main_me_error_report_subject">邮件主题</string>
     <string name="main_me_error_report_attach">添加附件</string>
     <string name="main_me_error_report_history">历史文件</string>
@@ -532,6 +534,7 @@
     <string name="main_me_advice_email_receive_address">support@sanetel.com</string>
     <string name="main_me_advice_email_send">发送邮箱</string>
     <string name="main_me_advice_email_send_address">user@sanetel.com</string>
+    <string name="main_me_error_report_user_mail">用户邮箱</string>
     <string name="main_me_email_customer">用户单位</string>
     <string name="main_me_advice_name">姓名</string>
     <string name="main_me_advice_phone">电话</string>
@@ -568,8 +571,8 @@
     <string name="main_me_app_update_state_install_failed">安装失败</string>
     <string name="main_me_app_update_state_complete">完成,并将自动安装</string>
     <string name="main_me_app_recovery">APP恢复出厂</string>
-    <string name="main_me_app_browse">APP使用说明书在线浏览</string>
-    <string name="main_me_app_download">APP使用说明书下载</string>
+    <string name="main_me_app_browse">产品相关资料在线浏览</string>
+    <string name="main_me_app_download">产品使用说明书</string>
 
     <string name="choose_file">选择文件</string>
     <string name="empty_directory">Empty Directory</string>
@@ -668,11 +671,12 @@
     <string name="administrator_band_select">波段选择</string>
     <string name="administrator_lnb_frequency_channel">LNB频段</string>
     <string name="administrator_searching_range">寻星范围</string>
+    <string name="administrator_amplifier_monitor">功放监控</string>
     <!--天线标定-->
     <!--恢复出厂-->
     <string name="administrator_setting_recovery_factory_title">恢复出厂</string>
     <string name="administrator_setting_recovery_factory_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当希望掉电存储信息恢复到设备出厂前的状态，可以采用此功能。\n
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;恢复出厂后后2秒，天线会自动重启。\n\n</string>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;恢复出厂后，天线会自动重启。\n\n</string>
     <string name="settings_to_be_working">生效</string>
     <string name="administrator_setting_recovery_factory_third_button"> ▲恢复出厂</string>
     <!--天线类型-->
@@ -702,7 +706,8 @@
 
     <!--10.5.9.	WIFI名称-->
     <string name="administrator_setting_wifi_name">名称</string>
-    <string name="administrator_setting_wifi_name_hint">请以“XWWT-”开头,否则将自动添加.不能超过27个字符</string>
+    <string name="administrator_setting_wifi_name_hint">XWWT-</string>
+    <string name="administrator_setting_wifi_name_second_line">请以“XWWT-”开头,否则无法输入.区分大小写，不能超过27个字符</string>
 
     <!--10.5.10.	IP设置-->
     <string name="administrator_setting_ip_address">IP地址</string>
@@ -731,6 +736,10 @@
     <string name="administrator_setting_serial_protocol_6">转发COM5 网络报文</string>
     <string name="administrator_setting_serial_protocol_7">转发COM6 功放监控报文</string>
     <string name="ip_edit_dot">.</string>
+
+    <!--功放监控-->
+    <string name="administrator_amplifier_monitor_has">有功放监控</string>
+    <string name="administrator_amplifier_monitor_none">无功放监控</string>
 
     <string name="app_intro_done_button">DONE</string>
     <string name="app_intro_skip_button">SKIP</string>

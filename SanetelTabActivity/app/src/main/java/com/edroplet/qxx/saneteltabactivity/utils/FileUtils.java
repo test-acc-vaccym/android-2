@@ -2,6 +2,7 @@ package com.edroplet.qxx.saneteltabactivity.utils;
 
 import android.content.Context;
 import android.os.Environment;
+import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
 import java.io.File;
@@ -32,7 +33,55 @@ public class FileUtils {
         ins.close();
     }
 
-    public static void saveFile(Context context, String filePath, int mode, String message) throws IOException{
+    public static String getParentDir(String path){
+        int index = path.lastIndexOf("/");
+        if (index == -1){
+            return "";
+        }
+        return path.substring(0,index);
+    }
+
+    public static String getBaseName(String path){
+        int index = path.lastIndexOf("/");
+        if (index == -1){
+            return path;
+        }
+        return path.substring(index+1);
+    }
+
+    public static void saveFile(String filePath, String message, boolean append) throws IOException{
+        FileOutputStream out;
+        PrintStream ps;
+        String parentDir = getParentDir(filePath);
+        if (!isFileExist(parentDir)){
+            createDir(parentDir);
+        }
+        out = new FileOutputStream(filePath, append);
+        ps = new PrintStream(out);
+        ps.println(message);
+        if (out != null) {
+            out.close();
+            ps.close();
+        }
+    }
+
+    public static void saveFileToSdcard(String filePath, String message) throws IOException{
+        FileOutputStream out;
+        PrintStream ps;
+        String parentDir = getParentDir(filePath);
+        if (!isFileExist(parentDir)){
+            createDir(parentDir);
+        }
+        out = new FileOutputStream(filePath);
+        ps = new PrintStream(out);
+        ps.println(message);
+        if (out != null) {
+            out.close();
+            ps.close();
+        }
+    }
+
+    public static void savePrivateFile(Context context, String filePath, int mode, String message) throws IOException{
         FileOutputStream out;
         PrintStream ps;
 
@@ -44,7 +93,6 @@ public class FileUtils {
             ps.close();
         }
     }
-
     /**
      * 删除单个文件
      * @param   filePath    被删除文件的文件名
@@ -119,16 +167,28 @@ public class FileUtils {
         if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
             sdPath = Environment.getExternalStorageDirectory().toString() + File.pathSeparator;
         }
-        return getSDPath();
+        if (sdPath.endsWith(":")){
+            sdPath = sdPath.substring(0,sdPath.length() -1);
+        }
+        return sdPath;
     }
 
+    private static String dataDir;
+    public static String getDataDir(Context context){
+        if (dataDir != null || context == null){
+            return dataDir;
+        }
+        File dataFile = ContextCompat.getDataDir(context);
+        dataDir = dataFile.getAbsolutePath();
+        return dataDir;
+    }
     /**
      * 判断文件是否存在
      * @param fileName
      * @return
      */
     public static boolean isFileExist(String fileName){
-        File file = new File(getSDPath() + fileName);
+        File file = new File(fileName);
         return file.exists();
     }
 
@@ -149,9 +209,9 @@ public class FileUtils {
      * @param dirName 目录名字
      * @return 文件目录
      */
-    public File createDir(String dirName){
-        File dir = new File(getSDPath() + dirName);
-        dir.mkdir();
+    public static File createDir(String dirName){
+        File dir = new File(dirName);
+        dir.mkdirs();
         return dir;
     }
 

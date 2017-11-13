@@ -44,6 +44,9 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
     @BindId(R.id.main_me_advice_email_send_address)
     private static CustomEditText adviceEmailSend;
 
+    @BindId(R.id.main_me_advice_user_mail)
+    private static CustomEditText adviceUserEmail;
+
     @BindId(R.id.main_me_advice_name)
     private static CustomEditText adviceName;
 
@@ -70,6 +73,7 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
     private static final String KEY_ADVICE_FILENAME= "KEY_ADVICE_FILENAME";
     private static final String KEY_ADVICE_DESCRIPTION= "KEY_ADVICE_DESCRIPTION";
     private static final String KEY_ADVICE_CUSTOMER= "KEY_ADVICE_CUSTOMER";
+    private static final String KEY_ADVICE_USER_MAIL= "KEY_ADVICE_USER_MAIL";
 
     private static int schedule;
     private static Context context;
@@ -96,6 +100,7 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
         adviceDescription.setText(CustomSP.getString(this, KEY_ADVICE_DESCRIPTION,""));
         adviceEmailReceive.setText(CustomSP.getString(this, KEY_ADVICE_EMAIL_RECEIVE,getString(R.string.main_me_advice_email_receive_address)));
         adviceEmailSend.setText(CustomSP.getString(this, KEY_ADVICE_EMAIL_SEND,getString(R.string.main_me_advice_email_send_address)));
+        adviceUserEmail.setText(CustomSP.getString(this, KEY_ADVICE_USER_MAIL,""));
         adviceSubject.setText(CustomSP.getString(this, KEY_ADVICE_FILENAME,""));
         adviceName.setText(CustomSP.getString(this, KEY_ADVICE_NAME,""));
         advicePhone.setText(CustomSP.getString(this, KEY_ADVICE_PHONE,""));
@@ -145,8 +150,9 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
                 }
 
                 String content = getString(R.string.main_me_advice_name) + ": " + adviceName.getText().toString() + "\n"; // 姓名
-                content = content + getString(R.string.main_me_email_customer) + ": " + adviceCustomer.getText().toString() + "\n"; // 电话
-                content = content + getString(R.string.main_me_advice_phone) + ": " + advicePhoto.getText().toString() + "\n"; // 电话
+                content = content + getString(R.string.main_me_error_report_user_mail) + ": " + adviceUserEmail.getText().toString() + "\n"; // 用户邮箱
+                content = content + getString(R.string.main_me_email_customer) + ": " + adviceCustomer.getText().toString() + "\n"; // 用户单位
+                content = content + getString(R.string.main_me_advice_phone) + ": " + advicePhoto.getText().toString() + "\n"; // 用户电话
                 content = content + adviceDescription.getText().toString();
 
                 String subject = adviceSubject.getText().toString();
@@ -191,6 +197,7 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
         CustomSP.putString(context, KEY_ADVICE_NAME, adviceName.getText().toString());
         CustomSP.putString(context, KEY_ADVICE_FILENAME, adviceSubject.getText().toString());
         CustomSP.putString(context, KEY_ADVICE_EMAIL_SEND, adviceEmailSend.getText().toString());
+        CustomSP.putString(context, KEY_ADVICE_USER_MAIL, adviceUserEmail.getText().toString());
         CustomSP.putString(context, KEY_ADVICE_EMAIL_RECEIVE, adviceEmailReceive.getText().toString());
         CustomSP.putString(context, KEY_ADVICE_DESCRIPTION, adviceDescription.getText().toString());
         CustomSP.putString(context, KEY_ADVICE_CUSTOMER,adviceCustomer.getText().toString());

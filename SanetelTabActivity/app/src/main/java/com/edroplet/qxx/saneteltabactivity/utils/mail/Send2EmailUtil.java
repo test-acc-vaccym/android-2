@@ -140,7 +140,8 @@ public class Send2EmailUtil {
             mimeMsg.setSubject(subject);
             // 设置正文
             BodyPart bp = new MimeBodyPart();
-            bp.setContent(content, "text/html;charset=utf-8");
+            // 如果是text/html;charset=UTF-8换行符就是<br>
+            bp.setContent(content.replace("\n","<br>"), "text/html;charset=utf-8");
             mp.addBodyPart(bp);
             // 设置附件
             if (fileList != null && fileList.size() > 0) {
@@ -214,7 +215,8 @@ public class Send2EmailUtil {
             mimeMsg.setSubject(subject);
             // 设置正文
             BodyPart bp = new MimeBodyPart();
-            bp.setContent(content, "application/octet-stream;charset=utf-8");
+            // 如果是text/html;charset=UTF-8换行符就是<br>
+            bp.setContent(content.replace("\n","<br>"), "application/octet-stream;charset=utf-8");
             mp.addBodyPart(bp);
             // 设置附件
             if (fileList != null && fileList.length > 0) {

@@ -73,16 +73,16 @@
             <!--单选组-->
             <RadioGroup
                 android:id="@+id/city_group"
-                android:padding="@dimen/no_padding"
                 android:layout_width="@dimen/radio_group_width"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="@dimen/no_padding">
 
                 <RadioButton
                     android:id="@+id/city_select_choice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/angle_calculate_select_city"
                     android:checked="true"
+                    android:text="@string/angle_calculate_select_city"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <RadioButton
@@ -90,21 +90,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/angle_calculate_input_location"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
             </RadioGroup>
             <!--城市选择-->
             <LinearLayout
                 android:id="@+id/city_select"
-                android:paddingLeft="@dimen/radio_group_city_padding"
-                android:paddingStart="@dimen/radio_group_city_padding"
-                android:layout_marginStart="@dimen/radio_group_width"
-                android:layout_marginLeft="@dimen/radio_group_width"
-                android:layout_marginBottom="@dimen/layout_padding_top"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/spinner_lower_height"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true">
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="@dimen/sub_layout_padding_top"
+                android:layout_marginLeft="@dimen/radio_group_width"
+                android:layout_marginStart="@dimen/radio_group_width"
+                android:paddingLeft="@dimen/radio_group_city_padding"
+                android:paddingStart="@dimen/radio_group_city_padding">
 
                 <!--android:layout_toEndOf="@+id/rbg_city"-->
                 <!--android:layout_toRightOf="@+id/rbg_city"-->
@@ -112,49 +112,54 @@
                 <Spinner
                     android:id="@+id/angle_calculate_spinner_province"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/province" />
+                    android:layout_height="match_parent"
+                    android:entries="@array/province"
+                    android:textAlignment="center" />
 
                 <Spinner
                     android:id="@+id/angle_calculate_spinner_city"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/city" />
+                    android:layout_height="match_parent"
+                    android:entries="@array/city"
+                    android:textAlignment="center" />
             </LinearLayout>
             <!--城市位置输入-->
             <LinearLayout
-                android:paddingLeft="@dimen/radio_group_city_padding"
-                android:paddingStart="@dimen/radio_group_city_padding"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/city_select"
                 android:layout_alignLeft="@id/city_select"
+                android:layout_alignRight="@id/city_select"
                 android:layout_alignStart="@id/city_select"
                 android:layout_below="@id/city_select"
-                android:layout_alignEnd="@id/city_select"
-                android:layout_alignRight="@id/city_select"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/radio_group_city_padding"
+                android:paddingStart="@dimen/radio_group_city_padding">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/spinner_lower_height"
                     android:orientation="horizontal">
 
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|center_vertical"
                         android:text="@string/angle_calculate_local_longitude" />
 
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                         android:id="@+id/angle_calculate_local_longitude"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|center_vertical"
                         android:layout_weight="1"
-                        android:inputType="numberSigned|numberDecimal" />
+                        android:inputType="numberSigned|numberDecimal"
+                        android:paddingTop="0dp" />
 
                     <Spinner
                         android:id="@+id/angle_calculate_local_longitude_unit"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_gravity="start|center_vertical"
                         android:layout_weight="1"
                         android:entries="@array/longitude_unit" />
@@ -162,25 +167,28 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/spinner_lower_height"
                     android:orientation="horizontal">
 
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|center_vertical"
                         android:text="@string/angle_calculate_local_latitude" />
 
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                         android:id="@+id/angle_calculate_local_latitude"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|center_vertical"
                         android:layout_weight="1"
-                        android:inputType="numberSigned|numberDecimal" />
+                        android:inputType="numberSigned|numberDecimal"
+                        android:paddingBottom="0dp" />
 
                     <Spinner
                         android:id="@+id/angle_calculate_local_latitude_unit"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_gravity="start|center_vertical"
                         android:layout_weight="1"
                         android:entries="@array/latitude_unit" />
@@ -217,14 +225,15 @@
                     android:text="@string/location_control_setting_azimuth"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     tools:ignore="NestedWeights" />
+
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                     android:id="@+id/main_application_manual_angle_calculate_tv_setting_azimuth"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:maxLines="1"
+                    android:layout_weight="1"
+                    android:hint="@string/location_control_setting_hint_val"
                     android:inputType="numberSigned|numberDecimal"
-                    android:hint="@string/location_control_setting_hint_val"/>
+                    android:maxLines="1" />
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="0.2"

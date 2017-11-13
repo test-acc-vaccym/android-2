@@ -28,11 +28,14 @@ import java.util.Scanner;
  */
 
 public class CollectHistoryFileInfo {
-    private String fileName;
+    private static String fileName;
     private String dateTime;
     private Context context;
     private static final String historyJsonFileName = "historyFileInfo.json";
     public static final String KEY_NEWEST_COLLECT_FILE = "KEY_NEWEST_COLLECT_FILE";
+
+    private static String CollectFileFullPath;
+    public static final String CollectFilePath="/logs/sanetel/";
 
     public CollectHistoryFileInfo setDateTime(String dateTime) {
         this.dateTime = dateTime;
@@ -40,7 +43,19 @@ public class CollectHistoryFileInfo {
     }
 
     public CollectHistoryFileInfo setFileName(String fileName) {
-        this.fileName = fileName;
+        if (fileName == null){
+            return this;
+        }
+        CollectFileFullPath = FileUtils.getDataDir(context) + CollectFilePath;
+        if (!FileUtils.isFileExist(CollectFileFullPath)){
+            FileUtils.createDir(CollectFileFullPath);
+        }
+
+        if (fileName.startsWith(CollectFileFullPath)){
+            this.fileName = fileName;
+        } else {
+            this.fileName = CollectFileFullPath + fileName;
+        }
         return this;
     }
 
@@ -56,9 +71,17 @@ public class CollectHistoryFileInfo {
         this.context = context;
     }
 
-    public CollectHistoryFileInfo(String fileName, String dateTime){
+    public CollectHistoryFileInfo(Context context, String fileName, String dateTime){
         this.dateTime = dateTime;
-        this.fileName = fileName;
+        CollectFileFullPath = FileUtils.getDataDir(context) + CollectFilePath;
+        if (!FileUtils.isFileExist(CollectFileFullPath)){
+            FileUtils.createDir(CollectFileFullPath);
+        }
+        if (fileName.startsWith(CollectFileFullPath)){
+            this.fileName = fileName;
+        } else {
+            this.fileName = CollectFileFullPath + fileName;
+        }
     }
 
     public JSONObject toJson(){
@@ -124,7 +147,7 @@ public class CollectHistoryFileInfo {
             if (jsonArray != null){
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject inf_Array = jsonArray.getJSONObject(i);
-                    collectHistoryFileInfos.add(new CollectHistoryFileInfo(inf_Array.getString("fileName"), inf_Array.getString("dateTime")));
+                    collectHistoryFileInfos.add(new CollectHistoryFileInfo(context, inf_Array.getString("fileName"), inf_Array.getString("dateTime")));
                 }
             }
         }catch (JSONException je){
@@ -144,10 +167,11 @@ public class CollectHistoryFileInfo {
                 array.put(collectHistoryFileInfo.toJson());
         }
 
-        FileUtils.saveFile(context, historyJsonFileName, Context.MODE_PRIVATE, array.toString());
+        // 保存列表文件
+        FileUtils.savePrivateFile(context, historyJsonFileName, Context.MODE_PRIVATE, array.toString());
 
         // 创建新文件
-        FileUtils.saveFile(context, fileName, Context.MODE_PRIVATE, DateTime.getCurrentDateTime() + SAMPLEDATA);
+        FileUtils.saveFile(fileName, DateTime.getCurrentDateTime() + SAMPLEDATA, false);
         setNewestCollectFile();
 
     }
@@ -162,6 +186,6 @@ public class CollectHistoryFileInfo {
 
     public void clearFile() throws IOException{
         String newestFilename = getNewestCollectFile();
-         FileUtils.saveFile(context, newestFilename, Context.MODE_PRIVATE, "");
+         FileUtils.saveFile( newestFilename, "", false);
     }
 }

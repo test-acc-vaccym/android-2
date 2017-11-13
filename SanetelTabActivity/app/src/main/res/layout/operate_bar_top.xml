@@ -7,7 +7,7 @@
     android:background="@color/operate_bar_background">
     <!--展开、暂停、寻星、复位、收藏-->
     <com.edroplet.qxx.saneteltabactivity.view.StatusButton
-        android:id="@id/button_operate_explode"
+        android:id="@+id/button_operate_explode"
         android:drawableTop="@drawable/antenna_exploded"
         android:text="@string/antenna_state_exploded"
         app:drawable_height="@dimen/operate_button_height"

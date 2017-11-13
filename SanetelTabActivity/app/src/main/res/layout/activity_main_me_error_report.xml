@@ -64,7 +64,8 @@
             </LinearLayout>
             <!--发送邮箱-->
             <LinearLayout
-                style="@style/layout_vertical_style">
+                style="@style/layout_vertical_style"
+                android:visibility="gone">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
                     android:text="@string/main_me_error_report_email_send"
                     style="@style/text_horizontal_style"
@@ -75,6 +76,21 @@
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                     android:id="@+id/main_me_error_report_email_send_address"
                     android:text="@string/main_me_advice_email_send_address"
+                    style="@style/text_horizontal_style"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+            </LinearLayout>
+            <!--用户邮箱-->
+            <LinearLayout
+                style="@style/layout_vertical_style">
+                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
+                    android:text="@string/main_me_error_report_user_mail"
+                    style="@style/text_horizontal_style"
+                    android:layout_weight="0.5"
+                    tools:layout_editor_absoluteY="16dp"
+                    tools:layout_editor_absoluteX="16dp"
+                    android:padding="@dimen/appbar_padding_top"/>
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                    android:id="@+id/main_me_error_report_user_mail"
                     style="@style/text_horizontal_style"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
             </LinearLayout>
@@ -121,7 +137,8 @@
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                     android:id="@+id/main_me_error_report_phone"
                     style="@style/text_horizontal_style"
-                   android:inputType="number"
+                    android:inputType="number"
+                    android:maxLength="12"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
             </LinearLayout>
             <!--产品序列号-->
@@ -140,6 +157,8 @@
                     style="@style/text_horizontal_style"
                     android:layout_height="match_parent"
                     android:hint="@string/main_me_error_report_serial_number_hint"
+                    android:focusable="false"
+                    android:clickable="false"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </LinearLayout>
             <!--文件名称-->
@@ -168,7 +187,7 @@
                     android:id="@+id/main_me_error_report_attach"
                     style="@style/button_vertical_style"
                     android:layout_width="wrap_content"
-                    android:gravity="start|left"
+                    android:gravity="start|left|center_vertical"
                     android:padding="@dimen/no_padding"
                     android:text="@string/main_me_error_report_attach"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -248,6 +267,13 @@
                     style="@style/button_horizontal_style"
                     android:text="@string/main_me_error_report_return"/>
             </LinearLayout>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:id="@+id/submit_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/mb_red"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:visibility="gone"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

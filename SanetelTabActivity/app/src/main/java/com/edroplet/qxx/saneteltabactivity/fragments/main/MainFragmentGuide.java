@@ -54,21 +54,18 @@ public class MainFragmentGuide extends Fragment implements View.OnClickListener{
         });
         */
         context = getContext();
-        String skipCancel= "false";
+        boolean skipCancel= false;
 
         try {
             ApplicationInfo appInfo = context.getPackageManager()
                     .getApplicationInfo(context.getPackageName(),
                             PackageManager.GET_META_DATA);
-            skipCancel=appInfo.metaData.getString("skip_cancel");
+            skipCancel = appInfo.metaData.getBoolean("skip_cancel");
         } catch (Exception e){
             e.printStackTrace();
         }
 
-
-        boolean skipToContinue = ConvertUtil.convertToBool(skipCancel, false);
-
-        if (!skipToContinue) {
+        if (!skipCancel) {
             mCancelClickListener = new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface arg0, int arg1) {
@@ -77,7 +74,8 @@ public class MainFragmentGuide extends Fragment implements View.OnClickListener{
                     jumpToFollowMe();
                 }
             };
-        }else {
+        } else {
+            // 否则跳到监视页面
             mCancelClickListener = new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface arg0, int arg1) {

@@ -75,6 +75,19 @@ public class MainMeAppActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
+    private int getVersionCode(){
+        //用来管理手机的APK(包管理器)
+        PackageManager pm = getPackageManager();
+        try {
+            //得到指定APK的功能清单文件
+            PackageInfo info = pm.getPackageInfo(getPackageName(), 0);
+            return info.versionCode;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
     private void getRemoteVersion(){
         HttpDownloaderTask httpDownloaderTask = new HttpDownloaderTask(getString(R.string.app_update_version_file_download_url));
         httpDownloaderTask.execute();
@@ -281,7 +294,9 @@ public class MainMeAppActivity extends AppCompatActivity implements View.OnClick
                 parser.parse(new ByteArrayInputStream(updateVersion.getBytes()) , appVersionHandler);
                 appVersion = appVersionHandler.getAppVersion().get(0);
                 String currentVersion = getVersion();
-                if (appVersion.getVersionName().compareToIgnoreCase(currentVersion) <= 0){
+                if (appVersion.getVersionName().compareToIgnoreCase(currentVersion) < 0 ||
+                        (appVersion.getVersionName().compareToIgnoreCase(currentVersion) == 0 &&
+                         appVersion.getVerCode() <= getVersionCode())){
                     appUpdateState.setText(R.string.up_to_date);
                 } else {
                     // 动态注册广播接收器

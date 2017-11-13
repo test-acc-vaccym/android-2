@@ -192,7 +192,7 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
                 bundle.putFloat(ManualActivity.PRESET_POLARIZATION, polarization);
                 intent.putExtras(bundle);
                 getActivity().startActivity(intent);
-                getActivity().finish();
+                // getActivity().finish();
                 break;
         }
     }

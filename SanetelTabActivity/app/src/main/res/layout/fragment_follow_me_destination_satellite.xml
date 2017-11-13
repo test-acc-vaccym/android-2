@@ -84,13 +84,15 @@
 
                     <Spinner
                         android:id="@+id/follow_me_destination_spinner_satellites_select"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:entries="@array/satellites" />
 
                     <Spinner
                         android:id="@+id/follow_me_destination_spinner_satellites_polarization_select"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:entries="@array/satellites_polarization" />
                 </LinearLayout>

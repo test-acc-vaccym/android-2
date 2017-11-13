@@ -74,14 +74,16 @@
                 android:layout_alignParentBottom="true">
                 <Spinner
                     android:id="@+id/reference_satellite_select_satellites"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     style="?android:attr/spinnerStyle"
                     android:entries="@array/satellites"/>
                 <Spinner
                     android:id="@+id/reference_satellite_select_satellites_polarization"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:entries="@array/satellites_polarization"/>

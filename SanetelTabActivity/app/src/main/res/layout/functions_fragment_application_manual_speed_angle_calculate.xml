@@ -42,12 +42,14 @@
             <Spinner
                 android:id="@+id/angle_calculate_spinner_satellites"
                 android:padding="@dimen/no_padding"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:entries="@array/satellites"/>
             <Spinner
                 android:id="@+id/angle_calculate_spinner_satellites_local"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/no_padding"
                 android:entries="@array/satellites_polarization"/>
@@ -111,14 +113,16 @@
 
                 <Spinner
                     android:id="@+id/angle_calculate_spinner_province"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:entries="@array/province"
                     android:textAlignment="center" />
 
                 <Spinner
                     android:id="@+id/angle_calculate_spinner_city"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:entries="@array/city"
                     android:textAlignment="center" />

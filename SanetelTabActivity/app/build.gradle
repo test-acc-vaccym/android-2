@@ -9,7 +9,7 @@ android {
         applicationId "com.edroplet.qxx.saneteltabactivity"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 1510472612
+        versionCode 1510589317
         versionName "SANETEL_V1.0.6.3"
         vectorDrawables.useSupportLibrary = true
     }

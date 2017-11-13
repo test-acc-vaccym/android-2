@@ -129,7 +129,7 @@ public class DownLoadService extends Service {
             @Override
             public void onAppSuccess(String tag, long fileLength, long downloaded, String savePath, String filenNme, long aSpeed, String aAppiconName, int downloadType, int appType) {
                 super.onAppSuccess(tag, fileLength, downloaded, savePath, filenNme, aSpeed, aAppiconName, downloadType, appType);
-                if (!downloadPdf && tag.contains(tagUuid)) {
+                if (!downloadPdf && tag != null && tag.contains(tagUuid)) {
                     // 发送广播通知Activity
                     Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
                     if (FileUtils.getFileSHA1(apkFileFullPath).equals(sha1)) {
@@ -147,7 +147,7 @@ public class DownLoadService extends Service {
             @Override
             public void onFail(String tag, long downloaded, String aFilepath, String aFilename, String aErrinfo) {
                 super.onFail(tag, downloaded, aFilepath, aFilename, aErrinfo);
-                if (tag.contains(tagUuid)) {
+                if (tag != null && tag.contains(tagUuid)) {
                     // 发送广播通知Activity
                     Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
                     sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, -1);
@@ -164,7 +164,7 @@ public class DownLoadService extends Service {
             @Override
             public void onSuccess(String tag, long fileLength, long downloaded, String savePath, String filenNme, long aSpeed, String aAppiconName) {
                 super.onSuccess(tag, fileLength, downloaded, savePath, filenNme, aSpeed, aAppiconName);
-                if (!downloadPdf && tag.contains(tagUuid)) {
+                if (!downloadPdf && tag != null && tag.contains(tagUuid)) {
                     // 发送广播通知Activity
                     Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
                     if (FileUtils.getFileSHA1(apkFileFullPath).equals(sha1)) {

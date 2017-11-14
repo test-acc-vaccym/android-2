@@ -1,0 +1,82 @@
+// 结合 git 和 gradle 我们就实现了自动版本号
+
+ext {
+	majorNumber = 1
+	minorNumber = 0
+	revisionNumberCMD = 'git rev-list HEAD --count'
+	revisionNumber = revisionNumberCMD.execute().getText().trim().toInteger()
+	revisionDescriptionCMD = 'git describe --always'
+	tempRevisionDescription = revisionDescriptionCMD.execute().getText().trim()
+	revisionDescription = (tempRevisionDescription == null || (tempRevisionDescription).size() == 0) ? new Date().format("yyMMdd") : (tempRevisionDescription).substring((tempRevisionDescription).size() - 6)
+
+}
+
+def gitVersionCode(boolean isRelease) {  
+    def cmd = 'git rev-list HEAD --first-parent --count'
+    cmd.execute().text.trim().toInteger()
+	// 正式环境
+    if (isRelease) {
+        majorNumber * 1000000 + minorNumber * 10000 + revisionNumber
+    }
+    // debug环境
+    else {
+        Integer.parseInt(new Date().format("yyMMddHHmm"))
+    }
+
+}
+
+def gitVersionTag() {  
+    def cmd = 'git describe --tags'
+    def version = "SANETEL_V" + cmd.execute().text.trim()
+
+    def pattern = "-(\\d+)-g"
+    def matcher = version =~ pattern
+
+    if (matcher) {
+        version = version.substring(0, matcher.start()) + "." + matcher[0][1]
+    } else {
+        version = version + ".0"
+    }
+
+    return version
+}
+
+//Major_Version_Number.Minor_Version_Number[Revision_Number[.Build_Number]]
+def getVersionName(boolean isRelease) {
+    // 正式环境
+    if (isRelease) {
+        majorNumber + "." + minorNumber + "." + revisionNumber + "." + revisionDescription
+    }
+    // debug环境
+    else {
+        String today = new Date().format("yyMMdd")
+        String time = new Date().format("HHmmss")
+        majorNumber + "." + minorNumber + "." + revisionNumber + ".$today.$time." + revisionDescription
+    }
+}
+
+
+
+def getSelfDefinedVersion(type) {
+    int aa = 1
+    int bb = 0
+    Process process = "git rev-list --count HEAD".execute()
+    process.waitFor()
+    int cccc = process.getText().toInteger()
+
+    if ("code".equals(type)) {
+        aa * 1000000 + bb * 10000 + cccc
+    } else if ("name".equals(type)) {
+        String today = new Date().format("yyMMdd")
+        process = "git describe --always".execute()
+        process.waitFor()
+        String sha1 = process.getText().trim()
+        "$aa.$bb.$cccc.$today.$sha1"
+    }
+}
+
+
+task printVersion(){
+	println("versionName: $revisionNumber")
+}
+

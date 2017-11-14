@@ -69,6 +69,7 @@ public class GuideFragmentLocation extends Fragment {
     private Spinner newLatitudeUnit;
 
     private CustomButton thirdButton;
+    private Context context;
 
     public static GuideFragmentLocation newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                     String secondLine, boolean showThird, String thirdLineStart,
@@ -100,8 +101,9 @@ public class GuideFragmentLocation extends Fragment {
         }
         
         initView(view);
+        context = getContext();
 
-        GalleryOnTime galleryOnTime = new GalleryOnTime(getContext());
+        GalleryOnTime galleryOnTime = new GalleryOnTime(context);
         galleryOnTime.setFrameLayout((FrameLayout) view.findViewById(R.id.destination_frameLayout_location));
         galleryOnTime.setImages(cityImages);
         galleryOnTime.setImageView();
@@ -115,8 +117,6 @@ public class GuideFragmentLocation extends Fragment {
         if (crbDbCity != null){
             crbDbCity.setOnCheckedChangeListener(mOnCheckedChangeListener);
         }
-
-        Context context = getContext();
 
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);
@@ -156,9 +156,9 @@ public class GuideFragmentLocation extends Fragment {
             cities = new Cities(getContext());
             String[] provincesArray = cities.getProvinceArray();
             if (provincesArray.length > 0) {
-                spinnerLocationProvince.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, provincesArray));
+                spinnerLocationProvince.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, provincesArray));
                 // 读取配置中的值
-                selectedProvince = CustomSP.getString(getContext(), LOCATION_PROVINCE_KEY, provincesArray[0]);
+                selectedProvince = CustomSP.getString(context, LOCATION_PROVINCE_KEY, provincesArray[0]);
                 for(int i=0; i<provincesArray.length; i++){
                     if(selectedProvince.equals(provincesArray[i])){
                         spinnerLocationProvince.setSelection(i,true);
@@ -167,9 +167,9 @@ public class GuideFragmentLocation extends Fragment {
                 }
                 String[] citiesArray = cities.getCitiesArray(selectedProvince);
                 if (citiesArray.length > 0) {
-                    spinnerLocationCity.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, citiesArray));
+                    spinnerLocationCity.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, citiesArray));
                     // 读取配置中的值
-                    selectedCity = CustomSP.getString(getContext(), LOCATION_CITY_KEY, citiesArray[0]);
+                    selectedCity = CustomSP.getString(context, LOCATION_CITY_KEY, citiesArray[0]);
                     for(int i=0; i<citiesArray.length; i++){
                         if(selectedCity.equals(citiesArray[i])){
                             spinnerLocationCity.setSelection(i,true);
@@ -196,12 +196,13 @@ public class GuideFragmentLocation extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedProvince = (String)spinnerLocationProvince.getItemAtPosition(position);
+                if (null == cities){ try{cities = new Cities(context);}catch (Exception e){e.printStackTrace();return;}}
                 String[] citiesArray = cities.getCitiesArray(selectedProvince);
                 if (citiesArray.length > 0) {
-                    spinnerLocationCity.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, citiesArray));
+                    spinnerLocationCity.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, citiesArray));
                     selectedCity = citiesArray[0];
-                    if (selectedProvince.equals(CustomSP.getString(getContext(), LOCATION_PROVINCE_KEY,selectedProvince)) ){
-                        selectedCity = CustomSP.getString(getContext(), LOCATION_CITY_KEY, selectedCity);
+                    if (selectedProvince.equals(CustomSP.getString(context, LOCATION_PROVINCE_KEY,selectedProvince)) ){
+                        selectedCity = CustomSP.getString(context, LOCATION_CITY_KEY, selectedCity);
                         for(int i=0; i<citiesArray.length; i++){
                             if(selectedCity.equals(citiesArray[i])){
                                 spinnerLocationCity.setSelection(i,true);
@@ -275,8 +276,8 @@ public class GuideFragmentLocation extends Fragment {
                         break;
                 }
                 // 保存配置
-                CustomSP.putString(getContext(), LOCATION_PROVINCE_KEY, selectedProvince);
-                CustomSP.putString(getContext(), LOCATION_CITY_KEY, selectedCity);
+                CustomSP.putString(context, LOCATION_PROVINCE_KEY, selectedProvince);
+                CustomSP.putString(context, LOCATION_CITY_KEY, selectedCity);
             }
         });
 

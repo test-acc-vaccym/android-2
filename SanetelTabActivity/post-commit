@@ -1,0 +1,23 @@
+#!/bin/sh
+commit=$(git log -1 --pretty=%H%n%ci)
+commit_full_hash=$(echo "$commit" | head -1)       # c7618bf23a71637c54b5e51c37cbace3f6ff4899
+# commit_full_hash=$(git log -1 --pretty=%H)     # same as above
+# commit_full_date=$(echo "$commit" | head -2 | tail -1)    # 2010-12-28 05:16:23 +0300
+commit_short_hash=$(git log -1 --pretty=%h)      # c7618bf
+
+commit_date=$(git log -1 --pretty=%ci 2>/dev/null | cut -d" " -f 1)     # 2016-09-12
+# commit_time=$(git log -1 --pretty="%ci" 2>/dev/null | cut -d" " -f 2)   # 15:12:21
+
+branch_full=$(git symbolic-ref HEAD 2>/dev/null)  # refs/heads/master
+branch_simple=$(git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3)   # master
+# branch_simple=$(git symbolic-ref --short -q HEAD)
+# branch_simple=$(git name-rev --name-only HEAD)
+# branch_simple=$(git symbolic-ref --short -q HEAD)
+
+echo "print by hzh --------"
+echo "$commit_full_hash"
+echo "$commit_short_hash"
+echo "$commit_date"
+echo "$branch_full"
+echo "$branch_simple"
+echo "print by hzh end --------\n"

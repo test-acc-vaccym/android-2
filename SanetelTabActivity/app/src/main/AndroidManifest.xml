@@ -33,6 +33,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data android:value="false" android:name="skip_cancel"/>
+        <meta-data
+            android:name="SANETEL_CHANNEL"
+            android:value="${SANETEL_CHANNEL_VALUE}" />
         <activity
             android:name=".IntroActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

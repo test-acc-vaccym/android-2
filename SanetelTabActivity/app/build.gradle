@@ -1,90 +1,269 @@
 apply plugin: 'com.android.application'
-//apply plugin: 'me.tatarka.retrolambda'
+// apply from: 'getversion.gradle'
+ext {
+    majorNumber = 1
+    minorNumber = 0
+    revisionNumberCMD = 'git rev-list HEAD --count'
+    revisionNumber = revisionNumberCMD.execute().getText().trim().toInteger()
+    revisionDescriptionCMD = 'git describe --always'
+    tempRevisionDescription = revisionDescriptionCMD.execute().getText().trim()
+    revisionDescription = (tempRevisionDescription == null || (tempRevisionDescription).size() == 0) ? new Date().format("yyMMdd") : (tempRevisionDescription).substring((tempRevisionDescription).size() - 6)
+
+}
+
+def gitVersionCode(boolean isRelease) {
+    def cmd = 'git rev-list HEAD --first-parent --count'
+    cmd.execute().text.trim().toInteger()
+    // 正式环境
+    if (isRelease) {
+        majorNumber * 1000000 + minorNumber * 10000 + revisionNumber
+    }
+    // debug环境
+    else {
+        Integer.parseInt(new Date().format("yyMMddHHmm"))
+    }
+}
+
+def gitVersionTag() {
+    def cmd = 'git describe --tags'
+    def version = cmd.execute().text.trim()
+    def pattern = "-(\\d+)-g"
+    def matcher = version =~ pattern
+
+    if (matcher) {
+        version = version.substring(0, matcher.start()) + "." + matcher[0][1]
+    } else {
+        version = version + ".0"
+    }
+    return version
+}
 
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
-
     defaultConfig {
         applicationId "com.edroplet.qxx.saneteltabactivity"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 1510589317
-        versionName "SANETEL_V1.0.6.3"
+        versionCode getVersionCode()
+        versionName "1.0.6.3"
         vectorDrawables.useSupportLibrary = true
+        // Error:All flavors must now belong to a named flavor dimension.
+        // Learn more at https://d.android.com/r/tools/flavorDimensions-missing-error-message.html
+        flavorDimensions "versionCode"
     }
+
     buildTypes {
+        debug {
+            // 为了不和 release 版本冲突
+            applicationIdSuffix ".debug"
+        }
         release {
-            minifyEnabled false
+            // 是否进行混淆
+            minifyEnabled true
+            //去除没有用到的资源文件，要求minifyEnabled为true才生效
+            shrinkResources true
+            // 混淆文件的位置
+            signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     sourceSets {
         main {
             assets.srcDirs = ['assets', 'assets/', 'src/assets', 'src/assets/']
         }
     }
+    //签名配置
+    signingConfigs {
+        debug {
+            keyAlias 'key_sanetel'
+            keyPassword 'sanetel!@#'
+            storeFile file('keystore/sanetel.key')
+            storePassword 'sanetel'
+        }
+    }
+
+    def archiveBuildTypes = ["release", "debug"];
+    applicationVariants.all { variant ->
+        // 替换版本号
+        if (variant.buildType.name.equals('release')) {
+            variant.mergedFlavor.versionCode = gitVersionCode(true)
+            variant.mergedFlavor.versionName = gitVersionTag()
+        }
+
+        def DIST_DIRECTORY = "$rootDir/${variant.buildType.name}"
+        variant.outputs.all  { output ->
+
+            if (variant.buildType.name in archiveBuildTypes) {
+                // Update output filename
+                if (variant.versionName != null) {
+                    //要被替换的源字符串
+                    //def sourceFile = "${archivesBaseName}-${variant.flavorName}-${variant.buildType.name}"//替换的字符串
+                    outputFileName = "sanetel_V${variant.versionName}_${variant.flavorName}_${variant.buildType.name}_${variant.versionCode}.apk".toLowerCase()
+                    //outputFileName  = output.outputFile.name.replace(sourceFile, replaceFile);
+                    // outputFileName = new File( output.outputFile.parent, outputFileName.replace(".apk", "-${finalVersionCode}.apk"))
+
+                }
+                // Move output into DIST_DIRECTORY
+                def taskSuffix = variant.name.capitalize()
+                def assembleTaskName = "assemble${taskSuffix}"
+                if (tasks.findByName(assembleTaskName)) {
+                    def copyAPKTask = tasks.create(name: "archive${taskSuffix}", type: org.gradle.api.tasks.Copy) {
+                        description "Archive/copy APK and mappings.txt to a versioned folder."
+                        print "Copying APK&mappings.txt from: ${buildDir}\n"
+                        from("${buildDir}") {
+                            include "**/mapping/${variant.buildType.name}/mapping.txt"
+                            include "**/apk/**/${variant.buildType.name}/${outputFileName}"
+                            include "**/apk/**/${variant.buildType.name}/output.json"
+                        }
+                        into DIST_DIRECTORY
+                        eachFile { file ->
+                            file.path = file.name // so we have a "flat" copy
+                        }
+                        rename { String fileName ->
+                            fileName.replace('output.json', '${variant.flavorName}output.json')
+                        }
+                        includeEmptyDirs = false
+                    }
+
+                    def deleteTask = tasks.create(name: "makePretty${taskSuffix}", type: Delete){
+                        dependsOn copyAPKTask
+                        delete "${buildDir}/outputs/apk/${variant.flavorName}/${variant.buildType.name}/${outputFileName}", "${buildDir}/outputs/apk/${variant.flavorName}/${variant.buildType.name}/output.json"
+                        followSymlinks = true
+                    }
+                    tasks[assembleTaskName].finalizedBy = [deleteTask]
+                }
+            }
+        }
+
+        //过滤掉unaligned的包
+        variant.assemble.doLast {
+            task makePretty(type: Delete) {
+                delete '${outputFileName}', '${buildDir}/output.json'
+                followSymlinks = true
+            }
+        }
+
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+        // 防止在发布的时候出现因MissingTranslation导致Build Failed!
+        disable 'MissingTranslation'
+    }
+    productFlavors {
+        wandoujia {
+            minSdkVersion 19
+            applicationId 'com.sanetel.p120'
+            proguardFile '$rootDir/proguard-android.txt'
+            signingConfig signingConfigs.debug
+            targetSdkVersion 26
+            versionCode gitVersionCode(true)
+            versionName gitVersionTag()
+        }
+        qihoo {
+            minSdkVersion 19
+            applicationId 'com.sanetel.qihoo'
+            signingConfig signingConfigs.debug
+            targetSdkVersion 26
+        }
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [SANETEL_CHANNEL_VALUE: name]
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
     // compile project(':library')
+
     // 弹出对话框
+
     //  http://blog.csdn.net/u013299524/article/details/50722863
+
     // 图像选择
+
     // 数据库
+
     // https://github.com/jgilfelt/android-sqlite-asset-helper
+
     // https://github.com/amulyakhare/TextDrawable
+
     // compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
     compile 'com.android.support:recyclerview-v7:26.+'
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support:design:26.+'
     compile 'com.nineoldandroids:library:2.4.0'
+
     // 对话框， 需求不能满足故而使用源码修改
+
     // compile 'com.github.sd6352051.niftydialogeffects:niftydialogeffects:1.0.0@aar'
     compile 'com.android.support:support-v4:26.+'
     compile 'com.android.support:support-vector-drawable:26.+'
-
     compile 'com.isseiaoki:simplecropview:1.0.13'
 
     // 图片选择3个
+
     // 选择器
     compile 'com.yongchun:com.yongchun.imageselector:1.1.0'
+
     // glid展现
     compile 'com.github.bumptech.glide:glide:3.7.0'
+
     // 图片选择预览
     compile 'com.commit451:PhotoView:1.2.4'
 
     // compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
-    // 下载器 不要了
-    // compile 'io.reactivex:rxjava:1.1.5'
-    // compile 'io.reactivex:rxandroid:1.2.0'
-    // compile 'com.squareup.okhttp3:okhttp:3.7.0'
-    // compile 'com.squareup.retrofit2:retrofit:2.0.2'
 
+    // 下载器 不要了
+
+    // compile 'io.reactivex:rxjava:1.1.5'
+
+    // compile 'io.reactivex:rxandroid:1.2.0'
+
+    // compile 'com.squareup.okhttp3:okhttp:3.7.0'
+
+    // compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.tamic.fastdownloader:Android-FastDownloader:1.0.3'
+
     // pdf阅读
+
     // 已经过时，但是这个可用
     compile 'com.joanzapata.pdfview:android-pdfview:1.0.4@aar'
+
     // 这个新的要崩溃
+
     // compile 'com.github.barteksc:android-pdf-viewer:2.8.0'
 
     // inject 已经有源码
+
     // compile 'com.github.rtyley:roboguice-sherlock:1.3'
+
     // 文件阅读
+
     //compile 'com.github.YuanWenHai:FileSearcher:1.3.3'
     compile 'com.android.support:cardview-v7:26+'
+
     // compile 'com.crystal:crystalrangeseekbar:1.1.1'
+
     // 文本文件阅读，快速滑动
     compile 'com.simplecityapps:recyclerview-fastscroll:1.0.16'
+
     // 滑动删除， 历史文件中用到
     compile 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
     testCompile 'junit:junit:4.12'
+
     // NoClassDefFoundError: Failed resolution of: Lokhttp3/internal/Platform
+
     // compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'

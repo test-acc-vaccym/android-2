@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
@@ -276,6 +277,10 @@ public class IPEdit extends LinearLayout{
 
     private void addTextChangeListener()
     {
+        mIpAddrEdt1.setFilters(new InputFilter[]{new InputFilterFloat(0,255)});
+        mIpAddrEdt2.setFilters(new InputFilter[]{new InputFilterFloat(0,255)});
+        mIpAddrEdt3.setFilters(new InputFilter[]{new InputFilterFloat(0,255)});
+        mIpAddrEdt4.setFilters(new InputFilter[]{new InputFilterFloat(0,255)});
         mIpAddrEdt1.addTextChangedListener(mTextWatcher);
         mIpAddrEdt2.addTextChangedListener(mTextWatcher);
         mIpAddrEdt3.addTextChangedListener(mTextWatcher);

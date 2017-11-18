@@ -21,8 +21,6 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
  */
 
 public class AdministratorFragmentIPSettings extends Fragment {
-    private static final String IPSettingsAddressKey = "ipAddress";
-    private static final String IPSettingsMaskKey = "ipMask";
 
     private static final int[] icons = {R.drawable.antenna_exploded};
 
@@ -61,11 +59,11 @@ public class AdministratorFragmentIPSettings extends Fragment {
 
         ViewInject.inject(getActivity(), getActivity());
         ipAddress = view.findViewById(R.id.administrator_setting_ip_address);
-        String address = CustomSP.getString(context,IPSettingsAddressKey, "");
+        String address = CustomSP.getString(context,CustomSP.KeyIPSettingsAddress, "");
         ipAddress.setText(address);
 
         ipMask = view.findViewById(R.id.administrator_setting_ip_mask);
-        String mask = CustomSP.getString(context,IPSettingsMaskKey, "");
+        String mask = CustomSP.getString(context,CustomSP.KeyIPSettingsMask, "");
         ipMask.setText(mask);
 
         thirdButton = view.findViewById(R.id.pop_dialog_third_button);
@@ -73,8 +71,8 @@ public class AdministratorFragmentIPSettings extends Fragment {
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomSP.putString(context,IPSettingsAddressKey,ipAddress.getText());
-                CustomSP.putString(context,IPSettingsMaskKey,ipMask.getText());
+                CustomSP.putString(context,CustomSP.KeyIPSettingsAddress,ipAddress.getText());
+                CustomSP.putString(context,CustomSP.KeyIPSettingsMask,ipMask.getText());
                 // todo send command
                 getActivity().finish();
             }

@@ -122,15 +122,17 @@ android {
                             file.path = file.name // so we have a "flat" copy
                         }
                         rename { String fileName ->
-                            fileName.replace('output.json', '${variant.flavorName}output.json')
+                            fileName.replace('output.json', outputFileName.replace(".apk","")+"_output.json")
                         }
                         includeEmptyDirs = false
                     }
 
                     def deleteTask = tasks.create(name: "makePretty${taskSuffix}", type: Delete){
                         dependsOn copyAPKTask
-                        delete "${buildDir}/outputs/apk/${variant.flavorName}/${variant.buildType.name}/${outputFileName}", "${buildDir}/outputs/apk/${variant.flavorName}/${variant.buildType.name}/output.json"
-                        followSymlinks = true
+                        if (variant.buildType.name.equals('release')) {
+                            delete "${buildDir}/outputs/apk/${variant.flavorName}/${variant.buildType.name}/${outputFileName}", "${buildDir}/outputs/apk/${variant.flavorName}/${variant.buildType.name}/output.json"
+                            followSymlinks = true
+                        }
                     }
                     tasks[assembleTaskName].finalizedBy = [deleteTask]
                 }

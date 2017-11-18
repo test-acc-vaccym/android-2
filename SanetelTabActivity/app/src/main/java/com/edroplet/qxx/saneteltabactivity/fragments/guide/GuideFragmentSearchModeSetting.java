@@ -18,13 +18,13 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.edroplet.qxx.saneteltabactivity.utils.CustomSP.KEY_SEARCHING_MODE;
+
 /**
  * Created by qxs on 2017/9/19.
  */
 
 public class GuideFragmentSearchModeSetting extends Fragment {
-
-    public static final String KEY_SEARCHING_MODE = "KEY_SEARCHING_MODE";
 
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;

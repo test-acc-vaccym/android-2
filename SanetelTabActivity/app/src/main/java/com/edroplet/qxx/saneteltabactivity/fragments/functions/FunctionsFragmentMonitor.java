@@ -19,8 +19,8 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentSearchModeSetting.KEY_SEARCHING_MODE;
 import static com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentAmplifierMonitor.KEY_AMPLIFIER_MONITOR;
+import static com.edroplet.qxx.saneteltabactivity.utils.CustomSP.KEY_SEARCHING_MODE;
 
 /**
  * Created by qxs on 2017/9/14.
@@ -80,7 +80,6 @@ public class FunctionsFragmentMonitor extends Fragment {
         context = getContext();
 
         CustomTextView tvAntennaAzimuthInfo = (CustomTextView) view.findViewById(R.id.antenna_info_tv_azimuth);
-        tvAntennaAzimuthInfo.setFilters(new InputFilter[]{new InputFilterFloat(-360.0, 360.0)});
         tvAntennaAzimuthInfo.setText(getArguments().getString(AntennaAzimuthInfo));
 
         // 信标模式和dvb模式分别展示

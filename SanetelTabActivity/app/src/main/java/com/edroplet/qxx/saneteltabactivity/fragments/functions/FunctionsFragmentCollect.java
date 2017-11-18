@@ -23,7 +23,9 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsCollectHistoryFileListActivity;
 import com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo;
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
+import com.edroplet.qxx.saneteltabactivity.services.communicate.CommunicateService;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.DateTime;
 import com.edroplet.qxx.saneteltabactivity.utils.FileUtils;
@@ -41,6 +43,9 @@ import static android.content.Context.MODE_APPEND;
 import static com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsCollectHistoryFileListActivity.KEY_IS_SELECT;
 import static com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo.KEY_NEWEST_COLLECT_FILE;
 import static com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo.SAMPLEDATA;
+import static com.edroplet.qxx.saneteltabactivity.services.CommunicateWithDeviceService.EXTRA_PARAM_SEND_CMD;
+import static com.edroplet.qxx.saneteltabactivity.services.communicate.CommunicateDataReceiver.ACTION_RECEIVE_DATA;
+import static com.edroplet.qxx.saneteltabactivity.services.communicate.CommunicateDataReceiver.ACTION_STOP_SAVE;
 
 /**
  * Created by qxs on 2017/9/14.
@@ -76,15 +81,32 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
         return view;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        // 回收资源
+        // 停止服务
+        if (null != intentCommunicateService){
+            context.stopService(intentCommunicateService);
+            intentCommunicateService = null;
+        }
+        // 停止定时器
+        if(timer!= null) {
+            timer.cancel();
+            timer.purge();
+            timer = null;
+        }
+    }
+
     static CollectHistoryFileInfo collectHistoryFileInfo;
     static Context context;
-    
+    Intent intentCommunicateService;
     @Override
     public void onClick(View view) {
         String newestFile = CustomSP.getString(context,KEY_NEWEST_COLLECT_FILE,"");
         switch (view.getId()){
             case R.id.main_collect_data_history:
-                Intent intent = new Intent(getActivity(), FunctionsCollectHistoryFileListActivity.class);
+                final Intent intent = new Intent(getActivity(), FunctionsCollectHistoryFileListActivity.class);
                 intent.putExtra(KEY_IS_SELECT, false);
                 startActivity(intent);
                 break;
@@ -121,19 +143,31 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
                         bundle.putString("message",DateTime.getCurrentDateTime());
                         message.setData(bundle);
 
-                        // TODO: 2017/11/3  通信
+                        // 通信, 启动服务接收
                         try {
                             if (collectHistoryFileInfo == null){
                                 collectHistoryFileInfo = new CollectHistoryFileInfo(context);
                             }
                             String newestFile = collectHistoryFileInfo.getNewestCollectFile();
                             if (FileUtils.isFileExist(newestFile) && FileUtils.getFileSize(newestFile) < FileUtils.FILE_LIMIT) {
-                                // TODO: 2017/11/12 接收数据
-                                FileUtils.saveFile(newestFile, DateTime.getCurrentDateTime() + SAMPLEDATA, true);
+                                if (null == intentCommunicateService) {
+                                    // 接收数据, 只启用一次服务
+                                    intentCommunicateService = new Intent(context, CommunicateService.class);
+                                    context.startService(intentCommunicateService);
+                                }
+
+                                // 发送监视信息命令
+                                Intent intentCollect = new Intent();
+                                intentCollect.setAction(ACTION_RECEIVE_DATA);
+                                intentCollect.putExtra(EXTRA_PARAM_SEND_CMD, Protocol.cmdGetSystemState);
+                                context.sendBroadcast(intentCollect);
+
+                                // 在广播中保存数据
+                                // FileUtils.saveFile(newestFile, DateTime.getCurrentDateTime() + SAMPLEDATA, true);
                             } else {
                                 Toast.makeText(context, context.getString(R.string.main_collect_data_file_full_prompt), Toast.LENGTH_LONG).show();
                             }
-                        }catch (IOException e){
+                        }catch (Exception e){
                             Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
                         }
                         handler.sendMessage(message);
@@ -150,6 +184,14 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
                 if (newestFile.isEmpty()){
                     Toast.makeText(context,getText(R.string.main_collect_data_no_file_prompt),Toast.LENGTH_SHORT).show();
                     break;
+                }
+                // 停止服务
+                if (null != intentCommunicateService){
+                    // 不停止服务，只发送停止保存的广播
+                    // context.stopService(intentCommunicateService);
+                    Intent intentStopSave = new Intent();
+                    intentStopSave.setAction(ACTION_STOP_SAVE);
+                    context.sendBroadcast(intentStopSave);
                 }
                 if(timer!= null) {
                     timer.cancel();

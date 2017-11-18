@@ -6,6 +6,7 @@ package com.edroplet.qxx.saneteltabactivity.view;
 import android.content.Context;
 import android.support.annotation.IdRes;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -17,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 
 public class IPEditText extends LinearLayout {
@@ -42,6 +44,11 @@ public class IPEditText extends LinearLayout {
         secondIPEdit = view.findViewById(R.id.secondIPField);
         thirdIPEdit = view.findViewById(R.id.thirdIPField);
         fourthIPEdit = view.findViewById(R.id.fourthIPField);
+
+        firstIPEdit.setFilters(new InputFilter[]{new InputFilterFloat(0,255)});
+        secondIPEdit.setFilters(new InputFilter[]{new InputFilterFloat(0,255)});
+        thirdIPEdit.setFilters(new InputFilter[]{new InputFilterFloat(0,255)});
+        fourthIPEdit.setFilters(new InputFilter[]{new InputFilterFloat(0,255)});
 
         setIPEditTextListener(context);
     }

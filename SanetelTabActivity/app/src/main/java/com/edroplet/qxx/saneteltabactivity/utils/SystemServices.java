@@ -1,6 +1,7 @@
 package com.edroplet.qxx.saneteltabactivity.utils;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -476,5 +477,16 @@ public class SystemServices {
             // delete the files
             new File(dir, children[i]).delete();
         }
+    }
+
+    public static boolean isServiceRunning(String servicename, Context context){
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningServiceInfo>  infos = am.getRunningServices(100);
+        for(ActivityManager.RunningServiceInfo info: infos){
+            if(servicename.equals(info.service.getClassName())){
+                return true;
+            }
+        }
+        return false;
     }
 }

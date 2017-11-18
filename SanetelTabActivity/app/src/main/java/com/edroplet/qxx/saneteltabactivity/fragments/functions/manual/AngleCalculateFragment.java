@@ -100,9 +100,9 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
         ButterKnife.bind(this,view);
         AntennaInfo antennaInfo = getArguments().getParcelable("antennaInfo");
 
-        tvAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(-360,360,3)});
-        tvPitch.setFilters(new InputFilter[]{new InputFilterFloat(-360,360,3)});
-        tvPolarization.setFilters(new InputFilter[]{new InputFilterFloat(-360,360,3)});
+        tvAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
+        tvPitch.setFilters(new InputFilter[]{new InputFilterFloat(-10,90,3)});
+        tvPolarization.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
 
         localLongitude.setOnFocusChangeListener(onInpuFocusChangeListener);
         localLongitudeUnit.setOnFocusChangeListener(onInpuFocusChangeListener);
@@ -155,10 +155,16 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
                         + satelliteDvb + satelliteThreshold + cityLongitude + cityLatitude)%360;
                 tvAzimuth.setText(String.valueOf(a));
                 float b = (satelliteLongitude + satelliteLatitude + satelliteBeacon
-                        + satelliteDvb + satelliteThreshold + cityLongitude - cityLatitude)%360;
+                        + satelliteDvb + satelliteThreshold + cityLongitude - cityLatitude)%90;
                 tvPitch.setText(String.valueOf(b));
+                if (b < -10){
+                    b = -10;
+                }
                 float c = (satelliteLongitude - satelliteLatitude - satelliteBeacon
                         - satelliteDvb + satelliteThreshold - cityLongitude - cityLatitude)%360;
+                if (c < 0){
+                    c = -c;
+                }
                 tvPolarization.setText(String.valueOf(c));
                 break;
             case R.id.angle_calculate_operate_clear:

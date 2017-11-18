@@ -69,9 +69,9 @@ public class LocationControlFragment extends Fragment {
         context = getContext();
 
 
-        etAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(-360,360,3)});
-        etPitch.setFilters(new InputFilter[]{new InputFilterFloat(-360,360,3)});
-        etPolarization.setFilters(new InputFilter[]{new InputFilterFloat(-360,360,3)});
+        etAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
+        etPitch.setFilters(new InputFilter[]{new InputFilterFloat(-10,90,3)});
+        etPolarization.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
 
         PresetAngleInfo presetAngleInfo = (PresetAngleInfo) getArguments().getSerializable(KEY_CALCULATED_PREPARE_ANGULAR_INFO);
         if (presetAngleInfo != null){

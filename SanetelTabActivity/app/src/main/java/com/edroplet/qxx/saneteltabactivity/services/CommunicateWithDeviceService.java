@@ -57,6 +57,7 @@ public class CommunicateWithDeviceService extends IntentService {
 
     public CommunicateWithDeviceService() {
         super("CommunicateWithDeviceService");
+        Log.e(TAG, "CommunicateWithDeviceService");
     }
     private static Intent intentCommunicateWithDeviceService;
     /**
@@ -67,6 +68,7 @@ public class CommunicateWithDeviceService extends IntentService {
      */
     // TODO: Customize helper method
     public static void startActionReceive(Context context, String cmd, String data) {
+        Log.e(TAG, "startActionReceive");
         if (null == mContext) mContext = context;
 
         if (null == intentCommunicateWithDeviceService || !SystemServices.isServiceRunning(CommunicateWithDeviceService.SERVICE_NAME, context)) {
@@ -86,6 +88,7 @@ public class CommunicateWithDeviceService extends IntentService {
      */
     // TODO: Customize helper method
     public static void startActionSend(Context context, String cmd, String data) {
+        Log.e(TAG, "startActionSend");
         if (null == mContext) mContext = context;
 
         if (null == intentCommunicateWithDeviceService || !SystemServices.isServiceRunning(CommunicateWithDeviceService.SERVICE_NAME, context)){
@@ -99,6 +102,7 @@ public class CommunicateWithDeviceService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        Log.e(TAG, "onHandleIntent");
         if (intent != null) {
             final String action = intent.getAction();
             if (ACTION_CMD_RECEIVE.equals(action)) {
@@ -118,6 +122,7 @@ public class CommunicateWithDeviceService extends IntentService {
      * parameters.
      */
     private void handleActionReceive(final String cmd, final String parameters) {
+        Log.e(TAG, "handleActionReceive");
         //次线程里操作网络请求数据
         new Thread(new Runnable() {
             @Override
@@ -137,6 +142,7 @@ public class CommunicateWithDeviceService extends IntentService {
      * parameters.
      */
     private void handleActionSend(String param1, String param2) {
+        Log.e(TAG, "handleActionSend");
         if (null == client){
             ConnectToServer();
             StartServerListener();
@@ -146,15 +152,18 @@ public class CommunicateWithDeviceService extends IntentService {
     }
 
     private void getSystemState(String cmd){
+        Log.e(TAG, "getSystemState, cmd is :"+cmd);
         if (null == client || !client.isConnected()|| !client.isOpen()) {
             ConnectToServer();
             StartServerListener();
         }
         SendMessageToServer(cmd);
     }
+
     InetSocketAddress isa;
     private void  ConnectToServer(){
         try {
+            Log.e(TAG, "ConnectToServer, cmd client :" + (client==null? "" : client.toString()));
             if (null == client || !client.isOpen()) {
                 client = SocketChannel.open();
                 String ip = CustomSP.getString(mContext, CustomSP.KeyIPSettingsAddress, CustomSP.DefaultIP);
@@ -168,6 +177,7 @@ public class CommunicateWithDeviceService extends IntentService {
         }catch (Exception e){
             e.printStackTrace();
             Log.e(TAG, e.toString());
+            DisConnectToServer();
         }
     }
 
@@ -177,8 +187,8 @@ public class CommunicateWithDeviceService extends IntentService {
     }
 
     // 向Server端发送消息 
-    public void SendMessageToServer(String msg) { 
-        System.out.println("Send:" + msg); 
+    public void SendMessageToServer(String msg) {
+        Log.e(TAG, "SendMessageToServer, msg is :"+msg);
         try {
             if (null != client && client.isConnected()) {
                 ByteBuffer bytebuf = ByteBuffer.allocate(1024);
@@ -195,16 +205,18 @@ public class CommunicateWithDeviceService extends IntentService {
 
     private void DisConnectToServer(){
         try{
-            if(null != client|| !client.isOpen()){
+            if(null != client && !client.isOpen()){
                 client.close();
                 client = null;
             }
         }catch(IOException e){
             e.printStackTrace();
+            client = null;
         }
     }
 
     private void sendMsg(String msg){
+        Log.e(TAG, "sendMsg, msg is :"+msg);
         // 解析message, 不能在服务中解析
         //
         // 指定广播目标的 action （注：指定了此 action 的 receiver 会接收此广播）
@@ -212,7 +224,7 @@ public class CommunicateWithDeviceService extends IntentService {
         // 需要传递的参数
         // 此处传送的数据的是集合类型，也可以有其他的类型：intent.put
         Bundle bundle = new Bundle();
-        bundle.putSerializable(EXTRA_PARAM_RESULT_DATA, msg);
+        bundle.putString(EXTRA_PARAM_RESULT_DATA, msg);
         // bundle.putString(EXTRA_PARAM_RESULT_CMD, msg);
         intent.putExtras(bundle);
         // 发送广播
@@ -226,11 +238,9 @@ public class CommunicateWithDeviceService extends IntentService {
                 while (true) {
 
                     //buf.clear();
-                    if (client != null) {
-                        if (!client.isConnected()){
-                            client.connect(isa);
-                        }
-                        ByteBuffer buf = ByteBuffer.allocate(1024);
+                    if (client != null && client.isConnected()) {
+
+                        ByteBuffer buf = ByteBuffer.allocate(8192);
                         client.read(buf);
                         buf.flip();
                         Charset charset = Charset.forName("UTF-8");
@@ -238,7 +248,7 @@ public class CommunicateWithDeviceService extends IntentService {
                         CharBuffer charBuffer;
                         charBuffer = decoder.decode(buf);
                         String result = charBuffer.toString();
-                        Log.e(CommunicateWithDeviceService.class.getSimpleName(),result);
+                        Log.e(TAG, result);
                         if (result.length() > 0) {
                             sendMsg(result);
                         }
@@ -256,7 +266,7 @@ public class CommunicateWithDeviceService extends IntentService {
     public void onDestroy() {
         super.onDestroy();
         Log.e(TAG, "onDestroy");
-        // DisConnectToServer();
+        DisConnectToServer();
     }
 
 }

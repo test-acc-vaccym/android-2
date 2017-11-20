@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo;
 import com.edroplet.qxx.saneteltabactivity.services.CommunicateWithDeviceService;
@@ -17,7 +18,6 @@ import com.edroplet.qxx.saneteltabactivity.utils.FileUtils;
 
 import java.io.IOException;
 
-import static com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo.SAMPLEDATA;
 import static com.edroplet.qxx.saneteltabactivity.services.CommunicateWithDeviceService.*;
 
 
@@ -53,7 +53,7 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
         }
         String action = intent.getAction();
         Bundle bundle = intent.getExtras();
-
+        Log.e(TAG,action);
         if (null != bundle) {
             sendCmd = bundle.getString(EXTRA_PARAM_SEND_CMD);
             sendData = bundle.getString(EXTRA_PARAM_SEND_DATA);
@@ -72,9 +72,7 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
 
         // todo 每次操作都记录文件，直到停止服务
         Intent notifyIntent = new Intent(context, ReceiveNotifyService.class);
-        if (null != notifyIntent && (ACTION_RECEIVE_DATA.equals(action) ||
-                ACTION_SEND_DATA.equals(action) || ACTION_SAVE_FILE.equals(action)
-        || ACTION_STOP_SAVE.equals(action) || ACTION_STOP_SAVE.equals(action))) {
+        if (null != notifyIntent && isInAction(action)) {
             if (bundle != null) {
                 notifyIntent.putExtras(bundle);
             }
@@ -92,6 +90,12 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
         }else if (ACTION_STOP_SAVE.equals(action)){
             saveFile = false;
         }
+    }
+
+    private static boolean isInAction(String action){
+        return  ACTION_RECEIVE_DATA.equals(action) || ACTION_DATA_RESULT.equals(action)
+                ||ACTION_SEND_DATA.equals(action)  || ACTION_SAVE_FILE.equals(action)
+                || ACTION_STOP_SAVE.equals(action) || ACTION_STOP_SAVE.equals(action);
     }
 
     /**
@@ -117,10 +121,7 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
             }
             if (intent != null) {
                 String action = intent.getStringExtra("action");
-                if (ACTION_RECEIVE_DATA.equals(action) || ACTION_SAVE_FILE.equals(action)
-                        || ACTION_STOP_SAVE.equals(action) || ACTION_SEND_DATA.equals(action)
-                        || ACTION_DATA_RESULT.equals(action)) {
-
+                if (isInAction(action)) {
                     Bundle bundle = intent.getExtras();
                     if (null != bundle) {
                         receiveCmd = bundle.getString(EXTRA_PARAM_RESULT_CMD);
@@ -161,10 +162,11 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
                                 CollectHistoryFileInfo collectHistoryFileInfo = new CollectHistoryFileInfo(mContext);
                                 String newestFile = collectHistoryFileInfo.getNewestCollectFile();
                                 try {
-                                    FileUtils.saveFile(newestFile, DateTime.getCurrentDateTime() /* + "receiveCmd:"+receiveCmd + "\n"*/
-                                            + "receiveData:" + receiveData + "\n"
-                                            /* + "sendCmd" + sendCmd +"\n" */
-                                            + "sendData" + sendData +"\n" , true);
+                                    FileUtils.saveFile(newestFile, DateTime.getCurrentDateTime() + "\n"
+                                            + (receiveCmd.isEmpty()?"":"receiveCmd:"+receiveCmd + "\n")
+                                            + (receiveData.isEmpty()?"":"receiveData:" + receiveData + "\n")
+                                            + (sendCmd.isEmpty()?"":"sendCmd:" + sendCmd +"\n" )
+                                            + (sendData.isEmpty()?"":"sendData:" + sendData +"\n" ), true);
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }

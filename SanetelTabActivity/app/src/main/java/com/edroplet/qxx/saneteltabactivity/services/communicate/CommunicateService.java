@@ -29,7 +29,7 @@ public class CommunicateService extends Service {
     /**
      * 定时唤醒的时间间隔，5分钟
      */
-    private final static int ALARM_INTERVAL = 6000; //每分钟执行一次 5 * 60 * 1000;
+    private final static int ALARM_INTERVAL = 1000; //每分钟执行一次 5 * 60 * 1000;
     private final static int COMMUNICATE_REQUEST_CODE = 60000;
 
     private final static int COMMUNICATE_SERVICE_ID = -1001;
@@ -85,8 +85,8 @@ public class CommunicateService extends Service {
 
         //发送唤醒广播来促使挂掉的UI进程重新启动起来
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent alarmIntent = new Intent();
-        alarmIntent.setAction(CommunicateDataReceiver.ACTION_KEEP_ALIVE);
+        Intent alarmIntent = new Intent(CommunicateDataReceiver.ACTION_KEEP_ALIVE);
+        // alarmIntent.setAction(CommunicateDataReceiver.ACTION_KEEP_ALIVE);
         PendingIntent operation = PendingIntent.getBroadcast(this, COMMUNICATE_REQUEST_CODE, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), ALARM_INTERVAL, operation);
 

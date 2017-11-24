@@ -29,7 +29,7 @@ public class CommunicateService extends Service {
     /**
      * 定时唤醒的时间间隔，5分钟
      */
-    private final static int ALARM_INTERVAL = 1000; //每分钟执行一次 5 * 60 * 1000;
+    private final static int ALARM_INTERVAL = 10000; //每秒钟执行一次 5 * 60 * 1000;
     private final static int COMMUNICATE_REQUEST_CODE = 60000;
 
     private final static int COMMUNICATE_SERVICE_ID = -1001;

@@ -1,7 +1,11 @@
 package com.edroplet.qxx.saneteltabactivity.beans.monitor;
 
 import android.content.Context;
+import android.content.Intent;
 
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
+import com.edroplet.qxx.saneteltabactivity.services.CommunicateWithDeviceService;
+import com.edroplet.qxx.saneteltabactivity.services.communicate.CommunicateDataReceiver;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 
 import java.io.Serializable;
@@ -65,4 +69,9 @@ public class DeviceInfo implements Serializable {
         this.softVer = softVer;
     }
 
+    public static void getDeviceInfo(Context context){
+        Intent intent = new Intent(CommunicateDataReceiver.ACTION_RECEIVE_DATA);
+        intent.putExtra(CommunicateWithDeviceService.EXTRA_PARAM_SEND_CMD, Protocol.cmdGeteEquipmentInfo);
+        context.sendBroadcast(intent);
+    }
 }

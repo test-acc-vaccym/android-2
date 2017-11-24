@@ -20,6 +20,7 @@ import com.edroplet.qxx.saneteltabactivity.beans.Cities;
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.Satellites;
+import com.edroplet.qxx.saneteltabactivity.utils.AngleCalculate;
 import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
@@ -151,21 +152,10 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.angle_calculate_operate_calculate:
-                float a = (satelliteLongitude + satelliteLatitude + satelliteBeacon
-                        + satelliteDvb + satelliteThreshold + cityLongitude + cityLatitude)%360;
-                tvAzimuth.setText(String.valueOf(a));
-                float b = (satelliteLongitude + satelliteLatitude + satelliteBeacon
-                        + satelliteDvb + satelliteThreshold + cityLongitude - cityLatitude)%90;
-                tvPitch.setText(String.valueOf(b));
-                if (b < -10){
-                    b = -10;
-                }
-                float c = (satelliteLongitude - satelliteLatitude - satelliteBeacon
-                        - satelliteDvb + satelliteThreshold - cityLongitude - cityLatitude)%360;
-                if (c < 0){
-                    c = -c;
-                }
-                tvPolarization.setText(String.valueOf(c));
+                AngleCalculate angleCalculate = new AngleCalculate();
+                tvAzimuth.setText(String.valueOf(angleCalculate.getAzimuth(satelliteLongitude, cityLongitude, cityLatitude)));
+                tvPitch.setText(String.valueOf(angleCalculate.getPitch(satelliteLongitude, cityLongitude, cityLatitude)));
+                tvPolarization.setText(String.valueOf(angleCalculate.getPolarization(satelliteLongitude, cityLongitude, cityLatitude)));
                 break;
             case R.id.angle_calculate_operate_clear:
                 tvAzimuth.setText("");

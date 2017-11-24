@@ -5,6 +5,7 @@ package com.edroplet.qxx.saneteltabactivity.utils.sscanf;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Sscanf {
@@ -51,9 +52,9 @@ public class Sscanf {
 			} else if (param instanceof Long) {
 				o = sf.parse((Long) param);
 			} else if (param instanceof Double) {
-				//o = sf.parse((Double) param);
+				o = param; //sf.parse((Double) param);
 			} else if (param instanceof Float) {
-				//o = sf.parse((Float) param);
+				o = sf.parse((Float) param);
 			} else {
 				//o = sf.parse((Number)param);
 			}
@@ -64,5 +65,14 @@ public class Sscanf {
 		}
 		
 		return o;
+	}
+
+
+	public static Object[] sscanf(String result, String format){
+		Scanner scan = new Scanner(result);
+		// 默认使用空格作为分割符来分隔文本，但允许你指定新的分隔符, 这里使用空格或逗号或点号作为分隔符
+		scan.useDelimiter(" |,|\\.");
+		scan.nextFloat();
+		return Sscanf.scan(result, format);
 	}
 }

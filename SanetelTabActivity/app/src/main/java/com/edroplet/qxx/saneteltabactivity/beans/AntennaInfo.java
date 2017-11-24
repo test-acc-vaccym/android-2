@@ -1,9 +1,13 @@
 package com.edroplet.qxx.saneteltabactivity.beans;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.edroplet.qxx.saneteltabactivity.services.CommunicateWithDeviceService;
+import com.edroplet.qxx.saneteltabactivity.services.communicate.CommunicateDataReceiver;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 
 import static com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo.AntennaStatus.INIT;
@@ -96,5 +100,11 @@ public class AntennaInfo implements Parcelable {
     }
     public static void setAntennaState(Context context, int antennaState){
         CustomSP.putInt(context,KEY_ANTENNA_STATE,antennaState);
+    }
+
+    public void getAntennaInfoFromServer(Context context){
+        Intent intent = new Intent(CommunicateDataReceiver.ACTION_RECEIVE_DATA);
+        intent.putExtra(CommunicateWithDeviceService.EXTRA_PARAM_SEND_CMD, Protocol.cmdGeteEquipmentInfo);
+        context.sendBroadcast(intent);
     }
 }

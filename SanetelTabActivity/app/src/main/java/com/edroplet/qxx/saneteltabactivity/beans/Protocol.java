@@ -3,10 +3,6 @@ package com.edroplet.qxx.saneteltabactivity.beans;
 import android.content.Context;
 import android.content.Intent;
 
-import com.edroplet.qxx.saneteltabactivity.utils.sscanf.Sscanf;
-
-import java.util.Scanner;
-
 import static com.edroplet.qxx.saneteltabactivity.services.CommunicateWithDeviceService.EXTRA_PARAM_SEND_CMD;
 import static com.edroplet.qxx.saneteltabactivity.services.communicate.CommunicateDataReceiver.*;
 
@@ -32,9 +28,9 @@ public class Protocol {
 
 
     // 4.5	读取设备信息
-    public static final String cmdGetSystemInfo="$cmd,get equip info*ff<CR><LF>";
+    public static final String cmdGeteEquipmentInfo="$cmd,get equip info*ff<CR><LF>";
     //返回 设备名称，主控板版本, 软件版本, 软件发布时间
-    public static final String cmdGetSystemInfoResult="$cmd,equip info %1$s, %2$s, %3$s, %4$s,*ff<CR><LF>";
+    public static final String cmdGeteEquipmentInfoResult="$cmd,equip info %s, %s, %s, %s,*ff<CR><LF>";
     // Scanner s = new Scanner("123 asdf sd 45 789 sdf asdfl,sdf.sdfl,asdf    ......asdfkl    las"); 
     // s.useDelimiter(" |,|\\."); 
     // while (s.hasNext()) { 
@@ -60,8 +56,14 @@ public class Protocol {
     // 4.8	监视信息
     // 4.8.1	监视指令
     public static final String cmdGetSystemState="$cmd,get system state*ff<CR><LF>";
-    // 返回 <预置方位角,预置俯仰角,预置发射极化角，预置接收极化角,当前方位角,当前俯仰角,当前发射极化角,当前接收极化角,寻星状态,本地经度,本地纬度,本地高度,惯导状态, 信标频率, 卫星经度，极化方式(0-水平极化 1-垂直极化 2-左旋圆极化 3-右旋圆极化)，符号率，寻星门限，寻星模式，AGC电平,故障状态,标志 >
-    public static final String cmdGetSystemStateResult="$cmd,sys state,%f,%f,%f，%f,%f,%f,%f,%f,%d,%f,%f,%f,%d,%f,%f，%d，%f，寻星门限，寻星模式，%f,%d,%d*ff<CR><LF>";
+    // $cmd,sys state,预置方位角,预置俯仰角,预置发射极化角，预置接收极化角,当前方位角,当前俯仰角,当前发射极化角,当前接收极化角,寻星状态,本地经度,本地纬度,本地高度, BD/GPS状态,寻星方式,卫星经度,极化方式,寻星门限，AGC电平,信标频率,载波频率、符号率，故障状态,标志 *ff<CR><LF>
+    public static final String cmdGetSystemStateResultHead="$cmd,sys state,";
+    public static final String cmdGetSystemStateResult="$cmd,sys state,%f,%f,%f,%f," +
+            "%f,%f,%f,%f," +
+            "%d,%f,%f,%f," +
+            "%d,%d,%f,%d," +
+            "%f,%f,%f,%f," +
+            "%f,%d,%d*ff<CR><LF>";
 
     // 4.9	获取便携站温湿度信息
     public static final String cmdGetTemperature="$cmd,get system temp*ff<CR><LF>";
@@ -280,16 +282,6 @@ public class Protocol {
     // 便携站返回数据：$cmd,lnb state,状态*ff<CR><LF>
 
 
-
-
-
-    public static Object[] sscanf(String result, String format){
-        Scanner scan = new Scanner(result);
-        // 默认使用空格作为分割符来分隔文本，但允许你指定新的分隔符, 这里使用空格或逗号或点号作为分隔符
-        scan.useDelimiter(" |,|\\.");
-        scan.nextFloat();
-        return Sscanf.scan(result, format);
-    }
 
     // 伺服控制通信D0  1故障 0 正常
     // 姿态测量(惯导) D1  1故障 0正常

@@ -4,6 +4,7 @@ package com.edroplet.qxx.saneteltabactivity.utils.sscanf;
 // Copyright (c) 2003-2011, Jodd Team (jodd.org). All Rights Reserved.
 
 
+import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 
 public class SscanfFormat {
 	protected int width;
@@ -21,6 +22,10 @@ public class SscanfFormat {
 	
 	protected String format;
 	protected String source;
+
+	public void setFmt(char fmt) {
+		this.fmt = fmt;
+	}
 
 	/**
 	 * Formats a number in a printf format, like C.
@@ -426,6 +431,18 @@ public class SscanfFormat {
 		
 
 		return retval;
+	}
+
+	public Object parse(Float f){
+
+		if (fmt != 'f') {
+			throw new IllegalArgumentException("Invalid long format: '" + fmt + "' is not 'f'.");
+		}
+
+		fmt = 's';
+		Object o = parse(String .valueOf(f));
+		Float ff = Float.parseFloat(String.valueOf(o));
+		return ff;
 	}
 	
 	

@@ -25,6 +25,11 @@ public class ConvertUtil {
 
     }
 
+    //把String转化为float
+    public static float convertToFloat(Object number, float defaultValue) {
+        return convertToFloat(String.valueOf(number), defaultValue);
+    }
+
     //把String转化为double
     public static double convertToDouble(String number, double defaultValue) {
         if (TextUtils.isEmpty(number)) {

@@ -9,6 +9,7 @@ import android.text.style.RelativeSizeSpan;
 
 /**
  * Created by qxs on 2017/11/9.
+ * 两端对齐
  */
 
 public class AlignedTextUtils {

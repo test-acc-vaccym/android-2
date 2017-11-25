@@ -12,6 +12,7 @@ import java.io.Serializable;
 
 /**
  * Created by qxs on 2017/9/15.
+ * 功放信息
  */
 
 public class AmplifierInfo implements Serializable {

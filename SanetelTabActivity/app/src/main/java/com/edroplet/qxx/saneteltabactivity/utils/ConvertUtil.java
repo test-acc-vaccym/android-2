@@ -10,6 +10,7 @@ import java.util.Map;
 
 /**
  * Created by qxs on 2017/10/22.
+ * 转换，string、int互换
  */
 
 public class ConvertUtil {

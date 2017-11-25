@@ -41,16 +41,16 @@ public class Protocol {
     // 4.6.1	读取
     public static final String cmdGetTrackMode="$cmd,get track mode*ff<CR><LF>";
     // 返回<模式名称>(0: 信标机, 1: DVB)
-    public static final String cmdGetTrackModeResult="$cmd,track mode %1$d*ff<CR><LF>";
+    public static final String cmdGetTrackModeResult="$cmd,track mode %d*ff<CR><LF>";
     // 4.6.2	设置 <模式名称>(0: 信标机, 1: DVB)
-    public static final String cmdSetTrackMode="$cmd,set track mode,%1$d*ff<CR><LF>";
+    public static final String cmdSetTrackMode="$cmd,set track mode,%d*ff<CR><LF>";
     // 返回
     public static final String cmdSetTrackModeResult="$cmd,track mode set ok*ff<CR><LF>";
 
     // 4.7	节能指令
     // 4.7.1	读取(在监视信息中读取。)
     // 4.7.2	设置(节能状态:0: 关 1: 开)
-    public static final String cmdSetEnergySave="$cmd,set energysave, %1$d*ff<CR><LF>";
+    public static final String cmdSetEnergySave="$cmd,set energysave, %d*ff<CR><LF>";
     public static final String cmdSetEnergySaveResult="$cmd, energysave set ok*ff<CR><LF>";
 
     // 4.8	监视信息
@@ -58,7 +58,7 @@ public class Protocol {
     public static final String cmdGetSystemState="$cmd,get system state*ff<CR><LF>";
     // $cmd,sys state,预置方位角,预置俯仰角,预置发射极化角，预置接收极化角,当前方位角,当前俯仰角,当前发射极化角,当前接收极化角,寻星状态,本地经度,本地纬度,本地高度, BD/GPS状态,寻星方式,卫星经度,极化方式,寻星门限，AGC电平,信标频率,载波频率、符号率，故障状态,标志 *ff<CR><LF>
     public static final String cmdGetSystemStateResultHead="$cmd,sys state,";
-    public static final String cmdGetSystemStateResult="$cmd,sys state,%f,%f,%f,%f," +
+    public static final String cmdGetSystemStateResult= cmdGetSystemStateResultHead + "%f,%f,%f,%f," +
             "%f,%f,%f,%f," +
             "%d,%f,%f,%f," +
             "%d,%d,%f,%d," +
@@ -68,40 +68,57 @@ public class Protocol {
     // 4.9	获取便携站温湿度信息
     public static final String cmdGetTemperature="$cmd,get system temp*ff<CR><LF>";
     // 返回数据：$cmd,temp data,温度,湿度*ff<CR><LF>
-    public static final String cmdGetTemperatureResult="$cmd,cmd,temp data,%f,%f*ff<CR><LF>";
+    public static final String cmdGetTemperatureResultHead="$cmd,cmd,temp data,";
+    public static final String cmdGetTemperatureResult=cmdGetTemperatureResultHead + "%f,%f*ff<CR><LF>";
 
     // 4.10	目标星
     // 4.10.1	读取
     public static final String cmdGetTargetState="$cmd,get target sat*ff<CR><LF>";
     // 返回数据：$cmd,target sat data,信标频率,卫星经度,极化方式,符号率,寻星模式,寻星门限 *ff <CR><LF>
-    public static final String cmdGetTargetStateResult="$cmd,target sat data,%f,%f,%f,%f,%f,%f*ff<CR><LF>";
+    public static final String cmdGetTargetStateResultHead="$cmd,target sat data,";
+    public static final String cmdGetTargetStateResult=cmdGetTargetStateResultHead + "%f,%f,%f,%f,%f,%f*ff<CR><LF>";
     // 4.10.2	设置
-    public static final String cmdSetTargetState="$cmd,set target sat,信标频率,卫星经度,极化方式,符号率,寻星模式,寻星门限*ff<CR><LF>";
-    public static final String cmdSetTargetStateesult="$cmd,target sat set ok*ff<CR><LF>";
+    // $cmd,set target sat,信标频率,卫星经度,极化方式,符号率,寻星模式,寻星门限*ff<CR><LF>
+    // 极化方式
+    /**
+     * 0-水平极化；
+     1-垂直极化；
+     2-左旋圆极化；
+     3-右旋圆极化；
+     */
+    public static final String cmdSetTargetState="$cmd,set target sat,%s,%s,%s,%s,%s,%s*ff<CR><LF>";
+    public static final String cmdSetTargetStateResultHead="$cmd,target sat ";
+    public static final String cmdSetTargetStateResult=cmdSetTargetStateResultHead + "set ok*ff<CR><LF>";
 
     // 4.11	参考星
     // 4.11.1	读取 
     public static final String cmdGetRefData="$cmd,get ref sat*ff<CR><LF>";
     // 返回数据：$cmd,ref sat data,信标频率,卫星经度,极化方式,符号率,寻星模式,寻星门限,卫星编号*ff<CR><LF>
-    public static final String cmdGetRefDataResult="$cmd,ref sat data,%f,卫星经度,极化方式,符号率,寻星模式,寻星门限,卫星编号*ff<CR><LF>";
-    // 4.11.2	设置 
-    public static final String cmdSetRefData="$cmd,set ref sat,信标频率,卫星经度,极化方式,符号率,寻星模式,寻星门限*ff*ff<CR><LF>";
-    public static final String cmdSetRefDataResult="$cmd,ref sat set ok*ff<CR><LF>";
+    public static final String cmdGetRefDataResultHead="$cmd,ref sat data,";
+    public static final String cmdGetRefDataResult = cmdGetRefDataResultHead + "%s,%s,%s,%s,%s,%s,%s*ff<CR><LF>";
+    // 4.11.2	设置
+    // $cmd,set ref sat,信标频率,卫星经度,极化方式,符号率,寻星模式,寻星门限*ff*ff<CR><LF>
+    public static final String cmdSetRefData="$cmd,set ref sat,%s,%s,%s,%s,%s,%s*ff<CR><LF>";
+    public static final String cmdSetRefDataResultHead = "$cmd,ref sat ";
+    public static final String cmdSetRefDataResult = cmdSetRefDataResultHead + "set ok*ff<CR><LF>";
 
     // 4.12	经纬度指令
     // 4.12.1	读取
     public static final String cmdGetPosition="$cmd,get position*ff<CR><LF>";
     // 返回数据：$cmd,position data，本地经度, 本地纬度*ff<CR><LF>
-    public static final String cmdGetPositionResult="$cmd,position data,本地经度,本地纬度*ff<CR><LF>";
+    public static final String cmdGetPositionResultHead="$cmd,position data,";
+    public static final String cmdGetPositionResult= cmdGetPositionResultHead + "%s,%s*ff<CR><LF>";
     // 4.12.2	设置
     // 发送指令格式：$cmd,set position,本地经度,本地纬度*ff<CR><LF>
-    public static final String cmdSetPosition="$cmd,set position,本地经度,本地纬度*ff<CR><LF>";
-    public static final String cmdSetPositionResult="$cmd,position ok*ff<CR><LF>";
+    public static final String cmdSetPosition="$cmd,set position,%s,%s*ff<CR><LF>";
+    public static final String cmdSetPositionResultHead="$cmd,position ";
+    public static final String cmdSetPositionResult=cmdSetPositionResultHead+"ok*ff<CR><LF>";
 
     // 4.13	寻星指令
     // 4.13.1	自动寻星指令
     public static final String cmdSetAutoSearch="$cmd,auto search*ff<CR><LF>";
-    public static final String cmdSetAutoSearchResult="$cmd,start auto search ok*ff<CR><LF>";
+    public static final String cmdSetAutoSearchResultHead="$cmd,start auto search ";
+    public static final String cmdSetAutoSearchResult=cmdSetAutoSearchResultHead+"ok*ff<CR><LF>";
     // 4.13.2	手动速度控制指令
     // 发送指令格式：$cmd,manual search,调整方式,速度(范围：0.0～10.0度/秒)*ff<CR><LF>
     // 1—方位角增加；2—方位角减小；
@@ -110,20 +127,24 @@ public class Protocol {
     // 6—备用角减小；
     // 7—接收极化增加；
     // 8—接收极化减小；
-    public static final String cmdSetManualSearch="$cmd,manual search,调整方式,速度*ff<CR><LF>";
-    public static final String cmdSetManualSearchResult="$cmd,start manual search*ff<CR><LF>";
+    public static final String cmdSetManualSearch="$cmd,manual search,%s,%s*ff<CR><LF>";
+    public static final String cmdSetManualSearchResultHead="$cmd,start manual search";
+    public static final String cmdSetManualSearchResult=cmdSetManualSearchResultHead+"*ff<CR><LF>";
     // 4.13.3	单步位置控制指令
     // $cmd,step control,调整方式,调整角度*ff<CR><LF>
     // 调整方式 同上，  调整角度(范围：0.0～10.0度/秒)
-    public static final String cmdStepControl="$cmd,step control,调整方式,调整角度*ff<CR><LF>";
-    public static final String cmdStepControlResult="$cmd,start manual search*ff<CR><LF>";
+    public static final String cmdStepControl="$cmd,step control,%s,%s*ff<CR><LF>";
+    public static final String cmdStepControlResultHead="$cmd,start manual search";
+    public static final String cmdStepControlResult=cmdStepControlResultHead+"*ff<CR><LF>";
     // 4.13.4	手动位置控制指令
     // $cmd,manual control,方位，俯仰，备用，极化角*ff<CR><LF>
-    public static final String cmdManualControl="$cmd,manual control,方位，俯仰，备用，极化角*ff<CR><LF>";
-    public static final String cmdManualControlResult="$cmd,start manual control*ff<CR><LF>";
+    public static final String cmdManualControl="$cmd,manual control,%s,%s,%s,%s*ff<CR><LF>";
+    public static final String cmdManualControlResultHead="$cmd,start manual control";
+    public static final String cmdManualControlResult=cmdManualControlResultHead+"*ff<CR><LF>";
     // 4.13.5	停止寻星指令
     public static final String cmdStopSearch="$cmd,stop search *ff<CR><LF>";
-    public static final String cmdStopSearchResult="$cmd,search stop*ff<CR><LF>";
+    public static final String cmdStopSearchResultHead="$cmd,search stop";
+    public static final String cmdStopSearchResult=cmdStopSearchResultHead+"*ff<CR><LF>";
 
 
     // 4.14	功放指令
@@ -137,11 +158,13 @@ public class Protocol {
     // 4.14.2.1	读取
     public static final String cmdGetBucFactory="$cmd,get buc factory *ff<CR><LF>";
     // $cmd, buc factory,功放厂家*ff
-    public static final String cmdGetBucFactoryResult="$cmd, buc factory,%s*ff<CR><LF>";
+    public static final String cmdGetBucFactoryResultHead="$cmd, buc factory,";
+    public static final String cmdGetBucFactoryResult=cmdGetBucFactoryResultHead+"%s*ff<CR><LF>";
     // 4.14.2.2	设置
     // 发送指令格式： $cmd,set buc factory,功放厂家*ff<CR><LF>
     public static final String cmdSetBucFactory="$cmd,set buc factory,功放厂家*ff<CR><LF>";
-    public static final String cmdSetBucFactoryResult="$cmd,buc factory set ok*ff<CR><LF>";
+    public static final String cmdSetBucFactoryResultHead="$cmd,buc factory ";
+    public static final String cmdSetBucFactoryResult=cmdSetBucFactoryResultHead+"set ok*ff<CR><LF>";
 
     // 4.14.3	功放本振
     // 4.14.3.1	读取

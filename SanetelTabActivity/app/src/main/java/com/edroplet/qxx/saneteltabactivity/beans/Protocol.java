@@ -130,7 +130,9 @@ public class Protocol {
     // 4.14.1	读取功放信息
     public static final String cmdGetBucInfo="$cmd,get buc info *ff<CR><LF>";
     // 返回数据：$cmd, buc info,功放厂家，功放本振，输出功率，温度，状态，邻星保护状态，功放衰减*ff
-    public static final String cmdGetBucInfoResult="$cmd, buc info,功放厂家，功放本振，输出功率，温度，状态，邻星保护状态，功放衰减*ff<CR><LF>";
+    public static final String cmdGetBucInfoResultHead="$cmd, buc info,";
+    public static final String cmdGetBucInfoResult=cmdGetBucInfoResultHead+"%s,%s,%s,%s,%s,%s,%s*ff<CR><LF>"; // 不参与计算的一律视为string
+
     // 4.14.2	功放厂家
     // 4.14.2.1	读取
     public static final String cmdGetBucFactory="$cmd,get buc factory *ff<CR><LF>";

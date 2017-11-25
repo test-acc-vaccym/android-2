@@ -20,6 +20,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 import java.util.ArrayList;
 
+import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_AMPLIFIER_INFO;
 import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_MONITOR_INFO;
 import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.KEY_RECEIVE_MONITOR_INFO_DATA;
 
@@ -145,40 +146,74 @@ public class CommunicateWithDeviceService extends IntentService {
      * Handle action Baz in the provided background thread with the provided
      * parameters.
      */
-    private void handleActionSend(String param1, String param2) {
+    private void handleActionSend(final String cmd, String param2) {
         Log.e(TAG, "handleActionSend");
-        if (null == client){
-            ConnectToServer();
-            StartServerListener();
+        if (null == client || !client.isConnected()|| !client.isOpen()){
+
+            //次线程里操作网络请求数据
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    ConnectToServer();
+                    StartServerListener();
+                    getSystemState(cmd);
+                    // 在listen中组包
+                }
+            }).start();
+        }else {
+            getSystemState(cmd);
         }
-        // TODO: Handle action Baz
-        throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    private void getSystemState(String cmd){
+    private void getSystemState(final String cmd){
         Log.e(TAG, "getSystemState, cmd is :"+cmd);
         if (null == client || !client.isConnected()|| !client.isOpen()) {
-            ConnectToServer();
-            StartServerListener();
+            //次线程里操作网络请求数据
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    ConnectToServer();
+                    StartServerListener();
+                    SendMessageToServer(cmd);
+                    // 在listen中组包
+                }
+            }).start();
+        }else {
+            SendMessageToServer(cmd);
         }
-        SendMessageToServer(cmd);
     }
 
     InetSocketAddress isa;
     private void  ConnectToServer(){
         try {
-            Log.e(TAG, "ConnectToServer, cmd client :" + (client==null? "" : client.toString()));
-            if (null == client || !client.isOpen()) {
+            Log.i(TAG, "ConnectToServer, cmd client :" + (client==null? "" : client.toString()));
+            if (null == client || !client.isOpen() || !client.isConnected()) {
                 client = SocketChannel.open();
                 String ip = CustomSP.getString(mContext, CustomSP.KeyIPSettingsAddress, CustomSP.DefaultIP);
+                // 判断是否设置过IP
+                while (ip.equals(CustomSP.DefaultIP)){
+                    Log.e(TAG, "ConnectToServer, ip is:" + CustomSP.DefaultIP );
+                    // TODO: 2017/11/25 ip不设置正确，一直等待
+                    Thread.sleep(1000);
+                    ip = CustomSP.getString(mContext, CustomSP.KeyIPSettingsAddress, CustomSP.DefaultIP);
+                }
                 int port = CustomSP.getInt(mContext, CustomSP.KeyIPSettingsPort, CustomSP.DefaultPort);
-
-                isa = new InetSocketAddress(ip, port);
-                client.connect(isa);
-                // 设置阻塞
-                client.configureBlocking(false);
+                while (!client.isConnected()) {
+                    Log.w(TAG, "ConnectToServer, client is not open, open now");
+                    // TODO: 2017/11/25 client没有open，一直等待
+                    Thread.sleep(1000);
+                    ip = CustomSP.getString(mContext, CustomSP.KeyIPSettingsAddress, CustomSP.DefaultIP);
+                    try {
+                        isa = new InetSocketAddress(ip, port);
+                        client.connect(isa);
+                        // 设置阻塞
+                        client.configureBlocking(false);
+                    } catch (IOException ioe) {
+                        Log.e(TAG, "ConnectToServer ERROR. "+ioe.toString());
+                    }
+                }
             }
-        }catch (Exception e){
+        } catch (Exception e){
             e.printStackTrace();
             Log.e(TAG, e.toString());
             DisConnectToServer();
@@ -226,17 +261,20 @@ public class CommunicateWithDeviceService extends IntentService {
         if (msg.startsWith(Protocol.cmdGetSystemStateResultHead)){
             intent.setAction(ACTION_RECEIVE_MONITOR_INFO);
             intent.putExtra(KEY_RECEIVE_MONITOR_INFO_DATA,msg);
-        }else {
-            // 解析message, 不能在服务中解析
-            //
-            // 指定广播目标的 action （注：指定了此 action 的 receiver 会接收此广播）
-           intent.setAction(ACTION_DATA_RESULT);
-            // 需要传递的参数
-            // 此处传送的数据的是集合类型，也可以有其他的类型：intent.put
-            Bundle bundle = new Bundle();
-            bundle.putString(EXTRA_PARAM_RESULT_DATA, msg);
-            // bundle.putString(EXTRA_PARAM_RESULT_CMD, msg);
-            intent.putExtras(bundle);
+        }else if (msg.startsWith(Protocol.cmdGetBucInfoResultHead)) {
+            intent.setAction(ACTION_RECEIVE_AMPLIFIER_INFO);
+            intent.putExtra(KEY_RECEIVE_MONITOR_INFO_DATA,msg);
+        }else{
+                // 解析message, 不能在服务中解析
+                //
+                // 指定广播目标的 action （注：指定了此 action 的 receiver 会接收此广播）
+                intent.setAction(ACTION_DATA_RESULT);
+                // 需要传递的参数
+                // 此处传送的数据的是集合类型，也可以有其他的类型：intent.put
+                Bundle bundle = new Bundle();
+                bundle.putString(EXTRA_PARAM_RESULT_DATA, msg);
+                // bundle.putString(EXTRA_PARAM_RESULT_CMD, msg);
+                intent.putExtras(bundle);
         }
         // 发送广播
         this.sendBroadcast(intent);

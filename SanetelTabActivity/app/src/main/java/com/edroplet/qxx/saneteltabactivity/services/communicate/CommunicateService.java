@@ -38,8 +38,8 @@ public class CommunicateService extends Service {
     public void onCreate() {
         super.onCreate();
 
-        // 这里动态注册广播吧， 静态注册的没法接收
-        if (null == communicateDataReceiver) {
+        // 这里动态注册广播， 静态注册的没法接收
+        if (null == communicateDataReceiver && CommunicateDataReceiver.isAlive(this)) {
             communicateDataReceiver = new CommunicateDataReceiver();
             IntentFilter intentFilter = new IntentFilter();
             intentFilter.addAction(CommunicateDataReceiver.ACTION_KEEP_ALIVE);

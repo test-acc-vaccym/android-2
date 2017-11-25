@@ -4,4 +4,5 @@
     <integer name="detail_schedule_timer">3000</integer>
     <integer name="collect_data_schedule_timer">30000</integer>
     <integer name="save_data_schedule_timer">30000</integer>
+    <integer name="get_monitor_info_schedule_timer">60000</integer>
 </resources>

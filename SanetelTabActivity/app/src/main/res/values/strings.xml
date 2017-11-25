@@ -276,9 +276,9 @@
     <string name="main_monitor_amplifier_status_pll_state">锁&#160;&#160;相&#160;&#160;环</string>
     <string name="main_monitor_amplifier_status_pll_state_normal">正常</string>
     <string name="main_monitor_amplifier_status_pll_state_abnormal">异常</string>
-    <string name="main_monitor_amplifier_status_satellite__protect_state">邻星保护</string>
-    <string name="main_monitor_amplifier_status_satellite__protect_state_open">开启</string>
-    <string name="main_monitor_amplifier_status_satellite__protect_state_close">开启</string>
+    <string name="main_monitor_amplifier_status_satellite_protect_state">邻星保护</string>
+    <string name="main_monitor_amplifier_status_satellite_protect_state_open">开启</string>
+    <string name="main_monitor_amplifier_status_satellite_protect_state_close">关闭</string>
     <string name="main_monitor_amplifier_value_output">输出</string>
     <string name="main_monitor_amplifier_value_output_hint">0.0</string>
     <string name="main_monitor_amplifier_value_temperature">温度</string>

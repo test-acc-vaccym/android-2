@@ -1,6 +1,7 @@
 package com.edroplet.qxx.saneteltabactivity.fragments.guide;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,9 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentDestination.KEY_DESTINATION_SATELLITE_BEACON_FREQUENCY;
+import static com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentDestination.KEY_DESTINATION_SATELLITE_DVB;
+import static com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentDestination.KEY_DESTINATION_SATELLITE_POLARIZATION;
 import static com.edroplet.qxx.saneteltabactivity.utils.CustomSP.KEY_SEARCHING_MODE;
 
 /**
@@ -25,6 +29,8 @@ import static com.edroplet.qxx.saneteltabactivity.utils.CustomSP.KEY_SEARCHING_M
  */
 
 public class GuideFragmentSearchModeSetting extends Fragment {
+    public static final int Mode_Beacon = 0;
+    public static final int Mode_DVB = 1;
 
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
@@ -52,7 +58,7 @@ public class GuideFragmentSearchModeSetting extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+    Context context;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -61,16 +67,41 @@ public class GuideFragmentSearchModeSetting extends Fragment {
         if (view == null){
             return null;
         }
+        context = getContext();
         ButterKnife.bind(this, view);
 
+        // 4.2.7.	寻星模式
+        // 如果卫星只支持DVB，信标模式为灰色；如果卫星只支持信标模式，DVB模式为灰色。
+        // 卫星是否支持信标模式和DVB模式，由数据库数据确定。
+        // 数据库中，卫星没有水平和垂直、左旋和右旋，或者是信标频率为0，则不支持信标模式；
+        // 如果DVB值为零或不在合理范围内，则不支持DVB模式。
+
+        String defaultVal = "0";
+        String beacon = CustomSP.getString(context, KEY_DESTINATION_SATELLITE_BEACON_FREQUENCY, defaultVal);
+        String dvb = CustomSP.getString(context, KEY_DESTINATION_SATELLITE_DVB, defaultVal);
+        String polarization = CustomSP.getString(context,KEY_DESTINATION_SATELLITE_POLARIZATION,"");
+
+        if (beacon.equals(defaultVal) && dvb.equals(defaultVal)){
+            crbSearchModeBeacon.setChecked(true);
+        }else if (polarization.isEmpty() || beacon.equals(defaultVal)){
+            crbSearchModeBeacon.setClickable(false);
+            crbSearchModeBeacon.setTextColor(Color.GRAY);
+            crbSearchModeBeacon.setChecked(false);
+            crbSearchModeDvb.setChecked(true);
+        }else if (dvb.equals(defaultVal)){
+            crbSearchModeDvb.setClickable(false);
+            crbSearchModeDvb.setTextColor(Color.GRAY);
+            crbSearchModeDvb.setChecked(false);
+            crbSearchModeBeacon.setChecked(true);
+        }
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO: 2017/11/11 设置寻星模式，发送命令
                 if (crbSearchModeBeacon.isChecked()){
-                    CustomSP.putInt(getContext(),KEY_SEARCHING_MODE, 0);
+                    CustomSP.putInt(getContext(),KEY_SEARCHING_MODE, Mode_Beacon);
                 } else {
-                    CustomSP.putInt(getContext(), KEY_SEARCHING_MODE, 1);
+                    CustomSP.putInt(getContext(), KEY_SEARCHING_MODE, Mode_DVB);
                 }
 
             }
@@ -80,7 +111,7 @@ public class GuideFragmentSearchModeSetting extends Fragment {
         crbSearchModeBeacon.setOnCheckedChangeListener(GuideFragmentLocation.mOnCheckedChangeListener);
         crbSearchModeDvb.setOnCheckedChangeListener(GuideFragmentLocation.mOnCheckedChangeListener);
 
-        if(CustomSP.getInt(getContext(), KEY_SEARCHING_MODE, 0) == 0){
+        if(CustomSP.getInt(getContext(), KEY_SEARCHING_MODE, Mode_Beacon) == Mode_Beacon){
             crbSearchModeBeacon.setChecked(true);
         }else {
             crbSearchModeDvb.setChecked(true);

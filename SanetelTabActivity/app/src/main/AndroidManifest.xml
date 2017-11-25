@@ -258,8 +258,13 @@
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="com.edroplet.sanetel.data.receiver"/>
-                <action android:name="com.edroplet.sanetel.data.send"/>
+                <action android:name="android.intent.action.SCREEN_ON"/>
+                <action android:name="android.intent.action.SCREEN_OFF"/>
+                <action android:name="com.edroplet.sanetel.data.KEEP_ALIVE"/>
+                <action android:name="com.edroplet.sanetel.data.RECEIVE_DATA"/>
+                <action android:name="com.edroplet.sanetel.data.SAVE_FILE"/>
+                <action android:name="com.edroplet.sanetel.data.STOP_SAVE"/>
+                <action android:name="com.edroplet.sanetel.data.SEND_DATA"/>
             </intent-filter>
         </receiver>
         <service

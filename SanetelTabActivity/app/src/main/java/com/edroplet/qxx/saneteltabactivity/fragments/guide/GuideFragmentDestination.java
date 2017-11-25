@@ -43,12 +43,16 @@ import static com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentL
 
 /**
  * Created by qxs on 2017/9/19.
+ * 目标星设置
  */
 
 public class GuideFragmentDestination extends Fragment {
     private static int[] satellitesImages = {R.mipmap.satellite1, R.mipmap.satellite2, R.mipmap.satellite3};
-    public static final String DESTINATION_SATELLITE_NAME_KEY = "DESTINATION_SATELLITE_NAME_KEY";
-    public static final String DESTINATION_SATELLITE_POLARIZATION_KEY = "DESTINATION_SATELLITE_POLARIZATION_KEY";
+    public static final String KEY_DESTINATION_SATELLITE_NAME = "KEY_DESTINATION_SATELLITE_NAME";
+    public static final String KEY_DESTINATION_SATELLITE_POLARIZATION = "KEY_DESTINATION_SATELLITE_POLARIZATION";
+    public static final String KEY_DESTINATION_SATELLITE_BEACON_FREQUENCY = "KEY_DESTINATION_SATELLITE_BEACON_FREQUENCY"; // 信标频率
+    public static final String KEY_DESTINATION_SATELLITE_DVB = "KEY_DESTINATION_SATELLITE_DVB"; // DVB值
+
 
     @BindId(R.id.follow_me_destination_spinner_satellites_select)
     Spinner satelliteSelect;
@@ -129,7 +133,7 @@ public class GuideFragmentDestination extends Fragment {
             if (satelliteNameArray.length > 0) {
                 satelliteSelect.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, satelliteNameArray));
                 // 读取配置中的值
-                selectedName = CustomSP.getString(getContext(), DESTINATION_SATELLITE_NAME_KEY, satelliteNameArray[0]);
+                selectedName = CustomSP.getString(getContext(), KEY_DESTINATION_SATELLITE_NAME, satelliteNameArray[0]);
                 for(int i=0; i<satelliteNameArray.length; i++){
                     if(selectedName.equals(satelliteNameArray[i])){
                         satelliteSelect.setSelection(i,true);
@@ -140,7 +144,7 @@ public class GuideFragmentDestination extends Fragment {
                 if (polarizationArray.length > 0) {
                     satellitePolarizationSelect.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, polarizationArray));
                     // 读取配置中的值
-                    selectedPolarization = CustomSP.getString(getContext(), DESTINATION_SATELLITE_POLARIZATION_KEY, polarizationArray[0]);
+                    selectedPolarization = CustomSP.getString(getContext(), KEY_DESTINATION_SATELLITE_POLARIZATION, polarizationArray[0]);
                     for(int i=0; i<polarizationArray.length; i++){
                         if(selectedPolarization.equals(polarizationArray[i])){
                             satellitePolarizationSelect.setSelection(i,true);
@@ -177,8 +181,8 @@ public class GuideFragmentDestination extends Fragment {
                 if (polarizationArray.length > 0) {
                     satellitePolarizationSelect.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, polarizationArray));
                     selectedPolarization = polarizationArray[0];
-                    if (selectedName.equals(CustomSP.getString(getContext(), DESTINATION_SATELLITE_NAME_KEY,selectedName)) ){
-                        selectedPolarization = CustomSP.getString(getContext(), DESTINATION_SATELLITE_POLARIZATION_KEY, selectedPolarization);
+                    if (selectedName.equals(CustomSP.getString(getContext(), KEY_DESTINATION_SATELLITE_NAME,selectedName)) ){
+                        selectedPolarization = CustomSP.getString(getContext(), KEY_DESTINATION_SATELLITE_POLARIZATION, selectedPolarization);
                         for(int i=0; i<polarizationArray.length; i++){
                             if(selectedPolarization.equals(polarizationArray[i])){
                                 satellitePolarizationSelect.setSelection(i,true);
@@ -269,8 +273,11 @@ public class GuideFragmentDestination extends Fragment {
                         break;
                 }
                 // 保存配置
-                CustomSP.putString(getContext(), DESTINATION_SATELLITE_NAME_KEY, selectedName);
-                CustomSP.putString(getContext(), DESTINATION_SATELLITE_POLARIZATION_KEY, selectedPolarization);
+                CustomSP.putString(getContext(), KEY_DESTINATION_SATELLITE_NAME, selectedName);
+                CustomSP.putString(getContext(), KEY_DESTINATION_SATELLITE_POLARIZATION, selectedPolarization);
+                // 4.2.7.	寻星模式 需要用到这两个值
+                CustomSP.putString(getContext(), KEY_DESTINATION_SATELLITE_BEACON_FREQUENCY, satelliteBeacon.getText().toString());
+                CustomSP.putString(getContext(), KEY_DESTINATION_SATELLITE_DVB, satelliteDvb.getText().toString());
             }
         });
 

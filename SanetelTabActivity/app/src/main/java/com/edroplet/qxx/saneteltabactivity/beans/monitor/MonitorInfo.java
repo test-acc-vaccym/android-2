@@ -16,6 +16,34 @@ import java.io.Serializable;
  */
 
 public class MonitorInfo implements Serializable {
+    public static final String KEY_MONITOR_LAST_ANTENNA_PRE_AZ = "KEY_MONITOR_LAST_ANTENNA_PRE_AZ";
+    public static final String KEY_MONITOR_LAST_ANTENNA_PRE_EL = "KEY_MONITOR_LAST_ANTENNA_PRE_EL";
+    public static final String KEY_MONITOR_LAST_ANTENNA_PRE_RV = "KEY_MONITOR_LAST_ANTENNA_PRE_RV";
+    public static final String KEY_MONITOR_LAST_ANTENNA_PRE_POL = "KEY_MONITOR_LAST_ANTENNA_PRE_POL";
+    public static final String KEY_MONITOR_LAST_ANTENNA_AZ = "KEY_MONITOR_LAST_ANTENNA_AZ";
+    public static final String KEY_MONITOR_LAST_ANTENNA_EL = "KEY_MONITOR_LAST_ANTENNA_EL";
+    public static final String KEY_MONITOR_LAST_ANTENNA_RV = "KEY_MONITOR_LAST_ANTENNA_RV";
+    public static final String KEY_MONITOR_LAST_ANTENNA_POL = "KEY_MONITOR_LAST_ANTENNA_POL";
+
+    public static final String KEY_MONITOR_LAST_TRACE_STATE = "KEY_MONITOR_LAST_TRACE_STATE";
+    public static final String KEY_MONITOR_LAST_BD_STATE = "KEY_MONITOR_LAST_BD_STATE";
+
+    public static final String KEY_MONITOR_LAST_LONGITUDE = "KEY_MONITOR_LAST_LONGITUDE";
+    public static final String KEY_MONITOR_LAST_LATITUDE = "KEY_MONITOR_LAST_LATITUDE";
+    public static final String KEY_MONITOR_LAST_HEIGHT = "KEY_MONITOR_LAST_HEIGHT";
+
+    public static final String KEY_MONITOR_LAST_SATELLITE_TRACE_MODE = "KEY_MONITOR_LAST_SATELLITE_TRACE_MODE";
+    public static final String KEY_MONITOR_LAST_SATELLITE_AGC = "KEY_MONITOR_LAST_AGC";
+    public static final String KEY_MONITOR_LAST_SATELLITE_LONGITUDE = "KEY_MONITOR_LAST_SATELLITE_LONGITUDE";
+    public static final String KEY_MONITOR_LAST_SATELLITE_POLARIZATION_MODE = "KEY_MONITOR_LAST_SATELLITE_POLARIZATION_MODE";
+    public static final String KEY_MONITOR_LAST_SATELLITE_THRESHOLD = "KEY_MONITOR_LAST_SATELLITE_THRESHOLD";
+    public static final String KEY_MONITOR_LAST_SATELLITE_BEACON = "KEY_MONITOR_LAST_SATELLITE_BEACON";
+    public static final String KEY_MONITOR_LAST_SATELLITE_CARRIER = "KEY_MONITOR_LAST_SATELLITE_CARRIER";
+    public static final String KEY_MONITOR_LAST_SATELLITE_DVB = "KEY_MONITOR_LAST_SATELLITE_DVB";
+    public static final String KEY_MONITOR_LAST_FAULT_CONDITION = "KEY_MONITOR_LAST_FAULT_CONDITION";
+    public static final String KEY_MONITOR_LAST_FLAG = "KEY_MONITOR_LAST_FLAG";
+
+
     private float prepareAZ; // 预置方位角  “AZ”是方位角的英文azimuth缩写;
     private float prepareEL; // 俯仰角 “EL”是俯仰角的英文elevation缩写;
     private float prepareRV; // “RV”是备用的英文reserve缩写
@@ -24,21 +52,24 @@ public class MonitorInfo implements Serializable {
     private float EL;
     private float RV;
     private float POL;
+
     private int traceState; // 寻星状态 0—收藏；1—展开中；2—已展开；3—初始；4--寻星；5—手动；6—锁定；7—收藏中；8—失锁9---异常；10--停止；11—复位中；12—已复位
     private float longitude; // -180~180
     private float latitude; // -90 ~ 90
     private float height; // 本地高度
     private int bdState;  // BD/GPS状态
+
     private int traceMode; // 寻星模式  0-信标机；1-DVB；
-    float satelliteLogitude; // 卫星经度
-    int plMode; // 极化方式 0-水平极化；1-垂直极化；2-左旋圆极化； 3-右旋圆极化；
-    float threshold; // 寻星门限
-    float agc; // AGC
-    float beacon; // 信标频率
-    float carrier; // 载波
-    float dvb; // 符号率
-    int faultCondition; // 故障状态
-    int flag; // 标志
+    private float satelliteLongitude; // 卫星经度
+    private int plMode; // 极化方式 0-水平极化；1-垂直极化；2-左旋圆极化； 3-右旋圆极化；
+    private float threshold; // 寻星门限
+    private float agc; // AGC
+    private float beacon; // 信标频率
+    private float carrier; // 载波
+    private float dvb; // 符号率
+
+    private int faultCondition; // 故障状态
+    private int flag; // 标志
 
     public static void getMonitorInfoFromServer(Context context){
         Intent intent = new Intent(CommunicateDataReceiver.ACTION_RECEIVE_DATA);
@@ -52,7 +83,7 @@ public class MonitorInfo implements Serializable {
                 monitorInfo.prepareAZ, monitorInfo.prepareEL,monitorInfo.prepareRV,monitorInfo.preparePOL,
                 monitorInfo.AZ,monitorInfo.EL,monitorInfo.RV,monitorInfo.POL,
                 monitorInfo.traceState,monitorInfo.latitude, monitorInfo.longitude, monitorInfo.height,
-                monitorInfo.bdState,monitorInfo.traceMode, monitorInfo.satelliteLogitude,monitorInfo.plMode,
+                monitorInfo.bdState,monitorInfo.traceMode, monitorInfo.satelliteLongitude,monitorInfo.plMode,
                 monitorInfo.threshold, monitorInfo.agc, monitorInfo.beacon,monitorInfo.carrier,
                 monitorInfo.dvb, monitorInfo.faultCondition, monitorInfo.flag);
 
@@ -73,7 +104,7 @@ public class MonitorInfo implements Serializable {
 
         monitorInfo.bdState = (Integer) o[12];
         monitorInfo.traceMode = (Integer) o[13];
-        monitorInfo.satelliteLogitude = (Float) o[14];
+        monitorInfo.satelliteLongitude = (Float) o[14];
         monitorInfo.plMode = (Integer) o[15];
 
         monitorInfo.threshold = (Float) o[16];
@@ -149,7 +180,7 @@ public class MonitorInfo implements Serializable {
     }
 
     public float getSatelliteLogitude() {
-        return satelliteLogitude;
+        return satelliteLongitude;
     }
 
     public float getThreshold() {

@@ -5,6 +5,8 @@ import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -17,6 +19,7 @@ import com.edroplet.qxx.saneteltabactivity.utils.DateTime;
 import com.edroplet.qxx.saneteltabactivity.utils.FileUtils;
 
 import java.io.IOException;
+import java.util.List;
 
 import static com.edroplet.qxx.saneteltabactivity.services.CommunicateWithDeviceService.*;
 
@@ -58,9 +61,9 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
             sendCmd = bundle.getString(EXTRA_PARAM_SEND_CMD);
             sendData = bundle.getString(EXTRA_PARAM_SEND_DATA);
         } else {
-            if (intent.hasExtra(EXTRA_PARAM_SEND_CMD))
+            if (null != intent && intent.hasExtra(EXTRA_PARAM_SEND_CMD))
                 sendCmd = bundle.getString(EXTRA_PARAM_SEND_CMD);
-            if (intent.hasExtra(EXTRA_PARAM_SEND_DATA))
+            if (null != intent && intent.hasExtra(EXTRA_PARAM_SEND_DATA))
                 sendData = bundle.getString(EXTRA_PARAM_SEND_DATA);
         }
         if (null == sendCmd ){
@@ -70,7 +73,7 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
             sendData = "";
         }
 
-        // todo 每次操作都记录文件，直到停止服务
+        // 每次操作都记录文件，直到停止服务
         Intent notifyIntent = new Intent(context, ReceiveNotifyService.class);
         if (null != notifyIntent && isInAction(action)) {
             if (bundle != null) {
@@ -80,6 +83,7 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
             context.startService(notifyIntent);
         }
 
+        // 启动服务
         if (ACTION_RECEIVE_DATA.equals(action)){
             CommunicateWithDeviceService.startActionReceive(context, sendCmd, sendData);
         }else if (ACTION_SEND_DATA.equals(action)){
@@ -98,8 +102,19 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
                 || ACTION_STOP_SAVE.equals(action) || ACTION_STOP_SAVE.equals(action);
     }
 
+    public static boolean isAlive(Context context){
+        Intent intent = new Intent();
+        intent.setAction(ACTION_KEEP_ALIVE);
+        PackageManager pm = context.getPackageManager();
+        List<ResolveInfo> resolveInfos = pm.queryBroadcastReceivers(intent, 0);
+        if(resolveInfos != null && !resolveInfos.isEmpty()){
+            //查询到相应的BroadcastReceiver
+            return true;
+        }
+        return false;
+    }
     /**
-     * not impments here
+     * not implements here
      */
     public static class ReceiveNotifyService extends Service{
         Intent innerIntent;
@@ -163,10 +178,10 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
                                 String newestFile = collectHistoryFileInfo.getNewestCollectFile();
                                 try {
                                     FileUtils.saveFile(newestFile, DateTime.getCurrentDateTime() + "\n"
-                                            + (receiveCmd.isEmpty()?"":"receiveCmd:"+receiveCmd + "\n")
-                                            + (receiveData.isEmpty()?"":"receiveData:" + receiveData + "\n")
-                                            + (sendCmd.isEmpty()?"":"sendCmd:" + sendCmd +"\n" )
-                                            + (sendData.isEmpty()?"":"sendData:" + sendData +"\n" ), true);
+                                            + (null != receiveCmd && receiveCmd.isEmpty()?"":"receiveCmd:"+receiveCmd + "\n")
+                                            + (null != receiveData && receiveData.isEmpty()? "":"receiveData:" + receiveData + "\n")
+                                            + (null != sendCmd && sendCmd.isEmpty()?"":"sendCmd:" + sendCmd +"\n" )
+                                            + (null != sendData && sendData.isEmpty()?"":"sendData:" + sendData +"\n" ), true);
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }

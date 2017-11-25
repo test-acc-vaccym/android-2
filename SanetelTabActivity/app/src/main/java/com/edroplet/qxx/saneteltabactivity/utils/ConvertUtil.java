@@ -1,5 +1,6 @@
 package com.edroplet.qxx.saneteltabactivity.utils;
 
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import java.util.ArrayList;
@@ -23,6 +24,40 @@ public class ConvertUtil {
             return defaultValue;
         }
 
+    }
+
+    public static int getBitValue(@NonNull String val, int index, int defaultVal){
+        if (defaultVal < 0){
+            defaultVal =0;
+        }else if (defaultVal > 1){
+            defaultVal = 1;
+        }
+        String binaryString = Integer.toBinaryString(convertToInt(val,defaultVal));
+        int l = binaryString.length();
+        int charIndex = l - 1 - index;
+        if (charIndex >= l){
+            charIndex = l - 1;
+        }else if (charIndex < 0){
+            charIndex = 0;
+        }
+        return convertToInt(String.valueOf(binaryString.charAt(charIndex)),defaultVal);
+    }
+
+    public static int getBitValue(int val, int index, int defaultVal){
+        if (defaultVal < 0){
+            defaultVal =0;
+        }else if (defaultVal > 1){
+            defaultVal = 1;
+        }
+        String binaryString = Integer.toBinaryString(val);
+        int l = binaryString.length();
+        int charIndex = l - 1 - index;
+        if (charIndex >= l){
+            charIndex = l - 1;
+        }else if (charIndex < 0){
+            charIndex = 0;
+        }
+        return convertToInt(String.valueOf(binaryString.charAt(charIndex)),defaultVal);
     }
 
     //把String转化为float

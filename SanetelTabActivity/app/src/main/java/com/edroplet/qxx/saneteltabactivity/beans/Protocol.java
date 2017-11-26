@@ -3,6 +3,8 @@ package com.edroplet.qxx.saneteltabactivity.beans;
 import android.content.Context;
 import android.content.Intent;
 
+import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
+
 import static com.edroplet.qxx.saneteltabactivity.services.CommunicateWithDeviceService.EXTRA_PARAM_SEND_CMD;
 import static com.edroplet.qxx.saneteltabactivity.services.communicate.CommunicateDataReceiver.*;
 
@@ -162,7 +164,7 @@ public class Protocol {
     public static final String cmdGetBucFactoryResult=cmdGetBucFactoryResultHead+"%s*ff<CR><LF>";
     // 4.14.2.2	设置
     // 发送指令格式： $cmd,set buc factory,功放厂家*ff<CR><LF>
-    public static final String cmdSetBucFactory="$cmd,set buc factory,功放厂家*ff<CR><LF>";
+    public static final String cmdSetBucFactory="$cmd,set buc factory,%s*ff<CR><LF>";
     public static final String cmdSetBucFactoryResultHead="$cmd,buc factory ";
     public static final String cmdSetBucFactoryResult=cmdSetBucFactoryResultHead+"set ok*ff<CR><LF>";
 
@@ -170,44 +172,76 @@ public class Protocol {
     // 4.14.3.1	读取
     // 终端设备发送指令格式： $cmd,get buc lf*ff<CR><LF>	
     // 便携站返回数据：$cmd, buc lf data,本振值*ff
+    public static final String cmdGetBucLf="$cmd,get buc lf*ff<CR><LF>";
+    public static final String cmdGetBucLfResultHead="$cmd, buc lf data,";
+    public static final String cmdGetBucLfResult=cmdGetBucLfResultHead+"%s*ff<CR><LF>";
 
     // 4.14.3.2	设置
     // 终端设备发送指令格式： $cmd,set buc lf ,本振值*ff<CR><LF>	
     // 便携站返回数据：$cmd, buc lf set ok*ff。
+    public static final String cmdSetBucLf="$cmd,set buc lf,%s*ff<CR><LF>";
+    public static final String cmdSetBucLfResultHead="$cmd, buc lf set ";
+    public static final String cmdSetBucLfResult=cmdSetBucLfResultHead+"ok*ff<CR><LF>";
 
 
     // 4.14.4	功放衰减-备用
     // 4.14.4.1	读取
     // 终端设备发送指令格式：$cmd,get buc att*ff<CR><LF>
     // 便携站返回数据：$cmd,buc att data,衰减数据*ff<CR><LF>
+    public static final String cmdGetBucAtt="$cmd,get buc att*ff<CR><LF>";
+    public static final String cmdGetBucAttResultHead="$cmd,buc att data,";
+    public static final String cmdGetBucAttResult=cmdGetBucAttResultHead+"%s*ff<CR><LF>";
+
     // 4.14.4.2	设置
     // 终端设备发送指令格式：$cmd,set buc att,衰减数据*ff<CR><LF>
     // 便携站返回数据：$cmd,start buc att*ff<CR><LF>
+    public static final String cmdSetBucAtt="$cmd,set buc att,%s*ff<CR><LF>";
+    public static final String cmdSetBucAttResultHead="$cmd,start buc att";
+    public static final String cmdSetBucAttResult=cmdSetBucAttResultHead+"*ff<CR><LF>";
 
     // 4.14.5	邻星保护
     // 4.14.5.1	读取
     // 终端设备发送指令格式：$cmd, get protect state*ff<CR><LF>	
     // 便携站返回数据：$cmd, protect data,1 *ff<CR><LF>
+    public static final String cmdGetProtectState="$cmd,get protect state*ff<CR><LF>";
+    public static final String cmdGetProtectStateResultHead="$cmd,protect state data,";
+    public static final String cmdGetProtectStateResult=cmdGetProtectStateResultHead+"%s*ff<CR><LF>";
     // 4.14.5.2	设置
     // 终端设备发送指令格式：$cmd, set protect，1*ff<CR><LF>	
     // 便携站返回数据：$cmd, protect set ok*ff<CR><LF>
+    public static final String cmdSetProtectState="$cmd,set protect,%s*ff<CR><LF>";
+    public static final String cmdSetProtectStateResultHead="$cmd,start protect set ";
+    public static final String cmdSetProtectStateResult=cmdSetProtectStateResultHead+"ok*ff<CR><LF>";
 
 
     // 4.14.6	发射手动
     // 4.14.6.1	打开
     // 终端设备发送指令格式： $cmd,set buc on*ff<CR><LF>	
     // 便携站返回数据：$cmd,start buc on*ff
+    public static final String cmdSetBucOn="$cmd,set buc on*ff<CR><LF>";
+    public static final String cmdSetBucOnResultHead="$cmd,start buc on";
+    public static final String cmdSetBucOnResult=cmdSetBucOnResultHead+"*ff<CR><LF>";
     // 4.14.6.2	关闭
     // 终端设备发送指令格式： $cmd,set buc off*ff<CR><LF>	
     // 便携站返回数据：$cmd, $cmd,start buc off*ff
+    public static final String cmdSetBucOff="$cmd,set buc off*ff<CR><LF>";
+    public static final String cmdSetBucOffResultHead="$cmd,start buc off";
+    public static final String cmdSetBucOffResult=cmdSetBucOffResultHead+"*ff<CR><LF>";
 
     // 4.14.7	功放监视
     // 4.14.7.1	读取  
     // 终端设备发送指令格式：$cmd,get bucinfo switch *ff<CR><LF>
     // 便携站返回数据：$cmd, bucinfo switch,功放监视*ff<CR><LF>
+    public static final String cmdGetBucInfoSwitch="$cmd,get bucinfo switch *ff<CR><LF>";
+    public static final String cmdGetBucInfoSwitchResultHead="$cmd, bucinfo switch,";
+    public static final String cmdGetBucInfoSwitchResult=cmdGetBucInfoSwitchResultHead+"%s*ff<CR><LF>";
     // 4.14.7.2	设置
     // 终端设备发送指令格式：$cmd,set bucinfo switch,功放监视*ff<CR><LF>
     // 便携站返回数据：$cmd, bucinfo switch set ok*ff<CR><LF>
+    public static final String cmdSetBucInfoSwitch="$cmd,set bucinfo switch,%s*ff<CR><LF>";
+    public static final String cmdSetBucInfoSwitchResultHead="$cmd, bucinfo switch set ";
+    public static final String cmdSetBucInfoSwitchResult=cmdSetBucInfoSwitchResultHead+"ok*ff<CR><LF>";
+
     // 4.15	LNB本振
     // 4.15.1.1	读取
     // 终端设备发送指令格式： $cmd,get lnb lf *ff<CR><LF>	
@@ -324,18 +358,15 @@ public class Protocol {
     // 极化收霍尔 D13  1故障  0正常
 
     public static int getBitValue(int status, int position){
-        if (position == 0){
-            return status & 1;
-        }
-        return (status & (int)Math.pow(2,position)) >> position;
+        //        if (position == 0){
+        //            return status & 1;
+        //        }
+        //        return (status & (int)Math.pow(2,position)) >> position;
+        return ConvertUtil.getBitValue(status, position, 0);
     }
 
-    public static String getBitValue(String status, int position){
-        int length = status.length();
-        if(position >= length - 1 ){
-            return status.substring(length-1);
-        }
-        return status.substring(position, position+1);
+    public static int getBitValue(String status, int position){
+        return ConvertUtil.getBitValue(status, position, 0);
     }
 
     // D0:  0:不节能        1：节能

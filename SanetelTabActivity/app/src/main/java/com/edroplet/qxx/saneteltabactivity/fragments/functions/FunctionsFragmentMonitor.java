@@ -267,6 +267,7 @@ public class FunctionsFragmentMonitor extends Fragment {
                 tvLatitude.setText(latitude);
 
                 // 状态栏信息
+
                 // BD状态
 
                 // 通知刷新UI

@@ -1,5 +1,6 @@
 package com.edroplet.qxx.saneteltabactivity.activities.guide;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,6 +23,7 @@ import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.LockerInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.SavingInfo;
+import com.edroplet.qxx.saneteltabactivity.beans.monitor.MonitorInfo;
 import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
 import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentDestination;
@@ -42,6 +44,8 @@ import java.util.ArrayList;
 
 import static com.edroplet.qxx.saneteltabactivity.activities.guide.FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_EXPLODE;
 import static com.edroplet.qxx.saneteltabactivity.activities.main.MainActivity.defaultDeviceName;
+import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_MONITOR_INFO;
+import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.KEY_RECEIVE_MONITOR_INFO_DATA;
 import static com.edroplet.qxx.saneteltabactivity.utils.CustomSP.WifiSettingsNameKey;
 
 public class FollowMeActivity extends AppCompatActivity implements View.OnClickListener {
@@ -380,4 +384,19 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
             mViewPager.setCurrentItem(startPosition);
         }
     }
+
+    private class FollowMeBroadcast extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            // 监视信息，包含状态信息
+            if (ACTION_RECEIVE_MONITOR_INFO.equals(action)){
+                String rawData =intent.getStringExtra(KEY_RECEIVE_MONITOR_INFO_DATA);
+                MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(rawData);
+                // 获取状态，更新UI
+
+            }
+        }
+    }
+
 }

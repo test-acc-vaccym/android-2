@@ -23,6 +23,7 @@ import android.widget.Spinner;
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.adapters.SpinnerAdapter1;
 import com.edroplet.qxx.saneteltabactivity.adapters.SpinnerAdapter2;
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.Satellites;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
@@ -278,6 +279,11 @@ public class GuideFragmentDestination extends Fragment {
                 // 4.2.7.	寻星模式 需要用到这两个值
                 CustomSP.putString(getContext(), KEY_DESTINATION_SATELLITE_BEACON_FREQUENCY, satelliteBeacon.getText().toString());
                 CustomSP.putString(getContext(), KEY_DESTINATION_SATELLITE_DVB, satelliteDvb.getText().toString());
+                // 发送设置命令
+                Protocol.sendMessage(getContext(), String.format(Protocol.cmdSetTargetState,
+                        satelliteBeacon.getText().toString(),satelliteLongitude.getText().toString(),
+                        satellitePolarization.toString(), satelliteDvb.getText().toString(),
+                        satellitePolarizationSelect, satelliteThreshold.getText().toString()) );
             }
         });
 

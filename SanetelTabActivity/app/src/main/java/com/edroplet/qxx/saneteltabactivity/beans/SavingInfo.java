@@ -6,12 +6,13 @@ import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 
 /**
  * Created by qxs on 2017/11/5.
+ * 节能数据
  */
 
 public class SavingInfo {
     public static final String KEY_ENERGY_STATE = "KEY_ENERGY_STATE";
-    public static final int SAVING_STATE_OPEN=0;
-    public static final int SAVING_STATE_CLOSE=1;
+    public static final int SAVING_STATE_OPEN=1;
+    public static final int SAVING_STATE_CLOSE=0;
 
 
     public static int getSavingState(Context context){

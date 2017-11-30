@@ -4,9 +4,10 @@ buildscript {
     repositories {
         jcenter()
         mavenCentral()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.android.tools.build:gradle:3.0.1'
         // http://blog.csdn.net/nicolelili1/article/details/52275263
         // lambda expressions are not supported at this language level（需设置project language level）
         // Android studio默认使用Lambda表达式会报错，即使使用的jdk是1.8.需要借助一个插件retrolambda，该插件将java8种的lambda表达式特性兼容到java5
@@ -27,6 +28,7 @@ allprojects {
             url 'http://dl.bintray.com/amulyakhare/maven'
         }
 
+        google()
     }
 }
 

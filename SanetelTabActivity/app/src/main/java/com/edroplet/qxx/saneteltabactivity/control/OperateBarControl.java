@@ -34,9 +34,9 @@ import static com.edroplet.qxx.saneteltabactivity.beans.SavingInfo.*;
 
 public class OperateBarControl {
     private static RandomDialog randomDialog;
-    private static StatusButton energyState; // 节能
-    private static StatusButton lockerState; // 锁紧
-    private static StatusButton antennaState; // 天线
+    private static StatusButton energyStateButton; // 节能
+    private static StatusButton lockerStateButton; // 锁紧
+    private static StatusButton antennaStateButton; // 天线
 
     private static Timer timer = new Timer();
     private static AppCompatActivity mActivity;
@@ -57,9 +57,9 @@ public class OperateBarControl {
         boolean searchClickable = true; // 寻星
         boolean resetClickable = true; // 复位
         boolean foldClickable = true; // 收藏
-        energyState = (StatusButton) activity.findViewById(R.id.status_bar_button_power_state);
-        lockerState = (StatusButton) activity.findViewById(R.id.status_bar_button_locker_state);
-        antennaState = (StatusButton) activity.findViewById(R.id.status_bar_button_antenna_state);
+        energyStateButton = (StatusButton) activity.findViewById(R.id.status_bar_button_power_state);
+        lockerStateButton = (StatusButton) activity.findViewById(R.id.status_bar_button_locker_state);
+        antennaStateButton = (StatusButton) activity.findViewById(R.id.status_bar_button_antenna_state);
 
         randomDialog = new RandomDialog(activity);
         // 当天线处于已收藏状态时，手动、寻星、复位、收藏快捷键为灰色，不能操作。只有展开快捷键能够操作。
@@ -119,9 +119,9 @@ public class OperateBarControl {
                                 }*/
                                 // 保存天线状态
                                 AntennaInfo.setAntennaState(activity, AntennaInfo.AntennaStatus.EXPLODING);
-                                if (null != antennaState){
-                                    antennaState.setButtonState(StatusButton.BUTTON_STATE_ABNORMAL);
-                                    antennaState.setText(R.string.antenna_state_exploding);
+                                if (null != antennaStateButton){
+                                    antennaStateButton.setButtonState(StatusButton.BUTTON_STATE_ABNORMAL);
+                                    antennaStateButton.setText(R.string.antenna_state_exploding);
                                 }
                                 // TODO: 2017/11/13 发送展开命令
                                 randomDialog.getDialogBuilder().dismiss();
@@ -152,9 +152,9 @@ public class OperateBarControl {
                                 }
                                 // 保存天线状态
                                 AntennaInfo.setAntennaState(activity, AntennaInfo.AntennaStatus.FOLDING);
-                                if (null != antennaState){
-                                    antennaState.setButtonState(StatusButton.BUTTON_STATE_SPECIAL);
-                                    antennaState.setText(R.string.antenna_state_folding);
+                                if (null != antennaStateButton){
+                                    antennaStateButton.setButtonState(StatusButton.BUTTON_STATE_SPECIAL);
+                                    antennaStateButton.setText(R.string.antenna_state_folding);
                                 }
                                 // TODO: 2017/11/13 发送收藏命令
                                 randomDialog.getDialogBuilder().dismiss();
@@ -177,9 +177,9 @@ public class OperateBarControl {
                     if (canOperate(activity, sbPause)) {
                         // 直接停止，不需要确认
                         AntennaInfo.setAntennaState(activity, AntennaInfo.AntennaStatus.PAUSE);
-                        if (null != antennaState){
-                            antennaState.setButtonState(StatusButton.BUTTON_STATE_ABNORMAL);
-                            antennaState.setText(R.string.antenna_state_paused);
+                        if (null != antennaStateButton){
+                            antennaStateButton.setButtonState(StatusButton.BUTTON_STATE_ABNORMAL);
+                            antennaStateButton.setText(R.string.antenna_state_paused);
                         }
                         // todo 发送停止命令
                     }
@@ -201,9 +201,9 @@ public class OperateBarControl {
                             @Override
                             public void onClick(View v) {
                                 AntennaInfo.setAntennaState(activity, AntennaInfo.AntennaStatus.RECYCLED);
-                                if (null != antennaState){
-                                    antennaState.setButtonState(StatusButton.BUTTON_STATE_SPECIAL);
-                                    antennaState.setText(R.string.antenna_state_reset);
+                                if (null != antennaStateButton){
+                                    antennaStateButton.setButtonState(StatusButton.BUTTON_STATE_SPECIAL);
+                                    antennaStateButton.setText(R.string.antenna_state_reset);
                                 }
                                 // todo 发送复位命令
                                 randomDialog.getDialogBuilder().dismiss();
@@ -239,9 +239,9 @@ public class OperateBarControl {
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         // 设置状态为寻星中
                                         AntennaInfo.setAntennaState(activity,AntennaInfo.AntennaStatus.SEARCHING);
-                                        if (null != antennaState){
-                                            antennaState.setButtonState(StatusButton.BUTTON_STATE_SPECIAL);
-                                            antennaState.setText(R.string.antenna_state_searching);
+                                        if (null != antennaStateButton){
+                                            antennaStateButton.setButtonState(StatusButton.BUTTON_STATE_SPECIAL);
+                                            antennaStateButton.setText(R.string.antenna_state_searching);
                                         }
                                         Intent intent = new Intent(activity, FollowMeActivity.class);
                                         Bundle bundle = new Bundle();
@@ -291,9 +291,9 @@ public class OperateBarControl {
             randomDialog.onConfirm(context.getString(R.string.saving_bind_confirm), new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (null != energyState) {
-                        energyState.setButtonState(StatusButton.BUTTON_STATE_ABNORMAL);
-                        energyState.setText(R.string.power_state_charged);
+                    if (null != energyStateButton) {
+                        energyStateButton.setButtonState(StatusButton.BUTTON_STATE_ABNORMAL);
+                        energyStateButton.setText(R.string.power_state_charged);
                     }
                     SavingInfo.setSavingState(context,SAVING_STATE_CLOSE);
 
@@ -312,9 +312,9 @@ public class OperateBarControl {
             randomDialog.onConfirm(context.getString(R.string.locker_bind_confirm), new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (null != lockerState) {
-                        lockerState.setButtonState(StatusButton.BUTTON_STATE_NORMAL);
-                        lockerState.setText(R.string.locker_state_released);
+                    if (null != lockerStateButton) {
+                        lockerStateButton.setButtonState(StatusButton.BUTTON_STATE_NORMAL);
+                        lockerStateButton.setText(R.string.locker_state_released);
                     }
                     LockerInfo.setLockerState(context,LockerInfo.LOCKER_STATE_UNLOCK);
                     randomDialog.getDialogBuilder().dismiss();

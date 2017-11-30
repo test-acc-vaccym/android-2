@@ -1,9 +1,13 @@
 package com.edroplet.qxx.saneteltabactivity.control;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.service.autofill.SaveInfo;
 import android.support.annotation.IdRes;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
@@ -16,11 +20,21 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
+import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
+import com.edroplet.qxx.saneteltabactivity.beans.LockerInfo;
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
+import com.edroplet.qxx.saneteltabactivity.beans.SavingInfo;
+import com.edroplet.qxx.saneteltabactivity.beans.monitor.MonitorInfo;
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
+import butterknife.Unbinder;
+
+import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_MONITOR_INFO;
+import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.KEY_RECEIVE_MONITOR_INFO_DATA;
 import static com.edroplet.qxx.saneteltabactivity.view.StatusButton.*;
 
 /**
@@ -33,11 +47,11 @@ public class StatusBarControl {
     private static Activity mActivity;
     private static Timer timer = new Timer();
 
-    private static StatusButton commState;
-    private static StatusButton antennaState;
-    private static StatusButton bdState;
-    private static StatusButton lockerState;
-    private static StatusButton energyState;
+    private static StatusButton commStateButton;
+    private static StatusButton antennaStateButton;
+    private static StatusButton bdStateButton;
+    private static StatusButton lockerStateButton;
+    private static StatusButton energyStateButton;
 
     public static void setupToolbar(AppCompatActivity activity, @IdRes int resId){
 
@@ -101,6 +115,7 @@ public class StatusBarControl {
             @Override
             public void onClick(View v) {
                 thisActivity.finish();
+
             }
         });*/
         toolbar.hideOverflowMenu();
@@ -108,34 +123,35 @@ public class StatusBarControl {
         if (null == timer){
             timer = new Timer();
         }
-
+        // 初始化button
+        initButton();
         /*
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 // TODO: 2017/11/13 更新状态
                 initButton();
-                if (null != commState) {
-                    commState.setButtonState(BUTTON_STATE_ABNORMAL);
-                    commState.setText(R.string.communication_state_connected);
+                if (null != commStateButton) {
+                    commStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
+                    commStateButton.setText(R.string.communication_state_connected);
                 }
 
-                if (null != antennaState) {
-                    antennaState.setButtonState(BUTTON_STATE_NORMAL);
-                    antennaState.setText(R.string.antenna_state_exploded);
+                if (null != antennaStateButton) {
+                    antennaStateButton.setButtonState(BUTTON_STATE_NORMAL);
+                    antennaStateButton.setText(R.string.antenna_state_exploded);
                 }
-                if (null != bdState) {
-                    bdState.setButtonState(BUTTON_STATE_ABNORMAL);
-                    bdState.setText(R.string.bd_state_disabled);
+                if (null != bdStateButton) {
+                    bdStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
+                    bdStateButton.setText(R.string.bd_state_disabled);
                 }
-                if (null != lockerState) {
-                    lockerState.setButtonState(BUTTON_STATE_NORMAL);
-                    lockerState.setText(R.string.locker_state_released);
+                if (null != lockerStateButton) {
+                    lockerStateButton.setButtonState(BUTTON_STATE_NORMAL);
+                    lockerStateButton.setText(R.string.locker_state_released);
                 }
 
-                if (null != energyState){
-                    energyState.setButtonState(BUTTON_STATE_NORMAL);
-                    energyState.setText(R.string.power_state_charged);
+                if (null != energyStateButton){
+                    energyStateButton.setButtonState(BUTTON_STATE_NORMAL);
+                    energyStateButton.setText(R.string.power_state_charged);
                 }
             }
         },0, 1000);
@@ -149,11 +165,87 @@ public class StatusBarControl {
     }
 
     private static void initButton(){
-        commState =  (StatusButton)mActivity.findViewById(R.id.status_bar_button_communication_state);
-        antennaState =  (StatusButton)mActivity.findViewById(R.id.status_bar_button_antenna_state);
-        bdState =  (StatusButton)mActivity.findViewById(R.id.status_bar_button_bd_state);
-        lockerState =  (StatusButton)mActivity.findViewById(R.id.status_bar_button_locker_state);
-        energyState =  (StatusButton)mActivity.findViewById(R.id.status_bar_button_power_state);
+        commStateButton =  (StatusButton)mActivity.findViewById(R.id.status_bar_button_communication_state);
+        antennaStateButton =  (StatusButton)mActivity.findViewById(R.id.status_bar_button_antenna_state);
+        bdStateButton =  (StatusButton)mActivity.findViewById(R.id.status_bar_button_bd_state);
+        lockerStateButton =  (StatusButton)mActivity.findViewById(R.id.status_bar_button_locker_state);
+        energyStateButton =  (StatusButton)mActivity.findViewById(R.id.status_bar_button_power_state);
     }
 
+    private StatusBarControlBroadcast statusBarControlBroadcast;
+    private void initBroadcast(Activity activity){
+        // 实例化IntentFilter对象
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ACTION_RECEIVE_MONITOR_INFO);
+        statusBarControlBroadcast = new StatusBarControlBroadcast();
+        activity.registerReceiver(statusBarControlBroadcast,filter);
+    }
+
+    private class StatusBarControlBroadcast extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            // 监视信息，包含状态信息
+            if (ACTION_RECEIVE_MONITOR_INFO.equals(action)){
+                String rawData =intent.getStringExtra(KEY_RECEIVE_MONITOR_INFO_DATA);
+                MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(rawData);
+                // 获取状态，更新UI
+                // 连接状态, 获取wifi连接状态？跟基站通信状态？
+                int communicateState = 1;
+                if (1 == communicateState){
+                    commStateButton.setText(R.string.communication_state_connected);
+                    commStateButton.setButtonState(BUTTON_STATE_NORMAL);
+                }else {
+                    commStateButton.setText(R.string.communication_state_disconnected);
+                    commStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
+                }
+                // 天线状态
+                int antennaState = monitorInfo.getTraceState();
+                if (null!=antennaStateButton){
+                    if (antennaState == AntennaInfo.AntennaStatus.EXPLODED){
+                        antennaStateButton.setText(R.string.antenna_state_exploded);
+                        antennaStateButton.setButtonState(BUTTON_STATE_NORMAL);
+                    }
+                }
+                // bd状态
+                int bdState = monitorInfo.getBdState();
+                if (null != bdStateButton){
+                    if (bdState == LocationInfo.BDState.LOCATED){
+                        bdStateButton.setText(R.string.bd_state_enabled);
+                        bdStateButton.setButtonState(BUTTON_STATE_NORMAL);
+                    }else {
+                        bdStateButton.setText(R.string.bd_state_disabled);
+                        bdStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
+                    }
+                }
+                // 获取flag， 包含节能和锁紧信息
+                int flag = monitorInfo.getFlag();
+                // 节能状态
+                if (null != energyStateButton){
+                    int energySaveState = Protocol.getBitValue(flag,0);
+                    if (energySaveState == SavingInfo.SAVING_STATE_OPEN){
+                        energyStateButton.setText(R.string.power_state_saved);
+                        energyStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
+                    }else {
+                        energyStateButton.setText(R.string.power_state_charged);
+                        energyStateButton.setButtonState(BUTTON_STATE_NORMAL);
+                    }
+                }
+                // 锁紧状态
+                if (null != lockerStateButton){
+                    // 俯仰锁紧
+                    int lockerButtonPitchState = Protocol.getBitValue(flag,1);
+                    // 方位锁紧
+                    int lockerButtonAzimuthState = Protocol.getBitValue(flag, 2);
+                    if (lockerButtonAzimuthState == LockerInfo.LOCKER_STATE_LOCKED || lockerButtonPitchState == LockerInfo.LOCKER_STATE_LOCKED){
+                        lockerStateButton.setText(R.string.locker_state_locked);
+                        lockerStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
+                    }else {
+                        lockerStateButton.setText(R.string.locker_state_released);
+                        lockerStateButton.setButtonState(BUTTON_STATE_NORMAL);
+                    }
+                }
+            }
+        }
+    }
 }

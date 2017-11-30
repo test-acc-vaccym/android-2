@@ -5,6 +5,7 @@ import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
@@ -34,5 +35,11 @@ public class ExampleUnitTest {
     public void getBitString() throws Exception {
         int i = ConvertUtil.getBitValue("5", 0, 0);
         assertEquals(1,i);
+    }
+
+    @Test
+    public void formatString() throws  Exception {
+        String s = String.format("%s: %d","he is", 9);
+        assertEquals("he is: 9", s);
     }
 }

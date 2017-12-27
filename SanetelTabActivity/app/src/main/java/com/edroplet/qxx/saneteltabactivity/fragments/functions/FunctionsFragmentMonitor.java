@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.AmplifierInfo;
+import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.monitor.MonitorInfo;
 import com.edroplet.qxx.saneteltabactivity.services.communicate.CommunicateService;
@@ -210,6 +211,7 @@ public class FunctionsFragmentMonitor extends Fragment {
     public static final String ACTION_RECEIVE_MONITOR_INFO="com.edroplet.broadcast.ACTION_RECEIVE_MONITOR_INFO";
     public static final String ACTION_RECEIVE_AMPLIFIER_INFO="com.edroplet.broadcast.ACTION_RECEIVE_AMPLIFIER_INFO";
     public static final String KEY_RECEIVE_MONITOR_INFO_DATA="com.edroplet.broadcast.KEY_RECEIVE_MONITOR_INFO_DATA";
+    public static final String KEY_RECEIVE_AMPLIFIER_INFO_DATA="com.edroplet.broadcast.KEY_RECEIVE_AMPLIFIER_INFO_DATA";
 
 
 
@@ -267,14 +269,23 @@ public class FunctionsFragmentMonitor extends Fragment {
                 tvLatitude.setText(latitude);
 
                 // 状态栏信息
-
-                // BD状态
-
+                // 已经在那边更新了
+                // BD状态, 自动刷新，由status button 接收广播自动更新
+                int bdState = monitorInfo.getBdState();
+                if (statusButtonBDState != null) {
+                    if (bdState == LocationInfo.BDState.NOTLOCATED) {
+                        statusButtonBDState.setText(R.string.bd_state_disabled);
+                        statusButtonBDState.setButtonState(StatusButton.BUTTON_STATE_ABNORMAL);
+                    } else {
+                        statusButtonBDState.setText(R.string.bd_state_enabled);
+                        statusButtonBDState.setButtonState(StatusButton.BUTTON_STATE_NORMAL);
+                    }
+                }
                 // 通知刷新UI
                 mView.postInvalidate();
             } else if (ACTION_RECEIVE_AMPLIFIER_INFO.equals(intent.getAction())){
                 //
-                String rawData =intent.getStringExtra(KEY_RECEIVE_MONITOR_INFO_DATA);
+                String rawData =intent.getStringExtra(KEY_RECEIVE_AMPLIFIER_INFO_DATA);
                 // 功放信息
                 AmplifierInfo amplifierInfo = AmplifierInfo.parseAmplifierInfo(rawData);
                 // 功放状态

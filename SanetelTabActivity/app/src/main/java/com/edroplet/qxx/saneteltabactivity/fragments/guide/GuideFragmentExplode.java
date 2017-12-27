@@ -1,5 +1,6 @@
 package com.edroplet.qxx.saneteltabactivity.fragments.guide;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 
@@ -42,6 +45,9 @@ public class GuideFragmentExplode extends Fragment {
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
 
+    int antennaState = AntennaInfo.AntennaStatus.INIT;
+     Context ctx;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,16 +56,21 @@ public class GuideFragmentExplode extends Fragment {
             return null;
         }
         ButterKnife.bind(this, view);
+        ctx = getContext();
 
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 2017/11/11  设置天线动作
+                // 及时获取
+                antennaState = AntennaInfo.getAntennaState(ctx);
                 // send command
+                if (antennaState == AntennaInfo.AntennaStatus.EXPLODED){
+                    Protocol.sendMessage(ctx,Protocol.cmdAntennaExplode);
+                }
             }
         });
         // TODO: 2017/11/11 获取天线状态
-
+        antennaState = AntennaInfo.getAntennaState(ctx);
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);
         popDialog.setContext(getContext());

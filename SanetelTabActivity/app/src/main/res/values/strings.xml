@@ -35,7 +35,7 @@
 </string>
 
     <!--引导页面-->
-    <string name="guide_done">进入主页面</string>
+    <string name="guide_done">进入引导主页</string>
     <string name="main_connected_ssid_prompt">您连接的wifi是：</string>
 
     <!--网络状态-->

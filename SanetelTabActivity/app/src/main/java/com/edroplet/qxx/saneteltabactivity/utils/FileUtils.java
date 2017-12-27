@@ -34,6 +34,9 @@ public class FileUtils {
     }
 
     public static String getParentDir(String path){
+        if (null == path){
+            return "../";
+        }
         int index = path.lastIndexOf("/");
         if (index == -1){
             return "";

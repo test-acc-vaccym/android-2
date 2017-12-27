@@ -21,6 +21,10 @@ import com.edroplet.qxx.saneteltabactivity.utils.FileUtils;
 import java.io.IOException;
 import java.util.List;
 
+import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_AMPLIFIER_INFO;
+import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_MONITOR_INFO;
+import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.KEY_RECEIVE_AMPLIFIER_INFO_DATA;
+import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.KEY_RECEIVE_MONITOR_INFO_DATA;
 import static com.edroplet.qxx.saneteltabactivity.services.CommunicateWithDeviceService.*;
 
 
@@ -99,7 +103,8 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
     private static boolean isInAction(String action){
         return  ACTION_RECEIVE_DATA.equals(action) || ACTION_DATA_RESULT.equals(action)
                 ||ACTION_SEND_DATA.equals(action)  || ACTION_SAVE_FILE.equals(action)
-                || ACTION_STOP_SAVE.equals(action) || ACTION_STOP_SAVE.equals(action);
+                || ACTION_STOP_SAVE.equals(action) || ACTION_RECEIVE_MONITOR_INFO.equals(action)
+                || ACTION_RECEIVE_AMPLIFIER_INFO.equals(action);
     }
 
     public static boolean isAlive(Context context){
@@ -143,6 +148,12 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
                         receiveData = bundle.getString(EXTRA_PARAM_RESULT_DATA);
                         sendCmd = bundle.getString(EXTRA_PARAM_SEND_CMD);
                         sendData = bundle.getString(EXTRA_PARAM_SEND_DATA);
+                        if (null == sendData){
+                            sendData = bundle.getString(KEY_RECEIVE_MONITOR_INFO_DATA);
+                        }
+                        if (null == sendData){
+                            sendData = bundle.getString(KEY_RECEIVE_AMPLIFIER_INFO_DATA);
+                        }
                     } else {
                         if (intent.hasExtra(EXTRA_PARAM_SEND_CMD))
                             sendCmd = bundle.getString(EXTRA_PARAM_SEND_CMD);
@@ -153,6 +164,11 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
                             receiveCmd = bundle.getString(EXTRA_PARAM_RESULT_CMD);
                         if (intent.hasExtra(EXTRA_PARAM_RESULT_DATA))
                             receiveData = bundle.getString(EXTRA_PARAM_RESULT_DATA);
+
+                        if (intent.hasExtra(KEY_RECEIVE_MONITOR_INFO_DATA))
+                            receiveData = bundle.getString(KEY_RECEIVE_MONITOR_INFO_DATA);
+                        if (intent.hasExtra(KEY_RECEIVE_AMPLIFIER_INFO_DATA))
+                            receiveData = bundle.getString(KEY_RECEIVE_AMPLIFIER_INFO_DATA);
                     }
                     if (null == sendCmd) {
                         sendCmd = "";
@@ -177,11 +193,13 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
                                 CollectHistoryFileInfo collectHistoryFileInfo = new CollectHistoryFileInfo(mContext);
                                 String newestFile = collectHistoryFileInfo.getNewestCollectFile();
                                 try {
-                                    FileUtils.saveFile(newestFile, DateTime.getCurrentDateTime() + "\n"
-                                            + (null != receiveCmd && receiveCmd.isEmpty()?"":"receiveCmd:"+receiveCmd + "\n")
-                                            + (null != receiveData && receiveData.isEmpty()? "":"receiveData:" + receiveData + "\n")
-                                            + (null != sendCmd && sendCmd.isEmpty()?"":"sendCmd:" + sendCmd +"\n" )
-                                            + (null != sendData && sendData.isEmpty()?"":"sendData:" + sendData +"\n" ), true);
+                                    if (newestFile != null) {
+                                        FileUtils.saveFile(newestFile, DateTime.getCurrentDateTime() + "\n"
+                                                + (null != receiveCmd && receiveCmd.isEmpty() ? "" : "receiveCmd:" + receiveCmd + "\n")
+                                                + (null != receiveData && receiveData.isEmpty() ? "" : "receiveData:" + receiveData + "\n")
+                                                + (null != sendCmd && sendCmd.isEmpty() ? "" : "sendCmd:" + sendCmd + "\n")
+                                                + (null != sendData && sendData.isEmpty() ? "" : "sendData:" + sendData + "\n"), true);
+                                    }
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }

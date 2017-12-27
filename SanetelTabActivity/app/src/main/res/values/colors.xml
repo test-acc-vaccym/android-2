@@ -19,9 +19,12 @@
 
     <color name="satellite_list_header_background">@color/operate_bar_background</color>
 
-    <color name="guide_item_background_start">#E0EFCF</color>
+    <!--color name="guide_item_background_start">#E0EFCF</color>
     <color name="guide_item_background_center">#F1EEEE</color>
-    <color name="guide_item_background_end">#E0FFFF</color>
+    <color name="guide_item_background_end">#E0FFFF</color-->
+    <color name="guide_item_background_start">#FFFFFF</color>
+    <color name="guide_item_background_center">#FEFFFF</color>
+    <color name="guide_item_background_end">#FDFFFF</color>
 
     <color name="bottom_tab_nav_background">#afbbeedd</color>
     <color name="toolbar_color_14b8f4">#14b8f4</color>

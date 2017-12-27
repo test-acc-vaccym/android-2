@@ -53,11 +53,13 @@ public class IntroActivity extends AppIntro {
         setSeparatorColor(ContextCompat.getColor(getBaseContext(), R.color.favorite_contacts_separator_color));
 
         // Hide Skip/Done button.
-        showSkipButton(false);
+        showSkipButton(true);
+        setSkipText(getText(R.string.guide_done));
+        setColorSkipButton(ContextCompat.getColor(this,R.color.button_text));
         setProgressButtonEnabled(true);
         // setProgressIndicator();
         setDoneText(getText(R.string.guide_done));
-        setDoneTextTypeface("msyhbd.ttc");
+        // setDoneTextTypeface("msyhbd.ttc");
         setColorDoneText(ContextCompat.getColor(getBaseContext(),R.color.button_text));
         setBackButtonVisibilityWithDone(true);
         // Turn vibration on and set intensity.
@@ -72,6 +74,10 @@ public class IntroActivity extends AppIntro {
     public void onSkipPressed(Fragment currentFragment) {
         super.onSkipPressed(currentFragment);
         // Do something when users tap on Skip button.
+        // 直接跳转到引导主页
+        Intent intent = new Intent(IntroActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override

@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
+import com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor;
 import com.edroplet.qxx.saneteltabactivity.services.CommunicateWithDeviceService;
 
 /**
@@ -52,6 +53,8 @@ public class CommunicateService extends Service {
             intentFilter.addAction(CommunicateDataReceiver.ACTION_POWER_CONNECTED);
             intentFilter.addAction(CommunicateDataReceiver.ACTION_BOOT_COMPLETED);
             intentFilter.addAction(CommunicateWithDeviceService.ACTION_DATA_RESULT);
+            intentFilter.addAction(FunctionsFragmentMonitor.ACTION_RECEIVE_MONITOR_INFO);
+            intentFilter.addAction(FunctionsFragmentMonitor.ACTION_RECEIVE_AMPLIFIER_INFO);
             registerReceiver(communicateDataReceiver, intentFilter);
         }
     }

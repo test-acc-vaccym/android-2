@@ -46,7 +46,7 @@ public class Protocol {
     // 4.6.1	读取
     public static final String cmdGetTrackMode="$cmd,get track mode*ff\r\n";
     // 返回<模式名称>(0: 信标机, 1: DVB)
-    public static final String cmdGetTrackModeResult="$cmd,track mode %d*ff\r\n";
+    public static final String cmdGetTrackModeResult="$cmd,track mode data,%d*ff\r\n";
     // 4.6.2	设置 <模式名称>(0: 信标机, 1: DVB)
     public static final String cmdSetTrackMode="$cmd,set track mode,%d*ff\r\n";
     // 返回
@@ -62,7 +62,7 @@ public class Protocol {
     // 4.8.1	监视指令
     public static final String cmdGetSystemState="$cmd,get system state*ff\r\n";
     // $cmd,sys state,预置方位角,预置俯仰角,预置发射极化角，预置接收极化角,当前方位角,当前俯仰角,当前发射极化角,当前接收极化角,寻星状态,本地经度,本地纬度,本地高度, BD/GPS状态,寻星方式,卫星经度,极化方式,寻星门限，AGC电平,信标频率,载波频率、符号率，故障状态,标志 *ff\r\n
-    public static final String cmdGetSystemStateResultHead="$cmd,sys state,";
+    public static final String cmdGetSystemStateResultHead="$cmd,sys state data,";
     public static final String cmdGetSystemStateResult= cmdGetSystemStateResultHead + "%f,%f,%f,%f," +
             "%f,%f,%f,%f," +
             "%d,%f,%f,%f," +

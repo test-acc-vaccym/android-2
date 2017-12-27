@@ -3,7 +3,10 @@ package com.edroplet.qxx.saneteltabactivity.view.appintro;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
+import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -60,7 +63,9 @@ public abstract class AppIntro extends AppIntroBase {
     public void setSkipText(@Nullable final CharSequence text) {
         TextView skipText = (TextView) findViewById(R.id.skip);
         skipText.setText(text);
+        skipText.setTextAppearance(this, android.R.style.TextAppearance_Medium);
     }
+
 
     /**
      * Override skip text typeface

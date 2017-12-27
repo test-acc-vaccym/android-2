@@ -14,6 +14,7 @@ import static com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo.AntennaStatu
 
 /**
  * Created by qxs on 2017/9/15.
+ * 天线信息
  */
 
 public class AntennaInfo implements Parcelable {
@@ -117,7 +118,9 @@ public class AntennaInfo implements Parcelable {
         public static final int RECYCLING = 11; // 复位中
         public static final int RECYCLED = 12; // 已复位完成
     }
+
     private static final String KEY_ANTENNA_STATE="KEY_ANTENNA_STATE";
+
     public static int getAntennaState(Context context){
         return CustomSP.getInt(context,KEY_ANTENNA_STATE,INIT);
     }
@@ -126,8 +129,6 @@ public class AntennaInfo implements Parcelable {
     }
 
     public void getAntennaInfoFromServer(Context context){
-        Intent intent = new Intent(CommunicateDataReceiver.ACTION_RECEIVE_DATA);
-        intent.putExtra(CommunicateWithDeviceService.EXTRA_PARAM_SEND_CMD, Protocol.cmdGeteEquipmentInfo);
-        context.sendBroadcast(intent);
+        Protocol.sendMessage(context, Protocol.cmdGeteEquipmentInfo);
     }
 }

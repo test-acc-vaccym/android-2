@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_AMPLIFIER_INFO;
 import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_MONITOR_INFO;
+import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.KEY_RECEIVE_AMPLIFIER_INFO_DATA;
 import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.KEY_RECEIVE_MONITOR_INFO_DATA;
 
 
@@ -263,7 +264,7 @@ public class CommunicateWithDeviceService extends IntentService {
             intent.putExtra(KEY_RECEIVE_MONITOR_INFO_DATA,msg);
         }else if (msg.startsWith(Protocol.cmdGetBucInfoResultHead)) {
             intent.setAction(ACTION_RECEIVE_AMPLIFIER_INFO);
-            intent.putExtra(KEY_RECEIVE_MONITOR_INFO_DATA,msg);
+            intent.putExtra(KEY_RECEIVE_AMPLIFIER_INFO_DATA,msg);
         }else{
                 // 解析message, 不能在服务中解析
                 //

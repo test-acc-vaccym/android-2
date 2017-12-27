@@ -67,20 +67,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/follow_me_location_new_city"
-                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_marginTop="@dimen/app_bar_height"/>
                 </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
                 <!--城市选择-->
                 <LinearLayout
                     android:id="@+id/city_select"
                     android:paddingLeft="@dimen/radio_group_city_padding"
                     android:paddingStart="@dimen/radio_group_city_padding"
-                    android:layout_marginStart="@dimen/radio_group_width"
-                    android:layout_marginLeft="@dimen/radio_group_width"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true">
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="@dimen/spinner_lower_height">
 
                     <!--android:layout_toEndOf="@+id/rbg_city"-->
                     <!--android:layout_toRightOf="@+id/rbg_city"-->
@@ -101,6 +101,7 @@
                 </LinearLayout>
                 <!--城市位置输入-->
                 <LinearLayout
+                    android:layout_marginTop="@dimen/app_bar_height"
                     android:paddingLeft="@dimen/radio_group_city_padding"
                     android:paddingStart="@dimen/radio_group_city_padding"
                     android:layout_width="wrap_content"

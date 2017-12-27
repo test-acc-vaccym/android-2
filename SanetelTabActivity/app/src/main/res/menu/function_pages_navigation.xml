@@ -9,7 +9,7 @@
     <item
         android:id="@+id/main_navigation_application"
         android:icon="@drawable/application"
-        android:title="@string/main_bottom_nav_application" />
+        android:title="@string/main_bottom_nav_control" />
 
     <item
         android:id="@+id/main_navigation_status"
@@ -18,7 +18,7 @@
     <item
         android:id="@+id/main_navigation_collect"
         android:icon="@drawable/record"
-        android:title="@string/main_bottom_nav_collect" />
+        android:title="@string/main_bottom_nav_log" />
     <item
         android:id="@+id/main_navigation_settings"
         android:icon="@drawable/settings"

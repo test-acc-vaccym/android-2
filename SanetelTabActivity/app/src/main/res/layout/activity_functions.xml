@@ -73,7 +73,7 @@
         <com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioButton
             style="@style/weChat_radio_button_style"
             android:id="@+id/functions_navigation_application"
-            android:text="@string/main_bottom_nav_application"
+            android:text="@string/main_bottom_nav_control"
             app:defocus_icon="@drawable/application"
             app:focus_color="@color/weChat_button_focus_color"
             app:defocus_color="@color/weChat_radio_button_deFocus_color"
@@ -93,7 +93,7 @@
         <com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioButton
             style="@style/weChat_radio_button_style"
             android:id="@+id/functions_navigation_collect"
-            android:text="@string/main_bottom_nav_collect"
+            android:text="@string/main_bottom_nav_log"
             app:defocus_icon="@drawable/record"
             app:focus_color="@color/weChat_button_focus_color"
             app:defocus_color="@color/weChat_radio_button_deFocus_color"

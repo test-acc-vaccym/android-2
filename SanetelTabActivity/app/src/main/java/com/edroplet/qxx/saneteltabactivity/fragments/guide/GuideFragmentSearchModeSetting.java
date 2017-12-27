@@ -79,16 +79,19 @@ public class GuideFragmentSearchModeSetting extends Fragment {
         String defaultVal = "0";
         String beacon = CustomSP.getString(context, KEY_DESTINATION_SATELLITE_BEACON_FREQUENCY, defaultVal);
         String dvb = CustomSP.getString(context, KEY_DESTINATION_SATELLITE_DVB, defaultVal);
-        String polarization = CustomSP.getString(context,KEY_DESTINATION_SATELLITE_POLARIZATION,"");
+        String polarization = CustomSP.getString(context,KEY_DESTINATION_SATELLITE_POLARIZATION,defaultVal);
+        String carrier = CustomSP.getString(context, KEY_DESTINATION_SATELLITE_DVB, defaultVal);
 
         if (beacon.equals(defaultVal) && dvb.equals(defaultVal)){
             crbSearchModeBeacon.setChecked(true);
         }else if (polarization.isEmpty() || beacon.equals(defaultVal)){
+            // 数据库中，卫星没有水平和垂直、左旋和右旋，或者是信标频率为0，则不支持信标模式
             crbSearchModeBeacon.setClickable(false);
             crbSearchModeBeacon.setTextColor(Color.GRAY);
             crbSearchModeBeacon.setChecked(false);
             crbSearchModeDvb.setChecked(true);
-        }else if (dvb.equals(defaultVal)){
+        }else if (dvb.equals(defaultVal) || carrier.equals(defaultVal)){
+            // 如果DVB的载波频率和符号率值为零，则不支持DVB模式。
             crbSearchModeDvb.setClickable(false);
             crbSearchModeDvb.setTextColor(Color.GRAY);
             crbSearchModeDvb.setChecked(false);
@@ -103,7 +106,6 @@ public class GuideFragmentSearchModeSetting extends Fragment {
                 } else {
                     CustomSP.putInt(getContext(), KEY_SEARCHING_MODE, Mode_DVB);
                 }
-
             }
         });
 

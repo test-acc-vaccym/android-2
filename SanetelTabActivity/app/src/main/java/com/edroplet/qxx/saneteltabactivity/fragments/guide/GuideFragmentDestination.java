@@ -31,6 +31,8 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCusto
 
 import java.util.Timer;
 
+import butterknife.BindView;
+
 import static com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentLocation.mOnCheckedChangeListener;
 
 /**
@@ -44,6 +46,7 @@ public class GuideFragmentDestination extends Fragment {
     public static final String KEY_DESTINATION_SATELLITE_POLARIZATION = "KEY_DESTINATION_SATELLITE_POLARIZATION";
     public static final String KEY_DESTINATION_SATELLITE_BEACON_FREQUENCY = "KEY_DESTINATION_SATELLITE_BEACON_FREQUENCY"; // 信标频率
     public static final String KEY_DESTINATION_SATELLITE_DVB = "KEY_DESTINATION_SATELLITE_DVB"; // DVB值
+    public static final String KEY_DESTINATION_SATELLITE_CARRIER = "KEY_DESTINATION_SATELLITE_CARRIER"; // 载波值
 
 
     @BindId(R.id.follow_me_destination_spinner_satellites_select)
@@ -67,7 +70,12 @@ public class GuideFragmentDestination extends Fragment {
     @BindId(R.id.follow_me_destination_satellite_threshold)
     CustomEditText satelliteThreshold;
 
-    @BindId(R.id.follow_me_destination_satellite_dvb) CustomEditText satelliteDvb;
+    @BindId(R.id.follow_me_destination_satellite_dvb)
+    CustomEditText satelliteDvb;
+
+    @BindView(R.id.follow_me_destination_satellite_carrier)
+    CustomEditText satelliteCarrier;
+
 
     private CustomButton thirdButton;
     private Satellites satellites;
@@ -270,6 +278,7 @@ public class GuideFragmentDestination extends Fragment {
                 // 4.2.7.	寻星模式 需要用到这两个值
                 CustomSP.putString(getContext(), KEY_DESTINATION_SATELLITE_BEACON_FREQUENCY, satelliteBeacon.getText().toString());
                 CustomSP.putString(getContext(), KEY_DESTINATION_SATELLITE_DVB, satelliteDvb.getText().toString());
+                CustomSP.putString(getContext(),KEY_DESTINATION_SATELLITE_CARRIER, satelliteCarrier.getText().toString());
                 // 发送设置命令
                 Protocol.sendMessage(getContext(), String.format(Protocol.cmdSetTargetState,
                         satelliteBeacon.getText().toString(),satelliteLongitude.getText().toString(),

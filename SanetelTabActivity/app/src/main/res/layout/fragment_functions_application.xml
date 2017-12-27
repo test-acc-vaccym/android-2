@@ -4,12 +4,12 @@
     android:layout_height="match_parent"
     android:layout_marginBottom="@dimen/functions_fragment_margin_bottom"
     android:background="@drawable/guide_main_item_background_color">
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/main_bottom_nav_control"/>
+        android:text="@string/main_bottom_nav_control"/-->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -18,7 +18,7 @@
         android:adjustViewBounds="true"
         android:maxHeight="@dimen/main_application_image_max_height"
         android:src="@drawable/main_application_image"/>
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.40"
@@ -27,12 +27,22 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/main_application_operate" />
+        android:text="@string/main_application_operate" /-->
     <LinearLayout
+        android:layout_marginTop="@dimen/status_button_height"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.5"
         android:orientation="horizontal">
+        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            android:id="@+id/main_application_manual_step"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/speed_manual"
+            android:text="@string/main_application_operate_step"
+            android:clickable="true"
+            android:background="@drawable/button_background"/>
         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
             android:id="@+id/main_application_manual_speed"
             android:layout_width="0dp"

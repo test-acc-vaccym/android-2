@@ -162,9 +162,10 @@
 
     <!--应用主页面-->
     <string name="main_application_operate">手动控制</string>
+    <string name="main_application_operate_step">步进控制</string>
     <string name="main_application_operate_speed">速度控制</string>
     <string name="main_application_operate_location">位置控制</string>
-    <string name="main_application_operate_calculate">预置角计算</string>
+    <string name="main_application_operate_calculate">对星计算</string>
     <string name="main_application_manual_speed_info">当前数值</string>
     <string name="main_application_manual_speed_azimuth">方位角</string>
     <string name="main_application_manual_speed_azimuth_hint">0.00</string>

@@ -99,9 +99,9 @@ public class GuideFragmentLocation extends Fragment {
         if (view == null){
             return null;
         }
-        
-        initView(view);
+
         context = getContext();
+        initView(view);
 
         GalleryOnTime galleryOnTime = new GalleryOnTime(context);
         galleryOnTime.setFrameLayout((FrameLayout) view.findViewById(R.id.destination_frameLayout_location));

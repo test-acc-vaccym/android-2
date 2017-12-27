@@ -160,7 +160,7 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
                     subject = getString(R.string.main_me_error_report_title);
                 }
                 MailUtil.sendMailMultiAttach(this,
-                        adviceEmailSend.getText().toString().split(";"),
+                        adviceEmailReceive.getText().toString().split(";"),
                         null, // 抄送
                         null, // 密送
                         subject, // 主题

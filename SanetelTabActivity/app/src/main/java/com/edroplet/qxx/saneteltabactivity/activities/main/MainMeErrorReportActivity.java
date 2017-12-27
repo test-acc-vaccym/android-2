@@ -346,7 +346,7 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
                 }else {
                     if (true) {
                         MailUtil.sendMailMultiAttach(MainMeErrorReportActivity.this,
-                                errorReportEmailSend.getText().toString().split(";"),
+                                errorReportEmailReceive.getText().toString().split(";"),
                                 null, // 抄送
                                 null, // 密送
                                 subject, // 主题

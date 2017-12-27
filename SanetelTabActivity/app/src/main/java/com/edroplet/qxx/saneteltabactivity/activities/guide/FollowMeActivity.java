@@ -218,14 +218,14 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
 
             // 位置输入
             // 获取gps定位信息
-            int bdState = LocationInfo.getBDState(this);
+            int bdState = LocationInfo.getGnssState(this);
             // switch (bdState){
-            //    case LocationInfo.BDState.NOTLOCATED:
+            //    case LocationInfo.GnssState.NOTLOCATED:
             guideFragmentLocation.add(GuideFragmentLocation.newInstance(true, getString(R.string.follow_me_location_state_not_locate),
                     true, getString(R.string.follow_me_location_state_not_locate_second_line),
                     true, getString(R.string.follow_me_message_click), 0, null, getString(R.string.follow_me_forever), false, null));
             //       break;
-            //   case LocationInfo.BDState.LOCATED:
+            //   case LocationInfo.GnssState.LOCATED:
             guideFragmentLocation.add(GuideFragmentLocation.newInstance(true, getString(R.string.follow_me_location_state_locate),
                     false, null, false, null, -1, null, null,
                     true, getString(R.string.follow_me_location_state_locate_forth_line)));

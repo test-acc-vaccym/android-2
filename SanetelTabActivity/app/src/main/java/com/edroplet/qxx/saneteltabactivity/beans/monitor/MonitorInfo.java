@@ -26,7 +26,7 @@ public class MonitorInfo implements Serializable {
     public static final String KEY_MONITOR_LAST_ANTENNA_POL = "KEY_MONITOR_LAST_ANTENNA_POL";
 
     public static final String KEY_MONITOR_LAST_TRACE_STATE = "KEY_MONITOR_LAST_TRACE_STATE";
-    public static final String KEY_MONITOR_LAST_BD_STATE = "KEY_MONITOR_LAST_BD_STATE";
+    public static final String KEY_MONITOR_LAST_GNSS_STATE = "KEY_MONITOR_LAST_GNSS_STATE";
 
     public static final String KEY_MONITOR_LAST_LONGITUDE = "KEY_MONITOR_LAST_LONGITUDE";
     public static final String KEY_MONITOR_LAST_LATITUDE = "KEY_MONITOR_LAST_LATITUDE";
@@ -57,7 +57,7 @@ public class MonitorInfo implements Serializable {
     private float longitude; // -180~180
     private float latitude; // -90 ~ 90
     private float height; // 本地高度
-    private int bdState;  // BD/GPS状态
+    private int bdState;  // GNSS状态
 
     private int traceMode; // 寻星模式  0-信标机；1-DVB；
     private float satelliteLongitude; // 卫星经度

@@ -61,7 +61,7 @@ public class Protocol {
     // 4.8	监视信息
     // 4.8.1	监视指令
     public static final String cmdGetSystemState="$cmd,get system state*ff\r\n";
-    // $cmd,sys state,预置方位角,预置俯仰角,预置发射极化角，预置接收极化角,当前方位角,当前俯仰角,当前发射极化角,当前接收极化角,寻星状态,本地经度,本地纬度,本地高度, BD/GPS状态,寻星方式,卫星经度,极化方式,寻星门限，AGC电平,信标频率,载波频率、符号率，故障状态,标志 *ff\r\n
+    // $cmd,sys state,预置方位角,预置俯仰角,预置发射极化角，预置接收极化角,当前方位角,当前俯仰角,当前发射极化角,当前接收极化角,寻星状态,本地经度,本地纬度,本地高度, GNSS状态,寻星方式,卫星经度,极化方式,寻星门限，AGC电平,信标频率,载波频率、符号率，故障状态,标志 *ff\r\n
     public static final String cmdGetSystemStateResultHead="$cmd,sys state data,";
     public static final String cmdGetSystemStateResult= cmdGetSystemStateResultHead + "%f,%f,%f,%f," +
             "%f,%f,%f,%f," +
@@ -73,7 +73,7 @@ public class Protocol {
     /** 故障状态
      * 预留通信 D0  1故障 0 正常
      * 手持机 D1  1故障 0正常
-     * BD/GPS  D2  1故障 0正常
+     * GNSS  D2  1故障 0正常
      * 信标机  D3  1故障 0正常
      * 倾角  D4  1 故障 0 正常
      * wifi    D5  1 故障 0 正常
@@ -401,7 +401,7 @@ public class Protocol {
     // 便携站返回数据：$cmd, net userid data ,端口号,协议*ff\r\n
     // 端口号 目前赋值为：0
     // 40：运行模式
-    // 41：转发GPS报文
+    // 41：转发GNSS报文
     // 42：转发信标机报文
     // 43：转发倾角计报文
     // 44：转发功放报文
@@ -422,7 +422,7 @@ public class Protocol {
     // 终端设备发送指令格式：$cmd,get com userid *ff\r\n
     // 便携站返回数据：$cmd,com userid,模式*ff\r\n
     // 0: 运行
-    // 1：转发COM2 GPS报文
+    // 1：转发COM2 GNSS报文
     // 2：转发COM3 信标机报文
     // 3：转发COM4 倾角计报文
     // 4：转发COM5 网络报文

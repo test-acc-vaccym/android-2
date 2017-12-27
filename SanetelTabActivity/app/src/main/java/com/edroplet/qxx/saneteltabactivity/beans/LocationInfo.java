@@ -222,16 +222,16 @@ public class LocationInfo implements Parcelable {
     public static final String[] longitudeString = {"°E", "°W"};
     public static final String[] latitudeString = {"°N", "°S"};
 
-    public static class BDState {
+    public static class GnssState {
         public static final int NOTLOCATED = 0;
         public static  final int LOCATED = 1;
     }
 
-    private static final String KEY_BD_STATE="KEY_BD_STATE";
-    public static int getBDState(Context context){
-        return CustomSP.getInt(context,KEY_BD_STATE, BDState.NOTLOCATED);
+    private static final String KEY_GNSS_STATE="KEY_GNSS_STATE";
+    public static int getGnssState(Context context){
+        return CustomSP.getInt(context,KEY_GNSS_STATE, GnssState.NOTLOCATED);
     }
-    public static void setBDState(Context context, int bdState){
-        CustomSP.getInt(context,KEY_BD_STATE, bdState);
+    public static void setGnssState(Context context, int bdState){
+        CustomSP.getInt(context,KEY_GNSS_STATE, bdState);
     }
 }

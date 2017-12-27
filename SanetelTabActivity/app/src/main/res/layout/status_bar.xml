@@ -40,8 +40,8 @@
 
                 <com.edroplet.qxx.saneteltabactivity.view.StatusButton
                     style="@style/status_bar_button_style"
-                    android:id="@+id/status_bar_button_bd_state"
-                    android:text="@string/bd_state_disabled"
+                    android:id="@+id/status_bar_button_gnss_state"
+                    android:text="@string/gnss_state_disabled"
                     android:drawableStart="@drawable/bd"
                     android:drawableLeft="@drawable/bd"
                     app:drawable_height="@dimen/status_button_height"

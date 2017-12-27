@@ -135,7 +135,7 @@ public class FunctionsFragmentMonitor extends Fragment {
     // 状态栏
     // 从故障状态和标志位获取状态显示
     StatusButton statusButtonAntennaState;
-    StatusButton statusButtonBDState;
+    StatusButton statusButtonGnssState;
     StatusButton statusButtonLockerState;
     StatusButton statusButtonEnergyState;
     StatusButton statusButtonCommunicateState;
@@ -193,7 +193,7 @@ public class FunctionsFragmentMonitor extends Fragment {
         Activity activity = getActivity();
         // 在FindViewById中通过getActivity()获取到父控件ID
         statusButtonAntennaState = (StatusButton)activity .findViewById (R.id.status_bar_button_antenna_state);
-        statusButtonBDState = (StatusButton)activity .findViewById (R.id.status_bar_button_bd_state);
+        statusButtonGnssState = (StatusButton)activity .findViewById (R.id.status_bar_button_gnss_state);
         statusButtonLockerState = (StatusButton)activity .findViewById (R.id.status_bar_button_locker_state);
         statusButtonEnergyState = (StatusButton)activity .findViewById (R.id.status_bar_button_power_state);
         statusButtonCommunicateState = (StatusButton)activity .findViewById (R.id.status_bar_button_communication_state);
@@ -270,15 +270,15 @@ public class FunctionsFragmentMonitor extends Fragment {
 
                 // 状态栏信息
                 // 已经在那边更新了
-                // BD状态, 自动刷新，由status button 接收广播自动更新
+                // GNSS状态, 自动刷新，由status button 接收广播自动更新
                 int bdState = monitorInfo.getBdState();
-                if (statusButtonBDState != null) {
-                    if (bdState == LocationInfo.BDState.NOTLOCATED) {
-                        statusButtonBDState.setText(R.string.bd_state_disabled);
-                        statusButtonBDState.setButtonState(StatusButton.BUTTON_STATE_ABNORMAL);
+                if (statusButtonGnssState != null) {
+                    if (bdState == LocationInfo.GnssState.NOTLOCATED) {
+                        statusButtonGnssState.setText(R.string.gnss_state_disabled);
+                        statusButtonGnssState.setButtonState(StatusButton.BUTTON_STATE_ABNORMAL);
                     } else {
-                        statusButtonBDState.setText(R.string.bd_state_enabled);
-                        statusButtonBDState.setButtonState(StatusButton.BUTTON_STATE_NORMAL);
+                        statusButtonGnssState.setText(R.string.gnss_state_enabled);
+                        statusButtonGnssState.setButtonState(StatusButton.BUTTON_STATE_NORMAL);
                     }
                 }
                 // 通知刷新UI

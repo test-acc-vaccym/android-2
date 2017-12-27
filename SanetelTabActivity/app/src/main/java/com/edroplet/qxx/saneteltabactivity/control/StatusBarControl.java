@@ -144,7 +144,7 @@ public class StatusBarControl {
                 }
                 if (null != bdStateButton) {
                     bdStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
-                    bdStateButton.setText(R.string.bd_state_disabled);
+                    bdStateButton.setText(R.string.gnss_state_disabled);
                 }
                 if (null != lockerStateButton) {
                     lockerStateButton.setButtonState(BUTTON_STATE_NORMAL);
@@ -169,7 +169,7 @@ public class StatusBarControl {
     private static void initButton(){
         commStateButton =  (StatusButton)mActivity.findViewById(R.id.status_bar_button_communication_state);
         antennaStateButton =  (StatusButton)mActivity.findViewById(R.id.status_bar_button_antenna_state);
-        bdStateButton =  (StatusButton)mActivity.findViewById(R.id.status_bar_button_bd_state);
+        bdStateButton =  (StatusButton)mActivity.findViewById(R.id.status_bar_button_gnss_state);
         lockerStateButton =  (StatusButton)mActivity.findViewById(R.id.status_bar_button_locker_state);
         energyStateButton =  (StatusButton)mActivity.findViewById(R.id.status_bar_button_power_state);
     }
@@ -212,11 +212,11 @@ public class StatusBarControl {
                 // bd状态
                 int bdState = monitorInfo.getBdState();
                 if (null != bdStateButton){
-                    if (bdState == LocationInfo.BDState.LOCATED){
-                        bdStateButton.setText(R.string.bd_state_enabled);
+                    if (bdState == LocationInfo.GnssState.LOCATED){
+                        bdStateButton.setText(R.string.gnss_state_enabled);
                         bdStateButton.setButtonState(BUTTON_STATE_NORMAL);
                     }else {
-                        bdStateButton.setText(R.string.bd_state_disabled);
+                        bdStateButton.setText(R.string.gnss_state_disabled);
                         bdStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
                     }
                 }

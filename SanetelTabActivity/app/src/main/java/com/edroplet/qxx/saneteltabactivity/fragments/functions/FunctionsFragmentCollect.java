@@ -4,15 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +17,6 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsCollectHistoryFileListActivity;
 import com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
@@ -29,20 +25,15 @@ import com.edroplet.qxx.saneteltabactivity.services.communicate.CommunicateServi
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.DateTime;
 import com.edroplet.qxx.saneteltabactivity.utils.FileUtils;
-import com.edroplet.qxx.saneteltabactivity.utils.RandomDialog;
-import com.edroplet.qxx.saneteltabactivity.view.EDropletDialogBuilder;
 import com.edroplet.qxx.saneteltabactivity.view.NDialog;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static android.content.Context.MODE_APPEND;
 import static com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsCollectHistoryFileListActivity.KEY_IS_SELECT;
 import static com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo.KEY_NEWEST_COLLECT_FILE;
-import static com.edroplet.qxx.saneteltabactivity.beans.CollectHistoryFileInfo.SAMPLEDATA;
 import static com.edroplet.qxx.saneteltabactivity.services.CommunicateWithDeviceService.EXTRA_PARAM_SEND_CMD;
 import static com.edroplet.qxx.saneteltabactivity.services.communicate.CommunicateDataReceiver.ACTION_RECEIVE_DATA;
 import static com.edroplet.qxx.saneteltabactivity.services.communicate.CommunicateDataReceiver.ACTION_STOP_SAVE;
@@ -68,7 +59,7 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.functions_fragment_collect, null);
+        View view = inflater.inflate(R.layout.fragment_functions_logs, null);
         context = getContext();
         schedule = context.getResources().getInteger(R.integer.collect_data_schedule_timer);
         view.findViewById(R.id.main_collect_data_history).setOnClickListener(this);

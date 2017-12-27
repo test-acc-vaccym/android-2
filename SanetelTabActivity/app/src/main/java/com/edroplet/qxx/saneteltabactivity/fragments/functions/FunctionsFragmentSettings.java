@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.AdministratorLoginActivity;
@@ -17,7 +16,6 @@ import com.edroplet.qxx.saneteltabactivity.activities.settings.LowNoiseBlockOsci
 import com.edroplet.qxx.saneteltabactivity.activities.settings.PowerAmplifierSettingsActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.ReferenceSatelliteActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteListActivity;
-import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -37,7 +35,7 @@ public class FunctionsFragmentSettings extends Fragment {
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.functions_fragment_settings, null);
+        final View view = inflater.inflate(R.layout.fragment_functions_settings, null);
         view.findViewById(R.id.main_settings_database_satellites).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

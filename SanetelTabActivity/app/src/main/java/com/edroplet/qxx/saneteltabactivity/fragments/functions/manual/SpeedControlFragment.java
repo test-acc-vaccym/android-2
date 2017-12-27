@@ -2,7 +2,6 @@ package com.edroplet.qxx.saneteltabactivity.fragments.functions.manual;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.AntennaInfo;
-import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentLocation;
 import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
@@ -20,8 +18,6 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentLocation.mOnCheckedChangeListener;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -107,7 +103,7 @@ public class SpeedControlFragment extends Fragment implements View.OnClickListen
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.functions_fragment_application_manual_speed_control, null);
+        View view = inflater.inflate(R.layout.fragment_functions_control_manual_speed_control, null);
 
         ButterKnife.bind(this, view);
 

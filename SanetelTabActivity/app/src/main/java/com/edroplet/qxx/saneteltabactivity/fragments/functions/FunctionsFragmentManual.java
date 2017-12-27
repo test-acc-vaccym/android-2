@@ -28,7 +28,7 @@ public class FunctionsFragmentManual extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.functions_fragment_application, null);
+        final View view = inflater.inflate(R.layout.fragment_functions_application, null);
         view.findViewById(R.id.main_application_manual_speed).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

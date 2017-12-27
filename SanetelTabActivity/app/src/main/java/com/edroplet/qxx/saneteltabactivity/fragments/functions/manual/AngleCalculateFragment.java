@@ -25,11 +25,9 @@ import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnFocusChange;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -94,7 +92,7 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.functions_fragment_application_manual_speed_angle_calculate, null);
+        View view = inflater.inflate(R.layout.fragment_functions_control_manual_speed_angle_calculate, null);
         if (view == null){
             return null;
         }

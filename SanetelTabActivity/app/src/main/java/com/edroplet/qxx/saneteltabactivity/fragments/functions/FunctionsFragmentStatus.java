@@ -28,7 +28,7 @@ public class FunctionsFragmentStatus extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.functions_fragment_status, null);
+        View view = inflater.inflate(R.layout.fragment_functions_status, null);
 
         return view;
     }

@@ -61,7 +61,7 @@ public class LocationControlFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.functions_fragment_application_manual_location_control, null);
+        View view = inflater.inflate(R.layout.fragment_functions_control_manual_location_control, null);
         if (null == view){
             return null;
         }

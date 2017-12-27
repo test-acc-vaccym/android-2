@@ -6,18 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.InputFilter;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.AmplifierInfo;
@@ -26,10 +21,8 @@ import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.monitor.MonitorInfo;
 import com.edroplet.qxx.saneteltabactivity.services.communicate.CommunicateService;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
-import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
 import com.edroplet.qxx.saneteltabactivity.view.StatusButton;
-import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 import java.util.Timer;
@@ -148,7 +141,7 @@ public class FunctionsFragmentMonitor extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.functions_fragment_monitor, null);
+        View view = inflater.inflate(R.layout.fragment_functions_monitor, null);
         mView = view;
         unbinder = ButterKnife.bind(this, view);
         dvbSatelliteAgc = view.findViewById(R.id.main_monitor_dvb_satellite_tv_agc);

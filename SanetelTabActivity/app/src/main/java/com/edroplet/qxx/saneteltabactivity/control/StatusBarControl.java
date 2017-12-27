@@ -104,12 +104,14 @@ public class StatusBarControl {
         // 使用drawable资源但不为其设置theme主题
         // ab.setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(),R.drawable.status_background,null));
         //关键下面两句话，设置了回退按钮，及点击事件的效果
+        /** 不需要返回键了，需求天天变啊！！！
         activity.findViewById(android.R.id.home).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 thisActivity.finish();
             }
         });
+        */
         /*
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,27 +1,19 @@
 package com.edroplet.qxx.saneteltabactivity.fragments.guide;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.text.InputFilter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.adapters.SpinnerAdapter1;
 import com.edroplet.qxx.saneteltabactivity.adapters.SpinnerAdapter2;
 import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
@@ -38,7 +30,6 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
 
 import java.util.Timer;
-import java.util.UUID;
 
 import static com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentLocation.mOnCheckedChangeListener;
 
@@ -109,7 +100,7 @@ public class GuideFragmentDestination extends Fragment {
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_follow_me_destination_satellite, null);
+        final View view = inflater.inflate(R.layout.fragment_guide_destination_satellite, null);
         if (view == null){
             return null;
         }

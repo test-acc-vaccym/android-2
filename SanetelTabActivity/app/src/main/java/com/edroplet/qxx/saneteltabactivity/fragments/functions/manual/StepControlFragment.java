@@ -21,13 +21,13 @@ import butterknife.ButterKnife;
 
 /**
  * Created by qxs on 2017/9/19.
- * 速度控制
+ * 步进控制
  */
 
-public class SpeedControlFragment extends Fragment implements View.OnClickListener{
-    public static SpeedControlFragment newInstance(AntennaInfo antennaInfo) {
+public class StepControlFragment extends Fragment implements View.OnClickListener{
+    public static StepControlFragment newInstance(AntennaInfo antennaInfo) {
         Bundle args = new Bundle();
-        SpeedControlFragment fragment = new SpeedControlFragment();
+        StepControlFragment fragment = new StepControlFragment();
         args.putParcelable("antennaInfo", antennaInfo);
         fragment.setArguments(args);
         return fragment;

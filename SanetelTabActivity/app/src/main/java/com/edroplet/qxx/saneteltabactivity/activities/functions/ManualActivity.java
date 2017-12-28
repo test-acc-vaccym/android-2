@@ -18,6 +18,7 @@ import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 import com.edroplet.qxx.saneteltabactivity.fragments.functions.manual.AngleCalculateFragment;
 import com.edroplet.qxx.saneteltabactivity.fragments.functions.manual.LocationControlFragment;
 import com.edroplet.qxx.saneteltabactivity.fragments.functions.manual.SpeedControlFragment;
+import com.edroplet.qxx.saneteltabactivity.fragments.functions.manual.StepControlFragment;
 import com.edroplet.qxx.saneteltabactivity.utils.BottomNavigationViewHelper;
 
 public class ManualActivity extends AppCompatActivity {
@@ -124,6 +125,7 @@ public class ManualActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         adapter = new MainViewPagerAdapter(getSupportFragmentManager());
 
+        adapter.addFragment(StepControlFragment.newInstance(new AntennaInfo()));
         adapter.addFragment(SpeedControlFragment.newInstance(new AntennaInfo()));
 
         PresetAngleInfo presetAngleInfo = new PresetAngleInfo();

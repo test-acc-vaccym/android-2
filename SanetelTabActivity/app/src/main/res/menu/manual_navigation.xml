@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/navigation_step_control"
+        android:icon="@drawable/speed_manual"
+        android:title="@string/main_control_operate_step" />
+
+    <item
         android:id="@+id/navigation_speed_manual"
         android:icon="@drawable/speed_manual"
         android:title="@string/main_control_operate_speed" />

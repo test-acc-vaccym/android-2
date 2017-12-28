@@ -11,7 +11,6 @@
 # zip files
 *.zip
 *.rar
-
 *.log
 
 AndroidUI-master
@@ -32,6 +31,8 @@ android-drawable-radiobutton-dev
 android-drawable-radiobutton
 custom-radiobutton-master
 custom-radiobutton
+zuke
+SmsVerify-master
 
 # Generated files
 bin/

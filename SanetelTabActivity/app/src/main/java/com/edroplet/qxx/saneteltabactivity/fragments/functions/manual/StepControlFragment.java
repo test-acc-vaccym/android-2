@@ -98,7 +98,7 @@ public class StepControlFragment extends Fragment implements View.OnClickListene
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_functions_control_manual_speed_control, null);
+        View view = inflater.inflate(R.layout.fragment_functions_control_step_control, null);
 
         ButterKnife.bind(this, view);
 

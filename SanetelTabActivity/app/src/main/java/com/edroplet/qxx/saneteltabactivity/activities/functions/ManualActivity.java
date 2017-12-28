@@ -34,14 +34,17 @@ public class ManualActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_speed_manual:
+                case R.id.navigation_step_control:
                     viewPager.setCurrentItem(0);
                     return true;
-                case R.id.navigation_location_manual:
+                case R.id.navigation_speed_manual:
                     viewPager.setCurrentItem(1);
                     return true;
-                case R.id.navigation_calculate_manual:
+                case R.id.navigation_location_manual:
                     viewPager.setCurrentItem(2);
+                    return true;
+                case R.id.navigation_calculate_manual:
+                    viewPager.setCurrentItem(3);
                     return true;
             }
             return false;

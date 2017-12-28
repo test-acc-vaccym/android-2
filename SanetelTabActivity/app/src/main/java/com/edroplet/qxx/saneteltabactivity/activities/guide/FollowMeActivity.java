@@ -240,8 +240,8 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
             mSectionsPagerAdapter.addFragment(guideFragmentDestination.get(0));
 
             // 4.3.5.	寻星模式
-            guideFragmentSearchModeSetting.add(GuideFragmentSearchModeSetting.newInstance(false, null,
-                    true, getString(R.string.follow_me_search_mode_second), true, getString(R.string.follow_me_search_mode_third_start),
+            guideFragmentSearchModeSetting.add(GuideFragmentSearchModeSetting.newInstance(true, getString(R.string.follow_me_search_mode_second), false, null,
+                    true, getString(R.string.follow_me_search_mode_third_start),
                     0, null, getString(R.string.follow_me_search_mode_third_end)));
 
             mSectionsPagerAdapter.addFragment(guideFragmentSearchModeSetting.get(0));

@@ -10,7 +10,7 @@
         android:layout_height="150dp"
         android:orientation="vertical">
         <!--运动方式-->
-        <LinearLayout
+        <!--LinearLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:orientation="horizontal">
@@ -18,27 +18,27 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:text="@string/main_application_manual_speed_movement"
+                android:text="@string/main_control_speed_movement"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
-                android:id="@+id/main_application_manual_speed_movement_group_top"
+                android:id="@+id/main_control_speed_movement_group_top"
                 android:layout_width="0dp"
                 android:layout_weight="2"
                 android:orientation="horizontal"
                 android:layout_height="match_parent">
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
-                    android:id="@+id/main_application_manual_speed_movement_step_top"
+                    android:id="@+id/main_control_speed_movement_step_top"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@string/main_application_manual_speed_movement_step"/>
+                    android:text="@string/main_control_speed_movement_step"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
-                    android:id="@+id/main_application_manual_speed_movement_continuous_top"
+                    android:id="@+id/main_control_speed_movement_continuous_top"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:checked="true"
-                    android:text="@string/main_application_manual_speed_movement_continuous" />
+                    android:text="@string/main_control_speed_movement_continuous" />
             </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
-        </LinearLayout>
+        </LinearLayout-->
         <!--角速度-->
         <LinearLayout
             android:layout_marginTop="@dimen/main_margin_top"
@@ -49,7 +49,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:text="@string/main_application_manual_speed_palstance"
+                android:text="@string/main_control_speed_palstance"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
                 android:id="@+id/top_angular_velocity_radio_group"
@@ -109,7 +109,7 @@
                         android:layout_alignBottom="@id/top_angular_velocity_6"
                         android:layout_toEndOf="@id/top_angular_velocity_6"
                         android:layout_toRightOf="@id/top_angular_velocity_6"
-                        android:hint="@string/main_application_manual_speed_palstance_hint"
+                        android:hint="@string/main_control_speed_palstance_hint"
                         android:paddingTop="@dimen/no_padding"
                         android:paddingBottom="3dp"
                         android:gravity="bottom"

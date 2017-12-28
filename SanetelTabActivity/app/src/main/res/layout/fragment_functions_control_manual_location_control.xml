@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/main_application_operate_location"
+            android:text="@string/main_control_operate_location"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"/>
         <android.support.v4.widget.NestedScrollView
@@ -54,7 +54,7 @@
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     tools:ignore="NestedWeights" />
                                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                                    android:id="@+id/main_application_manual_location_tv_azimuth"
+                                    android:id="@+id/main_control_manual_location_tv_azimuth"
                                     android:layout_width="0dp"
                                     android:layout_weight="1"
                                     android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     tools:ignore="NestedWeights" />
                                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                                    android:id="@+id/main_application_manual_location_tv_pitch"
+                                    android:id="@+id/main_control_manual_location_tv_pitch"
                                     android:layout_width="0dp"
                                     android:layout_weight="1"
                                     android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     tools:ignore="NestedWeights" />
                                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                                    android:id="@+id/main_application_manual_location_tv_polarization"
+                                    android:id="@+id/main_control_manual_location_tv_polarization"
                                     android:layout_width="0dp"
                                     android:layout_weight="1"
                                     android:layout_height="wrap_content"
@@ -154,7 +154,7 @@
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 tools:ignore="NestedWeights" />
                             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-                                android:id="@+id/main_application_manual_location_edit_setting_azimuth"
+                                android:id="@+id/main_control_manual_location_edit_setting_azimuth"
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:layout_height="wrap_content"
@@ -183,7 +183,7 @@
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 tools:ignore="NestedWeights" />
                             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-                                android:id="@+id/main_application_manual_location_edit_setting_pitch"
+                                android:id="@+id/main_control_manual_location_edit_setting_pitch"
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:layout_height="wrap_content"
@@ -212,7 +212,7 @@
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 tools:ignore="NestedWeights" />
                             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-                                android:id="@+id/main_application_manual_location_edit_setting_polarization"
+                                android:id="@+id/main_control_manual_location_edit_setting_polarization"
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:layout_height="wrap_content"

@@ -41,19 +41,19 @@ public class LocationControlFragment extends Fragment {
     }
 
     // 预置
-    @BindView(R.id.main_application_manual_location_edit_setting_azimuth)
+    @BindView(R.id.main_control_manual_location_edit_setting_azimuth)
     CustomEditText etAzimuth;
-    @BindView(R.id.main_application_manual_location_edit_setting_pitch)
+    @BindView(R.id.main_control_manual_location_edit_setting_pitch)
     CustomEditText etPitch;
-    @BindView(R.id.main_application_manual_location_edit_setting_polarization)
+    @BindView(R.id.main_control_manual_location_edit_setting_polarization)
     CustomEditText etPolarization;
 
     // 当前
-    @BindView(R.id.main_application_manual_location_tv_azimuth)
+    @BindView(R.id.main_control_manual_location_tv_azimuth)
     CustomTextView tvAzimuth;
-    @BindView(R.id.main_application_manual_location_tv_pitch)
+    @BindView(R.id.main_control_manual_location_tv_pitch)
     CustomTextView tvPitch;
-    @BindView(R.id.main_application_manual_location_tv_polarization)
+    @BindView(R.id.main_control_manual_location_tv_polarization)
     CustomTextView tvPolarization;
 
     Context context;

@@ -124,7 +124,7 @@ public class FunctionsActivity extends AppCompatActivity {
         MainViewPagerAdapter adapter = new MainViewPagerAdapter(getSupportFragmentManager());
 
         adapter.addFragment(FunctionsFragmentMonitor.newInstance(null));
-        adapter.addFragment(FunctionsFragmentManual.newInstance(getString(R.string.main_application_operate)));
+        adapter.addFragment(FunctionsFragmentManual.newInstance(getString(R.string.main_control_operate)));
         adapter.addFragment(FunctionsFragmentStatus.newInstance(null));
         adapter.addFragment(FunctionsFragmentCollect.newInstance(null));
         adapter.addFragment(FunctionsFragmentSettings.newInstance(getString(R.string.main_bottom_nav_settings)));

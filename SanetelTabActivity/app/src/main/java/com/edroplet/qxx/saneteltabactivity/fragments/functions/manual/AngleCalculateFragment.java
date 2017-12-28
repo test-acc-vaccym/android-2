@@ -66,11 +66,11 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
     private String selectedPolarization;
 
     // 计算结果
-    @BindView(R.id.main_application_manual_angle_calculate_tv_setting_azimuth)
+    @BindView(R.id.main_control_manual_angle_calculate_tv_setting_azimuth)
     CustomEditText tvAzimuth;
-    @BindView(R.id.main_application_manual_angle_calculate_tv_setting_pitch)
+    @BindView(R.id.main_control_manual_angle_calculate_tv_setting_pitch)
     CustomEditText tvPitch;
-    @BindView(R.id.main_application_manual_angle_calculate_tv_setting_polarization)
+    @BindView(R.id.main_control_manual_angle_calculate_tv_setting_polarization)
     CustomEditText tvPolarization;
 
     // 按键

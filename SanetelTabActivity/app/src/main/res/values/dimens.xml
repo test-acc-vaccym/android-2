@@ -53,7 +53,7 @@
 
     <dimen name="drawable_center_spacing">2dp</dimen>
     <!--主页面-->
-    <dimen name="main_application_image_max_height">200dp</dimen>
+    <dimen name="main_control_image_max_height">200dp</dimen>
     <dimen name="main_margin_top">10dp</dimen>
     <dimen name="spacing_medium">2dp</dimen>
 

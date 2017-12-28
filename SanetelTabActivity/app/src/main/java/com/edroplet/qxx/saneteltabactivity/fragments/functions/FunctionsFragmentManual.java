@@ -29,21 +29,21 @@ public class FunctionsFragmentManual extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_functions_application, null);
-        view.findViewById(R.id.main_application_manual_speed).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.main_control_speed).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setOnClickListener(0);
             }
         });
 
-        view.findViewById(R.id.main_application_manual_location).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.main_control_manual_location).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setOnClickListener(1);
             }
         });
 
-        view.findViewById(R.id.main_application_manual_calculate).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.main_control_manual_calculate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setOnClickListener(2);

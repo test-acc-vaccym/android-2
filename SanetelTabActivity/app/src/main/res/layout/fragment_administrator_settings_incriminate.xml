@@ -32,7 +32,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/main_application_manual_speed_azimuth"
+                android:text="@string/main_control_speed_azimuth"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 tools:ignore="NestedWeights" />
 
@@ -41,7 +41,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="@string/main_application_manual_speed_azimuth_hint"
+                android:hint="@string/main_control_speed_azimuth_hint"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -63,7 +63,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/main_application_manual_speed_pitch"
+                android:text="@string/main_control_speed_pitch"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 tools:ignore="NestedWeights" />
 
@@ -72,7 +72,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="@string/main_application_manual_speed_pitch_hint"
+                android:hint="@string/main_control_speed_pitch_hint"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
@@ -94,7 +94,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/main_application_manual_speed_polarization"
+                android:text="@string/main_control_speed_polarization"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
@@ -102,7 +102,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="@string/main_application_manual_speed_polarization_hint"
+                android:hint="@string/main_control_speed_polarization_hint"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
 
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView

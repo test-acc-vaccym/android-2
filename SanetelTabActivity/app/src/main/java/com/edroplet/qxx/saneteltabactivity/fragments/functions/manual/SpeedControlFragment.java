@@ -33,23 +33,17 @@ public class SpeedControlFragment extends Fragment implements View.OnClickListen
     }
 
     // 当前数值
-    @BindView(R.id.main_application_manual_speed_tv_azimuth)
+    @BindView(R.id.main_control_speed_tv_azimuth)
     CustomTextView textViewAzimuth;
 
-    @BindView(R.id.main_application_manual_speed_tv_pitch)
+    @BindView(R.id.main_control_speed_tv_pitch)
     CustomTextView textViewPitch;
 
-    @BindView(R.id.main_application_manual_speed_tv_polarization)
+    @BindView(R.id.main_control_speed_tv_polarization)
     CustomTextView textViewPolarization;
 
-    @BindView(R.id.main_application_manual_speed_tv_agc)
+    @BindView(R.id.main_control_speed_tv_agc)
     CustomTextView textViewAgc;
-
-    // 单选, 运动方式
-    @BindView(R.id.main_application_manual_speed_movement_step_top)
-    CustomRadioButton movementStep;
-    @BindView(R.id.main_application_manual_speed_movement_continuous_top)
-    CustomRadioButton movementContinuous;
 
     // 角速度
     @BindView(R.id.top_angular_velocity_radio_group)
@@ -124,15 +118,8 @@ public class SpeedControlFragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
 
-        int movmentMethod;
         float angluarVelocity;
 
-        // 获取设置
-        if (movementStep.isChecked()){
-            movmentMethod = 0;
-        }else {
-            movmentMethod = 1;
-        }
         if (angularVelocity1.isChecked()){
             angluarVelocity = ConvertUtil.convertToFloat(angularVelocity1.getText().toString(), 0.0f) ;
         } else if (angularVelocity2.isChecked()){

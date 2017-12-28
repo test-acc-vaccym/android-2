@@ -59,7 +59,7 @@
                     android:orientation="horizontal"/>
             </LinearLayout>
         </LinearLayout>
-        <include layout="@layout/pop_dialog_blue"
+        <include layout="@layout/pop_dialog_gray"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"/>

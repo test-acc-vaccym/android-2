@@ -520,7 +520,7 @@
     <string name="main_me_error_report_name">姓名</string>
     <string name="main_me_error_report_phone">用户电话</string>
     <string name="main_me_error_report_serial_number">产品序列号</string>
-    <string name="main_me_error_report_serial_number_hint">XWWT-P120-201708001</string>
+    <string name="main_me_error_report_serial_number_hint">XWWT&#8211;P120&#8211;201708001</string>
     <string name="main_me_error_report_subject">邮件主题</string>
     <string name="main_me_error_report_attach">添加附件</string>
     <string name="main_me_error_report_history">历史文件</string>
@@ -552,9 +552,9 @@
     <string name="main_me_about_address_title">公司地址</string>
     <string name="main_me_about_address">中国 北京\n经济技术开发区科谷二街6号院1号楼</string>
     <string name="main_me_about_phone">电话</string>
-    <string name="main_me_about_phone_number">010-87838886</string>
+    <string name="main_me_about_phone_number">010&#8211;87838886</string>
     <string name="main_me_about_fax">传真</string>
-    <string name="main_me_about_fax_number">010-87838866</string>
+    <string name="main_me_about_fax_number">010&#8211;87838866</string>
     <string name="main_me_about_email">EMAIL:</string>
     <string name="main_me_about_email_address">sale@sanetel.com</string>
     <string name="main_me_about_official_site">官网</string>
@@ -585,7 +585,7 @@
     <string name="finish">完成</string>
 
     <string name="choose_mail_client">请选择邮件发送软件(Choose Email Client)</string>
-    <string name="title_citylocation_list">CityLocations</string>
+    <string name="title_city_location_list">CityLocations</string>
     <string name="title_citylocation_detail">CityLocation Detail</string>
 
     <!--登陆-->

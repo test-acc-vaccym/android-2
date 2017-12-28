@@ -177,7 +177,7 @@
 
         <activity
             android:name=".activities.settings.CityLocationListActivity"
-            android:label="@string/title_citylocation_list"
+            android:label="@string/title_city_location_list"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity

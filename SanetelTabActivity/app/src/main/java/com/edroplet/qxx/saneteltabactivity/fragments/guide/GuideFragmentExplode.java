@@ -51,7 +51,7 @@ public class GuideFragmentExplode extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_follow_me_explode, null);
+        final View view = inflater.inflate(R.layout.fragment_guide_explode, null);
         if (view == null){
             return null;
         }

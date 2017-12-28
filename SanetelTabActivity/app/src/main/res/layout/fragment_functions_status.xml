@@ -25,80 +25,6 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/main_bottom_nav_status"/>
 
-            <!--环境信息-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/layout_padding_top"
-                android:orientation="vertical">
-                <!--标题-->
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/main_status_environment"
-                    android:background="@color/yellow"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/sub_layout_padding_top"
-                    android:orientation="horizontal">
-                    <!--温度-->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="@string/main_status_environment_temperature"/>
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_environment_temperature"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:hint="@string/main_monitor_amplifier_value_temperature_hint"
-                            android:layout_height="wrap_content" />
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:layout_height="wrap_content"
-                            android:text="@string/temperature_unit"/>
-                    </LinearLayout>
-                    <!--湿度-->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="@string/main_status_environment_humidity"/>
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_environment_humidity"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:hint="@string/main_monitor_amplifier_value_temperature_hint"
-                            android:layout_height="wrap_content" />
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:layout_height="wrap_content"
-                            android:text="@string/humidity_unit"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
             <!--通信状况-->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -473,6 +399,80 @@
                             android:gravity="center"
                             android:hint="@string/main_status_device_status_abnormal"
                             android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <!--环境信息-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_padding_top"
+                android:orientation="vertical">
+                <!--标题-->
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_status_environment"
+                    android:background="@color/yellow"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sub_layout_padding_top"
+                    android:orientation="horizontal">
+                    <!--温度-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/main_status_environment_temperature"/>
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:id="@+id/main_status_environment_temperature"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:hint="@string/main_monitor_amplifier_value_temperature_hint"
+                            android:layout_height="wrap_content" />
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:text="@string/temperature_unit"/>
+                    </LinearLayout>
+                    <!--湿度-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/main_status_environment_humidity"/>
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:id="@+id/main_status_environment_humidity"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:hint="@string/main_monitor_amplifier_value_temperature_hint"
+                            android:layout_height="wrap_content" />
+                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:text="@string/humidity_unit"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

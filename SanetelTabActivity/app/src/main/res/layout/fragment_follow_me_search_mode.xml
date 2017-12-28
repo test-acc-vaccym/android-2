@@ -60,6 +60,6 @@
                 </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
             </RelativeLayout>
         </LinearLayout>
-        <include layout="@layout/pop_dialog_red"/>
+        <include layout="@layout/pop_dialog_blue"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

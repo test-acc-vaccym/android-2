@@ -33,12 +33,13 @@
             android:layout_marginBottom="2dp"
             android:layout_marginTop="2dp"
             android:orientation="horizontal">
+
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                android:layout_width="@dimen/radio_group_width"
+                android:layout_width="@dimen/radio_group_width_small"
                 android:layout_height="wrap_content"
                 android:text="@string/angle_calculate_satellite_select"
-                android:textColor="@color/blacklisted_call"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/blacklisted_call" />
             <Spinner
                 android:id="@+id/angle_calculate_spinner_satellites"
                 android:padding="@dimen/no_padding"
@@ -75,7 +76,7 @@
             <!--单选组-->
             <RadioGroup
                 android:id="@+id/city_group"
-                android:layout_width="@dimen/radio_group_width"
+                android:layout_width="@dimen/radio_group_width_small"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/no_padding">
 
@@ -100,13 +101,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spinner_lower_height"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginBottom="@dimen/sub_layout_padding_top"
-                android:layout_marginLeft="@dimen/radio_group_width"
-                android:layout_marginStart="@dimen/radio_group_width"
-                android:paddingLeft="@dimen/radio_group_city_padding"
-                android:paddingStart="@dimen/radio_group_city_padding">
+                android:layout_marginStart="@dimen/radio_group_width_small">
 
                 <!--android:layout_toEndOf="@+id/rbg_city"-->
                 <!--android:layout_toRightOf="@+id/rbg_city"-->
@@ -132,13 +129,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@id/city_select"
-                android:layout_alignLeft="@id/city_select"
-                android:layout_alignRight="@id/city_select"
                 android:layout_alignStart="@id/city_select"
                 android:layout_below="@id/city_select"
-                android:orientation="vertical"
-                android:paddingLeft="@dimen/radio_group_city_padding"
-                android:paddingStart="@dimen/radio_group_city_padding">
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"

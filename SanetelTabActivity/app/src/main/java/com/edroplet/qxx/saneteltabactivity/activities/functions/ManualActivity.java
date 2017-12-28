@@ -22,6 +22,10 @@ import com.edroplet.qxx.saneteltabactivity.fragments.functions.manual.StepContro
 import com.edroplet.qxx.saneteltabactivity.utils.BottomNavigationViewHelper;
 
 public class ManualActivity extends AppCompatActivity {
+    public static final int stepIndex = 0;
+    public static final int speedIndex = 1;
+    public static final int locationIndex = 2;
+    public static final int calculateIndex = 3;
 
     private ViewPager viewPager;
     private MenuItem menuItem;
@@ -35,16 +39,16 @@ public class ManualActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_step_control:
-                    viewPager.setCurrentItem(0);
+                    viewPager.setCurrentItem(stepIndex);
                     return true;
                 case R.id.navigation_speed_manual:
-                    viewPager.setCurrentItem(1);
+                    viewPager.setCurrentItem(speedIndex);
                     return true;
                 case R.id.navigation_location_manual:
-                    viewPager.setCurrentItem(2);
+                    viewPager.setCurrentItem(locationIndex);
                     return true;
                 case R.id.navigation_calculate_manual:
-                    viewPager.setCurrentItem(3);
+                    viewPager.setCurrentItem(calculateIndex);
                     return true;
             }
             return false;

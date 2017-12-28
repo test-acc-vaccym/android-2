@@ -16,8 +16,7 @@ import com.edroplet.qxx.saneteltabactivity.activities.functions.ManualActivity;
  */
 
 public class FunctionsFragmentManual extends Fragment {
-    private com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton btnSpeed;
-    private View.OnClickListener speedClick;
+
     public static FunctionsFragmentManual newInstance(String info) {
         Bundle args = new Bundle();
         FunctionsFragmentManual fragment = new FunctionsFragmentManual();
@@ -32,34 +31,33 @@ public class FunctionsFragmentManual extends Fragment {
         view.findViewById(R.id.main_control_manual_step).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setOnClickListener(0);
+                setOnClickListener(ManualActivity.stepIndex);
             }
         });
 
         view.findViewById(R.id.main_control_speed).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setOnClickListener(1);
+                setOnClickListener(ManualActivity.speedIndex);
             }
         });
 
         view.findViewById(R.id.main_control_manual_location).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setOnClickListener(2);
+                setOnClickListener(ManualActivity.locationIndex);
             }
         });
 
         view.findViewById(R.id.main_control_manual_calculate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setOnClickListener(3);
+                setOnClickListener(ManualActivity.calculateIndex);
             }
         });
 
         return view;
     }
-
     private void setOnClickListener(int position){
         Intent intent = new Intent(getActivity(), ManualActivity.class);
         Bundle bundle = new Bundle();
@@ -67,5 +65,4 @@ public class FunctionsFragmentManual extends Fragment {
         intent.putExtras(bundle);
         startActivity(intent);
     }
-
 }

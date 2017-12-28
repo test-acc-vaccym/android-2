@@ -180,7 +180,7 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
 
                 Intent intent = new Intent(getContext(), ManualActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putInt(ManualActivity.POSITION, 1);
+                bundle.putInt(ManualActivity.POSITION, ManualActivity.locationIndex);
                 bundle.putFloat(ManualActivity.PRESET_AZIMUTH, azimuth);
                 bundle.putFloat(ManualActivity.PRESET_PITCH, pitch);
                 bundle.putFloat(ManualActivity.PRESET_POLARIZATION, polarization);

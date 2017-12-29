@@ -56,6 +56,12 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
     @BindId(R.id.administrator_toolbar)
     private Toolbar administratorToolbar;
 
+    @BindId(R.id.administrator_amplifier_factory)
+    private CustomButton administratorAmplifierFactory;
+
+    @BindId(R.id.administrator_amplifier_oscillator)
+    private CustomButton administratorAmplifierOscillator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +93,8 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
         administratorLnbFrequencyChannle.setOnClickListener(this);
         administratorSearhingRange.setOnClickListener(this);
         administratorAmplifierMonitor.setOnClickListener(this);
+        administratorAmplifierFactory.setOnClickListener(this);
+        administratorAmplifierOscillator.setOnClickListener(this);
     }
 
     @Override

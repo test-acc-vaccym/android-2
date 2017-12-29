@@ -59,6 +59,7 @@
                     android:id="@+id/administrator_antenna_incriminate"
                     style="@style/button_horizontal_style"
                     android:background="@drawable/button_background"
+                    android:padding="@dimen/no_padding"
                     android:text="@string/administrator_antenna_incriminate"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -66,6 +67,7 @@
                     android:id="@+id/administrator_recovery_factory"
                     style="@style/button_horizontal_style"
                     android:background="@drawable/button_background"
+                    android:padding="@dimen/no_padding"
                     android:text="@string/administrator_recovery_factory"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -73,14 +75,14 @@
                     android:id="@+id/administrator_antenna_type"
                     style="@style/button_horizontal_style"
                     android:background="@drawable/button_background"
+                    android:padding="@dimen/no_padding"
                     android:text="@string/administrator_antenna_type"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton style="@style/button_horizontal_style"
                     android:id="@+id/main_settings_antenna_restart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:background="@drawable/button_background"
+                    android:padding="@dimen/no_padding"
                     android:text="@string/main_settings_antenna_restart"
                     android:textColor="@color/button_text"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
@@ -110,6 +112,8 @@
                     android:background="@drawable/button_background"
                     android:text="@string/administrator_searching_range"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton  style="@style/button_horizontal_style"/>
             </LinearLayout>
             <!--功放厂家	功放本振	功放监控-->
             <LinearLayout
@@ -136,6 +140,8 @@
                     android:background="@drawable/button_background"
                     android:text="@string/administrator_amplifier_monitor"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton  style="@style/button_horizontal_style"/>
             </LinearLayout>
             <!--WIFI名称	IP设置	网口协议	串口协议-->
             <LinearLayout

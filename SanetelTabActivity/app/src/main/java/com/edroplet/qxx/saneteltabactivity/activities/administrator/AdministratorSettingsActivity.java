@@ -52,12 +52,12 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
             R.string.administrator_searching_range, R.string.administrator_amplifier_monitor,
             R.string.main_settings_amplifier_factory,R.string.main_settings_amplifier_oscillator};
 
-    @BindId(R.id.administrator_settings_viewpager)
+    @BindId(R.id.id_administrator_settings_viewpager)
     private CustomViewPager viewPager;
 
     private MenuItem menuItem;
 
-    @BindId(R.id.administrator_settings_toolbar)
+    @BindId(R.id.id_administrator_settings_toolbar)
     private Toolbar toolbar;
 
 

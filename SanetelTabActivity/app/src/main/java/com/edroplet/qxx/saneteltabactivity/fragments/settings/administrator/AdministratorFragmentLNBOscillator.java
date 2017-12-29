@@ -48,25 +48,25 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
     @BindView(R.id.low_noise_block_oscillator_ka_radio_group)
     CustomRadioGroupWithCustomRadioButton oscillatorKaSelect;
 
-    @BindView(R.id.administrator_settings_lnb_ku_value_1)
+    @BindView(R.id.id_administrator_settings_lnb_ku_value_1)
     RadioButton administrator_settings_lnb_ku_value_1;
-    @BindView(R.id.administrator_settings_lnb_ku_value_2)
+    @BindView(R.id.id_administrator_settings_lnb_ku_value_2)
     RadioButton administrator_settings_lnb_ku_value_2;
-    @BindView(R.id.administrator_settings_lnb_ku_value_3)
+    @BindView(R.id.id_administrator_settings_lnb_ku_value_3)
     RadioButton administrator_settings_lnb_ku_value_3;
-    @BindView(R.id.administrator_settings_lnb_ku_value_4)
+    @BindView(R.id.id_administrator_settings_lnb_ku_value_4)
     RadioButton administrator_settings_lnb_ku_value_4;
-    @BindView(R.id.administrator_settings_lnb_ku_value_5)
+    @BindView(R.id.id_administrator_settings_lnb_ku_value_5)
     RadioButton administrator_settings_lnb_ku_value_5;
-    @BindView(R.id.administrator_settings_lnb_ku_value_6)
+    @BindView(R.id.id_administrator_settings_lnb_ku_value_6)
     RadioButton administrator_settings_lnb_ku_value_6;
-    @BindView(R.id.administrator_settings_lnb_ku_value_7)
+    @BindView(R.id.id_administrator_settings_lnb_ku_value_7)
     RadioButton administrator_settings_lnb_ku_value_7;
 
 
-    @BindView(R.id.administrator_settings_lnb_ka_value_1)
+    @BindView(R.id.id_administrator_settings_lnb_ka_value_1)
     RadioButton administrator_settings_lnb_ka_value_1;
-    @BindView(R.id.administrator_settings_lnb_ka_value_2)
+    @BindView(R.id.id_administrator_settings_lnb_ka_value_2)
     RadioButton administrator_settings_lnb_ka_value_2;
 
     Context context;
@@ -107,9 +107,9 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
             linearLayoutKa.setVisibility(View.GONE);
 
             // 设置选择的值
-            int id = CustomSP.getInt(getContext(),LNBFrequencyResourceId, R.id.administrator_settings_lnb_ku_value_5);
+            int id = CustomSP.getInt(getContext(),LNBFrequencyResourceId, R.id.id_administrator_settings_lnb_ku_value_5);
             ((RadioButton) view.findViewById(id)).setChecked(true);
-            if (id == R.id.administrator_settings_lnb_ku_value_7){
+            if (id == R.id.id_administrator_settings_lnb_ku_value_7){
                 ((CustomEditText) view.findViewById(R.id.top_custom_val)).setText(CustomSP.getString(context, LNBFrequency,"")) ;
             }else {
                 ((CustomEditText) view.findViewById(R.id.top_custom_val)).setText("");
@@ -119,18 +119,18 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
             linearLayoutKa.setVisibility(View.VISIBLE);
             linearLayoutKu.setVisibility(View.GONE);
             // 设置选择的值
-            int id = CustomSP.getInt(context,LNBFrequencyResourceId, R.id.administrator_settings_lnb_ka_value_1);
+            int id = CustomSP.getInt(context,LNBFrequencyResourceId, R.id.id_administrator_settings_lnb_ka_value_1);
             ((RadioButton) view.findViewById(id)).setChecked(true);
         }
 
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 String val;
                 if (band.equals(WaveBand.KU)) {
                     int id = oscillatorKuSelect.getCheckedRadioButtonId();
                     CustomSP.putInt(context,LNBFrequencyResourceId,id);
-                    if (id != R.id.administrator_settings_lnb_ku_value_7){
+                    if (id != R.id.id_administrator_settings_lnb_ku_value_7){
                         val = ((RadioButton) view.findViewById(id)).getText().toString() ;
                     }else {
                         val = ((CustomEditText) view.findViewById(R.id.top_custom_val)).getText().toString();

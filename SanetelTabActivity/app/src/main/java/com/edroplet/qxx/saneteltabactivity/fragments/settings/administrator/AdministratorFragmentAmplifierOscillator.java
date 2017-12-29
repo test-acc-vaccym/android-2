@@ -65,16 +65,16 @@ public class AdministratorFragmentAmplifierOscillator extends Fragment {
             public void onClick(View v) {
                 int checkedId = oscillatorGroup.getCheckedRadioButtonId();
                 CustomSP.putInt(context, Key_amplifier_oscillator_id, checkedId);
-                if (checkedId != R.id.administrator_settings_amplifier_oscillator_value_3)
+                if (checkedId != R.id.id_administrator_settings_amplifier_oscillator_value_3)
                     CustomSP.putString(context,Key_amplifier_oscillator_value,((CustomRadioButton)view.findViewById(checkedId)).getText().toString());
                 else
                     CustomSP.putString(context,Key_amplifier_oscillator_value, oscillatorCustomValue.getText().toString());
             }
         });
 
-        int checkedId = CustomSP.getInt(context, Key_amplifier_oscillator_id, R.id.administrator_settings_amplifier_oscillator_value_1);
+        int checkedId = CustomSP.getInt(context, Key_amplifier_oscillator_id, R.id.id_administrator_settings_amplifier_oscillator_value_1);
         if (checkedId == 0) {
-            checkedId = R.id.administrator_settings_amplifier_oscillator_value_1;
+            checkedId = R.id.id_administrator_settings_amplifier_oscillator_value_1;
         }
 
         if (view.findViewById(checkedId) instanceof CustomRadioButton ) {
@@ -82,7 +82,7 @@ public class AdministratorFragmentAmplifierOscillator extends Fragment {
             radioButton.setChecked(true);
         }
 
-        if (checkedId == R.id.administrator_settings_amplifier_oscillator_value_3) {
+        if (checkedId == R.id.id_administrator_settings_amplifier_oscillator_value_3) {
             oscillatorCustomValue.setText(CustomSP.getString(context, Key_amplifier_oscillator_value, ""));
         }
 

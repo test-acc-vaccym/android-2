@@ -28,7 +28,7 @@ public class AdministratorFragmentAntennaType extends Fragment {
     @BindId(R.id.pop_dialog_third_button)
     private CustomButton thirdButton;
 
-    @BindId(R.id.administrator_settings_antenna_type_radio_group)
+    @BindId(R.id.id_administrator_settings_antenna_type_radio_group)
     private CustomRadioGroupWithCustomRadioButton radioGroupWithCustomRadioButton;
 
     @BindId(R.id.administrator_setting_antenna_type_two_two)
@@ -98,7 +98,7 @@ public class AdministratorFragmentAntennaType extends Fragment {
         }else if (type.equals(getString(R.string.administrator_setting_antenna_type_three_zero))){
             radioButtonThreeZero.setChecked(true);
         }
-        radioGroupWithCustomRadioButton = view.findViewById(R.id.administrator_settings_antenna_type_radio_group);
+        radioGroupWithCustomRadioButton = view.findViewById(R.id.id_administrator_settings_antenna_type_radio_group);
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

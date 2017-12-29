@@ -40,25 +40,25 @@ public class LowNoiseBlockOscillatorActivity extends AppCompatActivity {
     @BindId(R.id.low_noise_block_oscillator_ka_radio_group)
     private RadioButton oscillatorKaSelect;
 
-    @BindId(R.id.administrator_settings_lnb_ku_value_1)
+    @BindId(R.id.id_administrator_settings_lnb_ku_value_1)
     private RadioButton administrator_settings_lnb_ku_value_1;
-    @BindId(R.id.administrator_settings_lnb_ku_value_2)
+    @BindId(R.id.id_administrator_settings_lnb_ku_value_2)
     private RadioButton administrator_settings_lnb_ku_value_2;
-    @BindId(R.id.administrator_settings_lnb_ku_value_3)
+    @BindId(R.id.id_administrator_settings_lnb_ku_value_3)
     private RadioButton administrator_settings_lnb_ku_value_3;
-    @BindId(R.id.administrator_settings_lnb_ku_value_4)
+    @BindId(R.id.id_administrator_settings_lnb_ku_value_4)
     private RadioButton administrator_settings_lnb_ku_value_4;
-    @BindId(R.id.administrator_settings_lnb_ku_value_5)
+    @BindId(R.id.id_administrator_settings_lnb_ku_value_5)
     private RadioButton administrator_settings_lnb_ku_value_5;
-    @BindId(R.id.administrator_settings_lnb_ku_value_6)
+    @BindId(R.id.id_administrator_settings_lnb_ku_value_6)
     private RadioButton administrator_settings_lnb_ku_value_6;
-    @BindId(R.id.administrator_settings_lnb_ku_value_7)
+    @BindId(R.id.id_administrator_settings_lnb_ku_value_7)
     private RadioButton administrator_settings_lnb_ku_value_7;
 
 
-    @BindId(R.id.administrator_settings_lnb_ka_value_1)
+    @BindId(R.id.id_administrator_settings_lnb_ka_value_1)
     private RadioButton administrator_settings_lnb_ka_value_1;
-    @BindId(R.id.administrator_settings_lnb_ka_value_2)
+    @BindId(R.id.id_administrator_settings_lnb_ka_value_2)
     private RadioButton administrator_settings_lnb_ka_value_2;
 
     @Override

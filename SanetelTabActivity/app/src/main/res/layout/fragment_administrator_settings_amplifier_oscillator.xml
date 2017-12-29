@@ -34,13 +34,13 @@
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/radio_group_item_height"
-                    android:id="@+id/administrator_settings_amplifier_oscillator_value_1"
+                    android:id="@+id/id_administrator_settings_amplifier_oscillator_value_1"
                     android:text="@string/administrator_settings_amplifier_oscillator_value_1"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/radio_group_item_height"
-                    android:id="@+id/administrator_settings_amplifier_oscillator_value_2"
+                    android:id="@+id/id_administrator_settings_amplifier_oscillator_value_2"
                     android:text="@string/administrator_settings_amplifier_oscillator_value_2"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <RelativeLayout
@@ -49,13 +49,13 @@
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/radio_group_item_height"
-                        android:id="@+id/administrator_settings_amplifier_oscillator_value_3"/>
+                        android:id="@+id/id_administrator_settings_amplifier_oscillator_value_3"/>
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                         android:id="@+id/settings_amplifier_oscillator_custom_value"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/radio_group_item_height"
-                        android:layout_toEndOf="@id/administrator_settings_amplifier_oscillator_value_3"
-                        android:layout_toRightOf="@id/administrator_settings_amplifier_oscillator_value_3"
+                        android:layout_toEndOf="@id/id_administrator_settings_amplifier_oscillator_value_3"
+                        android:layout_toRightOf="@id/id_administrator_settings_amplifier_oscillator_value_3"
                         android:inputType="number|numberDecimal"
                         android:hint="@string/administrator_settings_amplifier_oscillator_value_1"
                         android:textAppearance="?android:attr/textAppearanceMedium"/>

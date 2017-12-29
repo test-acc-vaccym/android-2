@@ -46,7 +46,7 @@
         </LinearLayout>
 
         <include layout="@layout/pop_dialog_blue"
-            android:id="@+id/amplifier_pop"
+            android:id="@+id/amplifier_emit_pop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>

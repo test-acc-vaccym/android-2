@@ -32,7 +32,7 @@ public class AdministratorFragmentAmplifierMonitor extends Fragment {
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
 
-    @BindView(R.id.administrator_settings_amplifier_monitor_radio_group)
+    @BindView(R.id.id_administrator_settings_amplifier_monitor_radio_group)
     CustomRadioGroupWithCustomRadioButton radioGroupWithCustomRadioButton;
 
     @BindView(R.id.administrator_amplifier_monitor_has)

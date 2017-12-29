@@ -29,7 +29,7 @@ public class AdministratorFragmentBandSelect extends Fragment {
     @BindId(R.id.pop_dialog_third_button)
     private CustomButton thirdButton;
 
-    @BindId(R.id.administrator_settings_band_select_radio_group)
+    @BindId(R.id.id_administrator_settings_band_select_radio_group)
     private CustomRadioGroupWithCustomRadioButton radioGroupWithCustomRadioButton;
 
     @BindId(R.id.administrator_setting_band_ka)
@@ -80,7 +80,7 @@ public class AdministratorFragmentBandSelect extends Fragment {
             radioButtonKu.setChecked(true);
         }
 
-        radioGroupWithCustomRadioButton = view.findViewById(R.id.administrator_settings_band_select_radio_group);
+        radioGroupWithCustomRadioButton = view.findViewById(R.id.id_administrator_settings_band_select_radio_group);
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -26,7 +26,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
-                    android:id="@+id/administrator_settings_amplifier_monitor_radio_group"
+                    android:id="@+id/id_administrator_settings_amplifier_monitor_radio_group"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:orientation="vertical"

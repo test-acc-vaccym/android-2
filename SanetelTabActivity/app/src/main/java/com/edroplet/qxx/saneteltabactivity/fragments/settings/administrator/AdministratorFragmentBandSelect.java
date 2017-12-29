@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.WaveBand;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
@@ -86,6 +87,7 @@ public class AdministratorFragmentBandSelect extends Fragment {
                 radioButton = (CustomRadioButton)view.findViewById(radioGroupWithCustomRadioButton.getCheckedRadioButtonId());
                 selected = radioButton.getText().toString();
                 CustomSP.putString(getContext(), BandTypeKey, selected);
+                CustomSP.putString(getContext(), WaveBand.Key, selected.substring(0,2));
                 // todo send command
                 getActivity().finish();
             }

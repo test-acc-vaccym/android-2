@@ -14,9 +14,11 @@ import android.widget.RadioButton;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.WaveBand;
+import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
 
 import butterknife.BindView;
@@ -28,6 +30,7 @@ import butterknife.ButterKnife;
 
 public class AdministratorFragmentLNBOscillator extends Fragment {
     private static final String LNBFrequency = "lnbFrequency";
+    private static final String LNBFrequencyResourceId = "lnbFrequencyResourceId";
     private  final int[] icons = {R.drawable.antenna_exploded };
 
     @BindView(R.id.layout_lnb_ku)
@@ -66,6 +69,7 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
     @BindView(R.id.administrator_settings_lnb_ka_value_2)
     RadioButton administrator_settings_lnb_ka_value_2;
 
+    Context context;
     public static AdministratorFragmentLNBOscillator newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                                  String secondLine, boolean showThird, String thirdLineStart,
                                                                  int icon, String buttonText, String thirdLineEnd) {
@@ -93,21 +97,51 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
         }
 
         ButterKnife.bind(this, view);
-        Context context = getContext();
+        context = getContext();
 
-        String band = CustomSP.getString(context, WaveBand.Key, WaveBand.KU);
+        final String band = CustomSP.getString(context, WaveBand.Key, WaveBand.KU);
         // 根据不同的波段显示不同的layout
         if (band.equals(WaveBand.KU)){
+            // 设置可见性
             linearLayoutKu.setVisibility(View.VISIBLE);
             linearLayoutKa.setVisibility(View.GONE);
+
+            // 设置选择的值
+            int id = CustomSP.getInt(getContext(),LNBFrequencyResourceId, R.id.administrator_settings_lnb_ku_value_5);
+            ((RadioButton) view.findViewById(id)).setChecked(true);
+            if (id == R.id.administrator_settings_lnb_ku_value_7){
+                ((CustomEditText) view.findViewById(R.id.top_custom_val)).setText(CustomSP.getString(context, LNBFrequency,"")) ;
+            }else {
+                ((CustomEditText) view.findViewById(R.id.top_custom_val)).setText("");
+            }
         }else {
+            // 设置可见性
             linearLayoutKa.setVisibility(View.VISIBLE);
             linearLayoutKu.setVisibility(View.GONE);
+            // 设置选择的值
+            int id = CustomSP.getInt(context,LNBFrequencyResourceId, R.id.administrator_settings_lnb_ka_value_1);
+            ((RadioButton) view.findViewById(id)).setChecked(true);
         }
 
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String val;
+                if (band.equals(WaveBand.KU)) {
+                    int id = oscillatorKuSelect.getCheckedRadioButtonId();
+                    CustomSP.putInt(context,LNBFrequencyResourceId,id);
+                    if (id != R.id.administrator_settings_lnb_ku_value_7){
+                        val = ((RadioButton) view.findViewById(id)).getText().toString() ;
+                    }else {
+                        val = ((CustomEditText) view.findViewById(R.id.top_custom_val)).getText().toString();
+                    }
+                    CustomSP.putString(context, LNBFrequency, val);
+                }else{
+                    int id = oscillatorKaSelect.getCheckedRadioButtonId();
+                    CustomSP.putInt(context,LNBFrequencyResourceId,id);
+                    val = ((RadioButton) view.findViewById(id)).getText().toString() ;
+                    CustomSP.putString(context, LNBFrequency, val);
+                }
                 // TODO: 2017/10/23 设置命令
             }
         });

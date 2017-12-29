@@ -19,6 +19,7 @@ import com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteListActi
 
 /**
  * Created by qxs on 2017/9/19.
+ * 主页面设置
  */
 
 public class FunctionsFragmentSettings extends Fragment {
@@ -36,6 +37,8 @@ public class FunctionsFragmentSettings extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_functions_settings, null);
+        // 数据库
+        // 卫星库
         view.findViewById(R.id.main_settings_database_satellites).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,6 +46,7 @@ public class FunctionsFragmentSettings extends Fragment {
                 // getActivity().finish();
             }
         });
+        // 城市库
         view.findViewById(R.id.main_settings_database_city).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,39 +54,36 @@ public class FunctionsFragmentSettings extends Fragment {
                 // getActivity().finish();
             }
         });
-        view.findViewById(R.id.main_settings_amplifier_factory).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent = new Intent(getActivity(), PowerAmplifierSettingsActivity.class);
-                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, 0);
-                startActivity(intent);
-            }
-        });
-        view.findViewById(R.id.main_settings_amplifier_oscillator).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent = new Intent(getActivity(), PowerAmplifierSettingsActivity.class);
-                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, 1);
-                startActivity(intent);
-            }
-        });
+
+        // 功放
+        // 发射开关
         view.findViewById(R.id.main_settings_amplifier_emit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getActivity(), PowerAmplifierSettingsActivity.class);
-                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, 3);
+                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, PowerAmplifierSettingsActivity.emitPosition);
                 startActivity(intent);
             }
         });
+        // 邻星干扰
         view.findViewById(R.id.main_settings_amplifier_interfere).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getActivity(), PowerAmplifierSettingsActivity.class);
-                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, 2);
+                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, PowerAmplifierSettingsActivity.interferPosition);
                 startActivity(intent);
             }
         });
+        // 参考寻星
+        // 参考星
+        view.findViewById(R.id.main_settings_reference).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), ReferenceSatelliteActivity.class));
+            }
+        });
 
+        // 管理员设置
         view.findViewById(R.id.main_settings_administrator).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,24 +91,7 @@ public class FunctionsFragmentSettings extends Fragment {
                 startActivity(intent);
             }
         });
-        view.findViewById(R.id.main_settings_reference).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), ReferenceSatelliteActivity.class));
-            }
-        });
-        view.findViewById(R.id.main_settings_lnb_oscillator).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), LowNoiseBlockOscillatorActivity.class));
-            }
-        });
-        view.findViewById(R.id.main_settings_antenna_restart).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), AntennaRestartActivity.class));
-            }
-        });
+
         return view;
     }
 }

@@ -37,14 +37,15 @@
                     android:paddingLeft="@dimen/layout_padding_left"
                     android:paddingStart="@dimen/layout_padding_left"
                     style="@style/linear_shadow">
+
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                         android:id="@+id/main_settings_reference"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/button_background"
-                        android:text="@string/main_settings_reference"
-                        android:textColor="@color/button_text"
-                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                        android:text="@string/main_settings_reference_satellites"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/button_text" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -69,26 +70,6 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                            android:id="@+id/main_settings_amplifier_factory"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/button_background"
-                            android:padding="@dimen/no_padding"
-                            android:text="@string/main_settings_amplifier_factory"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/button_text" />
-
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                        android:id="@+id/main_settings_amplifier_oscillator"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/button_background"
-                            android:padding="@dimen/no_padding"
-                        android:text="@string/main_settings_amplifier_oscillator"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/button_text" />
-
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
                         android:id="@+id/main_settings_amplifier_interfere"
                         android:layout_width="wrap_content"
@@ -110,56 +91,6 @@
                         android:textColor="@color/button_text" />
                 </LinearLayout>
                 </HorizontalScrollView>
-            </LinearLayout>
-
-            <!--LNB-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/main_settings_lnb"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/settings_linear_shadow">
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                        android:id="@+id/main_settings_lnb_oscillator"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/button_background"
-                        android:text="@string/main_settings_lnb_oscillator"
-                        android:textColor="@color/button_text"
-                        android:textAppearance="?android:attr/textAppearanceMedium"/>
-                </LinearLayout>
-            </LinearLayout>
-
-            <!--天线-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/main_settings_antenna"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/settings_linear_shadow">
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
-                        android:id="@+id/main_settings_antenna_restart"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/button_background"
-                        android:text="@string/main_settings_antenna_restart"
-                        android:textColor="@color/button_text"
-                        android:textAppearance="?android:attr/textAppearanceMedium"/>
-                </LinearLayout>
             </LinearLayout>
 
             <!--数据库-->
@@ -200,10 +131,11 @@
 
             <!--管理员设置-->
             <LinearLayout
+                android:id="@+id/main_settings_administrator"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:orientation="horizontal">
+                <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/main_settings_advance"
@@ -212,10 +144,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:id="@+id/main_settings_administrator"
                     android:focusable="true"
                     android:focusedByDefault="true"
-                    android:clickable="true">
+                    android:clickable="true"-->
                     <com.edroplet.qxx.saneteltabactivity.view.StatusButton
                         android:layout_height="@dimen/app_bar_height"
                         android:layout_width="@dimen/app_bar_height"
@@ -243,7 +174,7 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:focusable="false"
                         android:clickable="false"/>
-                </LinearLayout>
+                <!--/LinearLayout-->
             </LinearLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

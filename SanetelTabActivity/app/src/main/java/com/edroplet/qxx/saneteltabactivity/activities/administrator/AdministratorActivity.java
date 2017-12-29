@@ -8,6 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.activities.settings.AdministratorLoginActivity;
+import com.edroplet.qxx.saneteltabactivity.activities.settings.AntennaRestartActivity;
+import com.edroplet.qxx.saneteltabactivity.activities.settings.LowNoiseBlockOscillatorActivity;
+import com.edroplet.qxx.saneteltabactivity.activities.settings.PowerAmplifierSettingsActivity;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
@@ -58,6 +62,39 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_administrator);
 
         ViewInject.inject(this,this);
+
+        findViewById(R.id.administrator_amplifier_factory).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdministratorActivity.this, PowerAmplifierSettingsActivity.class);
+                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, 0);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.administrator_amplifier_oscillator).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdministratorActivity.this, PowerAmplifierSettingsActivity.class);
+                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, 1);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.administrator_lnb_frequency_channel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AdministratorActivity.this, LowNoiseBlockOscillatorActivity.class));
+            }
+        });
+
+        findViewById(R.id.main_settings_antenna_restart).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AdministratorActivity.this, AntennaRestartActivity.class));
+            }
+        });
+
         administratorToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

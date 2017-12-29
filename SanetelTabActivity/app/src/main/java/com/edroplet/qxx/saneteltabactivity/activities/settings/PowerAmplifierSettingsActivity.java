@@ -61,21 +61,19 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
 
     private int startPosition;
     public static final String positionKey = "position";
+    public static final int interferPosition = 0;
+    public static final int emitPosition = 1;
     //Tab 文字
-    private final int[] TAB_TITLES = new int[]{R.string.main_settings_amplifier_factory,
-            R.string.main_settings_amplifier_oscillator,
+    private final int[] TAB_TITLES = new int[]{
             R.string.main_settings_amplifier_interfere,
             R.string.main_settings_amplifier_emit,
     };
     //Tab 图片
-    private final int[] TAB_IMGS = new int[]{R.drawable.tab_image_selector,
-            R.drawable.tab_image_selector,
+    private final int[] TAB_IMGS = new int[]{
             R.drawable.tab_image_selector,
             R.drawable.tab_image_selector};
-
     //Fragment 数组
-    private final Fragment[] TAB_FRAGMENTS = new Fragment[] {SettingsFragmentAmplifierManufacture.newInstance(null),
-            SettingsFragmentAmplifierOscillator.newInstance(null),SettingsFragmentAmplifierInterfere.newInstance(null)
+    private final Fragment[] TAB_FRAGMENTS = new Fragment[] {SettingsFragmentAmplifierInterfere.newInstance(null)
             ,SettingsFragmentAmplifiereEmit.newInstance(null)};
 
     private int COUNT = TAB_FRAGMENTS.length;

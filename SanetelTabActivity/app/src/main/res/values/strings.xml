@@ -291,11 +291,12 @@
 
     <!--设置主界面-->
     <string name="main_settings_reference">参考寻星</string>
+    <string name="main_settings_reference_satellites">参考星</string>
     <string name="main_settings_amplifier">功放</string>
     <string name="main_settings_amplifier_factory">功放厂家</string>
     <string name="main_settings_amplifier_oscillator">功放本振</string>
     <string name="main_settings_amplifier_interfere">邻星干扰</string>
-    <string name="main_settings_amplifier_emit">发射手动</string>
+    <string name="main_settings_amplifier_emit">发射开关</string>
     <string name="main_settings_lnb">LNB</string>
     <string name="main_settings_lnb_oscillator">LNB本振</string>
     <string name="main_settings_antenna">天线</string>

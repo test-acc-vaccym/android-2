@@ -17,12 +17,12 @@
         android:layout_marginBottom="@dimen/app_bar_height"
         android:orientation="vertical">
         <!--数据采集-->
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/main_collect_data"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+        <!--<!com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/main_collect_data"-->
+            <!--android:textAppearance="?android:attr/textAppearanceLarge"/>-->
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -14,13 +14,13 @@
         android:paddingBottom="8dp"
         android:orientation="vertical"
         style="@style/linear_shadow">
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-            android:id="@+id/functions_view_pager_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/main_bottom_nav_monitor"/>
+        <!--<com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView-->
+            <!--android:id="@+id/functions_view_pager_title"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center"-->
+            <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+            <!--android:text="@string/main_bottom_nav_monitor"/>-->
 
         <!--信标卫星信息-->
         <include layout="@layout/beacon_satellite_info"/>

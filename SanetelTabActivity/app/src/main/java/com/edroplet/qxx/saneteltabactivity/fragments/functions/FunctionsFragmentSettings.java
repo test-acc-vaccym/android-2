@@ -70,7 +70,7 @@ public class FunctionsFragmentSettings extends Fragment {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getActivity(), PowerAmplifierSettingsActivity.class);
-                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, PowerAmplifierSettingsActivity.interferPosition);
+                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, PowerAmplifierSettingsActivity.interfererPosition);
                 startActivity(intent);
             }
         });

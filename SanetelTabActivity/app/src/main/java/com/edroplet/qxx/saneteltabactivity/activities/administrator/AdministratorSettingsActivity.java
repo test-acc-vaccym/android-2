@@ -10,12 +10,15 @@ import android.view.View;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.adapters.MainViewPagerAdapter;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentAmplifierManufacturer;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentAmplifierMonitor;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentAmplifierOscillator;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentAntennaIncriminate;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentAntennaType;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentBandSelect;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentIPSettings;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentLNBFrequencyChannel;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentLNBOscillator;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentNetworkProtocolSettings;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentRecoveryFactory;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentSearchingRange;
@@ -27,13 +30,27 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomViewPager;
 
 public class AdministratorSettingsActivity extends AppCompatActivity {
     public static final String AdministratorSettingsPosition = "position";
+    public static final int antennaIncriminatePosition = 0;
+    public static final int recoveryFactoryPosition = 1;
+    public static final int antennaTypePosition = 2;
+    public static final int wifiNamePosition = 3;
+    public static final int ipSettingsPosition = 4;
+    public static final int networkProtocolPosition = 5;
+    public static final int serialProtocolPosition = 6;
+    public static final int bandSelectPosition = 7;
+    public static final int lnbPosition = 8;
+    public static final int searchingRangePosition = 9;
+    public static final int amplifierMonitorPosition = 10;
+    public static final int amplifierFactoryPosition = 11;
+    public static final int amplifierOscillatorPosition = 12;
 
     private static final @IdRes int[] TITLE = {R.string.administrator_antenna_incriminate,
             R.string.administrator_recovery_factory,R.string.administrator_antenna_type,
             R.string.administrator_wifi_name, R.string.administrator_ip_settings,
             R.string.administrator_network_protocol, R.string.administrator_serial_protocol,
             R.string.administrator_band_select, R.string.administrator_lnb_frequency_channel,
-            R.string.administrator_searching_range, R.string.administrator_amplifier_monitor};
+            R.string.administrator_searching_range, R.string.administrator_amplifier_monitor,
+            R.string.main_settings_amplifier_factory,R.string.main_settings_amplifier_oscillator};
 
     @BindId(R.id.administrator_settings_viewpager)
     private CustomViewPager viewPager;
@@ -123,7 +140,10 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
         adapter.addFragment(AdministratorFragmentBandSelect.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
-        adapter.addFragment(AdministratorFragmentLNBFrequencyChannel.newInstance(false,null,
+//        adapter.addFragment(AdministratorFragmentLNBFrequencyChannel.newInstance(false,null,
+//                false, null, true, getString(R.string.follow_me_message_click),-1,
+//                getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
+        adapter.addFragment(AdministratorFragmentLNBOscillator.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
         adapter.addFragment(AdministratorFragmentSearchingRange.newInstance(false,null,
@@ -132,6 +152,10 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
         adapter.addFragment(AdministratorFragmentAmplifierMonitor.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
+        // 功放厂家
+        adapter.addFragment(AdministratorFragmentAmplifierManufacturer.newInstance());
+        // 功放本振
+        adapter.addFragment(AdministratorFragmentAmplifierOscillator.newInstance());
 
         viewPager.setAdapter(adapter);
         COUNT = adapter.getCount();

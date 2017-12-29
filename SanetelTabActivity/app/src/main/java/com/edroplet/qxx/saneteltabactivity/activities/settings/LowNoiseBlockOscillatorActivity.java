@@ -40,26 +40,26 @@ public class LowNoiseBlockOscillatorActivity extends AppCompatActivity {
     @BindId(R.id.low_noise_block_oscillator_ka_radio_group)
     private RadioButton oscillatorKaSelect;
 
-    @BindId(R.id.settings_lnb_ku_value_1)
-    private RadioButton settings_lnb_ku_value_1;
-    @BindId(R.id.settings_lnb_ku_value_2)
-    private RadioButton settings_lnb_ku_value_2;
-    @BindId(R.id.settings_lnb_ku_value_3)
-    private RadioButton settings_lnb_ku_value_3;
-    @BindId(R.id.settings_lnb_ku_value_4)
-    private RadioButton settings_lnb_ku_value_4;
-    @BindId(R.id.settings_lnb_ku_value_5)
-    private RadioButton settings_lnb_ku_value_5;
-    @BindId(R.id.settings_lnb_ku_value_6)
-    private RadioButton settings_lnb_ku_value_6;
-    @BindId(R.id.settings_lnb_ku_value_7)
-    private RadioButton settings_lnb_ku_value_7;
+    @BindId(R.id.administrator_settings_lnb_ku_value_1)
+    private RadioButton administrator_settings_lnb_ku_value_1;
+    @BindId(R.id.administrator_settings_lnb_ku_value_2)
+    private RadioButton administrator_settings_lnb_ku_value_2;
+    @BindId(R.id.administrator_settings_lnb_ku_value_3)
+    private RadioButton administrator_settings_lnb_ku_value_3;
+    @BindId(R.id.administrator_settings_lnb_ku_value_4)
+    private RadioButton administrator_settings_lnb_ku_value_4;
+    @BindId(R.id.administrator_settings_lnb_ku_value_5)
+    private RadioButton administrator_settings_lnb_ku_value_5;
+    @BindId(R.id.administrator_settings_lnb_ku_value_6)
+    private RadioButton administrator_settings_lnb_ku_value_6;
+    @BindId(R.id.administrator_settings_lnb_ku_value_7)
+    private RadioButton administrator_settings_lnb_ku_value_7;
 
 
-    @BindId(R.id.settings_lnb_ka_value_1)
-    private RadioButton settings_lnb_ka_value_1;
-    @BindId(R.id.settings_lnb_ka_value_2)
-    private RadioButton settings_lnb_ka_value_2;
+    @BindId(R.id.administrator_settings_lnb_ka_value_1)
+    private RadioButton administrator_settings_lnb_ka_value_1;
+    @BindId(R.id.administrator_settings_lnb_ka_value_2)
+    private RadioButton administrator_settings_lnb_ka_value_2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,16 +92,16 @@ public class LowNoiseBlockOscillatorActivity extends AppCompatActivity {
         });
         /*
         不需要 这些代码，在控件中已经处理了
-        settings_lnb_ku_value_1.setOnCheckedChangeListener(generalOnCheckedChangeListener);
-        settings_lnb_ku_value_2.setOnCheckedChangeListener(generalOnCheckedChangeListener);
-        settings_lnb_ku_value_3.setOnCheckedChangeListener(generalOnCheckedChangeListener);
-        settings_lnb_ku_value_4.setOnCheckedChangeListener(generalOnCheckedChangeListener);
-        settings_lnb_ku_value_5.setOnCheckedChangeListener(generalOnCheckedChangeListener);
-        settings_lnb_ku_value_6.setOnCheckedChangeListener(generalOnCheckedChangeListener);
-        settings_lnb_ku_value_7.setOnCheckedChangeListener(generalOnCheckedChangeListener);
+        administrator_settings_lnb_ku_value_1.setOnCheckedChangeListener(generalOnCheckedChangeListener);
+        administrator_settings_lnb_ku_value_2.setOnCheckedChangeListener(generalOnCheckedChangeListener);
+        administrator_settings_lnb_ku_value_3.setOnCheckedChangeListener(generalOnCheckedChangeListener);
+        administrator_settings_lnb_ku_value_4.setOnCheckedChangeListener(generalOnCheckedChangeListener);
+        administrator_settings_lnb_ku_value_5.setOnCheckedChangeListener(generalOnCheckedChangeListener);
+        administrator_settings_lnb_ku_value_6.setOnCheckedChangeListener(generalOnCheckedChangeListener);
+        administrator_settings_lnb_ku_value_7.setOnCheckedChangeListener(generalOnCheckedChangeListener);
 
-        settings_lnb_ka_value_1.setOnCheckedChangeListener(generalOnCheckedChangeListener);
-        settings_lnb_ka_value_2.setOnCheckedChangeListener(generalOnCheckedChangeListener);
+        administrator_settings_lnb_ka_value_1.setOnCheckedChangeListener(generalOnCheckedChangeListener);
+        administrator_settings_lnb_ka_value_2.setOnCheckedChangeListener(generalOnCheckedChangeListener);
         */
         PopDialog popDialog = new PopDialog(this);
 
@@ -137,9 +137,9 @@ public class LowNoiseBlockOscillatorActivity extends AppCompatActivity {
                 for (int i = 0; i < childCount; i++){
                     if (edGroup.getChildAt(i) instanceof RelativeLayout){
                         if (!isCustom){
-                            settings_lnb_ku_value_7.setChecked(false);
+                            administrator_settings_lnb_ku_value_7.setChecked(false);
                         } else {
-                            settings_lnb_ku_value_7.setChecked(true);
+                            administrator_settings_lnb_ku_value_7.setChecked(true);
                         }
                     }else if (edGroup.getChildAt(i).getId() != compoundButton.getId()){
                         CustomRadioButton rdButton =  (CustomRadioButton)edGroup.getChildAt(i);

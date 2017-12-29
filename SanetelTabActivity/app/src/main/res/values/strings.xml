@@ -627,8 +627,8 @@
     <string name="settings_amplifier_manufacture_6">Sanetel</string>
     <string name="settings_amplifier_manufacture_message_second">更换参数</string>
     <string name="settings_amplifier_manufacture_message_third_start">点击</string>
-    <string name="settings_amplifier_oscillator_value_1">12800</string>
-    <string name="settings_amplifier_oscillator_value_2">13050</string>
+    <string name="administrator_settings_amplifier_oscillator_value_1">12800</string>
+    <string name="administrator_settings_amplifier_oscillator_value_2">13050</string>
     <string name="oscillator_unit">MHz</string>
     <string name="settings_amplifier_oscillator_value">本振值（MHz）</string>
     <string name="settings_amplifier_oscillator_message_second">更换参数</string>
@@ -646,15 +646,15 @@
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;选择开关后点击设置，邻星干扰将关闭；功放发射进入手动开关模式。退出“发射手动”功能后，恢复邻星干扰功能。
 </string>
     <string name="settings_lnb_value">本振值(MHz)</string>
-    <string name="settings_lnb_ka_value_1">17400</string>
-    <string name="settings_lnb_ka_value_2">19250</string>
-    <string name="settings_lnb_ku_value_1">05150</string>
-    <string name="settings_lnb_ku_value_2">09750</string>
-    <string name="settings_lnb_ku_value_3">10000</string>
-    <string name="settings_lnb_ku_value_4">10750</string>
-    <string name="settings_lnb_ku_value_5">11300</string>
-    <string name="settings_lnb_ku_value_6">10600</string>
-    <string name="settings_lnb_ku_value_7">17400</string>
+    <string name="administrator_settings_lnb_ka_value_1">17400</string>
+    <string name="administrator_settings_lnb_ka_value_2">19250</string>
+    <string name="administrator_settings_lnb_ku_value_1">05150</string>
+    <string name="administrator_settings_lnb_ku_value_2">09750</string>
+    <string name="administrator_settings_lnb_ku_value_3">10000</string>
+    <string name="administrator_settings_lnb_ku_value_4">10750</string>
+    <string name="administrator_settings_lnb_ku_value_5">11300</string>
+    <string name="administrator_settings_lnb_ku_value_6">10600</string>
+    <string name="administrator_settings_lnb_ku_value_7">17400</string>
     <string name="settings_lnb_message_first_line">根据实际LNB选择。</string>
     <string name="settings_antenna_restart_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;此功能能够在系统不断电的情况下通过软件实现天线重新启动。在一些不希望天线断电的场合可以用到此功能。\n
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;按重启2秒后，天线自己重新启动。</string>

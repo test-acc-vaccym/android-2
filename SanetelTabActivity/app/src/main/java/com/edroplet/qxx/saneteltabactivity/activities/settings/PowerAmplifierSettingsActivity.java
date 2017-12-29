@@ -61,7 +61,7 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
 
     private int startPosition;
     public static final String positionKey = "position";
-    public static final int interferPosition = 0;
+    public static final int interfererPosition = 0;
     public static final int emitPosition = 1;
     //Tab 文字
     private final int[] TAB_TITLES = new int[]{
@@ -105,17 +105,11 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         fab.setVisibility(View.INVISIBLE);
                         switch (item.getItemId()) {
-                            case R.id.settings_power_amplifier_bottom_navigation_factory:
-                                mViewPager.setCurrentItem(0);
-                                break;
-                            case R.id.settings_power_amplifier_bottom_navigation_oscillator:
-                                mViewPager.setCurrentItem(1);
-                                break;
                             case R.id.settings_power_amplifier_bottom_navigation_interfere:
-                                mViewPager.setCurrentItem(2);
+                                mViewPager.setCurrentItem(interfererPosition);
                                 break;
                             case R.id.settings_power_amplifier_bottom_navigation_emit:
-                                mViewPager.setCurrentItem(3);
+                                mViewPager.setCurrentItem(emitPosition);
                         }
                         return false;
                     }

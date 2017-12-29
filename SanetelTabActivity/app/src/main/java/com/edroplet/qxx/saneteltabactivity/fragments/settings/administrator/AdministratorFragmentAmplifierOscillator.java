@@ -1,4 +1,4 @@
-package com.edroplet.qxx.saneteltabactivity.fragments.settings;
+package com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,19 +18,14 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCusto
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by qxs on 2017/9/19.
+ * 功放本振
  */
 
-public class SettingsFragmentAmplifierOscillator extends Fragment {
-    public static SettingsFragmentAmplifierOscillator newInstance(String info) {
-        Bundle args = new Bundle();
-        SettingsFragmentAmplifierOscillator fragment = new SettingsFragmentAmplifierOscillator();
-        args.putString("info", info);
-        fragment.setArguments(args);
-        return fragment;
-    }
+public class AdministratorFragmentAmplifierOscillator extends Fragment {
 
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
@@ -44,12 +39,26 @@ public class SettingsFragmentAmplifierOscillator extends Fragment {
     public static final String Key_amplifier_oscillator_id="Key_amplifier_oscillator_id";
     public static final String Key_amplifier_oscillator_value="Key_amplifier_oscillator_value";
 
+    private Unbinder unbinder;
+
+
+    public static AdministratorFragmentAmplifierOscillator newInstance() {
+        Bundle args = new Bundle();
+        AdministratorFragmentAmplifierOscillator fragment = new AdministratorFragmentAmplifierOscillator();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_administrator_settings_amplifier_oscillator, null);
+        if (view == null){
+            return null;
+        }
 
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
+
         final Context context = getContext();
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,16 +73,18 @@ public class SettingsFragmentAmplifierOscillator extends Fragment {
         });
 
         int checkedId = CustomSP.getInt(context, Key_amplifier_oscillator_id, R.id.administrator_settings_amplifier_oscillator_value_1);
-        if (checkedId == 0)
+        if (checkedId == 0) {
             checkedId = R.id.administrator_settings_amplifier_oscillator_value_1;
+        }
 
         if (view.findViewById(checkedId) instanceof CustomRadioButton ) {
             CustomRadioButton radioButton = (CustomRadioButton) view.findViewById(checkedId);
             radioButton.setChecked(true);
         }
 
-        if (checkedId == R.id.administrator_settings_amplifier_oscillator_value_3)
-            oscillatorCustomValue.setText(CustomSP.getString(context,Key_amplifier_oscillator_value,""));
+        if (checkedId == R.id.administrator_settings_amplifier_oscillator_value_3) {
+            oscillatorCustomValue.setText(CustomSP.getString(context, Key_amplifier_oscillator_value, ""));
+        }
 
         // 设置自定义框内容
         PopDialog popDialog = new PopDialog();
@@ -90,5 +101,11 @@ public class SettingsFragmentAmplifierOscillator extends Fragment {
         popDialog.show();
 
         return view;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

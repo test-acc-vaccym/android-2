@@ -63,31 +63,6 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
 
         ViewInject.inject(this,this);
 
-        findViewById(R.id.administrator_amplifier_factory).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AdministratorActivity.this, PowerAmplifierSettingsActivity.class);
-                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, 0);
-                startActivity(intent);
-            }
-        });
-
-        findViewById(R.id.administrator_amplifier_oscillator).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AdministratorActivity.this, PowerAmplifierSettingsActivity.class);
-                intent.putExtra(PowerAmplifierSettingsActivity.positionKey, 1);
-                startActivity(intent);
-            }
-        });
-
-        findViewById(R.id.administrator_lnb_frequency_channel).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(AdministratorActivity.this, LowNoiseBlockOscillatorActivity.class));
-            }
-        });
-
         findViewById(R.id.main_settings_antenna_restart).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,38 +93,44 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
         Intent intent = new Intent(this, AdministratorSettingsActivity.class);
         switch (v.getId()){
+            case R.id.administrator_amplifier_factory:
+                intent.putExtra(AdministratorSettingsPosition, AdministratorSettingsActivity.amplifierFactoryPosition);
+                break;
+            case R.id.administrator_amplifier_oscillator:
+                intent.putExtra(AdministratorSettingsPosition, AdministratorSettingsActivity.amplifierOscillatorPosition);
+                break;
             case R.id.administrator_antenna_incriminate:
-                intent.putExtra(AdministratorSettingsPosition, 0);
+                intent.putExtra(AdministratorSettingsPosition, AdministratorSettingsActivity.antennaIncriminatePosition);
                 break;
             case R.id.administrator_recovery_factory:
-                intent.putExtra(AdministratorSettingsPosition, 1);
+                intent.putExtra(AdministratorSettingsPosition, AdministratorSettingsActivity.recoveryFactoryPosition);
                 break;
             case R.id.administrator_antenna_type:
-                intent.putExtra(AdministratorSettingsPosition, 2);
+                intent.putExtra(AdministratorSettingsPosition, AdministratorSettingsActivity.antennaTypePosition);
                 break;
             case R.id.administrator_wifi_name:
-                intent.putExtra(AdministratorSettingsPosition, 3);
+                intent.putExtra(AdministratorSettingsPosition, AdministratorSettingsActivity.wifiNamePosition);
                 break;
             case R.id.administrator_ip_settings:
-                intent.putExtra(AdministratorSettingsPosition, 4);
+                intent.putExtra(AdministratorSettingsPosition, AdministratorSettingsActivity.ipSettingsPosition);
                 break;
             case R.id.administrator_network_protocol:
-                intent.putExtra(AdministratorSettingsPosition, 5);
+                intent.putExtra(AdministratorSettingsPosition, AdministratorSettingsActivity.networkProtocolPosition);
                 break;
             case R.id.administrator_serial_protocol:
-                intent.putExtra(AdministratorSettingsPosition, 6);
+                intent.putExtra(AdministratorSettingsPosition, AdministratorSettingsActivity.serialProtocolPosition);
                 break;
             case R.id.administrator_band_select:
-                intent.putExtra(AdministratorSettingsPosition, 7);
+                intent.putExtra(AdministratorSettingsPosition, AdministratorSettingsActivity.bandSelectPosition);
                 break;
             case R.id.administrator_lnb_frequency_channel:
-                intent.putExtra(AdministratorSettingsPosition, 8);
+                intent.putExtra(AdministratorSettingsPosition, AdministratorSettingsActivity.lnbPosition);
                 break;
             case R.id.administrator_searching_range:
-                intent.putExtra(AdministratorSettingsPosition, 9);
+                intent.putExtra(AdministratorSettingsPosition, AdministratorSettingsActivity.searchingRangePosition);
                 break;
             case R.id.administrator_amplifier_monitor:
-                intent.putExtra(AdministratorSettingsPosition, 10);
+                intent.putExtra(AdministratorSettingsPosition, AdministratorSettingsActivity.amplifierMonitorPosition);
                 break;
             default:
                 break;

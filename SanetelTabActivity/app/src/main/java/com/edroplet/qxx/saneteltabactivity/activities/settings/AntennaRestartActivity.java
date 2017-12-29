@@ -2,15 +2,14 @@ package com.edroplet.qxx.saneteltabactivity.activities.settings;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 public class AntennaRestartActivity extends AppCompatActivity {
 
@@ -22,8 +21,18 @@ public class AntennaRestartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_antenna_restart);
         ViewInject.inject(this, this);
-        StatusBarControl.setupToolbar(this, R.id.antenna_restart_toolbar);
+        // StatusBarControl.setupToolbar(this, R.id.antenna_restart_toolbar);
+        // 设置标题栏
+        Toolbar toolbar = (Toolbar) findViewById(R.id.antenna_restart_toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
+        // 设置对话框
         PopDialog popDialog = new PopDialog(this);
 
         popDialog.setView(findViewById(R.id.main_settings_antenna_restart_pop));

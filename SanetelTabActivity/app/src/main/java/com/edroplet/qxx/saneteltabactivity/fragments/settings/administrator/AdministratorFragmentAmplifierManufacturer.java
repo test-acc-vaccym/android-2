@@ -1,4 +1,4 @@
-package com.edroplet.qxx.saneteltabactivity.fragments.settings;
+package com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,20 +18,14 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCusto
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by qxs on 2017/9/19.
- * 功放厂家
  */
 
-public class SettingsFragmentAmplifierManufacture extends Fragment {
-    public static SettingsFragmentAmplifierManufacture newInstance(String info) {
-        Bundle args = new Bundle();
-        SettingsFragmentAmplifierManufacture fragment = new SettingsFragmentAmplifierManufacture();
-        args.putString("info", info);
-        fragment.setArguments(args);
-        return fragment;
-    }
+public class AdministratorFragmentAmplifierManufacturer extends Fragment {
+
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
 
@@ -54,14 +48,31 @@ public class SettingsFragmentAmplifierManufacture extends Fragment {
     @BindView(R.id.settings_amplifier_manufacture_custom_value)
     CustomEditText manufactureCustomValue;
 
+
     public static final String KEY_amplifier_manufacture="KEY_amplifier_manufacture";
     public static final String KEY_amplifier_manufacture_id="KEY_amplifier_manufacture_id";
+
+    private Unbinder unbinder;
+
+
+    public static AdministratorFragmentAmplifierManufacturer newInstance() {
+        Bundle args = new Bundle();
+        AdministratorFragmentAmplifierManufacturer fragment = new AdministratorFragmentAmplifierManufacturer();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_administrator_settings_amplifier_manufacture, null);
+        if (view == null){
+            return null;
+        }
 
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
+
+        final Context context = getContext();
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +105,6 @@ public class SettingsFragmentAmplifierManufacture extends Fragment {
         // 设置自定义框内容
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);
-        Context context = getContext();
         popDialog.setContext(context);
         Bundle bundle = new Bundle();
         bundle.putBoolean(PopDialog.SHOW_SECOND, true);
@@ -107,5 +117,11 @@ public class SettingsFragmentAmplifierManufacture extends Fragment {
         popDialog.show();
 
         return view;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

@@ -347,7 +347,7 @@
 
     <!--数据采集-->
     <string name="main_collect_data">数据采集</string>
-    <string name="main_collect_data_history">▤ 历史文件</string>
+    <string name="main_collect_data_history">历史文件</string>
     <string name="main_collect_data_history_list_title">历史文件</string>
     <string name="main_collect_data_history_list_name">文件名称</string>
     <string name="main_collect_data_history_list_date">时间</string>
@@ -356,7 +356,7 @@
     <string name="main_collect_data_history_list_delete_all">删除所有</string>
     <string name="main_collect_data_history_list_select_ok">确认</string>
     <string name="main_collect_data_history_list_select_cancel">取消</string>
-    <string name="main_collect_data_new">▯ 新建文件</string>
+    <string name="main_collect_data_new">新建文件</string>
     <string name="main_collect_data_new_file_name">输入文件名称</string>
     <string name="main_collect_data_clear">▲清空</string>
     <string name="main_collect_data_start">▲开始</string>

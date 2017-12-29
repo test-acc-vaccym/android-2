@@ -38,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_background"
                 android:padding="@dimen/no_padding"
+                android:drawableStart="@drawable/history"
                 android:text="@string/main_collect_data_history"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title"
                 android:textColor="@color/button_text" />
@@ -47,6 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_background"
+                android:drawableStart="@drawable/new_file"
                 android:padding="@dimen/no_padding"
                 android:text="@string/main_collect_data_new"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title"

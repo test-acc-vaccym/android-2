@@ -7,7 +7,7 @@ package com.edroplet.qxx.saneteltabactivity.beans;
 public class WaveBand {
 
     // 波段设置字段
-    public static final String Key = "waveBand";
+    public static final String Key = "bandType";
     public static final String KA = "ka";
     public static final String KU = "ku";
 

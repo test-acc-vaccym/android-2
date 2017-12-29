@@ -48,7 +48,7 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
             R.string.administrator_recovery_factory,R.string.administrator_antenna_type,
             R.string.administrator_wifi_name, R.string.administrator_ip_settings,
             R.string.administrator_network_protocol, R.string.administrator_serial_protocol,
-            R.string.administrator_band_select, R.string.administrator_lnb_frequency_channel,
+            R.string.administrator_band_select, R.string.main_settings_lnb_oscillator,
             R.string.administrator_searching_range, R.string.administrator_amplifier_monitor,
             R.string.main_settings_amplifier_factory,R.string.main_settings_amplifier_oscillator};
 

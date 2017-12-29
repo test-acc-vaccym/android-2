@@ -40,6 +40,9 @@
         android:text="@string/main_settings_antenna_restart"
         android:textAppearance="?android:attr/textAppearanceLarge"/-->
     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        android:layout_marginTop="@dimen/pop_margin"
+        android:layout_marginStart="@dimen/marginLeft"
+        android:layout_marginEnd="@dimen/marginRight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"

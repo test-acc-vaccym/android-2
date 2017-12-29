@@ -22,8 +22,8 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
 
 public class LowNoiseBlockOscillatorActivity extends AppCompatActivity {
-    @BindId(R.id.lnb_toolbar)
-    private Toolbar lnbToolbar;
+//    @BindId(R.id.lnb_toolbar)
+//    private Toolbar lnbToolbar;
 
     @BindId(R.id.layout_lnb_ku)
     private LinearLayout linearLayoutKu;
@@ -67,12 +67,12 @@ public class LowNoiseBlockOscillatorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_low_noise_block_oscillator);
 
         ViewInject.inject(this, this);
-        lnbToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+//        lnbToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
 
         String band = CustomSP.getString(this, WaveBand.Key, WaveBand.KU);
         // 根据不同的波段显示不同的layout

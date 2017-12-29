@@ -29,8 +29,6 @@ import butterknife.ButterKnife;
 public class AdministratorFragmentLNBOscillator extends Fragment {
     private static final String LNBFrequency = "lnbFrequency";
     private  final int[] icons = {R.drawable.antenna_exploded };
-    @BindView(R.id.lnb_toolbar)
-    Toolbar lnbToolbar;
 
     @BindView(R.id.layout_lnb_ku)
     LinearLayout linearLayoutKu;
@@ -45,7 +43,7 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
     CustomButton thirdButton;
 
     @BindView(R.id.low_noise_block_oscillator_ka_radio_group)
-    RadioButton oscillatorKaSelect;
+    CustomRadioGroupWithCustomRadioButton oscillatorKaSelect;
 
     @BindView(R.id.administrator_settings_lnb_ku_value_1)
     RadioButton administrator_settings_lnb_ku_value_1;
@@ -96,13 +94,6 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
 
         ButterKnife.bind(this, view);
         Context context = getContext();
-
-        lnbToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().finish();
-            }
-        });
 
         String band = CustomSP.getString(context, WaveBand.Key, WaveBand.KU);
         // 根据不同的波段显示不同的layout

@@ -777,4 +777,11 @@
     <string name="title_activity_downlist">下载列表</string>
 
     <string name="value_error">数值错误，请看提示</string>
+
+
+    <string name="satellite_polarization_horizontal">水平</string>
+    <string name="satellite_polarization_vertical">垂直</string>
+    <string name="satellite_polarization_left_hand">左旋</string>
+    <string name="satellite_polarization_right_hand">右旋</string>
+
 </resources>

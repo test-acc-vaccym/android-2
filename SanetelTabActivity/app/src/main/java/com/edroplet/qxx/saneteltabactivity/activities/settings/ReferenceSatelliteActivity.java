@@ -6,20 +6,20 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.util.Log;
 import android.util.SparseIntArray;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
-import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.adapters.SpinnerAdapter2;
+import com.edroplet.qxx.saneteltabactivity.beans.PolarizationMode;
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.Satellites;
-import com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentLocation;
 import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
@@ -27,8 +27,6 @@ import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 
@@ -43,7 +41,7 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
     private CustomTextView thirdEnd;
 
     @BindId(R.id.reference_satellite_select_radio_group)
-    private CustomRadioGroupWithCustomRadioButton referenceSatelliteSelectGroup;
+    private RadioGroup referenceSatelliteSelectGroup;
 
     @BindId(R.id.reference_satellite_select_satellites)
     private Spinner satellitesSpinner;
@@ -56,10 +54,11 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
     @BindId(R.id.settings_reference_beacon)
     private CustomTextView beacon;
     @BindId(R.id.settings_reference_ag)
-    private CustomTextView agThrehold;
+    private CustomTextView agThreshold;
     @BindId(R.id.settings_reference_dvb)
     private CustomTextView dvbSymbolRate;
-
+    @BindId(R.id.settings_reference_carrier)
+    private CustomTextView tvCarrier;
     @BindId(R.id.pop_dialog_third_button)
     private CustomButton thirdButton;
 
@@ -70,6 +69,7 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
     private static final String KEY_REFERENCE_SATELLITE_SEARCHING_BEACON = "KEY_REFERENCE_SATELLITE_SEARCHING_BEACON";
     private static final String KEY_REFERENCE_SATELLITE_SEARCHING_AG = "KEY_REFERENCE_SATELLITE_SEARCHING_AG";
     private static final String KEY_REFERENCE_SATELLITE_SEARCHING_DVB = "KEY_REFERENCE_SATELLITE_SEARCHING_DVB";
+    private static final String KEY_REFERENCE_SATELLITE_SEARCHING_CARRIER = "KEY_REFERENCE_SATELLITE_SEARCHING_CARRIER";
 
     static SparseIntArray mapReferenceSatellite = new SparseIntArray(2);
 
@@ -102,7 +102,7 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
             }
         });
 
-        agThrehold.setFilters(new InputFilter[]{new InputFilterFloat(0, 10.0f)});
+        agThreshold.setFilters(new InputFilter[]{new InputFilterFloat(0, 10.0f)});
         beacon.setFilters(new InputFilter[]{new InputFilterFloat(0, 40000)});
         beacon.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -126,30 +126,50 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: 2017/10/23 设置命令
+
                 @IdRes int checkedId = referenceSatelliteSelectGroup.getCheckedRadioButtonId();
+                int searchMode = mapReferenceSatellite.indexOfValue(checkedId);
                 CustomSP.putInt(ReferenceSatelliteActivity.this,
                         KEY_REFERENCE_SATELLITE_SEARCHING_MODE,
-                        mapReferenceSatellite.indexOfValue(checkedId));
+                        searchMode);
 
                 CustomSP.putString(ReferenceSatelliteActivity.this,
                         KEY_REFERENCE_SATELLITE_SEARCHING_SATELLITE,
                         selectedSatellite);
+
                 CustomSP.putString(ReferenceSatelliteActivity.this,
                         KEY_REFERENCE_SATELLITE_SEARCHING_SATELLITE_POLARIZATION,
                         selectedPolarization);
+
+                String longitudeVal = longitude.getText().toString();
                 CustomSP.putString(ReferenceSatelliteActivity.this,
-                        KEY_REFERENCE_SATELLITE_SEARCHING_LONGITUDE,
-                        longitude.getText().toString());
+                        KEY_REFERENCE_SATELLITE_SEARCHING_LONGITUDE, longitudeVal);
+
+                String beaconVal = beacon.getText().toString();
                 CustomSP.putString(ReferenceSatelliteActivity.this,
                         KEY_REFERENCE_SATELLITE_SEARCHING_BEACON,
-                        beacon.getText().toString());
+                        beaconVal);
+
+                String agThresholdVal = agThreshold.getText().toString();
                 CustomSP.putString(ReferenceSatelliteActivity.this,
                         KEY_REFERENCE_SATELLITE_SEARCHING_AG,
-                        agThrehold.getText().toString());
+                        agThresholdVal);
+
+                String dvbVal = dvbSymbolRate.getText().toString();
                 CustomSP.putString(ReferenceSatelliteActivity.this,
                         KEY_REFERENCE_SATELLITE_SEARCHING_DVB,
-                        dvbSymbolRate.getText().toString());
+                        dvbVal);
+
+                String carrier = tvCarrier.getText().toString();
+                CustomSP.putString(ReferenceSatelliteActivity.this,
+                        KEY_REFERENCE_SATELLITE_SEARCHING_CARRIER,
+                        carrier);
+                // TODO: 2017/10/23 设置命令
+                // 卫星经度,极化方式,寻星门限,信标频率,载波频率,符号率,寻星方式
+                int polarizationMode = PolarizationMode.getMap(ReferenceSatelliteActivity.this).get(selectedPolarization);
+                String message = String.format(Protocol.cmdSetRefData, longitudeVal, polarizationMode, agThresholdVal, beaconVal, carrier, dvbVal, searchMode);
+                Log.e(ReferenceSatelliteActivity.class.getSimpleName(), message);
+                Protocol.sendMessage(ReferenceSatelliteActivity.this, message);
             }
         });
 
@@ -184,7 +204,7 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
         int pos = CustomSP.getInt(ReferenceSatelliteActivity.this,
                 KEY_REFERENCE_SATELLITE_SEARCHING_MODE,
                 0);
-        referenceSatelliteSelectGroup.setCheckedId(mapReferenceSatellite.get(pos));
+        referenceSatelliteSelectGroup.check(mapReferenceSatellite.get(pos));
 
         longitude.setText(CustomSP.getString(ReferenceSatelliteActivity.this,
                 KEY_REFERENCE_SATELLITE_SEARCHING_LONGITUDE,
@@ -192,7 +212,7 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
         beacon.setText(CustomSP.getString(ReferenceSatelliteActivity.this,
                 KEY_REFERENCE_SATELLITE_SEARCHING_BEACON,
                 ""));
-        agThrehold.setText(CustomSP.getString(ReferenceSatelliteActivity.this,
+        agThreshold.setText(CustomSP.getString(ReferenceSatelliteActivity.this,
                 KEY_REFERENCE_SATELLITE_SEARCHING_AG,
                 ""));
         dvbSymbolRate.setText(CustomSP.getString(ReferenceSatelliteActivity.this,
@@ -238,7 +258,7 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
                     }
                     longitude.setText(satelliteInfo.longitude);
                     beacon.setText(satelliteInfo.beacon);
-                    agThrehold.setText(satelliteInfo.threshold);
+                    agThreshold.setText(satelliteInfo.threshold);
                     // todo dvb数据哪里来
                     dvbSymbolRate.setText(satelliteInfo.symbolRate);
                 }
@@ -273,7 +293,7 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
                             }
                             longitude.setText(satelliteInfo.longitude);
                             beacon.setText(satelliteInfo.beacon);
-                            agThrehold.setText(satelliteInfo.threshold);
+                            agThreshold.setText(satelliteInfo.threshold);
                             // todo dvb数据哪里来
                             dvbSymbolRate.setText(satelliteInfo.symbolRate);
                         }
@@ -296,7 +316,7 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
                     if (satelliteInfo != null) {
                         longitude.setText(satelliteInfo.longitude);
                         beacon.setText(satelliteInfo.beacon);
-                        agThrehold.setText(satelliteInfo.threshold);
+                        agThreshold.setText(satelliteInfo.threshold);
                         // todo dvb数据哪里来
                         dvbSymbolRate.setText(satelliteInfo.symbolRate);
                     }

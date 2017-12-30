@@ -133,8 +133,8 @@ public class Protocol {
     public static final String cmdGetRefDataResultHead="$cmd,ref sat data,";
     public static final String cmdGetRefDataResult = cmdGetRefDataResultHead + "%s,%s,%s,%s,%s,%s,%s*ff\r\n";
     // 4.11.2	设置
-    // $cmd,set ref sat,信标频率,卫星经度,极化方式,符号率,寻星模式,寻星门限*ff*ff\r\n
-    public static final String cmdSetRefData="$cmd,set ref sat,%s,%s,%s,%s,%s,%s*ff\r\n";
+    // $cmd,set ref sat,卫星经度,极化方式,寻星门限,信标频率,载波频率,符号率,寻星方式*ff\r\n
+    public static final String cmdSetRefData="$cmd,set ref sat,%s,%s,%s,%s,%s,%s,%s*ff\r\n";
     public static final String cmdSetRefDataResultHead = "$cmd,ref sat ";
     public static final String cmdSetRefDataResult = cmdSetRefDataResultHead + "set ok*ff\r\n";
 

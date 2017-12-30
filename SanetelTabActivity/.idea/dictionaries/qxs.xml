@@ -2,6 +2,8 @@
   <dictionary name="qxs">
     <words>
       <w>gnss</w>
+      <w>levoclination</w>
+      <w>levoversion</w>
       <w>palstance</w>
       <w>sanetel</w>
       <w>xwwt</w>

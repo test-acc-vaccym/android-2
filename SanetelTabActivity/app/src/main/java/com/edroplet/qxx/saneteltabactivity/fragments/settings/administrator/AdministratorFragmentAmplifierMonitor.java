@@ -30,23 +30,23 @@ public class AdministratorFragmentAmplifierMonitor extends Fragment {
     public static final String KEY_AMPLIFIER_MONITOR = "KEY_AMPLIFIER_MONITOR";
     private  final int[] icons = {R.drawable.antenna_exploded };
 
-    public static SparseIntArray mapAmplifierMonitorSelect = new SparseIntArray();
+    public static SparseIntArray mapAmplifierMonitorPosId = new SparseIntArray();
 
-    public static SparseIntArray initMap(){
-        mapAmplifierMonitorSelect.put(R.id.administrator_amplifier_monitor_none, 0);
-        mapAmplifierMonitorSelect.put(R.id.administrator_amplifier_monitor_has, 1);
-        return mapAmplifierMonitorSelect;
+    public static SparseIntArray initSparseIntArray(){
+        mapAmplifierMonitorPosId.put(0, R.id.administrator_amplifier_monitor_none);
+        mapAmplifierMonitorPosId.put(1, R.id.administrator_amplifier_monitor_has);
+        return mapAmplifierMonitorPosId;
     }
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
 
     @BindView(R.id.id_administrator_settings_amplifier_monitor_radio_group)
-    CustomRadioGroupWithCustomRadioButton radioGroupWithCustomRadioButton;
+    CustomRadioGroupWithCustomRadioButton amplifierMonitorRadioGroup;
 
-    @BindView(R.id.administrator_amplifier_monitor_has)
-    CustomRadioButton radioButtonHas;
-    @BindView(R.id.administrator_amplifier_monitor_none)
-    CustomRadioButton radioButtonNone;
+//    @BindView(R.id.administrator_amplifier_monitor_has)
+//    CustomRadioButton radioButtonHas;
+//    @BindView(R.id.administrator_amplifier_monitor_none)
+//    CustomRadioButton radioButtonNone;
 
     private int selected;
 
@@ -81,18 +81,14 @@ public class AdministratorFragmentAmplifierMonitor extends Fragment {
 
         ButterKnife.bind(this, view);
 
-        initMap();
+        initSparseIntArray();
         selected = CustomSP.getInt(context, KEY_AMPLIFIER_MONITOR,0);
-        if (0 == selected){
-            radioButtonNone.setChecked(true);
-        }else{
-            radioButtonHas.setChecked(true);
-        }
+        amplifierMonitorRadioGroup.check(mapAmplifierMonitorPosId.get(selected));
 
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomSP.putInt(getContext(), KEY_AMPLIFIER_MONITOR, mapAmplifierMonitorSelect.get( radioGroupWithCustomRadioButton.getCheckedRadioButtonId()));
+                CustomSP.putInt(getContext(), KEY_AMPLIFIER_MONITOR, mapAmplifierMonitorPosId.indexOfValue( amplifierMonitorRadioGroup.getCheckedRadioButtonId()));
                 // todo send command
                 getActivity().finish();
             }

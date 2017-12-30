@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +12,12 @@ import android.view.ViewGroup;
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
-import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
-import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -25,32 +27,21 @@ public class AdministratorFragmentAntennaType extends Fragment {
     private static final String AntennaType = "antennaType";
     private  final int[] icons = {R.drawable.antenna_exploded };
 
-    @BindId(R.id.pop_dialog_third_button)
-    private CustomButton thirdButton;
+    @BindView(R.id.pop_dialog_third_button)
+    CustomButton thirdButton;
 
-    @BindId(R.id.id_administrator_settings_antenna_type_radio_group)
-    private CustomRadioGroupWithCustomRadioButton radioGroupWithCustomRadioButton;
+    @BindView(R.id.id_administrator_settings_antenna_type_radio_group)
+    CustomRadioGroupWithCustomRadioButton antennaTypeGroup;
 
-    @BindId(R.id.administrator_setting_antenna_type_two_two)
-    private CustomRadioButton radioButtonTwoTwo;
+    static SparseIntArray mapAntennaType = new SparseIntArray(5);
 
-    @BindId(R.id.administrator_setting_antenna_type_two_one)
-    private CustomRadioButton radioButtonTwoOne;
-
-
-    @BindId(R.id.administrator_setting_antenna_type_two_zero)
-    private CustomRadioButton radioButtonTwoZero;
-
-
-    @BindId(R.id.administrator_setting_antenna_type_three_one)
-    private CustomRadioButton radioButtonThreeOne;
-
-
-    @BindId(R.id.administrator_setting_antenna_type_three_zero)
-    private CustomRadioButton radioButtonThreeZero;
-
-    private CustomRadioButton radioButton;
-    private String selected;
+    void initAntennaTypeArray(){
+        mapAntennaType.put(0, R.id.administrator_setting_antenna_type_two_two);
+        mapAntennaType.put(1, R.id.administrator_setting_antenna_type_two_one);
+        mapAntennaType.put(2, R.id.administrator_setting_antenna_type_two_zero);
+        mapAntennaType.put(3, R.id.administrator_setting_antenna_type_three_one);
+        mapAntennaType.put(4, R.id.administrator_setting_antenna_type_three_zero);
+    }
 
     public static AdministratorFragmentAntennaType newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                                String secondLine, boolean showThird, String thirdLineStart,
@@ -77,34 +68,18 @@ public class AdministratorFragmentAntennaType extends Fragment {
         if (view == null){
             return null;
         }
-        ViewInject.inject(getActivity(), getContext());
+        initAntennaTypeArray();
 
-        thirdButton = view.findViewById(R.id.pop_dialog_third_button);
-        radioButtonTwoTwo = view.findViewById(R.id.administrator_setting_antenna_type_two_two);
-        radioButtonTwoOne = view.findViewById(R.id.administrator_setting_antenna_type_two_one);
-        radioButtonTwoZero = view.findViewById(R.id.administrator_setting_antenna_type_two_zero);
-        radioButtonThreeOne = view.findViewById(R.id.administrator_setting_antenna_type_three_one);
-        radioButtonThreeZero = view.findViewById(R.id.administrator_setting_antenna_type_three_zero);
+        ButterKnife.bind(this,view);
 
-        String type = CustomSP.getString(getContext(),AntennaType,getString(R.string.administrator_setting_antenna_type_two_one));
-        if (type.equals(getString(R.string.administrator_setting_antenna_type_two_two))){
-            radioButtonTwoTwo.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_antenna_type_two_one))){
-            radioButtonTwoOne.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_antenna_type_two_zero))){
-            radioButtonTwoZero.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_antenna_type_three_one))){
-            radioButtonThreeOne.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_antenna_type_three_zero))){
-            radioButtonThreeZero.setChecked(true);
-        }
-        radioGroupWithCustomRadioButton = view.findViewById(R.id.id_administrator_settings_antenna_type_radio_group);
+        int type = CustomSP.getInt(getContext(),AntennaType,1);
+        antennaTypeGroup.check(mapAntennaType.get(type));
+
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                radioButton = (CustomRadioButton)view.findViewById(radioGroupWithCustomRadioButton.getCheckedRadioButtonId());
-                selected = radioButton.getText().toString();
-                CustomSP.putString(getContext(), AntennaType, selected);
+
+                CustomSP.putInt(getContext(), AntennaType, mapAntennaType.indexOfValue(antennaTypeGroup.getCheckedRadioButtonId()));
                 // todo send command
                 getActivity().finish();
             }
@@ -130,6 +105,5 @@ public class AdministratorFragmentAntennaType extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
     }
 }

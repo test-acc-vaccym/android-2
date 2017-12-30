@@ -142,25 +142,33 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
                         selectedPolarization);
 
                 String longitudeVal = longitude.getText().toString();
+                if (longitudeVal.isEmpty()) longitudeVal = "0.0";
                 CustomSP.putString(ReferenceSatelliteActivity.this,
                         KEY_REFERENCE_SATELLITE_SEARCHING_LONGITUDE, longitudeVal);
 
                 String beaconVal = beacon.getText().toString();
+                if (beaconVal.isEmpty()) beaconVal = "0.000";
                 CustomSP.putString(ReferenceSatelliteActivity.this,
                         KEY_REFERENCE_SATELLITE_SEARCHING_BEACON,
                         beaconVal);
 
                 String agThresholdVal = agThreshold.getText().toString();
+                if (agThresholdVal.isEmpty()) agThresholdVal = "0.00";
                 CustomSP.putString(ReferenceSatelliteActivity.this,
                         KEY_REFERENCE_SATELLITE_SEARCHING_AG,
                         agThresholdVal);
 
                 String dvbVal = dvbSymbolRate.getText().toString();
+                if (dvbVal.isEmpty())
+                    dvbVal = "0.000";
                 CustomSP.putString(ReferenceSatelliteActivity.this,
                         KEY_REFERENCE_SATELLITE_SEARCHING_DVB,
                         dvbVal);
 
                 String carrier = tvCarrier.getText().toString();
+                if (carrier.isEmpty()){
+                    carrier = "0.000";
+                }
                 CustomSP.putString(ReferenceSatelliteActivity.this,
                         KEY_REFERENCE_SATELLITE_SEARCHING_CARRIER,
                         carrier);

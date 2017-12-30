@@ -167,8 +167,8 @@ public class FunctionsFragmentMonitor extends Fragment {
         }
 
         // 无功放不显示
-        int selected = CustomSP.getInt(context, KEY_AMPLIFIER_MONITOR,R.id.administrator_amplifier_monitor_none);
-        if (R.id.administrator_amplifier_monitor_none == selected){
+        int selected = CustomSP.getInt(context, KEY_AMPLIFIER_MONITOR,0);
+        if (0 == selected){
             monitorAmplifierInfo.setVisibility(View.GONE);
         }else{
             monitorAmplifierInfo.setVisibility(View.VISIBLE);

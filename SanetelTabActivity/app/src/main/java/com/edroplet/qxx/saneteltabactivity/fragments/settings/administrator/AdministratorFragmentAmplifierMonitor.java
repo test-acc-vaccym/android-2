@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,13 @@ public class AdministratorFragmentAmplifierMonitor extends Fragment {
     public static final String KEY_AMPLIFIER_MONITOR = "KEY_AMPLIFIER_MONITOR";
     private  final int[] icons = {R.drawable.antenna_exploded };
 
+    public static SparseIntArray mapAmplifierMonitorSelect = new SparseIntArray();
+
+    public static SparseIntArray initMap(){
+        mapAmplifierMonitorSelect.put(R.id.administrator_amplifier_monitor_none, 0);
+        mapAmplifierMonitorSelect.put(R.id.administrator_amplifier_monitor_has, 1);
+        return mapAmplifierMonitorSelect;
+    }
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
 
@@ -73,8 +81,9 @@ public class AdministratorFragmentAmplifierMonitor extends Fragment {
 
         ButterKnife.bind(this, view);
 
-        selected = CustomSP.getInt(context, KEY_AMPLIFIER_MONITOR,R.id.administrator_amplifier_monitor_none);
-        if (R.id.administrator_amplifier_monitor_none == selected){
+        initMap();
+        selected = CustomSP.getInt(context, KEY_AMPLIFIER_MONITOR,0);
+        if (0 == selected){
             radioButtonNone.setChecked(true);
         }else{
             radioButtonHas.setChecked(true);
@@ -83,7 +92,7 @@ public class AdministratorFragmentAmplifierMonitor extends Fragment {
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomSP.putInt(getContext(), KEY_AMPLIFIER_MONITOR, radioGroupWithCustomRadioButton.getCheckedRadioButtonId());
+                CustomSP.putInt(getContext(), KEY_AMPLIFIER_MONITOR, mapAmplifierMonitorSelect.get( radioGroupWithCustomRadioButton.getCheckedRadioButtonId()));
                 // todo send command
                 getActivity().finish();
             }

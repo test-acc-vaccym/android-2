@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
+import android.util.SparseArray;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,9 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -30,7 +35,7 @@ import butterknife.ButterKnife;
 
 public class AdministratorFragmentLNBOscillator extends Fragment {
     private static final String LNBFrequency = "lnbFrequency";
-    private static final String LNBFrequencyResourceId = "lnbFrequencyResourceId";
+    private static final String LNBFrequencyResourcePos = "LNBFrequencyResourcePos";
     private  final int[] icons = {R.drawable.antenna_exploded };
 
     @BindView(R.id.layout_lnb_ku)
@@ -70,6 +75,12 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
     RadioButton administrator_settings_lnb_ka_value_2;
 
     Context context;
+
+    static SparseIntArray mapKaIdPos = new SparseIntArray();
+    static SparseIntArray mapKuIdPos = new SparseIntArray();
+    static SparseIntArray mapKaPosId = new SparseIntArray();
+    static SparseIntArray mapKuPosId = new SparseIntArray();
+
     public static AdministratorFragmentLNBOscillator newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                                  String secondLine, boolean showThird, String thirdLineStart,
                                                                  int icon, String buttonText, String thirdLineEnd) {
@@ -97,6 +108,27 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
         }
 
         ButterKnife.bind(this, view);
+        mapKaIdPos.put(R.id.id_administrator_settings_lnb_ka_value_1,0);
+        mapKaIdPos.put(R.id.id_administrator_settings_lnb_ka_value_2,1);
+        mapKaPosId.put(0,R.id.id_administrator_settings_lnb_ka_value_1);
+        mapKaPosId.put(1,R.id.id_administrator_settings_lnb_ka_value_2);
+
+        mapKuIdPos.put(R.id.id_administrator_settings_lnb_ku_value_1, 0);
+        mapKuIdPos.put(R.id.id_administrator_settings_lnb_ku_value_2, 1);
+        mapKuIdPos.put(R.id.id_administrator_settings_lnb_ku_value_3, 2);
+        mapKuIdPos.put(R.id.id_administrator_settings_lnb_ku_value_4, 3);
+        mapKuIdPos.put(R.id.id_administrator_settings_lnb_ku_value_5, 4);
+        mapKuIdPos.put(R.id.id_administrator_settings_lnb_ku_value_6, 5);
+        mapKuIdPos.put(R.id.id_administrator_settings_lnb_ku_value_7, 6);
+
+        mapKuPosId.put(0, R.id.id_administrator_settings_lnb_ku_value_1);
+        mapKuPosId.put(1, R.id.id_administrator_settings_lnb_ku_value_2);
+        mapKuPosId.put(2, R.id.id_administrator_settings_lnb_ku_value_3);
+        mapKuPosId.put(3, R.id.id_administrator_settings_lnb_ku_value_4);
+        mapKuPosId.put(4, R.id.id_administrator_settings_lnb_ku_value_5);
+        mapKuPosId.put(5, R.id.id_administrator_settings_lnb_ku_value_6);
+        mapKuPosId.put(6, R.id.id_administrator_settings_lnb_ku_value_7);
+
         context = getContext();
 
         final String band = CustomSP.getString(context, WaveBand.Key, WaveBand.KU);
@@ -107,8 +139,10 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
             linearLayoutKa.setVisibility(View.GONE);
 
             // 设置选择的值
-            int id = CustomSP.getInt(getContext(),LNBFrequencyResourceId, R.id.id_administrator_settings_lnb_ku_value_5);
-            ((RadioButton) view.findViewById(id)).setChecked(true);
+            int idPos = CustomSP.getInt(getContext(),LNBFrequencyResourcePos, 4);
+            int id = (Integer) mapKuPosId.get(idPos);
+            // ((RadioButton) view.findViewById(id)).setChecked(true);
+            oscillatorKuSelect.check(id);
             if (id == R.id.id_administrator_settings_lnb_ku_value_7){
                 ((CustomEditText) view.findViewById(R.id.top_custom_val)).setText(CustomSP.getString(context, LNBFrequency,"")) ;
             }else {
@@ -119,8 +153,10 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
             linearLayoutKa.setVisibility(View.VISIBLE);
             linearLayoutKu.setVisibility(View.GONE);
             // 设置选择的值
-            int id = CustomSP.getInt(context,LNBFrequencyResourceId, R.id.id_administrator_settings_lnb_ka_value_1);
-            ((RadioButton) view.findViewById(id)).setChecked(true);
+            int id = (Integer) mapKaPosId.get( CustomSP.getInt(context,LNBFrequencyResourcePos, 0));
+            // ((RadioButton) view.findViewById(id)).setChecked(true);
+            oscillatorKaSelect.check(id);
+
         }
 
         thirdButton.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +165,7 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
                 String val;
                 if (band.equals(WaveBand.KU)) {
                     int id = oscillatorKuSelect.getCheckedRadioButtonId();
-                    CustomSP.putInt(context,LNBFrequencyResourceId,id);
+                    CustomSP.putInt(context,LNBFrequencyResourcePos,(Integer) mapKuIdPos.get(id));
                     if (id != R.id.id_administrator_settings_lnb_ku_value_7){
                         val = ((RadioButton) view.findViewById(id)).getText().toString() ;
                     }else {
@@ -138,7 +174,7 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
                     CustomSP.putString(context, LNBFrequency, val);
                 }else{
                     int id = oscillatorKaSelect.getCheckedRadioButtonId();
-                    CustomSP.putInt(context,LNBFrequencyResourceId,id);
+                    CustomSP.putInt(context,LNBFrequencyResourcePos,(Integer) mapKaIdPos.get(id));
                     val = ((RadioButton) view.findViewById(id)).getText().toString() ;
                     CustomSP.putString(context, LNBFrequency, val);
                 }

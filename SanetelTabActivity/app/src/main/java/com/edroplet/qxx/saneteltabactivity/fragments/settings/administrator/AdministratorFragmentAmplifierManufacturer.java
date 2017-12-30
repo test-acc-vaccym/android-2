@@ -91,9 +91,7 @@ public class AdministratorFragmentAmplifierManufacturer extends Fragment {
             public void onClick(View v) {
                 int checkedId = manufactureGroup.getCheckedRadioButtonId();
                 CustomSP.putInt(getContext(), KEY_amplifier_manufacture_position, mapAmplifierManufacturePosId.indexOfValue(checkedId));
-                if (checkedId != R.id.settings_amplifier_manufacture_7){
-                    CustomSP.putString(getContext(), KEY_amplifier_manufacture, ((CustomRadioButton) view.findViewById(checkedId)).getText().toString());
-                }else {
+                if (checkedId == R.id.settings_amplifier_manufacture_7){
                     CustomSP.putString(getContext(), KEY_amplifier_manufacture, manufactureCustomValue.getText().toString());
                 }
             }

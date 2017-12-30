@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,9 +50,18 @@ public class AdministratorFragmentAmplifierOscillator extends Fragment {
         return fragment;
     }
 
+    static SparseIntArray mapAmplifierOscillatorPosId = new SparseIntArray(3);
+
+    void initSparseIntArray(){
+        mapAmplifierOscillatorPosId.put(0, R.id.id_administrator_settings_amplifier_oscillator_value_1);
+        mapAmplifierOscillatorPosId.put(1, R.id.id_administrator_settings_amplifier_oscillator_value_2);
+        mapAmplifierOscillatorPosId.put(2, R.id.id_administrator_settings_amplifier_oscillator_value_3);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        initSparseIntArray();
         final View view = inflater.inflate(R.layout.fragment_administrator_settings_amplifier_oscillator, null);
         if (view == null){
             return null;
@@ -64,25 +74,16 @@ public class AdministratorFragmentAmplifierOscillator extends Fragment {
             @Override
             public void onClick(View v) {
                 int checkedId = oscillatorGroup.getCheckedRadioButtonId();
-                CustomSP.putInt(context, Key_amplifier_oscillator_id, checkedId);
-                if (checkedId != R.id.id_administrator_settings_amplifier_oscillator_value_3)
-                    CustomSP.putString(context,Key_amplifier_oscillator_value,((CustomRadioButton)view.findViewById(checkedId)).getText().toString());
-                else
+                CustomSP.putInt(context, Key_amplifier_oscillator_id, mapAmplifierOscillatorPosId.indexOfValue(checkedId));
+                if (checkedId == R.id.id_administrator_settings_amplifier_oscillator_value_3)
                     CustomSP.putString(context,Key_amplifier_oscillator_value, oscillatorCustomValue.getText().toString());
             }
         });
 
-        int checkedId = CustomSP.getInt(context, Key_amplifier_oscillator_id, R.id.id_administrator_settings_amplifier_oscillator_value_1);
-        if (checkedId == 0) {
-            checkedId = R.id.id_administrator_settings_amplifier_oscillator_value_1;
-        }
+        int checkedPos = CustomSP.getInt(context, Key_amplifier_oscillator_id, 0);
+        oscillatorGroup.check(mapAmplifierOscillatorPosId.get(checkedPos));
 
-        if (view.findViewById(checkedId) instanceof CustomRadioButton ) {
-            CustomRadioButton radioButton = (CustomRadioButton) view.findViewById(checkedId);
-            radioButton.setChecked(true);
-        }
-
-        if (checkedId == R.id.id_administrator_settings_amplifier_oscillator_value_3) {
+        if (checkedPos == 2) {
             oscillatorCustomValue.setText(CustomSP.getString(context, Key_amplifier_oscillator_value, ""));
         }
 

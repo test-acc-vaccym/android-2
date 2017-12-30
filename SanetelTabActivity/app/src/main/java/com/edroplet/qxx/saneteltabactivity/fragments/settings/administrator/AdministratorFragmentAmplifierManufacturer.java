@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,10 +51,11 @@ public class AdministratorFragmentAmplifierManufacturer extends Fragment {
 
 
     public static final String KEY_amplifier_manufacture="KEY_amplifier_manufacture";
-    public static final String KEY_amplifier_manufacture_id="KEY_amplifier_manufacture_id";
+    public static final String KEY_amplifier_manufacture_position="KEY_amplifier_manufacture_position";
 
     private Unbinder unbinder;
 
+    static SparseIntArray mapAmplifierManufacturePosId = new SparseIntArray(7);
 
     public static AdministratorFragmentAmplifierManufacturer newInstance() {
         Bundle args = new Bundle();
@@ -62,9 +64,20 @@ public class AdministratorFragmentAmplifierManufacturer extends Fragment {
         return fragment;
     }
 
+    void initSparseIntArray(){
+        mapAmplifierManufacturePosId.put(0, R.id.settings_amplifier_manufacture_1);
+        mapAmplifierManufacturePosId.put(1, R.id.settings_amplifier_manufacture_2);
+        mapAmplifierManufacturePosId.put(2, R.id.settings_amplifier_manufacture_3);
+        mapAmplifierManufacturePosId.put(3, R.id.settings_amplifier_manufacture_4);
+        mapAmplifierManufacturePosId.put(4, R.id.settings_amplifier_manufacture_5);
+        mapAmplifierManufacturePosId.put(5, R.id.settings_amplifier_manufacture_6);
+        mapAmplifierManufacturePosId.put(6, R.id.settings_amplifier_manufacture_7);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        initSparseIntArray();
         final View view = inflater.inflate(R.layout.fragment_administrator_settings_amplifier_manufacture, null);
         if (view == null){
             return null;
@@ -77,7 +90,7 @@ public class AdministratorFragmentAmplifierManufacturer extends Fragment {
             @Override
             public void onClick(View v) {
                 int checkedId = manufactureGroup.getCheckedRadioButtonId();
-                CustomSP.putInt(getContext(), KEY_amplifier_manufacture_id, checkedId);
+                CustomSP.putInt(getContext(), KEY_amplifier_manufacture_position, mapAmplifierManufacturePosId.indexOfValue(checkedId));
                 if (checkedId != R.id.settings_amplifier_manufacture_7){
                     CustomSP.putString(getContext(), KEY_amplifier_manufacture, ((CustomRadioButton) view.findViewById(checkedId)).getText().toString());
                 }else {
@@ -86,11 +99,14 @@ public class AdministratorFragmentAmplifierManufacturer extends Fragment {
             }
         });
 
-        int checkedId = CustomSP.getInt(getContext(),KEY_amplifier_manufacture_id, R.id.settings_amplifier_manufacture_1);
-        if (checkedId == 0)
-            checkedId = R.id.settings_amplifier_manufacture_1;
+        int checkedId = CustomSP.getInt(getContext(),KEY_amplifier_manufacture_position, 0);
+        manufactureGroup.check(mapAmplifierManufacturePosId.get(checkedId));
+        if (checkedId == 6){
+            manufactureCustomValue.setText(CustomSP.getString(getContext(),KEY_amplifier_manufacture,""));
+        }
+        /*
         switch (checkedId){
-            case R.id.settings_amplifier_manufacture_7:
+            case 6:
                 manufacture7.setChecked(true);
                 manufactureCustomValue.setText(CustomSP.getString(getContext(),KEY_amplifier_manufacture,""));
                 break;
@@ -101,7 +117,7 @@ public class AdministratorFragmentAmplifierManufacturer extends Fragment {
                 }
                 break;
         }
-
+        */
         // 设置自定义框内容
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);

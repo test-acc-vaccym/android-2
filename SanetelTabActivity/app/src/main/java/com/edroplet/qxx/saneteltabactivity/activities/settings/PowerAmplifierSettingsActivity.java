@@ -25,8 +25,6 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
 import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifierInterfere;
-import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifierManufacture;
-import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifierOscillator;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifiereEmit;
 import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
 import com.edroplet.qxx.saneteltabactivity.view.BottomNavigationViewEx;

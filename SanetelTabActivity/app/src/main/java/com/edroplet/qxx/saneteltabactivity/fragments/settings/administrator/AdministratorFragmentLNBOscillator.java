@@ -76,8 +76,6 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
 
     Context context;
 
-    static SparseIntArray mapKaIdPos = new SparseIntArray();
-    static SparseIntArray mapKuIdPos = new SparseIntArray();
     static SparseIntArray mapKaPosId = new SparseIntArray();
     static SparseIntArray mapKuPosId = new SparseIntArray();
 
@@ -108,18 +106,8 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
         }
 
         ButterKnife.bind(this, view);
-        mapKaIdPos.put(R.id.id_administrator_settings_lnb_ka_value_1,0);
-        mapKaIdPos.put(R.id.id_administrator_settings_lnb_ka_value_2,1);
         mapKaPosId.put(0,R.id.id_administrator_settings_lnb_ka_value_1);
         mapKaPosId.put(1,R.id.id_administrator_settings_lnb_ka_value_2);
-
-        mapKuIdPos.put(R.id.id_administrator_settings_lnb_ku_value_1, 0);
-        mapKuIdPos.put(R.id.id_administrator_settings_lnb_ku_value_2, 1);
-        mapKuIdPos.put(R.id.id_administrator_settings_lnb_ku_value_3, 2);
-        mapKuIdPos.put(R.id.id_administrator_settings_lnb_ku_value_4, 3);
-        mapKuIdPos.put(R.id.id_administrator_settings_lnb_ku_value_5, 4);
-        mapKuIdPos.put(R.id.id_administrator_settings_lnb_ku_value_6, 5);
-        mapKuIdPos.put(R.id.id_administrator_settings_lnb_ku_value_7, 6);
 
         mapKuPosId.put(0, R.id.id_administrator_settings_lnb_ku_value_1);
         mapKuPosId.put(1, R.id.id_administrator_settings_lnb_ku_value_2);
@@ -140,12 +128,10 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
 
             // 设置选择的值
             int idPos = CustomSP.getInt(getContext(),LNBFrequencyResourcePos, 4);
-            int id = (Integer) mapKuPosId.get(idPos);
+            int id = mapKuPosId.get(idPos);
             // ((RadioButton) view.findViewById(id)).setChecked(true);
             oscillatorKuSelect.check(id);
             if (id == R.id.id_administrator_settings_lnb_ku_value_7){
-                ((CustomEditText) view.findViewById(R.id.top_custom_val)).setText(CustomSP.getString(context, LNBFrequency,"")) ;
-            }else {
                 ((CustomEditText) view.findViewById(R.id.top_custom_val)).setText("");
             }
         }else {
@@ -153,7 +139,7 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
             linearLayoutKa.setVisibility(View.VISIBLE);
             linearLayoutKu.setVisibility(View.GONE);
             // 设置选择的值
-            int id = (Integer) mapKaPosId.get( CustomSP.getInt(context,LNBFrequencyResourcePos, 0));
+            int id = mapKaPosId.get( CustomSP.getInt(context,LNBFrequencyResourcePos, 0));
             // ((RadioButton) view.findViewById(id)).setChecked(true);
             oscillatorKaSelect.check(id);
 
@@ -165,18 +151,14 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
                 String val;
                 if (band.equals(WaveBand.KU)) {
                     int id = oscillatorKuSelect.getCheckedRadioButtonId();
-                    CustomSP.putInt(context,LNBFrequencyResourcePos,(Integer) mapKuIdPos.get(id));
-                    if (id != R.id.id_administrator_settings_lnb_ku_value_7){
-                        val = ((RadioButton) view.findViewById(id)).getText().toString() ;
-                    }else {
+                    CustomSP.putInt(context,LNBFrequencyResourcePos,mapKuPosId.indexOfValue(id));
+                    if (id == R.id.id_administrator_settings_lnb_ku_value_7){
                         val = ((CustomEditText) view.findViewById(R.id.top_custom_val)).getText().toString();
+                        CustomSP.putString(context, LNBFrequency, val);
                     }
-                    CustomSP.putString(context, LNBFrequency, val);
                 }else{
                     int id = oscillatorKaSelect.getCheckedRadioButtonId();
-                    CustomSP.putInt(context,LNBFrequencyResourcePos,(Integer) mapKaIdPos.get(id));
-                    val = ((RadioButton) view.findViewById(id)).getText().toString() ;
-                    CustomSP.putString(context, LNBFrequency, val);
+                    CustomSP.putInt(context,LNBFrequencyResourcePos,mapKaPosId.indexOfValue(id));
                 }
                 // TODO: 2017/10/23 设置命令
             }

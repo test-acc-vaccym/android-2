@@ -293,7 +293,8 @@ public class FunctionsFragmentMonitor extends Fragment {
                         : getString(R.string.main_monitor_amplifier_status_temperature_state_abnormal)
                 );
                 // 温度
-                tvAmplifierTemperature.setText(amplifierInfo.getAmplifierTemperature());
+                String temperature = amplifierInfo.getAmplifierTemperature()+ getString(R.string.temperature_unit);
+                tvAmplifierTemperature.setText(temperature);
                 // 锁相环
                 tvAmplifierPLLStatus.setText(amplifierInfo.getAmplifierPLLStatus().equals("1")?
                         getString(R.string.main_monitor_amplifier_status_pll_state_normal)

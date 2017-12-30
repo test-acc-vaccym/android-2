@@ -22,8 +22,6 @@ import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.GalleryOnTime;
 import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
-import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
-import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
@@ -32,6 +30,7 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCusto
 import java.util.Timer;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.edroplet.qxx.saneteltabactivity.fragments.guide.GuideFragmentLocation.mOnCheckedChangeListener;
 
@@ -49,28 +48,28 @@ public class GuideFragmentDestination extends Fragment {
     public static final String KEY_DESTINATION_SATELLITE_CARRIER = "KEY_DESTINATION_SATELLITE_CARRIER"; // 载波值
 
 
-    @BindId(R.id.follow_me_destination_spinner_satellites_select)
+    @BindView(R.id.follow_me_destination_spinner_satellites_select)
     Spinner satelliteSelect;
 
-    @BindId(R.id.follow_me_destination_spinner_satellites_polarization_select)
+    @BindView(R.id.follow_me_destination_spinner_satellites_polarization_select)
     Spinner satellitePolarizationSelect;
 
-    @BindId(R.id.follow_me_destination_satellite_name)
+    @BindView(R.id.follow_me_destination_satellite_name)
     CustomEditText satelliteName;
 
-    @BindId(R.id.follow_me_destination_satellite_polarization)
+    @BindView(R.id.follow_me_destination_satellite_polarization)
     Spinner satellitePolarization;
 
-    @BindId(R.id.follow_me_destination_satellite_longitude)
+    @BindView(R.id.follow_me_destination_satellite_longitude)
     CustomEditText satelliteLongitude;
 
-    @BindId(R.id.follow_me_destination_satellite_beacon)
+    @BindView(R.id.follow_me_destination_satellite_beacon)
     CustomEditText satelliteBeacon;
 
-    @BindId(R.id.follow_me_destination_satellite_threshold)
+    @BindView(R.id.follow_me_destination_satellite_threshold)
     CustomEditText satelliteThreshold;
 
-    @BindId(R.id.follow_me_destination_satellite_dvb)
+    @BindView(R.id.follow_me_destination_satellite_dvb)
     CustomEditText satelliteDvb;
 
     @BindView(R.id.follow_me_destination_satellite_carrier)
@@ -112,20 +111,20 @@ public class GuideFragmentDestination extends Fragment {
         if (view == null){
             return null;
         }
+        ButterKnife.bind(this, view);
 
-        ViewInject.inject(getActivity(), getActivity());
-        satelliteSelect = view.findViewById(R.id.follow_me_destination_spinner_satellites_select);
-        satellitePolarizationSelect = view.findViewById(R.id.follow_me_destination_spinner_satellites_polarization_select);
-        satelliteName = view.findViewById(R.id.follow_me_destination_satellite_name);
-        satellitePolarization = view.findViewById(R.id.follow_me_destination_satellite_polarization);
-        satelliteLongitude = view.findViewById(R.id.follow_me_destination_satellite_longitude);
-        satelliteBeacon = view.findViewById(R.id.follow_me_destination_satellite_beacon);
-        satelliteThreshold = view.findViewById(R.id.follow_me_destination_satellite_threshold);
-        satelliteDvb = view.findViewById(R.id.follow_me_destination_satellite_dvb);
+//        satelliteSelect = view.findViewById(R.id.follow_me_destination_spinner_satellites_select);
+//        satellitePolarizationSelect = view.findViewById(R.id.follow_me_destination_spinner_satellites_polarization_select);
+//        satelliteName = view.findViewById(R.id.follow_me_destination_satellite_name);
+//        satellitePolarization = view.findViewById(R.id.follow_me_destination_satellite_polarization);
+//        satelliteLongitude = view.findViewById(R.id.follow_me_destination_satellite_longitude);
+//        satelliteBeacon = view.findViewById(R.id.follow_me_destination_satellite_beacon);
+//        satelliteThreshold = view.findViewById(R.id.follow_me_destination_satellite_threshold);
+//        satelliteDvb = view.findViewById(R.id.follow_me_destination_satellite_dvb);
         satelliteDvb.setFilters(new InputFilter[]{new InputFilterFloat(6000,30000)});
 
-        thirdButton = view.findViewById(R.id.pop_dialog_third_button);
-        customRadioGroupWithCustomRadioButton = view.findViewById(R.id.rbg_city);
+//        thirdButton = view.findViewById(R.id.pop_dialog_third_button);
+//        customRadioGroupWithCustomRadioButton = view.findViewById(R.id.rbg_city);
 
         try {
             satellites = new Satellites(getContext());
@@ -163,7 +162,7 @@ public class GuideFragmentDestination extends Fragment {
                         satelliteLongitude.setText(satelliteInfo.longitude);
                         satelliteBeacon.setText(satelliteInfo.beacon);
                         satelliteThreshold.setText(satelliteInfo.threshold);
-                        // todo dvb数据哪里来
+                        //  dvb数据
                         satelliteDvb.setText(satelliteInfo.symbolRate);
                     }
                 }
@@ -205,7 +204,7 @@ public class GuideFragmentDestination extends Fragment {
                             satelliteLongitude.setText(satelliteInfo.longitude);
                             satelliteBeacon.setText(satelliteInfo.beacon);
                             satelliteThreshold.setText(satelliteInfo.threshold);
-                            // todo dvb数据哪里来
+                            // dvb数据
                             satelliteDvb.setText(satelliteInfo.symbolRate);
                         }
                     }
@@ -237,7 +236,7 @@ public class GuideFragmentDestination extends Fragment {
                         satelliteLongitude.setText(satelliteInfo.longitude);
                         satelliteBeacon.setText(satelliteInfo.beacon);
                         satelliteThreshold.setText(satelliteInfo.threshold);
-                        // todo dvb数据哪里来
+                        // dvb数据
                         satelliteDvb.setText(satelliteInfo.symbolRate);
                     }
                 }
@@ -315,10 +314,6 @@ public class GuideFragmentDestination extends Fragment {
 
             int icon = bundle.getInt(PopDialog.ICON, -1);
             if (icon >= 0) {
-//                popDialog.setDrawable(ImageUtil.bitmapToDrawable(
-//                        ImageUtil.textAsBitmap(context,context.getString(
-//                                R.string.triangle_string),
-//                                ImageUtil.sp2px(context,24)))) ;
                 popDialog.setButtonText(context, getString(R.string.setting_button_text));
             }
         }

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
@@ -33,10 +34,12 @@ public class SettingsFragmentAmplifiereEmit extends Fragment {
 
     @BindView(R.id.settings_amplifier_emit_close)
     RadioButton emitClose;
-    @BindView(R.id.settings_amplifier_emit_open)
-    RadioButton emitOpen;
+//    @BindView(R.id.settings_amplifier_emit_open)
+//    RadioButton emitOpen;
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
+    @BindView(R.id.settings_amplifier_emit_radio_group)
+    RadioGroup emitSelectGroup;
 
     public static final String KEY_emit_state="KEY_emit_state";
     @Nullable
@@ -51,17 +54,20 @@ public class SettingsFragmentAmplifiereEmit extends Fragment {
             @Override
             public void onClick(View v) {
                 if (emitClose.isChecked()){
-                    CustomSP.putInt(context,KEY_emit_state,R.id.settings_amplifier_emit_close);
+                    CustomSP.putInt(context,KEY_emit_state,1);
                     // TODO: 2017/11/12 发送命令关闭 
                 }else {
-                    CustomSP.putInt(context,KEY_emit_state,R.id.settings_amplifier_emit_open);
+                    CustomSP.putInt(context,KEY_emit_state,0);
                     // TODO: 2017/11/12 发送命令打开
                 }
             }
         });
-        int checkedId = CustomSP.getInt(context,KEY_emit_state, R.id.settings_amplifier_emit_open);
-        RadioButton radioButton = (RadioButton)view.findViewById(checkedId);
-        radioButton.setChecked(true);
+        int checkedPos = CustomSP.getInt(context,KEY_emit_state, 0);
+        // RadioButton radioButton = (RadioButton)view.findViewById(checkedId);
+        // radioButton.setChecked(true);
+        if (checkedPos == 0){
+            emitSelectGroup.check(R.id.settings_amplifier_emit_open);
+        }
 
         // 设置自定义框内容
         PopDialog popDialog = new PopDialog();

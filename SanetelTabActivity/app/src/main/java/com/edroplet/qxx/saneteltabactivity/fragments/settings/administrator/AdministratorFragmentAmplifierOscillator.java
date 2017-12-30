@@ -77,6 +77,11 @@ public class AdministratorFragmentAmplifierOscillator extends Fragment {
                 CustomSP.putInt(context, Key_amplifier_oscillator_id, mapAmplifierOscillatorPosId.indexOfValue(checkedId));
                 if (checkedId == R.id.id_administrator_settings_amplifier_oscillator_value_3)
                     CustomSP.putString(context,Key_amplifier_oscillator_value, oscillatorCustomValue.getText().toString());
+
+                // TODO: 2017/10/23 设置命令
+
+                // 退出
+                getActivity().finish();
             }
         });
 

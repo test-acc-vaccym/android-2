@@ -94,6 +94,10 @@ public class AdministratorFragmentAmplifierManufacturer extends Fragment {
                 if (checkedId == R.id.settings_amplifier_manufacture_7){
                     CustomSP.putString(getContext(), KEY_amplifier_manufacture, manufactureCustomValue.getText().toString());
                 }
+                // TODO: 2017/10/23 设置命令
+
+                // 退出
+                getActivity().finish();
             }
         });
 

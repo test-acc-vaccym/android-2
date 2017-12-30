@@ -161,6 +161,9 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
                     CustomSP.putInt(context,LNBFrequencyResourcePos,mapKaPosId.indexOfValue(id));
                 }
                 // TODO: 2017/10/23 设置命令
+
+                // 退出
+                getActivity().finish();
             }
         });
 

@@ -37,58 +37,51 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingEnd="@dimen/activity_horizontal_margin"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-        <!--单选-->
-        <RelativeLayout
+
+        <!--单选框-->
+        <RadioGroup
+            android:id="@+id/reference_satellite_select_radio_group"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="60dp">
-            <!--单选框-->
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
-                android:id="@+id/reference_satellite_select_radio_group"
-                android:orientation="vertical"
-                android:layout_width="@dimen/radio_group_width_medium"
-                android:layout_height="wrap_content">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
-                    android:id="@+id/reference_satellite_select_mode_direct"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/settings_reference_mode_direct"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
-                    android:id="@+id/reference_satellite_select_mode_refernce"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/settings_reference_mode_reference" />
-            </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
-            <!--卫星名-->
-            <LinearLayout
-                android:orientation="horizontal"
-                android:id="@+id/reference_satellite_select_spinner"
-                android:layout_marginStart="@dimen/radio_group_width_medium"
-                android:layout_marginLeft="@dimen/radio_group_width_medium"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/reference_satellite_select_mode_direct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true">
-                <Spinner
-                    android:id="@+id/reference_satellite_select_satellites"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    style="?android:attr/spinnerStyle"
-                    android:entries="@array/satellites"/>
-                <Spinner
-                    android:id="@+id/reference_satellite_select_satellites_polarization"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:entries="@array/satellites_polarization"/>
-            </LinearLayout>
-        </RelativeLayout>
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/settings_reference_mode_direct"/>
+            <RadioButton
+                android:id="@+id/reference_satellite_select_mode_reference"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/settings_reference_mode_reference" />
+        </RadioGroup>
+        <!--卫星名-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/reference_satellite_select_spinner"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Spinner
+                android:id="@+id/reference_satellite_select_satellites"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="?android:attr/spinnerStyle"
+                android:entries="@array/satellites"/>
+            <Spinner
+                android:id="@+id/reference_satellite_select_satellites_polarization"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:entries="@array/satellites_polarization"/>
+        </LinearLayout>
+
     </LinearLayout>
     <!--数值-->
     <LinearLayout

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.util.SparseIntArray;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -42,13 +43,7 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
     private CustomTextView thirdEnd;
 
     @BindId(R.id.reference_satellite_select_radio_group)
-    private CustomRadioGroupWithCustomRadioButton customRadioGroupWithCustomRadioButton;
-
-    @BindId(R.id.reference_satellite_select_mode_direct)
-    CustomRadioButton referenceSatelliteSelectModeDirect;
-
-    @BindId(R.id.reference_satellite_select_mode_refernce)
-    CustomRadioButton referenceSatelliteSelectModeRefernce;
+    private CustomRadioGroupWithCustomRadioButton referenceSatelliteSelectGroup;
 
     @BindId(R.id.reference_satellite_select_satellites)
     private Spinner satellitesSpinner;
@@ -76,13 +71,20 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
     private static final String KEY_REFERENCE_SATELLITE_SEARCHING_AG = "KEY_REFERENCE_SATELLITE_SEARCHING_AG";
     private static final String KEY_REFERENCE_SATELLITE_SEARCHING_DVB = "KEY_REFERENCE_SATELLITE_SEARCHING_DVB";
 
+    static SparseIntArray mapReferenceSatellite = new SparseIntArray(2);
+
+    void initReferenceSatellite(){
+        mapReferenceSatellite.put(0, R.id.reference_satellite_select_mode_direct);
+        mapReferenceSatellite.put(1, R.id.reference_satellite_select_mode_reference);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reference_satellite);
 
         ViewInject.inject(this, this);
-
+        initReferenceSatellite();
         initView();
 
         dvbSymbolRate.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -125,16 +127,11 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // TODO: 2017/10/23 设置命令
-                @IdRes int checkedId = customRadioGroupWithCustomRadioButton.getCheckedRadioButtonId();
-                if (checkedId == R.id.reference_satellite_select_mode_direct) {
-                    CustomSP.putString(ReferenceSatelliteActivity.this,
-                            KEY_REFERENCE_SATELLITE_SEARCHING_MODE,
-                            getString(R.string.settings_reference_mode_direct));
-                }else {
-                    CustomSP.putString(ReferenceSatelliteActivity.this,
-                            KEY_REFERENCE_SATELLITE_SEARCHING_MODE,
-                            getString(R.string.settings_reference_mode_reference));
-                }
+                @IdRes int checkedId = referenceSatelliteSelectGroup.getCheckedRadioButtonId();
+                CustomSP.putInt(ReferenceSatelliteActivity.this,
+                        KEY_REFERENCE_SATELLITE_SEARCHING_MODE,
+                        mapReferenceSatellite.indexOfValue(checkedId));
+
                 CustomSP.putString(ReferenceSatelliteActivity.this,
                         KEY_REFERENCE_SATELLITE_SEARCHING_SATELLITE,
                         selectedSatellite);
@@ -184,15 +181,11 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
     String selectedPolarization;
 
     private void initData(){
-        if (CustomSP.getString(ReferenceSatelliteActivity.this,
+        int pos = CustomSP.getInt(ReferenceSatelliteActivity.this,
                 KEY_REFERENCE_SATELLITE_SEARCHING_MODE,
-                "") == getString(R.string.settings_reference_mode_direct)) {
-            // customRadioGroupWithCustomRadioButton.setCheckedId(R.id.reference_satellite_select_mode_direct);
-            referenceSatelliteSelectModeDirect.setChecked(true);
-        }else{
-            // customRadioGroupWithCustomRadioButton.setCheckedId(R.id.reference_satellite_select_mode_refernce);
-            referenceSatelliteSelectModeRefernce.setChecked(true);
-        }
+                0);
+        referenceSatelliteSelectGroup.setCheckedId(mapReferenceSatellite.get(pos));
+
         longitude.setText(CustomSP.getString(ReferenceSatelliteActivity.this,
                 KEY_REFERENCE_SATELLITE_SEARCHING_LONGITUDE,
                 ""));
@@ -210,9 +203,6 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
 
     private void initView(){
         try {
-            referenceSatelliteSelectModeDirect.setOnCheckedChangeListener(GuideFragmentLocation.mOnCheckedChangeListener);
-            referenceSatelliteSelectModeRefernce.setOnCheckedChangeListener(GuideFragmentLocation.mOnCheckedChangeListener);
-
             satellites = new Satellites(this);
             String[] satelliteNameArray = satellites.getSatelliteNameArray();
             satellitesSpinner.setAdapter(new SpinnerAdapter2(this,

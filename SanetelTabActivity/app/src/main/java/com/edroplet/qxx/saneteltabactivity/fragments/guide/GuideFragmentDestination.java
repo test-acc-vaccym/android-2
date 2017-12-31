@@ -261,7 +261,10 @@ public class GuideFragmentDestination extends Fragment {
                                 satelliteLongitude.getText().toString(),
                                 satelliteBeacon.getText().toString(),
                                 satelliteThreshold.getText().toString(),
-                                satelliteDvb.getText().toString(),null), true);
+                                satelliteDvb.getText().toString(),
+                                null,
+                                satelliteCarrier.getText().toString(),
+                                null), true);
                         try {
                             satellites.save();
                         }catch (Exception e){

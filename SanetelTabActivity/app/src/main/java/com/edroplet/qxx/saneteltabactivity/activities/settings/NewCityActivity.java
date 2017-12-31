@@ -30,10 +30,10 @@ public class NewCityActivity extends AppCompatActivity {
     @BindId(R.id.city_detail_latitude)
     private CustomEditText cityLatitudeView;
 
-    @BindId(R.id.city_new_latitude_unit)
+    @BindId(R.id.latitude_unit)
     private Spinner cityLatitudeUnitView;
 
-    @BindId(R.id.city_new_longitude_unit)
+    @BindId(R.id.longitude_unit)
     private Spinner cityLongitudeUnitView;
 
     @BindId(R.id.latitude_unit)

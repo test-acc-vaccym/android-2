@@ -20,6 +20,8 @@ import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 import java.util.ArrayList;
 
+import static com.edroplet.qxx.saneteltabactivity.activities.settings.ReferenceSatelliteActivity.ACTION_RECEIVE_REFERENCE_INFO;
+import static com.edroplet.qxx.saneteltabactivity.activities.settings.ReferenceSatelliteActivity.KEY_RECEIVE_REFERENCE_INFO_DATA;
 import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_AMPLIFIER_INFO;
 import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_MONITOR_INFO;
 import static com.edroplet.qxx.saneteltabactivity.fragments.functions.FunctionsFragmentMonitor.KEY_RECEIVE_AMPLIFIER_INFO_DATA;
@@ -265,6 +267,9 @@ public class CommunicateWithDeviceService extends IntentService {
         }else if (msg.startsWith(Protocol.cmdGetBucInfoResultHead)) {
             intent.setAction(ACTION_RECEIVE_AMPLIFIER_INFO);
             intent.putExtra(KEY_RECEIVE_AMPLIFIER_INFO_DATA,msg);
+        }else if (msg.startsWith(Protocol.cmdGetRefDataResultHead)) {
+            intent.setAction(ACTION_RECEIVE_REFERENCE_INFO);
+            intent.putExtra(KEY_RECEIVE_REFERENCE_INFO_DATA,msg);
         }else{
                 // 解析message, 不能在服务中解析
                 //

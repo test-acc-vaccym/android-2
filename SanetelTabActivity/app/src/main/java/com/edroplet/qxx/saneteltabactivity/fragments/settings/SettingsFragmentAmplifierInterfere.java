@@ -43,7 +43,7 @@ public class SettingsFragmentAmplifierInterfere extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.settings_fragment_amplifier_interfere, null);
+        final View view = inflater.inflate(R.layout.fragment_settings_amplifier_interfere, null);
         ButterKnife.bind(this, view);
 
         thirdButton.setOnClickListener(new View.OnClickListener() {

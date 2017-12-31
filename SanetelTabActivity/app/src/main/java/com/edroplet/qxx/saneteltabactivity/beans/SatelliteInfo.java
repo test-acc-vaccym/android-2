@@ -31,20 +31,24 @@ public class SatelliteInfo implements Serializable {
     private static final String JSON_LONGITUDE = "卫星经度";
     private static final String JSON_BEACON = "信标频率";
     private static final String JSON_THRESHOLD = "门限";
+    private static final String JSON_CARRIER = "载波";
     private static final String JSON_SYMBOL_RATE = "符号率";
+    private static final String JSON_AGC = "AGC";
     private static final String JSON_COMMENT = "备注";
 
     // 包含的字段
-    public final UUID mId;
-    public final String id;             // 序号
-    public final String name;           // 卫星名称
-    public final String polarization;   // 极化
-    public final String longitude;      // 经度
-    public final String beacon;         // 信标
-    public final String threshold;      // 门限
-    public final String symbolRate;     // 符号率
-    public final String comment;        // 备注
-    private String agc;                 // AGC电平
+    public UUID mId;
+    public String id;             // 序号
+    public String name;           // 卫星名称
+    public String polarization;   // 极化
+    public String longitude;      // 经度
+    public String beacon;         // 信标
+    public String threshold;      // 门限
+    public String carrier;        // 载波
+    public String symbolRate;     // 符号率
+    public String comment;        // 备注
+    private String agc;           // AGC电平
+    public String mode;           // 寻星方式
 
     public SatelliteInfo(String id, String name, String polarization, String longitude,
                          @Nullable String beacon, String threshold,
@@ -61,10 +65,15 @@ public class SatelliteInfo implements Serializable {
         this.comment = comment;
     }
 
+    public SatelliteInfo(){
+        return;
+    }
     public SatelliteInfo(String uuid, String id, String name, String polarization, String longitude,
                          @Nullable String beacon, String threshold,
                          @Nullable String symbolRate,
-                         @Nullable String comment) {
+                         @Nullable String comment,
+                         @Nullable String carrier,
+                         @Nullable String agc) {
         mId = UUID.fromString(uuid);
         this.id = id;
         this.name = name;
@@ -74,11 +83,8 @@ public class SatelliteInfo implements Serializable {
         this.threshold = threshold;
         this.symbolRate = symbolRate;
         this.comment = comment;
-    }
-
-    public SatelliteInfo setAGC(String agc) {
+        this.carrier = carrier;
         this.agc = agc;
-        return this;
     }
 
     public SatelliteInfo(JSONObject json) throws JSONException{
@@ -112,24 +118,33 @@ public class SatelliteInfo implements Serializable {
         if (json.has(JSON_LONGITUDE)) {
             longitude = json.getString(JSON_LONGITUDE);
         }else {
-            longitude = "";
+            longitude = "0.0";
         }
         if (json.has(JSON_BEACON))
             beacon = json.getString(JSON_BEACON);
         else
-            beacon = "";
+            beacon = "0.000";
         if (json.has(JSON_THRESHOLD))
             threshold = json.getString(JSON_THRESHOLD);
         else
-            threshold = "";
+            threshold = "0.00";
+        if (json.has(JSON_CARRIER))
+            carrier = json.getString(JSON_CARRIER);
+        else
+            carrier = "0.000";
         if (json.has(JSON_SYMBOL_RATE))
             symbolRate = json.getString(JSON_SYMBOL_RATE);
         else
-            symbolRate = "";
+            symbolRate = "0";
         if (json.has(JSON_COMMENT))
             comment = json.getString(JSON_COMMENT);
         else
             comment="";
+
+        if (json.has(JSON_AGC))
+            agc = json.getString(JSON_AGC);
+        else
+            agc = "0.00";
     }
 
     @Override
@@ -151,7 +166,4 @@ public class SatelliteInfo implements Serializable {
         return json;
     }
 
-    public String getAgc(){
-        return this.agc;
-    }
 }

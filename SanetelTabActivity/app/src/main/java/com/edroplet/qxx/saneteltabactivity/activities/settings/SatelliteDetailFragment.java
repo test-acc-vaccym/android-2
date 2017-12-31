@@ -17,7 +17,6 @@ import com.edroplet.qxx.saneteltabactivity.adapters.SpinnerAdapter2;
 import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.beans.Satellites;
 import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
-import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
@@ -120,7 +119,7 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.settings_fragment_satellite_detail, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_settings_satellite_detail, container, false);
 
         ButterKnife.bind(this, rootView);
 
@@ -189,7 +188,9 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
                                 satelliteDetailBeacon.getText().toString(),
                                 satelliteDetailThreshold.getText().toString(),
                                 satelliteDetailSymbolRate.getText().toString(),
-                                satelliteDetailComment.getText().toString()
+                                satelliteDetailComment.getText().toString(),
+                                null,
+                                null
                         ));
                 bundle.putString(SatelliteInfo.uuidKey, satelliteDetailUuid.getText().toString());
 

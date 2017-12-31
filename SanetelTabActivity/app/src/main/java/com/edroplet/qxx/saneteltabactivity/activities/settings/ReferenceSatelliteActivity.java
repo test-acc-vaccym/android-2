@@ -1,5 +1,9 @@
 package com.edroplet.qxx.saneteltabactivity.activities.settings;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +28,7 @@ import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
+import com.edroplet.qxx.saneteltabactivity.utils.sscanf.Sscanf;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
@@ -86,6 +91,12 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
         ViewInject.inject(this, this);
         initReferenceSatellite();
         initView();
+
+        // 实例化IntentFilter对象
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ACTION_RECEIVE_REFERENCE_INFO);
+        // 注册广播接收器
+        registerReceiver(new ReferenceReceiver(), filter);
 
         dvbSymbolRate.setInputType(InputType.TYPE_CLASS_NUMBER);
         dvbSymbolRate.setFilters(new InputFilter[]{new InputFilterFloat(0,30000)});
@@ -209,6 +220,10 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
     String selectedPolarization;
 
     private void initData(){
+        // 注册广播接收
+
+        // 发送读取指令
+        Protocol.sendMessage(ReferenceSatelliteActivity.this, Protocol.cmdGetRefData);
         int pos = CustomSP.getInt(ReferenceSatelliteActivity.this,
                 KEY_REFERENCE_SATELLITE_SEARCHING_MODE,
                 0);
@@ -334,7 +349,48 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-
-
     }
+
+
+    public static final String KEY_RECEIVE_REFERENCE_INFO_DATA = "KEY_RECEIVE_REFERENCE_INFO_DATA";
+    public static final String ACTION_RECEIVE_REFERENCE_INFO="com.edroplet.broadcast.ACTION_RECEIVE_REFERENCE_INFO";
+    //通过继承 BroadcastReceiver建立动态广播接收器
+    private class ReferenceReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (ACTION_RECEIVE_REFERENCE_INFO.equals(intent.getAction())) {
+                String rawData =intent.getStringExtra(KEY_RECEIVE_REFERENCE_INFO_DATA);
+                SatelliteInfo si = parseReferenceInfo(rawData);
+                longitude.setText(si.longitude);
+                dvbSymbolRate.setText(si.symbolRate);
+                beacon.setText(si.beacon);
+                tvCarrier.setText(si.carrier);
+                agThreshold.setText(si.threshold);
+                int mode = Integer.parseInt(si.mode);
+                if (mode == 0){
+                    referenceSatelliteSelectGroup.check(mapReferenceSatellite.get(mode));
+                }
+                int pos = Integer.parseInt(si.polarization) ;
+                satellitesPolarizationSpinner.setSelection(pos);
+                // 通知刷新UI
+            }
+        }
+
+        private SatelliteInfo parseReferenceInfo(String src){
+            SatelliteInfo satelliteInfo = new SatelliteInfo();
+            // $cmd,ref sat data,卫星经度,极化方式,寻星门限,信标频率,载波频率,符号率,寻星方式
+            Object o[] =  Sscanf.scan(src, Protocol.cmdGetSystemStateResult,satelliteInfo.longitude, satelliteInfo.polarization,satelliteInfo.threshold, satelliteInfo.beacon, satelliteInfo.carrier, satelliteInfo.symbolRate, satelliteInfo.mode);
+            satelliteInfo.longitude = (String) o[0];
+            satelliteInfo.polarization = (String) o[1];
+            satelliteInfo.threshold = (String) o[2];
+            satelliteInfo.beacon = (String) o[3];
+            satelliteInfo.carrier = (String) o[4];
+            satelliteInfo.symbolRate = (String) o[5];
+            satelliteInfo.mode = (String) o[6];
+            return satelliteInfo;
+        }
+    }
+
+
+
 }

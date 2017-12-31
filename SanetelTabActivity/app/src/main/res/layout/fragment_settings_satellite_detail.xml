@@ -49,6 +49,7 @@
             android:layout_weight="2"
             android:layout_height="match_parent"/>
         </LinearLayout>
+        <!--卫星名-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/detail_activity_layout_height"
@@ -69,6 +70,28 @@
                 android:gravity="center"
                 android:layout_height="match_parent"/>
         </LinearLayout>
+        <!--极化方式-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/detail_activity_layout_height"
+            android:orientation="horizontal">
+            <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="end"
+                android:layout_height="match_parent"
+                android:padding="@dimen/list_detail_padding"
+                android:text="@string/satellite_detail_polarization_key"/>
+            <Spinner
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/polarization_detail"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+        <!--经度-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/detail_activity_layout_height"
@@ -91,48 +114,7 @@
                 android:inputType="numberDecimal|number"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/detail_activity_layout_height"
-            android:orientation="horizontal">
-            <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:layout_height="match_parent"
-                android:padding="@dimen/list_detail_padding"
-                android:text="@string/satellite_detail_polarization_key"/>
-            <Spinner
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/polarization_detail"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:layout_height="match_parent"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/detail_activity_layout_height"
-            android:orientation="horizontal">
-            <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:layout_height="match_parent"
-                android:padding="@dimen/list_detail_padding"
-                android:text="@string/satellite_detail_beacon_key"/>
-
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-                android:id="@+id/beacon_detail"
-                style="@style/radio_group_custom_item_edit_horizontal_style"
-                android:hint="@string/satellite_detail_beacon_hint"
-                android:inputType="numberDecimal|number"/>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                style="@style/radio_group_custom_item_third_filed_horizontal_style"
-                android:text="@string/frequency_unit"/>
-        </LinearLayout>
+        <!--门限-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/detail_activity_layout_height"
@@ -154,6 +136,29 @@
                 android:hint="@string/satellite_detail_threshold_hint"
                 android:inputType="numberDecimal|number"
                 android:layout_height="match_parent"/>
+        </LinearLayout>
+        <!--信标频率-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/detail_activity_layout_height"
+            android:orientation="horizontal">
+            <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="end"
+                android:layout_height="match_parent"
+                android:padding="@dimen/list_detail_padding"
+                android:text="@string/satellite_detail_beacon_key"/>
+
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                android:id="@+id/beacon_detail"
+                style="@style/radio_group_custom_item_edit_horizontal_style"
+                android:hint="@string/satellite_detail_beacon_hint"
+                android:inputType="numberDecimal|number"/>
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                style="@style/radio_group_custom_item_third_filed_horizontal_style"
+                android:text="@string/frequency_unit"/>
         </LinearLayout>
         <!--载波-->
         <LinearLayout
@@ -180,6 +185,7 @@
                 style="@style/radio_group_custom_item_third_filed_horizontal_style"
                 android:text="@string/settings_reference_carrier_unit"/>
         </LinearLayout>
+        <!--符号率-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/detail_activity_layout_height"
@@ -205,6 +211,7 @@
                 style="@style/radio_group_custom_item_third_filed_horizontal_style"
                 android:text="@string/settings_reference_dvb_unit"/>
         </LinearLayout>
+        <!--备注-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/detail_activity_layout_height"

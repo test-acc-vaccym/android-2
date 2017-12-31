@@ -14,15 +14,12 @@ import android.widget.Spinner;
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.Cities;
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
-import com.edroplet.qxx.saneteltabactivity.beans.SatelliteInfo;
 import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
-
-import java.util.Arrays;
 
 /**
  * A fragment representing a single CityLocation detail screen.
@@ -136,7 +133,7 @@ public class CityLocationDetailFragment extends Fragment implements View.OnClick
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.settings_fragment_city_detail, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_settings_city_detail, container, false);
         ViewInject.inject(getActivity(), this);
 
         // Show the dummy content as text in a TextView.

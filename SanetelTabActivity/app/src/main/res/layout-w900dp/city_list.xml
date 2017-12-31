@@ -27,7 +27,7 @@
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
         tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.CityLocationListActivity"
-        tools:listitem="@layout/settings_fragment_city_detail" />
+        tools:listitem="@layout/fragment_settings_city_detail" />
 
     <FrameLayout
         android:id="@+id/city_detail_container"

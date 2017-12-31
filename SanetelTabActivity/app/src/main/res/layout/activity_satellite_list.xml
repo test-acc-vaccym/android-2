@@ -42,6 +42,7 @@
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
             android:background="@color/satellite_list_header_background">
+                <!--名称-->
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/name_title"
                 android:layout_width="0dp"
@@ -51,6 +52,7 @@
                 android:textSize="@dimen/list_item_text_size"
                 android:padding="@dimen/no_padding"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
+                <!--极化方式-->
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/polarization_title"
                 android:layout_width="0dp"
@@ -60,6 +62,7 @@
                 android:text="@string/satellite_polarization_key"
                 android:padding="@dimen/no_padding"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
+                <!--经度-->
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/longitude_title"
                 android:layout_width="0dp"
@@ -69,15 +72,7 @@
                 android:textSize="@dimen/list_item_text_size"
                 android:padding="@dimen/no_padding"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                android:id="@+id/beacon_title"
-                android:layout_width="0dp"
-                android:layout_weight="1.7"
-                android:layout_height="wrap_content"
-                android:text="@string/satellite_beacon_key"
-                android:textSize="@dimen/list_item_text_size"
-                android:padding="@dimen/no_padding"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                <!--门限-->
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/threshold_title"
                 android:layout_width="0dp"
@@ -87,15 +82,27 @@
                 android:textSize="@dimen/list_item_text_size"
                 android:padding="@dimen/no_padding"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                    android:id="@+id/carrier_title"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/no_padding"
-                    android:text="@string/satellite_carrier_key"
-                    android:textSize="@dimen/list_item_text_size"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                <!--信标-->
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:id="@+id/beacon_title"
+                android:layout_width="0dp"
+                android:layout_weight="1.7"
+                android:layout_height="wrap_content"
+                android:text="@string/satellite_beacon_key"
+                android:textSize="@dimen/list_item_text_size"
+                android:padding="@dimen/no_padding"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                <!--载波-->
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                android:id="@+id/carrier_title"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/no_padding"
+                android:text="@string/satellite_carrier_key"
+                android:textSize="@dimen/list_item_text_size"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                <!--符号率-->
             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                 android:id="@+id/symbolRate_title"
                 android:layout_width="0dp"

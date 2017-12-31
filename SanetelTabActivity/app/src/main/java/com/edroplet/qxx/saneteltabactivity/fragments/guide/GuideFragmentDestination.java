@@ -54,29 +54,30 @@ public class GuideFragmentDestination extends Fragment {
     @BindView(R.id.follow_me_destination_spinner_satellites_polarization_select)
     Spinner satellitePolarizationSelect;
 
-    @BindView(R.id.follow_me_destination_satellite_name)
+    @BindView(R.id.name_detail)
     CustomEditText satelliteName;
 
-    @BindView(R.id.follow_me_destination_satellite_polarization)
+    @BindView(R.id.polarization_detail)
     Spinner satellitePolarization;
 
-    @BindView(R.id.follow_me_destination_satellite_longitude)
+    @BindView(R.id.longitude_detail)
     CustomEditText satelliteLongitude;
 
-    @BindView(R.id.follow_me_destination_satellite_beacon)
+    @BindView(R.id.beacon_detail)
     CustomEditText satelliteBeacon;
 
-    @BindView(R.id.follow_me_destination_satellite_threshold)
+    @BindView(R.id.threshold_detail)
     CustomEditText satelliteThreshold;
 
-    @BindView(R.id.follow_me_destination_satellite_dvb)
+    @BindView(R.id.symbol_rate_detail)
     CustomEditText satelliteDvb;
 
-    @BindView(R.id.follow_me_destination_satellite_carrier)
+    @BindView(R.id.carrier_detail)
     CustomEditText satelliteCarrier;
 
+    @BindView(R.id.pop_dialog_third_button)
+    CustomButton thirdButton;
 
-    private CustomButton thirdButton;
     private Satellites satellites;
     private String selectedName;
     private String selectedPolarization;
@@ -113,18 +114,8 @@ public class GuideFragmentDestination extends Fragment {
         }
         ButterKnife.bind(this, view);
 
-//        satelliteSelect = view.findViewById(R.id.follow_me_destination_spinner_satellites_select);
-//        satellitePolarizationSelect = view.findViewById(R.id.follow_me_destination_spinner_satellites_polarization_select);
-//        satelliteName = view.findViewById(R.id.follow_me_destination_satellite_name);
-//        satellitePolarization = view.findViewById(R.id.follow_me_destination_satellite_polarization);
-//        satelliteLongitude = view.findViewById(R.id.follow_me_destination_satellite_longitude);
-//        satelliteBeacon = view.findViewById(R.id.follow_me_destination_satellite_beacon);
-//        satelliteThreshold = view.findViewById(R.id.follow_me_destination_satellite_threshold);
-//        satelliteDvb = view.findViewById(R.id.follow_me_destination_satellite_dvb);
         satelliteDvb.setFilters(new InputFilter[]{new InputFilterFloat(6000,30000)});
 
-//        thirdButton = view.findViewById(R.id.pop_dialog_third_button);
-//        customRadioGroupWithCustomRadioButton = view.findViewById(R.id.rbg_city);
 
         try {
             satellites = new Satellites(getContext());

@@ -31,6 +31,9 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCusto
 
 import java.util.Timer;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by qxs on 2017/9/19.
  */
@@ -48,23 +51,41 @@ public class GuideFragmentLocation extends Fragment {
     private String selectedProvince;
     private String selectedCity;
 
-    private CustomRadioButton crbDbCity;
-    private CustomRadioButton crbNewCity;
+    @BindView(R.id.follow_me_location_db_city)
+    CustomRadioButton crbDbCity;
+    @BindView(R.id.follow_me_location_new_city)
+    CustomRadioButton crbNewCity;
 
-    private Spinner spinnerLocationProvince;
-    private Spinner spinnerLocationCity;
+    @BindView(R.id.follow_me_spinner_province)
+    Spinner spinnerLocationProvince;
 
-    private CustomRadioGroupWithCustomRadioButton customRadioGroupWithCustomRadioButton;
+    @BindView(R.id.follow_me_spinner_city)
+    Spinner spinnerLocationCity;
 
-    private CustomEditText newProvince;
-    private CustomEditText newCity;
-    private CustomEditText newLongitude;
-    private Spinner newLongitudeUnit;
-    private CustomEditText newLatitude;
-    private Spinner newLatitudeUnit;
+    @BindView(R.id.rbg_city)
+    CustomRadioGroupWithCustomRadioButton citySelectGroup;
 
-    private CustomButton thirdButton;
+    @BindView(R.id.city_detail_province)
+    CustomEditText newProvince;
+    @BindView(R.id.city_detail_name)
+    CustomEditText newCity;
+    @BindView(R.id.city_detail_longitude)
+    CustomEditText newLongitude;
+    @BindView(R.id.longitude_unit)
+    Spinner newLongitudeUnit;
+
+    @BindView(R.id.city_detail_latitude)
+    CustomEditText newLatitude;
+    @BindView(R.id.latitude_unit)
+    Spinner newLatitudeUnit;
+
+    @BindView(R.id.pop_dialog_third_button)
+    CustomButton thirdButton;
+
     private Context context;
+
+    @BindView(R.id.destination_frameLayout_location)
+    FrameLayout layoutLocation;
 
     public static GuideFragmentLocation newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                     String secondLine, boolean showThird, String thirdLineStart,
@@ -94,18 +115,18 @@ public class GuideFragmentLocation extends Fragment {
         if (view == null){
             return null;
         }
+        ButterKnife.bind(this, view);
 
         context = getContext();
         initView(view);
 
         GalleryOnTime galleryOnTime = new GalleryOnTime(context);
-        galleryOnTime.setFrameLayout((FrameLayout) view.findViewById(R.id.destination_frameLayout_location));
         galleryOnTime.setImages(cityImages);
         galleryOnTime.setImageView();
+        galleryOnTime.setFrameLayout(layoutLocation);
+
         timer = galleryOnTime.getTimer();
 
-        crbDbCity = view.findViewById(R.id.follow_me_location_db_city);
-        crbNewCity = view.findViewById(R.id.follow_me_location_new_city);
         if (crbNewCity != null){
             crbNewCity.setOnCheckedChangeListener(mOnCheckedChangeListener);
         }
@@ -132,17 +153,6 @@ public class GuideFragmentLocation extends Fragment {
     private void initView(View view){
 
         // 初始化控件
-        thirdButton = view.findViewById(R.id.pop_dialog_third_button);
-        spinnerLocationCity = view.findViewById(R.id.follow_me_spinner_city);
-        spinnerLocationProvince = view.findViewById(R.id.follow_me_spinner_province);
-
-        customRadioGroupWithCustomRadioButton = view.findViewById(R.id.rbg_city);
-        newCity = view.findViewById(R.id.follow_me_location_et_new_city);
-        newProvince = view.findViewById(R.id.follow_me_location_et_new_province);
-        newLongitude = view.findViewById(R.id.follow_me_location_et_new_longitude);
-        newLatitude = view.findViewById(R.id.follow_me_location_et_new_latitude);
-        newLongitudeUnit = view.findViewById(R.id.follow_me_location_spinner_new_longitude_nit);
-        newLatitudeUnit = view.findViewById(R.id.follow_me_location_spinner_new_latitude_unit);
 
         newLongitude.setFilters(new InputFilter[]{ new InputFilterFloat("-180.0", "180.0")});
         newLatitude.setFilters(new InputFilter[]{ new InputFilterFloat("-90.0", "90.0")});
@@ -250,7 +260,7 @@ public class GuideFragmentLocation extends Fragment {
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                @IdRes int checkedId = customRadioGroupWithCustomRadioButton.getCheckedRadioButtonId();
+                @IdRes int checkedId = citySelectGroup.getCheckedRadioButtonId();
                 switch (checkedId){
                     case R.id.follow_me_location_new_city:
                         selectedProvince = newProvince.getText().toString();

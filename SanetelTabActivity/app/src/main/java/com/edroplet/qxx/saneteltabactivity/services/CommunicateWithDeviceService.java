@@ -320,7 +320,7 @@ public class CommunicateWithDeviceService extends IntentService {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.e(TAG, "onDestroy");
+        Log.d(TAG, "onDestroy");
         DisConnectToServer();
     }
 

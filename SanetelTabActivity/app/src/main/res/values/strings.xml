@@ -119,7 +119,7 @@
     <string name="satellite_detail_carrier">载波频率</string>
     <string name="satellite_detail_carrier_hint">10750~40000</string>
     <string name="satellite_detail_symbol_rate_key">符号率</string>
-    <string name="satellite_detail_symbol_rate_hint">整数6000~30000,单位kbps</string>
+    <string name="satellite_detail_symbol_rate_hint">6000~30000</string>
     <string name="satellite_detail_comment_key">备注</string>
     <string name="input_error_dialog_message">您的某些输入有误，确认继续？</string>
     <!--城市-->

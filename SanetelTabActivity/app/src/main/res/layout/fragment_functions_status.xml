@@ -5,11 +5,11 @@
     android:layout_marginBottom="@dimen/functions_fragment_margin_bottom"
     style="@style/manual_divider">
     <android.support.v4.widget.NestedScrollView
-        android:id="@+id/speed_info_scroll"
+        android:id="@+id/id_speed_info_scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
-            android:id="@+id/ll_sc_content"
+            android:id="@+id/id_ll_sc_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="2dp"
@@ -18,7 +18,7 @@
             style="@style/linear_shadow">
 
             <!--<com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView-->
-                <!--android:id="@+id/functions_view_pager_title"-->
+                <!--android:id="@+id/id_functions_view_pager_title"-->
                 <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="wrap_content"-->
                 <!--android:gravity="center"-->
@@ -56,7 +56,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/main_status_communicate_internet"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_communicate_internet"
+                            android:id="@+id/id_main_status_communicate_internet"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -78,7 +78,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/main_status_communicate_serial_port"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_communicate_serial_port"
+                            android:id="@+id/id_main_status_communicate_serial_port"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -106,7 +106,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/main_status_communicate_bd"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_communicate_bd"
+                            android:id="@+id/id_main_status_communicate_bd"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -127,7 +127,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/main_status_communicate_beacon"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_communicate_beacon"
+                            android:id="@+id/id_main_status_communicate_beacon"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -153,7 +153,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/main_status_communicate_clinometer"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_communicate_clinometer"
+                            android:id="@+id/id_main_status_communicate_clinometer"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -173,7 +173,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/main_status_communicate_power"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_communicate_power"
+                            android:id="@+id/id_main_status_communicate_power"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -198,7 +198,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/main_status_communicate_lnb"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_communicate_lnb"
+                            android:id="@+id/id_main_status_communicate_lnb"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -252,7 +252,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/main_status_device_motor_encoder"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_device_motor_encoder"
+                            android:id="@+id/id_main_status_device_motor_encoder"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -270,7 +270,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/main_status_device_azimuth_holzer_switch"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_device_azimuth_holzer_switch"
+                            android:id="@+id/id_main_status_device_azimuth_holzer_switch"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -288,7 +288,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/main_status_device_azimuth_locking_holzer_switch"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_device_azimuth_locking_holzer_switch"
+                            android:id="@+id/id_main_status_device_azimuth_locking_holzer_switch"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -312,7 +312,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/main_status_device_pitch_motor"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_device_pitch_motor"
+                            android:id="@+id/id_main_status_device_pitch_motor"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -330,7 +330,7 @@
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="@string/main_status_device_pitch_holzer_switch"/>
                             <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                                android:id="@+id/main_status_device_pitch_holzer_switch"
+                                android:id="@+id/id_main_status_device_pitch_holzer_switch"
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:gravity="center"
@@ -349,7 +349,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/main_status_device_pitch_locking_holzer_switch"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_device_pitch_locking_holzer_switch"
+                            android:id="@+id/id_main_status_device_pitch_locking_holzer_switch"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -375,7 +375,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/main_status_device_polarize_motor"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_device_polarize_motor"
+                            android:id="@+id/id_main_status_device_polarize_motor"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -393,7 +393,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/main_status_device_polarization_potentiometer"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_device_polarization_potentiometer"
+                            android:id="@+id/id_main_status_device_polarization_potentiometer"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -436,7 +436,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/main_status_environment_temperature"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_environment_temperature"
+                            android:id="@+id/id_main_status_environment_temperature"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -463,7 +463,7 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/main_status_environment_humidity"/>
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                            android:id="@+id/main_status_environment_humidity"
+                            android:id="@+id/id_main_status_environment_humidity"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -504,7 +504,7 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/main_status_version_software"/>
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                        android:id="@+id/main_status_version_software"
+                        android:id="@+id/id_main_status_version_software"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:hint="@string/main_status_version_software_version"
@@ -524,7 +524,7 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/main_status_version_hardware"/>
                     <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
-                        android:id="@+id/main_status_version_hardware"
+                        android:id="@+id/id_main_status_version_hardware"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:hint="@string/main_status_version_hardware_version"

@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/navigation_step_control"
-        android:icon="@drawable/speed_manual"
+        android:icon="@mipmap/step"
         android:title="@string/main_control_operate_step" />
 
     <item

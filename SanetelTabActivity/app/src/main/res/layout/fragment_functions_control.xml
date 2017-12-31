@@ -39,7 +39,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/speed_manual"
+            android:drawableTop="@mipmap/step"
             android:text="@string/main_control_operate_step"
             android:clickable="true"
             android:background="@drawable/button_background"/>

@@ -339,6 +339,26 @@
     <string name="main_status_device_polarize_motor">极化电机</string>
     <string name="main_status_device_polarization_potentiometer">极化电位计</string>
 
+    <!--运行情况-->
+    <string name="main_status_running_state">运行情况</string>
+    <string name="main_status_running_energy_state">节&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;能</string>
+    <string name="main_status_running_pitch_lock_state">俯仰锁紧</string>
+    <string name="main_status_running_azimuth_lock_state">方位锁紧</string>
+    <string name="main_status_running_pitch_electric_low_limit">俯仰电气低限位</string>
+    <string name="main_status_running_pitch_electric_high_limit">俯仰电气高限位</string>
+    <string name="main_status_running_pitch_soft_low_limit">俯仰软件低限位</string>
+    <string name="main_status_running_pitch_soft_high_limit">俯仰软件高限位</string>
+    <string name="main_status_running_azimuth_soft_low_limit">方位软件低限位</string>
+    <string name="main_status_running_azimuth_soft_high_limit">方位软件高限位</string>
+    <string name="main_status_running_polar_soft_low_limit">极化软件低限位</string>
+    <string name="main_status_running_polar_soft_high_limit">极化软件高限位</string>
+    <string name="main_status_running_limit_abnormal">限位</string>
+    <string name="main_status_running_limit_normal">正常</string>
+    <string name="main_status_running_lock_abnormal">未锁紧</string>
+    <string name="main_status_running_lock_normal">锁紧</string>
+    <string name="main_status_running_energy_abnormal">未节能</string>
+    <string name="main_status_running_energy_normal">已节能</string>
+
     <!--版本信息-->
     <string name="main_status_version">版本信息</string>
     <string name="main_status_version_software">软件版本</string>

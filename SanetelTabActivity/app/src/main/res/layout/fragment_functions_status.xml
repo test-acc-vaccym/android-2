@@ -402,6 +402,8 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+            <!--运行情况-->
+            <include layout="@layout/fragment_functions_status_running" />
             <!--环境信息-->
             <LinearLayout
                 android:layout_width="match_parent"

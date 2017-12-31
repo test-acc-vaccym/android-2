@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Spinner;
 
 import com.edroplet.qxx.saneteltabactivity.R;
@@ -20,13 +21,13 @@ import java.util.ArrayList;
 
 public class NewCityActivity extends AppCompatActivity {
 
-    @BindId(R.id.city_new_provence)
+    @BindId(R.id.city_detail_province)
     private CustomEditText cityProvenceView;
-    @BindId(R.id.city_new_name)
+    @BindId(R.id.city_detail_name)
     private CustomEditText cityNameView;
-    @BindId(R.id.city_new_longitude)
+    @BindId(R.id.city_detail_longitude)
     private CustomEditText cityLongitudeView;
-    @BindId(R.id.city_new_latitude)
+    @BindId(R.id.city_detail_latitude)
     private CustomEditText cityLatitudeView;
 
     @BindId(R.id.city_new_latitude_unit)
@@ -34,6 +35,13 @@ public class NewCityActivity extends AppCompatActivity {
 
     @BindId(R.id.city_new_longitude_unit)
     private Spinner cityLongitudeUnitView;
+
+    @BindId(R.id.latitude_unit)
+    Spinner spinnerLatitudeUnit;
+    int latitudeUnitPosition;
+    @BindId(R.id.longitude_unit)
+    Spinner spinnerLongitudeUnit;
+    int longitudeUnitPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,4 +85,5 @@ public class NewCityActivity extends AppCompatActivity {
             }
         });
     }
+
 }

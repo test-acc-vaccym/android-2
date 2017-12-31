@@ -30,20 +30,22 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class NewSatelliteActivity extends AppCompatActivity {
-    @BindId(R.id.satellites_new_name)
+    @BindId(R.id.name_detail)
     private CustomEditText satelliteNameView;
-    @BindId(R.id.satellites_new_longitude)
+    @BindId(R.id.longitude_detail)
     private CustomEditText satelliteLongitudeView;
-    @BindId(R.id.satellites_new_polarization)
+    @BindId(R.id.polarization_detail)
     private Spinner satellitePolarizationView;
-    @BindId(R.id.satellites_new_beacon)
+    @BindId(R.id.beacon_detail)
     private CustomEditText satelliteBeaconView;
-    @BindId(R.id.satellites_new_threshold)
+    @BindId(R.id.threshold_detail)
     private CustomEditText satelliteThresholdView;
-    @BindId(R.id.satellites_new_symbol_rate)
+    @BindId(R.id.symbol_rate_detail)
     private CustomEditText satelliteSymbolRateView;
-    @BindId(R.id.satellites_new_comment)
+    @BindId(R.id.comment_detail)
     private CustomEditText satelliteCommentView;
+    @BindId(R.id.carrier_detail)
+    private CustomEditText satelliteCarrierView;
 
     private boolean inputError;
     private Context mContext;
@@ -113,7 +115,7 @@ public class NewSatelliteActivity extends AppCompatActivity {
             SatelliteInfo newSatellite = new SatelliteInfo(String.valueOf(satellites.size()),satelliteNameView.getText().toString(),
                     satellitePolarizationView.getSelectedItem().toString(), satelliteLongitudeView.getText().toString(),
                     satelliteBeaconView.getText().toString(), satelliteThresholdView.getText().toString(),
-                    satelliteSymbolRateView.getText().toString(), satelliteCommentView.getText().toString());
+                    satelliteSymbolRateView.getText().toString(), satelliteCommentView.getText().toString(),satelliteCarrierView.getText().toString(),null);
             satellites.add(newSatellite);
             jl.saveSatellites(satellites);
 

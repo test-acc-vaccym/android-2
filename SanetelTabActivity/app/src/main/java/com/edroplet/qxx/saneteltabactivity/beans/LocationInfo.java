@@ -3,6 +3,7 @@ package com.edroplet.qxx.saneteltabactivity.beans;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.SparseArray;
 
 import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
@@ -10,6 +11,7 @@ import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Map;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -234,4 +236,21 @@ public class LocationInfo implements Parcelable {
     public static void setGnssState(Context context, int bdState){
         CustomSP.getInt(context,KEY_GNSS_STATE, bdState);
     }
+
+    private static SparseArray<String> longitudeUnitArray = new SparseArray<>(2);
+    private static SparseArray<String> latitudeUnitArray = new SparseArray<>(2);
+
+    public static SparseArray<String> getLongitudeUnitArray(){
+        longitudeUnitArray.clear();
+        longitudeUnitArray.put(0, "°E");
+        longitudeUnitArray.put(1, "°W");
+        return longitudeUnitArray;
+    }
+    public static SparseArray<String> getLatiitudeUnitArray(){
+        latitudeUnitArray.clear();
+        latitudeUnitArray.put(0, "°N");
+        latitudeUnitArray.put(1, "°S");
+        return latitudeUnitArray;
+    }
+
 }

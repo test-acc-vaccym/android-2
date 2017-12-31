@@ -15,11 +15,12 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.Cities;
 import com.edroplet.qxx.saneteltabactivity.beans.LocationInfo;
 import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
-import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
-import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * A fragment representing a single CityLocation detail screen.
@@ -29,20 +30,20 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
  */
 public class CityLocationDetailFragment extends Fragment implements View.OnClickListener{
 
-    @BindId(R.id.city_detail_latitude)
-    private CustomEditText cityDetailLatitude;
+    @BindView(R.id.city_detail_latitude)
+    CustomEditText cityDetailLatitude;
 
-    @BindId(R.id.city_detail_longitude)
-    private CustomEditText cityDetailLongitude;
+    @BindView(R.id.city_detail_longitude)
+    CustomEditText cityDetailLongitude;
 
-    @BindId(R.id.city_detail_name)
-    private CustomTextView cityName;
+    @BindView(R.id.city_detail_name)
+    CustomEditText cityName;
 
-    @BindId(R.id.city_detail_province)
-    private CustomEditText province;
+    @BindView(R.id.city_detail_province)
+    CustomEditText province;
 
-    @BindId(R.id.city_detail_id)
-    private CustomTextView cityId;
+    @BindView(R.id.city_detail_id)
+    CustomTextView cityId;
 
     private CustomButton cityDetailSave;
     private CustomButton cityDetailReturn;
@@ -134,16 +135,9 @@ public class CityLocationDetailFragment extends Fragment implements View.OnClick
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_settings_city_detail, container, false);
-        ViewInject.inject(getActivity(), this);
+        ButterKnife.bind(this,rootView);
 
-        // Show the dummy content as text in a TextView.
-        cityId =  ((CustomTextView) rootView.findViewById(R.id.city_detail_id));
-        province = ((CustomEditText) rootView.findViewById(R.id.city_detail_province));
-        cityName = ((CustomTextView) rootView.findViewById(R.id.city_detail_name));
-        cityDetailLatitude = ((CustomEditText) rootView.findViewById(R.id.city_detail_latitude));
-        cityDetailLongitude = ((CustomEditText) rootView.findViewById(R.id.city_detail_longitude));
-        longitudeUnit = rootView.findViewById(R.id.longitude_unit);
-        latitudeUnit = rootView.findViewById(R.id.latitude_unit);
+        cityName.setFocusable(false);
 
         if (mItem != null) {
             cityId.setText(mItem.getmId());

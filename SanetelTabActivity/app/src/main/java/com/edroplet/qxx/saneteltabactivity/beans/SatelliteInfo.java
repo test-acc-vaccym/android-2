@@ -53,7 +53,9 @@ public class SatelliteInfo implements Serializable {
     public SatelliteInfo(String id, String name, String polarization, String longitude,
                          @Nullable String beacon, String threshold,
                          @Nullable String symbolRate,
-                         @Nullable String comment) {
+                         @Nullable String comment,
+                         @Nullable String carrier,
+                         @Nullable String agc) {
         mId = UUID.randomUUID();
         this.id = id;
         this.name = name;
@@ -63,6 +65,8 @@ public class SatelliteInfo implements Serializable {
         this.threshold = threshold;
         this.symbolRate = symbolRate;
         this.comment = comment;
+        this.carrier = carrier;
+        this.agc = agc;
     }
 
     public SatelliteInfo(){

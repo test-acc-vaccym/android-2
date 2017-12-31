@@ -62,7 +62,7 @@
                 android:layout_height="match_parent"
                 android:padding="@dimen/list_detail_padding"
                 android:text="@string/satellite_detail_name_key"/>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/name_detail"
                 android:layout_width="0dp"

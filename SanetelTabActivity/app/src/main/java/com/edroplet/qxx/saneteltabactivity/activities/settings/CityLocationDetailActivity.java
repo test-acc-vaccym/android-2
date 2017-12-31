@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.Spinner;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.Cities;
@@ -41,13 +42,18 @@ public class CityLocationDetailActivity extends AppCompatActivity {
     private CustomEditText cityDetailLongitude;
 
     @BindId(R.id.city_detail_name)
-    private CustomTextView cityName;
+    private CustomEditText cityName;
 
     @BindId(R.id.city_detail_province)
     private CustomTextView provience;
 
     @BindId(R.id.city_detail_id)
     private CustomTextView cityId;
+
+    @BindId(R.id.latitude_unit)
+    Spinner spinnerLatitudeUnit;
+    @BindId(R.id.longitude_unit)
+    Spinner spinnerLongitudeUnit;
 
     private static int[] cityImages = {R.mipmap.city1, R.mipmap.city2, R.mipmap.city3};
     public CollapsingToolbarLayout collap;

@@ -673,7 +673,7 @@
     <string name="administrator_serial_protocol">串口协议</string>
     <string name="administrator_band_select">波段选择</string>
     <string name="administrator_lnb_frequency_channel">LNB频段</string>
-    <string name="administrator_searching_range">寻星范围</string>
+    <string name="administrator_searching_range">方位寻星范围</string>
     <string name="administrator_amplifier_monitor">功放监控</string>
     <!--天线标定-->
     <!--恢复出厂-->

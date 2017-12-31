@@ -21,7 +21,7 @@
         android:title="@string/main_bottom_nav_log" />
     <item
         android:id="@+id/main_navigation_settings"
-        android:icon="@drawable/settings"
+        android:icon="@mipmap/settings"
         android:title="@string/main_bottom_nav_settings" />
 
 </menu>

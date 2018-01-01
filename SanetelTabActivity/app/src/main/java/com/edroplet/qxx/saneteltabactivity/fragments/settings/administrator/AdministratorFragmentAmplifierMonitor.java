@@ -9,6 +9,7 @@ import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
@@ -30,23 +31,21 @@ public class AdministratorFragmentAmplifierMonitor extends Fragment {
     public static final String KEY_AMPLIFIER_MONITOR = "KEY_AMPLIFIER_MONITOR";
     private  final int[] icons = {R.drawable.antenna_exploded };
 
-    public static SparseIntArray mapAmplifierMonitorPosId = new SparseIntArray();
+    public static SparseIntArray mapAmplifierMonitorPosId = new SparseIntArray(4);
 
     public static SparseIntArray initSparseIntArray(){
-        mapAmplifierMonitorPosId.put(0, R.id.administrator_amplifier_monitor_none);
-        mapAmplifierMonitorPosId.put(1, R.id.administrator_amplifier_monitor_has);
+        mapAmplifierMonitorPosId.put(0, R.id.id_administrator_amplifier_monitor_none);
+        mapAmplifierMonitorPosId.put(1, R.id.id_administrator_amplifier_monitor_rs232);
+        mapAmplifierMonitorPosId.put(2, R.id.id_administrator_amplifier_monitor_rs422);
+        mapAmplifierMonitorPosId.put(3, R.id.id_administrator_amplifier_monitor_rs485);
         return mapAmplifierMonitorPosId;
     }
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
 
     @BindView(R.id.id_administrator_settings_amplifier_monitor_radio_group)
-    CustomRadioGroupWithCustomRadioButton amplifierMonitorRadioGroup;
+    RadioGroup amplifierMonitorRadioGroup;
 
-//    @BindView(R.id.administrator_amplifier_monitor_has)
-//    CustomRadioButton radioButtonHas;
-//    @BindView(R.id.administrator_amplifier_monitor_none)
-//    CustomRadioButton radioButtonNone;
 
     private int selected;
 

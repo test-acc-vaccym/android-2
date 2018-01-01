@@ -693,7 +693,7 @@
     <string name="administrator_serial_protocol">串口协议</string>
     <string name="administrator_band_select">波段选择</string>
     <string name="administrator_lnb_frequency_channel">LNB频段</string>
-    <string name="administrator_searching_range">方位寻星范围</string>
+    <string name="administrator_searching_range">寻星范围</string>
     <string name="administrator_amplifier_monitor">功放监控</string>
     <!--天线标定-->
     <!--恢复出厂-->
@@ -720,6 +720,7 @@
     <string name="administrator_setting_lnb_frequency_channel_4"> 18V和22k</string>
 
     <!--寻星范围-->
+    <string name="administrator_setting_searching_range_title">方位寻星范围</string>
     <string name="administrator_setting_searching_range_1">±20°</string>
     <string name="administrator_setting_searching_range_2">±25°</string>
     <string name="administrator_setting_searching_range_3">±30°</string>
@@ -761,8 +762,10 @@
     <string name="ip_edit_dot">.</string>
 
     <!--功放监控-->
-    <string name="administrator_amplifier_monitor_has">有功放监控</string>
-    <string name="administrator_amplifier_monitor_none">无功放监控</string>
+    <string name="administrator_amplifier_monitor_rs232">RS232监控</string>
+    <string name="administrator_amplifier_monitor_rs422">RS422监控</string>
+    <string name="administrator_amplifier_monitor_rs485">RS485监控</string>
+    <string name="administrator_amplifier_monitor_none">无监控</string>
 
     <string name="app_intro_done_button">完成</string>
     <string name="app_intro_skip_button">跳过</string>

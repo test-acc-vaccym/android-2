@@ -18,7 +18,7 @@
                 <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/administrator_searching_range"
+                    android:text="@string/administrator_setting_searching_range_title"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingStart="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"

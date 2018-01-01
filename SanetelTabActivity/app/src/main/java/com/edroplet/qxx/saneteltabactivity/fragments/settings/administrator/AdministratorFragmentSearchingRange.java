@@ -1,47 +1,48 @@
 package com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
-import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
-import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by qxs on 2017/9/19.
+ * 寻星范围
  */
 
 public class AdministratorFragmentSearchingRange extends Fragment {
     private static final String SearchingRangeKey = "searchingRange";
     private  final int[] icons = {R.drawable.antenna_exploded };
 
-    @BindId(R.id.pop_dialog_third_button)
-    private CustomButton thirdButton;
+    @BindView(R.id.pop_dialog_third_button)
+    CustomButton thirdButton;
 
-    @BindId(R.id.administrator_setting_searching_range_radio_group)
-    private CustomRadioGroupWithCustomRadioButton radioGroupWithCustomRadioButton;
+    @BindView(R.id.administrator_setting_searching_range_radio_group)
+    CustomRadioGroupWithCustomRadioButton searchRangeGroup;
 
-    @BindId(R.id.administrator_setting_searching_range_1)
-    private CustomRadioButton radioButtonRange1;
-
-    @BindId(R.id.administrator_setting_searching_range_2)
-    private CustomRadioButton radioButtonRange2;
-
-    @BindId(R.id.administrator_setting_searching_range_3)
-    private CustomRadioButton radioButtonRange3;
-
-    private CustomRadioButton radioButton;
     private String selected;
+
+    int [] ids = {R.id.administrator_setting_searching_range_1, R.id.administrator_setting_searching_range_2, R.id.administrator_setting_searching_range_3, R.id.administrator_setting_searching_range_4, R.id.administrator_setting_searching_range_5};
+
+    int [] values = {20,25,30,35,45};
+
+    static SparseIntArray searchRangeArray = new SparseIntArray(5);
 
     public static AdministratorFragmentSearchingRange newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                                   String secondLine, boolean showThird, String thirdLineStart,
@@ -68,30 +69,23 @@ public class AdministratorFragmentSearchingRange extends Fragment {
         if (view == null){
             return null;
         }
-        ViewInject.inject(getActivity(), getContext());
 
-        thirdButton = view.findViewById(R.id.pop_dialog_third_button);
-        radioButtonRange1 = view.findViewById(R.id.administrator_setting_searching_range_1);
-        radioButtonRange2 = view.findViewById(R.id.administrator_setting_searching_range_2);
-        radioButtonRange3 = view.findViewById(R.id.administrator_setting_searching_range_3);
+        ButterKnife.bind(this,view);
 
-        String type = CustomSP.getString(getContext(),SearchingRangeKey,getString(R.string.administrator_setting_searching_range_1));
-        if (type.equals(getString(R.string.administrator_setting_searching_range_1))){
-            radioButtonRange1.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_searching_range_2))){
-            radioButtonRange2.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_searching_range_3))){
-            radioButtonRange3.setChecked(true);
+        for (int i = 0; i < ids.length; i++){
+            searchRangeArray.put(i, ids[i]);
         }
+        final Context context = getContext();
+        int position = CustomSP.getInt(context, SearchingRangeKey, 0);
+        searchRangeGroup.check(searchRangeArray.get(position));
 
-        radioGroupWithCustomRadioButton = view.findViewById(R.id.administrator_setting_searching_range_radio_group);
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                radioButton = (CustomRadioButton)view.findViewById(radioGroupWithCustomRadioButton.getCheckedRadioButtonId());
-                selected = radioButton.getText().toString();
-                CustomSP.putString(getContext(), SearchingRangeKey, selected);
-                // todo send command
+                int index = searchRangeArray.indexOfValue(searchRangeGroup.getCheckedRadioButtonId());
+                CustomSP.putInt(getContext(), SearchingRangeKey, index);
+                // 5.4 send command
+                Protocol.sendMessage(context, String.format(Protocol.cmdSetSearchRange, values[index], "0.0","0.0","0.0"));
                 getActivity().finish();
             }
         });

@@ -1,11 +1,13 @@
 package com.edroplet.qxx.saneteltabactivity.activities.settings;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
@@ -16,10 +18,13 @@ public class AntennaRestartActivity extends AppCompatActivity {
     @BindId(R.id.pop_dialog_third_button)
     private CustomButton thirdButton;
 
+    Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_antenna_restart);
+        context = this;
         ViewInject.inject(this, this);
         // StatusBarControl.setupToolbar(this, R.id.antenna_restart_toolbar);
         // 设置标题栏
@@ -49,7 +54,8 @@ public class AntennaRestartActivity extends AppCompatActivity {
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: 2017/10/23  发送重启命令
+                // 发送重启命令
+                Protocol.sendMessage(context, Protocol.cmdResetSystem);
             }
         });
 

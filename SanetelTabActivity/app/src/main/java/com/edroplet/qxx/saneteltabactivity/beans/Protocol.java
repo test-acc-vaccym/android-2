@@ -267,7 +267,7 @@ public class Protocol {
     // 终端设备发送指令格式：$cmd,get bucinfo switch *ff\r\n
     // 便携站返回数据：$cmd, bucinfo switch,功放监视*ff\r\n
     public static final String cmdGetBucInfoSwitch="$cmd,get bucinfo switch*ff\r\n";
-    public static final String cmdGetBucInfoSwitchResultHead="$cmd,bucinfo switch,";
+    public static final String cmdGetBucInfoSwitchResultHead="$cmd,bucinfo switch data,";
     public static final String cmdGetBucInfoSwitchResult=cmdGetBucInfoSwitchResultHead+"%s*ff\r\n";
     // 4.14.7.2	设置
     // 终端设备发送指令格式：$cmd,set bucinfo switch,功放监视*ff\r\n

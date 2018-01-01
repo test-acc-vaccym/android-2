@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
@@ -87,8 +88,11 @@ public class AdministratorFragmentAmplifierMonitor extends Fragment {
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomSP.putInt(getContext(), KEY_AMPLIFIER_MONITOR, mapAmplifierMonitorPosId.indexOfValue( amplifierMonitorRadioGroup.getCheckedRadioButtonId()));
+                int index = mapAmplifierMonitorPosId.indexOfValue( amplifierMonitorRadioGroup.getCheckedRadioButtonId());
+                CustomSP.putInt(getContext(), KEY_AMPLIFIER_MONITOR, index);
                 // todo send command
+                // 系统通信规范 4.14.7
+                Protocol.sendMessage(context, String.format(Protocol.cmdSetBucInfoSwitch, index));
                 getActivity().finish();
             }
         });

@@ -51,6 +51,8 @@ public class BroadcastReceiverFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        getActivity().getApplicationContext().unregisterReceiver(allInfoReceiver);
+        if (allInfoReceiver != null)
+            getActivity().getApplicationContext().unregisterReceiver(allInfoReceiver);
+        allInfoReceiver = null;
     }
 }

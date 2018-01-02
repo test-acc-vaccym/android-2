@@ -1,8 +1,8 @@
 package com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
@@ -13,6 +13,8 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
+import com.edroplet.qxx.saneteltabactivity.utils.sscanf.Sscanf;
+import com.edroplet.qxx.saneteltabactivity.view.BroadcastReceiverFragment;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
 
@@ -25,8 +27,10 @@ import butterknife.Unbinder;
  * 频段选择
  */
 
-public class AdministratorFragmentBandSelect extends Fragment {
+public class AdministratorFragmentBandSelect extends BroadcastReceiverFragment {
     public static final String BandTypeKey = "bandType";
+    public static final String BandTypeAction = "com.edroplet.sanetel.BandTypeAction";
+    public static final String BandTypeData = "com.edroplet.sanetel.BandTypeData";
     private  final int[] icons = {R.drawable.antenna_exploded };
 
     @BindView(R.id.pop_dialog_third_button)
@@ -55,6 +59,13 @@ public class AdministratorFragmentBandSelect extends Fragment {
         args.putString(PopDialog.END, thirdLineEnd);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        String [] action = {BandTypeAction};
+        setAction(action);
+        super.onCreate(savedInstanceState);
     }
 
     @Nullable
@@ -98,6 +109,17 @@ public class AdministratorFragmentBandSelect extends Fragment {
             }
         }
         return popDialog.show();
+    }
+
+    @Override
+    public void processData(Intent intent) {
+        super.processData(intent);
+        String rawData = intent.getStringExtra(BandTypeData);
+        int band = 0;
+        Object[] o = Sscanf.scan(rawData,Protocol.cmdGetBandResult,band);
+        band = (Integer) o[0];
+        // 设置选项
+        bandSelectGroup.check(bandTypes.get(band));
     }
 
     @Override

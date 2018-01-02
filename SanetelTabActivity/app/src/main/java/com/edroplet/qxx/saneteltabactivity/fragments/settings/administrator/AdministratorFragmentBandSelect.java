@@ -66,6 +66,8 @@ public class AdministratorFragmentBandSelect extends BroadcastReceiverFragment {
         String [] action = {BandTypeAction};
         setAction(action);
         super.onCreate(savedInstanceState);
+        // 发送命令
+        Protocol.sendMessage(getContext(),Protocol.cmdGetBand);
     }
 
     @Nullable

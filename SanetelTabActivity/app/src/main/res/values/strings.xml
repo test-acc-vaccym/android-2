@@ -640,8 +640,8 @@
 
     <!--10.2.	功放-->
     <string name="settings_amplifier_manufacture_1">JRC</string>
-    <string name="settings_amplifier_manufacture_2">WaveSTream</string>
-    <string name="settings_amplifier_manufacture_3">Mitec</string>
+    <string name="settings_amplifier_manufacture_2">WaveStream</string>
+    <string name="settings_amplifier_manufacture_3">Mitech</string>
     <string name="settings_amplifier_manufacture_4">WaveLab</string>
     <string name="settings_amplifier_manufacture_5">Advantech</string>
     <string name="settings_amplifier_manufacture_6">Sanetel</string>

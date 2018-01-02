@@ -363,7 +363,7 @@ public class Protocol {
     // 5.5.2	设置
     // 终端设备发送指令格式：$cmd,set band,波段*ff\r\n
     // 便携站返回数据：$cmd,band set ok*ff\r\n
-    public static final String cmdSetBand="$cmd,get band,%s*ff\r\n";
+    public static final String cmdSetBand="$cmd,set band,%s*ff\r\n";
     public static final String cmdSetBandResultHead="$cmd,band set ";
     public static final String cmdSetBandResult=cmdSetBandResultHead+"ok*ff\r\n";
 

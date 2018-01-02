@@ -44,4 +44,13 @@
         <item>长沙</item>
         <item>武汉</item>
     </array>
+
+    <string-array name="amplifier_manufacture">
+        <item>JRC</item>
+        <item>WaveStream</item>
+        <item>Mitech</item>
+        <item>WaveLab</item>
+        <item>Advantech</item>
+        <item>Sanetel</item>
+    </string-array>
 </resources>

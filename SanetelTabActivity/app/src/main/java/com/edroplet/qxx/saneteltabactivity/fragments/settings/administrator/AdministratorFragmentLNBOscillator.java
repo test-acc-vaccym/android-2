@@ -1,6 +1,7 @@
 package com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,31 +13,35 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.beans.WaveBand;
-import com.edroplet.qxx.saneteltabactivity.utils.ConvertUtil;
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
+import com.edroplet.qxx.saneteltabactivity.utils.sscanf.Sscanf;
+import com.edroplet.qxx.saneteltabactivity.view.BroadcastReceiverFragment;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
+import static com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentBandSelect.BandTypeKey;
 
 /**
  * Created by qxs on 2017/9/19.
+ * LNB本振
  */
 
-public class AdministratorFragmentLNBOscillator extends Fragment {
+public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragment {
     private static final String LNBFrequency = "lnbFrequency";
     private static final String LNBFrequencyResourcePos = "LNBFrequencyResourcePos";
-    private  final int[] icons = {R.drawable.antenna_exploded };
+    private static final String LNB_OSC_ACTION = "com.edroplet.sanetel.LNB_OSC_ACTION";
+    private static final String LNB_OSC_DATA = "com.edroplet.sanetel.LNB_OSC_DATA";
 
     @BindView(R.id.layout_lnb_ku)
     LinearLayout linearLayoutKu;
@@ -52,32 +57,26 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
 
     @BindView(R.id.low_noise_block_oscillator_ka_radio_group)
     CustomRadioGroupWithCustomRadioButton oscillatorKaSelect;
+    @BindView(R.id.oscillator_custom_ku_val)
+    CustomEditText tvCustomVal;
 
-    @BindView(R.id.id_administrator_settings_lnb_ku_value_1)
-    RadioButton administrator_settings_lnb_ku_value_1;
-    @BindView(R.id.id_administrator_settings_lnb_ku_value_2)
-    RadioButton administrator_settings_lnb_ku_value_2;
-    @BindView(R.id.id_administrator_settings_lnb_ku_value_3)
-    RadioButton administrator_settings_lnb_ku_value_3;
-    @BindView(R.id.id_administrator_settings_lnb_ku_value_4)
-    RadioButton administrator_settings_lnb_ku_value_4;
-    @BindView(R.id.id_administrator_settings_lnb_ku_value_5)
-    RadioButton administrator_settings_lnb_ku_value_5;
-    @BindView(R.id.id_administrator_settings_lnb_ku_value_6)
-    RadioButton administrator_settings_lnb_ku_value_6;
-    @BindView(R.id.id_administrator_settings_lnb_ku_value_7)
-    RadioButton administrator_settings_lnb_ku_value_7;
-
-
-    @BindView(R.id.id_administrator_settings_lnb_ka_value_1)
-    RadioButton administrator_settings_lnb_ka_value_1;
-    @BindView(R.id.id_administrator_settings_lnb_ka_value_2)
-    RadioButton administrator_settings_lnb_ka_value_2;
+    Unbinder unbinder;
 
     Context context;
-
     static SparseIntArray mapKaPosId = new SparseIntArray();
     static SparseIntArray mapKuPosId = new SparseIntArray();
+
+    static final int kuPosition = 0;
+    static final int [] kaVals = {17400, 19250};
+    static final int [] kaValIds={R.id.id_administrator_settings_lnb_ka_value_1,
+            R.id.id_administrator_settings_lnb_ka_value_2};
+
+    static final int [] kuVals = {5150, 9750, 10000, 10750, 11300, 10600};
+    static final int [] kuValIds= {R.id.id_administrator_settings_lnb_ku_value_1,
+            R.id.id_administrator_settings_lnb_ku_value_2,
+            R.id.id_administrator_settings_lnb_ku_value_3,R.id.id_administrator_settings_lnb_ku_value_4,
+            R.id.id_administrator_settings_lnb_ku_value_5,R.id.id_administrator_settings_lnb_ku_value_6,
+            R.id.id_administrator_settings_lnb_ku_value_7};
 
     public static AdministratorFragmentLNBOscillator newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                                  String secondLine, boolean showThird, String thirdLineStart,
@@ -97,6 +96,45 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
         return fragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        context = getContext();
+        String []action = {LNB_OSC_ACTION};
+        setAction(action);
+        super.onCreate(savedInstanceState);
+
+        Protocol.sendMessage(context,Protocol.cmdGetLnbLf);
+    }
+
+    @Override
+    public void processData(Intent intent) {
+        super.processData(intent);
+        String rawData =intent.getStringExtra(LNB_OSC_DATA);
+        String lnbLf = "" ;
+
+        Object[] o = Sscanf.scan(rawData, Protocol.cmdGetLnbLfResult,lnbLf);
+        lnbLf = (String)o[0];
+        int lnb = Integer.parseInt(lnbLf);
+        int bandType = CustomSP.getInt(context, BandTypeKey , 0 );
+        if (bandType != kuPosition) {
+            int pos = Arrays.asList(kaVals).indexOf(lnb);
+            if (pos == -1){
+                pos = 0;
+            }
+            oscillatorKaSelect.check(mapKaPosId.get(pos));
+        }else{
+            int pos = Arrays.asList(kuVals).indexOf(lnb);
+            if (pos == -1){
+                pos = kuVals.length;
+            }
+            // 自定义
+            if (pos == kuVals.length){
+                tvCustomVal.setText(String.valueOf(lnb));
+            }
+            oscillatorKuSelect.check(mapKuPosId.get(pos));
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -105,23 +143,21 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
             return null;
         }
 
-        ButterKnife.bind(this, view);
-        mapKaPosId.put(0,R.id.id_administrator_settings_lnb_ka_value_1);
-        mapKaPosId.put(1,R.id.id_administrator_settings_lnb_ka_value_2);
-
-        mapKuPosId.put(0, R.id.id_administrator_settings_lnb_ku_value_1);
-        mapKuPosId.put(1, R.id.id_administrator_settings_lnb_ku_value_2);
-        mapKuPosId.put(2, R.id.id_administrator_settings_lnb_ku_value_3);
-        mapKuPosId.put(3, R.id.id_administrator_settings_lnb_ku_value_4);
-        mapKuPosId.put(4, R.id.id_administrator_settings_lnb_ku_value_5);
-        mapKuPosId.put(5, R.id.id_administrator_settings_lnb_ku_value_6);
-        mapKuPosId.put(6, R.id.id_administrator_settings_lnb_ku_value_7);
+        unbinder = ButterKnife.bind(this, view);
+        int i = 0;
+        for (int id : kaValIds){
+            mapKaPosId.put(i++, id);
+        }
+        i = 0;
+        for (int id : kuValIds){
+            mapKuPosId.put(i++, id);
+        }
 
         context = getContext();
 
-        final String band = CustomSP.getString(context, WaveBand.Key, WaveBand.KU);
+        final int band = CustomSP.getInt(context, BandTypeKey, kuPosition);
         // 根据不同的波段显示不同的layout
-        if (band.equals(WaveBand.KU)){
+        if (band == kuPosition){
             // 设置可见性
             linearLayoutKu.setVisibility(View.VISIBLE);
             linearLayoutKa.setVisibility(View.GONE);
@@ -149,19 +185,24 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
             @Override
             public void onClick(View v) {
                 String val;
-                if (band.equals(WaveBand.KU)) {
+                if (band == kuPosition) {
                     int id = oscillatorKuSelect.getCheckedRadioButtonId();
-                    CustomSP.putInt(context,LNBFrequencyResourcePos,mapKuPosId.indexOfValue(id));
+                    int pos = mapKuPosId.indexOfValue(id);
+                    CustomSP.putInt(context,LNBFrequencyResourcePos,pos);
                     if (id == R.id.id_administrator_settings_lnb_ku_value_7){
                         val = ((CustomEditText) view.findViewById(R.id.top_custom_val)).getText().toString();
                         CustomSP.putString(context, LNBFrequency, val);
+                    }else {
+                        val = String.valueOf(kuVals[pos]) ;
                     }
                 }else{
                     int id = oscillatorKaSelect.getCheckedRadioButtonId();
-                    CustomSP.putInt(context,LNBFrequencyResourcePos,mapKaPosId.indexOfValue(id));
+                    int pos = mapKuPosId.indexOfValue(id);
+                    CustomSP.putInt(context,LNBFrequencyResourcePos,pos);
+                    val = String.valueOf(kuVals[pos]) ;
                 }
-                // TODO: 2017/10/23 设置命令
-
+                // 设置命令
+                Protocol.sendMessage(context,String.format(Protocol.cmdSetLnbLf, val));
                 // 退出
                 getActivity().finish();
             }
@@ -187,5 +228,11 @@ public class AdministratorFragmentLNBOscillator extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

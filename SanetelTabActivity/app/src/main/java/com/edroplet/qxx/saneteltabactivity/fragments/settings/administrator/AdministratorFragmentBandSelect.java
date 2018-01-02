@@ -4,43 +4,37 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.beans.WaveBand;
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
-import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
-import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by qxs on 2017/9/19.
  */
 
 public class AdministratorFragmentBandSelect extends Fragment {
-    private static final String BandTypeKey = "bandType";
+    public static final String BandTypeKey = "bandType";
     private  final int[] icons = {R.drawable.antenna_exploded };
 
-    @BindId(R.id.pop_dialog_third_button)
+    @BindView(R.id.pop_dialog_third_button)
     private CustomButton thirdButton;
 
-    @BindId(R.id.id_administrator_settings_band_select_radio_group)
-    private CustomRadioGroupWithCustomRadioButton radioGroupWithCustomRadioButton;
+    @BindView(R.id.id_administrator_settings_band_select_radio_group)
+    private CustomRadioGroupWithCustomRadioButton bandSelectGroup;
 
-    @BindId(R.id.administrator_setting_band_ka)
-    private CustomRadioButton radioButtonKa;
-
-    @BindId(R.id.administrator_setting_band_ku)
-    private CustomRadioButton radioButtonKu;
-
-
-    private CustomRadioButton radioButton;
-    private String selected;
+    int []bandTypeIds = {R.id.administrator_setting_band_ku,R.id.administrator_setting_band_ka};
+    SparseIntArray bandTypes=new SparseIntArray(2);
 
     public static AdministratorFragmentBandSelect newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                               String secondLine, boolean showThird, String thirdLineStart,
@@ -67,28 +61,23 @@ public class AdministratorFragmentBandSelect extends Fragment {
         if (view == null){
             return null;
         }
-        ViewInject.inject(getActivity(), getContext());
-
-        thirdButton = view.findViewById(R.id.pop_dialog_third_button);
-        radioButtonKa = view.findViewById(R.id.administrator_setting_band_ka);
-        radioButtonKu = view.findViewById(R.id.administrator_setting_band_ku);
-
-        String type = CustomSP.getString(getContext(),BandTypeKey,getString(R.string.administrator_setting_band_ku));
-        if (type.equals(getString(R.string.administrator_setting_band_ka))){
-            radioButtonKa.setChecked(true);
-        }else{
-            radioButtonKu.setChecked(true);
+        ButterKnife.bind(this, view);
+        int i = 0;
+        for (int id: bandTypeIds){
+            bandTypes.put(i++,id);
         }
 
-        radioGroupWithCustomRadioButton = view.findViewById(R.id.id_administrator_settings_band_select_radio_group);
+
+        int type = CustomSP.getInt(getContext(),BandTypeKey,1);
+        bandSelectGroup.check(bandTypes.get(type));
+
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                radioButton = (CustomRadioButton)view.findViewById(radioGroupWithCustomRadioButton.getCheckedRadioButtonId());
-                selected = radioButton.getText().toString();
-                CustomSP.putString(getContext(), BandTypeKey, selected);
-                CustomSP.putString(getContext(), WaveBand.Key, selected.substring(0,2));
-                // todo send command
+                int pos = bandTypes.indexOfKey(bandSelectGroup.getCheckedRadioButtonId());
+                CustomSP.putInt(getContext(), BandTypeKey, pos);
+                //send command
+                Protocol.sendMessage(getContext(), String.format(Protocol.cmdSetBand, pos));
                 getActivity().finish();
             }
         });

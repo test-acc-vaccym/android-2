@@ -2,6 +2,7 @@
   <dictionary name="qxs">
     <words>
       <w>clinometer</w>
+      <w>edroplet</w>
       <w>gnss</w>
       <w>holzer</w>
       <w>levoclination</w>
@@ -9,6 +10,7 @@
       <w>notlocated</w>
       <w>palstance</w>
       <w>sanetel</w>
+      <w>vals</w>
       <w>xwwt</w>
     </words>
   </dictionary>

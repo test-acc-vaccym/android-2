@@ -22,7 +22,7 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCusto
  */
 
 public class AdministratorFragmentLNBFrequencyChannel extends Fragment {
-    private static final String LNBFrequency = "lnbFrequency";
+    public static final String LNBFrequency = "lnbFrequency";
     private  final int[] icons = {R.drawable.antenna_exploded };
 
     @BindId(R.id.pop_dialog_third_button)

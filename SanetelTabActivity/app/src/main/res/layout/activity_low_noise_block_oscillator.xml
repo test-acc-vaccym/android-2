@@ -122,7 +122,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/administrator_settings_lnb_ku_value_6" />
 
-                    <!--单选-->
+                    <!--自定义项-->
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -131,9 +131,9 @@
                             android:layout_alignParentTop="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
-                        <!--卫星名-->
+                        <!--自定义本征值-->
                         <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
-                            android:id="@+id/top_custom_val"
+                            android:id="@+id/oscillator_custom_ku_val"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignBottom="@id/id_administrator_settings_lnb_ku_value_7"

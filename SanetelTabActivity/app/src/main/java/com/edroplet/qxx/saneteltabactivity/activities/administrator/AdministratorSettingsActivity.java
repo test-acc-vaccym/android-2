@@ -17,7 +17,6 @@ import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.Admi
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentAntennaType;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentBandSelect;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentIPSettings;
-import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentLNBFrequencyChannel;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentLNBOscillator;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentNetworkProtocolSettings;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator.AdministratorFragmentRecoveryFactory;
@@ -140,9 +139,6 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
         adapter.addFragment(AdministratorFragmentBandSelect.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
-//        adapter.addFragment(AdministratorFragmentLNBFrequencyChannel.newInstance(false,null,
-//                false, null, true, getString(R.string.follow_me_message_click),-1,
-//                getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
         adapter.addFragment(AdministratorFragmentLNBOscillator.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));

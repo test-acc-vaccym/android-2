@@ -18,9 +18,11 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCusto
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by qxs on 2017/9/19.
+ * 频段选择
  */
 
 public class AdministratorFragmentBandSelect extends Fragment {
@@ -35,6 +37,7 @@ public class AdministratorFragmentBandSelect extends Fragment {
 
     int []bandTypeIds = {R.id.administrator_setting_band_ku,R.id.administrator_setting_band_ka};
     SparseIntArray bandTypes=new SparseIntArray(2);
+    Unbinder unbinder;
 
     public static AdministratorFragmentBandSelect newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                               String secondLine, boolean showThird, String thirdLineStart,
@@ -61,12 +64,11 @@ public class AdministratorFragmentBandSelect extends Fragment {
         if (view == null){
             return null;
         }
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
         int i = 0;
         for (int id: bandTypeIds){
             bandTypes.put(i++,id);
         }
-
 
         int type = CustomSP.getInt(getContext(),BandTypeKey,1);
         bandSelectGroup.check(bandTypes.get(type));
@@ -96,5 +98,11 @@ public class AdministratorFragmentBandSelect extends Fragment {
             }
         }
         return popDialog.show();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

@@ -28,10 +28,10 @@ public class AdministratorFragmentBandSelect extends Fragment {
     private  final int[] icons = {R.drawable.antenna_exploded };
 
     @BindView(R.id.pop_dialog_third_button)
-    private CustomButton thirdButton;
+    CustomButton thirdButton;
 
     @BindView(R.id.id_administrator_settings_band_select_radio_group)
-    private CustomRadioGroupWithCustomRadioButton bandSelectGroup;
+    CustomRadioGroupWithCustomRadioButton bandSelectGroup;
 
     int []bandTypeIds = {R.id.administrator_setting_band_ku,R.id.administrator_setting_band_ka};
     SparseIntArray bandTypes=new SparseIntArray(2);

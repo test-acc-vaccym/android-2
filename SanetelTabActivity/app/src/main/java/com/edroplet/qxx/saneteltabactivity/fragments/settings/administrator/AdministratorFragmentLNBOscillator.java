@@ -168,7 +168,7 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
             // ((RadioButton) view.findViewById(id)).setChecked(true);
             oscillatorKuSelect.check(id);
             if (id == R.id.id_administrator_settings_lnb_ku_value_7){
-                ((CustomEditText) view.findViewById(R.id.top_custom_val)).setText("");
+                ((CustomEditText) view.findViewById(R.id.oscillator_custom_ku_val)).setText("");
             }
         }else {
             // 设置可见性
@@ -190,7 +190,7 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
                     int pos = mapKuPosId.indexOfValue(id);
                     CustomSP.putInt(context,LNBFrequencyResourcePos,pos);
                     if (id == R.id.id_administrator_settings_lnb_ku_value_7){
-                        val = ((CustomEditText) view.findViewById(R.id.top_custom_val)).getText().toString();
+                        val = ((CustomEditText) view.findViewById(R.id.oscillator_custom_ku_val)).getText().toString();
                         CustomSP.putString(context, LNBFrequency, val);
                     }else {
                         val = String.valueOf(kuVals[pos]) ;

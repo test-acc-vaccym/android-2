@@ -1,6 +1,7 @@
 package com.edroplet.sanetel.fragments.settings;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,20 +10,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.sanetel.R;
+import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.PopDialog;
+import com.edroplet.sanetel.utils.sscanf.Sscanf;
+import com.edroplet.sanetel.view.BroadcastReceiverFragment;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomRadioButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by qxs on 2017/9/19.
  *
  */
 
-public class SettingsFragmentAmplifierInterfere extends Fragment {
+public class SettingsFragmentAmplifierInterfere extends BroadcastReceiverFragment {
+    public static final String AmplifierInterfereAction = "com.edroplet.sanetel.AmplifierInterfereAction";
+    public static final String AmplifierInterfereData = "com.edroplet.sanetel.AmplifierInterfereData";
+
     public static SettingsFragmentAmplifierInterfere newInstance(String info) {
         Bundle args = new Bundle();
         SettingsFragmentAmplifierInterfere fragment = new SettingsFragmentAmplifierInterfere();
@@ -36,16 +44,24 @@ public class SettingsFragmentAmplifierInterfere extends Fragment {
     CustomButton thirdButton;
     @BindView(R.id.settings_amplifier_interfere_use)
     CustomRadioButton interfereUse;
-    @BindView(R.id.settings_amplifier_interfere_disuse)
-    CustomRadioButton interfereDisuse;
 
     public static final String KEY_USE_INTERFERE="KEY_USE_INTERFERE";
+    Context context;
+    Unbinder unbinder;
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        String[] action = {AmplifierInterfereAction};
+        setAction(action);
+        super.onCreate(savedInstanceState);
+        context = getContext();
+        Protocol.sendMessage(context,Protocol.cmdGetProtectState);
+    }
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_settings_amplifier_interfere, null);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
 
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,11 +69,13 @@ public class SettingsFragmentAmplifierInterfere extends Fragment {
                 if (interfereUse.isChecked()){
                     // 保存设置
                     CustomSP.putBoolean(getContext(),KEY_USE_INTERFERE,true);
-                    // TODO: 2017/11/12 发送命令使用零星干扰
+                    // TODO: 2017/11/12 发送命令使用邻星干扰
+                    Protocol.sendMessage(context, String.format(Protocol.cmdSetProtectState,"1"));
                 }else {
                     // 保存设置
                     CustomSP.putBoolean(getContext(),KEY_USE_INTERFERE,false);
-                    // TODO: 2017/11/12 发送命令不使用零星干扰
+                    // TODO: 2017/11/12 发送命令不使用邻星干扰
+                    Protocol.sendMessage(context, String.format(Protocol.cmdSetProtectState,"0"));
                 }
             }
         });
@@ -66,7 +84,7 @@ public class SettingsFragmentAmplifierInterfere extends Fragment {
         if (isUse){
             interfereUse.setChecked(true);
         }else {
-            interfereDisuse.setChecked(true);
+            interfereUse.setChecked(false);
         }
 
         // 设置自定义框内容
@@ -85,5 +103,27 @@ public class SettingsFragmentAmplifierInterfere extends Fragment {
         popDialog.show();
 
         return view;
+    }
+
+    @Override
+    public void processData(Intent intent) {
+        super.processData(intent);
+        String rawData = intent.getStringExtra(AmplifierInterfereData);
+        String use = "0";
+        Object[]objects = Sscanf.scan(rawData,Protocol.cmdGetProtectStateResult,use);
+        use = (String) objects[0];
+        if (use.equals("0")){
+            interfereUse.setChecked(false);
+            CustomSP.putBoolean(getContext(),KEY_USE_INTERFERE, false);
+        }else{
+            interfereUse.setChecked(true);
+            CustomSP.putBoolean(getContext(),KEY_USE_INTERFERE, true);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

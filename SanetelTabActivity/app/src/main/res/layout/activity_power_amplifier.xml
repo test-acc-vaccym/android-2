@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/status_bar_height"
             android:background="@color/state_bar_background"
+            app:navigationIcon="@drawable/back"
             app:titleTextColor="@color/black"
             app:titleTextAppearance="?android:attr/textAppearanceLarge"
             app:layout_scrollFlags="scroll|enterAlways">
@@ -88,7 +89,7 @@
         app:backgroundTint="@drawable/button_background"
         android:visibility="invisible"/-->
 
-    <com.edroplet.sanetel.view.custom.CustomFAB
+    <!--com.edroplet.sanetel.view.custom.CustomFAB
         android:id="@+id/amplifier_fab"
         android:layout_width="@dimen/fab_size"
         android:layout_height="@dimen/fab_size"
@@ -101,5 +102,5 @@
         android:layout_gravity="bottom"
         app:layout_anchorGravity="top|end"
         app:pressedTranslationZ="12dp"
-        app:rippleColor="#a6a6a6" />
+        app:rippleColor="#a6a6a6" /-->
 </android.support.design.widget.CoordinatorLayout>

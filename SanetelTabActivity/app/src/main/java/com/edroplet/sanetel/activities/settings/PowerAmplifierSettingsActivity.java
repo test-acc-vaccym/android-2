@@ -99,17 +99,19 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
         bottomNavigationView.enableShiftingMode(false);
         bottomNavigationView.setTextSize(20);
         bottomNavigationView.setIconSize(0,0);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        fab.setVisibility(View.INVISIBLE);
+                        // fab.setVisibility(View.INVISIBLE);
                         switch (item.getItemId()) {
                             case R.id.settings_power_amplifier_bottom_navigation_interfere:
                                 mViewPager.setCurrentItem(interfererPosition);
                                 break;
                             case R.id.settings_power_amplifier_bottom_navigation_emit:
                                 mViewPager.setCurrentItem(emitPosition);
+                                // fab.setVisibility(View.VISIBLE);
                         }
                         return false;
                     }
@@ -117,7 +119,7 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
         bottomNavigationView.setupWithViewPager(mViewPager);
 
         mViewPager.setCurrentItem(startPosition);
-        setupFab();
+        // setupFab();
     }
 
     private MenuItem menuItem;

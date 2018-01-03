@@ -1,50 +1,56 @@
 package com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
-import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
-import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
+import com.edroplet.qxx.saneteltabactivity.utils.sscanf.Sscanf;
+import com.edroplet.qxx.saneteltabactivity.view.BroadcastReceiverFragment;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 /**
  * Created by qxs on 2017/9/19.
+ * 网络协议选择
  */
 
-public class AdministratorFragmentNetworkProtocolSettings extends Fragment {
+public class AdministratorFragmentNetworkProtocolSettings extends BroadcastReceiverFragment {
+    public static final String NetworkProtocolSettingsAction = "com.edroplet.sanetel.NetworkProtocolSettingsAction";
+    public static final String NetworkProtocolSettingsData = "com.edroplet.sanetel.NetworkProtocolSettingsData";
     private static final String NetworkProtocolKey = "networkProtocol";
     private  final int[] icons = {R.drawable.antenna_exploded };
 
-    @BindId(R.id.pop_dialog_third_button)
-    private CustomButton thirdButton;
+    String port = "0", networkProtocol = "40";
+    @BindView(R.id.pop_dialog_third_button)
+    CustomButton thirdButton;
 
-    private CustomRadioGroupWithCustomRadioButton radioGroupWithCustomRadioButton;
+    @BindView(R.id.administrator_setting_network_protocol_radio_group)
+    CustomRadioGroupWithCustomRadioButton networkProtocolGroup;
 
-    @BindId(R.id.administrator_setting_network_protocol_1)
-    private CustomRadioButton radioButtonNetworkProtocol1;
-    private CustomRadioButton radioButtonNetworkProtocol2;
-    private CustomRadioButton radioButtonNetworkProtocol3;
-    private CustomRadioButton radioButtonNetworkProtocol4;
-    private CustomRadioButton radioButtonNetworkProtocol5;
-    private CustomRadioButton radioButtonNetworkProtocol6;
-    private CustomRadioButton radioButtonNetworkProtocol7;
+    SparseIntArray mapNetworkProtocol = new SparseIntArray(7);
+    int [] networkProtocolIds = {R.id.administrator_setting_network_protocol_1,R.id.administrator_setting_network_protocol_2,
+            R.id.administrator_setting_network_protocol_3,R.id.administrator_setting_network_protocol_4,
+            R.id.administrator_setting_network_protocol_5,R.id.administrator_setting_network_protocol_6,
+            R.id.administrator_setting_network_protocol_7};
 
-    private CustomRadioButton radioButton;
-    private String selected;
-
-    public static AdministratorFragmentNetworkProtocolSettings newInstance(boolean showFirst, String firstLine, boolean showSecond,
-                                                                           String secondLine, boolean showThird, String thirdLineStart,
-                                                                           int icon, String buttonText, String thirdLineEnd) {
+    public static AdministratorFragmentNetworkProtocolSettings newInstance(
+            boolean showFirst, String firstLine, boolean showSecond,
+            String secondLine, boolean showThird, String thirdLineStart,
+            int icon, String buttonText, String thirdLineEnd) {
         Bundle args = new Bundle();
         AdministratorFragmentNetworkProtocolSettings fragment = new AdministratorFragmentNetworkProtocolSettings();
         args.putBoolean(PopDialog.SHOW_FIRST,showFirst);
@@ -60,6 +66,16 @@ public class AdministratorFragmentNetworkProtocolSettings extends Fragment {
         return fragment;
     }
 
+    Unbinder unbinder;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        String[] action = {NetworkProtocolSettingsAction};
+        setAction(action);
+        super.onCreate(savedInstanceState);
+        Protocol.sendMessage(getContext(),Protocol.cmdGetNetUserid);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -67,42 +83,22 @@ public class AdministratorFragmentNetworkProtocolSettings extends Fragment {
         if (view == null){
             return null;
         }
-        ViewInject.inject(getActivity(), getContext());
-
-        thirdButton = view.findViewById(R.id.pop_dialog_third_button);
-        radioButtonNetworkProtocol1 = view.findViewById(R.id.administrator_setting_network_protocol_1);
-        radioButtonNetworkProtocol2 = view.findViewById(R.id.administrator_setting_network_protocol_2);
-        radioButtonNetworkProtocol3 = view.findViewById(R.id.administrator_setting_network_protocol_3);
-        radioButtonNetworkProtocol4 = view.findViewById(R.id.administrator_setting_network_protocol_4);
-        radioButtonNetworkProtocol5 = view.findViewById(R.id.administrator_setting_network_protocol_5);
-        radioButtonNetworkProtocol6 = view.findViewById(R.id.administrator_setting_network_protocol_6);
-        radioButtonNetworkProtocol7 = view.findViewById(R.id.administrator_setting_network_protocol_7);
-
-        String type = CustomSP.getString(getContext(),NetworkProtocolKey,getString(R.string.administrator_setting_network_protocol_1));
-        if (type.equals(getString(R.string.administrator_setting_network_protocol_1))){
-            radioButtonNetworkProtocol1.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_network_protocol_2))){
-            radioButtonNetworkProtocol2.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_network_protocol_3))){
-            radioButtonNetworkProtocol3.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_network_protocol_4))){
-            radioButtonNetworkProtocol4.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_network_protocol_5))){
-            radioButtonNetworkProtocol5.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_network_protocol_6))){
-            radioButtonNetworkProtocol6.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_network_protocol_7))){
-            radioButtonNetworkProtocol7.setChecked(true);
+        unbinder = ButterKnife.bind(this, view);
+        int i = 0;
+        for (int id: networkProtocolIds){
+            mapNetworkProtocol.put(i++, id);
         }
+        int type = CustomSP.getInt(getContext(),NetworkProtocolKey,0);
+        networkProtocolGroup.check(mapNetworkProtocol.get(type));
 
-        radioGroupWithCustomRadioButton = view.findViewById(R.id.administrator_setting_network_protocol_radio_group);
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                radioButton = (CustomRadioButton)view.findViewById(radioGroupWithCustomRadioButton.getCheckedRadioButtonId());
-                selected = radioButton.getText().toString();
-                CustomSP.putString(getContext(), NetworkProtocolKey, selected);
-                // todo send command
+                int pos = mapNetworkProtocol.indexOfKey(networkProtocolGroup.getCheckedRadioButtonId()) ;
+                CustomSP.putInt(getContext(), NetworkProtocolKey, pos);
+                // send command
+                // cmd,set net userid,端口号,协议
+                Protocol.sendMessage(getContext(),String.format(Protocol.cmdSetNetUserid, port, String.valueOf(40+pos)));
                 getActivity().finish();
             }
         });
@@ -128,5 +124,28 @@ public class AdministratorFragmentNetworkProtocolSettings extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
+    }
+
+    @Override
+    public void processData(Intent intent) {
+        super.processData(intent);
+        String rawData = intent.getStringExtra(NetworkProtocolSettingsData);
+        Object[] o = Sscanf.scan(rawData,Protocol.cmdGetNetUseridResult,port,networkProtocol);
+        port = (String)o[0];
+        if (port.length() == 0){
+            port = "0";
+        }
+        networkProtocol = (String)o[1];
+        int pos = Integer.parseInt(networkProtocol) - 40;
+        if (pos < 0){
+            pos = 0;
+        }
+        networkProtocolGroup.check(mapNetworkProtocol.get(pos));
     }
 }

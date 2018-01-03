@@ -10,7 +10,15 @@ import static org.junit.Assert.*;
 public class ProtocolTest {
     @Test
     public void verifyData() throws Exception {
-        System.out.print(Protocol.verifyData("$cmd,get system state*ff\r\n"));
+        String cmd = "$cmd,get system state*ff\r\n";
+        String v = Protocol.verifyData(cmd);
+        System.out.println(v);
+        String command = cmd;
+        int lastIndexStar = cmd.lastIndexOf('*');
+        if (lastIndexStar > 0) {
+            command = cmd.substring(0, lastIndexStar) + "*" + v + "\r\n";
+        }
+        System.out.println(command);
     }
 
 }

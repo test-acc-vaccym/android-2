@@ -172,11 +172,11 @@ public class Protocol {
     public static final String cmdStepControl="$cmd,step control,%s,%s*ff\r\n";
     public static final String cmdStepControlResultHead="$cmd,start manual search";
     public static final String cmdStepControlResult=cmdStepControlResultHead+"*ff\r\n";
-    // 4.13.4	手动位置控制指令
-    // $cmd,manual control,方位，俯仰，备用，极化角*ff\r\n
-    public static final String cmdManualControl="$cmd,manual control,%s,%s,%s,%s*ff\r\n";
-    public static final String cmdManualControlResultHead="$cmd,start manual control";
-    public static final String cmdManualControlResult=cmdManualControlResultHead+"*ff\r\n";
+    // 4.13.4	手动位置控制指令(已经修改)
+    // $cmd,manual position,方位,俯仰,备用,极化角*ff<CR><LF>
+    public static final String cmdManualPosition="$cmd,manual position,%s,%s,%s,%s*ff\r\n";
+    public static final String cmdManualPositionResultHead="$cmd,start manual position";
+    public static final String cmdManualPositionResult=cmdManualPositionResultHead+"*ff\r\n";
     // 4.13.5	停止寻星指令
     public static final String cmdStopSearch="$cmd,stop search*ff\r\n";
     public static final String cmdStopSearchResultHead="$cmd,search stop";
@@ -477,13 +477,19 @@ public class Protocol {
     public static void sendMessage(Context context, String cmd){
         Intent intent = new Intent();
         intent.setAction(ACTION_RECEIVE_DATA);
-        intent.putExtra(EXTRA_PARAM_SEND_CMD, cmd);
+        String v = verifyData(cmd);
+        String command = cmd;
+        int lastIndexStar = cmd.lastIndexOf('*');
+        if (lastIndexStar > 0) {
+            command = cmd.substring(0, lastIndexStar) + "*" + v + "\r\n";
+        }
+        intent.putExtra(EXTRA_PARAM_SEND_CMD, command);
         context.sendBroadcast(intent);
     }
 
-    public static String verifyData(String data){
-         int indexDollar = data.indexOf("$");
-         int indexStar = data.lastIndexOf("*");
+    public static String verifyData (String data){
+         int indexDollar = data.indexOf('$');
+         int indexStar = data.lastIndexOf('*');
          if (indexDollar < 0 || indexStar < 0){
              return "ff";
          }

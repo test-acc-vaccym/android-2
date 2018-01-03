@@ -24,8 +24,8 @@
             app:titleTextAppearance="?android:attr/textAppearanceLarge"
             app:layout_scrollFlags="scroll|enterAlways">
         </android.support.v7.widget.Toolbar>
-        <include android:id="@+id/operate_bar"
-            layout="@layout/operate_bar_top"/>
+        <!--include android:id="@+id/operate_bar"
+            layout="@layout/operate_bar_top"/-->
         <View
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,17 +1,13 @@
 package com.edroplet.qxx.saneteltabactivity.activities.administrator;
 
 import android.content.Intent;
-import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.activities.settings.AdministratorLoginActivity;
 import com.edroplet.qxx.saneteltabactivity.activities.settings.AntennaRestartActivity;
-import com.edroplet.qxx.saneteltabactivity.activities.settings.LowNoiseBlockOscillatorActivity;
-import com.edroplet.qxx.saneteltabactivity.activities.settings.PowerAmplifierSettingsActivity;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
@@ -33,7 +29,7 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
     private CustomButton administratorIpSettings;
 
     @BindId(R.id.administrator_lnb_frequency_channel)
-    private CustomButton administratorLnbFrequencyChannle;
+    private CustomButton administratorLnbFrequencyChannel;
 
     @BindId(R.id.administrator_network_protocol)
     private CustomButton administratorNetworkProtocol;
@@ -90,7 +86,7 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
         administratorNetworkProtocol.setOnClickListener(this);
         administratorSerialProtocol.setOnClickListener(this);
         administratorBandSelect.setOnClickListener(this);
-        administratorLnbFrequencyChannle.setOnClickListener(this);
+        administratorLnbFrequencyChannel.setOnClickListener(this);
         administratorSearhingRange.setOnClickListener(this);
         administratorAmplifierMonitor.setOnClickListener(this);
         administratorAmplifierFactory.setOnClickListener(this);
@@ -143,9 +139,6 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
             default:
                 break;
         }
-
-        if (intent != null){
-            startActivity(intent);
-        }
+        startActivity(intent);
     }
 }

@@ -15,12 +15,16 @@ import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
+import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
  * Created by qxs on 2017/9/19.
+ * 发射手动
+ * 命令 4.14.6	发射手动
+ * UI 10.2.2.	发射开关
  */
 
 public class SettingsFragmentAmplifierEmit extends Fragment {
@@ -39,6 +43,9 @@ public class SettingsFragmentAmplifierEmit extends Fragment {
     @BindView(R.id.settings_amplifier_emit_radio_group)
     RadioGroup emitSelectGroup;
 
+    @BindView(R.id.main_monitor_amplifier_info_title)
+    CustomTextView tvTitle;
+
     public static final String KEY_emit_state="KEY_emit_state";
     @Nullable
     @Override
@@ -47,6 +54,8 @@ public class SettingsFragmentAmplifierEmit extends Fragment {
         ButterKnife.bind(this, view);
 
         final Context context = getContext();
+
+        tvTitle.setVisibility(View.GONE);
 
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override

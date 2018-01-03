@@ -22,23 +22,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
-import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifierInterfere;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifierEmit;
 import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
 import com.edroplet.qxx.saneteltabactivity.view.BottomNavigationViewEx;
-import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
-import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomFAB;
 
-public class PowerAmplifierSettingsActivity extends AppCompatActivity {
-    public static Toolbar toolbar;
-    @BindId(R.id.amplifier_fab)
-    private CustomFAB fab;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-    @BindId(R.id.settings_power_amplifier_bottom_navigation)
-    private BottomNavigationViewEx bottomNavigationView;
+public class PowerAmplifierSettingsActivity extends AppCompatActivity {
+    @BindView(R.id.amplifier_fab)
+    CustomFAB fab;
+
+    @BindView(R.id.settings_power_amplifier_bottom_navigation)
+    BottomNavigationViewEx bottomNavigationView;
+
+    @BindView(R.id.content_toolbar)
+    Toolbar toolbar;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -55,7 +56,8 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
     /**
      * The {@link ViewPager} that will host the section contents.
      */
-    private ViewPager mViewPager;
+    @BindView(R.id.amplifier_view_pager)
+    ViewPager mViewPager;
 
     private int startPosition;
     public static final String positionKey = "position";
@@ -81,9 +83,9 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
         //  始终保持竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_power_amplifier);
-        ViewInject.inject(this, this);
 
-        StatusBarControl.setupToolbar(this,R.id.content_toolbar);
+        ButterKnife.bind(this);
+
         initView();
         if (savedInstanceState == null){
             startPosition = getIntent().getIntExtra(positionKey, 0);
@@ -120,22 +122,15 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
 
     private MenuItem menuItem;
     public PowerAmplifierSettingsActivity initView(){
-//        mSectionsPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager());
-//        mSectionsPagerAdapter.addFragment();
-//        mSectionsPagerAdapter.addFragment();
-//        mSectionsPagerAdapter.addFragment();
-//        mSectionsPagerAdapter.addFragment();
 
-        // final TabLayout mTabLayout = (TabLayout) findViewById(R.id.power_amplifier_tabs);
-        // setTabs(mTabLayout,this.getLayoutInflater(),TAB_TITLES,TAB_IMGS);
         mAdapter = new MyViewPagerAdapter(getSupportFragmentManager());
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.amplifier_view_pager);
         mViewPager.setAdapter(mAdapter);
 
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                toolbar.setTitle(TAB_TITLES[position]);
             }
 
             @Override
@@ -153,9 +148,6 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
             }
         });
-
-        // 初始化快捷键
-        OperateBarControl.setupOperatorBar(this);
         return this;
     }
 

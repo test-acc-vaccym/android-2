@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
@@ -54,7 +55,10 @@ public class AdministratorFragmentRecoveryFactory extends Fragment {
             @Override
             public void onClick(View v) {
 
-                // todo send command
+                // send command
+                // 5.1	恢复出厂 重新初始化Flash信息
+                // 指令格式：$cmd,reset flash info*ff<CR><LF>
+                Protocol.sendMessage(getContext(),String.format(Protocol.cmdResetFlashInfo));
                 getActivity().finish();
             }
         });

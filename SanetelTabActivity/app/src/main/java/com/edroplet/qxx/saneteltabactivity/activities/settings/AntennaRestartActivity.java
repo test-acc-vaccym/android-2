@@ -56,6 +56,7 @@ public class AntennaRestartActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // 发送重启命令
                 Protocol.sendMessage(context, Protocol.cmdResetSystem);
+                finish();
             }
         });
 

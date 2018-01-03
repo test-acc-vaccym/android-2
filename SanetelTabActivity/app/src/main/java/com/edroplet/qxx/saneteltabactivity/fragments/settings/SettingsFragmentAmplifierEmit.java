@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
@@ -22,10 +23,10 @@ import butterknife.ButterKnife;
  * Created by qxs on 2017/9/19.
  */
 
-public class SettingsFragmentAmplifiereEmit extends Fragment {
-    public static SettingsFragmentAmplifiereEmit newInstance(String info) {
+public class SettingsFragmentAmplifierEmit extends Fragment {
+    public static SettingsFragmentAmplifierEmit newInstance(String info) {
         Bundle args = new Bundle();
-        SettingsFragmentAmplifiereEmit fragment = new SettingsFragmentAmplifiereEmit();
+        SettingsFragmentAmplifierEmit fragment = new SettingsFragmentAmplifierEmit();
         args.putString("info", info);
         fragment.setArguments(args);
         return fragment;
@@ -33,8 +34,6 @@ public class SettingsFragmentAmplifiereEmit extends Fragment {
 
     @BindView(R.id.settings_amplifier_emit_close)
     RadioButton emitClose;
-//    @BindView(R.id.settings_amplifier_emit_open)
-//    RadioButton emitOpen;
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
     @BindView(R.id.settings_amplifier_emit_radio_group)
@@ -54,18 +53,20 @@ public class SettingsFragmentAmplifiereEmit extends Fragment {
             public void onClick(View v) {
                 if (emitClose.isChecked()){
                     CustomSP.putInt(context,KEY_emit_state,1);
-                    // TODO: 2017/11/12 发送命令关闭 
+                    // 2017/11/12 发送命令关闭
+                    Protocol.sendMessage(context, Protocol.cmdSetBucOff);
                 }else {
                     CustomSP.putInt(context,KEY_emit_state,0);
-                    // TODO: 2017/11/12 发送命令打开
+                    // 2017/11/12 发送命令打开
+                    Protocol.sendMessage(context, Protocol.cmdSetBucOn);
                 }
             }
         });
         int checkedPos = CustomSP.getInt(context,KEY_emit_state, 0);
-        // RadioButton radioButton = (RadioButton)view.findViewById(checkedId);
-        // radioButton.setChecked(true);
         if (checkedPos == 0){
             emitSelectGroup.check(R.id.settings_amplifier_emit_open);
+        }else {
+            emitSelectGroup.check(R.id.settings_amplifier_emit_close);
         }
 
         // 设置自定义框内容

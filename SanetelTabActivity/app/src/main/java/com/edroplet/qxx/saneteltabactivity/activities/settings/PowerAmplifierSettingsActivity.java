@@ -25,7 +25,7 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.control.OperateBarControl;
 import com.edroplet.qxx.saneteltabactivity.control.StatusBarControl;
 import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifierInterfere;
-import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifiereEmit;
+import com.edroplet.qxx.saneteltabactivity.fragments.settings.SettingsFragmentAmplifierEmit;
 import com.edroplet.qxx.saneteltabactivity.utils.ImageUtil;
 import com.edroplet.qxx.saneteltabactivity.view.BottomNavigationViewEx;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
@@ -72,7 +72,7 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
             R.drawable.tab_image_selector};
     //Fragment 数组
     private final Fragment[] TAB_FRAGMENTS = new Fragment[] {SettingsFragmentAmplifierInterfere.newInstance(null)
-            ,SettingsFragmentAmplifiereEmit.newInstance(null)};
+            , SettingsFragmentAmplifierEmit.newInstance(null)};
 
     private int COUNT = TAB_FRAGMENTS.length;
     @Override

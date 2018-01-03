@@ -1,4 +1,4 @@
-package com.edroplet.qxx.sanetel;
+package com.edroplet.sanetel;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

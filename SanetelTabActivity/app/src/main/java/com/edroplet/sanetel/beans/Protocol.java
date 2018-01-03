@@ -461,9 +461,9 @@ public class Protocol {
 
     /**
      * 获取控制位状态
-     * @param status
-     * @param position
-     * @return
+     * @param status 状态
+     * @param position 位置
+     * @return 状态位数值
      */
     public static int getBitValue(String status, int position){
         return ConvertUtil.getBitValue(status, position, 0);
@@ -471,13 +471,27 @@ public class Protocol {
 
     /**
      * 发送广播消息
-     * @param context
-     * @param cmd
+     * @param context 上下文
+     * @param cmd 命令
      */
     public static void sendMessage(Context context, String cmd){
         Intent intent = new Intent();
         intent.setAction(ACTION_RECEIVE_DATA);
         intent.putExtra(EXTRA_PARAM_SEND_CMD, cmd);
         context.sendBroadcast(intent);
+    }
+
+    public static String verifyData(String data){
+         int indexDollar = data.indexOf("$");
+         int indexStar = data.lastIndexOf("*");
+         if (indexDollar < 0 || indexStar < 0){
+             return "ff";
+         }
+         String verifyString  = data.substring(indexDollar+1,indexStar);
+         int sum = 0;
+         for (char c : verifyString.toCharArray()){
+             sum += c;
+         }
+         return String.format("%02x",sum & 0xff);
     }
 }

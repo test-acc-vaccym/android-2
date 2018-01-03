@@ -295,7 +295,7 @@
     <string name="main_settings_amplifier">功放</string>
     <string name="main_settings_amplifier_factory">功放厂家</string>
     <string name="main_settings_amplifier_oscillator">功放本振</string>
-    <string name="main_settings_amplifier_interfere">邻星干扰</string>
+    <string name="main_settings_amplifier_interfere">邻星保护</string>
     <string name="main_settings_amplifier_emit">发射开关</string>
     <string name="main_settings_lnb">LNB</string>
     <string name="main_settings_lnb_oscillator">LNB本振</string>
@@ -655,15 +655,15 @@
     <string name="settings_amplifier_oscillator_message_third_start">点击</string>
     <string name="settings_amplifier_interfere_use">启用</string>
     <string name="settings_amplifier_interfere_disuse">不启用</string>
-    <string name="settings_amplifier_interfere_second">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当天线由于某种原因偏离锁星位置，成为失锁状态，此时功放再发射功率已经没有意义，反而会干扰其他卫星。这就要求当天线失锁时自动关闭功放；锁星后再打开功放。这样的功能叫邻星干扰。</string>
+    <string name="settings_amplifier_interfere_second">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当天线由于某种原因偏离锁星位置，成为失锁状态，此时功放再发射功率已经没有意义，反而会干扰其他卫星。这就要求当天线失锁时自动关闭功放；锁星后再打开功放。这样的功能叫邻星保护。</string>
     <string name="settings_amplifier_emit_title">开关发射</string>
     <string name="settings_amplifier_emit_select">开关选择</string>
     <string name="settings_amplifier_emit_open">发射打开</string>
     <string name="settings_amplifier_emit_close">发射关闭</string>
-    <string name="settings_amplifier_emit_pop_second">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;选择开关后点击设置，邻星干扰将关闭；功放发射进入手动开关模式。退出“发射手动”功能后，恢复邻星干扰功能。</string>
+    <string name="settings_amplifier_emit_pop_second">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;选择开关后点击设置，邻星保护将关闭；功放发射进入手动开关模式。退出“发射手动”功能后，恢复邻星保护功能。</string>
     <string name="settings_amplifier_emit_help_title">发射手动说明</string>
-    <string name="settings_amplifier_emit_help_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当天线由于某种原因偏离锁星位置，成为失锁状态，此时功放再发射功率已经没有意义，反而会干扰其他卫星。这就要求当天线失锁时自动关闭功放；锁星后再打开功放。这样的功能叫邻星干扰。\n
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;选择开关后点击设置，邻星干扰将关闭；功放发射进入手动开关模式。退出“发射手动”功能后，恢复邻星干扰功能。
+    <string name="settings_amplifier_emit_help_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当天线由于某种原因偏离锁星位置，成为失锁状态，此时功放再发射功率已经没有意义，反而会干扰其他卫星。这就要求当天线失锁时自动关闭功放；锁星后再打开功放。这样的功能叫邻星保护。\n
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;选择开关后点击设置，邻星保护将关闭；功放发射进入手动开关模式。退出“发射手动”功能后，恢复邻星保护功能。
 </string>
     <string name="settings_lnb_value">本振值(MHz)</string>
     <string name="administrator_settings_lnb_ka_value_1">17400</string>

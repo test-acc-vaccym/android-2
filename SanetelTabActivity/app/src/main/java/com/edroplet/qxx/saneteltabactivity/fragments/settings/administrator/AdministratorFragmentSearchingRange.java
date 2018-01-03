@@ -1,9 +1,9 @@
 package com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
@@ -15,19 +15,26 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
+import com.edroplet.qxx.saneteltabactivity.utils.sscanf.Sscanf;
+import com.edroplet.qxx.saneteltabactivity.view.BroadcastReceiverFragment;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
 
+import java.util.Arrays;
+
+import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by qxs on 2017/9/19.
  * 寻星范围
  */
 
-public class AdministratorFragmentSearchingRange extends Fragment {
+public class AdministratorFragmentSearchingRange extends BroadcastReceiverFragment {
+    public static final String SearchingRangeAction = "com.edroplet.sanetel.SearchingRangeAction";
+    public static final String SearchingRangeData = "com.edroplet.sanetel.SearchingRangeData";
+
     private static final String SearchingRangeKey = "searchingRange";
     private  final int[] icons = {R.drawable.antenna_exploded };
 
@@ -37,13 +44,15 @@ public class AdministratorFragmentSearchingRange extends Fragment {
     @BindView(R.id.administrator_setting_searching_range_radio_group)
     RadioGroup searchRangeGroup;
 
-    private String selected;
+    @BindArray(R.array.search_range)
+    int [] values;
 
     int [] ids = {R.id.administrator_setting_searching_range_1, R.id.administrator_setting_searching_range_2, R.id.administrator_setting_searching_range_3, R.id.administrator_setting_searching_range_4, R.id.administrator_setting_searching_range_5};
 
-    int [] values = {20,25,30,35,45};
+    Unbinder unbinder;
 
     static SparseIntArray searchRangeArray = new SparseIntArray(5);
+    String azimuthRange,pitch,reserve,polarizationRange;
 
     public static AdministratorFragmentSearchingRange newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                                   String secondLine, boolean showThird, String thirdLineStart,
@@ -63,6 +72,14 @@ public class AdministratorFragmentSearchingRange extends Fragment {
         return fragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        String[] action = {SearchingRangeAction};
+        setAction(action);
+        super.onCreate(savedInstanceState);
+        Protocol.sendMessage(getContext(),Protocol.cmdGetSearchRange);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -71,7 +88,7 @@ public class AdministratorFragmentSearchingRange extends Fragment {
             return null;
         }
 
-        ButterKnife.bind(this,view);
+        unbinder = ButterKnife.bind(this,view);
 
         for (int i = 0; i < ids.length; i++){
             searchRangeArray.put(i, ids[i]);
@@ -86,7 +103,7 @@ public class AdministratorFragmentSearchingRange extends Fragment {
                 int index = searchRangeArray.indexOfValue(searchRangeGroup.getCheckedRadioButtonId());
                 CustomSP.putInt(getContext(), SearchingRangeKey, index);
                 // 5.4 send command
-                Protocol.sendMessage(context, String.format(Protocol.cmdSetSearchRange, values[index], "0.0","0.0","0.0"));
+                Protocol.sendMessage(context, String.format(Protocol.cmdSetSearchRange, values[index], pitch,reserve,polarizationRange));
                 getActivity().finish();
             }
         });
@@ -112,5 +129,27 @@ public class AdministratorFragmentSearchingRange extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+    }
+
+    @Override
+    public void processData(Intent intent) {
+        super.processData(intent);
+        String rawData = intent.getStringExtra(SearchingRangeData);
+        Object[] objects = Sscanf.scan(rawData,Protocol.cmdGetSearchRangeResult,azimuthRange,pitch,reserve,polarizationRange);
+        azimuthRange = (String)objects[0];
+        pitch = (String)objects[1];
+        reserve = (String)objects[2];
+        polarizationRange = (String)objects[3];
+        int pos  = Arrays.asList(values).indexOf(azimuthRange);
+        if (pos == -1){
+            pos= 0;
+        }
+        searchRangeGroup.check(searchRangeArray.get(pos));
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

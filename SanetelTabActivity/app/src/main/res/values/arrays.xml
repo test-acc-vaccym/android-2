@@ -58,4 +58,11 @@
         <item>12800</item>
         <item>13050</item>
     </string-array>
+    <string-array name="search_range">
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>45</item>
+    </string-array>
 </resources>

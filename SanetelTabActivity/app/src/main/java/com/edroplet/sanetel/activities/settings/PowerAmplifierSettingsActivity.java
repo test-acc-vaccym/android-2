@@ -1,6 +1,5 @@
 package com.edroplet.sanetel.activities.settings;
 
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -32,8 +31,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class PowerAmplifierSettingsActivity extends AppCompatActivity {
-    @BindView(R.id.amplifier_fab)
-    CustomFAB fab;
+//    @BindView(R.id.amplifier_fab)
+//    CustomFAB fab;
 
     @BindView(R.id.settings_power_amplifier_bottom_navigation)
     BottomNavigationViewEx bottomNavigationView;
@@ -154,12 +153,12 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
     }
 
     public PowerAmplifierSettingsActivity setupFab(){
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(PowerAmplifierSettingsActivity.this, SettingsPowerAmplifierEmitHelpActivity.class));
-            }
-        });
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(PowerAmplifierSettingsActivity.this, SettingsPowerAmplifierEmitHelpActivity.class));
+//            }
+//        });
         return this;
     }
 

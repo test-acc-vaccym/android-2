@@ -33,7 +33,7 @@
             android:background="@color/gray"/>
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -49,5 +49,5 @@
             android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
             android:text="@string/functions_monitor_help_message"
             android:textAppearance="?android:attr/textAppearanceMedium"/>
-    </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

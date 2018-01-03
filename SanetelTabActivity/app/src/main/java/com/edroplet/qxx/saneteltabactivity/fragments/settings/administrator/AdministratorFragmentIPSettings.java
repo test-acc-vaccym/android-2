@@ -1,34 +1,48 @@
 package com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
+import com.edroplet.qxx.saneteltabactivity.utils.IpUtils;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
+import com.edroplet.qxx.saneteltabactivity.view.BroadcastReceiverFragment;
 import com.edroplet.qxx.saneteltabactivity.view.IPEdit;
-import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by qxs on 2017/9/19.
+ * 5.7	网络参数指令
+ * IP 设置
  */
 
-public class AdministratorFragmentIPSettings extends Fragment {
+public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
+    public static final String IPSettingsAction = "com.edroplet.sanetel.IPSettingsAction";
+    public static final String IPSettingsData = "com.edroplet.sanetel.IPSettingsData";
 
     private static final int[] icons = {R.drawable.antenna_exploded};
 
-    private CustomButton thirdButton;
+    @BindView(R.id.pop_dialog_third_button)
+    CustomButton thirdButton;
 
-    private IPEdit ipAddress;
-    private IPEdit ipMask;
+    @BindView(R.id.administrator_setting_ip_address)
+    IPEdit ipAddress;
+    @BindView(R.id.administrator_setting_ip_mask)
+    IPEdit ipMask;
 
+    Unbinder unbinder;
     public static AdministratorFragmentIPSettings newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                               String secondLine, boolean showThird, String thirdLineStart,
                                                               int icon, String buttonText, String thirdLineEnd) {
@@ -56,24 +70,25 @@ public class AdministratorFragmentIPSettings extends Fragment {
         }
 
         final Context context = getContext();
+        unbinder =  ButterKnife.bind(this, view);
 
-        ViewInject.inject(getActivity(), getActivity());
-        ipAddress = view.findViewById(R.id.administrator_setting_ip_address);
         String address = CustomSP.getString(context,CustomSP.KeyIPSettingsAddress, "");
         ipAddress.setText(address);
 
-        ipMask = view.findViewById(R.id.administrator_setting_ip_mask);
         String mask = CustomSP.getString(context,CustomSP.KeyIPSettingsMask, "");
         ipMask.setText(mask);
-
-        thirdButton = view.findViewById(R.id.pop_dialog_third_button);
 
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomSP.putString(context,CustomSP.KeyIPSettingsAddress,ipAddress.getText());
-                CustomSP.putString(context,CustomSP.KeyIPSettingsMask,ipMask.getText());
-                // todo send command
+                String ip = ipAddress.getText();
+                String mask = ipMask.getText();
+                String gateWay = IpUtils.getLowAddr(ip,mask);
+                CustomSP.putString(context,CustomSP.KeyIPSettingsAddress, ip);
+                CustomSP.putString(context,CustomSP.KeyIPSettingsMask, mask);
+                // send command
+                // cmd,set ip,网络IP,子网掩码,网关*ff<CR><LF>
+                Protocol.sendMessage(context, String.format(Protocol.cmdSetIP,ip, mask,gateWay));
                 getActivity().finish();
             }
         });
@@ -92,5 +107,16 @@ public class AdministratorFragmentIPSettings extends Fragment {
             }
         }
         return popDialog.show();
+    }
+
+    @Override
+    public void processData(Intent intent) {
+        super.processData(intent);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

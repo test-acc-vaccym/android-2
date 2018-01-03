@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
 
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.beans.Protocol;
@@ -42,8 +44,11 @@ public class SettingsFragmentAmplifierInterfere extends BroadcastReceiverFragmen
 
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
-    @BindView(R.id.settings_amplifier_interfere_use)
-    CustomRadioButton interfereUse;
+    @BindView(R.id.settings_amplifier_interfere_group)
+    RadioGroup amplifierInterfereGroup;
+
+    int []amplifierInterfereIds = {R.id.settings_amplifier_interfere_disuse,R.id.settings_amplifier_interfere_use};
+    SparseIntArray mapAmplifierInterfere = new SparseIntArray(2);
 
     public static final String KEY_USE_INTERFERE="KEY_USE_INTERFERE";
     Context context;
@@ -59,33 +64,34 @@ public class SettingsFragmentAmplifierInterfere extends BroadcastReceiverFragmen
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_settings_amplifier_interfere, null);
         unbinder = ButterKnife.bind(this, view);
-
+        int i = 0;
+        for (int id:amplifierInterfereIds){
+            mapAmplifierInterfere.put(i++,id);
+        }
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (interfereUse.isChecked()){
-                    // 保存设置
-                    CustomSP.putBoolean(getContext(),KEY_USE_INTERFERE,true);
-                    // TODO: 2017/11/12 发送命令使用邻星干扰
+                int pos = mapAmplifierInterfere.indexOfKey(amplifierInterfereGroup.getCheckedRadioButtonId());
+                if (pos < 0){
+                    pos = 0;
+                }
+                // 保存设置
+                CustomSP.putInt(getContext(),KEY_USE_INTERFERE,pos);
+                if (pos != 0){
+                    // TODO: 2017/11/12 发送命令使用邻星干扰?邻星保护？
                     Protocol.sendMessage(context, String.format(Protocol.cmdSetProtectState,"1"));
                 }else {
-                    // 保存设置
-                    CustomSP.putBoolean(getContext(),KEY_USE_INTERFERE,false);
-                    // TODO: 2017/11/12 发送命令不使用邻星干扰
+                    // TODO: 2017/11/12 发送命令不使用邻星干扰?邻星保护？
                     Protocol.sendMessage(context, String.format(Protocol.cmdSetProtectState,"0"));
                 }
             }
         });
 
-        boolean isUse = CustomSP.getBoolean(getContext(),KEY_USE_INTERFERE, true);
-        if (isUse){
-            interfereUse.setChecked(true);
-        }else {
-            interfereUse.setChecked(false);
-        }
+        int pos = CustomSP.getInt(getContext(),KEY_USE_INTERFERE, 0);
+        amplifierInterfereGroup.check(mapAmplifierInterfere.get(pos));
 
         // 设置自定义框内容
         PopDialog popDialog = new PopDialog();
@@ -112,13 +118,14 @@ public class SettingsFragmentAmplifierInterfere extends BroadcastReceiverFragmen
         String use = "0";
         Object[]objects = Sscanf.scan(rawData,Protocol.cmdGetProtectStateResult,use);
         use = (String) objects[0];
-        if (use.equals("0")){
-            interfereUse.setChecked(false);
-            CustomSP.putBoolean(getContext(),KEY_USE_INTERFERE, false);
-        }else{
-            interfereUse.setChecked(true);
-            CustomSP.putBoolean(getContext(),KEY_USE_INTERFERE, true);
+        int pos = Integer.parseInt(use);
+        if (pos < 0){
+            pos = 0;
+        }else if (pos >= mapAmplifierInterfere.size()){
+            pos= mapAmplifierInterfere.size() - 1;
         }
+        CustomSP.putInt(getContext(),KEY_USE_INTERFERE,pos);
+        amplifierInterfereGroup.check(mapAmplifierInterfere.get(pos));
     }
 
     @Override

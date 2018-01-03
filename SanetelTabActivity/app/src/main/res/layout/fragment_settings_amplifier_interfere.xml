@@ -21,7 +21,8 @@
             android:orientation="vertical"
             android:paddingTop="@dimen/sub_layout_padding_top"
             android:paddingBottom="@dimen/sub_layout_padding_top" >
-            <com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton
+            <RadioGroup
+                android:id="@+id/settings_amplifier_interfere_group"
                 android:layout_width="@dimen/radio_group_width"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/layout_padding_left"
@@ -38,7 +39,7 @@
                     android:id="@+id/settings_amplifier_interfere_disuse"
                     android:text="@string/settings_amplifier_interfere_disuse"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
-            </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
+            </RadioGroup>
         </LinearLayout>
 
         <include layout="@layout/pop_dialog_blue"

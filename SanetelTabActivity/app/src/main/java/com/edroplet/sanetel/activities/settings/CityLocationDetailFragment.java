@@ -48,8 +48,10 @@ public class CityLocationDetailFragment extends Fragment implements View.OnClick
     private CustomButton cityDetailSave;
     private CustomButton cityDetailReturn;
 
-    private Spinner longitudeUnit;
-    private Spinner latitudeUnit;
+    @BindView(R.id.longitude_unit)
+    Spinner longitudeUnit;
+    @BindView(R.id.latitude_unit)
+    Spinner latitudeUnit;
 
     /**
      * The fragment argument representing the item ID that this fragment
@@ -147,7 +149,7 @@ public class CityLocationDetailFragment extends Fragment implements View.OnClick
             cityDetailLongitude.setText(String.valueOf(mItem.getLongitude()));
 
             longitudeUnit.setSelection(mItem.getLongitudeUnit());
-            latitudeUnit.setSelection(mItem.getLongitudeUnit());
+            latitudeUnit.setSelection(mItem.getLatitudeUnit());
 
         }
         return rootView;

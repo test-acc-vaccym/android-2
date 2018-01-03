@@ -188,6 +188,9 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
                 if (band == kuPosition) {
                     int id = oscillatorKuSelect.getCheckedRadioButtonId();
                     int pos = mapKuPosId.indexOfValue(id);
+                    if (pos < 0){
+                        pos = kuVals.length;
+                    }
                     CustomSP.putInt(context,LNBFrequencyResourcePos,pos);
                     if (id == R.id.id_administrator_settings_lnb_ku_value_7){
                         val = tvCustomVal.getText().toString();
@@ -198,6 +201,9 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
                 }else{
                     int id = oscillatorKaSelect.getCheckedRadioButtonId();
                     int pos = mapKuPosId.indexOfValue(id);
+                    if (pos < 0){
+                        pos = 0;
+                    }
                     CustomSP.putInt(context,LNBFrequencyResourcePos,pos);
                     val = String.valueOf(kuVals[pos]) ;
                 }

@@ -1,6 +1,7 @@
 package com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,8 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
+import com.edroplet.qxx.saneteltabactivity.utils.sscanf.Sscanf;
+import com.edroplet.qxx.saneteltabactivity.view.BroadcastReceiverFragment;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
@@ -23,23 +26,31 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCusto
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by qxs on 2017/9/19.
+ * 功放监控
+ * ●无监控
+ ◎RS232监控
+ ◎RS422监控
+ ◎RS485监控
  */
 
-public class AdministratorFragmentAmplifierMonitor extends Fragment {
+
+public class AdministratorFragmentAmplifierMonitor extends BroadcastReceiverFragment {
     public static final String KEY_AMPLIFIER_MONITOR = "KEY_AMPLIFIER_MONITOR";
+    public static final String AmplifierMonitorAction = "com.edroplet.sanetel.AmplifierMonitorAction";
+    public static final String AmplifierMonitorData = "com.edroplet.sanetel.AmplifierMonitorData";
     private  final int[] icons = {R.drawable.antenna_exploded };
 
     public static SparseIntArray mapAmplifierMonitorPosId = new SparseIntArray(4);
 
-    public static SparseIntArray initSparseIntArray(){
+    public static void initSparseIntArray(){
         mapAmplifierMonitorPosId.put(0, R.id.id_administrator_amplifier_monitor_none);
         mapAmplifierMonitorPosId.put(1, R.id.id_administrator_amplifier_monitor_rs232);
         mapAmplifierMonitorPosId.put(2, R.id.id_administrator_amplifier_monitor_rs422);
         mapAmplifierMonitorPosId.put(3, R.id.id_administrator_amplifier_monitor_rs485);
-        return mapAmplifierMonitorPosId;
     }
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
@@ -47,8 +58,7 @@ public class AdministratorFragmentAmplifierMonitor extends Fragment {
     @BindView(R.id.id_administrator_settings_amplifier_monitor_radio_group)
     RadioGroup amplifierMonitorRadioGroup;
 
-
-    private int selected;
+    Unbinder unbinder;
 
     public static AdministratorFragmentAmplifierMonitor newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                                     String secondLine, boolean showThird, String thirdLineStart,
@@ -70,6 +80,16 @@ public class AdministratorFragmentAmplifierMonitor extends Fragment {
 
     private Context context;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        String []action = {AmplifierMonitorAction};
+        setAction(action);
+        super.onCreate(savedInstanceState);
+
+        context = getContext();
+        Protocol.sendMessage(context, Protocol.cmdGetBucInfoSwitch);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -79,9 +99,11 @@ public class AdministratorFragmentAmplifierMonitor extends Fragment {
         }
         context = getContext();
 
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
 
         initSparseIntArray();
+
+        int selected;
         selected = CustomSP.getInt(context, KEY_AMPLIFIER_MONITOR,0);
         amplifierMonitorRadioGroup.check(mapAmplifierMonitorPosId.get(selected));
 
@@ -90,7 +112,7 @@ public class AdministratorFragmentAmplifierMonitor extends Fragment {
             public void onClick(View v) {
                 int index = mapAmplifierMonitorPosId.indexOfValue( amplifierMonitorRadioGroup.getCheckedRadioButtonId());
                 CustomSP.putInt(getContext(), KEY_AMPLIFIER_MONITOR, index);
-                // todo send command
+                // send command
                 // 系统通信规范 4.14.7
                 Protocol.sendMessage(context, String.format(Protocol.cmdSetBucInfoSwitch, index));
                 getActivity().finish();
@@ -111,5 +133,22 @@ public class AdministratorFragmentAmplifierMonitor extends Fragment {
             }
         }
         return popDialog.show();
+    }
+
+    @Override
+    public void processData(Intent intent) {
+        super.processData(intent);
+        String rawData = intent.getStringExtra(AmplifierMonitorData);
+        String bucInfoSwitch = "0";
+        Object[] o= Sscanf.scan(rawData, Protocol.cmdGetBucInfoSwitchResult, bucInfoSwitch);
+        bucInfoSwitch = (String) o[0];
+        int pos = Integer.parseInt(bucInfoSwitch);
+        amplifierMonitorRadioGroup.check(mapAmplifierMonitorPosId.get(pos));
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

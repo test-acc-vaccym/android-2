@@ -42,8 +42,6 @@ public class AdministratorFragmentSerialProtocolSettings extends BroadcastReceiv
     @BindView(R.id.administrator_setting_serial_protocol_radio_group)
     private CustomRadioGroupWithCustomRadioButton serialProtocolGroup;
 
-
-    private String selected;
     SparseIntArray mapSerialProtocol = new SparseIntArray(7);
     Unbinder unbinder;
 

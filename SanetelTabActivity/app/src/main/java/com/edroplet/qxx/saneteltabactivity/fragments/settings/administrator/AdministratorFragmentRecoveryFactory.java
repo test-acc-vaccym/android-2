@@ -16,6 +16,7 @@ import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 
 /**
  * Created by qxs on 2017/9/19.
+ * 恢复出厂
  */
 
 public class AdministratorFragmentRecoveryFactory extends Fragment {

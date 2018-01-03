@@ -38,9 +38,9 @@ public class AdministratorFragmentSerialProtocolSettings extends BroadcastReceiv
     private  final int[] icons = {R.drawable.antenna_exploded };
 
     @BindView(R.id.pop_dialog_third_button)
-    private CustomButton thirdButton;
+    CustomButton thirdButton;
     @BindView(R.id.administrator_setting_serial_protocol_radio_group)
-    private CustomRadioGroupWithCustomRadioButton serialProtocolGroup;
+    CustomRadioGroupWithCustomRadioButton serialProtocolGroup;
 
     SparseIntArray mapSerialProtocol = new SparseIntArray(7);
     Unbinder unbinder;

@@ -1,50 +1,56 @@
 package com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator;
 
+import android.content.Intent;
+import android.os.Binder;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
-import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
-import com.edroplet.qxx.saneteltabactivity.view.annotation.BindId;
+import com.edroplet.qxx.saneteltabactivity.utils.sscanf.Sscanf;
+import com.edroplet.qxx.saneteltabactivity.view.BroadcastReceiverFragment;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 /**
  * Created by qxs on 2017/9/19.
+ * 串口协议选择
+ * 5.9	串口协议选择
  */
 
-public class AdministratorFragmentSerialProtocolSettings extends Fragment {
+public class AdministratorFragmentSerialProtocolSettings extends BroadcastReceiverFragment {
+    public static final String SerialProtocolAction = "com.edroplet.sanetel.SerialProtocolAction";
+    public static final String SerialProtocolData = "com.edroplet.sanetel.SerialProtocolData";
+
     private static final String SerialProtocolKey = "serialProtocol";
     private  final int[] icons = {R.drawable.antenna_exploded };
 
-    @BindId(R.id.pop_dialog_third_button)
+    @BindView(R.id.pop_dialog_third_button)
     private CustomButton thirdButton;
+    @BindView(R.id.administrator_setting_serial_protocol_radio_group)
+    private CustomRadioGroupWithCustomRadioButton serialProtocolGroup;
 
-    private CustomRadioGroupWithCustomRadioButton radioGroupWithCustomRadioButton;
 
-    @BindId(R.id.administrator_setting_serial_protocol_1)
-    private CustomRadioButton radioButtonSerialProtocol1;
-    private CustomRadioButton radioButtonSerialProtocol2;
-    private CustomRadioButton radioButtonSerialProtocol3;
-    private CustomRadioButton radioButtonSerialProtocol4;
-    private CustomRadioButton radioButtonSerialProtocol5;
-    private CustomRadioButton radioButtonSerialProtocol6;
-    private CustomRadioButton radioButtonSerialProtocol7;
-
-    private CustomRadioButton radioButton;
     private String selected;
+    SparseIntArray mapSerialProtocol = new SparseIntArray(7);
+    Unbinder unbinder;
 
-    public static AdministratorFragmentSerialProtocolSettings newInstance(boolean showFirst, String firstLine, boolean showSecond,
-                                                                          String secondLine, boolean showThird, String thirdLineStart,
-                                                                          int icon, String buttonText, String thirdLineEnd) {
+    public static AdministratorFragmentSerialProtocolSettings newInstance(
+            boolean showFirst, String firstLine, boolean showSecond,
+            String secondLine, boolean showThird, String thirdLineStart,
+            int icon, String buttonText, String thirdLineEnd) {
         Bundle args = new Bundle();
         AdministratorFragmentSerialProtocolSettings fragment = new AdministratorFragmentSerialProtocolSettings();
         args.putBoolean(PopDialog.SHOW_FIRST,showFirst);
@@ -60,6 +66,14 @@ public class AdministratorFragmentSerialProtocolSettings extends Fragment {
         return fragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        String[] action = {SerialProtocolAction};
+        setAction(action);
+        super.onCreate(savedInstanceState);
+        Protocol.sendMessage(getContext(),Protocol.cmdGetComUserid);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -67,42 +81,39 @@ public class AdministratorFragmentSerialProtocolSettings extends Fragment {
         if (view == null){
             return null;
         }
-        ViewInject.inject(getActivity(), getContext());
+        unbinder = ButterKnife.bind(this,view);
 
-        thirdButton = view.findViewById(R.id.pop_dialog_third_button);
-        radioButtonSerialProtocol1 = view.findViewById(R.id.administrator_setting_serial_protocol_1);
-        radioButtonSerialProtocol2 = view.findViewById(R.id.administrator_setting_serial_protocol_2);
-        radioButtonSerialProtocol3 = view.findViewById(R.id.administrator_setting_serial_protocol_3);
-        radioButtonSerialProtocol4 = view.findViewById(R.id.administrator_setting_serial_protocol_4);
-        radioButtonSerialProtocol5 = view.findViewById(R.id.administrator_setting_serial_protocol_5);
-        radioButtonSerialProtocol6 = view.findViewById(R.id.administrator_setting_serial_protocol_6);
-        radioButtonSerialProtocol7 = view.findViewById(R.id.administrator_setting_serial_protocol_7);
+        mapSerialProtocol.put(0,R.id.administrator_setting_serial_protocol_1);
+        mapSerialProtocol.put(1,R.id.administrator_setting_serial_protocol_2);
+        mapSerialProtocol.put(2,R.id.administrator_setting_serial_protocol_3);
+        mapSerialProtocol.put(3,R.id.administrator_setting_serial_protocol_4);
+        mapSerialProtocol.put(4,R.id.administrator_setting_serial_protocol_5);
+        mapSerialProtocol.put(5,R.id.administrator_setting_serial_protocol_6);
+        mapSerialProtocol.put(6,R.id.administrator_setting_serial_protocol_7);
 
-        String type = CustomSP.getString(getContext(),SerialProtocolKey,getString(R.string.administrator_setting_serial_protocol_1));
-        if (type.equals(getString(R.string.administrator_setting_serial_protocol_1))){
-            radioButtonSerialProtocol1.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_serial_protocol_2))){
-            radioButtonSerialProtocol2.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_serial_protocol_3))){
-            radioButtonSerialProtocol3.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_serial_protocol_4))){
-            radioButtonSerialProtocol4.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_serial_protocol_5))){
-            radioButtonSerialProtocol5.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_serial_protocol_6))){
-            radioButtonSerialProtocol6.setChecked(true);
-        }else if (type.equals(getString(R.string.administrator_setting_serial_protocol_7))){
-            radioButtonSerialProtocol7.setChecked(true);
+        int type = CustomSP.getInt(getContext(),SerialProtocolKey,0);
+        if (type >= mapSerialProtocol.size()){
+            type = mapSerialProtocol.size() - 1;
         }
+        serialProtocolGroup.check(mapSerialProtocol.get(type));
 
-        radioGroupWithCustomRadioButton = view.findViewById(R.id.administrator_setting_serial_protocol_radio_group);
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                radioButton = (CustomRadioButton)view.findViewById(radioGroupWithCustomRadioButton.getCheckedRadioButtonId());
-                selected = radioButton.getText().toString();
-                CustomSP.putString(getContext(), SerialProtocolKey, selected);
-                // todo send command
+                int pos = mapSerialProtocol.indexOfKey(serialProtocolGroup.getCheckedRadioButtonId());
+
+                // send command
+                // 5.9.2	设置 发送指令格式：$cmd,set com userid,模式*ff<CR><LF>
+                String val = String.valueOf(pos);
+                if (pos == -1){
+                    pos = 0;
+                    val = "0";
+                } if (pos == mapSerialProtocol.size() - 1){
+                    val = "9";
+                }
+                CustomSP.putInt(getContext(), SerialProtocolKey, pos);
+
+                Protocol.sendMessage(getContext(),String.format(Protocol.cmdSetComUserid,val));
                 getActivity().finish();
             }
         });
@@ -125,8 +136,25 @@ public class AdministratorFragmentSerialProtocolSettings extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void processData(Intent intent) {
+        super.processData(intent);
+        String rawData = intent.getStringExtra(SerialProtocolData);
+        String type = "0";
+        Object[] objects = Sscanf.scan(rawData,Protocol.cmdGetComUseridResult,type);
+        type = (String) objects[0];
 
+        int pos = Integer.parseInt(type);
+        if (pos < 0){
+            pos = 0;
+        }else if (pos >= mapSerialProtocol.size()){
+            pos = mapSerialProtocol.size() - 1;
+        }
+        serialProtocolGroup.check(mapSerialProtocol.get(pos));
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

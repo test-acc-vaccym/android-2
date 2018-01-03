@@ -120,6 +120,12 @@ public class AdministratorFragmentBandSelect extends BroadcastReceiverFragment {
         int band = 0;
         Object[] o = Sscanf.scan(rawData,Protocol.cmdGetBandResult,band);
         band = (Integer) o[0];
+        if (band < 0){
+            band = 0;
+        }else if (band >= bandTypes.size()){
+            band = bandTypes.size() - 1;
+        }
+        CustomSP.putInt(getContext(), BandTypeKey, band);
         // 设置选项
         bandSelectGroup.check(bandTypes.get(band));
     }

@@ -46,6 +46,7 @@ public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
     Unbinder unbinder;
     String ip;
     String mask;
+    Context context;
 
     public static AdministratorFragmentIPSettings newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                               String secondLine, boolean showThird, String thirdLineStart,
@@ -70,7 +71,8 @@ public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
         String[] action = {IPSettingsAction};
         setAction(action);
         super.onCreate(savedInstanceState);
-        Protocol.sendMessage(getContext(), Protocol.cmdGetIP);
+        context = getContext();
+        Protocol.sendMessage(context, Protocol.cmdGetIP);
     }
 
     @Nullable
@@ -81,7 +83,7 @@ public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
             return null;
         }
 
-        final Context context = getContext();
+        context = getContext();
         unbinder =  ButterKnife.bind(this, view);
 
         String address = CustomSP.getString(context,CustomSP.KeyIPSettingsAddress, "");
@@ -128,8 +130,14 @@ public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
         Object[] o = Sscanf.scan(rawData, Protocol.cmdGetIPResult,ip, mask);
         ip = (String) o[0];
         mask = (String) o[1];
-        ipAddress.setText(ip);
-        ipMask.setText(mask);
+        if (ip != null && ip.length() > 0) {
+            ipAddress.setText(ip);
+            CustomSP.putString(context,CustomSP.KeyIPSettingsAddress, ip);
+        }
+        if (mask != null && mask.length() > 0) {
+            ipMask.setText(mask);
+            CustomSP.putString(context, CustomSP.KeyIPSettingsMask, mask);
+        }
     }
 
     @Override

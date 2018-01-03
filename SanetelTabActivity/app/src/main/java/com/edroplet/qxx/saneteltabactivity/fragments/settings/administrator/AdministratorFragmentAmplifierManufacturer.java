@@ -97,7 +97,7 @@ public class AdministratorFragmentAmplifierManufacturer extends BroadcastReceive
 
         unbinder = ButterKnife.bind(this, view);
 
-        final Context context = getContext();
+        context = getContext();
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,13 +163,15 @@ public class AdministratorFragmentAmplifierManufacturer extends BroadcastReceive
         manufacture = (String) o[0];
 
         int pos = Arrays.asList(amplifierManufacture).indexOf(manufacture);
-        if (pos == -1){
-            pos = 6;
+        if (pos == -1 || pos >= mapAmplifierManufacturePosId.size()){
+            pos = mapAmplifierManufacturePosId.size() - 1;
         }
         manufactureGroup.check(mapAmplifierManufacturePosId.get(pos));
         if (pos == 6 ){
             manufactureCustomValue.setText(manufacture);
+            CustomSP.putString(getContext(), KEY_amplifier_manufacture, manufacture);
         }
+        CustomSP.putInt(getContext(), KEY_amplifier_manufacture_position, pos);
     }
 
     @Override

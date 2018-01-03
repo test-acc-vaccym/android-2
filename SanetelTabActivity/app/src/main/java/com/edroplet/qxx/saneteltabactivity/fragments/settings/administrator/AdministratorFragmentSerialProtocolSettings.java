@@ -147,6 +147,7 @@ public class AdministratorFragmentSerialProtocolSettings extends BroadcastReceiv
         }else if (pos >= mapSerialProtocol.size()){
             pos = mapSerialProtocol.size() - 1;
         }
+        CustomSP.putInt(getContext(), SerialProtocolKey, pos);
         serialProtocolGroup.check(mapSerialProtocol.get(pos));
     }
 

@@ -146,6 +146,7 @@ public class AdministratorFragmentNetworkProtocolSettings extends BroadcastRecei
         if (pos < 0){
             pos = 0;
         }
+        CustomSP.putInt(getContext(), NetworkProtocolKey, pos);
         networkProtocolGroup.check(mapNetworkProtocol.get(pos));
     }
 }

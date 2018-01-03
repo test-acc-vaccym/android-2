@@ -54,6 +54,7 @@ public class AdministratorFragmentAmplifierOscillator extends BroadcastReceiverF
     public static final String Key_amplifier_oscillator_value="Key_amplifier_oscillator_value";
 
     private Unbinder unbinder;
+    Context context;
 
     public static AdministratorFragmentAmplifierOscillator newInstance() {
         Bundle args = new Bundle();
@@ -74,7 +75,8 @@ public class AdministratorFragmentAmplifierOscillator extends BroadcastReceiverF
         String []action = {AmplifierOscillatorAction};
         setAction(action);
         super.onCreate(savedInstanceState);
-        Protocol.sendMessage(getContext(), Protocol.cmdGetBucLf);
+        context = getContext();
+        Protocol.sendMessage(context, Protocol.cmdGetBucLf);
     }
 
     @Nullable
@@ -88,7 +90,6 @@ public class AdministratorFragmentAmplifierOscillator extends BroadcastReceiverF
 
         unbinder = ButterKnife.bind(this, view);
 
-        final Context context = getContext();
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,7 +145,9 @@ public class AdministratorFragmentAmplifierOscillator extends BroadcastReceiverF
         if (pos == -1){
             pos = 2;
             oscillatorCustomValue.setText(oscillator);
+            CustomSP.putString(context, Key_amplifier_oscillator_value, oscillator);
         }
+        CustomSP.putInt(context, Key_amplifier_oscillator_id, pos);
         oscillatorGroup.check(mapAmplifierOscillatorPosId.get(pos));
     }
 

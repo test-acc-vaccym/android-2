@@ -52,6 +52,7 @@ public class AdministratorFragmentAntennaIncriminate extends BroadcastReceiverFr
     Unbinder unbinder;
 
     String azimuth="", pitch="", reserve="", polarization="", pitchOffset="";
+    Context context;
 
     public static AdministratorFragmentAntennaIncriminate newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                                       String secondLine, boolean showThird, String thirdLineStart,
@@ -76,7 +77,8 @@ public class AdministratorFragmentAntennaIncriminate extends BroadcastReceiverFr
         String[] action = {AntennaIncriminateAction};
         setAction(action);
         super.onCreate(savedInstanceState);
-        Protocol.sendMessage(getContext(), Protocol.cmdGetCalibAnt);
+        context = getContext();
+        Protocol.sendMessage(context, Protocol.cmdGetCalibAnt);
     }
 
     @Nullable
@@ -86,7 +88,7 @@ public class AdministratorFragmentAntennaIncriminate extends BroadcastReceiverFr
         if (view == null){
             return null;
         }
-        final Context context = getContext();
+        context = getContext();
         unbinder = ButterKnife.bind(this, view);
 
         antennaIncriminateAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(0.0, 360.0)});
@@ -145,10 +147,18 @@ public class AdministratorFragmentAntennaIncriminate extends BroadcastReceiverFr
         polarization = (String) o[3];
         pitchOffset = (String) o[4];
 
-        antennaIncriminateAzimuth.setText(azimuth);
-        antennaIncriminatePitch.setText(pitch);
-        antennaIncriminatePolarization.setText(polarization);
-
+        if (azimuth != null && azimuth.length() > 0) {
+            antennaIncriminateAzimuth.setText(azimuth);
+            CustomSP.putString(context, AntennaIncriminateAzimuthKey, azimuth);
+        }
+        if (azimuth != null && azimuth.length() > 0) {
+            antennaIncriminatePitch.setText(pitch);
+            CustomSP.putString(context, AntennaIncriminatePitchKey, pitch);
+        }
+        if (azimuth != null && azimuth.length() > 0) {
+            antennaIncriminatePolarization.setText(polarization);
+            CustomSP.putString(context, AntennaIncriminatePolarizationKey, polarization);
+        }
     }
 
     @Override

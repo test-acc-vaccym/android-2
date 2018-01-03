@@ -144,6 +144,7 @@ public class AdministratorFragmentSearchingRange extends BroadcastReceiverFragme
         if (pos == -1){
             pos= 0;
         }
+        CustomSP.putInt(getContext(), SearchingRangeKey, pos);
         searchRangeGroup.check(searchRangeArray.get(pos));
     }
 

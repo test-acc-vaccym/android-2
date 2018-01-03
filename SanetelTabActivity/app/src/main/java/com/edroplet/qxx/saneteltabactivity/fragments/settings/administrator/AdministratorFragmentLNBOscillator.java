@@ -118,14 +118,18 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
                 pos = 0;
             }
             oscillatorKaSelect.check(mapKaPosId.get(pos));
+            CustomSP.putInt(context,LNBFrequencyResourcePos,pos);
         }else{
             int pos = Arrays.asList(kuVals).indexOf(lnb);
             if (pos == -1){
                 pos = kuVals.length;
             }
+            CustomSP.putInt(context,LNBFrequencyResourcePos,pos);
             // 自定义
             if (pos == kuVals.length){
-                tvCustomVal.setText(String.valueOf(lnb));
+                String val = String.valueOf(lnb);
+                tvCustomVal.setText(val);
+                CustomSP.putString(context, LNBFrequency, val);
             }
             oscillatorKuSelect.check(mapKuPosId.get(pos));
         }
@@ -164,7 +168,7 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
             // ((RadioButton) view.findViewById(id)).setChecked(true);
             oscillatorKuSelect.check(id);
             if (id == R.id.id_administrator_settings_lnb_ku_value_7){
-                ((CustomEditText) view.findViewById(R.id.oscillator_custom_ku_val)).setText("");
+                tvCustomVal.setText("");
             }
         }else {
             // 设置可见性
@@ -186,7 +190,7 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
                     int pos = mapKuPosId.indexOfValue(id);
                     CustomSP.putInt(context,LNBFrequencyResourcePos,pos);
                     if (id == R.id.id_administrator_settings_lnb_ku_value_7){
-                        val = ((CustomEditText) view.findViewById(R.id.oscillator_custom_ku_val)).getText().toString();
+                        val = tvCustomVal.getText().toString();
                         CustomSP.putString(context, LNBFrequency, val);
                     }else {
                         val = String.valueOf(kuVals[pos]) ;

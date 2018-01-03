@@ -143,6 +143,12 @@ public class AdministratorFragmentAmplifierMonitor extends BroadcastReceiverFrag
         Object[] o= Sscanf.scan(rawData, Protocol.cmdGetBucInfoSwitchResult, bucInfoSwitch);
         bucInfoSwitch = (String) o[0];
         int pos = Integer.parseInt(bucInfoSwitch);
+        if (pos >= mapAmplifierMonitorPosId.size()){
+            pos = mapAmplifierMonitorPosId.size() - 1;
+        }else if (pos < 0){
+            pos = 0;
+        }
+        CustomSP.putInt(getContext(), KEY_AMPLIFIER_MONITOR, pos);
         amplifierMonitorRadioGroup.check(mapAmplifierMonitorPosId.get(pos));
     }
 

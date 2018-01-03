@@ -3,7 +3,7 @@ package com.will.ireader.common;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.edroplet.qxx.saneteltabactivity.DropletBaseApplication;
+import com.edroplet.sanetel.DropletBaseApplication;
 import com.will.ireader.bean.Book;
 
 /**

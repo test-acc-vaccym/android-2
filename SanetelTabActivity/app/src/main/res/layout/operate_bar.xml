@@ -6,7 +6,7 @@
     android:layout_height="@dimen/operate_bar_height"
     android:background="@color/operate_bar_background">
     <!--展开、暂停、寻星、复位、收藏-->
-    <com.edroplet.qxx.saneteltabactivity.view.StatusButton
+    <com.edroplet.sanetel.view.StatusButton
         android:id="@id/button_operate_explode"
         style="@style/operate_bar_button_style"
         android:drawableStart="@drawable/antenna_exploded"
@@ -15,7 +15,7 @@
         app:drawable_height="@dimen/operate_button_height"
         app:drawable_width="@dimen/operate_button_height"
         app:state_color="operate"/>
-    <com.edroplet.qxx.saneteltabactivity.view.StatusButton
+    <com.edroplet.sanetel.view.StatusButton
         android:id="@+id/button_operate_pause"
         style="@style/operate_bar_button_style"
         android:drawableStart="@drawable/park"
@@ -24,7 +24,7 @@
         app:drawable_height="@dimen/operate_button_height"
         app:drawable_width="@dimen/operate_button_height"
         app:state_color="operate"/>
-    <com.edroplet.qxx.saneteltabactivity.view.StatusButton
+    <com.edroplet.sanetel.view.StatusButton
         android:id="@+id/button_operate_search"
         style="@style/operate_bar_button_style"
         android:drawableStart="@drawable/searching"
@@ -33,7 +33,7 @@
         app:drawable_height="@dimen/operate_button_height"
         app:drawable_width="@dimen/operate_button_height"
         app:state_color="operate"/>
-    <com.edroplet.qxx.saneteltabactivity.view.StatusButton
+    <com.edroplet.sanetel.view.StatusButton
         android:id="@+id/button_operate_reset"
         style="@style/operate_bar_button_style"
         android:drawableStart="@drawable/recycle"
@@ -42,7 +42,7 @@
         app:drawable_height="@dimen/operate_button_height"
         app:drawable_width="@dimen/operate_button_height"
         app:state_color="operate"/>
-    <com.edroplet.qxx.saneteltabactivity.view.StatusButton
+    <com.edroplet.sanetel.view.StatusButton
         android:id="@+id/button_operate_fold"
         style="@style/operate_bar_button_style"
         android:drawableStart="@drawable/folder"

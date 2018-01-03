@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.CityLocationDetailActivity"
+    tools:context="com.edroplet.sanetel.activities.settings.CityLocationDetailActivity"
     tools:ignore="MergeRootFrame"
     style="@style/linear_no_shadow_no_padding">
 
@@ -70,11 +70,11 @@
         app:layout_anchor="@id/city_detail_container"
         app:layout_anchorGravity="bottom"
         android:gravity="bottom">
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/city_detail_save"
             android:text="@string/main_me_error_report_save"
             style="@style/button_horizontal_style"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/city_detail_return"
             android:text="@string/main_me_error_report_return"
             style="@style/button_horizontal_style"/>

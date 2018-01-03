@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

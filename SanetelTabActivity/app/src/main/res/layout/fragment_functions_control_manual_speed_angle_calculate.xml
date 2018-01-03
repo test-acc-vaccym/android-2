@@ -22,7 +22,7 @@
         android:layout_marginBottom="@dimen/layout_padding_top"
         android:orientation="vertical">
         <!--输入数据-->
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/angle_calculate_input_data"
@@ -34,7 +34,7 @@
             android:layout_marginTop="2dp"
             android:orientation="horizontal">
 
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:layout_width="@dimen/radio_group_width_small"
                 android:layout_height="wrap_content"
                 android:text="@string/angle_calculate_satellite_select"
@@ -64,7 +64,7 @@
         android:layout_weight="3"
         android:orientation="vertical">
         <!--本地位置-->
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/angle_calculate_local_location"
@@ -138,13 +138,13 @@
                     android:layout_height="@dimen/spinner_lower_height"
                     android:orientation="horizontal">
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <com.edroplet.sanetel.view.custom.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="start|center_vertical"
                         android:text="@string/angle_calculate_local_longitude" />
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                    <com.edroplet.sanetel.view.custom.CustomEditText
                         android:id="@+id/angle_calculate_local_longitude"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -167,13 +167,13 @@
                     android:layout_height="@dimen/spinner_lower_height"
                     android:orientation="horizontal">
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <com.edroplet.sanetel.view.custom.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="start|center_vertical"
                         android:text="@string/angle_calculate_local_latitude" />
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                    <com.edroplet.sanetel.view.custom.CustomEditText
                         android:id="@+id/angle_calculate_local_latitude"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -201,7 +201,7 @@
         android:layout_marginTop="@dimen/layout_padding_top"
         android:layout_marginBottom="@dimen/layout_padding_top"
         android:orientation="vertical">
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/angle_calculate_calculate_result"
@@ -215,7 +215,7 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -223,7 +223,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     tools:ignore="NestedWeights" />
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                <com.edroplet.sanetel.view.custom.CustomEditText
                     android:id="@+id/main_control_manual_angle_calculate_tv_setting_azimuth"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -231,7 +231,7 @@
                     android:hint="@string/location_control_setting_hint_val"
                     android:inputType="numberSigned|numberDecimal"
                     android:maxLines="1" />
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="0.2"
                     android:layout_height="wrap_content"
@@ -244,13 +244,13 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/location_control_setting_pitch"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                <com.edroplet.sanetel.view.custom.CustomEditText
                     android:id="@+id/main_control_manual_angle_calculate_tv_setting_pitch"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -258,7 +258,7 @@
                     android:maxLines="1"
                     android:inputType="numberSigned|numberDecimal"
                     android:hint="@string/location_control_setting_hint_val"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="0.2"
                     android:layout_height="wrap_content"
@@ -271,14 +271,14 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/location_control_setting_polarization"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     tools:ignore="NestedWeights" />
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                <com.edroplet.sanetel.view.custom.CustomEditText
                     android:id="@+id/main_control_manual_angle_calculate_tv_setting_polarization"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -286,7 +286,7 @@
                     android:maxLines="1"
                     android:inputType="numberSigned|numberDecimal"
                     android:hint="@string/location_control_setting_hint_val"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="0.2"
                     android:layout_height="wrap_content"
@@ -304,17 +304,17 @@
         android:layout_marginTop="@dimen/layout_padding_top"
         android:orientation="horizontal"
         android:background="@color/bottom_tab_nav_background">
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/angle_calculate_operate_calculate"
             style="@style/button_horizontal_style"
             android:layout_gravity="center_vertical"
             android:text="@string/angle_calculate_operate_calculate"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/angle_calculate_operate_clear"
             style="@style/button_horizontal_style"
             android:layout_gravity="center_vertical"
             android:text="@string/angle_calculate_operate_clear"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/angle_calculate_operate_use"
             style="@style/button_horizontal_style"
             android:layout_gravity="center_vertical"

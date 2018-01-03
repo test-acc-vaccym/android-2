@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <com.edroplet.sanetel.view.custom.CustomTextView
         android:id="@+id/ssid"
         android:gravity="start"
         android:layout_width="match_parent"

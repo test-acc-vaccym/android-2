@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         style="@style/linear_shadow"
         android:layout_marginBottom="@dimen/app_bar_height">
-        <!---com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <!---com.edroplet.sanetel.view.custom.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/layout_padding_top"
             android:orientation="vertical">
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/settings_amplifier_emit_select"

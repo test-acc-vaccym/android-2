@@ -1,4 +1,4 @@
-package com.edroplet.qxx.saneteltabactivity.utils.downloadmanager.utils;
+package com.edroplet.sanetel.utils.downloadmanager.utils;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;

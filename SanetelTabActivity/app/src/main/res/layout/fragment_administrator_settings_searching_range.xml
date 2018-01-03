@@ -15,7 +15,7 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/administrator_setting_searching_range_title"
@@ -34,29 +34,29 @@
                     android:layout_marginStart="@dimen/layout_padding_left"
                     android:layout_marginLeft="@dimen/layout_padding_left">
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_searching_range_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:text="@string/administrator_setting_searching_range_1"/>
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_searching_range_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
                         android:text="@string/administrator_setting_searching_range_2" />
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_searching_range_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/administrator_setting_searching_range_3" />
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_searching_range_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/administrator_setting_searching_range_4" />
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_searching_range_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

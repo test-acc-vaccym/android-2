@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.edroplet.qxx.saneteltabactivity.view.appintro.AppIntroViewPager
+    <com.edroplet.sanetel.view.appintro.AppIntroViewPager
         android:id="@+id/view_pager"
         android:fitsSystemWindows="true"
         android:layout_width="fill_parent"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     style="@style/manual_divider">
-        <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <!--com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/functions_view_pager_title"
             android:layout_width="match_parent"
             android:layout_height="@dimen/app_bar_height"
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <!--步进控制-->
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/speed_info_now"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -33,20 +33,20 @@
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:orientation="horizontal">
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                        <com.edroplet.sanetel.view.custom.CustomTextView
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:text="@string/main_control_speed_azimuth"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             tools:ignore="NestedWeights" />
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                        <com.edroplet.sanetel.view.custom.CustomTextView
                             android:id="@+id/main_control_speed_tv_azimuth"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:hint="@string/main_control_speed_azimuth"/>
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                        <com.edroplet.sanetel.view.custom.CustomTextView
                             android:layout_width="0dp"
                             android:layout_weight="0.2"
                             android:layout_height="wrap_content"
@@ -60,20 +60,20 @@
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:orientation="horizontal">
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                        <com.edroplet.sanetel.view.custom.CustomTextView
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:text="@string/main_control_speed_pitch"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             tools:ignore="NestedWeights" />
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                        <com.edroplet.sanetel.view.custom.CustomTextView
                             android:id="@+id/main_control_speed_tv_pitch"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:hint="@string/main_control_speed_pitch"/>
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                        <com.edroplet.sanetel.view.custom.CustomTextView
                             android:layout_width="0dp"
                             android:layout_weight="0.2"
                             android:layout_height="wrap_content"
@@ -87,20 +87,20 @@
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:orientation="horizontal">
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                        <com.edroplet.sanetel.view.custom.CustomTextView
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:text="@string/main_control_speed_polarization"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             tools:ignore="NestedWeights" />
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                        <com.edroplet.sanetel.view.custom.CustomTextView
                             android:id="@+id/main_control_speed_tv_polarization"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:hint="@string/main_control_speed_polarization"/>
-                        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                        <com.edroplet.sanetel.view.custom.CustomTextView
                             android:layout_width="0dp"
                             android:layout_weight="0.2"
                             android:layout_height="wrap_content"
@@ -114,20 +114,20 @@
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:orientation="horizontal">
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <com.edroplet.sanetel.view.custom.CustomTextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="@string/main_control_speed_agc"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         tools:ignore="NestedWeights" />
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <com.edroplet.sanetel.view.custom.CustomTextView
                         android:id="@+id/main_control_speed_tv_agc"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:hint="@string/main_control_speed_agc"/>
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <com.edroplet.sanetel.view.custom.CustomTextView
                         android:layout_width="0dp"
                         android:layout_weight="0.2"
                         android:layout_height="wrap_content"

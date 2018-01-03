@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:background="@color/WhiteSmoke"
     android:layout_marginBottom="@dimen/app_bar_height">
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <com.edroplet.sanetel.view.custom.CustomTextView
         android:id="@+id/welcome_fix_device_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
@@ -23,7 +23,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:padding="@dimen/layout_padding_top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

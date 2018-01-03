@@ -11,39 +11,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.edroplet.qxx.saneteltabactivity.activities.main.MainActivity">
+        tools:context="com.edroplet.sanetel.activities.main.MainActivity">
 
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/main_me_font"
             style="@style/button_vertical_style"
             android:layout_width="match_parent"
             android:text="@string/main_me_font"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/main_bottom_nav_me_language"
             style="@style/button_vertical_style"
             android:layout_width="match_parent"
             android:text="@string/main_bottom_nav_me_language"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/main_bottom_nav_me_error_report"
             style="@style/button_vertical_style"
             android:layout_width="match_parent"
             android:text="@string/main_bottom_nav_me_error_report"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/main_bottom_nav_me_advices"
             style="@style/button_vertical_style"
             android:layout_width="match_parent"
             android:text="@string/main_bottom_nav_me_advices"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/main_bottom_nav_me_about"
             style="@style/button_vertical_style"
             android:layout_width="match_parent"
             android:text="@string/main_bottom_nav_me_about"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/main_bottom_nav_me_version"
             style="@style/button_vertical_style"
             android:layout_width="match_parent"
             android:text="@string/main_bottom_nav_me_version"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/main_bottom_nav_me_switch_device"
             style="@style/button_vertical_style"
             android:layout_width="match_parent"

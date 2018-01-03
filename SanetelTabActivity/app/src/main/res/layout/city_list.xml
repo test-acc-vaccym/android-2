@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/city_list"
-    android:name="com.edroplet.qxx.saneteltabactivity.activities.settings.CityLocationListFragment"
+    android:name="com.edroplet.sanetel.activities.settings.CityLocationListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/no_padding"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.CityLocationListActivity"
+    tools:context="com.edroplet.sanetel.activities.settings.CityLocationListActivity"
     tools:listitem="@layout/city_list_content" />

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.sanetel.R;
 import com.will.ireader.bean.Chapter;
 
 import java.util.ArrayList;

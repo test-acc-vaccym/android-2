@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     style="@style/linear_no_shadow_no_padding"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.PowerAmplifierSettingsActivity">
+    tools:context="com.edroplet.sanetel.activities.settings.PowerAmplifierSettingsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -45,7 +45,7 @@
         android:layout_marginBottom="@dimen/bottom_nav_height"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <com.edroplet.qxx.saneteltabactivity.view.BottomNavigationViewEx
+    <com.edroplet.sanetel.view.BottomNavigationViewEx
         android:id="@+id/settings_power_amplifier_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_nav_height"
@@ -88,7 +88,7 @@
         app:backgroundTint="@drawable/button_background"
         android:visibility="invisible"/-->
 
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomFAB
+    <com.edroplet.sanetel.view.custom.CustomFAB
         android:id="@+id/amplifier_fab"
         android:layout_width="@dimen/fab_size"
         android:layout_height="@dimen/fab_size"

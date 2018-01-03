@@ -34,7 +34,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.sanetel.R;
 
 import java.io.File;
 

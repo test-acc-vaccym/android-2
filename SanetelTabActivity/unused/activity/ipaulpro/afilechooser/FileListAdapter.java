@@ -23,7 +23,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.sanetel.R;
 
 import java.io.File;
 import java.util.ArrayList;

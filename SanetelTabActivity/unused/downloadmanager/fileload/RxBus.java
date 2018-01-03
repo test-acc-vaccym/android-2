@@ -1,4 +1,4 @@
-package com.edroplet.qxx.saneteltabactivity.utils.downloadmanager.fileload;
+package com.edroplet.sanetel.utils.downloadmanager.fileload;
 
 import rx.Observable;
 import rx.subjects.PublishSubject;

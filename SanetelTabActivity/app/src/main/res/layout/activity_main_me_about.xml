@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.main.MainActivity"
+    tools:context="com.edroplet.sanetel.activities.main.MainActivity"
     android:divider="@drawable/divider"
     style="@style/linear_no_shadow_no_padding">
 
@@ -54,7 +54,7 @@
             <LinearLayout
                 style="@style/layout_vertical_style"
                 android:orientation="vertical">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:text="@string/main_me_about_address_title"
                     style="@style/text_vertical_style"
                     android:gravity="start|left"/>
@@ -63,7 +63,7 @@
             <LinearLayout
                 style="@style/layout_vertical_style"
                 android:layout_weight="3">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:text="@string/main_me_about_address"
                     style="@style/text_horizontal_style"
                     android:focusable="false"
@@ -73,13 +73,13 @@
             <!--电话-->
             <LinearLayout
                 style="@style/layout_vertical_style">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:text="@string/main_me_about_phone"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.4"
                     android:gravity="start|left"
                     android:padding="@dimen/appbar_padding_top"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:text="@string/main_me_about_phone_number"
                     style="@style/text_horizontal_style"
                     android:gravity="start|left"
@@ -88,13 +88,13 @@
             <!--传真-->
             <LinearLayout
                 style="@style/layout_vertical_style">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:text="@string/main_me_about_fax"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.4"
                     android:gravity="start|left"
                     android:padding="@dimen/appbar_padding_top"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:text="@string/main_me_about_fax_number"
                     style="@style/text_horizontal_style"
                     android:gravity="start|left"
@@ -105,13 +105,13 @@
             <LinearLayout
                 style="@style/layout_vertical_style"
                 android:layout_weight = "2">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:text="@string/main_me_about_email"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.4"
                     android:gravity="start|left"
                     android:padding="@dimen/appbar_padding_top"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:text="@string/main_me_about_email_address"
                     style="@style/text_horizontal_style"
                     android:gravity="start|left"
@@ -122,13 +122,13 @@
             <LinearLayout
                 style="@style/layout_vertical_style"
                 android:layout_weight = "2">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:text="@string/main_me_about_official_site"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.4"
                     android:gravity="start|left"
                     android:padding="@dimen/appbar_padding_top"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:text="@string/main_me_about_official_site_url"
                     style="@style/text_horizontal_style"
                     android:gravity="start|left"

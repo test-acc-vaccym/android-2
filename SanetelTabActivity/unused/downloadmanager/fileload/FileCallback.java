@@ -1,4 +1,4 @@
-package com.edroplet.qxx.saneteltabactivity.utils.downloadmanager.fileload;
+package com.edroplet.sanetel.utils.downloadmanager.fileload;
 
 import java.io.File;
 import java.io.FileOutputStream;

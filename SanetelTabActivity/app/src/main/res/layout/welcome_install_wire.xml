@@ -6,7 +6,7 @@
     android:background="@color/WhiteSmoke"
     android:orientation="vertical"
     android:layout_marginBottom="@dimen/app_bar_height">
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <com.edroplet.sanetel.view.custom.CustomTextView
         android:id="@+id/welcome_install_wire_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
@@ -32,7 +32,7 @@
                 android:src="@mipmap/welcome4"
                 tools:ignore="ContentDescription" />
 
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:padding="@dimen/layout_padding_top"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

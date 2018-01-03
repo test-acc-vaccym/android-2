@@ -15,7 +15,7 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/administrator_antenna_type"
@@ -25,7 +25,7 @@
                     android:paddingEnd="@dimen/activity_horizontal_margin"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
+                <com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton
                     android:id="@+id/id_administrator_settings_antenna_type_radio_group"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -35,7 +35,7 @@
                     android:layout_marginLeft="@dimen/layout_padding_left">
 
                     <!--android:focusable="false"-->
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_antenna_type_two_two"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -43,14 +43,14 @@
                         android:focusable="false"
                         android:clickable="false"
                         android:text="@string/administrator_setting_antenna_type_two_two"/>
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_antenna_type_two_one"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
                         android:layout_below="@id/administrator_setting_antenna_type_two_two"
                         android:text="@string/administrator_setting_antenna_type_two_one" />
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_antenna_type_two_zero"
                         android:layout_below="@id/administrator_setting_antenna_type_two_one"
                         android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
                         android:focusable="false"
                         android:clickable="false"
                         android:text="@string/administrator_setting_antenna_type_two_zero" />
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_antenna_type_three_one"
                         android:layout_below="@id/administrator_setting_antenna_type_two_zero"
                         android:layout_width="wrap_content"
@@ -66,7 +66,7 @@
                         android:focusable="false"
                         android:clickable="false"
                         android:text="@string/administrator_setting_antenna_type_three_one" />
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_antenna_type_three_zero"
                         android:layout_below="@id/administrator_setting_antenna_type_three_one"
                         android:layout_width="wrap_content"
@@ -75,7 +75,7 @@
                         android:clickable="false"
                         android:text="@string/administrator_setting_antenna_type_three_zero" />
 
-                </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
+                </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
             </LinearLayout>
             <include layout="@layout/pop_dialog_blue"/>
         </LinearLayout>

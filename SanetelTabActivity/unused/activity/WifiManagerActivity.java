@@ -1,4 +1,4 @@
-package com.edroplet.qxx.saneteltabactivity.activities.guide;
+package com.edroplet.sanetel.activities.guide;
 
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
@@ -26,11 +26,11 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.sanetel.R;
 
-import com.edroplet.qxx.saneteltabactivity.utils.SystemServices;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView;
+import com.edroplet.sanetel.utils.SystemServices;
+import com.edroplet.sanetel.view.custom.CustomButton;
+import com.edroplet.sanetel.view.custom.CustomTextView;
 
 import java.util.List;
 

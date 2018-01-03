@@ -31,7 +31,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
-import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.sanetel.R;
 
 import java.util.List;
 

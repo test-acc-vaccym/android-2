@@ -3,7 +3,7 @@ package com.will.ireader.db;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.edroplet.qxx.saneteltabactivity.DropletBaseApplication;
+import com.edroplet.sanetel.DropletBaseApplication;
 
 /**
  * Created by Will on 2016/1/31.

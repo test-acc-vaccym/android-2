@@ -1,4 +1,4 @@
-package com.edroplet.qxx.saneteltabactivity.utils.update;
+package com.edroplet.sanetel.utils.update;
 
 /**
  * Created by qxs on 2017/11/10.
@@ -31,7 +31,7 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.RemoteViews;
 
-import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.sanetel.R;
 
 public class AppUpdateUtils {
     private static Context mContext;

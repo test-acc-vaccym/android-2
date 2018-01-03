@@ -24,7 +24,7 @@
             app:titleTextAppearance="?android:attr/textAppearanceLarge"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/history_list_toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
             android:layout_marginRight="0dp"
             android:background="@color/satellite_list_header_background">
 
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/name_title"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -52,7 +52,7 @@
                 android:text="@string/main_collect_data_history_list_name"
                 android:textSize="@dimen/list_item_title_size"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/polarization_title"
                 android:layout_width="0dp"
                 android:layout_weight="1.5"
@@ -61,7 +61,7 @@
                 android:textSize="@dimen/list_item_title_size"
                 android:text="@string/main_collect_data_history_list_date"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            <com.edroplet.sanetel.view.custom.CustomButton
                 android:id="@+id/polarization_title_select_all_or_not"
                 android:layout_width="0dp"
                 android:layout_weight="0.5"
@@ -92,11 +92,11 @@
         android:layout_height="@dimen/app_bar_height"
         app:layout_behavior="@string/bottom_sheet_behavior"
         android:visibility="gone">
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             style="@style/button_horizontal_style"
             android:id="@+id/main_collect_data_history_list_select_ok"
             android:text="@string/main_collect_data_history_list_select_ok"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             style="@style/button_horizontal_style"
             android:id="@+id/main_collect_data_history_list_select_cancel"
             android:text="@string/main_collect_data_history_list_select_cancel"/>

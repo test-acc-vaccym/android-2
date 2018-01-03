@@ -5,24 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/linear_no_shadow_no_padding"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.guide.WifiManagerActivity">
+    tools:context="com.edroplet.sanetel.activities.guide.WifiManagerActivity">
     <LinearLayout
         android:layout_width="455dp"
         android:layout_height="48dp">
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/check_wifi"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="检查状态"
             tools:ignore="HardcodedText"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/open_wifi"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="打开WIFI"
             tools:ignore="HardcodedText"/>
 
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/close_wifi"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -30,7 +30,7 @@
             tools:layout_editor_absoluteX="151dp"
             tools:layout_editor_absoluteY="0dp"
             tools:ignore="HardcodedText" />
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/scan_wifi"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

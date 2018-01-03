@@ -45,7 +45,7 @@
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:gravity="center"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/satellites_new_button_commit"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -55,7 +55,7 @@
                     android:gravity="center"
                     android:text="@string/main_me_error_report_commit"
                     android:textAppearance="?android:attr/textAppearanceLarge"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/satellites_new_button_cancel"
                     android:layout_width="0dp"
                     android:layout_weight="1"

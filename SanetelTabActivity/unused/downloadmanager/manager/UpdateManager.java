@@ -1,4 +1,4 @@
-package com.edroplet.qxx.saneteltabactivity.utils.downloadmanager.manager;
+package com.edroplet.sanetel.utils.downloadmanager.manager;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -7,8 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.widget.Toast;
 
-import com.edroplet.qxx.saneteltabactivity.services.DownLoadService;
-import com.edroplet.qxx.saneteltabactivity.utils.downloadmanager.utils.DeviceUtils;
+import com.edroplet.sanetel.services.DownLoadService;
+import com.edroplet.sanetel.utils.downloadmanager.utils.DeviceUtils;
 
 
 /**

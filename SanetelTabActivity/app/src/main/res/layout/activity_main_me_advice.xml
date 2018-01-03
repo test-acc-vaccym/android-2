@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.main.MainActivity"
+    tools:context="com.edroplet.sanetel.activities.main.MainActivity"
     android:divider="@drawable/divider"
     style="@style/linear_no_shadow_no_padding">
 
@@ -48,7 +48,7 @@
             <!--接收邮箱：support@sanetel.com-->
             <LinearLayout
                 style="@style/layout_vertical_style">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
+                <com.edroplet.sanetel.view.custom.JustifyTextView
                     android:text="@string/main_me_error_report_email_receive"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.5"
@@ -57,7 +57,7 @@
                     android:padding="@dimen/appbar_padding_top"
                     android:gravity="start|left"/>
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_me_advice_email_receive"
                     style="@style/text_horizontal_style"
                     android:text="@string/main_me_error_report_email_receive_address"
@@ -67,7 +67,7 @@
             <LinearLayout
                 style="@style/layout_vertical_style"
                 android:visibility="gone">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
+                <com.edroplet.sanetel.view.custom.JustifyTextView
                     android:text="@string/main_me_error_report_email_send"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.5"
@@ -75,7 +75,7 @@
                     android:inputType="textEmailAddress"
                     android:gravity="start|left"/>
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                <com.edroplet.sanetel.view.custom.CustomEditText
                     android:id="@+id/main_me_advice_email_send_address"
                     style="@style/text_horizontal_style"
                     android:text="@string/main_me_advice_email_send_address"
@@ -84,14 +84,14 @@
             <!--用户邮箱-->
             <LinearLayout
                 style="@style/layout_vertical_style">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
+                <com.edroplet.sanetel.view.custom.JustifyTextView
                     android:text="@string/main_me_error_report_user_mail"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.5"
                     tools:layout_editor_absoluteY="16dp"
                     tools:layout_editor_absoluteX="16dp"
                     android:padding="@dimen/appbar_padding_top"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                <com.edroplet.sanetel.view.custom.CustomEditText
                     android:id="@+id/main_me_advice_user_mail"
                     style="@style/text_horizontal_style"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
@@ -99,7 +99,7 @@
             <!--用户单位-->
             <LinearLayout
                 style="@style/layout_vertical_style">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
+                <com.edroplet.sanetel.view.custom.JustifyTextView
                     android:text="@string/main_me_email_customer"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.5"
@@ -107,20 +107,20 @@
                     tools:layout_editor_absoluteX="16dp"
                     android:padding="@dimen/appbar_padding_top"
                     android:gravity="start|left"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                <com.edroplet.sanetel.view.custom.CustomEditText
                     android:id="@+id/main_me_advice_email_customer"
                     style="@style/text_horizontal_style"/>
             </LinearLayout>
             <!--姓    名-->
             <LinearLayout
                 style="@style/layout_vertical_style">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
+                <com.edroplet.sanetel.view.custom.JustifyTextView
                     android:text="@string/main_me_advice_name"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.5"
                     android:padding="@dimen/appbar_padding_top"
                     android:gravity="start|left"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                <com.edroplet.sanetel.view.custom.CustomEditText
                     android:id="@+id/main_me_advice_name"
                     style="@style/text_horizontal_style"
                     android:maxLength="5"
@@ -129,13 +129,13 @@
             <!--电    话-->
             <LinearLayout
                 style="@style/layout_vertical_style">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
+                <com.edroplet.sanetel.view.custom.JustifyTextView
                     android:text="@string/main_me_advice_phone"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.5"
                     android:padding="@dimen/appbar_padding_top"
                     android:gravity="start|left"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                <com.edroplet.sanetel.view.custom.CustomEditText
                     android:id="@+id/main_me_advice_phone"
                     style="@style/text_horizontal_style"
                     android:inputType="number"
@@ -145,14 +145,14 @@
             <!--文件名称-->
             <LinearLayout
                 style="@style/layout_vertical_style">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
+                <com.edroplet.sanetel.view.custom.JustifyTextView
                     android:text="@string/main_me_advice_subject"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.5"
                     android:padding="@dimen/appbar_padding_top"
                     android:inputType="textEmailSubject"
                     android:gravity="start|left"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                <com.edroplet.sanetel.view.custom.CustomEditText
                     android:id="@+id/main_me_advice_subject"
                     style="@style/text_horizontal_style"
                     app:titleTextAppearance="?android:attr/textAppearanceMedium"/>
@@ -165,7 +165,7 @@
                 android:gravity="start|left"
                 android:padding="@dimen/no_padding"
                 android:orientation="vertical">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/main_me_advice_photo"
                     android:text="@string/main_me_advice_photo"
                     style="@style/button_vertical_style"
@@ -173,7 +173,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_gravity="start|left|center_vertical"
                     android:gravity="start|left|center_vertical"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_me_advice_photo_list"
                     style="@style/text_vertical_style"
                     android:layout_weight="2"
@@ -183,7 +183,7 @@
                     android:inputType="textMultiLine"/>
         </LinearLayout>
             <!--故障描述-->
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+            <com.edroplet.sanetel.view.custom.CustomEditText
                 android:id="@+id/main_me_advice_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -196,7 +196,7 @@
                 android:inputType="textMultiLine"
                 android:layout_weight="5"/>
 
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/submit_result"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -210,15 +210,15 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
         android:layout_alignParentBottom="true">
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/main_me_advice_commit"
             style="@style/button_horizontal_style"
             android:text="@string/main_me_advice_commit"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/main_me_advice_save"
             style="@style/button_horizontal_style"
             android:text="@string/main_me_advice_save"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/main_me_advice_return"
             style="@style/button_horizontal_style"
             android:text="@string/main_me_advice_return"/>

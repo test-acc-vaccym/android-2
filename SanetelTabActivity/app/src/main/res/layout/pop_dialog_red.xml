@@ -17,12 +17,12 @@
     android:layout_gravity="center"
     android:gravity="center">
     <!--android:background="@drawable/pop"-->
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/pop_dialog_tv_first"
             style="@style/text_vertical_style"
             android:visibility="visible"
             android:gravity="center"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/pop_dialog_tv_second"
             style="@style/text_vertical_style"
             android:gravity="center"/>
@@ -31,13 +31,13 @@
             style="@style/layout_vertical_style"
             android:padding="0dp"
             android:orientation="horizontal">
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/pop_dialog_tv_third_start"
                 style="@style/pop_text_horizontal_style"
                 android:padding="@dimen/no_padding"
                 android:gravity="end|center"/>
 
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            <com.edroplet.sanetel.view.custom.CustomButton
                 android:id="@+id/pop_dialog_third_button"
                 style="@style/pop_operate_bar_button_style"
                 app:drawable_height="@dimen/operate_button_height"
@@ -47,7 +47,7 @@
                 android:drawableStart="@drawable/antenna_exploded"
                 android:visibility="gone"
                 android:padding="@dimen/no_padding"/>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/pop_dialog_tv_third_end"
                 style="@style/pop_text_horizontal_style"
                 android:padding="@dimen/no_padding"

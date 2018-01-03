@@ -7,7 +7,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -30,21 +30,21 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
+                    <com.edroplet.sanetel.view.custom.JustifyTextView
                         android:id="@+id/follow_me_searching_agc"
                         android:layout_width="0dp"
                         android:layout_weight="1.8"
                         android:layout_height="wrap_content"
                         android:text="@string/follow_me_searching_agc"
                         android:textAppearance="?android:attr/textAppearanceMedium"/>
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <com.edroplet.sanetel.view.custom.CustomTextView
                         android:id="@+id/main_monitor_satellite_tv_agc"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:layout_height="wrap_content"
                         android:hint="@string/main_monitor_satellite_agc_hint"/>
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <com.edroplet.sanetel.view.custom.CustomTextView
                         android:layout_width="0dp"
                         android:layout_weight="0.4"
                         android:gravity="center"

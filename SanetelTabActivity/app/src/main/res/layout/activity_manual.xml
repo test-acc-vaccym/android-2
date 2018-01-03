@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     style="@style/linear_no_shadow_no_padding"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.functions.ManualActivity">
+    tools:context="com.edroplet.sanetel.activities.functions.ManualActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/manual_appbar"

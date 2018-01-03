@@ -13,7 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.sanetel.R;
 import com.will.ireader.page.PageActivity;
 import com.will.ireader.base.BaseActivity;
 import com.will.ireader.bean.Book;

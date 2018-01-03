@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top">
         <!--寻星模式-->
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -24,7 +24,7 @@
             android:paddingBottom="@dimen/layout_padding_top"
             android:orientation="vertical">
             <!--寻星模式-->
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/follow_me_search_mode_title"
@@ -36,14 +36,14 @@
                 android:paddingTop="@dimen/layout_padding_top"
                 android:paddingBottom="@dimen/layout_padding_top">
                 <!--单选组-->
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
+                <com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton
                     android:id="@+id/rbg_search_mode"
                     android:padding="@dimen/no_padding"
                     android:layout_width="@dimen/radio_group_width"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/follow_me_search_mode_beacon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -51,13 +51,13 @@
                         android:text="@string/follow_me_search_mode_beacon"
                         android:checked="true"/>
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/follow_me_search_mode_dvb"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="@string/follow_me_search_mode_dvb"/>
-                </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
+                </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
             </RelativeLayout>
         </LinearLayout>
         <include layout="@layout/pop_dialog_blue"/>

@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/main_settings_reference"
@@ -38,7 +38,7 @@
                     android:paddingStart="@dimen/layout_padding_left"
                     style="@style/linear_shadow">
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                    <com.edroplet.sanetel.view.custom.CustomButton
                         android:id="@+id/main_settings_reference"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/main_settings_amplifier"
@@ -70,7 +70,7 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                    <com.edroplet.sanetel.view.custom.CustomButton
                         android:id="@+id/main_settings_amplifier_interfere"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/button_text" />
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                    <com.edroplet.sanetel.view.custom.CustomButton
                         android:id="@+id/main_settings_amplifier_emit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/main_settings_database"
@@ -108,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     style="@style/settings_linear_shadow">
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                    <com.edroplet.sanetel.view.custom.CustomButton
                         android:id="@+id/main_settings_database_city"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
                         android:textColor="@color/button_text"
                         android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                    <com.edroplet.sanetel.view.custom.CustomButton
                         android:id="@+id/main_settings_database_satellites"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -135,7 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <!--com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/main_settings_advance"
@@ -147,7 +147,7 @@
                     android:focusable="true"
                     android:focusedByDefault="true"
                     android:clickable="true"-->
-                    <com.edroplet.qxx.saneteltabactivity.view.StatusButton
+                    <com.edroplet.sanetel.view.StatusButton
                         android:layout_height="@dimen/app_bar_height"
                         android:layout_width="@dimen/app_bar_height"
                         android:textColor="@color/button_text"
@@ -165,7 +165,7 @@
                         app:state_color="operate"
                         android:focusable="false"
                         android:clickable="false"/>
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                    <com.edroplet.sanetel.view.custom.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"

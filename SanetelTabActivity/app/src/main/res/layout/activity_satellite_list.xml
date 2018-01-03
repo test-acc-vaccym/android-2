@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     style="@style/linear_no_shadow_no_padding"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteListActivity">
+    tools:context="com.edroplet.sanetel.activities.settings.SatelliteListActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -24,7 +24,7 @@
             app:titleTextColor="@color/black"
             app:titleTextAppearance="?android:attr/textAppearanceLarge">
 
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/satellite_list_toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
             android:layout_marginRight="0dp"
             android:background="@color/satellite_list_header_background">
                 <!--名称-->
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/name_title"
                 android:layout_width="0dp"
                 android:layout_weight="1.8"
@@ -53,7 +53,7 @@
                 android:padding="@dimen/no_padding"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <!--极化方式-->
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/polarization_title"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -63,7 +63,7 @@
                 android:padding="@dimen/no_padding"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <!--经度-->
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/longitude_title"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -73,7 +73,7 @@
                 android:padding="@dimen/no_padding"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <!--门限-->
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/threshold_title"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -83,7 +83,7 @@
                 android:padding="@dimen/no_padding"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <!--信标-->
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/beacon_title"
                 android:layout_width="0dp"
                 android:layout_weight="1.7"
@@ -93,7 +93,7 @@
                 android:padding="@dimen/no_padding"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <!--载波-->
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/carrier_title"
                 android:layout_width="0dp"
                 android:layout_weight="2"
@@ -103,7 +103,7 @@
                 android:textSize="@dimen/list_item_text_size"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <!--符号率-->
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/symbolRate_title"
                 android:layout_width="0dp"
                 android:layout_weight="1.5"
@@ -113,7 +113,7 @@
                 android:textSize="@dimen/list_item_text_size"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            <com.edroplet.sanetel.view.custom.CustomButton
                 android:id="@+id/satellite_select_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -142,7 +142,7 @@
         android:layout_height="@dimen/satellite_bottom_bar_height"
         android:background="@color/bottom_tab_nav_background"
         android:layout_gravity="bottom">
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
@@ -150,7 +150,7 @@
             android:drawableTop="@drawable/recover"
             android:text="@string/satellite_recover"
             android:background="@drawable/button_background"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
@@ -158,7 +158,7 @@
             android:drawableTop="@drawable/ic_dialer_fork_add_call"
             android:text="@string/add_satellite"
             android:background="@drawable/button_background"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"

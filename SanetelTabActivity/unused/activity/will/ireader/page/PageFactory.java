@@ -11,7 +11,7 @@ import android.os.BatteryManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
-import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.sanetel.R;
 import com.will.ireader.bean.Book;
 import com.will.ireader.common.SPHelper;
 import com.will.ireader.common.Util;

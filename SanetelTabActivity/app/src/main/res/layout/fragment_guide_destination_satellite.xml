@@ -10,7 +10,7 @@
         android:layout_marginBottom="@dimen/status_bar_height"
         android:gravity="center">
         <!--目标星-->
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/status_bar_height"
             android:text="@string/follow_me_destination_satellite_title"
@@ -47,14 +47,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <!--单选组-->
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton
+                <com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton
                     android:id="@+id/rbg_city"
                     android:padding="@dimen/no_padding"
                     android:layout_width="@dimen/radio_group_width"
                     android:orientation="vertical"
                     android:layout_height="wrap_content">
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/follow_me_destination_satellite_select"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -62,14 +62,14 @@
                         android:text="@string/angle_calculate_satellite_select"
                         android:checked="true"/>
 
-                    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton
+                    <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/follow_me_destination_satellite_new"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_marginTop="@dimen/app_bar_height"
                         android:text="@string/follow_me_destination_satellite_new"/>
-                </com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton>
+                </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
                 <!--卫星选择-->
                 <LinearLayout
                     android:id="@+id/satellite_select"

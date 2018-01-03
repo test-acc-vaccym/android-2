@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.main.MainActivity">
+    tools:context="com.edroplet.sanetel.activities.main.MainActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/guide_tool_bar"
@@ -19,7 +19,7 @@
         app:titleTextAppearance="?android:attr/textAppearanceLarge"
         android:background="@color/title_background"
         android:fitsSystemWindows="true">
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/guide_toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:textColor="@color/title_text"
             android:textStyle="bold"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/guide_enter_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,13 +58,13 @@
         android:background="?android:attr/windowBackground"
         app:itemTextColor="@color/button_text"
         app:menu="@menu/main_navigation" /-->
-    <com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioGroup
+    <com.edroplet.sanetel.view.custom.WeChatRadioGroup
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/main_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioButton
+        <com.edroplet.sanetel.view.custom.WeChatRadioButton
             android:id="@+id/main_bottom_nav_guide"
             android:text="@string/main_bottom_nav_guide"
             style="@style/weChat_radio_button_style"
@@ -75,7 +75,7 @@
             app:focus_icon="@mipmap/guide_follow_me_green"
             app:icon_width="@dimen/weChat_icon_width"
             app:icon_height="@dimen/weChat_icon_height"/>
-        <!--com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioButton
+        <!--com.edroplet.sanetel.view.custom.WeChatRadioButton
             android:id="@+id/main_bottom_nav_start"
             android:text="@string/main_bottom_nav_start"
             style="@style/weChat_radio_button_style"
@@ -85,7 +85,7 @@
             app:focus_icon="@mipmap/discover_green"
             app:icon_width="@dimen/weChat_icon_width"
             app:icon_height="@dimen/weChat_icon_height"/-->
-        <com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioButton
+        <com.edroplet.sanetel.view.custom.WeChatRadioButton
             android:id="@+id/main_bottom_nav_me"
             android:text="@string/main_bottom_nav_me"
             style="@style/weChat_radio_button_style"
@@ -95,7 +95,7 @@
             app:focus_icon="@mipmap/about_me_green"
             app:icon_width="@dimen/weChat_icon_width"
             app:icon_height="@dimen/weChat_icon_height"/>
-    </com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioGroup>
+    </com.edroplet.sanetel.view.custom.WeChatRadioGroup>
     <!--底部阴影-->
     <View
         android:layout_width="match_parent"

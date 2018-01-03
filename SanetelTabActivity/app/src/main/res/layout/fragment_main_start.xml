@@ -11,7 +11,7 @@
         android:src="@mipmap/workstation"
         android:contentDescription="@string/main_bottom_nav_start"
         android:layout_gravity="center"/-->
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+    <com.edroplet.sanetel.view.custom.CustomButton
         android:id="@+id/main_start_launch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

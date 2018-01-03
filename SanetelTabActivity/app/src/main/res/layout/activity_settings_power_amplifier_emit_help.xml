@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     style="@style/linear_no_shadow_no_padding"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.SettingsPowerAmplifierEmitHelpActivity">
+    tools:context="com.edroplet.sanetel.activities.settings.SettingsPowerAmplifierEmitHelpActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/amplifier_help_appbar"
@@ -23,7 +23,7 @@
             app:titleTextColor="@color/black"
             app:titleTextAppearance="?android:attr/textAppearanceLarge"/>
     </android.support.design.widget.AppBarLayout>
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <com.edroplet.sanetel.view.custom.CustomTextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"

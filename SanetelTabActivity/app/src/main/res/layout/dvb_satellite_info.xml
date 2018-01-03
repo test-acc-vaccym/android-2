@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/layout_padding_top">
     <!--卫星信息-->
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <com.edroplet.sanetel.view.custom.CustomTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/main_monitor_satellite_info"
@@ -26,19 +26,19 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_name"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_dvb_satellite_tv_name"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_satellite_name_hint"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="0.4"
                     android:gravity="center"
@@ -49,19 +49,19 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_polarization"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_dvb_satellite_tv_polarization"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_satellite_polarization_hint"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="0.4"
                     android:gravity="center"
@@ -78,19 +78,19 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_longitude"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_dvb_satellite_tv_longitude"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_satellite_longitude_hint"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="0.4"
                     android:gravity="center"
@@ -103,20 +103,20 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_agc"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_dvb_satellite_tv_agc"
                     android:layout_width="0dp"
                     android:layout_weight="0.6"
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_satellite_agc_hint"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="0.4"
                     android:gravity="center"
@@ -135,19 +135,19 @@
                 android:layout_weight="@dimen/two_element_the_bigger_weight"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_carrier"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_dvb_satellite_tv_carrier"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/main_monitor_satellite_carrier_hint"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="0.4"
                     android:gravity="center"
@@ -171,20 +171,20 @@
                 android:layout_weight="@dimen/two_element_the_bigger_weight"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/settings_reference_dvb"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_dvb_satellite_tv_dvb"
                     android:layout_width="0dp"
                     android:layout_weight="0.6"
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:hint="@string/settings_reference_dvb_hint"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="0.4"
                     android:gravity="center"

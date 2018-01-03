@@ -17,7 +17,7 @@
         android:layout_marginBottom="@dimen/app_bar_height"
         android:orientation="vertical">
         <!--数据采集-->
-        <!--<!com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView-->
+        <!--<!com.edroplet.sanetel.view.custom.CustomTextView-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="wrap_content"-->
             <!--android:gravity="center"-->
@@ -32,7 +32,7 @@
             android:layout_marginTop="@dimen/layout_padding_top"
             android:orientation="vertical">
 
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            <com.edroplet.sanetel.view.custom.CustomButton
                 android:id="@+id/main_collect_data_history"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title"
                 android:textColor="@color/button_text" />
 
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            <com.edroplet.sanetel.view.custom.CustomButton
                 android:id="@+id/main_collect_data_new"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,28 +62,28 @@
         android:layout_height="@dimen/app_bar_height"
         android:orientation="horizontal"
         android:background="@color/bottom_tab_nav_background">
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/main_collect_data_clear"
             style="@style/button_horizontal_style"
             android:layout_gravity="center_vertical"
             android:padding="@dimen/no_padding"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/main_collect_data_clear"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             style="@style/button_horizontal_style"
             android:id="@+id/main_collect_data_start"
             android:layout_gravity="center_vertical"
             android:padding="@dimen/no_padding"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/main_collect_data_start"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             style="@style/button_horizontal_style"
             android:id="@+id/main_collect_data_stop"
             android:layout_gravity="center_vertical"
             android:padding="@dimen/no_padding"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/main_collect_data_stop"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             style="@style/button_horizontal_style"
             android:id="@+id/main_collect_data_save"
             android:layout_gravity="center_vertical"

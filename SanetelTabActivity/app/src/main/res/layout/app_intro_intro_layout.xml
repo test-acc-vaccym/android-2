@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="#222222">
 
-    <com.edroplet.qxx.saneteltabactivity.view.appintro.AppIntroViewPager
+    <com.edroplet.sanetel.view.appintro.AppIntroViewPager
         android:id="@+id/view_pager"
         android:fitsSystemWindows="true"
         android:layout_width="fill_parent"

@@ -9,7 +9,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
-                <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <!--com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@android:id/home"
                     android:layout_width="0dp"
                     android:layout_weight="0.2"
@@ -18,7 +18,7 @@
                     android:drawableStart="@drawable/back"
                     android:padding="@dimen/no_padding"
                     style="@style/Base.Widget.AppCompat.Button.Borderless" /-->
-                <com.edroplet.qxx.saneteltabactivity.view.StatusButton
+                <com.edroplet.sanetel.view.StatusButton
                     style="@style/status_bar_button_style"
                     android:id="@+id/status_bar_button_communication_state"
                     android:text="@string/communication_state_disconnected"
@@ -28,7 +28,7 @@
                     app:drawable_width="@dimen/status_button_height"
                     app:state_color="abnormal"/>
 
-                <com.edroplet.qxx.saneteltabactivity.view.StatusButton
+                <com.edroplet.sanetel.view.StatusButton
                     style="@style/status_bar_button_style"
                     android:id="@+id/status_bar_button_antenna_state"
                     android:text="@string/antenna_state_init"
@@ -38,7 +38,7 @@
                     app:drawable_width="@dimen/status_button_height"
                     app:state_color="normal"/>
 
-                <com.edroplet.qxx.saneteltabactivity.view.StatusButton
+                <com.edroplet.sanetel.view.StatusButton
                     style="@style/status_bar_button_style"
                     android:id="@+id/status_bar_button_gnss_state"
                     android:text="@string/gnss_state_disabled"
@@ -48,7 +48,7 @@
                     app:drawable_width="@dimen/status_button_height"
                     app:state_color="special"/>
 
-                <com.edroplet.qxx.saneteltabactivity.view.StatusButton
+                <com.edroplet.sanetel.view.StatusButton
                     style="@style/status_bar_button_style"
                     android:id="@+id/status_bar_button_locker_state"
                     android:text="@string/locker_state_released"
@@ -58,7 +58,7 @@
                     android:drawableLeft="@drawable/locker"
                     app:state_color="special"/>
 
-                <com.edroplet.qxx.saneteltabactivity.view.StatusButton
+                <com.edroplet.sanetel.view.StatusButton
                     style="@style/status_bar_button_style"
                     android:id="@+id/status_bar_button_power_state"
                     android:text="@string/power_state_saved"

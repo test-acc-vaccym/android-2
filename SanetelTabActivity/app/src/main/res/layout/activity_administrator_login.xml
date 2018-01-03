@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="start|center_vertical"
@@ -63,7 +63,7 @@
                     android:text="@string/main_settings_administrator_password"
                     android:textColor="@color/black"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                <com.edroplet.sanetel.view.custom.CustomEditText
                     android:id="@+id/main_settings_administrator_password"
                     android:layout_weight="1"
                     android:layout_width="0dp"

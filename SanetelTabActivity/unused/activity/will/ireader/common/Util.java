@@ -2,7 +2,7 @@ package com.will.ireader.common;
 
 import android.widget.Toast;
 
-import com.edroplet.qxx.saneteltabactivity.DropletBaseApplication;
+import com.edroplet.sanetel.DropletBaseApplication;
 import com.will.ireader.bean.Book;
 
 import org.mozilla.universalchardet.UniversalDetector;

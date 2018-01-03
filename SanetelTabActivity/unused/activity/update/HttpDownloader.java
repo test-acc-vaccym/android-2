@@ -1,4 +1,4 @@
-package com.edroplet.qxx.saneteltabactivity.utils.update;
+package com.edroplet.sanetel.utils.update;
 
 /**
  * Created by qxs on 2017/11/10.
@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.edroplet.qxx.saneteltabactivity.utils.FileUtils;
+import com.edroplet.sanetel.utils.FileUtils;
 
 import java.io.BufferedReader;
 import java.io.File;

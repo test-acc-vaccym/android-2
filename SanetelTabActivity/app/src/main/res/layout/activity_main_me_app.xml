@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     style="@style/linear_no_shadow_no_padding"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.functions.ManualActivity">
+    tools:context="com.edroplet.sanetel.activities.functions.ManualActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:src="@mipmap/ic_launcher"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_me_app_version"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/app_bar_height"
@@ -68,14 +68,14 @@
                 android:paddingLeft="@dimen/guide_list_padding_left"
                 android:orientation="horizontal">
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/main_me_app_update"
                     style="@style/button_horizontal_style"
                     android:gravity="start|left|center_vertical"
                     android:padding="@dimen/no_padding"
                     android:text="@string/main_me_app_update" />
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_me_app_update_state"
                     style="@style/text_horizontal_style"
                     android:padding="@dimen/no_padding"
@@ -87,21 +87,21 @@
                     android:gravity="start|left|center_vertical"
                     android:visibility="gone"/>
             </LinearLayout>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            <com.edroplet.sanetel.view.custom.CustomButton
                 android:id="@+id/main_me_app_recovery"
                 style="@style/button_vertical_style"
                 android:layout_width="match_parent"
                 android:padding="@dimen/no_padding"
                 android:text="@string/main_me_app_recovery"
                 android:gravity="start|left|center_vertical"/>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            <com.edroplet.sanetel.view.custom.CustomButton
                 android:id="@+id/main_me_app_download"
                 style="@style/button_vertical_style"
                 android:padding="@dimen/no_padding"
                 android:layout_width="match_parent"
                 android:text="@string/main_me_app_download"
                 android:gravity="start|left|center_vertical"/>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            <com.edroplet.sanetel.view.custom.CustomButton
                 android:id="@+id/main_me_app_browse"
                 style="@style/button_vertical_style"
                 android:layout_width="match_parent"

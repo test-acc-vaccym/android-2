@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     style="@style/linear_no_shadow_no_padding"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.functions.MonitorHelpActivity">
+    tools:context="com.edroplet.sanetel.activities.functions.MonitorHelpActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/monitor_help_appbar"
@@ -43,7 +43,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginBottom="8dp">
 
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"

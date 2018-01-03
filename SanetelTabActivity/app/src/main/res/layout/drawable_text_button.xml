@@ -10,7 +10,7 @@
         android:layout_gravity="end"
         android:layout_height="wrap_content">
     </ImageView>
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <com.edroplet.sanetel.view.custom.CustomTextView
         android:id="@+id/drawable_text_text_view"
         android:layout_width="0dp"
         android:layout_weight="2"
@@ -18,5 +18,5 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/drawable_center_spacing"
         android:layout_marginStart="@dimen/drawable_center_spacing">
-    </com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView>
+    </com.edroplet.sanetel.view.custom.CustomTextView>
 </LinearLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/com.edroplet.qxx.saneteltabactivity">
+    xmlns:app="http://schemas.android.com/apk/com.edroplet.sanetel">
     <!-- 倒三角 -->
     <!--item android:id="@+id/shape_inverted_triangle">
         <rotate

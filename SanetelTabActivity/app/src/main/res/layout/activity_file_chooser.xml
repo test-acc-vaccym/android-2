@@ -17,7 +17,7 @@
         app:titleTextAppearance="?android:attr/textAppearanceLarge"
         android:background="@color/title_background"
         android:fitsSystemWindows="true">
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/file_select_toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/file_select_complete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

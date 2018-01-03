@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/layout_padding_top">
 
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <com.edroplet.sanetel.view.custom.CustomTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/main_monitor_location_info"
@@ -23,13 +23,13 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_location_longitude"
                     android:gravity="right|end|center_vertical"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_location_tv_longitude"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -37,7 +37,7 @@
                     android:inputType="numberDecimal|number"
                     android:gravity="right|end|center_vertical"
                     android:hint="@string/main_monitor_location_longitude_beijing"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_location_tv_longitude_unit"
                     android:layout_width="0dp"
                     android:layout_weight="0.4"
@@ -50,13 +50,13 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_location_latitude"
                     android:gravity="right|end|center_vertical"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_location_tv_latitude"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -64,7 +64,7 @@
                     android:inputType="numberDecimal|number"
                     android:gravity="right|end|center_vertical"
                     android:hint="@string/main_monitor_location_latitude_beijing"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_location_tv_latitude_unit"
                     android:layout_width="0dp"
                     android:layout_weight="0.4"

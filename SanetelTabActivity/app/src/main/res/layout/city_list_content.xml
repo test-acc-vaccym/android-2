@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/recycler_view_item_height"
     android:orientation="horizontal">
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <com.edroplet.sanetel.view.custom.CustomTextView
         android:id="@+id/city_list_province"
         android:layout_width="0dp"
         android:layout_weight="1"
@@ -11,7 +11,7 @@
         android:layout_margin="@dimen/text_margin"
         android:textSize="@dimen/list_item_text_size"
         style="?attr/textAppearanceListItem"/>
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <com.edroplet.sanetel.view.custom.CustomTextView
         android:id="@+id/city_list_name"
         android:layout_width="0dp"
         android:layout_weight="1.5"
@@ -19,7 +19,7 @@
         android:layout_margin="@dimen/text_margin"
         android:textSize="@dimen/list_item_text_size"
         android:textAppearance="?attr/textAppearanceListItem" />
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <com.edroplet.sanetel.view.custom.CustomTextView
         android:id="@+id/city_list_latitude"
         android:layout_width="0dp"
         android:layout_weight="1"
@@ -27,7 +27,7 @@
         android:layout_margin="@dimen/text_margin"
         android:textSize="@dimen/list_item_text_size"
         android:textAppearance="?attr/textAppearanceListItem" />
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <com.edroplet.sanetel.view.custom.CustomTextView
         android:id="@+id/city_list_longitude"
         android:layout_width="0dp"
         android:layout_weight="1"
@@ -35,7 +35,7 @@
         android:layout_margin="@dimen/text_margin"
         android:textSize="@dimen/list_item_text_size"
         android:textAppearance="?attr/textAppearanceListItem" />
-    <!--com.edroplet.qxx.saneteltabactivity.view.custom.SmoothCheckBox
+    <!--com.edroplet.sanetel.view.custom.SmoothCheckBox
         android:layout_gravity="center_vertical"
         android:layout_width="0dp"
         android:layout_weight="0.4"

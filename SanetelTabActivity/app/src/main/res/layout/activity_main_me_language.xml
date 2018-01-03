@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/linear_no_shadow_no_padding"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.main.MainMeLanguageActivity">
+    tools:context="com.edroplet.sanetel.activities.main.MainMeLanguageActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

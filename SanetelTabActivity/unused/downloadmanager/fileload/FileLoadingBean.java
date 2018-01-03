@@ -1,4 +1,4 @@
-package com.edroplet.qxx.saneteltabactivity.utils.downloadmanager.fileload;
+package com.edroplet.sanetel.utils.downloadmanager.fileload;
 
 /**
  * Created by zs on 2016/7/7.

@@ -16,13 +16,13 @@
     android:background="@drawable/notebook_ice_blue"
     android:layout_gravity="center">
     <!--android:background="@drawable/pop"-->
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/pop_dialog_tv_first"
             style="@style/text_vertical_style"
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/pop_item_margin_vertical"
             android:visibility="visible"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/pop_dialog_tv_second"
             style="@style/text_vertical_style"
             android:layout_height="wrap_content"
@@ -35,14 +35,14 @@
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/pop_item_margin_vertical"
             android:orientation="horizontal">
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/pop_dialog_tv_third_start"
                 style="@style/pop_text_horizontal_style"
                 android:padding="@dimen/no_padding"
                 android:layout_gravity="end|center_vertical"
                 android:gravity="end|center_vertical"/>
 
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+            <com.edroplet.sanetel.view.custom.CustomButton
                 android:id="@+id/pop_dialog_third_button"
                 style="@style/pop_operate_bar_button_style"
                 app:drawable_height="@dimen/operate_button_height"
@@ -53,7 +53,7 @@
                 android:visibility="gone"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="@dimen/no_padding"/>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/pop_dialog_tv_third_end"
                 style="@style/pop_text_horizontal_style"
                 android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
                 android:layout_gravity="start|center_vertical"
                 android:gravity="start|center_vertical"/>
         </LinearLayout>
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <com.edroplet.sanetel.view.custom.CustomTextView
         android:id="@+id/pop_dialog_tv_forth"
         style="@style/text_vertical_style"
         android:layout_height="wrap_content"

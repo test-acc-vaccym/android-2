@@ -14,6 +14,6 @@
     android:layout_marginLeft="6dp"
     android:layout_marginRight="6dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsCollectHistoryFileListActivity"
+    tools:context="com.edroplet.sanetel.activities.functions.FunctionsCollectHistoryFileListActivity"
     tools:listitem="@layout/collect_history_list_content" />
 <!--/android.support.v4.widget.SwipeRefreshLayout-->

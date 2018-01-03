@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     style="@style/linear_no_shadow_no_padding"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.functions.FunctionsActivity">
+    tools:context="com.edroplet.sanetel.activities.functions.FunctionsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/functions_appbar"
@@ -50,7 +50,7 @@
         app:itemBackground="@color/bottom_tab_nav_background"
         app:itemTextColor="@color/tab_unchecked"/-->
 
-    <com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioGroup
+    <com.edroplet.sanetel.view.custom.WeChatRadioGroup
         android:id="@+id/functions_navigation"
         android:layout_width="match_parent"
         android:layout_height="@dimen/status_bar_height"
@@ -59,7 +59,7 @@
         android:layout_gravity="bottom"
         app:layout_anchorGravity="bottom">
 
-        <com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioButton
+        <com.edroplet.sanetel.view.custom.WeChatRadioButton
             style="@style/weChat_radio_button_style"
             android:id="@+id/functions_navigation_monitor"
             android:checked="true"
@@ -70,7 +70,7 @@
             app:focus_icon="@drawable/monitor_focus"
             app:icon_width="@dimen/weChat_icon_width"
             app:icon_height="@dimen/weChat_icon_height"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioButton
+        <com.edroplet.sanetel.view.custom.WeChatRadioButton
             style="@style/weChat_radio_button_style"
             android:id="@+id/functions_navigation_application"
             android:text="@string/main_bottom_nav_control"
@@ -80,7 +80,7 @@
             app:focus_icon="@drawable/application_focus"
             app:icon_width="@dimen/weChat_icon_width"
             app:icon_height="@dimen/weChat_icon_height"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioButton
+        <com.edroplet.sanetel.view.custom.WeChatRadioButton
             style="@style/weChat_radio_button_style"
             android:id="@+id/functions_navigation_status"
             android:text="@string/main_bottom_nav_status"
@@ -90,7 +90,7 @@
             app:focus_icon="@drawable/status_focus"
             app:icon_width="@dimen/weChat_icon_width"
             app:icon_height="@dimen/weChat_icon_height"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioButton
+        <com.edroplet.sanetel.view.custom.WeChatRadioButton
             style="@style/weChat_radio_button_style"
             android:id="@+id/functions_navigation_collect"
             android:text="@string/main_bottom_nav_log"
@@ -100,7 +100,7 @@
             app:focus_icon="@drawable/record_focus"
             app:icon_width="@dimen/weChat_icon_width"
             app:icon_height="@dimen/weChat_icon_height"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioButton
+        <com.edroplet.sanetel.view.custom.WeChatRadioButton
             style="@style/weChat_radio_button_style"
             android:id="@+id/functions_navigation_settings"
             android:text="@string/main_bottom_nav_settings"
@@ -110,10 +110,10 @@
             app:focus_icon="@drawable/settings_focus"
             app:icon_width="@dimen/weChat_icon_width"
             app:icon_height="@dimen/weChat_icon_height"/>
-    </com.edroplet.qxx.saneteltabactivity.view.custom.WeChatRadioGroup>
+    </com.edroplet.sanetel.view.custom.WeChatRadioGroup>
         <!--app:itemIconTint="@color/yellow"-->
         <!--android:background="?android:attr/windowBackground"-->
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomFAB
+    <com.edroplet.sanetel.view.custom.CustomFAB
         android:id="@+id/activity_functions_fab"
         android:layout_width="@dimen/fab_size"
         android:layout_height="@dimen/fab_size"

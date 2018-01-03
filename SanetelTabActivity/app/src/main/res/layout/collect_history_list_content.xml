@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:background="?android:attr/selectableItemBackground">
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/collect_history_list_file_name"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -23,7 +23,7 @@
             android:layout_margin="@dimen/text_margin"
             android:textSize="@dimen/list_item_text_size"
             android:textAppearance="?attr/textAppearanceListItem" />
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/collect_history_list_save_date"
             android:layout_width="0dp"
             android:layout_weight="1.5"
@@ -43,17 +43,17 @@
             android:layout_height="wrap_content"/>
     </LinearLayout>
     <!-- 以下都是侧滑菜单的内容依序排列 -->
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+    <com.edroplet.sanetel.view.custom.CustomButton
         style="@style/swipe_button_style"
         android:id="@+id/main_collect_data_history_list_open"
         android:text="@string/main_collect_data_history_list_open"/>
 
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+    <com.edroplet.sanetel.view.custom.CustomButton
         style="@style/swipe_button_style"
         android:id="@+id/main_collect_data_history_list_delete"
         android:text="@string/main_collect_data_history_list_delete"/>
 
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+    <com.edroplet.sanetel.view.custom.CustomButton
         style="@style/swipe_button_style"
         android:id="@+id/main_collect_data_history_list_delete_all"
         android:text="@string/main_collect_data_history_list_delete_all"/>

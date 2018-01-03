@@ -31,7 +31,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
-import com.edroplet.qxx.saneteltabactivity.utils.LocalStorageProvider;
+import com.edroplet.sanetel.utils.LocalStorageProvider;
 
 import java.io.File;
 import java.io.FileFilter;

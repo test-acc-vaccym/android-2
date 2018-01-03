@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/layout_padding_top">
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <com.edroplet.sanetel.view.custom.CustomTextView
         android:id="@+id/main_monitor_amplifier_info_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         <!--LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -27,7 +27,7 @@
                 android:textColor="@color/black_overlay"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
-            <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -48,12 +48,12 @@
                 android:paddingEnd="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_status_state"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_amplifier_status_tv_state"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -66,12 +66,12 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_value_output"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_amplifier_tv_value_output"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -94,13 +94,13 @@
                 android:paddingEnd="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_status_temperature_state"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_amplifier_tv_temperature_state"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -115,12 +115,12 @@
                 android:paddingEnd="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_value_temperature"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_amplifier_tv_temperature"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -143,12 +143,12 @@
                 android:paddingEnd="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
+                <com.edroplet.sanetel.view.custom.JustifyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_status_pll_state"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_amplifier_tv_status_pll"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -164,12 +164,12 @@
                 android:paddingEnd="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:orientation="horizontal">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.JustifyTextView
+                <com.edroplet.sanetel.view.custom.JustifyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_status_satellite_protect_state"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_amplifier_status_satellite_protect_state"
                     android:layout_width="0dp"
                     android:layout_weight="1"

@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.sanetel.R;
 import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView;
 import com.will.ireader.page.PageFactory;
 import com.will.ireader.base.BaseActivity;

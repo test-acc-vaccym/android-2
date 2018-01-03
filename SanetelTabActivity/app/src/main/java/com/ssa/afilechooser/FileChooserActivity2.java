@@ -38,8 +38,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 
-import com.edroplet.qxx.saneteltabactivity.R;
-import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
+import com.edroplet.sanetel.R;
+import com.edroplet.sanetel.view.custom.CustomButton;
 
 import java.io.File;
 import java.io.Serializable;

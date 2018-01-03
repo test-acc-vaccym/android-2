@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.AntennaRestartActivity">
+    tools:context="com.edroplet.sanetel.activities.settings.AntennaRestartActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/antenna_restart_appbar"
@@ -33,13 +33,13 @@
             android:layout_height="@dimen/toolbar_divider"
             android:background="@color/gray"/>
     </android.support.design.widget.AppBarLayout>
-    <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <!--com.edroplet.sanetel.view.custom.CustomTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/main_settings_antenna_restart"
         android:textAppearance="?android:attr/textAppearanceLarge"/-->
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <com.edroplet.sanetel.view.custom.CustomTextView
         android:layout_marginTop="@dimen/pop_margin"
         android:layout_marginStart="@dimen/marginLeft"
         android:layout_marginEnd="@dimen/marginRight"

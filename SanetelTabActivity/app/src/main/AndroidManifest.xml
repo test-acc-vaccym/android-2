@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.edroplet.qxx.saneteltabactivity">
+    package="com.edroplet.sanetel">
 
     <!--7.0后静态注册广播需要权限了-->
-    <permission android:name="com.edroplet.qxx.saneteltabactivity.services.communicate.CommunicateDataReceiver"
+    <permission android:name="com.edroplet.sanetel.services.communicate.CommunicateDataReceiver"
         android:protectionLevel="normal"/>
-    <uses-permission android:name="com.edroplet.qxx.saneteltabactivity.services.communicate.CommunicateDataReceiver"/>
+    <uses-permission android:name="com.edroplet.sanetel.services.communicate.CommunicateDataReceiver"/>
     <!-- 震动 -->
     <uses-permission android:name="android.permission.VIBRATE" />
     <!-- 相册和文件 -->
@@ -100,7 +100,7 @@
             android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteListActivity" />
+                android:value="com.edroplet.sanetel.activities.settings.SatelliteListActivity" />
         </activity>
         <activity
             android:name=".activities.guide.FollowMeActivity"
@@ -188,7 +188,7 @@
             android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.edroplet.qxx.saneteltabactivity.activities.settings.CityLocationListActivity" />
+                android:value="com.edroplet.sanetel.activities.settings.CityLocationListActivity" />
         </activity>
         <activity
             android:name=".activities.guide.GuideExplodeActivity"

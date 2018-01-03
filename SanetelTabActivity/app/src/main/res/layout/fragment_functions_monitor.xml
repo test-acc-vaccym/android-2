@@ -14,7 +14,7 @@
         android:paddingBottom="8dp"
         android:orientation="vertical"
         style="@style/linear_shadow">
-        <!--<com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView-->
+        <!--<com.edroplet.sanetel.view.custom.CustomTextView-->
             <!--android:id="@+id/functions_view_pager_title"-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="wrap_content"-->

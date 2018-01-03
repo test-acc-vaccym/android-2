@@ -9,7 +9,7 @@
         android:orientation="horizontal"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp">
-        <!--com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <!--com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/id"
             android:layout_width="0dp"
             android:layout_weight="0.3"
@@ -18,7 +18,7 @@
             android:textSize="@dimen/list_item_text_size"
             android:textAppearance="?attr/textAppearanceListItem" /-->
     <!--名称-->
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_weight="1.8"
@@ -27,7 +27,7 @@
             android:padding="@dimen/no_padding"
             android:textAppearance="?attr/textAppearanceListItem" />
     <!--极化方式-->
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/polarization"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -37,7 +37,7 @@
             android:padding="@dimen/no_padding"
             android:textAppearance="?attr/textAppearanceListItem" />
     <!--经度-->
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/longitude"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -46,7 +46,7 @@
             android:padding="@dimen/no_padding"
             android:textAppearance="?attr/textAppearanceListItem" />
     <!--门限-->
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/threshold"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -55,7 +55,7 @@
             android:padding="@dimen/no_padding"
             android:textAppearance="?attr/textAppearanceListItem" />
     <!--信标-->
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/beacon"
             android:layout_width="0dp"
             android:layout_weight="1.7"
@@ -64,7 +64,7 @@
             android:padding="@dimen/no_padding"
             android:textAppearance="?attr/textAppearanceListItem" />
     <!--载波-->
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/carrier"
             android:layout_width="0dp"
             android:layout_weight="2"
@@ -73,7 +73,7 @@
             android:padding="@dimen/no_padding"
             android:textAppearance="?attr/textAppearanceListItem" />
     <!--符号率-->
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/symbolRate"
             android:layout_width="0dp"
             android:layout_weight="1.5"

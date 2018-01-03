@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     style="@style/linear_no_shadow_no_padding"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.functions.ReaderTextActivity">
+    tools:context="com.edroplet.sanetel.activities.functions.ReaderTextActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/read_text_toolbar"
@@ -19,13 +19,13 @@
         app:popupTheme="@style/AppTheme.PopupOverlay">
     </android.support.v7.widget.Toolbar>
 
-    <com.edroplet.qxx.saneteltabactivity.view.BorderScrollView
+    <com.edroplet.sanetel.view.BorderScrollView
         android:id="@+id/read_text_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+        <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/read_text_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-    </com.edroplet.qxx.saneteltabactivity.view.BorderScrollView>
+    </com.edroplet.sanetel.view.BorderScrollView>
 </LinearLayout>

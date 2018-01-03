@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.administrator.AdministratorSettingsActivity">
+    tools:context="com.edroplet.sanetel.activities.administrator.AdministratorSettingsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/id_administrator_settings_appbar"
@@ -33,7 +33,7 @@
             android:layout_height="@dimen/toolbar_divider"
             android:background="@color/gray"/>
     </android.support.design.widget.AppBarLayout>
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomViewPager
+    <com.edroplet.sanetel.view.custom.CustomViewPager
         android:id="@+id/id_administrator_settings_viewpager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

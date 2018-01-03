@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.main.MainMeLanguageActivity"
+    tools:context="com.edroplet.sanetel.activities.main.MainMeLanguageActivity"
     tools:showIn="@layout/activity_main_me_language"
     android:layout_marginStart="@dimen/guide_list_padding_left"
     android:layout_marginLeft="@dimen/guide_list_padding_left">

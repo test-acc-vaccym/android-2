@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:src="@mipmap/welcome"/>
     <!--android:layout_centerInParent="true"-->
-    <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+    <com.edroplet.sanetel.view.custom.CustomTextView
         android:id="@+id/tv_splash_version"
         android:text="@string/welcome_version"
         android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/tv_splash_version">
 
-        <com.edroplet.qxx.saneteltabactivity.view.CircleProgressbar
+        <com.edroplet.sanetel.view.CircleProgressbar
             android:id="@+id/tv_red_skip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

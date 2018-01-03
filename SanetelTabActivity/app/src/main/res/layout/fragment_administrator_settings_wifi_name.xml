@@ -16,7 +16,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/app_bar_height"
                 android:layout_height="wrap_content">
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/administrator_setting_wifi_name"
@@ -25,7 +25,7 @@
                     android:paddingRight="@dimen/activity_horizontal_margin"
                     android:paddingEnd="@dimen/activity_horizontal_margin"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText
+                <com.edroplet.sanetel.view.custom.CustomEditText
                     android:id="@+id/administrator_setting_wifi_name"
                     android:layout_width="0dp"
                     android:layout_weight="1"

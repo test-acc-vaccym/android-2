@@ -11,7 +11,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.sanetel.R;
 import com.will.RemovableView;
 import com.will.ireader.bean.Book;
 import com.will.ireader.common.SPHelper;

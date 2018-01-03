@@ -21,7 +21,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.sanetel.R;
 import com.will.ireader.view.CustomSeekBar;
 import com.will.ireader.view.PageView;
 import com.will.ireader.base.BaseActivity;

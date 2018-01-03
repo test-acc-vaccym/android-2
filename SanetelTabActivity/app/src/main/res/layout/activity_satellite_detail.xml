@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     style="@style/linear_no_shadow_no_padding"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.settings.SatelliteDetailActivity"
+    tools:context="com.edroplet.sanetel.activities.settings.SatelliteDetailActivity"
     tools:ignore="MergeRootFrame">
 
     <android.support.design.widget.AppBarLayout
@@ -71,11 +71,11 @@
         app:layout_anchor="@id/satellite_detail_container"
         app:layout_anchorGravity="bottom"
         android:gravity="bottom">
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/satellite_detail_save"
             android:text="@string/main_me_error_report_save"
             style="@style/button_horizontal_style"/>
-        <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+        <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/satellite_detail_return"
             android:text="@string/main_me_error_report_return"
             style="@style/button_horizontal_style"/>

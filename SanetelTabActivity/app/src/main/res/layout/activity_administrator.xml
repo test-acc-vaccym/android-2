@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/linear_no_shadow_no_padding"
-    tools:context="com.edroplet.qxx.saneteltabactivity.activities.administrator.AdministratorActivity">
+    tools:context="com.edroplet.sanetel.activities.administrator.AdministratorActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/administrator_appbar"
@@ -55,7 +55,7 @@
                 style="@style/layout_vertical_style"
                 android:layout_height="@dimen/app_bar_height">
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/administrator_antenna_incriminate"
                     style="@style/button_horizontal_style"
                     android:background="@drawable/button_background"
@@ -63,7 +63,7 @@
                     android:text="@string/administrator_antenna_incriminate"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/administrator_recovery_factory"
                     style="@style/button_horizontal_style"
                     android:background="@drawable/button_background"
@@ -71,7 +71,7 @@
                     android:text="@string/administrator_recovery_factory"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/administrator_antenna_type"
                     style="@style/button_horizontal_style"
                     android:background="@drawable/button_background"
@@ -79,7 +79,7 @@
                     android:text="@string/administrator_antenna_type"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton style="@style/button_horizontal_style"
+                <com.edroplet.sanetel.view.custom.CustomButton style="@style/button_horizontal_style"
                     android:id="@+id/main_settings_antenna_restart"
                     android:background="@drawable/button_background"
                     android:padding="@dimen/no_padding"
@@ -92,63 +92,63 @@
                 style="@style/layout_vertical_style"
                 android:layout_height="@dimen/app_bar_height">
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/administrator_band_select"
                     style="@style/button_horizontal_style"
                     android:background="@drawable/button_background"
                     android:text="@string/administrator_band_select"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/administrator_lnb_frequency_channel"
                     style="@style/button_horizontal_style"
                     android:background="@drawable/button_background"
                     android:text="@string/main_settings_lnb_oscillator"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/administrator_searching_range"
                     style="@style/button_horizontal_style"
                     android:background="@drawable/button_background"
                     android:text="@string/administrator_searching_range"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton  style="@style/button_horizontal_style"/>
+                <com.edroplet.sanetel.view.custom.CustomButton  style="@style/button_horizontal_style"/>
             </LinearLayout>
             <!--功放厂家	功放本振	功放监控-->
             <LinearLayout
                 style="@style/layout_vertical_style"
                 android:layout_height="@dimen/app_bar_height">
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/administrator_amplifier_factory"
                     style="@style/button_horizontal_style"
                     android:background="@drawable/button_background"
                     android:text="@string/main_settings_amplifier_factory"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/administrator_amplifier_oscillator"
                     style="@style/button_horizontal_style"
                     android:background="@drawable/button_background"
                     android:text="@string/main_settings_amplifier_oscillator"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/administrator_amplifier_monitor"
                     style="@style/button_horizontal_style"
                     android:background="@drawable/button_background"
                     android:text="@string/administrator_amplifier_monitor"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton  style="@style/button_horizontal_style"/>
+                <com.edroplet.sanetel.view.custom.CustomButton  style="@style/button_horizontal_style"/>
             </LinearLayout>
             <!--WIFI名称	IP设置	网口协议	串口协议-->
             <LinearLayout
                 style="@style/layout_vertical_style"
                 android:layout_height="@dimen/app_bar_height">
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/administrator_wifi_name"
                     style="@style/button_horizontal_style"
                     android:background="@drawable/button_background"
@@ -156,7 +156,7 @@
                     android:text="@string/administrator_wifi_name"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/administrator_ip_settings"
                     style="@style/button_horizontal_style"
                     android:background="@drawable/button_background"
@@ -164,7 +164,7 @@
                     android:text="@string/administrator_ip_settings"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/administrator_network_protocol"
                     style="@style/button_horizontal_style"
                     android:background="@drawable/button_background"
@@ -172,7 +172,7 @@
                     android:text="@string/administrator_network_protocol"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton
+                <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/administrator_serial_protocol"
                     style="@style/button_horizontal_style"
                     android:background="@drawable/button_background"

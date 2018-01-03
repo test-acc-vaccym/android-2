@@ -1,6 +1,7 @@
 package com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,12 +14,16 @@ import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
+import com.edroplet.qxx.saneteltabactivity.utils.sscanf.Sscanf;
 import com.edroplet.qxx.saneteltabactivity.view.BroadcastReceiverFragment;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioGroupWithCustomRadioButton;
 
+import java.util.Arrays;
+
+import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -40,6 +45,10 @@ public class AdministratorFragmentAmplifierOscillator extends BroadcastReceiverF
 
     @BindView(R.id.settings_amplifier_oscillator_custom_value)
     CustomEditText oscillatorCustomValue;
+
+    @BindArray(R.array.amplifier_oscillator)
+    String[] oscillatorValues;
+
 
     public static final String Key_amplifier_oscillator_id="Key_amplifier_oscillator_id";
     public static final String Key_amplifier_oscillator_value="Key_amplifier_oscillator_value";
@@ -122,6 +131,21 @@ public class AdministratorFragmentAmplifierOscillator extends BroadcastReceiverF
         popDialog.show();
 
         return view;
+    }
+
+    @Override
+    public void processData(Intent intent) {
+        super.processData(intent);
+        String rawData = intent.getStringExtra(AmplifierOscillatorData);
+        String oscillator = "0";
+        Object[] o = Sscanf.scan(rawData,Protocol.cmdGetBucLfResult, oscillator);
+        oscillator = (String)o[0];
+        int pos = Arrays.asList(oscillatorValues).indexOf(oscillator);
+        if (pos == -1){
+            pos = 2;
+            oscillatorCustomValue.setText(oscillator);
+        }
+        oscillatorGroup.check(mapAmplifierOscillatorPosId.get(pos));
     }
 
     @Override

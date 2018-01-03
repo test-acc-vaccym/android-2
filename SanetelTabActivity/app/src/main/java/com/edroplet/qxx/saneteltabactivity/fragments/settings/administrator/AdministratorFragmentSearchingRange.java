@@ -9,6 +9,7 @@ import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
 import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
@@ -34,7 +35,7 @@ public class AdministratorFragmentSearchingRange extends Fragment {
     CustomButton thirdButton;
 
     @BindView(R.id.administrator_setting_searching_range_radio_group)
-    CustomRadioGroupWithCustomRadioButton searchRangeGroup;
+    RadioGroup searchRangeGroup;
 
     private String selected;
 

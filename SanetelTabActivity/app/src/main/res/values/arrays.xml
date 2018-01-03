@@ -53,4 +53,9 @@
         <item>Advantech</item>
         <item>Sanetel</item>
     </string-array>
+
+    <string-array name="amplifier_oscillator">
+        <item>12800</item>
+        <item>13050</item>
+    </string-array>
 </resources>

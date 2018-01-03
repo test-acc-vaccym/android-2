@@ -14,6 +14,7 @@ import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.IpUtils;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
+import com.edroplet.qxx.saneteltabactivity.utils.sscanf.Sscanf;
 import com.edroplet.qxx.saneteltabactivity.view.BroadcastReceiverFragment;
 import com.edroplet.qxx.saneteltabactivity.view.IPEdit;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
@@ -43,6 +44,9 @@ public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
     IPEdit ipMask;
 
     Unbinder unbinder;
+    String ip;
+    String mask;
+
     public static AdministratorFragmentIPSettings newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                               String secondLine, boolean showThird, String thirdLineStart,
                                                               int icon, String buttonText, String thirdLineEnd) {
@@ -59,6 +63,14 @@ public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
         args.putString(PopDialog.END, thirdLineEnd);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        String[] action = {IPSettingsAction};
+        setAction(action);
+        super.onCreate(savedInstanceState);
+        Protocol.sendMessage(getContext(), Protocol.cmdGetIP);
     }
 
     @Nullable
@@ -112,6 +124,12 @@ public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
     @Override
     public void processData(Intent intent) {
         super.processData(intent);
+        String rawData = intent.getStringExtra(IPSettingsData);
+        Object[] o = Sscanf.scan(rawData, Protocol.cmdGetIPResult,ip, mask);
+        ip = (String) o[0];
+        mask = (String) o[1];
+        ipAddress.setText(ip);
+        ipMask.setText(mask);
     }
 
     @Override

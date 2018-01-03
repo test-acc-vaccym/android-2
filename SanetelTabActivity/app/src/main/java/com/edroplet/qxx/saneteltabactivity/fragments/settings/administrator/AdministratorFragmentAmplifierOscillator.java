@@ -10,8 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
+import com.edroplet.qxx.saneteltabactivity.view.BroadcastReceiverFragment;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomRadioButton;
@@ -26,7 +28,9 @@ import butterknife.Unbinder;
  * 功放本振
  */
 
-public class AdministratorFragmentAmplifierOscillator extends Fragment {
+public class AdministratorFragmentAmplifierOscillator extends BroadcastReceiverFragment {
+    public static final String AmplifierOscillatorAction="com.edroplet.sanetel.AmplifierOscillatorAction";
+    public static final String AmplifierOscillatorData="com.edroplet.sanetel.AmplifierOscillatorData";
 
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
@@ -42,7 +46,6 @@ public class AdministratorFragmentAmplifierOscillator extends Fragment {
 
     private Unbinder unbinder;
 
-
     public static AdministratorFragmentAmplifierOscillator newInstance() {
         Bundle args = new Bundle();
         AdministratorFragmentAmplifierOscillator fragment = new AdministratorFragmentAmplifierOscillator();
@@ -51,11 +54,18 @@ public class AdministratorFragmentAmplifierOscillator extends Fragment {
     }
 
     static SparseIntArray mapAmplifierOscillatorPosId = new SparseIntArray(3);
-
     void initSparseIntArray(){
         mapAmplifierOscillatorPosId.put(0, R.id.id_administrator_settings_amplifier_oscillator_value_1);
         mapAmplifierOscillatorPosId.put(1, R.id.id_administrator_settings_amplifier_oscillator_value_2);
         mapAmplifierOscillatorPosId.put(2, R.id.id_administrator_settings_amplifier_oscillator_value_3);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        String []action = {AmplifierOscillatorAction};
+        setAction(action);
+        super.onCreate(savedInstanceState);
+        Protocol.sendMessage(getContext(), Protocol.cmdGetBucLf);
     }
 
     @Nullable
@@ -74,12 +84,17 @@ public class AdministratorFragmentAmplifierOscillator extends Fragment {
             @Override
             public void onClick(View v) {
                 int checkedId = oscillatorGroup.getCheckedRadioButtonId();
+                String val = getString(R.string.administrator_settings_amplifier_oscillator_value_1);
                 CustomSP.putInt(context, Key_amplifier_oscillator_id, mapAmplifierOscillatorPosId.indexOfValue(checkedId));
-                if (checkedId == R.id.id_administrator_settings_amplifier_oscillator_value_3)
-                    CustomSP.putString(context,Key_amplifier_oscillator_value, oscillatorCustomValue.getText().toString());
+                if (checkedId == R.id.id_administrator_settings_amplifier_oscillator_value_3) {
+                    val = oscillatorCustomValue.getText().toString();
+                    CustomSP.putString(context, Key_amplifier_oscillator_value, val);
+                } else {
+                    val = ((CustomRadioButton) view.findViewById(checkedId)).getText().toString();
+                }
 
-                // TODO: 2017/10/23 设置命令
-
+                // 2017/10/23 设置命令
+                Protocol.sendMessage(context, String.format(Protocol.cmdSetBucLf, val));
                 // 退出
                 getActivity().finish();
             }

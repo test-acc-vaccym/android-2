@@ -1,6 +1,7 @@
 package com.edroplet.qxx.saneteltabactivity.fragments.settings.administrator;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,31 +12,46 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.qxx.saneteltabactivity.R;
+import com.edroplet.qxx.saneteltabactivity.beans.Protocol;
 import com.edroplet.qxx.saneteltabactivity.utils.CustomSP;
 import com.edroplet.qxx.saneteltabactivity.utils.InputFilterFloat;
 import com.edroplet.qxx.saneteltabactivity.utils.PopDialog;
+import com.edroplet.qxx.saneteltabactivity.utils.sscanf.Sscanf;
+import com.edroplet.qxx.saneteltabactivity.view.BroadcastReceiverFragment;
 import com.edroplet.qxx.saneteltabactivity.view.ViewInject;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomButton;
 import com.edroplet.qxx.saneteltabactivity.view.custom.CustomEditText;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by qxs on 2017/9/19.
+ * 天线标定
  */
 
-public class AdministratorFragmentAntennaIncriminate extends Fragment {
+public class AdministratorFragmentAntennaIncriminate extends BroadcastReceiverFragment {
     private static final String AntennaIncriminateAzimuthKey = "antennaIncriminateAzimuth";
     private static final String AntennaIncriminatePitchKey = "antennaIncriminatePitch";
     private static final String AntennaIncriminatePolarizationKey = "antennaIncriminatePolarization";
+    public static final String AntennaIncriminateAction = "com.edroplet.sanetel.AntennaIncriminateAction";
+    public static final String AntennaIncriminateData = "com.edroplet.sanetel.AntennaIncriminateData";
     private static final int[] icons = {R.drawable.antenna_exploded};
 
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
 
-    private CustomEditText antennaIncriminateAzimuth;
-    private CustomEditText antennaIncriminatePitch;
-    private CustomEditText antennaIncriminatePolarization;
+    @BindView(R.id.administrator_antenna_incriminate_tv_azimuth)
+    CustomEditText antennaIncriminateAzimuth;
+    @BindView(R.id.administrator_antenna_incriminate_tv_pitch)
+    CustomEditText antennaIncriminatePitch;
+    @BindView(R.id.administrator_antenna_incriminate_polarization)
+    CustomEditText antennaIncriminatePolarization;
+
+    Unbinder unbinder;
+
+    String azimuth="", pitch="", reserve="", polarization="", pitchOffset="";
 
     public static AdministratorFragmentAntennaIncriminate newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                                       String secondLine, boolean showThird, String thirdLineStart,
@@ -55,6 +71,14 @@ public class AdministratorFragmentAntennaIncriminate extends Fragment {
         return fragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        String[] action = {AntennaIncriminateAction};
+        setAction(action);
+        super.onCreate(savedInstanceState);
+        Protocol.sendMessage(getContext(), Protocol.cmdGetCalibAnt);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -62,13 +86,8 @@ public class AdministratorFragmentAntennaIncriminate extends Fragment {
         if (view == null){
             return null;
         }
-
         final Context context = getContext();
-
-        ViewInject.inject(getActivity(), getActivity());
-        antennaIncriminateAzimuth = view.findViewById(R.id.administrator_antenna_incriminate_tv_azimuth);
-        antennaIncriminatePitch = view.findViewById(R.id.administrator_antenna_incriminate_tv_pitch);
-        antennaIncriminatePolarization = view.findViewById(R.id.administrator_antenna_incriminate_polarization);
+        unbinder = ButterKnife.bind(this, view);
 
         antennaIncriminateAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(0.0, 360.0)});
         antennaIncriminatePitch.setFilters(new InputFilter[]{new InputFilterFloat(-10.0, 90.0)});
@@ -86,10 +105,15 @@ public class AdministratorFragmentAntennaIncriminate extends Fragment {
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomSP.putString(context,AntennaIncriminateAzimuthKey,antennaIncriminateAzimuth.getText().toString());
-                CustomSP.putString(context,AntennaIncriminatePitchKey,antennaIncriminatePitch.getText().toString());
-                CustomSP.putString(context,AntennaIncriminatePolarizationKey,antennaIncriminatePolarization.getText().toString());
-                // todo send command
+                azimuth = antennaIncriminateAzimuth.getText().toString();
+                CustomSP.putString(context,AntennaIncriminateAzimuthKey,azimuth);
+                pitch = antennaIncriminatePitch.getText().toString();
+                CustomSP.putString(context,AntennaIncriminatePitchKey,pitch);
+                polarization = antennaIncriminatePolarization.getText().toString();
+                CustomSP.putString(context,AntennaIncriminatePolarizationKey,polarization);
+                // send command
+                // 方位,俯仰，备用，极化
+                Protocol.sendMessage(context, String.format(Protocol.cmdSetCalibAnt,azimuth, pitch, reserve, polarization));
                 getActivity().finish();
             }
         });
@@ -106,10 +130,30 @@ public class AdministratorFragmentAntennaIncriminate extends Fragment {
             if (icon >= 0) {
                 popDialog.setDrawable(ContextCompat.getDrawable(context,icons[0]));
             }
-//            if (bundle.getString(PopDialog.BUTTON_TEXT).length() > 0){
-//                popDialog.setButtonText(context, context.getString(R.string.setting_button_text));
-//            }
         }
         return popDialog.show();
+    }
+
+    @Override
+    public void processData(Intent intent) {
+        super.processData(intent);
+        String rawData = intent.getStringExtra(AntennaIncriminateData);
+        Object[] o = Sscanf.scan(rawData,Protocol.cmdGetCalibAntResult,azimuth,pitch,reserve,polarization, pitchOffset);
+        azimuth = (String) o[0];
+        pitch  = (String) o[1];
+        reserve = (String) o[2];
+        polarization = (String) o[3];
+        pitchOffset = (String) o[4];
+
+        antennaIncriminateAzimuth.setText(azimuth);
+        antennaIncriminatePitch.setText(pitch);
+        antennaIncriminatePolarization.setText(polarization);
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

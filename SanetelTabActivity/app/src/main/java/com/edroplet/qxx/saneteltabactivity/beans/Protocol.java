@@ -319,7 +319,7 @@ public class Protocol {
     public static final String cmdGetCalibAntResultHead="$cmd,calib ant data,";
     public static final String cmdGetCalibAntResult=cmdGetCalibAntResultHead+"%s,%s,%s,%s,%s*ff\r\n";
     // 5.2.2	设置
-    // 终端设备发送指令格式：$cmd,set calib ant,方位,俯仰，备用，极化, *ff\r\n
+    // 终端设备发送指令格式：$cmd,set calib ant,方位,俯仰，备用，极化*ff\r\n
     // 便携站返回数据：$cmd,start calib ant*ff\r\n
     public static final String cmdSetCalibAnt="$cmd,set calib ant,%s,%s,%s,%s*ff\r\n";
     public static final String cmdSetCalibAntResultHead="$cmd,start calib ant";

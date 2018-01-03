@@ -84,7 +84,7 @@ public class AdministratorFragmentAmplifierOscillator extends BroadcastReceiverF
             @Override
             public void onClick(View v) {
                 int checkedId = oscillatorGroup.getCheckedRadioButtonId();
-                String val = getString(R.string.administrator_settings_amplifier_oscillator_value_1);
+                String val;
                 CustomSP.putInt(context, Key_amplifier_oscillator_id, mapAmplifierOscillatorPosId.indexOfValue(checkedId));
                 if (checkedId == R.id.id_administrator_settings_amplifier_oscillator_value_3) {
                     val = oscillatorCustomValue.getText().toString();

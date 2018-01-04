@@ -31,6 +31,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by qxs on 2017/9/19.
+ * 对星计算
  */
 
 public class AngleCalculateFragment extends Fragment implements View.OnClickListener {

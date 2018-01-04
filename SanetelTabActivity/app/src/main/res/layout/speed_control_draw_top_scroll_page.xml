@@ -172,6 +172,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <com.edroplet.sanetel.view.custom.CustomButton
+                android:id="@+id/manual_reserve_up"
                 style="@style/focus_button_horizontal_style"
                 android:clickable="false"
                 android:focusable="false"/>
@@ -182,6 +183,7 @@
                 android:text="@string/manual_pause"/>
             <!--android:background="@drawable/button_background"-->
             <com.edroplet.sanetel.view.custom.CustomButton
+                android:id="@+id/manual_reserve_down"
                 style="@style/focus_button_horizontal_style"
                 android:clickable="false"
                 android:focusable="false"/>

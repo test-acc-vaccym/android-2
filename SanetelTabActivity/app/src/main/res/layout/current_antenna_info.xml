@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <!--当前数值-->
     <com.edroplet.sanetel.view.custom.CustomTextView
@@ -24,8 +25,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/main_control_speed_azimuth"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                tools:ignore="NestedWeights" />
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/main_control_speed_tv_azimuth"
                 android:layout_width="0dp"
@@ -51,8 +51,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/main_control_speed_pitch"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                tools:ignore="NestedWeights" />
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/main_control_speed_tv_pitch"
                 android:layout_width="0dp"
@@ -78,8 +77,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/main_control_speed_polarization"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                tools:ignore="NestedWeights" />
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/main_control_speed_tv_polarization"
                 android:layout_width="0dp"
@@ -105,8 +103,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/main_control_speed_agc"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                tools:ignore="NestedWeights" />
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/main_control_speed_tv_agc"
                 android:layout_width="0dp"

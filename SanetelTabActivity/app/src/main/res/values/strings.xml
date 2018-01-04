@@ -193,8 +193,10 @@
     <string name="manual_pitch">俯仰</string>
     <string name="manual_polarization">极化</string>
     <string name="manual_pause">暂停</string>
-    <string name="latitude_degree_unit">°E</string>
-    <string name="longitude_degree_unit">°N</string>
+    <string name="latitude_degree_unit_east">°E</string>
+    <string name="latitude_degree_unit_west">°W</string>
+    <string name="longitude_degree_unit_north">°N</string>
+    <string name="longitude_degree_unit_south">°S</string>
     <string name="angle_degree_unit">°</string>
     <string name="voltage_unit">V</string>
     <string name="frequency_unit">MHz</string>

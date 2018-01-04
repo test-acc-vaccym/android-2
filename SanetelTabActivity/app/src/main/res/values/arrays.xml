@@ -11,20 +11,20 @@
         <item>中星6A</item>
     </string-array>
     <string-array name="satellites_polarization">
-        <item>水平</item>
-        <item>垂直</item>
-        <item>左旋</item>
-        <item>右旋</item>
+        <item>@string/satellite_polarization_horizontal</item>
+        <item>@string/satellite_polarization_vertical</item>
+        <item>@string/satellite_polarization_left_hand</item>
+        <item>@string/satellite_polarization_right_hand</item>
     </string-array>
 
     <string-array name="latitude_unit">
-        <item>°N</item>
-        <item>°S</item>
+        <item>@string/longitude_degree_unit_north</item>
+        <item>@string/longitude_degree_unit_south</item>
     </string-array>
 
     <string-array name="longitude_unit">
-        <item>°E</item>
-        <item>°W</item>
+        <item>@string/latitude_degree_unit_east</item>
+        <item>@string/latitude_degree_unit_west</item>
     </string-array>
 
     <string-array name="province">

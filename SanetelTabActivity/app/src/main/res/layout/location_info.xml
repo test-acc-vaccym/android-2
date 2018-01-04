@@ -43,7 +43,7 @@
                     android:layout_weight="0.4"
                     android:gravity="center"
                     android:layout_height="wrap_content"
-                    android:text="@string/latitude_degree_unit"/>
+                    android:text="@string/latitude_degree_unit_east"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_height="match_parent"
@@ -70,7 +70,7 @@
                     android:layout_weight="0.4"
                     android:gravity="center"
                     android:layout_height="wrap_content"
-                    android:text="@string/longitude_degree_unit"/>
+                    android:text="@string/longitude_degree_unit_north"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

@@ -4,6 +4,7 @@ import com.edroplet.sanetel.utils.ConvertUtil;
 
 /**
  * Created by qxs on 2018/1/4.
+ * 运行状态-故障-来自监视信息的flag
  */
 
 public class RunningInfo {

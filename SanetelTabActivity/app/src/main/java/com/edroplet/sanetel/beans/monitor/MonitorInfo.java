@@ -16,6 +16,9 @@ import java.io.Serializable;
  */
 
 public class MonitorInfo implements Serializable {
+    public static final String MonitorInfoAction="com.edroplet.broadcast.MonitorInfoAction";
+    public static final String MonitorInfoData="com.edroplet.broadcast.MonitorInfoData";
+
     public static final String KEY_MONITOR_LAST_ANTENNA_PRE_AZ = "KEY_MONITOR_LAST_ANTENNA_PRE_AZ";
     public static final String KEY_MONITOR_LAST_ANTENNA_PRE_EL = "KEY_MONITOR_LAST_ANTENNA_PRE_EL";
     public static final String KEY_MONITOR_LAST_ANTENNA_PRE_RV = "KEY_MONITOR_LAST_ANTENNA_PRE_RV";
@@ -190,7 +193,7 @@ public class MonitorInfo implements Serializable {
     public int getBdState() {
         return bdState;
     }
-
+    // 故障状态
     public int getFaultCondition() {
         return faultCondition;
     }

@@ -35,7 +35,7 @@ public class BroadcastReceiverFragment extends Fragment {
         @Override
         public void onReceive(Context context, Intent intent) {
             String actionName = intent.getAction();
-            if (Arrays.asList(action).contains(actionName)) {
+            if (actionName != null && Arrays.asList(action).contains(actionName)) {
                 processData(intent);
             }
         }

@@ -25,8 +25,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-import static com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_MONITOR_INFO;
-import static com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor.KEY_RECEIVE_MONITOR_INFO_DATA;
+import static com.edroplet.sanetel.beans.monitor.MonitorInfo.MonitorInfoAction;
+import static com.edroplet.sanetel.beans.monitor.MonitorInfo.MonitorInfoData;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -87,7 +87,7 @@ public class SpeedControlFragment extends BroadcastReceiverFragment implements V
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         context = getContext();
-        String[] action = {ACTION_RECEIVE_MONITOR_INFO};
+        String[] action = {MonitorInfoAction};
         setAction(action);
         super.onCreate(savedInstanceState);
     }
@@ -96,7 +96,7 @@ public class SpeedControlFragment extends BroadcastReceiverFragment implements V
     public void processData(Intent intent) {
         super.processData(intent);
         // 3)	一直从监视指令$cmd,sys state, ….*ff<CR><LF>中获取角度和AGC信息并显示。
-        MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(intent.getStringExtra(KEY_RECEIVE_MONITOR_INFO_DATA));
+        MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(intent.getStringExtra(MonitorInfoData));
         tvAzimuth.setText(String.valueOf(monitorInfo.getAZ()));
         tvPitch.setText(String.valueOf(monitorInfo.getEL()));
         tvPolarization.setText(String.valueOf(monitorInfo.getPOL()));

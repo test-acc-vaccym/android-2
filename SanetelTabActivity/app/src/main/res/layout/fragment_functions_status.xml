@@ -76,9 +76,9 @@
                             android:gravity="center"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="@string/main_status_communicate_serial_port"/>
+                            android:text="@string/main_status_communicate_handset"/>
                         <com.edroplet.sanetel.view.custom.CustomTextView
-                            android:id="@+id/id_main_status_communicate_serial_port"
+                            android:id="@+id/id_main_status_communicate_handset"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -397,7 +397,7 @@
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:hint="@string/main_status_device_status_abnormal"
+                            android:hint="@string/main_status_device_status_fault"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
                 </LinearLayout>

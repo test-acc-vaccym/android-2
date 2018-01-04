@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.edroplet.sanetel.beans.AmplifierInfo;
 import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.SystemServices;
@@ -18,15 +19,10 @@ import java.nio.channels.SocketChannel;
 import java.nio.charset.CharacterCodingException; 
 import java.nio.charset.Charset; 
 import java.nio.charset.CharsetDecoder;
-import java.util.ArrayList;
+import com.edroplet.sanetel.beans.monitor.MonitorInfo;
 
 import static com.edroplet.sanetel.activities.settings.ReferenceSatelliteActivity.ACTION_RECEIVE_REFERENCE_INFO;
 import static com.edroplet.sanetel.activities.settings.ReferenceSatelliteActivity.KEY_RECEIVE_REFERENCE_INFO_DATA;
-import static com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_AMPLIFIER_INFO;
-import static com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_MONITOR_INFO;
-import static com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor.KEY_RECEIVE_AMPLIFIER_INFO_DATA;
-import static com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor.KEY_RECEIVE_MONITOR_INFO_DATA;
-
 
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
@@ -262,11 +258,11 @@ public class CommunicateWithDeviceService extends IntentService {
         Intent intent = new Intent(ACTION_DATA_RESULT);
         // 这里区分broadcast
         if (msg.startsWith(Protocol.cmdGetSystemStateResultHead)){
-            intent.setAction(ACTION_RECEIVE_MONITOR_INFO);
-            intent.putExtra(KEY_RECEIVE_MONITOR_INFO_DATA,msg);
+            intent.setAction(MonitorInfo.MonitorInfoAction);
+            intent.putExtra(MonitorInfo.MonitorInfoData,msg);
         }else if (msg.startsWith(Protocol.cmdGetBucInfoResultHead)) {
-            intent.setAction(ACTION_RECEIVE_AMPLIFIER_INFO);
-            intent.putExtra(KEY_RECEIVE_AMPLIFIER_INFO_DATA,msg);
+            intent.setAction(AmplifierInfo.AmplifierInfoAction);
+            intent.putExtra(AmplifierInfo.AmplifierInfoData,msg);
         }else if (msg.startsWith(Protocol.cmdGetRefDataResultHead)) {
             intent.setAction(ACTION_RECEIVE_REFERENCE_INFO);
             intent.putExtra(KEY_RECEIVE_REFERENCE_INFO_DATA,msg);

@@ -319,7 +319,7 @@
     <string name="main_status_communicate_status_opening">正在通信</string>
     <string name="main_status_communicate_status_close">断&#160;&#160;&#160;&#160;开</string>
     <string name="main_status_communicate_internet">网络通信</string>
-    <string name="main_status_communicate_serial_port">串口通信</string>
+    <string name="main_status_communicate_handset">手&#160;&#160;持&#160;&#160;机</string>
     <string name="main_status_communicate_bd">GNSS</string>
     <string name="main_status_communicate_beacon">信标机</string>
     <string name="main_status_communicate_clinometer">倾角计</string>
@@ -329,7 +329,7 @@
     <!--设备状况-->
     <string name="main_status_device">设备状况</string>
     <string name="main_status_device_status_normal">正常</string>
-    <string name="main_status_device_status_abnormal">异常</string>
+    <string name="main_status_device_status_fault">故障</string>
     <string name="main_status_device_motor_encoder">方位电机和编码器</string>
     <string name="main_status_device_azimuth_holzer_switch">方位霍尔开关</string>
     <string name="main_status_device_azimuth_locking_holzer_switch">方位锁紧霍尔开关</string>

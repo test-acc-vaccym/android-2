@@ -42,6 +42,9 @@ import static com.edroplet.sanetel.utils.MLog.TAG;
 
 /**
  * Created by qxs on 2017/9/14.
+ * 监视页面
+ * 1)	一直发送$cmd,get buc info *ff<CR><LF>	获取功放信息并显示；
+ * 2)	一直从监视信息$cmd,sys state, ….*ff<CR><LF>中获取数据并显示。
  */
 
 public class FunctionsFragmentMonitor extends Fragment {
@@ -201,19 +204,12 @@ public class FunctionsFragmentMonitor extends Fragment {
     private Timer monitorTimer = new Timer(true);
     TimerTask monitorTimerTask = new RequestTimerTask();
 
-    public static final String ACTION_RECEIVE_MONITOR_INFO="com.edroplet.broadcast.ACTION_RECEIVE_MONITOR_INFO";
-    public static final String ACTION_RECEIVE_AMPLIFIER_INFO="com.edroplet.broadcast.ACTION_RECEIVE_AMPLIFIER_INFO";
-    public static final String KEY_RECEIVE_MONITOR_INFO_DATA="com.edroplet.broadcast.KEY_RECEIVE_MONITOR_INFO_DATA";
-    public static final String KEY_RECEIVE_AMPLIFIER_INFO_DATA="com.edroplet.broadcast.KEY_RECEIVE_AMPLIFIER_INFO_DATA";
-
-
-
     //通过继承 BroadcastReceiver建立动态广播接收器
     private class MonitorReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (ACTION_RECEIVE_MONITOR_INFO.equals(intent.getAction())) {
-                String rawData =intent.getStringExtra(KEY_RECEIVE_MONITOR_INFO_DATA);
+            if (MonitorInfo.MonitorInfoAction.equals(intent.getAction())) {
+                String rawData =intent.getStringExtra(MonitorInfo.MonitorInfoData);
                 //通过土司验证接收到广播
                 //Toast t = Toast.makeText(context, getString(R.string.main_bottom_nav_monitor)+"：" + rawData, Toast.LENGTH_SHORT);
                 // t.setGravity(Gravity.TOP, 0, 0);//方便录屏，将土司设置在屏幕顶端
@@ -276,9 +272,9 @@ public class FunctionsFragmentMonitor extends Fragment {
                 }
                 // 通知刷新UI
                 mView.postInvalidate();
-            } else if (ACTION_RECEIVE_AMPLIFIER_INFO.equals(intent.getAction())){
+            } else if (AmplifierInfo.AmplifierInfoAction.equals(intent.getAction())){
                 //
-                String rawData =intent.getStringExtra(KEY_RECEIVE_AMPLIFIER_INFO_DATA);
+                String rawData =intent.getStringExtra(AmplifierInfo.AmplifierInfoData);
                 // 功放信息
                 AmplifierInfo amplifierInfo = AmplifierInfo.parseAmplifierInfo(rawData);
                 // 功放状态
@@ -318,8 +314,8 @@ public class FunctionsFragmentMonitor extends Fragment {
         }
         // 实例化IntentFilter对象
         IntentFilter filter = new IntentFilter();
-        filter.addAction(ACTION_RECEIVE_MONITOR_INFO);
-        filter.addAction(ACTION_RECEIVE_AMPLIFIER_INFO);
+        filter.addAction(MonitorInfo.MonitorInfoAction);
+        filter.addAction(AmplifierInfo.AmplifierInfoAction);
         // 注册广播接收器
         monitorReceiver = new MonitorReceiver();
         getActivity().registerReceiver(monitorReceiver, filter);

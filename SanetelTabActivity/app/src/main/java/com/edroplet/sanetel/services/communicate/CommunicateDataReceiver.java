@@ -13,7 +13,9 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.edroplet.sanetel.beans.AmplifierInfo;
 import com.edroplet.sanetel.beans.CollectHistoryFileInfo;
+import com.edroplet.sanetel.beans.monitor.MonitorInfo;
 import com.edroplet.sanetel.services.CommunicateWithDeviceService;
 import com.edroplet.sanetel.utils.DateTime;
 import com.edroplet.sanetel.utils.FileUtils;
@@ -21,10 +23,6 @@ import com.edroplet.sanetel.utils.FileUtils;
 import java.io.IOException;
 import java.util.List;
 
-import static com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_AMPLIFIER_INFO;
-import static com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_MONITOR_INFO;
-import static com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor.KEY_RECEIVE_AMPLIFIER_INFO_DATA;
-import static com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor.KEY_RECEIVE_MONITOR_INFO_DATA;
 import static com.edroplet.sanetel.services.CommunicateWithDeviceService.*;
 
 
@@ -103,8 +101,8 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
     private static boolean isInAction(String action){
         return  ACTION_RECEIVE_DATA.equals(action) || ACTION_DATA_RESULT.equals(action)
                 ||ACTION_SEND_DATA.equals(action)  || ACTION_SAVE_FILE.equals(action)
-                || ACTION_STOP_SAVE.equals(action) || ACTION_RECEIVE_MONITOR_INFO.equals(action)
-                || ACTION_RECEIVE_AMPLIFIER_INFO.equals(action);
+                || ACTION_STOP_SAVE.equals(action) || MonitorInfo.MonitorInfoAction.equals(action)
+                || AmplifierInfo.AmplifierInfoAction.equals(action);
     }
 
     public static boolean isAlive(Context context){
@@ -149,10 +147,10 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
                         sendCmd = bundle.getString(EXTRA_PARAM_SEND_CMD);
                         sendData = bundle.getString(EXTRA_PARAM_SEND_DATA);
                         if (null == sendData){
-                            sendData = bundle.getString(KEY_RECEIVE_MONITOR_INFO_DATA);
+                            sendData = bundle.getString(MonitorInfo.MonitorInfoData);
                         }
                         if (null == sendData){
-                            sendData = bundle.getString(KEY_RECEIVE_AMPLIFIER_INFO_DATA);
+                            sendData = bundle.getString(AmplifierInfo.AmplifierInfoData);
                         }
                     } else {
                         if (intent.hasExtra(EXTRA_PARAM_SEND_CMD))
@@ -165,10 +163,10 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
                         if (intent.hasExtra(EXTRA_PARAM_RESULT_DATA))
                             receiveData = bundle.getString(EXTRA_PARAM_RESULT_DATA);
 
-                        if (intent.hasExtra(KEY_RECEIVE_MONITOR_INFO_DATA))
-                            receiveData = bundle.getString(KEY_RECEIVE_MONITOR_INFO_DATA);
-                        if (intent.hasExtra(KEY_RECEIVE_AMPLIFIER_INFO_DATA))
-                            receiveData = bundle.getString(KEY_RECEIVE_AMPLIFIER_INFO_DATA);
+                        if (intent.hasExtra(MonitorInfo.MonitorInfoData))
+                            receiveData = bundle.getString(MonitorInfo.MonitorInfoData);
+                        if (intent.hasExtra(AmplifierInfo.AmplifierInfoData))
+                            receiveData = bundle.getString(AmplifierInfo.AmplifierInfoData);
                     }
                     if (null == sendCmd) {
                         sendCmd = "";

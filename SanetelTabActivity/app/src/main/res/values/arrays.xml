@@ -46,23 +46,43 @@
     </array>
 
     <string-array name="amplifier_manufacture">
-        <item>JRC</item>
-        <item>WaveStream</item>
-        <item>Mitech</item>
-        <item>WaveLab</item>
-        <item>Advantech</item>
-        <item>Sanetel</item>
+        <item>@string/settings_amplifier_manufacture_1</item>
+        <item>@string/settings_amplifier_manufacture_2</item>
+        <item>@string/settings_amplifier_manufacture_3</item>
+        <item>@string/settings_amplifier_manufacture_4</item>
+        <item>@string/settings_amplifier_manufacture_5</item>
+        <item>@string/settings_amplifier_manufacture_6</item>
     </string-array>
 
     <string-array name="amplifier_oscillator">
-        <item>12800</item>
-        <item>13050</item>
+        <item>@string/administrator_settings_amplifier_oscillator_value_1</item>
+        <item>@string/administrator_settings_amplifier_oscillator_value_2</item>
     </string-array>
     <string-array name="search_range">
         <item>20</item>
         <item>25</item>
         <item>30</item>
         <item>35</item>
-        <item>45</item>
+        <item>40</item>
+    </string-array>
+    <string-array name="energy_state_array">
+        <item>@string/power_state_charged</item>
+        <item>@string/power_state_saved</item>
+    </string-array>
+    <string-array name="communicate_status_array">
+        <item>@string/main_status_communicate_status_opening</item>
+        <item>@string/main_status_communicate_status_close</item>
+    </string-array>
+    <string-array name="fault_condition_array">
+        <item>@string/main_status_device_status_normal</item>
+        <item>@string/main_status_device_status_fault</item>
+    </string-array>
+    <string-array name="locker_state_array">
+        <item>@string/locker_state_released</item>
+        <item>@string/locker_state_locked</item>
+    </string-array>
+    <string-array name="limit_state_array">
+        <item>@string/main_status_running_limit_abnormal</item>
+        <item>@string/main_status_running_limit_normal</item>
     </string-array>
 </resources>

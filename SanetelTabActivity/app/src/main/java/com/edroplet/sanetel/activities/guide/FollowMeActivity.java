@@ -24,7 +24,6 @@ import com.edroplet.sanetel.beans.LocationInfo;
 import com.edroplet.sanetel.beans.LockerInfo;
 import com.edroplet.sanetel.beans.SavingInfo;
 import com.edroplet.sanetel.beans.monitor.MonitorInfo;
-import com.edroplet.sanetel.control.OperateBarControl;
 import com.edroplet.sanetel.control.StatusBarControl;
 import com.edroplet.sanetel.fragments.guide.GuideFragmentDestination;
 import com.edroplet.sanetel.fragments.guide.GuideFragmentExplode;
@@ -33,8 +32,6 @@ import com.edroplet.sanetel.fragments.guide.GuideFragmentLocker;
 import com.edroplet.sanetel.fragments.guide.GuideFragmentSaving;
 import com.edroplet.sanetel.fragments.guide.GuideFragmentSearchModeSetting;
 import com.edroplet.sanetel.fragments.guide.GuideFragmentSearching;
-import com.edroplet.sanetel.utils.CustomSP;
-import com.edroplet.sanetel.utils.SystemServices;
 import com.edroplet.sanetel.view.ViewInject;
 import com.edroplet.sanetel.view.annotation.BindId;
 import com.edroplet.sanetel.view.custom.CustomButton;
@@ -42,11 +39,8 @@ import com.edroplet.sanetel.view.custom.CustomFAB;
 
 import java.util.ArrayList;
 
-import static com.edroplet.sanetel.activities.guide.FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_EXPLODE;
-import static com.edroplet.sanetel.activities.main.MainActivity.defaultDeviceName;
-import static com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_MONITOR_INFO;
-import static com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor.KEY_RECEIVE_MONITOR_INFO_DATA;
-import static com.edroplet.sanetel.utils.CustomSP.WifiSettingsNameKey;
+import static com.edroplet.sanetel.beans.monitor.MonitorInfo.MonitorInfoAction;
+import static com.edroplet.sanetel.beans.monitor.MonitorInfo.MonitorInfoData;
 
 public class FollowMeActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String POSITION="position";
@@ -390,8 +384,8 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             // 监视信息，包含状态信息
-            if (ACTION_RECEIVE_MONITOR_INFO.equals(action)){
-                String rawData =intent.getStringExtra(KEY_RECEIVE_MONITOR_INFO_DATA);
+            if (MonitorInfoAction.equals(action)){
+                String rawData =intent.getStringExtra(MonitorInfoData);
                 MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(rawData);
                 // 获取状态，更新UI
 

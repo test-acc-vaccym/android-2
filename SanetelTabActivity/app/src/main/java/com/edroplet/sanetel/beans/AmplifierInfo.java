@@ -16,6 +16,9 @@ import java.io.Serializable;
  */
 
 public class AmplifierInfo implements Serializable {
+    public static final String AmplifierInfoAction="com.edroplet.broadcast.AmplifierInfoAction";
+    public static final String AmplifierInfoData="com.edroplet.broadcast.AmplifierInfoData";
+
     private String amplifierFactory; // 功放厂家
     private String amplifierOscillator; // 功放本振
     private String amplifierOutput; // 输出功率

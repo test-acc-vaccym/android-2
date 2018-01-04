@@ -128,7 +128,7 @@ public class AntennaInfo implements Parcelable {
         CustomSP.putInt(context,KEY_ANTENNA_STATE,antennaState);
     }
 
-    public void getAntennaInfoFromServer(Context context){
-        Protocol.sendMessage(context, Protocol.cmdGeteEquipmentInfo);
+    public static void getAntennaInfoFromServer(Context context){
+        Protocol.sendMessage(context, Protocol.cmdGetEquipmentInfo);
     }
 }

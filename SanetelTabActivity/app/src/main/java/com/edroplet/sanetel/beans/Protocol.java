@@ -33,9 +33,9 @@ public class Protocol {
 
 
     // 4.5	读取设备信息
-    public static final String cmdGeteEquipmentInfo="$cmd,get equip info*ff\r\n";
+    public static final String cmdGetEquipmentInfo="$cmd,get equip info*ff\r\n";
     //返回 设备名称，主控板版本, 软件版本, 软件发布时间
-    public static final String cmdGeteEquipmentInfoResult="$cmd,equip info %s,%s,%s,%s*ff\r\n";
+    public static final String cmdGetEquipmentInfoResult="$cmd,equip info,%s,%s,%s,%s*ff\r\n";
     // Scanner s = new Scanner("123 asdf sd 45 789 sdf asdfl,sdf.sdfl,asdf    ......asdfkl    las"); 
     // s.useDelimiter(" |,|\\."); 
     // while (s.hasNext()) { 

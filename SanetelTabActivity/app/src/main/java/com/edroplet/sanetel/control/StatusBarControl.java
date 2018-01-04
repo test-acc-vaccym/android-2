@@ -5,19 +5,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.AsyncTask;
 import android.os.Build;
-import android.service.autofill.SaveInfo;
 import android.support.annotation.IdRes;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.WindowManager;
 
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.beans.AntennaInfo;
@@ -29,12 +22,6 @@ import com.edroplet.sanetel.beans.monitor.MonitorInfo;
 import com.edroplet.sanetel.view.StatusButton;
 
 import java.util.Timer;
-import java.util.TimerTask;
-
-import butterknife.Unbinder;
-
-import static com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_MONITOR_INFO;
-import static com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor.KEY_RECEIVE_MONITOR_INFO_DATA;
 import static com.edroplet.sanetel.view.StatusButton.*;
 
 /**
@@ -178,7 +165,7 @@ public class StatusBarControl {
     private void initBroadcast(Activity activity){
         // 实例化IntentFilter对象
         IntentFilter filter = new IntentFilter();
-        filter.addAction(ACTION_RECEIVE_MONITOR_INFO);
+        filter.addAction(MonitorInfo.MonitorInfoAction);
         statusBarControlBroadcast = new StatusBarControlBroadcast();
         activity.registerReceiver(statusBarControlBroadcast,filter);
     }
@@ -188,8 +175,8 @@ public class StatusBarControl {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             // 监视信息，包含状态信息
-            if (ACTION_RECEIVE_MONITOR_INFO.equals(action)){
-                String rawData =intent.getStringExtra(KEY_RECEIVE_MONITOR_INFO_DATA);
+            if (MonitorInfo.MonitorInfoAction.equals(action)){
+                String rawData =intent.getStringExtra(MonitorInfo.MonitorInfoData);
                 MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(rawData);
                 // 获取状态，更新UI
                 // 连接状态, 获取wifi连接状态？跟基站通信状态？

@@ -144,7 +144,7 @@ public class SpeedControlFragment extends BroadcastReceiverFragment implements V
             Protocol.sendMessage(getContext(),Protocol.cmdStopSearch);
         }else{
             // 控制
-            Protocol.sendMessage(getContext(), String.format(Protocol.cmdSetManualSearch,String.valueOf(operatePos),angularVelocity));
+            Protocol.sendMessage(getContext(), String.format(Protocol.cmdManualVel,String.valueOf(operatePos + 1),angularVelocity));
         }
     }
 

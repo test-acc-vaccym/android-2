@@ -163,15 +163,15 @@ public class Protocol {
     // 6—备用角减小；
     // 7—接收极化增加；
     // 8—接收极化减小；
-    public static final String cmdSetManualSearch="$cmd,manual search,%s,%s*ff\r\n";
-    public static final String cmdSetManualSearchResultHead="$cmd,start manual search";
-    public static final String cmdSetManualSearchResult=cmdSetManualSearchResultHead+"*ff\r\n";
+    public static final String cmdManualVel="$cmd,manual vel,%s,%s*ff\r\n";
+    public static final String cmdManualVelResultHead="$cmd,start manual vel";
+    public static final String cmdManualVelResult=cmdManualVelResultHead+"*ff\r\n";
     // 4.13.3	单步位置控制指令
     // $cmd,step control,调整方式,调整角度*ff\r\n
     // 调整方式 同上，  调整角度(范围：0.0～10.0度/秒)
-    public static final String cmdStepControl="$cmd,step control,%s,%s*ff\r\n";
-    public static final String cmdStepControlResultHead="$cmd,start manual search";
-    public static final String cmdStepControlResult=cmdStepControlResultHead+"*ff\r\n";
+    public static final String cmdManualStep="$cmd,manual step,%s,%s*ff\r\n";
+    public static final String cmdManualStepResultHead="$cmd,start manual step";
+    public static final String cmdManualStepResult=cmdManualStepResultHead+"*ff\r\n";
     // 4.13.4	手动位置控制指令(已经修改)
     // $cmd,manual position,方位,俯仰,备用,极化角*ff<CR><LF>
     public static final String cmdManualPosition="$cmd,manual position,%s,%s,%s,%s*ff\r\n";

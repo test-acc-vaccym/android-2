@@ -1,15 +1,21 @@
 package com.edroplet.sanetel.fragments.functions.manual;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.beans.AntennaInfo;
+import com.edroplet.sanetel.beans.Protocol;
+import com.edroplet.sanetel.beans.monitor.MonitorInfo;
 import com.edroplet.sanetel.utils.ConvertUtil;
+import com.edroplet.sanetel.view.BroadcastReceiverFragment;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomEditText;
 import com.edroplet.sanetel.view.custom.CustomRadioButton;
@@ -18,13 +24,17 @@ import com.edroplet.sanetel.view.custom.CustomTextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
+import static com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor.ACTION_RECEIVE_MONITOR_INFO;
+import static com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor.KEY_RECEIVE_MONITOR_INFO_DATA;
 
 /**
  * Created by qxs on 2017/9/19.
  * 步进控制
  */
 
-public class StepControlFragment extends Fragment implements View.OnClickListener{
+public class StepControlFragment extends BroadcastReceiverFragment implements View.OnClickListener{
     public static StepControlFragment newInstance(AntennaInfo antennaInfo) {
         Bundle args = new Bundle();
         StepControlFragment fragment = new StepControlFragment();
@@ -35,128 +45,114 @@ public class StepControlFragment extends Fragment implements View.OnClickListene
 
     // 当前数值
     @BindView(R.id.main_control_speed_tv_azimuth)
-    CustomTextView textViewAzimuth;
+    CustomTextView tvAzimuth;
 
     @BindView(R.id.main_control_speed_tv_pitch)
-    CustomTextView textViewPitch;
+    CustomTextView tvPitch;
 
     @BindView(R.id.main_control_speed_tv_polarization)
-    CustomTextView textViewPolarization;
+    CustomTextView tvPolarization;
 
     @BindView(R.id.main_control_speed_tv_agc)
-    CustomTextView textViewAgc;
+    CustomTextView tvAgc;
 
     // 角速度
-    @BindView(R.id.top_angular_velocity_radio_group)
+    @BindView(R.id.step_angular_velocity_radio_group)
     CustomRadioGroupWithCustomRadioButton angularVelocityGroup;
 
-    @BindView(R.id.top_angular_velocity_1)
-    CustomRadioButton angularVelocity1;
-
-    @BindView(R.id.top_angular_velocity_2)
-    CustomRadioButton angularVelocity2;
-
-    @BindView(R.id.top_angular_velocity_3)
-    CustomRadioButton angularVelocity3;
-
-    @BindView(R.id.top_angular_velocity_4)
-    CustomRadioButton angularVelocity4;
-
-    @BindView(R.id.top_angular_velocity_5)
-    CustomRadioButton angularVelocity5;
-
-    @BindView(R.id.top_angular_velocity_6)
-    CustomRadioButton angularVelocity6;
-
-    @BindView(R.id.top_angular_velocity_custom_val)
+    @BindView(R.id.step_angular_velocity_custom_val)
     CustomEditText angularVelocityCustomValue;
 
     // 操作按键
-    @BindView(R.id.manual_direction_left)
-    CustomButton directionLeft;
-
-    @BindView(R.id.manual_direction_right)
-    CustomButton directionRight;
-
-    @BindView(R.id.manual_pitch_up)
-    CustomButton pitchUp;
-
-    @BindView(R.id.manual_pitch_down)
-    CustomButton pitchDown;
-
-    @BindView(R.id.manual_polarization_up)
-    CustomButton polarizationUp;
-
-    @BindView(R.id.manual_polarization_down)
-    CustomButton polarizationDown;
-
-    @BindView(R.id.manual_pause)
+    @BindView(R.id.manual_step_pause)
     CustomButton pause;
 
-    // TODO: 2017/11/11 注册广播，接收当前数值信息
+    int [] angularVelocityIds = {
+            R.id.step_angular_velocity_1, R.id.step_angular_velocity_2,
+            R.id.step_angular_velocity_3, R.id.step_angular_velocity_4,
+            R.id.step_angular_velocity_5, R.id.step_angular_velocity_6};
+
+    int [] operateIds = {
+            R.id.manual_step_direction_left,R.id.manual_step_direction_right,
+            R.id.manual_step_pitch_up,R.id.manual_step_pitch_down,
+            R.id.manual_step_reserve_up, R.id.manual_step_reserve_down,
+            R.id.manual_step_polarization_up,R.id.manual_step_polarization_down
+    };
+
+    SparseIntArray mapAngularVelocity = new SparseIntArray(6);
+    SparseIntArray mapOperate = new SparseIntArray(6);
+
+    View view;
+    Context context;
+    Unbinder unbinder;
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        context = getContext();
+        String[] action = {ACTION_RECEIVE_MONITOR_INFO};
+        setAction(action);
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void processData(Intent intent) {
+        super.processData(intent);
+        // 3)	一直从监视指令$cmd,sys state, ….*ff<CR><LF>中获取角度和AGC信息并显示。
+        MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(intent.getStringExtra(KEY_RECEIVE_MONITOR_INFO_DATA));
+        tvAzimuth.setText(String.valueOf(monitorInfo.getAZ()));
+        tvPitch.setText(String.valueOf(monitorInfo.getEL()));
+        tvPolarization.setText(String.valueOf(monitorInfo.getPOL()));
+        tvAgc.setText(String.valueOf(monitorInfo.getAgc()));
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_functions_control_step_control, null);
 
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
 
-        directionLeft.setOnClickListener(this);
-        directionRight.setOnClickListener(this);
-        pitchDown.setOnClickListener(this);
-        pitchUp.setOnClickListener(this);
-        polarizationDown.setOnClickListener(this);
-        polarizationUp.setOnClickListener(this);
+        int i = 0;
+        for (int id: angularVelocityIds){
+            mapAngularVelocity.put(i++, id);
+        }
+        int j = 0;
+        for (int id: operateIds){
+            mapOperate.put(j++,id);
+            view.findViewById(id).setOnClickListener(this);
+        }
         pause.setOnClickListener(this);
-
-        AntennaInfo antennaInfo = getArguments().getParcelable("antennaInfo");
-
         return view;
     }
 
 
     @Override
     public void onClick(View v) {
-
-        float angluarVelocity;
-
-        if (angularVelocity1.isChecked()){
-            angluarVelocity = ConvertUtil.convertToFloat(angularVelocity1.getText().toString(), 0.0f) ;
-        } else if (angularVelocity2.isChecked()){
-            angluarVelocity = ConvertUtil.convertToFloat(angularVelocity2.getText().toString(), 0.0f) ;
-        } else if (angularVelocity3.isChecked()){
-            angluarVelocity = ConvertUtil.convertToFloat(angularVelocity3.getText().toString(), 0.0f) ;
-        } else if (angularVelocity4.isChecked()){
-            angluarVelocity = ConvertUtil.convertToFloat(angularVelocity4.getText().toString(), 0.0f) ;
-        } else if (angularVelocity5.isChecked()){
-            angluarVelocity = ConvertUtil.convertToFloat(angularVelocity5.getText().toString(), 0.0f) ;
-        } else if (angularVelocity6.isChecked()){
-            angluarVelocity = ConvertUtil.convertToFloat(angularVelocityCustomValue.getText().toString(), 0.0f) ;
+        float angularVelocity;
+        int id = angularVelocityGroup.getCheckedRadioButtonId();
+        int pos =  mapAngularVelocity.indexOfKey(id);
+        int maxPos = mapAngularVelocity.size() - 1;
+        if (pos == maxPos){
+            String angularVelocityString = ((CustomRadioButton) view.findViewById(id)).getText().toString();
+            angularVelocity  = ConvertUtil.convertToFloat(angularVelocityString, 0.0f);
+        }else{
+            angularVelocity  = ConvertUtil.convertToFloat(angularVelocityCustomValue.getText().toString(), 0.0f);
         }
-
-        switch (v.getId()){
-            case R.id.manual_direction_left:
-                // TODO: 2017/11/11 发送命令方位角减小
-                break;
-            case R.id.manual_direction_right:
-                // TODO: 2017/11/11 发送命令方位角增加
-                break;
-            case R.id.manual_pitch_down:
-                // TODO: 2017/11/11 发送命令俯仰角减小
-                break;
-            case R.id.manual_pitch_up:
-                // TODO: 2017/11/11 发送命令俯仰角增加
-                break;
-            case R.id.manual_polarization_down:
-                // TODO: 2017/11/11 发送命令极化角减小
-                break;
-            case R.id.manual_polarization_up:
-                // TODO: 2017/11/11 发送命令极化角增加
-                break;
-            case R.id.manual_pause:
-                // TODO: 2017/11/11 发送命令暂停
-                break;
+        int operateId = v.getId();
+        int operatePos = mapOperate.indexOfKey(operateId);
+        if (operatePos == -1){
+            // 暂停
+            Protocol.sendMessage(getContext(),Protocol.cmdStopSearch);
+        }else{
+            // 控制
+            Protocol.sendMessage(getContext(), String.format(Protocol.cmdManualStep,String.valueOf(operatePos + 1),angularVelocity));
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
+import android.service.autofill.SaveInfo;
 import android.support.annotation.IdRes;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
@@ -19,6 +20,8 @@ import com.edroplet.sanetel.beans.LockerInfo;
 import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.beans.SavingInfo;
 import com.edroplet.sanetel.beans.monitor.MonitorInfo;
+import com.edroplet.sanetel.beans.status.FaultCondition;
+import com.edroplet.sanetel.beans.status.RunningInfo;
 import com.edroplet.sanetel.view.StatusButton;
 
 import java.util.Timer;
@@ -180,20 +183,26 @@ public class StatusBarControl {
                 MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(rawData);
                 // 获取状态，更新UI
                 // 连接状态, 获取wifi连接状态？跟基站通信状态？
-                int communicateState = 1;
-                if (1 == communicateState){
+                FaultCondition faultCondition = FaultCondition.parseFaultCondition(String.valueOf(monitorInfo.getFaultCondition()));
+                int communicateState = faultCondition.WifiCommunication;
+                if (0 == communicateState){
                     commStateButton.setText(R.string.communication_state_connected);
                     commStateButton.setButtonState(BUTTON_STATE_NORMAL);
+                    FaultCondition.setWifiCommunication(context, 0);
                 }else {
                     commStateButton.setText(R.string.communication_state_disconnected);
                     commStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
+                    FaultCondition.setWifiCommunication(context, 1);
                 }
                 // 天线状态
                 int antennaState = monitorInfo.getTraceState();
+                AntennaInfo.setAntennaState(context, antennaState);
                 if (null!=antennaStateButton){
-                    if (antennaState == AntennaInfo.AntennaStatus.EXPLODED){
-                        antennaStateButton.setText(R.string.antenna_state_exploded);
-                        antennaStateButton.setButtonState(BUTTON_STATE_NORMAL);
+                    switch (antennaState){
+                        case AntennaInfo.AntennaSearchSatellitesStatus.EXPLODED:
+                            antennaStateButton.setText(R.string.antenna_state_exploded);
+                            antennaStateButton.setButtonState(BUTTON_STATE_NORMAL);
+                            break;
                     }
                 }
                 // bd状态
@@ -202,36 +211,42 @@ public class StatusBarControl {
                     if (bdState == LocationInfo.GnssState.LOCATED){
                         bdStateButton.setText(R.string.gnss_state_enabled);
                         bdStateButton.setButtonState(BUTTON_STATE_NORMAL);
+                        LocationInfo.setGnssState(context,LocationInfo.GnssState.LOCATED);
                     }else {
                         bdStateButton.setText(R.string.gnss_state_disabled);
                         bdStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
+                        LocationInfo.setGnssState(context,LocationInfo.GnssState.NOTLOCATED);
                     }
                 }
                 // 获取flag， 包含节能和锁紧信息
-                int flag = monitorInfo.getFlag();
+                RunningInfo runningInfo = RunningInfo.parseRunningInfo(String.valueOf(monitorInfo.getFlag()));
                 // 节能状态
                 if (null != energyStateButton){
-                    int energySaveState = Protocol.getBitValue(flag,0);
+                    int energySaveState = runningInfo.energyInfo;
                     if (energySaveState == SavingInfo.SAVING_STATE_OPEN){
                         energyStateButton.setText(R.string.power_state_saved);
                         energyStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
+                        SavingInfo.setSavingState(context, SavingInfo.SAVING_STATE_OPEN);
                     }else {
                         energyStateButton.setText(R.string.power_state_charged);
                         energyStateButton.setButtonState(BUTTON_STATE_NORMAL);
+                        SavingInfo.setSavingState(context, SavingInfo.SAVING_STATE_CLOSE);
                     }
                 }
                 // 锁紧状态
                 if (null != lockerStateButton){
                     // 俯仰锁紧
-                    int lockerButtonPitchState = Protocol.getBitValue(flag,1);
+                    int lockerButtonPitchState = runningInfo.pitchLockerInfo;
                     // 方位锁紧
-                    int lockerButtonAzimuthState = Protocol.getBitValue(flag, 2);
+                    int lockerButtonAzimuthState = runningInfo.azimuthLockerInfo;
                     if (lockerButtonAzimuthState == LockerInfo.LOCKER_STATE_LOCKED || lockerButtonPitchState == LockerInfo.LOCKER_STATE_LOCKED){
                         lockerStateButton.setText(R.string.locker_state_locked);
                         lockerStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
+                        LockerInfo.setLockerState(context,LockerInfo.LOCKER_STATE_LOCKED);
                     }else {
                         lockerStateButton.setText(R.string.locker_state_released);
                         lockerStateButton.setButtonState(BUTTON_STATE_NORMAL);
+                        LockerInfo.setLockerState(context,LockerInfo.LOCKER_STATE_LOCKED);
                     }
                 }
             }

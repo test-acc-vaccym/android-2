@@ -1,6 +1,9 @@
 package com.edroplet.sanetel.beans.status;
 
+import android.content.Context;
+
 import com.edroplet.sanetel.utils.ConvertUtil;
+import com.edroplet.sanetel.utils.CustomSP;
 
 /**
  * Created by qxs on 2018/1/4.
@@ -46,5 +49,15 @@ public class FaultCondition {
         faultCondition.PolMotorStatus = binaryString.charAt(14);
         faultCondition.PolPotentiometerStatus = binaryString.charAt(15);
         return faultCondition;
+    }
+
+    public static final String KEY_WIFI_STATE="wifiState";
+    public static void setWifiCommunication(Context ctx, int wifiCommunication) {
+        // WifiCommunication = wifiCommunication;
+        CustomSP.putInt(ctx, KEY_WIFI_STATE, wifiCommunication);
+    }
+
+    public static char getWifiCommunication(Context ctx) {
+        return (char)CustomSP.getInt(ctx, KEY_WIFI_STATE,1);
     }
 }

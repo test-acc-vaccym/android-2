@@ -19,6 +19,7 @@ import java.util.regex.PatternSyntaxException;
 
 /**
  * Created by qxs on 2017/9/15.
+ * 位置信息
  */
 
 public class LocationInfo implements Parcelable {

@@ -63,18 +63,18 @@ public class OperateBarControl {
 
         randomDialog = new RandomDialog(activity);
         // 当天线处于已收藏状态时，手动、寻星、复位、收藏快捷键为灰色，不能操作。只有展开快捷键能够操作。
-        if(AntennaInfo.getAntennaState(activity) == AntennaInfo.AntennaStatus.FOLDED){
+        if(AntennaInfo.getAntennaState(activity) == AntennaInfo.AntennaSearchSatellitesStatus.FOLDED){
             manualClickable = false;
             searchClickable = false;
             resetClickable = false;
             foldClickable = false;
-        }else if (AntennaInfo.getAntennaState(activity) == AntennaInfo.AntennaStatus.EXPLODED ){
+        }else if (AntennaInfo.getAntennaState(activity) == AntennaInfo.AntennaSearchSatellitesStatus.EXPLODED ){
             //  当天线处于已展开状态时，展开和复位快捷键为灰色，不能操作。只有手动、寻星、收藏快捷键能够操作。
             explodeClickable = false;
             resetClickable = false;
-        }else if (AntennaInfo.getAntennaState(activity) == AntennaInfo.AntennaStatus.EXPLODING
-                || AntennaInfo.getAntennaState(activity) == AntennaInfo.AntennaStatus.INIT
-                || AntennaInfo.getAntennaState(activity) == AntennaInfo.AntennaStatus.FOLDING){
+        }else if (AntennaInfo.getAntennaState(activity) == AntennaInfo.AntennaSearchSatellitesStatus.EXPLODING
+                || AntennaInfo.getAntennaState(activity) == AntennaInfo.AntennaSearchSatellitesStatus.INIT
+                || AntennaInfo.getAntennaState(activity) == AntennaInfo.AntennaSearchSatellitesStatus.FOLDING){
             // 当天线处于展开中、初始、收藏中，所有快捷键为灰色，不能操作。
             explodeClickable = false;
             manualClickable = false;
@@ -118,7 +118,7 @@ public class OperateBarControl {
                                     sbFold.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
                                 }*/
                                 // 保存天线状态
-                                AntennaInfo.setAntennaState(activity, AntennaInfo.AntennaStatus.EXPLODING);
+                                AntennaInfo.setAntennaState(activity, AntennaInfo.AntennaSearchSatellitesStatus.EXPLODING);
                                 if (null != antennaStateButton){
                                     antennaStateButton.setButtonState(StatusButton.BUTTON_STATE_ABNORMAL);
                                     antennaStateButton.setText(R.string.antenna_state_exploding);
@@ -151,7 +151,7 @@ public class OperateBarControl {
                                     sbExploded.setButtonState(StatusButton.BUTTON_STATE_OPERATE);
                                 }
                                 // 保存天线状态
-                                AntennaInfo.setAntennaState(activity, AntennaInfo.AntennaStatus.FOLDING);
+                                AntennaInfo.setAntennaState(activity, AntennaInfo.AntennaSearchSatellitesStatus.FOLDING);
                                 if (null != antennaStateButton){
                                     antennaStateButton.setButtonState(StatusButton.BUTTON_STATE_SPECIAL);
                                     antennaStateButton.setText(R.string.antenna_state_folding);
@@ -176,7 +176,7 @@ public class OperateBarControl {
                 public void onClick(View v) {
                     if (canOperate(activity, sbPause)) {
                         // 直接停止，不需要确认
-                        AntennaInfo.setAntennaState(activity, AntennaInfo.AntennaStatus.PAUSE);
+                        AntennaInfo.setAntennaState(activity, AntennaInfo.AntennaSearchSatellitesStatus.PAUSE);
                         if (null != antennaStateButton){
                             antennaStateButton.setButtonState(StatusButton.BUTTON_STATE_ABNORMAL);
                             antennaStateButton.setText(R.string.antenna_state_paused);
@@ -200,7 +200,7 @@ public class OperateBarControl {
                         randomDialog.onConfirm(activity.getString(R.string.reset_confirm), new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                AntennaInfo.setAntennaState(activity, AntennaInfo.AntennaStatus.RECYCLED);
+                                AntennaInfo.setAntennaState(activity, AntennaInfo.AntennaSearchSatellitesStatus.RECYCLED);
                                 if (null != antennaStateButton){
                                     antennaStateButton.setButtonState(StatusButton.BUTTON_STATE_SPECIAL);
                                     antennaStateButton.setText(R.string.antenna_state_reset);
@@ -238,7 +238,7 @@ public class OperateBarControl {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         // 设置状态为寻星中
-                                        AntennaInfo.setAntennaState(activity,AntennaInfo.AntennaStatus.SEARCHING);
+                                        AntennaInfo.setAntennaState(activity,AntennaInfo.AntennaSearchSatellitesStatus.SEARCHING);
                                         if (null != antennaStateButton){
                                             antennaStateButton.setButtonState(StatusButton.BUTTON_STATE_SPECIAL);
                                             antennaStateButton.setText(R.string.antenna_state_searching);
@@ -328,7 +328,7 @@ public class OperateBarControl {
 
         @IdRes int resId = statusButton.getId();
         switch (satelliteStatus){
-            case AntennaInfo.AntennaStatus.EXPLODED:
+            case AntennaInfo.AntennaSearchSatellitesStatus.EXPLODED:
                 if (resId == R.id.button_operate_explode || resId == R.id.button_operate_reset) {
                     statusButton.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
                     randomDialog.onConfirm(context.getString(R.string.antenna_exploded_bind_confirm), new View.OnClickListener() {
@@ -340,7 +340,7 @@ public class OperateBarControl {
                     return false;
                 }
                 break;
-            case AntennaInfo.AntennaStatus.INIT:
+            case AntennaInfo.AntennaSearchSatellitesStatus.INIT:
                 statusButton.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
                 randomDialog.onConfirm(context.getString(R.string.antenna_init_bind_confirm), new View.OnClickListener() {
                     @Override
@@ -349,7 +349,7 @@ public class OperateBarControl {
                     }
                 }, buttonOkText);
                 return false;
-            case AntennaInfo.AntennaStatus.EXPLODING:
+            case AntennaInfo.AntennaSearchSatellitesStatus.EXPLODING:
                 statusButton.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
                 randomDialog.onConfirm(context.getString(R.string.antenna_exploding_bind_confirm), new View.OnClickListener() {
                     @Override
@@ -358,7 +358,7 @@ public class OperateBarControl {
                     }
                 }, buttonOkText);
                 return false;
-            case AntennaInfo.AntennaStatus.FOLDING:
+            case AntennaInfo.AntennaSearchSatellitesStatus.FOLDING:
                 statusButton.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
                 randomDialog.onConfirm(context.getString(R.string.antenna_folding_bind_confirm), new View.OnClickListener() {
                     @Override
@@ -367,7 +367,7 @@ public class OperateBarControl {
                     }
                 }, buttonOkText);
                 return false;
-            case AntennaInfo.AntennaStatus.FOLDED:
+            case AntennaInfo.AntennaSearchSatellitesStatus.FOLDED:
                 if (resId != R.id.button_operate_explode) {
                     statusButton.setButtonState(StatusButton.BUTTON_STATE_DISABLE);
                     randomDialog.onConfirm(context.getString(R.string.antenna_folded_bind_confirm), new View.OnClickListener() {

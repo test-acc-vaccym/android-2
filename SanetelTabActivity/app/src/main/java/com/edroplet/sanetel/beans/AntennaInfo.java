@@ -10,7 +10,7 @@ import com.edroplet.sanetel.services.CommunicateWithDeviceService;
 import com.edroplet.sanetel.services.communicate.CommunicateDataReceiver;
 import com.edroplet.sanetel.utils.CustomSP;
 
-import static com.edroplet.sanetel.beans.AntennaInfo.AntennaStatus.INIT;
+import static com.edroplet.sanetel.beans.AntennaInfo.AntennaSearchSatellitesStatus.INIT;
 
 /**
  * Created by qxs on 2017/9/15.
@@ -103,7 +103,7 @@ public class AntennaInfo implements Parcelable {
      11 –复位中
      12—已复位完成；
      */
-    public static class AntennaStatus{
+    public static class AntennaSearchSatellitesStatus{
         public static final int FOLDED = 0; // 收藏
         public static final int EXPLODING = 1; // 展开中
         public static final int EXPLODED = 2; // 已展开

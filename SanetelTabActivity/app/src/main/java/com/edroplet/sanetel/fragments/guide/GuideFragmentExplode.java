@@ -45,7 +45,7 @@ public class GuideFragmentExplode extends Fragment {
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
 
-    int antennaState = AntennaInfo.AntennaStatus.INIT;
+    int antennaState = AntennaInfo.AntennaSearchSatellitesStatus.INIT;
      Context ctx;
 
     @Nullable
@@ -64,7 +64,7 @@ public class GuideFragmentExplode extends Fragment {
                 // 及时获取
                 antennaState = AntennaInfo.getAntennaState(ctx);
                 // send command
-                if (antennaState == AntennaInfo.AntennaStatus.EXPLODED){
+                if (antennaState == AntennaInfo.AntennaSearchSatellitesStatus.EXPLODED){
                     Protocol.sendMessage(ctx,Protocol.cmdAntennaExplode);
                 }
             }

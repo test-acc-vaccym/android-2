@@ -175,33 +175,33 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
             // 添加天线界面
             // int antennaState = SystemServices.getAntennaState();
             // switch (antennaState){;
-            // case AntennaInfo.AntennaStatus.EXPLODED:
+            // case AntennaInfo.AntennaSearchSatellitesStatus.EXPLODED:
             GuideFragmentExplode guideFragmentExplode0 = GuideFragmentExplode.newInstance(true, getString(R.string.follow_me_antenna_state_explode),
                     true, getString(R.string.follow_me_antenna_state_explode_second_line),
                     true, getString(R.string.follow_me_antenna_state_explode_third_start), -1, null, null);
             guideFragmentExplode.add(guideFragmentExplode0);
             //    break;
-            // case AntennaInfo.AntennaStatus.FOLDED:
+            // case AntennaInfo.AntennaSearchSatellitesStatus.FOLDED:
             GuideFragmentExplode guideFragmentExplode1 = GuideFragmentExplode.newInstance(true, getString(R.string.follow_me_antenna_state_folder),
                     false, null, true, getString(R.string.follow_me_message_click), 0, getString(R.string.antenna_state_exploded), null);
             guideFragmentExplode.add(guideFragmentExplode1);
             //     break
-            // case AntennaInfo.AntennaStatus.PAUSE:
+            // case AntennaInfo.AntennaSearchSatellitesStatus.PAUSE:
             GuideFragmentExplode guideFragmentExplode2 = GuideFragmentExplode.newInstance(true, getString(R.string.follow_me_antenna_state_pause),
                     false, null, true, getString(R.string.follow_me_message_click), 0, getString(R.string.antenna_state_exploded), null);
             guideFragmentExplode.add(guideFragmentExplode2);
             // break;
-            // case AntennaInfo.AntennaStatus.SEARCHING:
+            // case AntennaInfo.AntennaSearchSatellitesStatus.SEARCHING:
             GuideFragmentExplode guideFragmentExplode3 = GuideFragmentExplode.newInstance(true, getString(R.string.follow_me_antenna_state_searching),
                     false, null, false, null, -1, null, null);
             guideFragmentExplode.add(guideFragmentExplode3);
             // break;
-            // case AntennaInfo.AntennaStatus.RECYCLED:
+            // case AntennaInfo.AntennaSearchSatellitesStatus.RECYCLED:
             GuideFragmentExplode guideFragmentExplode4 = GuideFragmentExplode.newInstance(true, getString(R.string.follow_me_antenna_state_saving),
                     false, null, true, getString(R.string.follow_me_message_click), 0, getString(R.string.antenna_state_exploded), null);
             guideFragmentExplode.add(guideFragmentExplode4);
             // break;
-            // case AntennaInfo.AntennaStatus.EXPLODING:
+            // case AntennaInfo.AntennaSearchSatellitesStatus.EXPLODING:
             GuideFragmentExplode guideFragmentExplode5 = GuideFragmentExplode.newInstance(true, getString(R.string.follow_me_explode_exploding),
                     false, null, true, getString(R.string.follow_me_message_click), 1, getString(R.string.antenna_state_paused), null);
             guideFragmentExplode.add(guideFragmentExplode5);

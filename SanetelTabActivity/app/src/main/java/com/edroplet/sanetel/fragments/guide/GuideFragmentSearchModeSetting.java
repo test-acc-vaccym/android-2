@@ -34,12 +34,13 @@ import static com.edroplet.sanetel.utils.CustomSP.KEY_SEARCHING_MODE;
  * Created by qxs on 2017/9/19.
  *  UI 寻星模式
  * 协议 4.6	跟踪模式选择
+ * 通信协议在ap中使用 3.4、寻星模式流程
  */
 
 public class GuideFragmentSearchModeSetting extends BroadcastReceiverFragment {
     public static final String SearchModeAction = "com.edroplet.sanetel.SearchModeAction";
     public static final String SearchModeData = "com.edroplet.sanetel.SearchModeData";
-    
+
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
 

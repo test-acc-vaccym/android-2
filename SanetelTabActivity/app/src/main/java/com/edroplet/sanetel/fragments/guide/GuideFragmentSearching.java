@@ -2,6 +2,7 @@ package com.edroplet.sanetel.fragments.guide;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,16 +12,24 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.edroplet.sanetel.R;
+import com.edroplet.sanetel.beans.AntennaInfo;
+import com.edroplet.sanetel.beans.Protocol;
+import com.edroplet.sanetel.beans.monitor.MonitorInfo;
+import com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.PopDialog;
+import com.edroplet.sanetel.view.BroadcastReceiverFragment;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomTextView;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 import static com.edroplet.sanetel.fragments.functions.manual.LocationControlFragment.KEY_PREPARE_AZIMUTH;
 import static com.edroplet.sanetel.fragments.functions.manual.LocationControlFragment.KEY_PREPARE_PITCH;
@@ -28,26 +37,13 @@ import static com.edroplet.sanetel.fragments.functions.manual.LocationControlFra
 
 /**
  * Created by qxs on 2017/9/19.
+ * 寻星操作
+ * 4.13.1	自动寻星指令
+ * ……app中使用》3.5、寻星操作流程
  */
 
 public class GuideFragmentSearching extends Fragment {
 
-    // 寻星中
-    //case 1:
-
-    // 锁星
-    //case 2:
-
-    // 重设参数
-    //case 3:
-
-    // 故障报告
-    //case 4:
-
-
-    @BindView(R.id.pop_dialog_third_button)
-    CustomButton thirdButton;
-    
     public static GuideFragmentSearching newInstance(boolean showInfo,boolean showFirst, String firstLine,
                                                      boolean showSecond, String secondLine, boolean showThird,
                                                      String thirdLineStart, int icon, String buttonText, String thirdLineEnd) {
@@ -75,11 +71,14 @@ public class GuideFragmentSearching extends Fragment {
         return args;
     }
 
+    @BindView(R.id.pop_dialog_third_button)
+    CustomButton thirdButton;
+
     @BindView(R.id.follow_me_searching_antenna_info)
     LinearLayout linearLayoutAntennaInfo;
 
     @BindView(R.id.antenna_info_tv_prepare_azimuth)
-    CustomTextView prepareAzmiuth;
+    CustomTextView prepareAzimuth;
     @BindView(R.id.antenna_info_tv_prepare_pitch)
     CustomTextView preparePitch;
     @BindView(R.id.antenna_info_tv_prepare_polarization)
@@ -92,6 +91,8 @@ public class GuideFragmentSearching extends Fragment {
     CustomTextView polarization;
 
     Context context;
+    Unbinder unbinder;
+
     private  static final int  STATE_READY = 0;
     private  static final int  STATE_SEARCHING = 1;
     private  static final int  STATE_TIMEOUT = 2;
@@ -109,71 +110,45 @@ public class GuideFragmentSearching extends Fragment {
 
     PopDialog popDialog = new PopDialog();
 
+    Timer searchingTimer = new Timer(false);
+    int schedule = 1000;
+
+    View view;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_guide_searching, null);
+        view = inflater.inflate(R.layout.fragment_guide_searching, null);
         if (view == null){
             return null;
         }
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
         context = getContext();
 
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 2017/11/11  开始寻星
+                //  2017/11/11  发送命令开始寻星
+                Protocol.sendMessage(context, Protocol.cmdSetAutoSearch);
                 // 首先让天线信息可见
                 linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
                 // 更新信息
                 // 设置预置角度信息
                 String defaultVal="0.00";
-                prepareAzmiuth.setText(CustomSP.getString(context, KEY_PREPARE_AZIMUTH,defaultVal));
+                prepareAzimuth.setText(CustomSP.getString(context, KEY_PREPARE_AZIMUTH,defaultVal));
                 preparePitch.setText(CustomSP.getString(context, KEY_PREPARE_PITCH,defaultVal));
                 preparePolarization.setText(CustomSP.getString(context, KEY_PREPARE_POLARIZATION,defaultVal));
 
                 // 修改pop_dialog的提示信息
-                switch (state){
-                    case STATE_READY:
-                        state = STATE_SEARCHING;
-                        Bundle bundle = setPopupDialogBundle(true, true, getString(R.string.follow_me_searching_ing_first_line),
-                                true, String.format(getString(R.string.follow_me_searching_ing_second_line), 0),
-                                true, getString(R.string.follow_me_searching_ing_third_start), 2, null, null);
-                        setPopupDialog(view, bundle);
-                        popDialog.show();
-                        // TODO: 2017/11/12 天线通信，获取超时,失败的状态
-                        return;
-                    case STATE_COMPLETE:
-                        state = STATE_READY;
-                        setPopupDialog(view, setPopupDialogBundle(true, true, getString(R.string.follow_me_searching_lock_first_line),
-                                true, String.format(getString(R.string.follow_me_searching_lock_second_line),0) ,
-                                true, getString(R.string.follow_me_searching_lock_third_start), -1, null, null));
-                        popDialog.show();
-                        return;
-                    case STATE_SEARCHING:
-                        // TODO: 2017/11/12  急停命令
-                        return;
-                    case STATE_TIMEOUT:
-                        setPopupDialog(view, setPopupDialogBundle(true, true, getString(R.string.follow_me_searching_timeout_first_line),
-                                true, String.format(getString(R.string.follow_me_searching_timeout_second_line),0),
-                                true, getString(R.string.follow_me_searching_timeout_third_start), 3,
-                                null, getString(R.string.follow_me_searching_timeout_third_end)));
-                        popDialog.show();
-                        return;
-                    case STATE_ERROR:
-                        setPopupDialog(view, setPopupDialogBundle(true, true, getString(R.string.follow_me_searching_error_first_line),
-                                true, String.format(getString(R.string.follow_me_searching_error_second_line),0),
-                                true, getString(R.string.follow_me_searching_error_third_start), 4, null, null));
-                        popDialog.show();
-                        return;
-
-                }
+                updatePopDialog(state);
             }
         });
 
 
         Bundle bundle = getArguments();
         setPopupDialog(view, bundle);
+        TimerTask monitorTimerTask = new RequestTimerTask();
+        searchingTimer.schedule(monitorTimerTask, 0, schedule);
         return popDialog.show();
     }
 
@@ -196,5 +171,56 @@ public class GuideFragmentSearching extends Fragment {
                 popDialog.setSetThirdColor(true);
             }
         }
+    }
+
+
+    class RequestTimerTask extends TimerTask {
+        public void run() {
+            int antennaState = AntennaInfo.getAntennaState(context);
+            updatePopDialog(antennaState);
+        }
+    }
+
+    void updatePopDialog(int state){
+
+        switch (state){
+            case STATE_READY:
+                // state = STATE_SEARCHING;
+                Bundle bundle = setPopupDialogBundle(true, true, getString(R.string.follow_me_searching_ing_first_line),
+                        true, String.format(getString(R.string.follow_me_searching_ing_second_line), 0),
+                        true, getString(R.string.follow_me_searching_ing_third_start), 2, null, null);
+                setPopupDialog(view, bundle);
+                popDialog.show();
+                // TODO: 2017/11/12 天线通信，获取超时,失败的状态
+            case STATE_COMPLETE:
+                // state = STATE_READY;
+                setPopupDialog(view, setPopupDialogBundle(true, true, getString(R.string.follow_me_searching_lock_first_line),
+                        true, String.format(getString(R.string.follow_me_searching_lock_second_line),0) ,
+                        true, getString(R.string.follow_me_searching_lock_third_start), -1, null, null));
+                popDialog.show();
+            case STATE_SEARCHING:
+                // 2017/11/12  急停命令
+                // 4.13.5	停止寻星指令
+                Protocol.sendMessage(context,Protocol.cmdStopSearch);
+            case STATE_TIMEOUT:
+                setPopupDialog(view, setPopupDialogBundle(true, true, getString(R.string.follow_me_searching_timeout_first_line),
+                        true, String.format(getString(R.string.follow_me_searching_timeout_second_line),0),
+                        true, getString(R.string.follow_me_searching_timeout_third_start), 3,
+                        null, getString(R.string.follow_me_searching_timeout_third_end)));
+                popDialog.show();
+            case STATE_ERROR:
+                setPopupDialog(view, setPopupDialogBundle(true, true, getString(R.string.follow_me_searching_error_first_line),
+                        true, String.format(getString(R.string.follow_me_searching_error_second_line),0),
+                        true, getString(R.string.follow_me_searching_error_third_start), 4, null, null));
+                popDialog.show();
+        }
+
+        view.invalidate();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

@@ -153,8 +153,8 @@ public class Protocol {
     // 4.13	寻星指令
     // 4.13.1	自动寻星指令
     public static final String cmdSetAutoSearch="$cmd,auto search*ff\r\n";
-    public static final String cmdSetAutoSearchResultHead="$cmd,start auto search ";
-    public static final String cmdSetAutoSearchResult=cmdSetAutoSearchResultHead+"ok*ff\r\n";
+    public static final String cmdSetAutoSearchResultHead="$cmd,start auto search";
+    public static final String cmdSetAutoSearchResult=cmdSetAutoSearchResultHead+"*ff\r\n";
     // 4.13.2	手动速度控制指令
     // 发送指令格式：$cmd,manual search,调整方式,速度(范围：0.0～10.0度/秒)*ff\r\n
     // 1—方位角增加；2—方位角减小；

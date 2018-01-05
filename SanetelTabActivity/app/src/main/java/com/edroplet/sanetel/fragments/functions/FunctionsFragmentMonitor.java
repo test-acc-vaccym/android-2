@@ -35,7 +35,6 @@ import butterknife.Unbinder;
 import static com.edroplet.sanetel.beans.monitor.MonitorInfo.KEY_MONITOR_LAST_SATELLITE_AGC;
 import static com.edroplet.sanetel.fragments.guide.GuideFragmentDestination.KEY_DESTINATION_SATELLITE_NAME;
 import static com.edroplet.sanetel.fragments.guide.GuideFragmentDestination.KEY_DESTINATION_SATELLITE_POLARIZATION;
-import static com.edroplet.sanetel.fragments.guide.GuideFragmentSearchModeSetting.Mode_Beacon;
 import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentAmplifierMonitor.KEY_AMPLIFIER_MONITOR;
 import static com.edroplet.sanetel.utils.CustomSP.KEY_SEARCHING_MODE;
 import static com.edroplet.sanetel.utils.MLog.TAG;
@@ -50,6 +49,7 @@ import static com.edroplet.sanetel.utils.MLog.TAG;
 public class FunctionsFragmentMonitor extends Fragment {
     public static final String AntennaAzimuthInfo = "AntennaAzimuthInfo";
     private static long Schedule; // ms
+    int Mode_Beacon = 0;
 
     public static FunctionsFragmentMonitor newInstance(@Nullable MainMonitorFragmentHolder mfh){
         Bundle args = new Bundle();

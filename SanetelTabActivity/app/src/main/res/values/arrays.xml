@@ -85,4 +85,23 @@
         <item>@string/main_status_running_limit_abnormal</item>
         <item>@string/main_status_running_limit_normal</item>
     </string-array>
+    <string-array name="antenna_state_array">
+        <item>@string/antenna_state_folded</item>
+        <item>@string/antenna_state_exploding</item>
+        <item>@string/antenna_state_exploded</item>
+        <item>@string/antenna_state_init</item>
+        <item>@string/antenna_state_searching</item>
+        <item>@string/antenna_state_manual</item>
+        <item>@string/antenna_state_locked</item>
+        <item>@string/antenna_state_folding</item>
+        <item>@string/antenna_state_lock_loose</item>
+        <item>@string/antenna_state_abnormal</item>
+        <item>@string/antenna_state_paused</item>
+        <item>@string/antenna_state_resetting</item>
+        <item>@string/antenna_state_reset</item>
+    </string-array>
+    <string-array name="communication_state_array">
+        <item>@string/communication_state_connected</item>
+        <item>@string/communication_state_disconnected</item>
+    </string-array>
 </resources>

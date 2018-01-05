@@ -41,14 +41,20 @@
     <string name="communication_state_connected">连接</string>
     <string name="communication_state_disconnected">断开</string>
     <!--天线状态-->
-    <string name="antenna_state_init">初始</string>
+    <string name="antenna_state_folded">收藏</string>
     <string name="antenna_state_exploding">展开中</string>
     <string name="antenna_state_exploded">展开</string>
-    <string name="antenna_state_folding">收藏中</string>
-    <string name="antenna_state_folded">收藏</string>
-    <string name="antenna_state_reset">复位</string>
-    <string name="antenna_state_paused">停止</string>
+    <string name="antenna_state_init">寻零</string>
     <string name="antenna_state_searching">寻星</string>
+    <string name="antenna_state_manual">手动</string>
+    <string name="antenna_state_locked">锁定</string>
+    <string name="antenna_state_folding">收藏中</string>
+    <string name="antenna_state_lock_loose">失锁</string>
+    <string name="antenna_state_abnormal">异常</string>
+    <string name="antenna_state_paused">停止</string>
+    <string name="antenna_state_resetting">复位中</string>
+    <string name="antenna_state_reset">复位</string>
+    <string name="antenna_state_lock">锁星</string>
     <string name="explode_confirm">你确定要展开吗？</string>
     <string name="fold_confirm">你确定要收藏吗？</string>
     <string name="reset_confirm">你确定要复位吗？</string>
@@ -64,8 +70,6 @@
     <string name="locker_bind_confirm">当锁紧机构处于锁紧时，不能操作\n请将方位手刹松开，天线才能运动</string>
     <string name="saving_bind_confirm">当节能处于开启时，不能操作\n请先退出节能天线才能运动</string>
     <string name="saving_bind_quit">退出</string>
-    <string name="antenna_state_lock">锁星</string>
-    <string name="antenna_state_abnormal">异常</string>
 
     <!--锁紧机构状态-->
     <string name="locker_state_locked">锁紧</string>

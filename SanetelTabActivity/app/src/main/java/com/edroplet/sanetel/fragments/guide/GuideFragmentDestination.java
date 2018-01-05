@@ -1,6 +1,7 @@
 package com.edroplet.sanetel.fragments.guide;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
@@ -22,24 +23,34 @@ import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.GalleryOnTime;
 import com.edroplet.sanetel.utils.InputFilterFloat;
 import com.edroplet.sanetel.utils.PopDialog;
+import com.edroplet.sanetel.utils.sscanf.Sscanf;
+import com.edroplet.sanetel.view.BroadcastReceiverFragment;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomEditText;
 import com.edroplet.sanetel.view.custom.CustomRadioButton;
 import com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Timer;
 
+import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 import static com.edroplet.sanetel.fragments.guide.GuideFragmentLocation.mOnCheckedChangeListener;
 
 /**
  * Created by qxs on 2017/9/19.
  * 目标星设置
+ * 协议 4.10	目标星
  */
 
-public class GuideFragmentDestination extends Fragment {
+public class GuideFragmentDestination extends BroadcastReceiverFragment {
+    public static final String GuideDestinationAction = "com.edroplet.sanetel.GuideDestinationAction";
+    public static final String GuideDestinationData = "com.edroplet.sanetel.GuideDestinationData";
+
     private static int[] satellitesImages = {R.mipmap.satellite1, R.mipmap.satellite2, R.mipmap.satellite3};
     public static final String KEY_DESTINATION_SATELLITE_NAME = "KEY_DESTINATION_SATELLITE_NAME";
     public static final String KEY_DESTINATION_SATELLITE_POLARIZATION = "KEY_DESTINATION_SATELLITE_POLARIZATION";
@@ -78,10 +89,18 @@ public class GuideFragmentDestination extends Fragment {
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
 
+    @BindArray(R.array.satellites_polarization)
+    String[] satellitesPolarization;
     private Satellites satellites;
-    private String selectedName;
-    private String selectedPolarization;
-    private CustomRadioGroupWithCustomRadioButton customRadioGroupWithCustomRadioButton;
+    private String name;
+    private String polarization;
+
+    @BindView(R.id.guide_destination_group)
+    CustomRadioGroupWithCustomRadioButton guideDestinationGroup;
+
+    Context context;
+    Unbinder unbinder;
+    View view;
 
     // 定时器
     Timer timer = new Timer();
@@ -105,47 +124,78 @@ public class GuideFragmentDestination extends Fragment {
         return fragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        String[] action = {GuideDestinationAction};
+        setAction(action);
+        super.onCreate(savedInstanceState);
+        context = getContext();
+        Protocol.sendMessage(context, Protocol.cmdGetTargetState);
+    }
+
+    @Override
+    public void processData(Intent intent) {
+        super.processData(intent);
+        String rawData = intent.getStringExtra(GuideDestinationData);
+        SatelliteInfo destinationSatelliteInfo = new SatelliteInfo();
+        Object[] objects = Sscanf.scan(rawData,Protocol.cmdGetTargetStateResult,destinationSatelliteInfo.longitude,destinationSatelliteInfo.polarization,destinationSatelliteInfo.threshold,destinationSatelliteInfo.beacon,destinationSatelliteInfo.carrier,destinationSatelliteInfo.symbolRate);
+        int pos = Arrays.asList(satellitesPolarization).indexOf((String)objects[0]);
+        if (pos < 0 ){
+            pos = 0;
+        }
+        String longitudeString = (String)objects[0];
+        satelliteName.setText(satellites.getNameByLongitude(longitudeString));
+        satelliteLongitude.setText(longitudeString);
+        satellitePolarization.setSelection(pos,true);
+        satelliteThreshold.setText((String)objects[1]);
+        satelliteBeacon.setText((String)objects[2]);
+        satelliteCarrier.setText((String)objects[3]);
+        satelliteDvb.setText((String)objects[4]);
+        view.invalidate();
+    }
+
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_guide_destination_satellite, null);
+        view = inflater.inflate(R.layout.fragment_guide_destination_satellite, null);
         if (view == null){
             return null;
         }
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
 
         satelliteDvb.setFilters(new InputFilter[]{new InputFilterFloat(6000,30000)});
 
 
         try {
-            satellites = new Satellites(getContext());
+            satellites = new Satellites(context);
             String[] satelliteNameArray = satellites.getSatelliteNameArray();
             if (satelliteNameArray.length > 0) {
                 satelliteSelect.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, satelliteNameArray));
                 // 读取配置中的值
-                selectedName = CustomSP.getString(getContext(), KEY_DESTINATION_SATELLITE_NAME, satelliteNameArray[0]);
+                name = CustomSP.getString(getContext(), KEY_DESTINATION_SATELLITE_NAME, satelliteNameArray[0]);
                 for(int i=0; i<satelliteNameArray.length; i++){
-                    if(selectedName.equals(satelliteNameArray[i])){
+                    if(name.equals(satelliteNameArray[i])){
                         satelliteSelect.setSelection(i,true);
                         break;
                     }
                 }
-                String[] polarizationArray = satellites.getSatellitePolarizationArray(selectedName);
+                String[] polarizationArray = satellites.getSatellitePolarizationArray(name);
                 if (polarizationArray.length > 0) {
                     satellitePolarizationSelect.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, polarizationArray));
+                    satellitePolarization.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, polarizationArray));
                     // 读取配置中的值
-                    selectedPolarization = CustomSP.getString(getContext(), KEY_DESTINATION_SATELLITE_POLARIZATION, polarizationArray[0]);
+                    polarization = CustomSP.getString(getContext(), KEY_DESTINATION_SATELLITE_POLARIZATION, polarizationArray[0]);
                     for(int i=0; i<polarizationArray.length; i++){
-                        if(selectedPolarization.equals(polarizationArray[i])){
+                        if(polarization.equals(polarizationArray[i])){
                             satellitePolarizationSelect.setSelection(i,true);
                             break;
                         }
                     }
-                    SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(selectedName, selectedPolarization);
+                    SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(name, polarization);
                     if (satelliteInfo != null) {
                         satelliteName.setText(satelliteInfo.name);
                         for(int i=0; i<polarizationArray.length; i++){
-                            if(selectedPolarization.equals(polarizationArray[i])){
+                            if(polarization.equals(polarizationArray[i])){
                                 satellitePolarization.setSelection(i,true);
                                 break;
                             }
@@ -166,28 +216,28 @@ public class GuideFragmentDestination extends Fragment {
         satelliteSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedName = (String)satelliteSelect.getItemAtPosition(position);
-                String[] polarizationArray = satellites.getSatellitePolarizationArray(selectedName);
+                name = (String)satelliteSelect.getItemAtPosition(position);
+                String[] polarizationArray = satellites.getSatellitePolarizationArray(name);
                 if (polarizationArray.length > 0) {
                     satellitePolarizationSelect.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, polarizationArray));
-                    selectedPolarization = polarizationArray[0];
-                    if (selectedName.equals(CustomSP.getString(getContext(), KEY_DESTINATION_SATELLITE_NAME,selectedName)) ){
-                        selectedPolarization = CustomSP.getString(getContext(), KEY_DESTINATION_SATELLITE_POLARIZATION, selectedPolarization);
+                    polarization = polarizationArray[0];
+                    if (name.equals(CustomSP.getString(getContext(), KEY_DESTINATION_SATELLITE_NAME,name)) ){
+                        polarization = CustomSP.getString(getContext(), KEY_DESTINATION_SATELLITE_POLARIZATION, polarization);
                         for(int i=0; i<polarizationArray.length; i++){
-                            if(selectedPolarization.equals(polarizationArray[i])){
+                            if(polarization.equals(polarizationArray[i])){
                                 satellitePolarizationSelect.setSelection(i,true);
                                 break;
                             }
                         }
                     }
 
-                    if (!selectedPolarization.isEmpty()) {
-                        SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(selectedName, selectedPolarization);
+                    if (!polarization.isEmpty()) {
+                        SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(name, polarization);
                         if (satelliteInfo != null) {
                             satelliteName.setText(satelliteInfo.name);
 
                             for(int i=0; i<polarizationArray.length; i++){
-                                if(selectedPolarization.equals(polarizationArray[i])){
+                                if(polarization.equals(polarizationArray[i])){
                                     satellitePolarization.setSelection(i,true);
                                     break;
                                 }
@@ -211,14 +261,14 @@ public class GuideFragmentDestination extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // 读取配置中的值
-                selectedPolarization = (String)satellitePolarizationSelect.getItemAtPosition(position);
-                if (!selectedPolarization.isEmpty()) {
-                    SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(selectedName, selectedPolarization);
+                polarization = (String)satellitePolarizationSelect.getItemAtPosition(position);
+                if (!polarization.isEmpty()) {
+                    SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(name, polarization);
                     if (satelliteInfo != null) {
                         satelliteName.setText(satelliteInfo.name);
-                        String[] polarizationArray = satellites.getSatellitePolarizationArray(selectedName);
+                        String[] polarizationArray = satellites.getSatellitePolarizationArray(name);
                         for(int i=0; i<polarizationArray.length; i++){
-                            if(selectedPolarization.equals(polarizationArray[i])){
+                            if(polarization.equals(polarizationArray[i])){
                                 satellitePolarization.setSelection(i,true);
                                 break;
                             }
@@ -240,15 +290,15 @@ public class GuideFragmentDestination extends Fragment {
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                @IdRes int checkedId = customRadioGroupWithCustomRadioButton.getCheckedRadioButtonId();
+                @IdRes int checkedId = guideDestinationGroup.getCheckedRadioButtonId();
                 switch (checkedId){
                     case R.id.follow_me_destination_satellite_new:
-                        selectedName = satelliteName.getText().toString();
-                        selectedPolarization = satellitePolarization.getSelectedItem().toString();
+                        name = satelliteName.getText().toString();
+                        polarization = satellitePolarization.getSelectedItem().toString();
                         // 添加新城市
                         satellites.addItem(new SatelliteInfo(satellites.getItemCounts()+"",
-                                selectedName,
-                                selectedPolarization,
+                                name,
+                                polarization,
                                 satelliteLongitude.getText().toString(),
                                 satelliteBeacon.getText().toString(),
                                 satelliteThreshold.getText().toString(),
@@ -266,8 +316,8 @@ public class GuideFragmentDestination extends Fragment {
                         break;
                 }
                 // 保存配置
-                CustomSP.putString(getContext(), KEY_DESTINATION_SATELLITE_NAME, selectedName);
-                CustomSP.putString(getContext(), KEY_DESTINATION_SATELLITE_POLARIZATION, selectedPolarization);
+                CustomSP.putString(getContext(), KEY_DESTINATION_SATELLITE_NAME, name);
+                CustomSP.putString(getContext(), KEY_DESTINATION_SATELLITE_POLARIZATION, polarization);
                 // 4.2.7.	寻星模式 需要用到这两个值
                 CustomSP.putString(getContext(), KEY_DESTINATION_SATELLITE_BEACON_FREQUENCY, satelliteBeacon.getText().toString());
                 CustomSP.putString(getContext(), KEY_DESTINATION_SATELLITE_DVB, satelliteDvb.getText().toString());
@@ -275,7 +325,7 @@ public class GuideFragmentDestination extends Fragment {
                 // 发送设置命令
                 Protocol.sendMessage(getContext(), String.format(Protocol.cmdSetTargetState,
                         satelliteBeacon.getText().toString(),satelliteLongitude.getText().toString(),
-                        satellitePolarization.toString(), satelliteDvb.getText().toString(),
+                        satellitePolarization.getSelectedItem().toString(), satelliteDvb.getText().toString(),
                         satellitePolarizationSelect, satelliteThreshold.getText().toString()) );
             }
         });
@@ -322,5 +372,7 @@ public class GuideFragmentDestination extends Fragment {
             timer = null;
         }
         super.onDestroy();
+        unbinder.unbind();
     }
+
 }

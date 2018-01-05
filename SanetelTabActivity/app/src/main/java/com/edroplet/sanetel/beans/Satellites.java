@@ -31,7 +31,7 @@ public class Satellites {
     /**
      * An array of sample (dummy) items.
      */
-    private static final List<SatelliteInfo> ITEMS = new ArrayList<SatelliteInfo>();
+    private static final List<SatelliteInfo> ITEMS = new ArrayList<>();
 
     /**
      * A map of sample (dummy) items, by ID.
@@ -230,4 +230,12 @@ public class Satellites {
         return builder.toString();
     }
 
+    public String getNameByLongitude(String longitude){
+        for (SatelliteInfo si: ITEMS){
+            if (si.longitude.equals(longitude)){
+                return si.name;
+            }
+        }
+        return  "";
+    }
 }

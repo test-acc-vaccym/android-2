@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content">
                 <!--单选组-->
                 <com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton
-                    android:id="@+id/rbg_city"
+                    android:id="@+id/guide_destination_group"
                     android:padding="@dimen/no_padding"
                     android:layout_width="@dimen/radio_group_width"
                     android:orientation="vertical"

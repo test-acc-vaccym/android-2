@@ -37,7 +37,7 @@
                 android:paddingBottom="@dimen/layout_padding_top">
                 <!--单选组-->
                 <com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton
-                    android:id="@+id/rbg_search_mode"
+                    android:id="@+id/search_mode_group"
                     android:padding="@dimen/no_padding"
                     android:layout_width="@dimen/radio_group_width"
                     android:layout_height="wrap_content"
@@ -48,8 +48,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/follow_me_search_mode_beacon"
-                        android:checked="true"/>
+                        android:text="@string/follow_me_search_mode_beacon"/>
 
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/follow_me_search_mode_dvb"

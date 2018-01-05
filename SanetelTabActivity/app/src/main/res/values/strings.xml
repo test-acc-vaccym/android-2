@@ -76,8 +76,8 @@
     <string name="locker_state_released">松开</string>
 
     <!--节能状态-->
-    <string name="power_state_charged">关闭</string>
-    <string name="power_state_saved">开启</string>
+    <string name="energy_state_charged">关闭</string>
+    <string name="energy_state_saved">开启</string>
 
     <!--GNSS状态-->
     <string name="gnss_state_enabled">定位</string>

@@ -1,22 +1,29 @@
 package com.edroplet.sanetel.fragments.guide;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.sanetel.R;
+import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.PopDialog;
+import com.edroplet.sanetel.utils.sscanf.Sscanf;
+import com.edroplet.sanetel.view.BroadcastReceiverFragment;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomRadioButton;
+import com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 import static com.edroplet.sanetel.fragments.guide.GuideFragmentDestination.KEY_DESTINATION_SATELLITE_BEACON_FREQUENCY;
 import static com.edroplet.sanetel.fragments.guide.GuideFragmentDestination.KEY_DESTINATION_SATELLITE_DVB;
@@ -25,20 +32,30 @@ import static com.edroplet.sanetel.utils.CustomSP.KEY_SEARCHING_MODE;
 
 /**
  * Created by qxs on 2017/9/19.
+ *  UI 寻星模式
+ * 协议 4.6	跟踪模式选择
  */
 
-public class GuideFragmentSearchModeSetting extends Fragment {
-    public static final int Mode_Beacon = 0;
-    public static final int Mode_DVB = 1;
-
+public class GuideFragmentSearchModeSetting extends BroadcastReceiverFragment {
+    public static final String SearchModeAction = "com.edroplet.sanetel.SearchModeAction";
+    public static final String SearchModeData = "com.edroplet.sanetel.SearchModeData";
+    
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
 
+    @BindView(R.id.search_mode_group)
+    CustomRadioGroupWithCustomRadioButton searchModeGroup;
     @BindView(R.id.follow_me_search_mode_beacon)
-    CustomRadioButton crbSearchModeBeacon;
-
+    CustomRadioButton rbSearchModeBeacon;
     @BindView(R.id.follow_me_search_mode_dvb)
-    CustomRadioButton crbSearchModeDvb;
+    CustomRadioButton rbSearchModeDvb;
+    
+    int []searchModeIds = {R.id.follow_me_search_mode_beacon,R.id.follow_me_search_mode_dvb};
+    SparseIntArray searchModeArray = new SparseIntArray(searchModeIds.length);
+
+    Context context;
+    Unbinder unbinder;
+    View view;
 
     public static GuideFragmentSearchModeSetting newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                              String secondLine, boolean showThird, String thirdLineStart,
@@ -57,11 +74,24 @@ public class GuideFragmentSearchModeSetting extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    Context context;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        String[]action = {SearchModeAction};
+        setAction(action);
+        super.onCreate(savedInstanceState);
+        context = getContext();
+        int i = 0;
+        for (int id: searchModeIds){
+            searchModeArray.put(i++, id);
+        }
+        Protocol.sendMessage(context,Protocol.cmdGetTrackMode);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_guide_search_mode, null);
+        view = inflater.inflate(R.layout.fragment_guide_search_mode, null);
 
         if (view == null){
             return null;
@@ -82,40 +112,33 @@ public class GuideFragmentSearchModeSetting extends Fragment {
         String carrier = CustomSP.getString(context, KEY_DESTINATION_SATELLITE_DVB, defaultVal);
 
         if (beacon.equals(defaultVal) && dvb.equals(defaultVal)){
-            crbSearchModeBeacon.setChecked(true);
+            rbSearchModeBeacon.setChecked(true);
         }else if (polarization.isEmpty() || beacon.equals(defaultVal)){
             // 数据库中，卫星没有水平和垂直、左旋和右旋，或者是信标频率为0，则不支持信标模式
-            crbSearchModeBeacon.setClickable(false);
-            crbSearchModeBeacon.setTextColor(Color.GRAY);
-            crbSearchModeBeacon.setChecked(false);
-            crbSearchModeDvb.setChecked(true);
+            rbSearchModeBeacon.setClickable(false);
+            rbSearchModeBeacon.setTextColor(Color.GRAY);
+            rbSearchModeBeacon.setChecked(false);
+            rbSearchModeDvb.setChecked(true);
         }else if (dvb.equals(defaultVal) || carrier.equals(defaultVal)){
             // 如果DVB的载波频率和符号率值为零，则不支持DVB模式。
-            crbSearchModeDvb.setClickable(false);
-            crbSearchModeDvb.setTextColor(Color.GRAY);
-            crbSearchModeDvb.setChecked(false);
-            crbSearchModeBeacon.setChecked(true);
+            rbSearchModeDvb.setClickable(false);
+            rbSearchModeDvb.setTextColor(Color.GRAY);
+            rbSearchModeDvb.setChecked(false);
+            rbSearchModeBeacon.setChecked(true);
         }
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 2017/11/11 设置寻星模式，发送命令
-                if (crbSearchModeBeacon.isChecked()){
-                    CustomSP.putInt(getContext(),KEY_SEARCHING_MODE, Mode_Beacon);
-                } else {
-                    CustomSP.putInt(getContext(), KEY_SEARCHING_MODE, Mode_DVB);
-                }
+                int pos = searchModeArray.indexOfKey(searchModeGroup.getCheckedRadioButtonId());
+                CustomSP.putInt(getContext(),KEY_SEARCHING_MODE, pos);
+                // 2017/11/11 设置寻星模式，发送命令
+                Protocol.sendMessage(context,String.format(Protocol.cmdSetTrackMode, pos));
             }
         });
 
-        // 单选组的选择互斥
-        crbSearchModeBeacon.setOnCheckedChangeListener(GuideFragmentLocation.mOnCheckedChangeListener);
-        crbSearchModeDvb.setOnCheckedChangeListener(GuideFragmentLocation.mOnCheckedChangeListener);
-
-        if(CustomSP.getInt(getContext(), KEY_SEARCHING_MODE, Mode_Beacon) == Mode_Beacon){
-            crbSearchModeBeacon.setChecked(true);
-        }else {
-            crbSearchModeDvb.setChecked(true);
+        int storedSearchMode = CustomSP.getInt(getContext(), KEY_SEARCHING_MODE, -1);
+        if( storedSearchMode != -1){
+            searchModeGroup.check(searchModeArray.get(storedSearchMode));
         }
 
         Context context = getContext();
@@ -138,5 +161,23 @@ public class GuideFragmentSearchModeSetting extends Fragment {
             }
         }
         return popDialog.show();
+    }
+
+    @Override
+    public void processData(Intent intent) {
+        super.processData(intent);
+        String rawData = intent.getStringExtra(SearchModeData);
+        String trackMode = "0";
+        Object[] objects = Sscanf.scan(rawData,Protocol.cmdGetTrackModeResult,trackMode);
+        trackMode = (String) objects[0];
+        searchModeGroup.check(searchModeArray.get(Integer.parseInt(trackMode)));
+        
+        view.invalidate();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

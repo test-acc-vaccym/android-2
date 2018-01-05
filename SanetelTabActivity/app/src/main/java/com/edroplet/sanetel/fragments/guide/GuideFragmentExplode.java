@@ -13,16 +13,20 @@ import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.beans.AntennaInfo;
 import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.utils.PopDialog;
+import com.edroplet.sanetel.view.BroadcastReceiverFragment;
 import com.edroplet.sanetel.view.custom.CustomButton;
 
+import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by qxs on 2017/9/19.
+ * 展开页面，只有一个设置展开
  */
 
-public class GuideFragmentExplode extends Fragment {
+public class GuideFragmentExplode extends BroadcastReceiverFragment {
     private int[] icons = {R.drawable.antenna_exploded, R.drawable.park, R.drawable.searching, R.drawable.recycle, R.drawable.folder};
     public static GuideFragmentExplode newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                    String secondLine, boolean showThird, String thirdLineStart,
@@ -45,8 +49,12 @@ public class GuideFragmentExplode extends Fragment {
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
 
+    @BindArray(R.array.antenna_state_array)
+    String[] antennaStateArray;
+
     int antennaState = AntennaInfo.AntennaSearchSatellitesStatus.INIT;
-     Context ctx;
+    Context ctx;
+    Unbinder unbinder;
 
     @Nullable
     @Override
@@ -55,7 +63,7 @@ public class GuideFragmentExplode extends Fragment {
         if (view == null){
             return null;
         }
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
         ctx = getContext();
 
         thirdButton.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +77,7 @@ public class GuideFragmentExplode extends Fragment {
                 }
             }
         });
-        // TODO: 2017/11/11 获取天线状态
+        // 2017/11/11 获取天线状态
         antennaState = AntennaInfo.getAntennaState(ctx);
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);
@@ -86,5 +94,11 @@ public class GuideFragmentExplode extends Fragment {
             }
         }
         return popDialog.show();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

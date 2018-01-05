@@ -16,8 +16,7 @@ import android.widget.Toast;
 
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.activities.functions.FunctionsActivity;
-import com.edroplet.sanetel.activities.guide.FollowMeActivity;
-import com.edroplet.sanetel.utils.ConvertUtil;
+import com.edroplet.sanetel.activities.guide.GuideActivity;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.SystemServices;
 
@@ -129,31 +128,31 @@ public class MainFragmentGuide extends Fragment implements View.OnClickListener{
 
     private boolean jumpToFollowMe(){
 
-        Intent intent = new Intent(getActivity(), FollowMeActivity.class);
+        Intent intent = new Intent(getActivity(), GuideActivity.class);
         Bundle bundle = new Bundle();
         boolean skip = false;
 
         switch (clickedId){
             case R.id.guide_main_button_explode:
-                bundle.putInt(FollowMeActivity.POSITION, 0 );
+                bundle.putInt(GuideActivity.POSITION, 0 );
                 break;
             case R.id.guide_main_button_location:
-                bundle.putInt(FollowMeActivity.POSITION, 1 );
+                bundle.putInt(GuideActivity.POSITION, 1 );
                 break;
             case R.id.guide_main_button_destination:
-                bundle.putInt(FollowMeActivity.POSITION, 2 );
+                bundle.putInt(GuideActivity.POSITION, 2 );
                 break;
             case R.id.guide_main_button_search_mode:
-                bundle.putInt(FollowMeActivity.POSITION, 3 );
+                bundle.putInt(GuideActivity.POSITION, 3 );
                 break;
             case R.id.guide_main_button_search:
-                bundle.putInt(FollowMeActivity.POSITION, 4 );
+                bundle.putInt(GuideActivity.POSITION, 4 );
                 break;
             case R.id.guide_main_button_lock:
-                bundle.putInt(FollowMeActivity.POSITION, 5 );
+                bundle.putInt(GuideActivity.POSITION, 5 );
                 break;
             case R.id.guide_main_button_saving:
-                bundle.putInt(FollowMeActivity.POSITION, 6);
+                bundle.putInt(GuideActivity.POSITION, 6);
                 break;
             default:
                 skip = true;

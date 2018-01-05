@@ -143,7 +143,7 @@ public class StatusBarControl {
 
                 if (null != energyStateButton){
                     energyStateButton.setButtonState(BUTTON_STATE_NORMAL);
-                    energyStateButton.setText(R.string.power_state_charged);
+                    energyStateButton.setText(R.string.energy_state_charged);
                 }
             }
         },0, 1000);
@@ -224,11 +224,11 @@ public class StatusBarControl {
                 if (null != energyStateButton){
                     int energySaveState = runningInfo.energyInfo;
                     if (energySaveState == SavingInfo.SAVING_STATE_OPEN){
-                        energyStateButton.setText(R.string.power_state_saved);
+                        energyStateButton.setText(R.string.energy_state_saved);
                         energyStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
                         SavingInfo.setSavingState(context, SavingInfo.SAVING_STATE_OPEN);
                     }else {
-                        energyStateButton.setText(R.string.power_state_charged);
+                        energyStateButton.setText(R.string.energy_state_charged);
                         energyStateButton.setButtonState(BUTTON_STATE_NORMAL);
                         SavingInfo.setSavingState(context, SavingInfo.SAVING_STATE_CLOSE);
                     }

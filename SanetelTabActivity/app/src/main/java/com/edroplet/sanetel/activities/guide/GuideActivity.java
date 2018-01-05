@@ -32,21 +32,26 @@ import com.edroplet.sanetel.fragments.guide.GuideFragmentLocker;
 import com.edroplet.sanetel.fragments.guide.GuideFragmentSaving;
 import com.edroplet.sanetel.fragments.guide.GuideFragmentSearchModeSetting;
 import com.edroplet.sanetel.fragments.guide.GuideFragmentSearching;
-import com.edroplet.sanetel.view.ViewInject;
-import com.edroplet.sanetel.view.annotation.BindId;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomFAB;
 
 import java.util.ArrayList;
+import java.util.Timer;
+
+import butterknife.BindArray;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.edroplet.sanetel.beans.monitor.MonitorInfo.MonitorInfoAction;
 import static com.edroplet.sanetel.beans.monitor.MonitorInfo.MonitorInfoData;
 
-public class FollowMeActivity extends AppCompatActivity implements View.OnClickListener {
+public class GuideActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String POSITION="position";
 
+    private Timer timer = new Timer();
+    private static final int schedule = 1000; // 一秒钟获取一次状态
 
-    public static enum FOLLOWME_PAGES_INDEX{
+    public enum GUIDE_PAGES_INDEX{
         INDEX_EXPLODE,
         INDEX_LOCATION,
         INDEX_DESTINATION,
@@ -59,20 +64,20 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
     private ViewPager mViewPager;
 
     private int startPosition = 0;
-    @BindId(R.id.follow_me_explode_fab)
-    private CustomFAB fab;
+    @BindView(R.id.follow_me_explode_fab)
+    CustomFAB fab;
 
-    private boolean isInited = false;
+    private boolean isInit = false;
 
-    private  ArrayList<GuideFragmentExplode> guideFragmentExplode = new ArrayList<GuideFragmentExplode>();
-    private  ArrayList<GuideFragmentLocation> guideFragmentLocation = new ArrayList<GuideFragmentLocation>();
-    private  ArrayList<GuideFragmentDestination> guideFragmentDestination = new ArrayList<GuideFragmentDestination>();
-    private  ArrayList<GuideFragmentSearchModeSetting> guideFragmentSearchModeSetting = new ArrayList<GuideFragmentSearchModeSetting>();
-    private  ArrayList<GuideFragmentSearching> guideFragmentSearching = new ArrayList<GuideFragmentSearching>();
-    private  ArrayList<GuideFragmentLocker> guideFragmentLocker = new ArrayList<GuideFragmentLocker>();
-    private  ArrayList<GuideFragmentSaving> guideFragmentSaving = new ArrayList<GuideFragmentSaving>();
+    private  ArrayList<GuideFragmentExplode> guideFragmentExplode = new ArrayList<>();
+    private  ArrayList<GuideFragmentLocation> guideFragmentLocation = new ArrayList<>();
+    private  ArrayList<GuideFragmentDestination> guideFragmentDestination = new ArrayList<>();
+    private  ArrayList<GuideFragmentSearchModeSetting> guideFragmentSearchModeSetting = new ArrayList<>();
+    private  ArrayList<GuideFragmentSearching> guideFragmentSearching = new ArrayList<>();
+    private  ArrayList<GuideFragmentLocker> guideFragmentLocker = new ArrayList<>();
+    private  ArrayList<GuideFragmentSaving> guideFragmentSaving = new ArrayList<>();
 
-    private  ArrayList<ArrayList> fragments = new ArrayList<ArrayList>();
+    private  ArrayList<ArrayList> fragments = new ArrayList<>();
     @Override
     public void onClick(View view) {
         if (mViewPager == null){
@@ -82,7 +87,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
         int now = mViewPager.getCurrentItem();
         switch (view.getId()) {
             case R.id.follow_me_bottom_nav_main:
-                startActivity(new Intent(FollowMeActivity.this, MainActivity.class));
+                startActivity(new Intent(GuideActivity.this, MainActivity.class));
                 StatusBarControl.setTitle(getString(R.string.follow_me_bottom_nav_main));
                 finish();
                 break;
@@ -99,7 +104,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
                 if (now == count - 1) {
                     StatusBarControl.setTitle(getString(R.string.follow_me_bottom_nav_done));
                     // Toast.makeText(this, getString(R.string.follow_me_last_page), Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(FollowMeActivity.this, FunctionsActivity.class));
+                    startActivity(new Intent(GuideActivity.this, FunctionsActivity.class));
                     finish();
                 }else{
                     mViewPager.setCurrentItem(now + 1);
@@ -107,7 +112,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.follow_me_bottom_nav_monitor:
                 StatusBarControl.setTitle(getString(R.string.follow_me_bottom_nav_monitor));
-                startActivity(new Intent(FollowMeActivity.this, FunctionsActivity.class));
+                startActivity(new Intent(GuideActivity.this, FunctionsActivity.class));
                 finish();
                 break;
         }
@@ -117,7 +122,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follow_me);
-        ViewInject.inject(this, this);
+        ButterKnife.bind(this);
         //新页面接收数据
         Bundle bundle = this.getIntent().getExtras();
         //接收name值
@@ -141,11 +146,11 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
                     Intent intent;
                     switch (currentPage) {
                         case 0:
-                            intent = new Intent(FollowMeActivity.this, GuideExplodeActivity.class);
+                            intent = new Intent(GuideActivity.this, GuideExplodeActivity.class);
                             startActivity(intent);
                             break;
                         case 1:
-                            intent = new Intent(FollowMeActivity.this, GuideLocationActivity.class);
+                            intent = new Intent(GuideActivity.this, GuideLocationActivity.class);
                             startActivity(intent);
                             break;
                         default:
@@ -154,9 +159,9 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
                 }
             });
 
-        if (!isInited)
+        if (!isInit)
             initView();
-        isInited = true;
+        isInit = true;
 
         int viewCount = mSectionsPagerAdapter.getCount();
         if (position <= 0) {
@@ -319,7 +324,7 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
     }
     private MenuItem menuItem;
 
-    final Context context = FollowMeActivity.this;
+    final Context context = GuideActivity.this;
     final DialogInterface.OnClickListener mCancelClickListener = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface arg0, int arg1) {
@@ -353,13 +358,13 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
         @Override
         public void onPageSelected(int position) {
             /** 吴鹏说进入后就不要判断了
-            final Context context = FollowMeActivity.this;
+            final Context context = GuideActivity.this;
 
             switch (position){
                 case 0: // 展开
                 case 2: // 目标星
                     SystemServices.checkConnectedSsid(context, CustomSP.getString(context,
-                            WifiSettingsNameKey, defaultDeviceName), FollowMeActivity.this, mCancelClickListener,
+                            WifiSettingsNameKey, defaultDeviceName), GuideActivity.this, mCancelClickListener,
              SystemServices.REQUEST_WIFI_CONNECT_MANAGER);
                     break;
             }
@@ -393,4 +398,15 @@ public class FollowMeActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (timer != null) {
+            timer.cancel();
+            timer.purge();
+            timer = null;
+        }
+
+    }
 }

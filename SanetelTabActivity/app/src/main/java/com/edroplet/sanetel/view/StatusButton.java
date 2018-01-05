@@ -256,8 +256,8 @@ public class StatusButton extends CustomButton {
                 else setText(R.string.locker_state_locked);
                 break;
             case R.id.status_bar_button_power_state:
-                if (mButtonState != BUTTON_STATE_ABNORMAL) setText(R.string.power_state_saved);
-                else setText(R.string.power_state_charged);
+                if (mButtonState != BUTTON_STATE_ABNORMAL) setText(R.string.energy_state_saved);
+                else setText(R.string.energy_state_charged);
                 break;
         }
         // 自适应尺寸

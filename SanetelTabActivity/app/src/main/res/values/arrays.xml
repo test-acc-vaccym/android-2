@@ -66,8 +66,8 @@
         <item>40</item>
     </string-array>
     <string-array name="energy_state_array">
-        <item>@string/power_state_charged</item>
-        <item>@string/power_state_saved</item>
+        <item>@string/energy_state_charged</item>
+        <item>@string/energy_state_saved</item>
     </string-array>
     <string-array name="communicate_status_array">
         <item>@string/main_status_communicate_status_opening</item>
@@ -103,5 +103,9 @@
     <string-array name="communication_state_array">
         <item>@string/communication_state_connected</item>
         <item>@string/communication_state_disconnected</item>
+    </string-array>
+    <string-array name="gnss_state_array">
+        <item>@string/gnss_state_enabled</item>
+        <item>@string/gnss_state_disabled</item>
     </string-array>
 </resources>

@@ -1,5 +1,6 @@
 package com.edroplet.sanetel.fragments.guide;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,11 +12,14 @@ import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.utils.PopDialog;
 import com.edroplet.sanetel.view.custom.CustomButton;
 
+import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by qxs on 2017/9/19.
+ * 锁紧操作
  */
 
 public class GuideFragmentLocker extends Fragment {
@@ -39,15 +43,22 @@ public class GuideFragmentLocker extends Fragment {
 
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
+    @BindArray(R.array.locker_state_array)
+    String[] lockerState;
+
+    Unbinder unbinder;
+    Context context;
+    View view;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_guide_locker, null);
+        View view = inflater.inflate(R.layout.fragment_guide_locker, null);
         if (view == null){
             return null;
         }
-        ButterKnife.bind(this, view);
+        context = getContext();
+        unbinder = ButterKnife.bind(this, view);
 
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,5 +77,11 @@ public class GuideFragmentLocker extends Fragment {
             popDialog.setSetFirstColor(true);
         }
         return popDialog.show();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

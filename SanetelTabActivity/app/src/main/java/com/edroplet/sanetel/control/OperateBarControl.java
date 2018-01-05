@@ -1,7 +1,5 @@
 package com.edroplet.sanetel.control;
 
-import android.app.Activity;
-import android.content.ContentProvider;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,18 +10,14 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.edroplet.sanetel.R;
-import com.edroplet.sanetel.activities.guide.FollowMeActivity;
+import com.edroplet.sanetel.activities.guide.GuideActivity;
 import com.edroplet.sanetel.beans.AntennaInfo;
 import com.edroplet.sanetel.beans.LockerInfo;
-import com.edroplet.sanetel.beans.SatelliteInfo;
 import com.edroplet.sanetel.beans.SavingInfo;
-import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.RandomDialog;
-import com.edroplet.sanetel.utils.SystemServices;
 import com.edroplet.sanetel.view.StatusButton;
 
 import java.util.Timer;
-import java.util.TimerTask;
 
 import static com.edroplet.sanetel.beans.SavingInfo.*;
 
@@ -243,9 +237,9 @@ public class OperateBarControl {
                                             antennaStateButton.setButtonState(StatusButton.BUTTON_STATE_SPECIAL);
                                             antennaStateButton.setText(R.string.antenna_state_searching);
                                         }
-                                        Intent intent = new Intent(activity, FollowMeActivity.class);
+                                        Intent intent = new Intent(activity, GuideActivity.class);
                                         Bundle bundle = new Bundle();
-                                        bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_SEARCHING.ordinal());
+                                        bundle.putInt(GuideActivity.POSITION, GuideActivity.GUIDE_PAGES_INDEX.INDEX_SEARCHING.ordinal());
                                         intent.putExtras(bundle);
                                         activity.startActivity(intent);
                                     }
@@ -254,9 +248,9 @@ public class OperateBarControl {
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        Intent intent = new Intent(activity, FollowMeActivity.class);
+                                        Intent intent = new Intent(activity, GuideActivity.class);
                                         Bundle bundle = new Bundle();
-                                        bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_DESTINATION.ordinal());
+                                        bundle.putInt(GuideActivity.POSITION, GuideActivity.GUIDE_PAGES_INDEX.INDEX_DESTINATION.ordinal());
                                         intent.putExtras(bundle);
                                         activity.startActivity(intent);
                                     }
@@ -293,7 +287,7 @@ public class OperateBarControl {
                 public void onClick(View v) {
                     if (null != energyStateButton) {
                         energyStateButton.setButtonState(StatusButton.BUTTON_STATE_ABNORMAL);
-                        energyStateButton.setText(R.string.power_state_charged);
+                        energyStateButton.setText(R.string.energy_state_charged);
                     }
                     SavingInfo.setSavingState(context,SAVING_STATE_CLOSE);
 

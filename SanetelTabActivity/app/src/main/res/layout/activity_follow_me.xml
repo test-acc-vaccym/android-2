@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     style="@style/linear_no_shadow_no_padding"
-    tools:context="com.edroplet.sanetel.activities.guide.FollowMeActivity">
+    tools:context="com.edroplet.sanetel.activities.guide.GuideActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"

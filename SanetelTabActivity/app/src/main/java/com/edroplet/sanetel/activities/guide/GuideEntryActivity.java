@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
 
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.activities.functions.FunctionsActivity;
@@ -21,32 +20,32 @@ public class GuideEntryActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(GuideEntryActivity.this, FollowMeActivity.class);
+        Intent intent = new Intent(GuideEntryActivity.this, GuideActivity.class);
         Bundle bundle = new Bundle();
         switch (view.getId()){
             case R.id.guide_main_button_explode:
-                bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_EXPLODE.ordinal() );
+                bundle.putInt(GuideActivity.POSITION, GuideActivity.GUIDE_PAGES_INDEX.INDEX_EXPLODE.ordinal() );
                 break;
             case R.id.guide_main_button_location:
-                bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_LOCATION.ordinal() );
+                bundle.putInt(GuideActivity.POSITION, GuideActivity.GUIDE_PAGES_INDEX.INDEX_LOCATION.ordinal() );
                 break;
             case R.id.guide_main_button_destination:
-                bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_DESTINATION.ordinal() );
+                bundle.putInt(GuideActivity.POSITION, GuideActivity.GUIDE_PAGES_INDEX.INDEX_DESTINATION.ordinal() );
                 break;
             case R.id.guide_main_button_search_mode:
-                bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_SEARCH_MODE.ordinal() );
+                bundle.putInt(GuideActivity.POSITION, GuideActivity.GUIDE_PAGES_INDEX.INDEX_SEARCH_MODE.ordinal() );
                 break;
             case R.id.guide_main_button_search:
-                bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_SEARCHING.ordinal() );
+                bundle.putInt(GuideActivity.POSITION, GuideActivity.GUIDE_PAGES_INDEX.INDEX_SEARCHING.ordinal() );
                 break;
             case R.id.guide_main_button_lock:
-                bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_LOCKER.ordinal() );
+                bundle.putInt(GuideActivity.POSITION, GuideActivity.GUIDE_PAGES_INDEX.INDEX_LOCKER.ordinal() );
                 break;
             case R.id.guide_main_button_saving:
-                bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_SAVING.ordinal());
+                bundle.putInt(GuideActivity.POSITION, GuideActivity.GUIDE_PAGES_INDEX.INDEX_SAVING.ordinal());
                 break;
             default:
-                bundle.putInt(FollowMeActivity.POSITION, FollowMeActivity.FOLLOWME_PAGES_INDEX.INDEX_EXPLODE.ordinal() );
+                bundle.putInt(GuideActivity.POSITION, GuideActivity.GUIDE_PAGES_INDEX.INDEX_EXPLODE.ordinal() );
                 break;
         }
         intent.putExtras(bundle);

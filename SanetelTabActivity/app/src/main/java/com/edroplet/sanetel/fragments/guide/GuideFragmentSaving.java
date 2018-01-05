@@ -12,16 +12,25 @@ import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.utils.PopDialog;
 import com.edroplet.sanetel.view.custom.CustomButton;
 
+import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by qxs on 2017/9/19.
+ * 节能
  */
 
 public class GuideFragmentSaving extends Fragment {
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
+
+    @BindArray(R.array.energy_state_array)
+    String[] energyState;
+
+    Unbinder unbinder;
+    Context context;
 
     public static GuideFragmentSaving newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                   String secondLine, boolean showThird, String thirdLineStart,
@@ -43,6 +52,7 @@ public class GuideFragmentSaving extends Fragment {
         return fragment;
     }
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,7 +60,7 @@ public class GuideFragmentSaving extends Fragment {
         if (view == null){
             return null;
         }
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
 
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,5 +96,11 @@ public class GuideFragmentSaving extends Fragment {
             }
         }
         return popDialog.show();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

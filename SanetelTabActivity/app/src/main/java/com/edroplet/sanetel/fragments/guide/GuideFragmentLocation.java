@@ -31,11 +31,14 @@ import com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton;
 
 import java.util.Timer;
 
+import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by qxs on 2017/9/19.
+ * 位置输入
  */
 
 public class GuideFragmentLocation extends Fragment {
@@ -45,7 +48,7 @@ public class GuideFragmentLocation extends Fragment {
     private static final String LOCATION_CITY_KEY = "LOCATION_CITY_KEY";
 
     // 定时器
-    Timer timer = new Timer();
+    Timer timer;
 
     private Cities cities;
     private String selectedProvince;
@@ -87,6 +90,11 @@ public class GuideFragmentLocation extends Fragment {
     @BindView(R.id.destination_frameLayout_location)
     FrameLayout layoutLocation;
 
+    @BindArray(R.array.gnss_state_array)
+    String[] gnssState;
+
+    Unbinder unbinder;
+
     public static GuideFragmentLocation newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                     String secondLine, boolean showThird, String thirdLineStart,
                                                     int icon, String buttonText, String thirdLineEnd,
@@ -115,7 +123,7 @@ public class GuideFragmentLocation extends Fragment {
         if (view == null){
             return null;
         }
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
 
         context = getContext();
         initView(view);
@@ -317,5 +325,6 @@ public class GuideFragmentLocation extends Fragment {
             timer = null;
         }
         super.onDestroy();
+        unbinder.unbind();
     }
 }

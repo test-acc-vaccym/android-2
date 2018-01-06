@@ -9,8 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.sanetel.R;
+import com.edroplet.sanetel.beans.LockerInfo;
+import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.utils.PopDialog;
+import com.edroplet.sanetel.view.TimerFragment;
 import com.edroplet.sanetel.view.custom.CustomButton;
+import com.edroplet.sanetel.view.custom.CustomTextView;
 
 import butterknife.BindArray;
 import butterknife.BindView;
@@ -22,29 +26,17 @@ import butterknife.Unbinder;
  * 锁紧操作
  */
 
-public class GuideFragmentLocker extends Fragment {
-    public static GuideFragmentLocker newInstance(boolean showFirst, String firstLine, boolean showSecond,
-                                                  String secondLine, boolean showThird, String thirdLineStart,
-                                                  int icon, String buttonText, String thirdLineEnd) {
-        Bundle args = new Bundle();
-        GuideFragmentLocker fragment = new GuideFragmentLocker();
-        args.putBoolean(PopDialog.SHOW_FIRST,showFirst);
-        args.putString(PopDialog.FIRST, firstLine);
-        args.putBoolean(PopDialog.SHOW_SECOND,showSecond);
-        args.putString(PopDialog.SECOND, secondLine);
-        args.putBoolean(PopDialog.SHOW_THIRD,showThird);
-        args.putString(PopDialog.START, thirdLineStart);
-        args.putInt(PopDialog.ICON, icon);
-        args.putString(PopDialog.BUTTON_TEXT, buttonText);
-        args.putString(PopDialog.END, thirdLineEnd);
-        fragment.setArguments(args);
-        return fragment;
+public class GuideFragmentLocker extends TimerFragment {
+    public static GuideFragmentLocker newInstance() {
+        return new GuideFragmentLocker();
     }
 
-    @BindView(R.id.pop_dialog_third_button)
-    CustomButton thirdButton;
     @BindArray(R.array.locker_state_array)
-    String[] lockerState;
+    String[] lockerStateArray;
+    int lockerState;
+
+    @BindView(R.id.pop_dialog_tv_first)
+    CustomTextView tvFirst;
 
     Unbinder unbinder;
     Context context;
@@ -52,27 +44,23 @@ public class GuideFragmentLocker extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_guide_locker, null);
+    public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_guide_locker, null);
         if (view == null){
             return null;
         }
         context = getContext();
         unbinder = ButterKnife.bind(this, view);
 
-        thirdButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO: 2017/11/11  设置锁紧
-                // send command
-            }
-        });
-
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);
         popDialog.setContext(getContext());
-        Bundle bundle = getArguments();
-        if (bundle != null) {
+        Bundle bundleIntent = getArguments();
+        if (bundleIntent != null) {
+            lockerState = LockerInfo.getLockerState(getContext());
+            Bundle bundle = getBundle(true, String.format(getString(R.string.follow_me_locker_lock_first_line), lockerStateArray[lockerState]) ,
+                    true, getString(R.string.follow_me_locker_lock_second_line),
+                    true, getString(R.string.follow_me_locker_lock_third_start), -1, null, null);
             popDialog.setBundle(bundle);
             popDialog.setSetFirstColor(true);
         }
@@ -83,5 +71,29 @@ public class GuideFragmentLocker extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+    }
+
+    @Override
+    public void doTimer() {
+        super.doTimer();
+        lockerState = LockerInfo.getLockerState(getContext());
+        tvFirst.setText(String.format(getString(R.string.follow_me_locker_lock_first_line), lockerStateArray[lockerState]));
+        view.invalidate();
+    }
+
+    Bundle  getBundle(boolean showFirst, String firstLine, boolean showSecond,
+                      String secondLine, boolean showThird, String thirdLineStart,
+                      int icon, String buttonText, String thirdLineEnd) {
+        Bundle args = new Bundle();
+        args.putBoolean(PopDialog.SHOW_FIRST,showFirst);
+        args.putString(PopDialog.FIRST, firstLine);
+        args.putBoolean(PopDialog.SHOW_SECOND,showSecond);
+        args.putString(PopDialog.SECOND, secondLine);
+        args.putBoolean(PopDialog.SHOW_THIRD,showThird);
+        args.putString(PopDialog.START, thirdLineStart);
+        args.putInt(PopDialog.ICON, icon);
+        args.putString(PopDialog.BUTTON_TEXT, buttonText);
+        args.putString(PopDialog.END, thirdLineEnd);
+        return args;
     }
 }

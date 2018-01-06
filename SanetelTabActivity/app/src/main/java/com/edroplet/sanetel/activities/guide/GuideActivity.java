@@ -61,7 +61,8 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
         INDEX_SAVING
     }
     private MainViewPagerAdapter mSectionsPagerAdapter;
-    private ViewPager mViewPager;
+    @BindView(R.id.follow_me_view_pager)
+    ViewPager mViewPager;
 
     private int startPosition = 0;
     @BindView(R.id.follow_me_explode_fab)
@@ -74,10 +75,8 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
     private  ArrayList<GuideFragmentDestination> guideFragmentDestination = new ArrayList<>();
     private  ArrayList<GuideFragmentSearchModeSetting> guideFragmentSearchModeSetting = new ArrayList<>();
     private  ArrayList<GuideFragmentSearching> guideFragmentSearching = new ArrayList<>();
-    private  ArrayList<GuideFragmentLocker> guideFragmentLocker = new ArrayList<>();
     private  ArrayList<GuideFragmentSaving> guideFragmentSaving = new ArrayList<>();
 
-    private  ArrayList<ArrayList> fragments = new ArrayList<>();
     @Override
     public void onClick(View view) {
         if (mViewPager == null){
@@ -141,7 +140,6 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                     int currentPage = mViewPager.getCurrentItem();
                     Intent intent;
                     switch (currentPage) {
@@ -260,68 +258,19 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
             mSectionsPagerAdapter.addFragment(guideFragmentSearching.get(0));
 
             // 4.3.7.	锁紧操作
-            int lockerState = LockerInfo.getLockerState(this);
-            //switch (lockerState){
-            //case 0:
-            guideFragmentLocker.add(GuideFragmentLocker.newInstance(true, getString(R.string.follow_me_locker_open_first_line),
-                    true, getString(R.string.follow_me_locker_open_second_line),
-                    true, getString(R.string.follow_me_locker_open_third_start), -1, null, null));
-            //break;
-            //case 1:
-            guideFragmentLocker.add(GuideFragmentLocker.newInstance(true, getString(R.string.follow_me_locker_lock_first_line),
-                    true, getString(R.string.follow_me_locker_lock_second_line),
-                    true, getString(R.string.follow_me_locker_lock_third_start), -1, null, null));
-            //break;
-            //}
-            mSectionsPagerAdapter.addFragment(guideFragmentLocker.get(lockerState));
+            mSectionsPagerAdapter.addFragment(GuideFragmentLocker.newInstance());
 
             // 4.3.8.	节能操作
-            int savingState = SavingInfo.getSavingState(this);
-            //switch (savingState){
-            //    case 0:
-            guideFragmentSaving.add(GuideFragmentSaving.newInstance(true, getString(R.string.follow_me_saving_open_first_line),
-                    true, getString(R.string.follow_me_saving_second_line),
-                    true, getString(R.string.follow_me_saving_third_start), 0, null, null, true,getString(R.string.follow_me_saving_third_end)));
-            //       break;
-            //    case 1:
-            guideFragmentSaving.add(GuideFragmentSaving.newInstance(true, getString(R.string.follow_me_saving_close_first_line),
-                    true, getString(R.string.follow_me_saving_second_line),
-                    true, getString(R.string.follow_me_saving_third_start), 0, null, null, true, getString(R.string.follow_me_saving_third_end)));
-            //       break;
-            //}
-
-            mSectionsPagerAdapter.addFragment(guideFragmentSaving.get(savingState));
+            mSectionsPagerAdapter.addFragment(GuideFragmentSaving.newInstance());
         }
 
-        if (!fragments.contains(guideFragmentExplode))
-            fragments.add(guideFragmentExplode);
-        if (!fragments.contains(guideFragmentLocation))
-            fragments.add(guideFragmentLocation);
-        if (!fragments.contains(guideFragmentDestination))
-            fragments.add(guideFragmentDestination);
-        if (!fragments.contains(guideFragmentSearchModeSetting))
-            fragments.add(guideFragmentSearchModeSetting);
-        if (!fragments.contains(guideFragmentSearching))
-            fragments.add(guideFragmentSearching);
-        if (!fragments.contains(guideFragmentLocker))
-            fragments.add( guideFragmentLocker);
-        if (!fragments.contains(guideFragmentSaving))
-            fragments.add( guideFragmentSaving);
-
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.follow_me_view_pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         // 指定ViewPage预加载的页数
         mViewPager.setOffscreenPageLimit(3);
         mViewPager.addOnPageChangeListener(mOnPageChangeListener);
-        // jumpTo(position);
     }
 
-    private void  jumpTo(){
-            FragmentManager fmanager = getSupportFragmentManager();
-            FragmentTransaction ftransaction = fmanager.beginTransaction();
-            ftransaction.replace(R.id.follow_me_view_pager, (Fragment)fragments.get(startPosition).get(0)).commit();
-    }
     private MenuItem menuItem;
 
     final Context context = GuideActivity.this;

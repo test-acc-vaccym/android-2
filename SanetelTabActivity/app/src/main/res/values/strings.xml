@@ -506,7 +506,7 @@
     <string name="follow_me_locker_open_first_line">锁紧机构状态：松开 </string>
     <string name="follow_me_locker_open_second_line">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;锁星后，为防止大风恶劣天气影响信号质量，通过方位锁紧手刹和和俯仰锁紧手刹来加强强度，尽可能保证通信性能。</string>
     <string name="follow_me_locker_open_third_start">无需锁紧，直接点击下一步。</string>
-    <string name="follow_me_locker_lock_first_line">锁紧机构状态：锁紧 </string>
+    <string name="follow_me_locker_lock_first_line">锁紧机构状态：%1$s </string>
     <string name="follow_me_locker_lock_second_line">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;锁星后，为防止大风恶劣天气影响信号质量，通过方位锁紧手刹和和俯仰锁紧手刹来加强强度，尽可能保证电性能。</string>
     <string name="follow_me_locker_lock_third_start">无需锁紧，直接点击下一步。</string>
 
@@ -514,8 +514,7 @@
     <string name="saving_open_button">▲开启</string>
     <string name="saving_close_button">▼关闭</string>
     <string name="follow_me_saving_title">节能操作</string>
-    <string name="follow_me_saving_open_first_line">节能状态：开启</string>
-    <string name="follow_me_saving_close_first_line">节能状态：关闭</string>
+    <string name="follow_me_saving_first_line">节能状态：%1$s</string>
     <string name="follow_me_saving_second_line">&#160;&#160;&#160;&#160;锁星后，锁紧机构锁紧产生的力矩来代替电机的保持力矩，保持方位和俯仰静止。节能70%。</string>
     <string name="follow_me_saving_third_start">点击</string>
     <string name="follow_me_saving_third_end">无需节能，点击完成。</string>

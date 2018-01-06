@@ -112,4 +112,9 @@
         <item>@string/gnss_state_enabled</item>
         <item>@string/gnss_state_disabled</item>
     </string-array>
+    <string-array name="guide_searching_state_button_array">
+        <item>@string/follow_me_searching_third_button_start</item>
+        <item>@string/follow_me_searching_third_button_stop</item>
+        <item>@string/return_string_button</item>
+    </string-array>
 </resources>

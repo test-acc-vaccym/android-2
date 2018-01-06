@@ -1,11 +1,10 @@
 package com.edroplet.sanetel.fragments.guide;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,19 +13,16 @@ import android.widget.LinearLayout;
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.beans.AntennaInfo;
 import com.edroplet.sanetel.beans.Protocol;
-import com.edroplet.sanetel.beans.monitor.MonitorInfo;
-import com.edroplet.sanetel.fragments.functions.FunctionsFragmentMonitor;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.PopDialog;
-import com.edroplet.sanetel.view.BroadcastReceiverFragment;
+import com.edroplet.sanetel.view.TimerFragment;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomTextView;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-import java.util.Timer;
-import java.util.TimerTask;
 
+import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -42,7 +38,7 @@ import static com.edroplet.sanetel.fragments.functions.manual.LocationControlFra
  * ……app中使用》3.5、寻星操作流程
  */
 
-public class GuideFragmentSearching extends Fragment {
+public class GuideFragmentSearching extends TimerFragment {
 
     public static GuideFragmentSearching newInstance(boolean showInfo,boolean showFirst, String firstLine,
                                                      boolean showSecond, String secondLine, boolean showThird,
@@ -73,9 +69,18 @@ public class GuideFragmentSearching extends Fragment {
 
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
+    @BindView(R.id.pop_dialog_tv_first)
+    CustomTextView firstLine;
+    @BindView(R.id.pop_dialog_tv_second)
+    CustomTextView secondLine;
+    @BindView(R.id.pop_dialog_tv_third_start)
+    CustomTextView thirdStart;
+    @BindView(R.id.pop_dialog_tv_third_end)
+    CustomTextView thirdEnd;
 
     @BindView(R.id.follow_me_searching_antenna_info)
     LinearLayout linearLayoutAntennaInfo;
+
 
     @BindView(R.id.antenna_info_tv_prepare_azimuth)
     CustomTextView prepareAzimuth;
@@ -89,6 +94,9 @@ public class GuideFragmentSearching extends Fragment {
     CustomTextView pitch;
     @BindView(R.id.antenna_info_tv_polarization)
     CustomTextView polarization;
+
+    @BindArray(R.array.guide_searching_state_button_array)
+    String[] searchingButtonTextArray;
 
     Context context;
     Unbinder unbinder;
@@ -110,10 +118,8 @@ public class GuideFragmentSearching extends Fragment {
 
     PopDialog popDialog = new PopDialog();
 
-    Timer searchingTimer = new Timer(false);
-    int schedule = 1000;
-
     View view;
+    static int startTime = 0;
 
     @Nullable
     @Override
@@ -147,9 +153,16 @@ public class GuideFragmentSearching extends Fragment {
 
         Bundle bundle = getArguments();
         setPopupDialog(view, bundle);
-        TimerTask monitorTimerTask = new RequestTimerTask();
-        searchingTimer.schedule(monitorTimerTask, 0, schedule);
+
         return popDialog.show();
+    }
+
+    @Override
+    public void doTimer() {
+        super.doTimer();
+        int antennaState = AntennaInfo.getAntennaState(context);
+        startTime += 1;
+        updatePopDialog(antennaState);
     }
 
     private void setPopupDialog(View view, Bundle bundle){
@@ -173,46 +186,55 @@ public class GuideFragmentSearching extends Fragment {
         }
     }
 
-
-    class RequestTimerTask extends TimerTask {
-        public void run() {
-            int antennaState = AntennaInfo.getAntennaState(context);
-            updatePopDialog(antennaState);
-        }
-    }
-
     void updatePopDialog(int state){
 
         switch (state){
             case STATE_READY:
+                linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
+                firstLine.setText(getString(R.string.follow_me_searching_ing_first_line));
+                secondLine.setText(String.format(getString(R.string.follow_me_searching_ing_second_line), startTime));
+                thirdButton.setText(searchingButtonTextArray[1]);
+                thirdStart.setText(getString(R.string.follow_me_searching_ing_third_start));
                 // state = STATE_SEARCHING;
-                Bundle bundle = setPopupDialogBundle(true, true, getString(R.string.follow_me_searching_ing_first_line),
-                        true, String.format(getString(R.string.follow_me_searching_ing_second_line), 0),
-                        true, getString(R.string.follow_me_searching_ing_third_start), 2, null, null);
-                setPopupDialog(view, bundle);
-                popDialog.show();
+
                 // TODO: 2017/11/12 天线通信，获取超时,失败的状态
             case STATE_COMPLETE:
                 // state = STATE_READY;
-                setPopupDialog(view, setPopupDialogBundle(true, true, getString(R.string.follow_me_searching_lock_first_line),
-                        true, String.format(getString(R.string.follow_me_searching_lock_second_line),0) ,
-                        true, getString(R.string.follow_me_searching_lock_third_start), -1, null, null));
-                popDialog.show();
+                linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
+                firstLine.setText(getString(R.string.follow_me_searching_lock_first_line));
+                secondLine.setText(String.format(getString(R.string.follow_me_searching_ing_second_line), startTime));
+                thirdButton.setText("");
+                thirdStart.setText(getString(R.string.follow_me_searching_lock_third_start));
+
             case STATE_SEARCHING:
                 // 2017/11/12  急停命令
                 // 4.13.5	停止寻星指令
                 Protocol.sendMessage(context,Protocol.cmdStopSearch);
+
+                linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
+                firstLine.setText(getString(R.string.follow_me_searching_ing_first_line));
+                secondLine.setText(String.format(getString(R.string.follow_me_searching_ing_second_line), startTime));
+                thirdButton.setText(searchingButtonTextArray[1]);
+                thirdStart.setText(getString(R.string.follow_me_searching_ing_third_start));
+
             case STATE_TIMEOUT:
-                setPopupDialog(view, setPopupDialogBundle(true, true, getString(R.string.follow_me_searching_timeout_first_line),
-                        true, String.format(getString(R.string.follow_me_searching_timeout_second_line),0),
-                        true, getString(R.string.follow_me_searching_timeout_third_start), 3,
-                        null, getString(R.string.follow_me_searching_timeout_third_end)));
-                popDialog.show();
+                linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
+                firstLine.setText(getString(R.string.follow_me_searching_timeout_first_line));
+                secondLine.setText(String.format(getString(R.string.follow_me_searching_timeout_second_line), startTime));
+                thirdButton.setText(searchingButtonTextArray[2]);
+                thirdStart.setText(getString(R.string.follow_me_searching_timeout_third_start));
+                thirdEnd.setText(getString(R.string.follow_me_searching_timeout_third_end));
+
             case STATE_ERROR:
-                setPopupDialog(view, setPopupDialogBundle(true, true, getString(R.string.follow_me_searching_error_first_line),
-                        true, String.format(getString(R.string.follow_me_searching_error_second_line),0),
-                        true, getString(R.string.follow_me_searching_error_third_start), 4, null, null));
-                popDialog.show();
+
+                linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
+                firstLine.setText(getString(R.string.follow_me_searching_error_first_line));
+                firstLine.setTextColor(Color.RED);
+                secondLine.setText(String.format(getString(R.string.follow_me_searching_error_second_line), startTime));
+                thirdButton.setText("");
+                thirdStart.setText(getString(R.string.follow_me_searching_error_third_start));
+                thirdEnd.setText("");
+
         }
 
         view.invalidate();

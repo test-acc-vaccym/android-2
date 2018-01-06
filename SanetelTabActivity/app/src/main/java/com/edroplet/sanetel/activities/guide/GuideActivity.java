@@ -72,10 +72,6 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
 
     private  ArrayList<GuideFragmentExplode> guideFragmentExplode = new ArrayList<>();
     private  ArrayList<GuideFragmentLocation> guideFragmentLocation = new ArrayList<>();
-    private  ArrayList<GuideFragmentDestination> guideFragmentDestination = new ArrayList<>();
-    private  ArrayList<GuideFragmentSearchModeSetting> guideFragmentSearchModeSetting = new ArrayList<>();
-    private  ArrayList<GuideFragmentSearching> guideFragmentSearching = new ArrayList<>();
-    private  ArrayList<GuideFragmentSaving> guideFragmentSaving = new ArrayList<>();
 
     @Override
     public void onClick(View view) {
@@ -231,31 +227,18 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
             mSectionsPagerAdapter.addFragment(guideFragmentLocation.get(bdState));
 
             // 目标星
-            guideFragmentDestination.add(GuideFragmentDestination.newInstance(false, null,
+            mSectionsPagerAdapter.addFragment(GuideFragmentDestination.newInstance(false, null,
                     true, getString(R.string.follow_me_destination_second_line),
                     true, getString(R.string.follow_me_message_click), 0, null, getString(R.string.follow_me_forever)));
-            mSectionsPagerAdapter.addFragment(guideFragmentDestination.get(0));
 
             // 4.3.5.	寻星模式
-            guideFragmentSearchModeSetting.add(GuideFragmentSearchModeSetting.newInstance(true, getString(R.string.follow_me_search_mode_second), false, null,
+            mSectionsPagerAdapter.addFragment(GuideFragmentSearchModeSetting.newInstance(true, getString(R.string.follow_me_search_mode_second), false, null,
                     true, getString(R.string.follow_me_search_mode_third_start),
                     0, null, getString(R.string.follow_me_search_mode_third_end)));
-
-            mSectionsPagerAdapter.addFragment(guideFragmentSearchModeSetting.get(0));
             // 4.3.6.	寻星操作
-            int satelliteStatus = AntennaInfo.getAntennaState(this);
-
-            //switch (satelliteStatus){
-            // 开始寻星
-            // case 0:
-            guideFragmentSearching.add(GuideFragmentSearching.newInstance(false, true, getString(R.string.follow_me_searching_first_line),
+            mSectionsPagerAdapter.addFragment(GuideFragmentSearching.newInstance(false, true, getString(R.string.follow_me_searching_first_line),
                     true, getString(R.string.follow_me_searching_second_line),
                     true, getString(R.string.follow_me_searching_third_start), 1, null, null));
-            //break;
-
-            //break;
-            //}
-            mSectionsPagerAdapter.addFragment(guideFragmentSearching.get(0));
 
             // 4.3.7.	锁紧操作
             mSectionsPagerAdapter.addFragment(GuideFragmentLocker.newInstance());

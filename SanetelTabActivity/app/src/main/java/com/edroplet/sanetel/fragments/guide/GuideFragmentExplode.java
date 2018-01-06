@@ -13,7 +13,6 @@ import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.beans.AntennaInfo;
 import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.utils.PopDialog;
-import com.edroplet.sanetel.view.BroadcastReceiverFragment;
 import com.edroplet.sanetel.view.custom.CustomButton;
 
 import butterknife.BindArray;
@@ -26,7 +25,7 @@ import butterknife.Unbinder;
  * 展开页面，只有一个设置展开
  */
 
-public class GuideFragmentExplode extends BroadcastReceiverFragment {
+public class GuideFragmentExplode extends Fragment {
     private int[] icons = {R.drawable.antenna_exploded, R.drawable.park, R.drawable.searching, R.drawable.recycle, R.drawable.folder};
     public static GuideFragmentExplode newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                    String secondLine, boolean showThird, String thirdLineStart,

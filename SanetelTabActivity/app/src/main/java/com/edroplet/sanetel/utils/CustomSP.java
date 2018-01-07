@@ -10,6 +10,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by qxs on 2017/9/21.
+ * 本地缓存
  */
 
 public class CustomSP {
@@ -18,8 +19,6 @@ public class CustomSP {
     public static final String globalFont = "global.font";
     public static  final String firstReadSatellites = "firstReadSatellites";
     public static  final String firstReadCities = "firstReadCities";
-    public static  final String showWelcome = "showWelcome";
-    public static  final String searchingMode = "searchingMode";
     public static final String WifiSettingsNameKey = "deviceName";
 
     public static final String KEY_SEARCHING_MODE = "KEY_SEARCHING_MODE";
@@ -42,7 +41,7 @@ public class CustomSP {
     public  static String getString(final Context context, String key, @Nullable String defaultVal){
         if (null == context)
             return defaultVal;
-        if (spFileName == null || spFileName.isEmpty()) return defaultVal;
+        if (spFileName.isEmpty()) return defaultVal;
         SharedPreferences sharedPreferences= context.getSharedPreferences(spFileName, MODE_PRIVATE);
         if (null == sharedPreferences) return defaultVal;
         return sharedPreferences.getString(key,defaultVal);
@@ -62,6 +61,14 @@ public class CustomSP {
         SharedPreferences sharedPreferences= context.getSharedPreferences(spFileName, MODE_PRIVATE);
         if (null == sharedPreferences) return defaultVal;
         return sharedPreferences.getInt(key,defaultVal);
+    }
+
+    public static void putChar(Context context, String key, char val){
+        putInt(context,key,val);
+    }
+
+    public static char getChar(final Context context, String key, int defaultVal){
+        return (char) getInt(context,key,defaultVal);
     }
 
     public  static void putBoolean(final Context context, String key, boolean val){
@@ -108,6 +115,7 @@ public class CustomSP {
         editor.putStringSet(key,val);
         editor.apply();
     }
+
     public static void clear(final Context context){
         if (null == context)
             return;

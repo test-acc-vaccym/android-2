@@ -372,7 +372,7 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
             timer = null;
         }
         super.onDestroy();
-        unbinder.unbind();
+        if (unbinder != null)  unbinder.unbind();
     }
 
 }

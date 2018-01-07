@@ -96,11 +96,11 @@ public class SpeedControlFragment extends BroadcastReceiverFragment implements V
     public void processData(Intent intent) {
         super.processData(intent);
         // 3)	一直从监视指令$cmd,sys state, ….*ff<CR><LF>中获取角度和AGC信息并显示。
-        MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(intent.getStringExtra(MonitorInfoData));
-        tvAzimuth.setText(String.valueOf(monitorInfo.getAZ()));
-        tvPitch.setText(String.valueOf(monitorInfo.getEL()));
-        tvPolarization.setText(String.valueOf(monitorInfo.getPOL()));
-        tvAgc.setText(String.valueOf(monitorInfo.getAgc()));
+        MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(context, intent.getStringExtra(MonitorInfoData));
+        tvAzimuth.setText(String.valueOf(monitorInfo.getAZ(context)));
+        tvPitch.setText(String.valueOf(monitorInfo.getEL(context)));
+        tvPolarization.setText(String.valueOf(monitorInfo.getPOL(context)));
+        tvAgc.setText(String.valueOf(monitorInfo.getAgc(context)));
     }
 
     @Nullable
@@ -151,6 +151,6 @@ public class SpeedControlFragment extends BroadcastReceiverFragment implements V
     @Override
     public void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
+        if (unbinder != null)  unbinder.unbind();
     }
 }

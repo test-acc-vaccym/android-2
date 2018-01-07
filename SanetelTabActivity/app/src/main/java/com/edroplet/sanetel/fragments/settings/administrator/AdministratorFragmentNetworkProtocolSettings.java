@@ -129,7 +129,7 @@ public class AdministratorFragmentNetworkProtocolSettings extends BroadcastRecei
     @Override
     public void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
+        if (unbinder != null)  unbinder.unbind();
     }
 
     @Override

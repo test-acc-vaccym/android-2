@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.beans.SatelliteInfo;
+import com.edroplet.sanetel.beans.SavingInfo;
 import com.edroplet.sanetel.beans.monitor.EquipmentInfo;
 import com.edroplet.sanetel.beans.monitor.MonitorInfo;
 import com.edroplet.sanetel.beans.monitor.TemperatureInfo;
@@ -186,39 +187,39 @@ public class FunctionsFragmentStatus extends BroadcastReceiverFragment {
     void processMonitorData(Intent intent){
         String rawData = intent.getStringExtra(MonitorInfo.MonitorInfoData);
         MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(context, rawData);
-        FaultCondition faultCondition = FaultCondition.parseFaultCondition(context, String.valueOf(monitorInfo.getFaultCondition()));
+        FaultCondition faultCondition = new FaultCondition();
         // 通信状况
-        internetStatus.setText(communicateStatus[faultCondition.WifiCommunication]);
-        serialPortStatus.setText(communicateStatus[faultCondition.HandsetCommunication]);
-        bdCommunicateStatus.setText(communicateStatus[faultCondition.GNSSCommunication]);
-        beaconCommunicateStatus.setText(communicateStatus[faultCondition.BeaconCommunication]);
-        clinometerCommunicateStatus.setText(communicateStatus[faultCondition.DipCommunication]);
-        powerCommunicateStatus.setText(communicateStatus[faultCondition.AmplifierCommunication]);
-        lnbCommunicateStatus.setText(communicateStatus[faultCondition.Reserve2Communication]);
+        internetStatus.setText(communicateStatus[faultCondition.getWifiCommunication(context)]);
+        serialPortStatus.setText(communicateStatus[faultCondition.getHandsetCommunication(context)]);
+        bdCommunicateStatus.setText(communicateStatus[faultCondition.getGNSSCommunication(context)]);
+        beaconCommunicateStatus.setText(communicateStatus[faultCondition.getBeaconCommunication(context)]);
+        clinometerCommunicateStatus.setText(communicateStatus[faultCondition.getDipCommunication(context)]);
+        powerCommunicateStatus.setText(communicateStatus[faultCondition.getAmplifierCommunication(context)]);
+        lnbCommunicateStatus.setText(communicateStatus[faultCondition.getReserve2Communication(context)]);
         // 设备状况
-        motorEncoderStatus.setText(faultConditions[faultCondition.AzimuthMotorStatus]);
-        azimuthHolzerSwitchStatus.setText(faultConditions[faultCondition.AzimuthLockHolzerStatus]);
-        azimuthHolzerLockerSwitchStatus.setText(faultConditions[faultCondition.AzimuthLockHolzerStatus]);
-        pitchMotorStatus.setText(faultConditions[faultCondition.PitchHolzerStatus]);
-        pitchHolzerLockerSwitchStatus.setText(faultConditions[faultCondition.PitchLockHolzerStatus]);
-        pitchHolzerSwitchStatus.setText(faultConditions[faultCondition.PitchHolzerStatus]);
-        polarizeMotorStatus.setText(faultConditions[faultCondition.PolMotorStatus]);
-        polarizePotentiometerStatus.setText(faultConditions[faultCondition.PolPotentiometerStatus]);
+        motorEncoderStatus.setText(faultConditions[faultCondition.getAzimuthMotorStatus(context)]);
+        azimuthHolzerSwitchStatus.setText(faultConditions[faultCondition.getAzimuthLockHolzerStatus(context)]);
+        azimuthHolzerLockerSwitchStatus.setText(faultConditions[faultCondition.getAzimuthLockHolzerStatus(context)]);
+        pitchMotorStatus.setText(faultConditions[faultCondition.getPitchHolzerStatus(context)]);
+        pitchHolzerLockerSwitchStatus.setText(faultConditions[faultCondition.getPitchLockHolzerStatus(context)]);
+        pitchHolzerSwitchStatus.setText(faultConditions[faultCondition.getPitchHolzerStatus(context)]);
+        polarizeMotorStatus.setText(faultConditions[faultCondition.getPolMotorStatus(context)]);
+        polarizePotentiometerStatus.setText(faultConditions[faultCondition.getPolPotentiometerStatus(context)]);
 
         // 运行情况
-        RunningInfo runningInfo = RunningInfo.parseRunningInfo(String.valueOf(monitorInfo.getFlag()));
-        runningEnergyState.setText(energyStates[runningInfo.energyInfo]);
-        pitchLockState.setText(lockerStates[runningInfo.pitchLockerInfo]);
-        azimuthLockState.setText(lockerStates[runningInfo.azimuthLockerInfo]);
+        RunningInfo runningInfo = new RunningInfo();
+        runningEnergyState.setText(energyStates[SavingInfo.getSavingState(context)]);
+        pitchLockState.setText(lockerStates[runningInfo.getPitchLockerInfo(context)]);
+        azimuthLockState.setText(lockerStates[runningInfo.getAzimuthLockerInfo(context)]);
 
-        pitchElectricLowLimit.setText(limitStates[runningInfo.pitchElectricLowLimit]);
-        pitchElectricHighLimit.setText(limitStates[runningInfo.pitchElectricHighLimit]);
-        pitchSoftLowLimit.setText(limitStates[runningInfo.pitchSoftLowLimit]);
-        pitchSoftHighLimit.setText(limitStates[runningInfo.pitchSoftHighLimit]);
-        azimuthSoftLowLimit.setText(limitStates[runningInfo.azimuthSoftLowLimit]);
-        azimuthSoftHighLimit.setText(limitStates[runningInfo.azimuthSoftHighLimit]);
-        polarSoftLowLimit.setText(limitStates[runningInfo.polarSoftLowLimit]);
-        polarSoftHighLimit.setText(limitStates[runningInfo.polarSoftHighLimit]);
+        pitchElectricLowLimit.setText(limitStates[runningInfo.getPitchElectricLowLimit(context)]);
+        pitchElectricHighLimit.setText(limitStates[runningInfo.getPitchElectricHighLimit(context)]);
+        pitchSoftLowLimit.setText(limitStates[runningInfo.getPitchSoftLowLimit(context)]);
+        pitchSoftHighLimit.setText(limitStates[runningInfo.getPitchSoftHighLimit(context)]);
+        azimuthSoftLowLimit.setText(limitStates[runningInfo.getAzimuthSoftLowLimit(context)]);
+        azimuthSoftHighLimit.setText(limitStates[runningInfo.getAzimuthSoftHighLimit(context)]);
+        polarSoftLowLimit.setText(limitStates[runningInfo.getPolarSoftLowLimit(context)]);
+        polarSoftHighLimit.setText(limitStates[runningInfo.getPolarSoftHighLimit(context)]);
 
     }
 
@@ -239,6 +240,6 @@ public class FunctionsFragmentStatus extends BroadcastReceiverFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
+        if (unbinder != null)  unbinder.unbind();
     }
 }

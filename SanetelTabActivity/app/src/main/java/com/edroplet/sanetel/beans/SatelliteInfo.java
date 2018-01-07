@@ -4,7 +4,10 @@ package com.edroplet.sanetel.beans;
  * Created by qxs on 2017/9/11.
  */
 
+import android.content.Context;
 import android.support.annotation.Nullable;
+
+import com.edroplet.sanetel.utils.CustomSP;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,8 +40,8 @@ public class SatelliteInfo implements Serializable {
     private static final String JSON_COMMENT = "备注";
 
     // 包含的字段
-    public UUID mId;
-    public String id;             // 序号
+    private UUID mId;
+    private String id;             // 序号
     public String name;           // 卫星名称
     public String polarization;   // 极化
     public String longitude;      // 经度
@@ -47,8 +50,20 @@ public class SatelliteInfo implements Serializable {
     public String carrier;        // 载波
     public String symbolRate;     // 符号率
     public String comment;        // 备注
-    private String agc;           // AGC电平
+    public String agc;           // AGC电平
     public String mode;           // 寻星方式
+
+    private static final String KeyName = "KeyName";
+    private static final String KeyPolarization = "KeyPolarization";
+    private static final String KeyLongitude = "KeyLongitude";
+    private static final String KeyBeacon = "KeyBeacon";
+    private static final String KeyThreshold = "KeyThreshold";
+    private static final String KeyCarrier = "KeyCarrier";
+    private static final String KeySymbolRate = "KeySymbolRate";
+    private static final String KeyComment = "KeyComment";
+    private static final String KeyAgc = "KeyAgc";
+    private static final String KeyMode = "KeyMode";
+
 
     public SatelliteInfo(String id, String name, String polarization, String longitude,
                          @Nullable String beacon, String threshold,
@@ -170,4 +185,189 @@ public class SatelliteInfo implements Serializable {
         return json;
     }
 
+    public static String
+    getName(Context context) {
+        return CustomSP.getString(context, KeyName, "");
+    }
+
+    public static String
+    getBeacon(Context context) {
+        return CustomSP.getString(context, KeyBeacon, "");
+    }
+
+    public static String
+    getCarrier(Context context) {
+        return CustomSP.getString(context, KeyCarrier, "");
+    }
+
+    public static String
+    getAgc(Context context) {
+        return CustomSP.getString(context, KeyAgc, "");
+    }
+
+    public static String
+    getComment(Context context) {
+        return CustomSP.getString(context, KeyComment, "");
+    }
+
+    public static String
+    getLongitude(Context context) {
+        return CustomSP.getString(context, KeyLongitude, "");
+    }
+
+    public static String
+    getMode(Context context) {
+        return CustomSP.getString(context, KeyMode, "");
+    }
+
+    public static String
+    getPolarization(Context context) {
+        return CustomSP.getString(context, KeyPolarization, "");
+    }
+
+    public static String
+    getSymbolRate(Context context) {
+        return CustomSP.getString(context, KeySymbolRate, "");
+    }
+
+    public static String
+    getThreshold(Context context) {
+        return CustomSP.getString(context, KeyThreshold, "");
+    }
+
+    public static void setThreshold(Context context, String threshold) {
+        CustomSP.putString(context, KeyThreshold, threshold);
+    }
+
+    public static void setName(Context context, String name) {
+        CustomSP.putString(context, KeyName, name);
+    }
+
+    public static void setLongitude(Context context, String longitude) {
+        CustomSP.putString(context, KeyLongitude, longitude);
+    }
+
+    public static void setBeacon(Context context, String beacon) {
+        CustomSP.putString(context, KeyBeacon, beacon);
+    }
+
+    public static void setCarrier(Context context, String carrier) {
+        CustomSP.putString(context, KeyCarrier, carrier);
+    }
+
+    public static void setComment(Context context, String comment) {
+        CustomSP.putString(context, KeyComment, comment);
+    }
+
+    public static void setAgc(Context context, String agc) {
+        CustomSP.putString(context, KeyAgc, agc);
+    }
+
+    public static void setPolarization(Context context, String polarization) {
+        CustomSP.putString(context, KeyPolarization, polarization);
+    }
+
+    public static void setMode(Context context, String mode) {
+        CustomSP.putString(context, KeyMode, mode);
+    }
+
+    public static void setSymbolRate(Context context, String symbolRate) {
+        CustomSP.putString(context, KeySymbolRate, symbolRate);
+    }
+
+    public String getPolarization() {
+        return polarization;
+    }
+
+    public String getThreshold() {
+        return threshold;
+    }
+
+    public String getSymbolRate() {
+        return symbolRate;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public String getCarrier() {
+        return carrier;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public String getBeacon() {
+        return beacon;
+    }
+
+    public String getAgc() {
+        return agc;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setThreshold(String threshold) {
+        this.threshold = threshold;
+    }
+
+    public void setSymbolRate(String symbolRate) {
+        this.symbolRate = symbolRate;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
+
+    public void setPolarization(String polarization) {
+        this.polarization = polarization;
+    }
+
+    public void setAgc(String agc) {
+        this.agc = agc;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public void setCarrier(String carrier) {
+        this.carrier = carrier;
+    }
+
+    public void setBeacon(String beacon) {
+        this.beacon = beacon;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public UUID getmId() {
+        return mId;
+    }
+
+    public void setmId(UUID mId) {
+        this.mId = mId;
+    }
 }

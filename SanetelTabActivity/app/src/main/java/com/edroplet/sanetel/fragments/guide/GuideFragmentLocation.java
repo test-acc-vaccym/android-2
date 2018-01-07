@@ -195,8 +195,8 @@ public class GuideFragmentLocation extends Fragment {
                         newCity.setText(locationInfo.getName());
                         newLatitude.setText(locationInfo.getLatitude()+"");
                         newLongitude.setText(locationInfo.getLongitude()+"");
-                        newLatitudeUnit.setSelection(locationInfo.getLatitudeUnit());
-                        newLongitudeUnit.setSelection(locationInfo.getLongitudeUnit());
+                        newLatitudeUnit.setSelection(locationInfo.getLatitudeUnitPosition());
+                        newLongitudeUnit.setSelection(locationInfo.getLongitudeUnitPosition());
                     }
                 }
 
@@ -325,6 +325,6 @@ public class GuideFragmentLocation extends Fragment {
             timer = null;
         }
         super.onDestroy();
-        unbinder.unbind();
+        if (unbinder != null)  unbinder.unbind();
     }
 }

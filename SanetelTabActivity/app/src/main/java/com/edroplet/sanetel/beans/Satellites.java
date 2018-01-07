@@ -82,7 +82,7 @@ public class Satellites {
         // 是否存在， 不存在才添加
         if (!isContainSatelliteInItems(item)) {
             ITEMS.add(item);
-            ITEM_MAP.put(item.mId.toString(), item);
+            ITEM_MAP.put(item.getmId().toString(), item);
 
             // 添加卫星极化map数据
             String satelliteName = item.name;
@@ -146,7 +146,7 @@ public class Satellites {
         int index = -1;
         for (SatelliteInfo satelliteInfo: satellites){
             index++;
-            if (id.equals(satelliteInfo.mId.toString())){
+            if (id.equals(satelliteInfo.getmId().toString())){
                 return index;
             }
         }
@@ -184,7 +184,7 @@ public class Satellites {
 
     public void deleteItem(SatelliteInfo satelliteInfo){
         ITEMS.remove(satelliteInfo);
-        ITEM_MAP.remove(satelliteInfo.mId.toString());
+        ITEM_MAP.remove(satelliteInfo.getmId().toString());
         satellites.remove(satelliteInfo);
 
         // 删除卫星极化map数据
@@ -207,7 +207,7 @@ public class Satellites {
 
     public void deleteItem(int position){
         ITEMS.remove(position);
-        ITEM_MAP.remove(satellites.get(position).mId.toString());
+        ITEM_MAP.remove(satellites.get(position).getmId().toString());
         satellites.remove(position);
     }
 

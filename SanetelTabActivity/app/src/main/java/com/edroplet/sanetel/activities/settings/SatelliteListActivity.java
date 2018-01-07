@@ -283,7 +283,7 @@ public class SatelliteListActivity extends AppCompatActivity {
 
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putString(SatelliteDetailFragment.SATELLITE_ARG_ITEM_ID, satellites.getITEMS().get(position).mId.toString());
+                        arguments.putString(SatelliteDetailFragment.SATELLITE_ARG_ITEM_ID, satellites.getITEMS().get(position).getmId().toString());
                         SatelliteDetailFragment fragment = new SatelliteDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
@@ -292,7 +292,7 @@ public class SatelliteListActivity extends AppCompatActivity {
                     } else {
                         Context context = view.getContext();
                         Intent intent = new Intent(context, SatelliteDetailActivity.class);
-                        intent.putExtra(SatelliteDetailFragment.SATELLITE_ARG_ITEM_ID, satellites.getITEMS().get(position).mId.toString());
+                        intent.putExtra(SatelliteDetailFragment.SATELLITE_ARG_ITEM_ID, satellites.getITEMS().get(position).getmId().toString());
                         startActivityForResult(intent, SatelliteListActivity.SATELLITE_DETAIL_REQUEST_CODE);
                     }
                 }

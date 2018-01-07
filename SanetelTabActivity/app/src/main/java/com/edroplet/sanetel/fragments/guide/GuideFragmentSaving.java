@@ -109,7 +109,7 @@ public class GuideFragmentSaving extends TimerFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
+        if (unbinder != null)  unbinder.unbind();
     }
 
     Bundle getBundle(){

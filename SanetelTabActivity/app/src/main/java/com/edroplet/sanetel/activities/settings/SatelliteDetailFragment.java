@@ -141,8 +141,8 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
         satelliteDetailName.setFocusable(false);
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            satelliteDetailUuid.setText(mItem.mId.toString());
-            satelliteDetailId.setText(mItem.id);
+            satelliteDetailUuid.setText(mItem.getmId().toString());
+            satelliteDetailId.setText(mItem.getId());
             satelliteDetailName.setText(mItem.toString());
             satelliteDetailBeacon.setText(mItem.beacon);
             satelliteDetailLongitude.setText(mItem.longitude);

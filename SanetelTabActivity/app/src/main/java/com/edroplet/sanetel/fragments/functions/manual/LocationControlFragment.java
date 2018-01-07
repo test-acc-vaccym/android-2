@@ -84,11 +84,11 @@ public class LocationControlFragment extends BroadcastReceiverFragment {
     public void processData(Intent intent) {
         super.processData(intent);
         // 3)	一直从监视指令$cmd,sys state, ….*ff<CR><LF>中获取角度和AGC信息并显示。
-        MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(intent.getStringExtra(MonitorInfoData));
-        tvAzimuth.setText(String.valueOf(monitorInfo.getAZ()));
-        tvPitch.setText(String.valueOf(monitorInfo.getEL()));
-        tvPolarization.setText(String.valueOf(monitorInfo.getPOL()));
-        preRv = String.valueOf( monitorInfo.getPrepareRV() );
+        MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(context, intent.getStringExtra(MonitorInfoData));
+        tvAzimuth.setText(String.valueOf(monitorInfo.getAZ(context)));
+        tvPitch.setText(String.valueOf(monitorInfo.getEL(context)));
+        tvPolarization.setText(String.valueOf(monitorInfo.getPOL(context)));
+        preRv = String.valueOf( monitorInfo.getPrepareRV(context) );
     }
 
     @Nullable
@@ -160,6 +160,6 @@ public class LocationControlFragment extends BroadcastReceiverFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
+        if (unbinder != null)  unbinder.unbind();
     }
 }

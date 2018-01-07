@@ -155,6 +155,6 @@ public class AdministratorFragmentAmplifierMonitor extends BroadcastReceiverFrag
     @Override
     public void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
+        if (unbinder != null)  unbinder.unbind();
     }
 }

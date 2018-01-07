@@ -32,7 +32,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-import static com.edroplet.sanetel.beans.monitor.MonitorInfo.KEY_MONITOR_LAST_SATELLITE_AGC;
 import static com.edroplet.sanetel.fragments.guide.GuideFragmentDestination.KEY_DESTINATION_SATELLITE_NAME;
 import static com.edroplet.sanetel.fragments.guide.GuideFragmentDestination.KEY_DESTINATION_SATELLITE_POLARIZATION;
 import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentAmplifierMonitor.KEY_AMPLIFIER_MONITOR;
@@ -182,9 +181,10 @@ public class FunctionsFragmentMonitor extends Fragment {
     }
 
     private void initView(){
+        MonitorInfo monitorInfo = new MonitorInfo();
         // 上次的监视数据
         if (null != dvbSatelliteAgc){
-            dvbSatelliteAgc.setText(CustomSP.getString(context, KEY_MONITOR_LAST_SATELLITE_AGC, getString(R.string.main_monitor_satellite_agc_hint)));
+            dvbSatelliteAgc.setText(String.valueOf(monitorInfo.getAgc(context)));
         }
         Activity activity = getActivity();
         // 在FindViewById中通过getActivity()获取到父控件ID
@@ -214,15 +214,13 @@ public class FunctionsFragmentMonitor extends Fragment {
                 //Toast t = Toast.makeText(context, getString(R.string.main_bottom_nav_monitor)+"：" + rawData, Toast.LENGTH_SHORT);
                 // t.setGravity(Gravity.TOP, 0, 0);//方便录屏，将土司设置在屏幕顶端
                 //t.show();
-                MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(rawData);
+                MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(context, rawData);
                 // 卫星信息
-                String agc = String.valueOf(monitorInfo.getAgc());
-                CustomSP.putString(context, KEY_MONITOR_LAST_SATELLITE_AGC, agc);
-                String carrier = String.valueOf(monitorInfo.getCarrier());
-                CustomSP.putString(context, KEY_MONITOR_LAST_SATELLITE_AGC, agc);
-                String beacon = String.valueOf(monitorInfo.getBeacon());
-                String dvb = String.valueOf(monitorInfo.getDvb());
-                String satelliteLongitude = String.valueOf(monitorInfo.getSatelliteLogitude());
+                String agc = String.valueOf(monitorInfo.getAgc(context));
+                String carrier = String.valueOf(monitorInfo.getCarrier(context));
+                String beacon = String.valueOf(monitorInfo.getBeacon(context));
+                String dvb = String.valueOf(monitorInfo.getDvb(context));
+                String satelliteLongitude = String.valueOf(monitorInfo.getSatelliteLongitude(context));
                 // dvb模式
                 if (Mode_Beacon != searchingMode) {
                     dvbSatelliteAgc.setText(agc);
@@ -236,15 +234,15 @@ public class FunctionsFragmentMonitor extends Fragment {
                     beaconSatelliteLongitude.setText(satelliteLongitude);
                 }
                 // 天线信息
-                String azuimth = String.valueOf(monitorInfo.getAZ());
-                String pitch = String.valueOf(monitorInfo.getEL());
-                String reserve = String.valueOf(monitorInfo.getRV());
-                String polarization = String.valueOf(monitorInfo.getPOL());
+                String azuimth = String.valueOf(monitorInfo.getAZ(context));
+                String pitch = String.valueOf(monitorInfo.getEL(context));
+                String reserve = String.valueOf(monitorInfo.getRV(context));
+                String polarization = String.valueOf(monitorInfo.getPOL(context));
 
-                String preAzuimth = String.valueOf(monitorInfo.getPrepareAZ());
-                String prePitch = String.valueOf(monitorInfo.getPrepareEL());
-                String preReserve = String.valueOf(monitorInfo.getPrepareRV());
-                String prePolarization = String.valueOf(monitorInfo.getPreparePOL());
+                String preAzuimth = String.valueOf(monitorInfo.getPrepareAZ(context));
+                String prePitch = String.valueOf(monitorInfo.getPrepareEL(context));
+                String preReserve = String.valueOf(monitorInfo.getPrepareRV(context));
+                String prePolarization = String.valueOf(monitorInfo.getPreparePOL(context));
                 tvPrepareAzimuth.setText(preAzuimth);
                 tvAzimuth.setText(azuimth);
                 tvPreparePitch.setText(prePitch);
@@ -252,15 +250,15 @@ public class FunctionsFragmentMonitor extends Fragment {
                 tvPolarization.setText(polarization);
                 tvPreparePolarization.setText(prePolarization);
                 // 位置信息
-                String longitude = String.valueOf(monitorInfo.getLongitude());
-                String latitude = String.valueOf(monitorInfo.getLatitude());
+                String longitude = String.valueOf(monitorInfo.getLongitude(context));
+                String latitude = String.valueOf(monitorInfo.getLatitude(context));
                 tvLongitude.setText(longitude);
                 tvLatitude.setText(latitude);
 
                 // 状态栏信息
                 // 已经在那边更新了
                 // GNSS状态, 自动刷新，由status button 接收广播自动更新
-                int gnssState = monitorInfo.getBdState();
+                int gnssState = monitorInfo.getGnssState(context);
                 if (statusButtonGnssState != null) {
                     if (gnssState == LocationInfo.GnssState.NOTLOCATED) {
                         statusButtonGnssState.setText(R.string.gnss_state_disabled);
@@ -385,6 +383,6 @@ public class FunctionsFragmentMonitor extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        if (unbinder != null)  unbinder.unbind();
     }
 }

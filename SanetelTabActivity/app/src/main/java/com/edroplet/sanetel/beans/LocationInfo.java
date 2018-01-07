@@ -24,74 +24,32 @@ import java.util.regex.PatternSyntaxException;
 
 public class LocationInfo implements Parcelable {
     public static final String citiesJsonFile = "city_location.json";
-    private String mId;             // 序号
+    public String mId;             // 序号
     private String province;        // 省份
+    private static final String KeyProvince = "KeyProvince";
     private String name;            // 城市
+    private static final String KeyName = "KeyName";
     private float longitude;        // 经度
+    private static final String KeyLongitude = "KeyLongitude";
     private int longitudeUnitPosition;   // 经度单位
+    private static final String KeyLongitudeUnitPosition = "KeyLongitudeUnitPosition";
     private float latitude;         // 纬度
+    private static final String KeyLatitude = "KeyLatitude";
     private int latitudeUnitPosition;    // 纬度单位
+    private static final String KeyLatitudeUnitPosition = "KeyLatitudeUnitPosition";
 
     public static final String objectKey = "city";
     public static final String positionKey = "position";
 
     // 字段的key
     public static final String JSON_ID_KEY = "id";
-    public static final String JSON_PROVENCE_NAME = "省份";
-    public static final String JSON_CITY_NAME = "地名";
-    public static final String JSON_CITY_LATITUDE = "纬度°";
-    public static final String JSON_CITY_LONGITUDE = "经度°";
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
-    }
+    private static final String JSON_PROVENCE_NAME = "省份";
+    private static final String JSON_CITY_NAME = "地名";
+    private static final String JSON_CITY_LATITUDE = "纬度°";
+    private static final String JSON_CITY_LONGITUDE = "经度°";
 
     public void setmId(String mId) {
         this.mId = mId;
-    }
-
-    public void setLatitude(float latitude) {
-        this.latitude = latitude;
-    }
-
-    public void setLongitude(float longitude) {
-        this.longitude = longitude;
-    }
-
-    public float getLatitude() {
-        return latitude;
-    }
-
-    public int getLatitudeUnit() {
-        return latitudeUnitPosition;
-    }
-
-    public int getLongitudeUnit() {
-        return longitudeUnitPosition;
-    }
-
-    public void setLatitudeUnit(int latitudeUnitPosition) {
-        this.latitudeUnitPosition = latitudeUnitPosition;
-    }
-
-    public void setLongitudeUnit(int longitudeUnitPosition) {
-        this.longitudeUnitPosition = longitudeUnitPosition;
-    }
-
-    public float getLongitude() {
-        return longitude;
-    }
-
-    public String getProvince() {
-        return province;
     }
 
     public String getmId() {
@@ -254,4 +212,98 @@ public class LocationInfo implements Parcelable {
         return latitudeUnitArray;
     }
 
+    public static float
+    getLatitude(Context context) {
+        return CustomSP.getFloat(context, KeyLatitude, 0f);
+    }
+
+    public static float
+    getLongitude(Context context) {
+        return CustomSP.getFloat(context, KeyLongitude, 0f);
+    }
+
+    public static int
+    getLatitudeUnitPosition(Context context) {
+        return CustomSP.getInt(context, KeyLatitudeUnitPosition, 0);
+    }
+
+    public static int
+    getLongitudeUnitPosition(Context context) {
+        return CustomSP.getInt(context, KeyLongitudeUnitPosition, 0);
+    }
+
+    public static void setLatitude(Context context, float latitude) {
+        CustomSP.putFloat(context, KeyLatitude, latitude);
+    }
+
+    public static void setLongitude(Context context, float longitude) {
+        CustomSP.putFloat(context, KeyLongitude, longitude);
+    }
+
+    public static void setName(Context context, String name) {
+        String myName = name == null ? "" : name;
+        CustomSP.putString(context, KeyName, myName);
+    }
+
+    public static String
+    getName(Context context) {
+        return CustomSP.getString(context, KeyName, "");
+    }
+
+    public static void setProvince(Context context, String province) {
+        CustomSP.putString(context, KeyProvince, province);
+    }
+
+    public static String
+    getProvince(Context context) {
+        return CustomSP.getString(context, KeyProvince, "");
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public int getLongitudeUnitPosition() {
+        return longitudeUnitPosition;
+    }
+
+    public int getLatitudeUnitPosition() {
+        return latitudeUnitPosition;
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public void setLatitude(float latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLatitudeUnitPosition(int latitudeUnitPosition) {
+        this.latitudeUnitPosition = latitudeUnitPosition;
+    }
+
+    public void setLongitudeUnitPosition(int longitudeUnitPosition) {
+        this.longitudeUnitPosition = longitudeUnitPosition;
+    }
 }

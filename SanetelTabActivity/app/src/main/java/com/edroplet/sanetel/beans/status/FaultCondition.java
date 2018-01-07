@@ -11,36 +11,39 @@ import com.edroplet.sanetel.utils.CustomSP;
  */
 
 public class FaultCondition {
-    public char ReserveCommunication;  // 预留通信 D0  1 断开 0 正在通信
-    public char HandsetCommunication;  // 手持机  D1  1 断开 0 正在通信
-    public static final String KeyHandsetCommunication = "KeyHandsetCommunication";
-    public char GNSSCommunication;     // GNSS   D2  1 断开 0 正在通信
-    public static final String KeyGNSSCommunication = "KeyGNSSCommunication";
-    public char BeaconCommunication;   // 信标机 D3  1 断开 0 正在通信
-    public static final String KeyBeaconCommunication = "KeyBeaconommunication";
-    public char DipCommunication;      // 倾角   D4  1 断开 0 正在通信
-    public static final String KeyDipCommunication = "KeyDipCommunication";
-    public char WifiCommunication;     //    wifi    D5  1 断开 0 正在通信
-    public static final String KeyWifiCommunication = "KeyWifiCommunication";
-    public char AmplifierCommunication; //    功放   D6  1 断开 0 正在通信
-    public static final String KeyAmplifierCommunication = "KeyAmplifierCommunication";
-    public char Reserve2Communication;   //    预留通信   D7  1 断开 0 正在通信
-    public char AzimuthMotorStatus;     //    方位电机和编码器：D8 1 故障 0 正常
-    public static final String KeyAzimuthMotorStatus = "KeyAzimuthMotorStatus";
-    public char AzimuthHolzerStatus;    //    方位霍尔开关   D9  1故障  0正常
-    public static final String KeyAzimuthHolzerStatus = "KeyAzimuthHolzerStatus";
-    public char AzimuthLockHolzerStatus;  //    方位锁紧霍尔开关 D10 1故障 0 正常
-    public static final String KeyAzimuthLockHolzerStatus = "KeyAzimuthLockHolzerStatus";
-    public char PitchMotorStatus;      //    俯仰电机   D11  1故障 0 正常
-    public static final String KeyPitchMotorStatus = "KeyPitchMotorStatus";
-    public char PitchHolzerStatus;      //    俯仰霍尔开关D12  1故障 0正常
-    public static final String KeyPitchHolzerStatus = "KeyPitchHolzerStatus";
-    public char PitchLockHolzerStatus;  //    俯仰锁紧霍尔开关D13  1故障 0正常
-    public static final String KeyPitchLockHolzerStatus = "KeyPitchLockHolzerStatus";
-    public char PolMotorStatus;        //    极化电机D14  1故障 0正常
-    public static final String KeyPolMotorStatus = "KeyPolMotorStatus";
-    public char PolPotentiometerStatus;  //    极化电位计D15  1故障 0正常
-    public static final String KeyPolPotentiometerStatus = "KeyPolPotentiometerStatus";
+    private char ReserveCommunication;  // 预留通信 D0  1 断开 0 正在通信
+    private static final String KeyReserveCommunication = "KeyReserveCommunication";
+
+    private char HandsetCommunication;  // 手持机  D1  1 断开 0 正在通信
+    private static final String KeyHandsetCommunication = "KeyHandsetCommunication";
+    private char GNSSCommunication;     // GNSS   D2  1 断开 0 正在通信
+    private static final String KeyGNSSCommunication = "KeyGNSSCommunication";
+    private char BeaconCommunication;   // 信标机 D3  1 断开 0 正在通信
+    private static final String KeyBeaconCommunication = "KeyBeaconommunication";
+    private char DipCommunication;      // 倾角   D4  1 断开 0 正在通信
+    private static final String KeyDipCommunication = "KeyDipCommunication";
+    private char WifiCommunication;     //    wifi    D5  1 断开 0 正在通信
+    private static final String KeyWifiCommunication = "KeyWifiCommunication";
+    private char AmplifierCommunication; //    功放   D6  1 断开 0 正在通信
+    private static final String KeyAmplifierCommunication = "KeyAmplifierCommunication";
+    private char Reserve2Communication;   //    预留通信   D7  1 断开 0 正在通信
+    private static final String KeyReserve2Communication = "KeyReserve2Communication";
+    private char AzimuthMotorStatus;     //    方位电机和编码器：D8 1 故障 0 正常
+    private static final String KeyAzimuthMotorStatus = "KeyAzimuthMotorStatus";
+    private char AzimuthHolzerStatus;    //    方位霍尔开关   D9  1故障  0正常
+    private static final String KeyAzimuthHolzerStatus = "KeyAzimuthHolzerStatus";
+    private char AzimuthLockHolzerStatus;  //    方位锁紧霍尔开关 D10 1故障 0 正常
+    private static final String KeyAzimuthLockHolzerStatus = "KeyAzimuthLockHolzerStatus";
+    private char PitchMotorStatus;      //    俯仰电机   D11  1故障 0 正常
+    private static final String KeyPitchMotorStatus = "KeyPitchMotorStatus";
+    private char PitchHolzerStatus;      //    俯仰霍尔开关D12  1故障 0正常
+    private static final String KeyPitchHolzerStatus = "KeyPitchHolzerStatus";
+    private char PitchLockHolzerStatus;  //    俯仰锁紧霍尔开关D13  1故障 0正常
+    private static final String KeyPitchLockHolzerStatus = "KeyPitchLockHolzerStatus";
+    private char PolMotorStatus;        //    极化电机D14  1故障 0正常
+    private static final String KeyPolMotorStatus = "KeyPolMotorStatus";
+    private char PolPotentiometerStatus;  //    极化电位计D15  1故障 0正常
+    private static final String KeyPolPotentiometerStatus = "KeyPolPotentiometerStatus";
     //    D16~ D31:保留
 
     public static FaultCondition parseFaultCondition(Context context, String faultConditionString){
@@ -80,11 +83,11 @@ public class FaultCondition {
         return faultCondition;
     }
 
-    public static void setWifiCommunication(Context ctx, int wifiCommunication) {
+    public void setWifiCommunication(Context ctx, int wifiCommunication) {
         CustomSP.putInt(ctx, KeyWifiCommunication, wifiCommunication);
     }
 
-    public static char getWifiCommunication(Context ctx) {
+    public char getWifiCommunication(Context ctx) {
         return (char)CustomSP.getInt(ctx, KeyWifiCommunication,1);
     }
 
@@ -98,5 +101,99 @@ public class FaultCondition {
 
     public char getAzimuthMotorStatus(Context context){
         return (char)CustomSP.getInt(context,KeyAzimuthMotorStatus,0);
+    }
+
+    public char
+    getHandsetCommunication(Context context) {
+        char defaultVal = 0;
+        HandsetCommunication = CustomSP.getChar(context, KeyHandsetCommunication, defaultVal);
+        return HandsetCommunication;
+    }
+
+    public char
+    getBeaconCommunication(Context context) {
+        char defaultVal = 0;
+        BeaconCommunication = CustomSP.getChar(context, KeyBeaconCommunication, defaultVal);
+        return BeaconCommunication;
+    }
+
+    public char
+    getDipCommunication(Context context) {
+        char defaultVal = 0;
+        DipCommunication = CustomSP.getChar(context, KeyDipCommunication, defaultVal);
+        return DipCommunication;
+    }
+
+    public char
+    getAzimuthLockHolzerStatus(Context context) {
+        char defaultVal = 0;
+        AzimuthLockHolzerStatus = CustomSP.getChar(context, KeyAzimuthLockHolzerStatus, defaultVal);
+        return AzimuthLockHolzerStatus;
+    }
+
+    public char
+    getGNSSCommunication(Context context) {
+        char defaultVal = 0;
+        GNSSCommunication = CustomSP.getChar(context, KeyGNSSCommunication, defaultVal);
+        return GNSSCommunication;
+    }
+
+    public char
+    getPitchHolzerStatus(Context context) {
+        char defaultVal = 0;
+        PitchHolzerStatus = CustomSP.getChar(context, KeyPitchHolzerStatus, defaultVal);
+        return PitchHolzerStatus;
+    }
+
+    public char
+    getPitchLockHolzerStatus(Context context) {
+        char defaultVal = 0;
+        PitchLockHolzerStatus = CustomSP.getChar(context, KeyPitchLockHolzerStatus, defaultVal);
+        return PitchLockHolzerStatus;
+    }
+
+    public char
+    getPitchMotorStatus(Context context) {
+        char defaultVal = 0;
+        PitchMotorStatus = CustomSP.getChar(context, KeyPitchMotorStatus, defaultVal);
+        return PitchMotorStatus;
+    }
+
+    public char
+    getPolMotorStatus(Context context) {
+        char defaultVal = 0;
+        PolMotorStatus = CustomSP.getChar(context, KeyPolMotorStatus, defaultVal);
+        return PolMotorStatus;
+    }
+
+    public char
+    getPolPotentiometerStatus(Context context) {
+        char defaultVal = 0;
+        PolPotentiometerStatus = CustomSP.getChar(context, KeyPolPotentiometerStatus, defaultVal);
+        return PolPotentiometerStatus;
+    }
+
+    public void setWifiCommunication(Context context, char wifiCommunication) {
+        CustomSP.putChar(context, KeyWifiCommunication, wifiCommunication);
+        WifiCommunication = wifiCommunication;
+    }
+
+    public void setAmplifierCommunication(Context context, char amplifierCommunication) {
+        CustomSP.putChar(context, KeyAmplifierCommunication, amplifierCommunication);
+        AmplifierCommunication = amplifierCommunication;
+    }
+
+    public char
+    getReserveCommunication(Context context) {
+        char defaultVal = 0;
+        ReserveCommunication = CustomSP.getChar(context, KeyReserveCommunication, defaultVal);
+        return ReserveCommunication;
+    }
+
+    public char
+    getReserve2Communication(Context context) {
+        char defaultVal = 0;
+        Reserve2Communication = CustomSP.getChar(context, KeyReserve2Communication, defaultVal);
+        return Reserve2Communication;
     }
 }

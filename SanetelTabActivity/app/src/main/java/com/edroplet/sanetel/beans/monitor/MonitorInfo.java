@@ -3,7 +3,11 @@ package com.edroplet.sanetel.beans.monitor;
 import android.content.Context;
 import android.content.Intent;
 
+import com.edroplet.sanetel.beans.AntennaInfo;
+import com.edroplet.sanetel.beans.LocationInfo;
+import com.edroplet.sanetel.beans.LockerInfo;
 import com.edroplet.sanetel.beans.Protocol;
+import com.edroplet.sanetel.beans.SatelliteInfo;
 import com.edroplet.sanetel.beans.status.FaultCondition;
 import com.edroplet.sanetel.beans.status.RunningInfo;
 import com.edroplet.sanetel.services.CommunicateWithDeviceService;
@@ -24,32 +28,32 @@ public class MonitorInfo implements Serializable {
     public static final String MonitorInfoData="com.edroplet.broadcast.MonitorInfoData";
 
 
-    public static final String KEY_MONITOR_LAST_ANTENNA_PRE_AZ = "KEY_MONITOR_LAST_ANTENNA_PRE_AZ";
-    public static final String KEY_MONITOR_LAST_ANTENNA_PRE_EL = "KEY_MONITOR_LAST_ANTENNA_PRE_EL";
-    public static final String KEY_MONITOR_LAST_ANTENNA_PRE_RV = "KEY_MONITOR_LAST_ANTENNA_PRE_RV";
-    public static final String KEY_MONITOR_LAST_ANTENNA_PRE_POL = "KEY_MONITOR_LAST_ANTENNA_PRE_POL";
-    public static final String KEY_MONITOR_LAST_ANTENNA_AZ = "KEY_MONITOR_LAST_ANTENNA_AZ";
-    public static final String KEY_MONITOR_LAST_ANTENNA_EL = "KEY_MONITOR_LAST_ANTENNA_EL";
-    public static final String KEY_MONITOR_LAST_ANTENNA_RV = "KEY_MONITOR_LAST_ANTENNA_RV";
-    public static final String KEY_MONITOR_LAST_ANTENNA_POL = "KEY_MONITOR_LAST_ANTENNA_POL";
+    private static final String KeyPrepareAZ = "KeyPrepareAZ";
+    private static final String KeyPrepareEL = "KeyPrepareEL";
+    private static final String KeyPrepareRV = "KeyPrepareRV";
+    private static final String KeyPreparePOL = "KeyPreparePOL";
+    private static final String KeyAZ = "KeyAZ";
+    private static final String KeyEL = "KeyEL";
+    private static final String KeyRV = "KeyRV";
+    private static final String KeyPOL = "KeyPOL";
 
-    public static final String KEY_MONITOR_LAST_TRACE_STATE = "KEY_MONITOR_LAST_TRACE_STATE";
-    public static final String KEY_MONITOR_LAST_GNSS_STATE = "KEY_MONITOR_LAST_GNSS_STATE";
+    private static final String KeyTraceState = "KeyTraceState";
+    private static final String KeyGnssState = "KeyGnssState";
 
-    public static final String KEY_MONITOR_LAST_LONGITUDE = "KEY_MONITOR_LAST_LONGITUDE";
-    public static final String KEY_MONITOR_LAST_LATITUDE = "KEY_MONITOR_LAST_LATITUDE";
-    public static final String KEY_MONITOR_LAST_HEIGHT = "KEY_MONITOR_LAST_HEIGHT";
+    private static final String KeyLongitude = "KeyLongitude";
+    private static final String KeyLatitude = "KeyLatitude";
+    private static final String KeyHeight = "KeyHeight";
 
-    public static final String KEY_MONITOR_LAST_SATELLITE_TRACE_MODE = "KEY_MONITOR_LAST_SATELLITE_TRACE_MODE";
-    public static final String KEY_MONITOR_LAST_SATELLITE_AGC = "KEY_MONITOR_LAST_AGC";
-    public static final String KEY_MONITOR_LAST_SATELLITE_LONGITUDE = "KEY_MONITOR_LAST_SATELLITE_LONGITUDE";
-    public static final String KEY_MONITOR_LAST_SATELLITE_POLARIZATION_MODE = "KEY_MONITOR_LAST_SATELLITE_POLARIZATION_MODE";
-    public static final String KEY_MONITOR_LAST_SATELLITE_THRESHOLD = "KEY_MONITOR_LAST_SATELLITE_THRESHOLD";
-    public static final String KEY_MONITOR_LAST_SATELLITE_BEACON = "KEY_MONITOR_LAST_SATELLITE_BEACON";
-    public static final String KEY_MONITOR_LAST_SATELLITE_CARRIER = "KEY_MONITOR_LAST_SATELLITE_CARRIER";
-    public static final String KEY_MONITOR_LAST_SATELLITE_DVB = "KEY_MONITOR_LAST_SATELLITE_DVB";
-    public static final String KEY_MONITOR_LAST_FAULT_CONDITION = "KEY_MONITOR_LAST_FAULT_CONDITION";
-    public static final String KEY_MONITOR_LAST_FLAG = "KEY_MONITOR_LAST_FLAG";
+    private static final String KeyTraceMode = "KeyTraceMode";
+    private static final String KeyAgc = "KEY_MONITOR_LAST_AGC";
+    private static final String KeySatelliteLongitude = "KeySatelliteLongitude";
+    private static final String KeyPlMode = "KeyPlMode";
+    private static final String KeyThreshold = "KeyThreshold";
+    private static final String KeyBeacon = "KeyBeacon";
+    private static final String KeyCarrier = "KeyCarrier";
+    private static final String KeyDvb = "KeyDvb";
+    private static final String KeyFaultCondition = "KeyFaultCondition";
+    private static final String KeyFlag = "KeyFlag";
 
 
     private float prepareAZ; // 预置方位角  “AZ”是方位角的英文azimuth缩写;
@@ -96,149 +100,227 @@ public class MonitorInfo implements Serializable {
                 monitorInfo.dvb, monitorInfo.faultCondition, monitorInfo.flag);
 
         monitorInfo.prepareAZ = (Float) o[0];
-        CustomSP.putString(context,KEY_MONITOR_LAST_ANTENNA_PRE_AZ, String.valueOf(monitorInfo.prepareAZ));
+        CustomSP.putString(context,KeyPrepareAZ, String.valueOf(monitorInfo.prepareAZ));
         monitorInfo.prepareEL = (Float) o[1];
-        CustomSP.putString(context,KEY_MONITOR_LAST_ANTENNA_PRE_EL, String.valueOf(monitorInfo.prepareEL));
+        CustomSP.putString(context,KeyPrepareEL, String.valueOf(monitorInfo.prepareEL));
         monitorInfo.prepareRV = (Float) o[2];
-        CustomSP.putString(context,KEY_MONITOR_LAST_ANTENNA_PRE_RV, String.valueOf(monitorInfo.prepareRV));
+        CustomSP.putString(context,KeyPrepareRV, String.valueOf(monitorInfo.prepareRV));
         monitorInfo.preparePOL = (Float) o[3];
-        CustomSP.putString(context,KEY_MONITOR_LAST_ANTENNA_PRE_POL, String.valueOf(monitorInfo.preparePOL));
+        CustomSP.putString(context,KeyPreparePOL, String.valueOf(monitorInfo.preparePOL));
 
         monitorInfo.AZ = (Float) o[4];
-        CustomSP.putString(context,KEY_MONITOR_LAST_ANTENNA_AZ, String.valueOf(monitorInfo.AZ));
+        CustomSP.putString(context,KeyAZ, String.valueOf(monitorInfo.AZ));
+        AntennaInfo antennaInfo = new AntennaInfo();
+        antennaInfo.setAzimuth(context, monitorInfo.AZ);
         monitorInfo.EL = (Float) o[5];
-        CustomSP.putString(context,KEY_MONITOR_LAST_ANTENNA_EL, String.valueOf(monitorInfo.EL));
+        CustomSP.putString(context,KeyEL, String.valueOf(monitorInfo.EL));
+        antennaInfo.setPitch(context, monitorInfo.EL);
         monitorInfo.RV = (Float) o[6];
-        CustomSP.putString(context,KEY_MONITOR_LAST_ANTENNA_RV, String.valueOf(monitorInfo.RV));
+        CustomSP.putString(context,KeyRV, String.valueOf(monitorInfo.RV));
         monitorInfo.POL = (Float) o[7];
-        CustomSP.putString(context,KEY_MONITOR_LAST_ANTENNA_POL, String.valueOf(monitorInfo.POL));
+        CustomSP.putString(context,KeyPOL, String.valueOf(monitorInfo.POL));
+        antennaInfo.setPolarization(context,monitorInfo.POL);
 
         monitorInfo.traceState = (Integer) o[8];
-        CustomSP.putInt(context,KEY_MONITOR_LAST_TRACE_STATE, monitorInfo.traceState);
+        CustomSP.putInt(context,KeyTraceState, monitorInfo.traceState);
+        AntennaInfo.setAntennaState(context,monitorInfo.traceState);
         monitorInfo.latitude = (Float) o[9];
-        CustomSP.putString(context,KEY_MONITOR_LAST_LATITUDE, String.valueOf(monitorInfo.latitude));
+        CustomSP.putString(context,KeyLatitude, String.valueOf(monitorInfo.latitude));
+        LocationInfo.setLatitude(context,monitorInfo.latitude);
         monitorInfo.longitude = (Float) o[10];
-        CustomSP.putString(context,KEY_MONITOR_LAST_LONGITUDE, String.valueOf(monitorInfo.longitude));
+        CustomSP.putString(context,KeyLongitude, String.valueOf(monitorInfo.longitude));
+        LocationInfo.setLongitude(context,monitorInfo.longitude);
         monitorInfo.height = (Float) o[11];
-        CustomSP.putString(context,KEY_MONITOR_LAST_HEIGHT, String.valueOf(monitorInfo.height));
+        CustomSP.putString(context,KeyHeight, String.valueOf(monitorInfo.height));
 
         monitorInfo.gnssState = (Integer) o[12];
-        CustomSP.putInt(context,KEY_MONITOR_LAST_GNSS_STATE, monitorInfo.gnssState);
+        CustomSP.putInt(context,KeyGnssState, monitorInfo.gnssState);
+        LocationInfo.setGnssState(context, monitorInfo.gnssState);
         monitorInfo.traceMode = (Integer) o[13];
-        CustomSP.putInt(context,KEY_MONITOR_LAST_SATELLITE_TRACE_MODE, monitorInfo.traceMode);
+        CustomSP.putInt(context,KeyTraceMode, monitorInfo.traceMode);
         monitorInfo.satelliteLongitude = (Float) o[14];
-        CustomSP.putString(context,KEY_MONITOR_LAST_SATELLITE_LONGITUDE, String.valueOf(monitorInfo.satelliteLongitude));
+        CustomSP.putString(context,KeySatelliteLongitude, String.valueOf(monitorInfo.satelliteLongitude));
         monitorInfo.plMode = (Integer) o[15];
-        CustomSP.putInt(context,KEY_MONITOR_LAST_SATELLITE_POLARIZATION_MODE, monitorInfo.plMode);
+        CustomSP.putInt(context,KeyPlMode, monitorInfo.plMode);
 
         monitorInfo.threshold = (Float) o[16];
-        CustomSP.putString(context,KEY_MONITOR_LAST_SATELLITE_THRESHOLD, String.valueOf(monitorInfo.threshold));
+        CustomSP.putString(context,KeyThreshold, String.valueOf(monitorInfo.threshold));
+        SatelliteInfo.setThreshold(context,String.valueOf(monitorInfo.threshold));
         monitorInfo.agc = (Float) o[17];
-        CustomSP.putString(context,KEY_MONITOR_LAST_SATELLITE_AGC, String.valueOf(monitorInfo.agc));
+        CustomSP.putString(context,KeyAgc, String.valueOf(monitorInfo.agc));
+        SatelliteInfo.setAgc(context, String.valueOf(monitorInfo.agc));
         monitorInfo.beacon = (Float) o[18];
-        CustomSP.putString(context,KEY_MONITOR_LAST_SATELLITE_BEACON, String.valueOf(monitorInfo.beacon));
+        CustomSP.putString(context,KeyBeacon, String.valueOf(monitorInfo.beacon));
+        SatelliteInfo.setBeacon(context,String.valueOf(monitorInfo.beacon));
         monitorInfo.carrier = (Float) o[19];
-        CustomSP.putString(context,KEY_MONITOR_LAST_SATELLITE_CARRIER, String.valueOf(monitorInfo.carrier));
+        CustomSP.putString(context,KeyCarrier, String.valueOf(monitorInfo.carrier));
+        SatelliteInfo.setCarrier(context,String.valueOf(monitorInfo.carrier));
         monitorInfo.dvb = (Float) o[20];
-        CustomSP.putString(context,KEY_MONITOR_LAST_SATELLITE_DVB, String.valueOf(monitorInfo.dvb));
+        CustomSP.putString(context,KeyDvb, String.valueOf(monitorInfo.dvb));
+        SatelliteInfo.setSymbolRate(context, String.valueOf(monitorInfo.dvb));
 
         monitorInfo.faultCondition = (Integer) o[21];
         FaultCondition.parseFaultCondition(context, String.valueOf(monitorInfo.faultCondition));
         monitorInfo.flag = (Integer) o[22];
-        RunningInfo.parseRunningInfo(String.valueOf(monitorInfo.flag));
+        RunningInfo.parseRunningInfo(context, String.valueOf(monitorInfo.flag));
 
         return monitorInfo;
     }
 
-    public float getAgc() {
-        return agc;
-    }
-
-    public float getAZ() {
-        return AZ;
-    }
-
-    public float getBeacon() {
-        return beacon;
-    }
-
-    public float getCarrier() {
-        return carrier;
-    }
-
-    public float getDvb() {
-        return dvb;
-    }
-
-    public float getEL() {
-        return EL;
-    }
-
-    public float getHeight() {
-        return height;
-    }
-
-    public float getLatitude() {
-        return latitude;
-    }
-
-    public float getLongitude() {
-        return longitude;
-    }
-
-    public float getPOL() {
-        return POL;
-    }
-
-    public float getPrepareAZ() {
-        return prepareAZ;
-    }
-
-    public float getPrepareEL() {
-        return prepareEL;
-    }
-
-    public float getPreparePOL() {
-        return preparePOL;
-    }
-
-    public float getPrepareRV() {
-        return prepareRV;
-    }
-
-    public float getRV() {
-        return RV;
-    }
-
-    public float getSatelliteLogitude() {
-        return satelliteLongitude;
-    }
-
-    public float getThreshold() {
-        return threshold;
-    }
-
-    public int getBdState() {
-        return gnssState;
-    }
-    // 故障状态
-    public int getFaultCondition() {
-        return faultCondition;
-    }
-
-    public int getFlag() {
-        return flag;
-    }
-
-    public int getPlMode() {
-        return plMode;
-    }
-
-    public int getTraceMode() {
+    public int
+    getTraceMode(Context context) {
+        int defaultVal = 0;
+        traceMode = CustomSP.getInt(context, KeyTraceMode, defaultVal);
         return traceMode;
     }
 
-    public int getTraceState() {
+    public int
+    getPlMode(Context context) {
+        int defaultVal = 0;
+        plMode = CustomSP.getInt(context, KeyPlMode, defaultVal);
+        return plMode;
+    }
+
+    public int
+    getFlag(Context context) {
+        int defaultVal = 0;
+        flag = CustomSP.getInt(context, KeyFlag, defaultVal);
+        return flag;
+    }
+
+    public int
+    getFaultCondition(Context context) {
+        int defaultVal = 0;
+        faultCondition = CustomSP.getInt(context, KeyFaultCondition, defaultVal);
+        return faultCondition;
+    }
+
+    public float
+    getThreshold(Context context) {
+        float defaultVal = 0;
+        threshold = CustomSP.getFloat(context, KeyThreshold, defaultVal);
+        return threshold;
+    }
+
+    public float
+    getRV(Context context) {
+        float defaultVal = 0;
+        RV = CustomSP.getFloat(context, KeyRV, defaultVal);
+        return RV;
+    }
+
+    public float
+    getPrepareRV(Context context) {
+        float defaultVal = 0;
+        prepareRV = CustomSP.getFloat(context, KeyPrepareRV, defaultVal);
+        return prepareRV;
+    }
+
+    public float
+    getPreparePOL(Context context) {
+        float defaultVal = 0;
+        preparePOL = CustomSP.getFloat(context, KeyPreparePOL, defaultVal);
+        return preparePOL;
+    }
+
+    public float
+    getPrepareEL(Context context) {
+        float defaultVal = 0;
+        prepareEL = CustomSP.getFloat(context, KeyPrepareEL, defaultVal);
+        return prepareEL;
+    }
+
+    public float
+    getPrepareAZ(Context context) {
+        float defaultVal = 0;
+        prepareAZ = CustomSP.getFloat(context, KeyPrepareAZ, defaultVal);
+        return prepareAZ;
+    }
+
+    public int
+    getTraceState(Context context) {
+        int defaultVal = 0;
+        traceState = AntennaInfo.getAntennaState(context);
         return traceState;
     }
+
+    public float
+    getPOL(Context context) {
+        POL = new AntennaInfo().getPolarization(context);
+        return POL;
+    }
+
+    public float
+    getLongitude(Context context) {
+        float defaultVal = 0;
+        longitude = CustomSP.getFloat(context, KeyLongitude, defaultVal);
+        return longitude;
+    }
+
+    public float
+    getLatitude(Context context) {
+        float defaultVal = 0;
+        latitude = CustomSP.getFloat(context, KeyLatitude, defaultVal);
+        return latitude;
+    }
+
+    public float
+    getSatelliteLongitude(Context context) {
+        float defaultVal = 0;
+        satelliteLongitude = CustomSP.getFloat(context, KeySatelliteLongitude, defaultVal);
+        return satelliteLongitude;
+    }
+
+    public float
+    getHeight(Context context) {
+        float defaultVal = 0;
+        height = CustomSP.getFloat(context, KeyHeight, defaultVal);
+        return height;
+    }
+
+    public float
+    getEL(Context context) {
+        EL = new AntennaInfo().getPitch(context);
+        return EL;
+    }
+
+    public float
+    getDvb(Context context) {
+        float defaultVal = 0;
+        dvb = CustomSP.getFloat(context, KeyDvb, defaultVal);
+        return dvb;
+    }
+
+    public float
+    getCarrier(Context context) {
+        float defaultVal = 0;
+        carrier = CustomSP.getFloat(context, KeyCarrier, defaultVal);
+        return carrier;
+    }
+
+    public float
+    getBeacon(Context context) {
+        float defaultVal = 0;
+        beacon = CustomSP.getFloat(context, KeyBeacon, defaultVal);
+        return beacon;
+    }
+
+    public float
+    getAZ(Context context) {
+        AZ = new AntennaInfo().getAzimuth(context);
+        return AZ;
+    }
+
+    public float
+    getAgc(Context context) {
+        agc = new AntennaInfo().getAgcLevel(context);
+        return agc;
+    }
+
+    public int
+    getGnssState(Context context) {
+        gnssState = LocationInfo.getGnssState(context);
+        return gnssState;
+    }
+
 }

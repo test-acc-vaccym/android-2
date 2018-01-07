@@ -55,15 +55,13 @@ public class GuideFragmentLocker extends TimerFragment {
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);
         popDialog.setContext(getContext());
-        Bundle bundleIntent = getArguments();
-        if (bundleIntent != null) {
-            lockerState = LockerInfo.getLockerState(getContext());
-            Bundle bundle = getBundle(true, String.format(getString(R.string.follow_me_locker_lock_first_line), lockerStateArray[lockerState]) ,
-                    true, getString(R.string.follow_me_locker_lock_second_line),
-                    true, getString(R.string.follow_me_locker_lock_third_start), -1, null, null);
-            popDialog.setBundle(bundle);
-            popDialog.setSetFirstColor(true);
-        }
+        lockerState = LockerInfo.getLockerState(getContext());
+        Bundle bundle = getBundle(true, String.format(getString(R.string.follow_me_locker_lock_first_line), lockerStateArray[lockerState]) ,
+                true, getString(R.string.follow_me_locker_lock_second_line),
+                true, getString(R.string.follow_me_locker_lock_third_start), -1, null, null);
+        popDialog.setBundle(bundle);
+        popDialog.setSetFirstColor(true);
+
         return popDialog.show();
     }
 

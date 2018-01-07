@@ -180,10 +180,10 @@ public class StatusBarControl {
             // 监视信息，包含状态信息
             if (MonitorInfo.MonitorInfoAction.equals(action)){
                 String rawData =intent.getStringExtra(MonitorInfo.MonitorInfoData);
-                MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(rawData);
+                MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(context, rawData);
                 // 获取状态，更新UI
                 // 连接状态, 获取wifi连接状态？跟基站通信状态？
-                FaultCondition faultCondition = FaultCondition.parseFaultCondition(String.valueOf(monitorInfo.getFaultCondition()));
+                FaultCondition faultCondition = FaultCondition.parseFaultCondition(context, String.valueOf(monitorInfo.getFaultCondition()));
                 int communicateState = faultCondition.WifiCommunication;
                 if (0 == communicateState){
                     commStateButton.setText(R.string.communication_state_connected);
@@ -206,9 +206,9 @@ public class StatusBarControl {
                     }
                 }
                 // bd状态
-                int bdState = monitorInfo.getBdState();
+                int gnssState = monitorInfo.getBdState();
                 if (null != bdStateButton){
-                    if (bdState == LocationInfo.GnssState.LOCATED){
+                    if (gnssState == LocationInfo.GnssState.LOCATED){
                         bdStateButton.setText(R.string.gnss_state_enabled);
                         bdStateButton.setButtonState(BUTTON_STATE_NORMAL);
                         LocationInfo.setGnssState(context,LocationInfo.GnssState.LOCATED);

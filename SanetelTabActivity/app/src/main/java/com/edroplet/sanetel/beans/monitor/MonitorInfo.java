@@ -4,8 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.edroplet.sanetel.beans.Protocol;
+import com.edroplet.sanetel.beans.status.FaultCondition;
+import com.edroplet.sanetel.beans.status.RunningInfo;
 import com.edroplet.sanetel.services.CommunicateWithDeviceService;
 import com.edroplet.sanetel.services.communicate.CommunicateDataReceiver;
+import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.sscanf.Sscanf;
 
 import java.io.Serializable;
@@ -17,7 +20,9 @@ import java.io.Serializable;
 
 public class MonitorInfo implements Serializable {
     public static final String MonitorInfoAction="com.edroplet.broadcast.MonitorInfoAction";
+
     public static final String MonitorInfoData="com.edroplet.broadcast.MonitorInfoData";
+
 
     public static final String KEY_MONITOR_LAST_ANTENNA_PRE_AZ = "KEY_MONITOR_LAST_ANTENNA_PRE_AZ";
     public static final String KEY_MONITOR_LAST_ANTENNA_PRE_EL = "KEY_MONITOR_LAST_ANTENNA_PRE_EL";
@@ -60,7 +65,7 @@ public class MonitorInfo implements Serializable {
     private float longitude; // -180~180
     private float latitude; // -90 ~ 90
     private float height; // 本地高度
-    private int bdState;  // GNSS状态
+    private int gnssState;  // GNSS状态
 
     private int traceMode; // 寻星模式  0-信标机；1-DVB；
     private float satelliteLongitude; // 卫星经度
@@ -80,44 +85,67 @@ public class MonitorInfo implements Serializable {
         context.sendBroadcast(intent);
     }
 
-    public static MonitorInfo parseMonitorInfo(String src){
+    public static MonitorInfo parseMonitorInfo(Context context, String src){
         MonitorInfo monitorInfo = new MonitorInfo();
         Object o[] =  Sscanf.scan(src, Protocol.cmdGetSystemStateResult,
                 monitorInfo.prepareAZ, monitorInfo.prepareEL,monitorInfo.prepareRV,monitorInfo.preparePOL,
                 monitorInfo.AZ,monitorInfo.EL,monitorInfo.RV,monitorInfo.POL,
                 monitorInfo.traceState,monitorInfo.latitude, monitorInfo.longitude, monitorInfo.height,
-                monitorInfo.bdState,monitorInfo.traceMode, monitorInfo.satelliteLongitude,monitorInfo.plMode,
+                monitorInfo.gnssState,monitorInfo.traceMode, monitorInfo.satelliteLongitude,monitorInfo.plMode,
                 monitorInfo.threshold, monitorInfo.agc, monitorInfo.beacon,monitorInfo.carrier,
                 monitorInfo.dvb, monitorInfo.faultCondition, monitorInfo.flag);
 
         monitorInfo.prepareAZ = (Float) o[0];
+        CustomSP.putString(context,KEY_MONITOR_LAST_ANTENNA_PRE_AZ, String.valueOf(monitorInfo.prepareAZ));
         monitorInfo.prepareEL = (Float) o[1];
+        CustomSP.putString(context,KEY_MONITOR_LAST_ANTENNA_PRE_EL, String.valueOf(monitorInfo.prepareEL));
         monitorInfo.prepareRV = (Float) o[2];
+        CustomSP.putString(context,KEY_MONITOR_LAST_ANTENNA_PRE_RV, String.valueOf(monitorInfo.prepareRV));
         monitorInfo.preparePOL = (Float) o[3];
+        CustomSP.putString(context,KEY_MONITOR_LAST_ANTENNA_PRE_POL, String.valueOf(monitorInfo.preparePOL));
 
         monitorInfo.AZ = (Float) o[4];
+        CustomSP.putString(context,KEY_MONITOR_LAST_ANTENNA_AZ, String.valueOf(monitorInfo.AZ));
         monitorInfo.EL = (Float) o[5];
+        CustomSP.putString(context,KEY_MONITOR_LAST_ANTENNA_EL, String.valueOf(monitorInfo.EL));
         monitorInfo.RV = (Float) o[6];
+        CustomSP.putString(context,KEY_MONITOR_LAST_ANTENNA_RV, String.valueOf(monitorInfo.RV));
         monitorInfo.POL = (Float) o[7];
+        CustomSP.putString(context,KEY_MONITOR_LAST_ANTENNA_POL, String.valueOf(monitorInfo.POL));
 
         monitorInfo.traceState = (Integer) o[8];
+        CustomSP.putInt(context,KEY_MONITOR_LAST_TRACE_STATE, monitorInfo.traceState);
         monitorInfo.latitude = (Float) o[9];
+        CustomSP.putString(context,KEY_MONITOR_LAST_LATITUDE, String.valueOf(monitorInfo.latitude));
         monitorInfo.longitude = (Float) o[10];
+        CustomSP.putString(context,KEY_MONITOR_LAST_LONGITUDE, String.valueOf(monitorInfo.longitude));
         monitorInfo.height = (Float) o[11];
+        CustomSP.putString(context,KEY_MONITOR_LAST_HEIGHT, String.valueOf(monitorInfo.height));
 
-        monitorInfo.bdState = (Integer) o[12];
+        monitorInfo.gnssState = (Integer) o[12];
+        CustomSP.putInt(context,KEY_MONITOR_LAST_GNSS_STATE, monitorInfo.gnssState);
         monitorInfo.traceMode = (Integer) o[13];
+        CustomSP.putInt(context,KEY_MONITOR_LAST_SATELLITE_TRACE_MODE, monitorInfo.traceMode);
         monitorInfo.satelliteLongitude = (Float) o[14];
+        CustomSP.putString(context,KEY_MONITOR_LAST_SATELLITE_LONGITUDE, String.valueOf(monitorInfo.satelliteLongitude));
         monitorInfo.plMode = (Integer) o[15];
+        CustomSP.putInt(context,KEY_MONITOR_LAST_SATELLITE_POLARIZATION_MODE, monitorInfo.plMode);
 
         monitorInfo.threshold = (Float) o[16];
+        CustomSP.putString(context,KEY_MONITOR_LAST_SATELLITE_THRESHOLD, String.valueOf(monitorInfo.threshold));
         monitorInfo.agc = (Float) o[17];
+        CustomSP.putString(context,KEY_MONITOR_LAST_SATELLITE_AGC, String.valueOf(monitorInfo.agc));
         monitorInfo.beacon = (Float) o[18];
+        CustomSP.putString(context,KEY_MONITOR_LAST_SATELLITE_BEACON, String.valueOf(monitorInfo.beacon));
         monitorInfo.carrier = (Float) o[19];
-
+        CustomSP.putString(context,KEY_MONITOR_LAST_SATELLITE_CARRIER, String.valueOf(monitorInfo.carrier));
         monitorInfo.dvb = (Float) o[20];
+        CustomSP.putString(context,KEY_MONITOR_LAST_SATELLITE_DVB, String.valueOf(monitorInfo.dvb));
+
         monitorInfo.faultCondition = (Integer) o[21];
+        FaultCondition.parseFaultCondition(context, String.valueOf(monitorInfo.faultCondition));
         monitorInfo.flag = (Integer) o[22];
+        RunningInfo.parseRunningInfo(String.valueOf(monitorInfo.flag));
 
         return monitorInfo;
     }
@@ -191,7 +219,7 @@ public class MonitorInfo implements Serializable {
     }
 
     public int getBdState() {
-        return bdState;
+        return gnssState;
     }
     // 故障状态
     public int getFaultCondition() {

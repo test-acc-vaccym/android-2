@@ -185,8 +185,8 @@ public class FunctionsFragmentStatus extends BroadcastReceiverFragment {
 
     void processMonitorData(Intent intent){
         String rawData = intent.getStringExtra(MonitorInfo.MonitorInfoData);
-        MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(rawData);
-        FaultCondition faultCondition = FaultCondition.parseFaultCondition(String.valueOf(monitorInfo.getFaultCondition()));
+        MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(context, rawData);
+        FaultCondition faultCondition = FaultCondition.parseFaultCondition(context, String.valueOf(monitorInfo.getFaultCondition()));
         // 通信状况
         internetStatus.setText(communicateStatus[faultCondition.WifiCommunication]);
         serialPortStatus.setText(communicateStatus[faultCondition.HandsetCommunication]);

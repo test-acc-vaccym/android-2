@@ -260,9 +260,9 @@ public class FunctionsFragmentMonitor extends Fragment {
                 // 状态栏信息
                 // 已经在那边更新了
                 // GNSS状态, 自动刷新，由status button 接收广播自动更新
-                int bdState = monitorInfo.getBdState();
+                int gnssState = monitorInfo.getBdState();
                 if (statusButtonGnssState != null) {
-                    if (bdState == LocationInfo.GnssState.NOTLOCATED) {
+                    if (gnssState == LocationInfo.GnssState.NOTLOCATED) {
                         statusButtonGnssState.setText(R.string.gnss_state_disabled);
                         statusButtonGnssState.setButtonState(StatusButton.BUTTON_STATE_ABNORMAL);
                     } else {

@@ -234,8 +234,8 @@ public class LocationInfo implements Parcelable {
     public static int getGnssState(Context context){
         return CustomSP.getInt(context,KEY_GNSS_STATE, GnssState.NOTLOCATED);
     }
-    public static void setGnssState(Context context, int bdState){
-        CustomSP.getInt(context,KEY_GNSS_STATE, bdState);
+    public static void setGnssState(Context context, int gnssState){
+        CustomSP.getInt(context,KEY_GNSS_STATE, gnssState);
     }
 
     private static SparseArray<String> longitudeUnitArray = new SparseArray<>(2);

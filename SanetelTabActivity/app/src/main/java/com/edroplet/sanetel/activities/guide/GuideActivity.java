@@ -4,8 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -22,6 +25,7 @@ import com.edroplet.sanetel.adapters.MainViewPagerAdapter;
 import com.edroplet.sanetel.beans.AntennaInfo;
 import com.edroplet.sanetel.beans.LocationInfo;
 import com.edroplet.sanetel.beans.LockerInfo;
+import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.beans.SavingInfo;
 import com.edroplet.sanetel.beans.monitor.MonitorInfo;
 import com.edroplet.sanetel.control.StatusBarControl;
@@ -37,6 +41,7 @@ import com.edroplet.sanetel.view.custom.CustomFAB;
 
 import java.util.ArrayList;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindArray;
 import butterknife.BindView;
@@ -50,6 +55,26 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
 
     private Timer timer = new Timer();
     private static final int schedule = 1000; // 一秒钟获取一次状态
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case 1:
+                    // 发送监视指令，获取监视信息
+                    Protocol.sendMessage(context,Protocol.cmdGetSystemState);
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+    };
+    TimerTask timerTask = new TimerTask() {
+        @Override
+        public void run() {
+            Message message = new Message();
+            message.what = 1;
+            handler.sendMessage(message);
+        }
+    };
 
     public enum GUIDE_PAGES_INDEX{
         INDEX_EXPLODE,
@@ -72,6 +97,7 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
 
     private  ArrayList<GuideFragmentExplode> guideFragmentExplode = new ArrayList<>();
     private  ArrayList<GuideFragmentLocation> guideFragmentLocation = new ArrayList<>();
+    GuideBroadcast guideBroadcast;
 
     @Override
     public void onClick(View view) {
@@ -165,6 +191,18 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
                 position =  viewCount - 1;
         }
         this.startPosition = position;
+        // 初始化广播
+        initBroadcast();
+        // 开启定时任务
+        timer.schedule(timerTask,0,schedule);
+    }
+
+    void initBroadcast(){
+        // 注册广播
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(MonitorInfo.MonitorInfoAction);
+        guideBroadcast = new GuideBroadcast();
+        registerReceiver(guideBroadcast, intentFilter);
     }
 
     private void initView(){
@@ -211,8 +249,8 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
 
             // 位置输入
             // 获取gps定位信息
-            int bdState = LocationInfo.getGnssState(this);
-            // switch (bdState){
+            int gnssState = LocationInfo.getGnssState(this);
+            // switch (gnssState){
             //    case LocationInfo.GnssState.NOTLOCATED:
             guideFragmentLocation.add(GuideFragmentLocation.newInstance(true, getString(R.string.follow_me_location_state_not_locate),
                     true, getString(R.string.follow_me_location_state_not_locate_second_line),
@@ -224,7 +262,7 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
                     true, getString(R.string.follow_me_location_state_locate_forth_line)));
             //       break;
             //}
-            mSectionsPagerAdapter.addFragment(guideFragmentLocation.get(bdState));
+            mSectionsPagerAdapter.addFragment(guideFragmentLocation.get(gnssState));
 
             // 目标星
             mSectionsPagerAdapter.addFragment(GuideFragmentDestination.newInstance(false, null,
@@ -316,16 +354,18 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private class FollowMeBroadcast extends BroadcastReceiver {
+    private class GuideBroadcast extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             // 监视信息，包含状态信息
             if (MonitorInfoAction.equals(action)){
                 String rawData =intent.getStringExtra(MonitorInfoData);
-                MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(rawData);
+                // 更新本地缓存数据
+                MonitorInfo.parseMonitorInfo(context, rawData);
                 // 获取状态，更新UI
-
+                // 更新statusBar, 在StatusButton中实现
+                // 其他UI在每个fragment中实现
             }
         }
     }
@@ -333,12 +373,14 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         if (timer != null) {
             timer.cancel();
             timer.purge();
             timer = null;
         }
-
+        if (guideBroadcast != null){
+            unregisterReceiver(guideBroadcast);
+            guideBroadcast = null;
+        }
     }
 }

@@ -130,7 +130,7 @@ public class GuideFragmentSearchModeSetting extends BroadcastReceiverFragment {
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int pos = searchModeArray.indexOfKey(searchModeGroup.getCheckedRadioButtonId());
+                int pos = searchModeArray.indexOfValue(searchModeGroup.getCheckedRadioButtonId());
                 CustomSP.putInt(getContext(),KEY_SEARCHING_MODE, pos);
                 // 2017/11/11 设置寻星模式，发送命令
                 Protocol.sendMessage(context,String.format(Protocol.cmdSetTrackMode, pos));

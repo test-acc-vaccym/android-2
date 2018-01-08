@@ -6,6 +6,7 @@ import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.InputFilter;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.view.ViewParent;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import com.edroplet.sanetel.R;
@@ -32,6 +34,7 @@ import com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton;
 import java.util.Timer;
 
 import butterknife.BindArray;
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -44,8 +47,6 @@ import butterknife.Unbinder;
 public class GuideFragmentLocation extends Fragment {
 
     private static int[] cityImages = {R.mipmap.city1, R.mipmap.city2, R.mipmap.city3};
-    private static final String LOCATION_PROVINCE_KEY = "LOCATION_PROVINCE_KEY";
-    private static final String LOCATION_CITY_KEY = "LOCATION_CITY_KEY";
 
     // 定时器
     Timer timer;
@@ -54,19 +55,14 @@ public class GuideFragmentLocation extends Fragment {
     private String selectedProvince;
     private String selectedCity;
 
-    @BindView(R.id.follow_me_location_db_city)
-    CustomRadioButton crbDbCity;
-    @BindView(R.id.follow_me_location_new_city)
-    CustomRadioButton crbNewCity;
-
     @BindView(R.id.follow_me_spinner_province)
     Spinner spinnerLocationProvince;
 
     @BindView(R.id.follow_me_spinner_city)
     Spinner spinnerLocationCity;
 
-    @BindView(R.id.rbg_city)
-    CustomRadioGroupWithCustomRadioButton citySelectGroup;
+    @BindView(R.id.city_select_group)
+    RadioGroup citySelectGroup;
 
     @BindView(R.id.city_detail_province)
     CustomEditText newProvince;
@@ -85,34 +81,33 @@ public class GuideFragmentLocation extends Fragment {
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
 
+    @BindArray(R.array.guide_locate_state_array)
+    String[] locateStateArray;
+    @BindArray(R.array.guide_locate_second_line_array)
+    String[] locateSecondLineArray;
+
+    @BindString(R.string.follow_me_message_click)
+    String messageClickString;
+    @BindString(R.string.follow_me_forever)
+    String foreverString;
+    @BindString(R.string.setting_button_text)
+    String settingString;
+
     private Context context;
 
     @BindView(R.id.destination_frameLayout_location)
     FrameLayout layoutLocation;
 
     @BindArray(R.array.gnss_state_array)
-    String[] gnssState;
+    String[] gnssStateString;
 
     Unbinder unbinder;
 
-    public static GuideFragmentLocation newInstance(boolean showFirst, String firstLine, boolean showSecond,
-                                                    String secondLine, boolean showThird, String thirdLineStart,
-                                                    int icon, String buttonText, String thirdLineEnd,
-                                                    boolean showForth, String forth) {
-        Bundle args = new Bundle();
+    SparseIntArray mapCitySelectArray = new SparseIntArray(2);
+    int[] citySelectIds = {R.id.follow_me_location_db_city, R.id.follow_me_location_new_city};
+
+    public static GuideFragmentLocation newInstance() {
         GuideFragmentLocation fragment = new GuideFragmentLocation();
-        args.putBoolean(PopDialog.SHOW_FIRST,showFirst);
-        args.putString(PopDialog.FIRST, firstLine);
-        args.putBoolean(PopDialog.SHOW_SECOND,showSecond);
-        args.putString(PopDialog.SECOND, secondLine);
-        args.putBoolean(PopDialog.SHOW_THIRD,showThird);
-        args.putString(PopDialog.START, thirdLineStart);
-        args.putInt(PopDialog.ICON, icon);
-        args.putString(PopDialog.BUTTON_TEXT, buttonText);
-        args.putString(PopDialog.END, thirdLineEnd);
-        args.putBoolean(PopDialog.SHOW_FORTH,showForth);
-        args.putString(PopDialog.FORTH, forth);
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -126,6 +121,11 @@ public class GuideFragmentLocation extends Fragment {
         unbinder = ButterKnife.bind(this, view);
 
         context = getContext();
+        int i = 0;
+        for (int id: citySelectIds){
+            mapCitySelectArray.put(i++, id);
+        }
+
         initView(view);
 
         GalleryOnTime galleryOnTime = new GalleryOnTime(context);
@@ -135,32 +135,45 @@ public class GuideFragmentLocation extends Fragment {
 
         timer = galleryOnTime.getTimer();
 
-        if (crbNewCity != null){
-            crbNewCity.setOnCheckedChangeListener(mOnCheckedChangeListener);
-        }
-        if (crbDbCity != null){
-            crbDbCity.setOnCheckedChangeListener(mOnCheckedChangeListener);
-        }
-
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);
         popDialog.setContext(context);
         // 位置输入
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-            popDialog.setBundle(bundle);
-            popDialog.setSetFirstColor(true);
-            int icon = bundle.getInt(PopDialog.ICON, -1);
-            if (icon >= 0) {
-                popDialog.setButtonText(context, getString(R.string.setting_button_text));
-            }
-        }
+        popDialog.setBundle(getBundle());
+        popDialog.setSetFirstColor(true);
+
         return popDialog.show();
     }
 
+    private static final String KeyCitySelect = "KeyCitySelect";
+
+    boolean[] focusables = {false, true};
+    void changFocusable(int pos){
+        newCity.setFocusable(focusables[pos]);
+        newProvince.setFocusable(focusables[pos]);
+        newLatitude.setFocusable(focusables[pos]);
+        newLongitude.setFocusable(focusables[pos]);
+        newLatitudeUnit.setFocusable(focusables[pos]);
+        newLongitudeUnit.setFocusable(focusables[pos]);
+
+    }
     private void initView(View view){
 
-        // 初始化控件
+        // 初始化单选
+        int pos = CustomSP.getInt(context,KeyCitySelect,0);
+        citySelectGroup.check(mapCitySelectArray.get(pos));
+        changFocusable(pos);
+
+        citySelectGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int pos = mapCitySelectArray.indexOfValue(checkedId);
+                if (pos <=0) pos = 0;
+                else pos = 1;
+                changFocusable(pos);
+            }
+        });
+        // 初始化其他
 
         newLongitude.setFilters(new InputFilter[]{ new InputFilterFloat("-180.0", "180.0")});
         newLatitude.setFilters(new InputFilter[]{ new InputFilterFloat("-90.0", "90.0")});
@@ -171,7 +184,7 @@ public class GuideFragmentLocation extends Fragment {
             if (provincesArray.length > 0) {
                 spinnerLocationProvince.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, provincesArray));
                 // 读取配置中的值
-                selectedProvince = CustomSP.getString(context, LOCATION_PROVINCE_KEY, provincesArray[0]);
+                selectedProvince = LocationInfo.getProvince(context);
                 for(int i=0; i<provincesArray.length; i++){
                     if(selectedProvince.equals(provincesArray[i])){
                         spinnerLocationProvince.setSelection(i,true);
@@ -182,7 +195,7 @@ public class GuideFragmentLocation extends Fragment {
                 if (citiesArray.length > 0) {
                     spinnerLocationCity.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, citiesArray));
                     // 读取配置中的值
-                    selectedCity = CustomSP.getString(context, LOCATION_CITY_KEY, citiesArray[0]);
+                    selectedCity = LocationInfo.getName(context);
                     for(int i=0; i<citiesArray.length; i++){
                         if(selectedCity.equals(citiesArray[i])){
                             spinnerLocationCity.setSelection(i,true);
@@ -214,8 +227,8 @@ public class GuideFragmentLocation extends Fragment {
                 if (citiesArray.length > 0) {
                     spinnerLocationCity.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, citiesArray));
                     selectedCity = citiesArray[0];
-                    if (selectedProvince.equals(CustomSP.getString(context, LOCATION_PROVINCE_KEY,selectedProvince)) ){
-                        selectedCity = CustomSP.getString(context, LOCATION_CITY_KEY, selectedCity);
+                    if (selectedProvince.equals(LocationInfo.getProvince(context)) ){
+                        selectedCity = LocationInfo.getName(context);
                         for(int i=0; i<citiesArray.length; i++){
                             if(selectedCity.equals(citiesArray[i])){
                                 spinnerLocationCity.setSelection(i,true);
@@ -269,6 +282,7 @@ public class GuideFragmentLocation extends Fragment {
             @Override
             public void onClick(View v) {
                 @IdRes int checkedId = citySelectGroup.getCheckedRadioButtonId();
+                CustomSP.putInt(context,KeyCitySelect, mapCitySelectArray.indexOfValue(checkedId));
                 switch (checkedId){
                     case R.id.follow_me_location_new_city:
                         selectedProvince = newProvince.getText().toString();
@@ -289,33 +303,12 @@ public class GuideFragmentLocation extends Fragment {
                         break;
                 }
                 // 保存配置
-                CustomSP.putString(context, LOCATION_PROVINCE_KEY, selectedProvince);
-                CustomSP.putString(context, LOCATION_CITY_KEY, selectedCity);
+                LocationInfo.setProvince(context,selectedProvince);
+                LocationInfo.setName(context,selectedCity);
             }
         });
 
     }
-    public static CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-            ViewParent vp = compoundButton.getParent();
-            CustomRadioGroupWithCustomRadioButton edGroup = (CustomRadioGroupWithCustomRadioButton) vp;
-            int childCount = edGroup.getChildCount();
-            int buttonId = compoundButton.getId();
-            if (b){
-                edGroup.setCheckedId(buttonId);
-            }
-            for (int i = 0; i < childCount; i++){
-                int childId = edGroup.getChildAt(i).getId();
-                if (childId != buttonId){
-                    CustomRadioButton rdButton =  (CustomRadioButton)edGroup.getChildAt(i);
-                    if (b && rdButton.isChecked()){
-                        rdButton.setChecked(false);
-                    }
-                }
-            }
-        }
-    };
 
     @Override
     public void onDestroy() {
@@ -326,5 +319,19 @@ public class GuideFragmentLocation extends Fragment {
         }
         super.onDestroy();
         if (unbinder != null)  unbinder.unbind();
+    }
+
+    Bundle getBundle(){
+        int gnssState = LocationInfo.getGnssState(context);
+        Bundle args = new Bundle();
+        args.putBoolean(PopDialog.SHOW_FIRST,true);
+        args.putString(PopDialog.FIRST, locateStateArray[gnssState]);
+        args.putBoolean(PopDialog.SHOW_SECOND,true);
+        args.putString(PopDialog.SECOND, locateSecondLineArray[gnssState]);
+        args.putBoolean(PopDialog.SHOW_THIRD,true);
+        args.putString(PopDialog.START, messageClickString);
+        args.putString(PopDialog.BUTTON_TEXT, settingString);
+        args.putString(PopDialog.END, foreverString);
+        return args;
     }
 }

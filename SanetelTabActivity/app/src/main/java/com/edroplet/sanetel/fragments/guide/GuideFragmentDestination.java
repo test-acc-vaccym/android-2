@@ -5,13 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.InputFilter;
+import android.util.SparseArray;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import com.edroplet.sanetel.R;
@@ -27,19 +29,14 @@ import com.edroplet.sanetel.utils.sscanf.Sscanf;
 import com.edroplet.sanetel.view.BroadcastReceiverFragment;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomEditText;
-import com.edroplet.sanetel.view.custom.CustomRadioButton;
-import com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Timer;
 
 import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-
-import static com.edroplet.sanetel.fragments.guide.GuideFragmentLocation.mOnCheckedChangeListener;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -50,6 +47,8 @@ import static com.edroplet.sanetel.fragments.guide.GuideFragmentLocation.mOnChec
 public class GuideFragmentDestination extends BroadcastReceiverFragment {
     public static final String GuideDestinationAction = "com.edroplet.sanetel.GuideDestinationAction";
     public static final String GuideDestinationData = "com.edroplet.sanetel.GuideDestinationData";
+
+    private static final String KeySelectDestination = "KeySelectDestination";
 
     private static int[] satellitesImages = {R.mipmap.satellite1, R.mipmap.satellite2, R.mipmap.satellite3};
     public static final String KEY_DESTINATION_SATELLITE_NAME = "KEY_DESTINATION_SATELLITE_NAME";
@@ -96,7 +95,10 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
     private String polarization;
 
     @BindView(R.id.guide_destination_group)
-    CustomRadioGroupWithCustomRadioButton guideDestinationGroup;
+    RadioGroup guideDestinationGroup;
+
+    SparseIntArray mapSelectDestinationArray = new SparseIntArray(2);
+    int[] destinationSelectIds = {R.id.follow_me_destination_satellite_select,R.id.follow_me_destination_satellite_new};
 
     Context context;
     Unbinder unbinder;
@@ -131,6 +133,11 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
         super.onCreate(savedInstanceState);
         context = getContext();
         Protocol.sendMessage(context, Protocol.cmdGetTargetState);
+
+        int n = 0;
+        for (int id:destinationSelectIds){
+            mapSelectDestinationArray.put(n++, id);
+        }
     }
 
     @Override
@@ -154,6 +161,19 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
         view.invalidate();
     }
 
+    boolean[] focusableArray = {false, true};
+
+    void changeFocusable(int pos){
+        satelliteName.setFocusable(focusableArray[pos]);
+        satelliteLongitude.setFocusable(focusableArray[pos]);
+        satellitePolarization.setFocusable(focusableArray[pos]);
+        satelliteDvb.setFocusable(focusableArray[pos]);
+        satelliteCarrier.setFocusable(focusableArray[pos]);
+        satelliteThreshold.setFocusable(focusableArray[pos]);
+        satelliteBeacon.setFocusable(focusableArray[pos]);
+
+        view.invalidate();
+    }
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -163,8 +183,20 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
         }
         unbinder = ButterKnife.bind(this, view);
 
-        satelliteDvb.setFilters(new InputFilter[]{new InputFilterFloat(6000,30000)});
+        final int pos = CustomSP.getInt(context,KeySelectDestination,0);
+        changeFocusable(pos);
+        guideDestinationGroup.check(mapSelectDestinationArray.get(pos));
 
+        guideDestinationGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int pos = mapSelectDestinationArray.indexOfValue(checkedId);
+                if (pos <= 0) pos = 0;
+                else pos = 1;
+                changeFocusable(pos);
+            }
+        });
+        satelliteDvb.setFilters(new InputFilter[]{new InputFilterFloat(6000,30000)});
 
         try {
             satellites = new Satellites(context);
@@ -291,6 +323,8 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
             @Override
             public void onClick(View v) {
                 @IdRes int checkedId = guideDestinationGroup.getCheckedRadioButtonId();
+                CustomSP.putInt(context,KeySelectDestination, mapSelectDestinationArray.indexOfValue(checkedId));
+
                 switch (checkedId){
                     case R.id.follow_me_destination_satellite_new:
                         name = satelliteName.getText().toString();
@@ -338,14 +372,6 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
         galleryOnTime.setImageView();
         timer = galleryOnTime.getTimer();
 
-        CustomRadioButton crbDbSatellite = view.findViewById(R.id.follow_me_destination_satellite_select);
-        CustomRadioButton crbNewSatellite = view.findViewById(R.id.follow_me_destination_satellite_new);
-        if (crbDbSatellite != null){
-            crbDbSatellite.setOnCheckedChangeListener(mOnCheckedChangeListener);
-        }
-        if (crbNewSatellite != null){
-            crbNewSatellite.setOnCheckedChangeListener(mOnCheckedChangeListener);
-        }
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);
         Context context = getContext();

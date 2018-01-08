@@ -67,6 +67,8 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
     @BindId(R.id.pop_dialog_third_button)
     private CustomButton thirdButton;
 
+    ReferenceReceiver referenceReceiver;
+
     private static final String KEY_REFERENCE_SATELLITE_SEARCHING_MODE = "KEY_REFERENCE_SATELLITE_SEARCHING_MODE";
     private static final String KEY_REFERENCE_SATELLITE_SEARCHING_SATELLITE = "KEY_REFERENCE_SATELLITE_SEARCHING_SATELLITE";
     private static final String KEY_REFERENCE_SATELLITE_SEARCHING_SATELLITE_POLARIZATION = "KEY_REFERENCE_SATELLITE_SEARCHING_SATELLITE_POLARIZATION";
@@ -96,7 +98,8 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_RECEIVE_REFERENCE_INFO);
         // 注册广播接收器
-        registerReceiver(new ReferenceReceiver(), filter);
+        referenceReceiver = new ReferenceReceiver();
+        registerReceiver(referenceReceiver, filter);
 
         dvbSymbolRate.setInputType(InputType.TYPE_CLASS_NUMBER);
         dvbSymbolRate.setFilters(new InputFilter[]{new InputFilterFloat(0,30000)});
@@ -389,8 +392,12 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
             satelliteInfo.mode = (String) o[6];
             return satelliteInfo;
         }
+
     }
 
-
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (referenceReceiver != null) unregisterReceiver(referenceReceiver);
+    }
 }

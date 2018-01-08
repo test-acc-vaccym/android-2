@@ -15,19 +15,11 @@
             android:orientation="horizontal"
             android:visibility="gone">
             <com.edroplet.sanetel.view.custom.JustifyTextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:layout_height="match_parent"
-                android:padding="@dimen/list_detail_padding"
+                style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:text="@string/satellite_detail_uuid_key"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/satellite_detail_uuid"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="match_parent"/>
+                style="@style/radio_group_second_item_edit_horizontal_style"
+                android:id="@+id/satellite_detail_uuid"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,19 +27,11 @@
             android:orientation="horizontal"
             android:visibility="invisible">
         <com.edroplet.sanetel.view.custom.JustifyTextView
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="end"
-            android:layout_height="match_parent"
-            android:padding="@dimen/list_detail_padding"
+            style="@style/radio_group_custom_item_first_filed_horizontal_style"
             android:text="@string/satellite_detail_id_key"/>
         <com.edroplet.sanetel.view.custom.CustomTextView
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/id_detail"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="match_parent"/>
+            style="@style/radio_group_second_item_edit_horizontal_style"
+            android:id="@+id/id_detail"/>
         </LinearLayout>
         <!--卫星名-->
         <LinearLayout
@@ -55,20 +39,11 @@
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:layout_height="match_parent"
-                android:padding="@dimen/list_detail_padding"
+                style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:text="@string/satellite_detail_name_key"/>
             <com.edroplet.sanetel.view.custom.CustomEditText
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/name_detail"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:layout_height="match_parent"/>
+                style="@style/radio_group_second_item_edit_horizontal_style"
+                android:id="@+id/name_detail"/>
         </LinearLayout>
         <!--极化方式-->
         <LinearLayout
@@ -76,20 +51,11 @@
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:layout_height="match_parent"
-                android:padding="@dimen/list_detail_padding"
+                style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:text="@string/satellite_detail_polarization_key"/>
             <Spinner
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/polarization_detail"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:layout_height="match_parent"/>
+                style="@style/radio_group_second_item_edit_horizontal_style"
+                android:id="@+id/polarization_detail"/>
         </LinearLayout>
         <!--经度-->
         <LinearLayout
@@ -106,13 +72,9 @@
                 android:text="@string/satellite_detail_longitude_key"/>
 
             <com.edroplet.sanetel.view.custom.CustomEditText
+                style="@style/radio_group_second_item_edit_horizontal_style"
                 android:id="@+id/longitude_detail"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:inputType="numberDecimal|number"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:inputType="numberDecimal|number"/>
         </LinearLayout>
         <!--门限-->
         <LinearLayout
@@ -120,22 +82,13 @@
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:layout_height="match_parent"
-                android:padding="@dimen/list_detail_padding"
+                style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:text="@string/satellite_detail_threshold_key"/>
             <com.edroplet.sanetel.view.custom.CustomEditText
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/radio_group_second_item_edit_horizontal_style"
                 android:id="@+id/threshold_detail"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:gravity="center"
                 android:hint="@string/satellite_detail_threshold_hint"
-                android:inputType="numberDecimal|number"
-                android:layout_height="match_parent"/>
+                android:inputType="numberDecimal|number"/>
         </LinearLayout>
         <!--信标频率-->
         <LinearLayout
@@ -143,12 +96,7 @@
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:layout_height="match_parent"
-                android:padding="@dimen/list_detail_padding"
+                style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:text="@string/satellite_detail_beacon_key"/>
 
             <com.edroplet.sanetel.view.custom.CustomEditText
@@ -166,21 +114,13 @@
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:layout_height="match_parent"
-                android:padding="@dimen/list_detail_padding"
-                android:text="@string/satellite_detail_carrier"
-                android:textIsSelectable="true"/>
+                style="@style/radio_group_custom_item_first_filed_horizontal_style"
+                android:text="@string/satellite_detail_carrier"/>
             <com.edroplet.sanetel.view.custom.CustomEditText
                 android:id="@+id/carrier_detail"
                 style="@style/radio_group_custom_item_edit_horizontal_style"
-                android:layout_height="match_parent"
                 android:hint="@string/satellite_detail_carrier_hint"
-                android:inputType="number"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:inputType="number"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 style="@style/radio_group_custom_item_third_filed_horizontal_style"
                 android:text="@string/settings_reference_carrier_unit"/>
@@ -191,22 +131,15 @@
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:layout_height="match_parent"
+                style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:padding="@dimen/list_detail_padding"
-                android:text="@string/satellite_detail_symbol_rate_key"
-                android:textIsSelectable="true"/>
+                android:text="@string/satellite_detail_symbol_rate_key" />
 
             <com.edroplet.sanetel.view.custom.CustomEditText
                 android:id="@+id/symbol_rate_detail"
                 style="@style/radio_group_custom_item_edit_horizontal_style"
-                android:layout_height="match_parent"
                 android:hint="@string/satellite_detail_symbol_rate_hint"
-                android:inputType="number"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:inputType="number"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 style="@style/radio_group_custom_item_third_filed_horizontal_style"
                 android:text="@string/settings_reference_dvb_unit"/>
@@ -217,21 +150,11 @@
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:layout_height="match_parent"
-                android:padding="@dimen/list_detail_padding"
-                android:text="@string/satellite_detail_comment_key"
-                android:textIsSelectable="true" />
+                style="@style/radio_group_custom_item_first_filed_horizontal_style"
+                android:text="@string/satellite_detail_comment_key" />
             <com.edroplet.sanetel.view.custom.CustomEditText
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/comment_detail"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:layout_height="match_parent"/>
+                style="@style/radio_group_second_item_edit_horizontal_style"
+                android:id="@+id/comment_detail"/>
         </LinearLayout>
 
         <!--LinearLayout

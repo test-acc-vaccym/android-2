@@ -117,4 +117,16 @@
         <item>@string/follow_me_searching_third_button_stop</item>
         <item>@string/return_string_button</item>
     </string-array>
+    <string-array name="guide_locate_state_array">
+        <item>@string/follow_me_location_state_not_locate</item>
+        <item>@string/follow_me_location_state_locate</item>
+    </string-array>
+    <string-array name="guide_locate_second_line_array">
+        <item>@string/follow_me_location_state_not_locate_second_line</item>
+        <item>@string/follow_me_location_state_not_locate_second_line</item>
+    </string-array>
+    <string-array name="guide_locate_forth_line_array">
+        <item>@string/empty_directory</item>
+        <item>@string/follow_me_location_state_locate_forth_line</item>
+    </string-array>
 </resources>

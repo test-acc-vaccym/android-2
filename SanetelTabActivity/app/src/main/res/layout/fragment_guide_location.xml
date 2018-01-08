@@ -47,8 +47,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <!--单选组-->
-                <com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton
-                    android:id="@+id/rbg_city"
+                <RadioGroup
+                    android:id="@+id/city_select_group"
                     android:padding="@dimen/no_padding"
                     android:layout_width="@dimen/radio_group_width"
                     android:orientation="vertical"
@@ -59,7 +59,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/follow_me_location_db_city"
-                        android:checked="true"
                         android:textAppearance="?android:attr/textAppearanceMedium"/>
 
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
@@ -69,7 +68,7 @@
                         android:text="@string/follow_me_location_new_city"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_marginTop="@dimen/app_bar_height"/>
-                </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
+                </RadioGroup>
                 <!--城市选择-->
                 <LinearLayout
                     android:id="@+id/city_select"
@@ -82,8 +81,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="@dimen/spinner_lower_height">
 
-                    <!--android:layout_toEndOf="@+id/rbg_city"-->
-                    <!--android:layout_toRightOf="@+id/rbg_city"-->
+                    <!--android:layout_toEndOf="@+id/city_select_group"-->
+                    <!--android:layout_toRightOf="@+id/city_select_group"-->
 
                     <Spinner
                         android:id="@+id/follow_me_spinner_province"

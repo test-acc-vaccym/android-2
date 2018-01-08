@@ -89,7 +89,7 @@ public class AdministratorFragmentBandSelect extends BroadcastReceiverFragment {
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int pos = bandTypes.indexOfKey(bandSelectGroup.getCheckedRadioButtonId());
+                int pos = bandTypes.indexOfValue(bandSelectGroup.getCheckedRadioButtonId());
                 CustomSP.putInt(getContext(), BandTypeKey, pos);
                 //send command
                 Protocol.sendMessage(getContext(), String.format(Protocol.cmdSetBand, pos));

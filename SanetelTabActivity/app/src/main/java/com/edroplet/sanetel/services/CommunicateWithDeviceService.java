@@ -61,7 +61,6 @@ public class CommunicateWithDeviceService extends IntentService {
 
     public CommunicateWithDeviceService() {
         super("CommunicateWithDeviceService");
-        Log.e(TAG, "CommunicateWithDeviceService");
     }
     private static Intent intentCommunicateWithDeviceService;
     /**
@@ -126,19 +125,21 @@ public class CommunicateWithDeviceService extends IntentService {
      * parameters.
      */
     private void handleActionReceive(final String cmd, final String parameters) {
-        Log.e(TAG, "handleActionReceive");
-        //次线程里操作网络请求数据
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                if (null == client || !client.isConnected()|| !client.isOpen()){
-                    ConnectToServer();
-                    StartServerListener();
+        if (sleepForConnect) {
+            Log.e(TAG, "handleActionReceive");
+            //次线程里操作网络请求数据
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    if (null == client || !client.isConnected() || !client.isOpen()) {
+                        ConnectToServer();
+                        StartServerListener();
+                    }
+                    getSystemState(cmd);
+                    // 在listen中组包
                 }
-                getSystemState(cmd);
-                // 在listen中组包
-            }
-        }).start();
+            }).start();
+        }
     }
 
     /**
@@ -146,56 +147,63 @@ public class CommunicateWithDeviceService extends IntentService {
      * parameters.
      */
     private void handleActionSend(final String cmd, String param2) {
-        Log.e(TAG, "handleActionSend");
-        if (null == client || !client.isConnected()|| !client.isOpen()){
+        if (sleepForConnect) {
+            Log.e(TAG, "handleActionSend");
+            if (null == client || !client.isConnected() || !client.isOpen()) {
 
-            //次线程里操作网络请求数据
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    ConnectToServer();
-                    StartServerListener();
-                    getSystemState(cmd);
-                    // 在listen中组包
-                }
-            }).start();
-        }else {
-            getSystemState(cmd);
+                //次线程里操作网络请求数据
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ConnectToServer();
+                        StartServerListener();
+                        getSystemState(cmd);
+                        // 在listen中组包
+                    }
+                }).start();
+            } else {
+                getSystemState(cmd);
+            }
         }
     }
 
     private void getSystemState(final String cmd){
-        Log.e(TAG, "getSystemState, cmd is :"+cmd);
-        if (null == client || !client.isConnected()|| !client.isOpen()) {
-            //次线程里操作网络请求数据
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    ConnectToServer();
-                    StartServerListener();
-                    SendMessageToServer(cmd);
-                    // 在listen中组包
-                }
-            }).start();
-        }else {
-            SendMessageToServer(cmd);
+        if (sleepForConnect) {
+            Log.e(TAG, "getSystemState, cmd is :" + cmd);
+            if (null == client || !client.isConnected() || !client.isOpen()) {
+                //次线程里操作网络请求数据
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ConnectToServer();
+                        StartServerListener();
+                        SendMessageToServer(cmd);
+                        // 在listen中组包
+                    }
+                }).start();
+            } else {
+                SendMessageToServer(cmd);
+            }
         }
     }
 
     InetSocketAddress isa;
+    boolean sleepForConnect = false;
     private void  ConnectToServer(){
         try {
-            Log.i(TAG, "ConnectToServer, cmd client :" + (client==null? "" : client.toString()));
+            Log.d(TAG, "ConnectToServer, cmd client :" + (client==null? "" : client.toString()));
             if (null == client || !client.isOpen() || !client.isConnected()) {
                 client = SocketChannel.open();
                 String ip = CustomSP.getString(mContext, CustomSP.KeyIPSettingsAddress, CustomSP.DefaultIP);
                 // 判断是否设置过IP
                 while (ip.equals(CustomSP.DefaultIP)){
-                    Log.e(TAG, "ConnectToServer, ip is:" + CustomSP.DefaultIP );
-                    // TODO: 2017/11/25 ip不设置正确，一直等待
+                    Log.d(TAG, "ConnectToServer, ip is:" + CustomSP.DefaultIP );
+                    // 2017/11/25 ip不设置正确，一直等待
+                    sleepForConnect = true;
                     Thread.sleep(1000);
                     ip = CustomSP.getString(mContext, CustomSP.KeyIPSettingsAddress, CustomSP.DefaultIP);
                 }
+                sleepForConnect = false;
                 int port = CustomSP.getInt(mContext, CustomSP.KeyIPSettingsPort, CustomSP.DefaultPort);
                 while (!client.isConnected()) {
                     Log.w(TAG, "ConnectToServer, client is not open, open now");
@@ -226,7 +234,7 @@ public class CommunicateWithDeviceService extends IntentService {
 
     // 向Server端发送消息 
     public void SendMessageToServer(String msg) {
-        Log.e(TAG, "SendMessageToServer, msg is :"+msg);
+        Log.d(TAG, "SendMessageToServer, msg is :"+msg);
         try {
             if (null != client && client.isConnected()) {
                 ByteBuffer bytebuf = ByteBuffer.allocate(1024);
@@ -235,9 +243,7 @@ public class CommunicateWithDeviceService extends IntentService {
                 bytebuf.flip();
             }
         } catch (IOException e) {
-            // TODO Auto-generated catch block 
-            e.printStackTrace(); 
-            System.out.println(" SendMessageToServer IOException===");
+            e.printStackTrace();
         } 
     }
 

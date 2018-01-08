@@ -121,7 +121,9 @@ public class GuideFragmentSaving extends TimerFragment {
         args.putBoolean(PopDialog.SHOW_THIRD,true);
         args.putString(PopDialog.START, start);
         args.putString(PopDialog.BUTTON_TEXT, null);
-        args.putString(PopDialog.END, end);
+        args.putString(PopDialog.END, null);
+        args.putBoolean(PopDialog.SHOW_FORTH,true);
+        args.putString(PopDialog.FORTH,end);
 
         return args;
     }

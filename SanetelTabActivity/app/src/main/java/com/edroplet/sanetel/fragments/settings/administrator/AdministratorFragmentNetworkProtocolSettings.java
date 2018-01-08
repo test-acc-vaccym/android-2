@@ -94,7 +94,7 @@ public class AdministratorFragmentNetworkProtocolSettings extends BroadcastRecei
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int pos = mapNetworkProtocol.indexOfKey(networkProtocolGroup.getCheckedRadioButtonId()) ;
+                int pos = mapNetworkProtocol.indexOfValue(networkProtocolGroup.getCheckedRadioButtonId()) ;
                 CustomSP.putInt(getContext(), NetworkProtocolKey, pos);
                 // send command
                 // cmd,set net userid,端口号,协议

@@ -96,7 +96,6 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
     private boolean isInit = false;
 
     private  ArrayList<GuideFragmentExplode> guideFragmentExplode = new ArrayList<>();
-    private  ArrayList<GuideFragmentLocation> guideFragmentLocation = new ArrayList<>();
     GuideBroadcast guideBroadcast;
 
     @Override
@@ -248,21 +247,7 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
             mSectionsPagerAdapter.addFragment(guideFragmentExplode.get(AntennaInfo.getAntennaState(this)));
 
             // 位置输入
-            // 获取gps定位信息
-            int gnssState = LocationInfo.getGnssState(this);
-            // switch (gnssState){
-            //    case LocationInfo.GnssState.NOTLOCATED:
-            guideFragmentLocation.add(GuideFragmentLocation.newInstance(true, getString(R.string.follow_me_location_state_not_locate),
-                    true, getString(R.string.follow_me_location_state_not_locate_second_line),
-                    true, getString(R.string.follow_me_message_click), 0, null, getString(R.string.follow_me_forever), false, null));
-            //       break;
-            //   case LocationInfo.GnssState.LOCATED:
-            guideFragmentLocation.add(GuideFragmentLocation.newInstance(true, getString(R.string.follow_me_location_state_locate),
-                    false, null, false, null, -1, null, null,
-                    true, getString(R.string.follow_me_location_state_locate_forth_line)));
-            //       break;
-            //}
-            mSectionsPagerAdapter.addFragment(guideFragmentLocation.get(gnssState));
+            mSectionsPagerAdapter.addFragment(GuideFragmentLocation.newInstance());
 
             // 目标星
             mSectionsPagerAdapter.addFragment(GuideFragmentDestination.newInstance(false, null,

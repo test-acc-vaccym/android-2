@@ -129,7 +129,7 @@ public class SpeedControlFragment extends BroadcastReceiverFragment implements V
 
         float angularVelocity;
         int id = angularVelocityGroup.getCheckedRadioButtonId();
-        int pos =  mapAngularVelocity.indexOfKey(id);
+        int pos =  mapAngularVelocity.indexOfValue(id);
         int maxPos = mapAngularVelocity.size() - 1;
         if (pos == maxPos){
             String angularVelocityString = ((CustomRadioButton) view.findViewById(id)).getText().toString();
@@ -138,7 +138,7 @@ public class SpeedControlFragment extends BroadcastReceiverFragment implements V
             angularVelocity  = ConvertUtil.convertToFloat(angularVelocityCustomValue.getText().toString(), 0.0f);
         }
         int operateId = v.getId();
-        int operatePos = mapOperate.indexOfKey(operateId);
+        int operatePos = mapOperate.indexOfValue(operateId);
         if (operatePos == -1){
             // 暂停
             Protocol.sendMessage(getContext(),Protocol.cmdStopSearch);

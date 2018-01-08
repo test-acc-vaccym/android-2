@@ -74,7 +74,7 @@ public class SettingsFragmentAmplifierInterfere extends BroadcastReceiverFragmen
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int pos = mapAmplifierInterfere.indexOfKey(amplifierInterfereGroup.getCheckedRadioButtonId());
+                int pos = mapAmplifierInterfere.indexOfValue(amplifierInterfereGroup.getCheckedRadioButtonId());
                 if (pos < 0){
                     pos = 0;
                 }

@@ -58,7 +58,7 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
         }
         String action = intent.getAction();
         Bundle bundle = intent.getExtras();
-        Log.e(TAG,action);
+        Log.e(TAG,"action: " + action);
         if (null != bundle) {
             sendCmd = bundle.getString(EXTRA_PARAM_SEND_CMD);
             sendData = bundle.getString(EXTRA_PARAM_SEND_DATA);
@@ -99,10 +99,8 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
     }
 
     private static boolean isInAction(String action){
-        return  ACTION_RECEIVE_DATA.equals(action) || ACTION_DATA_RESULT.equals(action)
-                ||ACTION_SEND_DATA.equals(action)  || ACTION_SAVE_FILE.equals(action)
-                || ACTION_STOP_SAVE.equals(action) || MonitorInfo.MonitorInfoAction.equals(action)
-                || AmplifierInfo.AmplifierInfoAction.equals(action);
+        return  !ACTION_SCREEN_ON.equals(action) && !ACTION_SCREEN_OFF.equals(action)
+                && !ACTION_POWER_CONNECTED.equals(action) && !ACTION_BOOT_COMPLETED.equals(action);
     }
 
     public static boolean isAlive(Context context){

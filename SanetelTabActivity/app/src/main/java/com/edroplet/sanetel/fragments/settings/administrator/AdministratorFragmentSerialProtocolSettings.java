@@ -98,7 +98,7 @@ public class AdministratorFragmentSerialProtocolSettings extends BroadcastReceiv
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int pos = mapSerialProtocol.indexOfKey(serialProtocolGroup.getCheckedRadioButtonId());
+                int pos = mapSerialProtocol.indexOfValue(serialProtocolGroup.getCheckedRadioButtonId());
 
                 // send command
                 // 5.9.2	设置 发送指令格式：$cmd,set com userid,模式*ff<CR><LF>

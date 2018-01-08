@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <!--单选组-->
-                <com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton
+                <RadioGroup
                     android:id="@+id/guide_destination_group"
                     android:padding="@dimen/no_padding"
                     android:layout_width="@dimen/radio_group_width"
@@ -59,8 +59,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/angle_calculate_satellite_select"
-                        android:checked="true"/>
+                        android:text="@string/angle_calculate_satellite_select"/>
 
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/follow_me_destination_satellite_new"
@@ -69,7 +68,7 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_marginTop="@dimen/app_bar_height"
                         android:text="@string/follow_me_destination_satellite_new"/>
-                </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
+                </RadioGroup>
                 <!--卫星选择-->
                 <LinearLayout
                     android:id="@+id/satellite_select"

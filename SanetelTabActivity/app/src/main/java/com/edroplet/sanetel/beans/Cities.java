@@ -163,7 +163,7 @@ public class Cities {
         ArrayList<LocationInfo>  locationInfos = provinceObjectMap.get(province);
         if (locationInfos != null && locationInfos.size() > 0){
             for (LocationInfo locationInfo : locationInfos) {
-                if (locationInfo.getName(mContext).equals(city)) {
+                if (locationInfo.getName().equals(city)) {
                     return locationInfo;
                 }
             }

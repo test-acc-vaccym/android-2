@@ -47,13 +47,7 @@ public class GalleryOnTime {
     {
         @Override
         public void handleMessage(Message msg) {
-            Log.d("@@@", i + "");
-//            if (i > images.length){
-//                i = 1;
-//            }else if (i == 0){
-//                i = 1;
-//            }
-//            i = i - 1;
+            Log.d("GalleryOnTime Handle", i + "");
             frameLayout.setBackgroundResource(images[i%3]);
             frameLayout.invalidate();
 

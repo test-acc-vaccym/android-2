@@ -105,8 +105,8 @@
                 android:layout_marginBottom="@dimen/sub_layout_padding_top"
                 android:layout_marginStart="@dimen/radio_group_width_small">
 
-                <!--android:layout_toEndOf="@+id/rbg_city"-->
-                <!--android:layout_toRightOf="@+id/rbg_city"-->
+                <!--android:layout_toEndOf="@+id/city_select_group"-->
+                <!--android:layout_toRightOf="@+id/city_select_group"-->
 
                 <Spinner
                     android:id="@+id/angle_calculate_spinner_province"

@@ -151,12 +151,16 @@ public class Cities {
 
     public String[] getCitiesArray(String province){
         ArrayList<LocationInfo>  locationInfos = provinceObjectMap.get(province);
-        String[] array = new String[locationInfos.size()];
-        int i = 0;
-        for (LocationInfo locationInfo : locationInfos) {
-            array[i++] = locationInfo.getName();
+        if (locationInfos != null) {
+            String[] array = new String[locationInfos.size()];
+            int i = 0;
+            for (LocationInfo locationInfo : locationInfos) {
+                array[i++] = locationInfo.getName();
+            }
+            return array;
         }
-        return array;
+        Log.e(TAG, "getCitiesArray province: " + province);
+        return null;
     }
 
     public LocationInfo getLocationInfoByProvinceCity(String province, String city){

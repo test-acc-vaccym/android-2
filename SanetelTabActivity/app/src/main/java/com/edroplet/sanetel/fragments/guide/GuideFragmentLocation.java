@@ -192,7 +192,7 @@ public class GuideFragmentLocation extends Fragment {
                     }
                 }
                 String[] citiesArray = cities.getCitiesArray(selectedProvince);
-                if (citiesArray.length > 0) {
+                if (citiesArray != null && citiesArray.length > 0) {
                     spinnerLocationCity.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, citiesArray));
                     // 读取配置中的值
                     selectedCity = LocationInfo.getName(context);
@@ -224,7 +224,7 @@ public class GuideFragmentLocation extends Fragment {
                 selectedProvince = (String)spinnerLocationProvince.getItemAtPosition(position);
                 if (null == cities){ try{cities = new Cities(context);}catch (Exception e){e.printStackTrace();return;}}
                 String[] citiesArray = cities.getCitiesArray(selectedProvince);
-                if (citiesArray.length > 0) {
+                if (citiesArray != null && citiesArray.length > 0) {
                     spinnerLocationCity.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, citiesArray));
                     selectedCity = citiesArray[0];
                     if (selectedProvince.equals(LocationInfo.getProvince(context)) ){

@@ -308,7 +308,7 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
                     }
                 }
                 String[] citiesArray = cities.getCitiesArray(selectedProvince);
-                if (citiesArray.length > 0) {
+                if (citiesArray != null && citiesArray.length > 0) {
                     spinnerLocationCity.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, citiesArray));
                     // 读取配置中的值
                     selectedCity = citiesArray[0];
@@ -339,7 +339,7 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedProvince = (String)spinnerLocationProvince.getItemAtPosition(position);
                 String[] citiesArray = cities.getCitiesArray(selectedProvince);
-                if (citiesArray.length > 0) {
+                if (citiesArray != null && citiesArray.length > 0) {
                     spinnerLocationCity.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, citiesArray));
                     selectedCity = citiesArray[0];
 

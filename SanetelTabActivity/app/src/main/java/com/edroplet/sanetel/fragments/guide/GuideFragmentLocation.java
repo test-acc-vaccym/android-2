@@ -151,53 +151,37 @@ public class GuideFragmentLocation extends Fragment {
     boolean[] focusables = {false, true};
     void changFocusable(int pos){
         boolean focusable = focusables[pos];
+
+        newCity.setFocusable(focusable);
+        newCity.setFocusableInTouchMode(focusable);
+
+        newProvince.setFocusable(focusable);
+        newProvince.setFocusableInTouchMode(focusable);
+
+        newLatitude.setFocusable(focusable);
+        newLatitude.setFocusableInTouchMode(focusable);
+
+        newLongitude.setFocusable(focusable);
+        newLongitude.setFocusableInTouchMode(focusable);
+
+        newLatitudeUnit.setFocusable(focusable);
+        newLatitudeUnit.setFocusableInTouchMode(focusable);
+
+        newLongitudeUnit.setClickable(focusable);
+
         if (focusable) {
-            newCity.setFocusableInTouchMode(focusable);
-            newCity.setFocusable(focusable);
             newCity.requestFocus();
-
-            newProvince.setFocusableInTouchMode(focusable);
-            newProvince.setFocusable(focusable);
-            newProvince.requestFocus();
-
-            newLatitude.setFocusableInTouchMode(focusable);
-            newLatitude.setFocusable(focusable);
-            newProvince.requestFocus();
-
-            newLongitude.setFocusableInTouchMode(focusable);
-            newLongitude.setFocusable(focusable);
-            newProvince.requestFocus();
-
-            newLatitudeUnit.setFocusableInTouchMode(focusable);
-            newLatitudeUnit.setFocusable(focusable);
-            newProvince.requestFocus();
-
-            newLongitudeUnit.setFocusableInTouchMode(focusable);
-            newLongitudeUnit.setFocusable(focusable);
-            newProvince.requestFocus();
-        }else {
-            newCity.setFocusable(focusable);
-            newCity.setFocusableInTouchMode(focusable);
-
-            newProvince.setFocusable(focusable);
-            newProvince.setFocusableInTouchMode(focusable);
-
-            newLatitude.setFocusable(focusable);
-            newLatitude.setFocusableInTouchMode(focusable);
-
-            newLongitude.setFocusable(focusable);
-            newLongitude.setFocusableInTouchMode(focusable);
-
-            newLatitudeUnit.setFocusable(focusable);
-            newLatitudeUnit.setFocusableInTouchMode(focusable);
-
-            newLongitudeUnit.setFocusable(focusable);
-            newLongitudeUnit.setFocusableInTouchMode(focusable);
         }
-        view.invalidate();
-    }
-    private void initView(View view){
 
+    }
+    @BindArray(R.array.longitude_unit)
+    String[] longitudeArray;
+    @BindArray(R.array.latitude_unit)
+    String[] latitudeArray;
+
+    private void initView(View view){
+        newLongitudeUnit.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, longitudeArray));
+        newLatitudeUnit.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, latitudeArray));
         // 初始化单选
         int pos = CustomSP.getInt(context,KeyCitySelect,0);
         citySelectGroup.check(mapCitySelectArray.get(pos));

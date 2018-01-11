@@ -166,51 +166,30 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
     void changeFocusable(int pos){
         boolean focusable = focusableArray[pos];
 
+        satelliteName.setFocusableInTouchMode(focusable);
+        satelliteName.setFocusable(focusable);
+
+        satelliteLongitude.setFocusableInTouchMode(focusable);
+        satelliteLongitude.setFocusable(focusable);
+
+        satellitePolarization.setFocusableInTouchMode(focusable);
+        satellitePolarization.setFocusable(focusable);
+
+        satelliteDvb.setFocusableInTouchMode(focusable);
+        satelliteDvb.setFocusable(focusable);
+
+        satelliteCarrier.setFocusableInTouchMode(focusable);
+        satelliteCarrier.setFocusable(focusable);
+
+        satelliteThreshold.setFocusableInTouchMode(focusable);
+        satelliteThreshold.setFocusable(focusable);
+
+        satelliteBeacon.setFocusableInTouchMode(focusable);
+        satelliteBeacon.setFocusable(focusable);
+
         if (focusable) {
-            satelliteName.setFocusableInTouchMode(focusable);
-            satelliteName.setFocusable(focusable);
             satelliteName.requestFocus();
-            
-            satelliteLongitude.setFocusableInTouchMode(focusable);
-            satelliteLongitude.setFocusable(focusable);
-
-            satellitePolarization.setFocusableInTouchMode(focusable);
-            satellitePolarization.setFocusable(focusable);
-
-            satelliteDvb.setFocusableInTouchMode(focusable);
-            satelliteDvb.setFocusable(focusable);
-
-            satelliteCarrier.setFocusableInTouchMode(focusable);
-            satelliteCarrier.setFocusable(focusable);
-
-            satelliteThreshold.setFocusableInTouchMode(focusable);
-            satelliteThreshold.setFocusable(focusable);
-
-            satelliteBeacon.setFocusableInTouchMode(focusable);
-            satelliteBeacon.setFocusable(focusable);
-        }else {
-            satelliteName.setFocusableInTouchMode(focusable);
-            satelliteName.setFocusable(focusable);
-
-            satelliteLongitude.setFocusableInTouchMode(focusable);
-            satelliteLongitude.setFocusable(focusable);
-
-            satellitePolarization.setFocusableInTouchMode(focusable);
-            satellitePolarization.setFocusable(focusable);
-
-            satelliteDvb.setFocusableInTouchMode(focusable);
-            satelliteDvb.setFocusable(focusable);
-
-            satelliteCarrier.setFocusableInTouchMode(focusable);
-            satelliteCarrier.setFocusable(focusable);
-
-            satelliteThreshold.setFocusableInTouchMode(focusable);
-            satelliteThreshold.setFocusable(focusable);
-
-            satelliteBeacon.setFocusableInTouchMode(focusable);
-            satelliteBeacon.setFocusable(focusable);
         }
-
         view.invalidate();
     }
     @Nullable

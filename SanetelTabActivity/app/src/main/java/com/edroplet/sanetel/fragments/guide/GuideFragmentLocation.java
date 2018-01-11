@@ -102,6 +102,7 @@ public class GuideFragmentLocation extends Fragment {
     String[] gnssStateString;
 
     Unbinder unbinder;
+    View view;
 
     SparseIntArray mapCitySelectArray = new SparseIntArray(2);
     int[] citySelectIds = {R.id.follow_me_location_db_city, R.id.follow_me_location_new_city};
@@ -114,7 +115,7 @@ public class GuideFragmentLocation extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_guide_location, null);
+        view = inflater.inflate(R.layout.fragment_guide_location, null);
         if (view == null){
             return null;
         }
@@ -149,13 +150,51 @@ public class GuideFragmentLocation extends Fragment {
 
     boolean[] focusables = {false, true};
     void changFocusable(int pos){
-        newCity.setFocusable(focusables[pos]);
-        newProvince.setFocusable(focusables[pos]);
-        newLatitude.setFocusable(focusables[pos]);
-        newLongitude.setFocusable(focusables[pos]);
-        newLatitudeUnit.setFocusable(focusables[pos]);
-        newLongitudeUnit.setFocusable(focusables[pos]);
+        boolean focusable = focusables[pos];
+        if (focusable) {
+            newCity.setFocusableInTouchMode(focusable);
+            newCity.setFocusable(focusable);
+            newCity.requestFocus();
 
+            newProvince.setFocusableInTouchMode(focusable);
+            newProvince.setFocusable(focusable);
+            newProvince.requestFocus();
+
+            newLatitude.setFocusableInTouchMode(focusable);
+            newLatitude.setFocusable(focusable);
+            newProvince.requestFocus();
+
+            newLongitude.setFocusableInTouchMode(focusable);
+            newLongitude.setFocusable(focusable);
+            newProvince.requestFocus();
+
+            newLatitudeUnit.setFocusableInTouchMode(focusable);
+            newLatitudeUnit.setFocusable(focusable);
+            newProvince.requestFocus();
+
+            newLongitudeUnit.setFocusableInTouchMode(focusable);
+            newLongitudeUnit.setFocusable(focusable);
+            newProvince.requestFocus();
+        }else {
+            newCity.setFocusable(focusable);
+            newCity.setFocusableInTouchMode(focusable);
+
+            newProvince.setFocusable(focusable);
+            newProvince.setFocusableInTouchMode(focusable);
+
+            newLatitude.setFocusable(focusable);
+            newLatitude.setFocusableInTouchMode(focusable);
+
+            newLongitude.setFocusable(focusable);
+            newLongitude.setFocusableInTouchMode(focusable);
+
+            newLatitudeUnit.setFocusable(focusable);
+            newLatitudeUnit.setFocusableInTouchMode(focusable);
+
+            newLongitudeUnit.setFocusable(focusable);
+            newLongitudeUnit.setFocusableInTouchMode(focusable);
+        }
+        view.invalidate();
     }
     private void initView(View view){
 

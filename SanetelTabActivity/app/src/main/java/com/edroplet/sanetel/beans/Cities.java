@@ -92,8 +92,8 @@ public class Cities {
             }
             if (isNew) {
                 cities.add(item);
-                provinceObjectMap.put(mContext.getString(R.string.key_province_all), cities);
             }
+            provinceObjectMap.put(mContext.getString(R.string.key_province_all), cities);
         }
     }
 

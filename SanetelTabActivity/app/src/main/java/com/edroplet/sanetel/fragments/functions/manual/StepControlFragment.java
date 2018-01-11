@@ -129,24 +129,35 @@ public class StepControlFragment extends BroadcastReceiverFragment implements Vi
 
     @Override
     public void onClick(View v) {
-        float angularVelocity;
-        int id = angularVelocityGroup.getCheckedRadioButtonId();
-        int pos =  mapAngularVelocity.indexOfValue(id);
-        int maxPos = mapAngularVelocity.size() - 1;
-        if (pos == maxPos){
-            String angularVelocityString = ((CustomRadioButton) view.findViewById(id)).getText().toString();
-            angularVelocity  = ConvertUtil.convertToFloat(angularVelocityString, 0.0f);
-        }else{
-            angularVelocity  = ConvertUtil.convertToFloat(angularVelocityCustomValue.getText().toString(), 0.0f);
-        }
-        int operateId = v.getId();
-        int operatePos = mapOperate.indexOfValue(operateId);
-        if (operatePos == -1){
-            // 暂停
-            Protocol.sendMessage(getContext(),Protocol.cmdStopSearch);
-        }else{
-            // 控制
-            Protocol.sendMessage(getContext(), String.format(Protocol.cmdManualStep,String.valueOf(operatePos + 1),angularVelocity));
+        switch (v.getId()) {
+            case R.id.manual_step_direction_left:
+            case R.id.manual_step_direction_right:
+            case R.id.manual_step_pitch_up:
+            case R.id.manual_step_pitch_down:
+            case R.id.manual_step_polarization_up:
+            case R.id.manual_step_polarization_down:
+            case R.id.manual_step_pause:
+                float angularVelocity;
+                int id = angularVelocityGroup.getCheckedRadioButtonId();
+                int pos = mapAngularVelocity.indexOfValue(id);
+                int maxPos = mapAngularVelocity.size() - 1;
+                if (pos == maxPos) {
+                    String angularVelocityString = ((CustomRadioButton) view.findViewById(id)).getText().toString();
+                    angularVelocity = ConvertUtil.convertToFloat(angularVelocityString, 0.0f);
+                } else {
+                    angularVelocity = ConvertUtil.convertToFloat(angularVelocityCustomValue.getText().toString(), 0.0f);
+                }
+                int operateId = v.getId();
+                int operatePos = mapOperate.indexOfValue(operateId);
+                if (operatePos == -1) {
+                    // 暂停
+                    Protocol.sendMessage(getContext(), Protocol.cmdStopSearch);
+                } else {
+                    // 控制
+                    Protocol.sendMessage(getContext(), String.format(Protocol.cmdManualStep,
+                            String.valueOf(operatePos + 1), angularVelocity));
+                }
+            break;
         }
     }
 

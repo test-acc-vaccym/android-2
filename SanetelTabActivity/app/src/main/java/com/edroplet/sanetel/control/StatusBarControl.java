@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Resources;
 import android.os.Build;
 import android.service.autofill.SaveInfo;
 import android.support.annotation.IdRes;
@@ -25,6 +26,9 @@ import com.edroplet.sanetel.beans.status.RunningInfo;
 import com.edroplet.sanetel.view.StatusButton;
 
 import java.util.Timer;
+
+import butterknife.BindArray;
+
 import static com.edroplet.sanetel.view.StatusButton.*;
 
 /**
@@ -117,6 +121,7 @@ public class StatusBarControl {
         }
         // 初始化button
         initButton();
+        updateStatusButton(activity);
         /*
         timer.schedule(new TimerTask() {
             @Override
@@ -180,98 +185,120 @@ public class StatusBarControl {
             // 监视信息，包含状态信息
             if (MonitorInfo.MonitorInfoAction.equals(action)){
                 String rawData =intent.getStringExtra(MonitorInfo.MonitorInfoData);
-                MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(context, rawData);
-                // 获取状态，更新UI
-                // 连接状态, 获取wifi连接状态？跟基站通信状态？
-                FaultCondition faultCondition = FaultCondition.parseFaultCondition(context, String.valueOf(monitorInfo.getFaultCondition(context)));
-                int communicateState = faultCondition.getWifiCommunication(context);
-                if (0 == communicateState){
-                    commStateButton.setText(R.string.communication_state_connected);
-                    commStateButton.setButtonState(BUTTON_STATE_NORMAL);
-                }else {
-                    commStateButton.setText(R.string.communication_state_disconnected);
-                    commStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
-                }
-                // 天线状态
-                int antennaState = AntennaInfo.getAntennaState(context);
-                AntennaInfo.setAntennaState(context, antennaState);
-                if (null!=antennaStateButton){
-                    switch (antennaState){
-                        case AntennaInfo.AntennaSearchSatellitesStatus.EXPLODED:
-                            antennaStateButton.setText(R.string.antenna_state_exploded);
-                            antennaStateButton.setButtonState(BUTTON_STATE_NORMAL);
-                            break;
-                        case AntennaInfo.AntennaSearchSatellitesStatus.FOLDED:
-                            antennaStateButton.setText(R.string.antenna_state_folded);
-                            antennaStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
-                            break;
-                        case AntennaInfo.AntennaSearchSatellitesStatus.FOLDING:
-                            antennaStateButton.setText(R.string.antenna_state_folding);
-                            antennaStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
-                            break;
-                        case AntennaInfo.AntennaSearchSatellitesStatus.EXPLODING:
-                            antennaStateButton.setText(R.string.antenna_state_exploding);
-                            antennaStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
-                            break;
-                        case AntennaInfo.AntennaSearchSatellitesStatus.INIT:
-                            antennaStateButton.setText(R.string.antenna_state_init);
-                            antennaStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
-                            break;
-                        case AntennaInfo.AntennaSearchSatellitesStatus.SEARCHING:
-                            break;
-                        case AntennaInfo.AntennaSearchSatellitesStatus.MANUAL:
-                            break;
-                        case AntennaInfo.AntennaSearchSatellitesStatus.LOCKED:
-                            break;
-                        case AntennaInfo.AntennaSearchSatellitesStatus.LOST:
-                            break;
-                        case AntennaInfo.AntennaSearchSatellitesStatus.ABNORMAL:
-                            break;
-                        case AntennaInfo.AntennaSearchSatellitesStatus.PAUSE:
-                            break;
-                        case AntennaInfo.AntennaSearchSatellitesStatus.RECYCLED:
-                            break;
-                        case AntennaInfo.AntennaSearchSatellitesStatus.RECYCLING:
-                            break;
-                    }
-                }
-                // bd状态
-                int gnssState = LocationInfo.getGnssState(context);
-                if (null != bdStateButton){
-                    if (gnssState == LocationInfo.GnssState.LOCATED){
-                        bdStateButton.setText(R.string.gnss_state_enabled);
-                        bdStateButton.setButtonState(BUTTON_STATE_NORMAL);
-                    }else {
-                        bdStateButton.setText(R.string.gnss_state_disabled);
-                        bdStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
-                    }
-                }
+                MonitorInfo.parseMonitorInfo(context, rawData);
+                updateStatusButton(context);
+            }
+        }
+    }
 
-                // 节能状态
-                if (null != energyStateButton){
-                    int energySaveState = SavingInfo.getSavingState(context);
-                    if (energySaveState == SavingInfo.SAVING_STATE_OPEN){
-                        energyStateButton.setText(R.string.energy_state_saved);
-                        energyStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
-                    }else {
-                        energyStateButton.setText(R.string.energy_state_charged);
-                        energyStateButton.setButtonState(BUTTON_STATE_NORMAL);
-                        SavingInfo.setSavingState(context, SavingInfo.SAVING_STATE_CLOSE);
-                    }
-                }
-                // 锁紧状态
-                if (null != lockerStateButton){
-                    // 俯仰锁紧
-                    int lockerState = LockerInfo.getLockerState(context);
-                    if (lockerState == LockerInfo.LOCKER_STATE_LOCKED){
-                        lockerStateButton.setText(R.string.locker_state_locked);
-                        lockerStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
-                    }else {
-                        lockerStateButton.setText(R.string.locker_state_released);
-                        lockerStateButton.setButtonState(BUTTON_STATE_NORMAL);
-                    }
+    private static void updateCommunicateState(int communicateState){
+        if (null != commStateButton) {
+            if (0 == communicateState) {
+                commStateButton.setText(R.string.communication_state_connected);
+                commStateButton.setButtonState(BUTTON_STATE_NORMAL);
+            } else {
+                commStateButton.setText(R.string.communication_state_disconnected);
+                commStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
+            }
+        }
+    }
+
+    private static String[] antennaStateArray;
+    private static void updateAntennaButtonState(int antennaState){
+        if (null!=antennaStateButton){
+            if (antennaState < antennaStateArray.length){
+                antennaStateButton.setText(antennaStateArray[antennaState]);
+            }
+            switch (antennaState){
+                case AntennaInfo.AntennaSearchSatellitesStatus.EXPLODED:
+                    // antennaStateButton.setText(R.string.antenna_state_exploded);
+                    antennaStateButton.setButtonState(BUTTON_STATE_NORMAL);
+                    break;
+                case AntennaInfo.AntennaSearchSatellitesStatus.FOLDED:
+                    // antennaStateButton.setText(R.string.antenna_state_folded);
+                case AntennaInfo.AntennaSearchSatellitesStatus.FOLDING:
+                    // antennaStateButton.setText(R.string.antenna_state_folding);
+                case AntennaInfo.AntennaSearchSatellitesStatus.EXPLODING:
+                    // antennaStateButton.setText(R.string.antenna_state_exploding);
+                case AntennaInfo.AntennaSearchSatellitesStatus.INIT:
+                    // antennaStateButton.setText(R.string.antenna_state_init);
+                case AntennaInfo.AntennaSearchSatellitesStatus.SEARCHING:
+                    // antennaStateButton.setText(R.string.antenna_state_searching);
+                case AntennaInfo.AntennaSearchSatellitesStatus.MANUAL:
+                    // antennaStateButton.setText(R.string.antenna_state_manual);
+                case AntennaInfo.AntennaSearchSatellitesStatus.LOCKED:
+                    // antennaStateButton.setText(R.string.antenna_state_locked);
+                case AntennaInfo.AntennaSearchSatellitesStatus.LOST:
+                case AntennaInfo.AntennaSearchSatellitesStatus.ABNORMAL:
+                case AntennaInfo.AntennaSearchSatellitesStatus.PAUSE:
+                case AntennaInfo.AntennaSearchSatellitesStatus.RECYCLED:
+                case AntennaInfo.AntennaSearchSatellitesStatus.RECYCLING:
+                    antennaStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
+                    break;
+            }
+        }
+    }
+
+    private static void updateGnssButtonState(int gnssState){
+        if (null != bdStateButton){
+            if (gnssState == LocationInfo.GnssState.LOCATED){
+                bdStateButton.setText(R.string.gnss_state_enabled);
+                bdStateButton.setButtonState(BUTTON_STATE_NORMAL);
+            }else {
+                bdStateButton.setText(R.string.gnss_state_disabled);
+                bdStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
+            }
+        }
+    }
+
+    private static void updateEnergyButtonState(int energySaveState){
+
+        if (null != energyStateButton){
+            if (energySaveState == SavingInfo.SAVING_STATE_OPEN){
+                energyStateButton.setText(R.string.energy_state_saved);
+                energyStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
+            }else {
+                energyStateButton.setText(R.string.energy_state_charged);
+                energyStateButton.setButtonState(BUTTON_STATE_NORMAL);
+            }
+        }
+    }
+
+    private static void updateLockerButtonState(int lockerState){
+        if (null != lockerStateButton){
+            if (null != lockerStateButton) {
+                if (lockerState == LockerInfo.LOCKER_STATE_LOCKED) {
+                    lockerStateButton.setText(R.string.locker_state_locked);
+                    lockerStateButton.setButtonState(BUTTON_STATE_ABNORMAL);
+                } else {
+                    lockerStateButton.setText(R.string.locker_state_released);
+                    lockerStateButton.setButtonState(BUTTON_STATE_NORMAL);
                 }
             }
         }
+    }
+
+    private static void updateStatusButton(Context context){
+        Resources res = context.getResources();
+        antennaStateArray = res.getStringArray(R.array.antenna_state_array);
+        // 获取状态，更新UI
+        // 连接状态, 获取wifi连接状态？跟基站通信状态？
+
+        int communicateState = FaultCondition.getWifiCommunication(context);
+        updateCommunicateState(communicateState);
+        // 天线状态
+        int antennaState = AntennaInfo.getAntennaState(context);
+        updateAntennaButtonState(antennaState);
+        // bd状态
+        int gnssState = LocationInfo.getGnssState(context);
+        updateGnssButtonState(gnssState);
+
+        // 节能状态
+        int energySaveState = SavingInfo.getSavingState(context);
+        updateEnergyButtonState(energySaveState);
+
+        // 锁紧状态
+        int lockerState = LockerInfo.getLockerState(context);
+        updateLockerButtonState(lockerState);
     }
 }

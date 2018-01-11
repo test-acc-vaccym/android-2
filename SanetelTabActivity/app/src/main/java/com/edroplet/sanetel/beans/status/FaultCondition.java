@@ -50,150 +50,180 @@ public class FaultCondition {
         FaultCondition faultCondition = new FaultCondition();
         String binaryString = Integer.toBinaryString(ConvertUtil.convertToInt(faultConditionString,0));
         faultCondition.ReserveCommunication = binaryString.charAt(0);
+        setReserveCommunication(context,faultCondition.ReserveCommunication);
         faultCondition.HandsetCommunication = binaryString.charAt(1);
-        CustomSP.putInt(context,KeyHandsetCommunication,faultCondition.HandsetCommunication);
+        setHandsetCommunication(context,faultCondition.HandsetCommunication);
         faultCondition.GNSSCommunication = binaryString.charAt(2);
-        CustomSP.putInt(context,KeyGNSSCommunication,faultCondition.GNSSCommunication);
+        setGNSSCommunication(context,faultCondition.GNSSCommunication);
         faultCondition.BeaconCommunication = binaryString.charAt(3);
-        CustomSP.putInt(context,KeyBeaconCommunication,faultCondition.BeaconCommunication);
+        setBeaconCommunication(context,faultCondition.BeaconCommunication);
         faultCondition.DipCommunication = binaryString.charAt(4);
-        CustomSP.putInt(context,KeyDipCommunication,faultCondition.DipCommunication);
+        setDipCommunication(context,faultCondition.DipCommunication);
         faultCondition.WifiCommunication = binaryString.charAt(5);
-        CustomSP.putInt(context,KeyWifiCommunication,faultCondition.WifiCommunication);
+        setWifiCommunication(context,faultCondition.WifiCommunication);
         faultCondition.AmplifierCommunication = binaryString.charAt(6);
-        CustomSP.putInt(context,KeyAmplifierCommunication,faultCondition.AmplifierCommunication);
+        setAmplifierCommunication(context,faultCondition.AmplifierCommunication);
         faultCondition.Reserve2Communication = binaryString.charAt(7);
+        setReserve2Communication(context,faultCondition.Reserve2Communication);
         faultCondition.AzimuthMotorStatus = binaryString.charAt(8);
-        CustomSP.putInt(context,KeyAzimuthMotorStatus,faultCondition.AzimuthMotorStatus);
+        setAzimuthMotorStatus(context,faultCondition.AzimuthMotorStatus);
         faultCondition.AzimuthHolzerStatus = binaryString.charAt(9);
-        CustomSP.putInt(context,KeyAzimuthHolzerStatus,faultCondition.AzimuthHolzerStatus);
+        setAzimuthHolzerStatus(context,faultCondition.AzimuthHolzerStatus);
         faultCondition.AzimuthLockHolzerStatus = binaryString.charAt(10);
-        CustomSP.putInt(context,KeyAzimuthLockHolzerStatus,faultCondition.AzimuthLockHolzerStatus);
+        setAzimuthLockHolzerStatus(context,faultCondition.AzimuthLockHolzerStatus);
         faultCondition.PitchMotorStatus = binaryString.charAt(11);
-        CustomSP.putInt(context,KeyPitchMotorStatus,faultCondition.PitchMotorStatus);
+        setPitchMotorStatus(context,faultCondition.PitchMotorStatus);
         faultCondition.PitchHolzerStatus = binaryString.charAt(12);
-        CustomSP.putInt(context,KeyPitchHolzerStatus,faultCondition.PitchHolzerStatus);
+        setPitchHolzerStatus(context,faultCondition.PitchHolzerStatus);
         faultCondition.PitchLockHolzerStatus = binaryString.charAt(13);
-        CustomSP.putInt(context,KeyPitchLockHolzerStatus,faultCondition.PitchLockHolzerStatus);
+        setPitchLockHolzerStatus(context,faultCondition.PitchLockHolzerStatus);
         faultCondition.PolMotorStatus = binaryString.charAt(14);
-        CustomSP.putInt(context,KeyPolMotorStatus,faultCondition.PolMotorStatus);
+        setPolMotorStatus(context,faultCondition.PolMotorStatus);
         faultCondition.PolPotentiometerStatus = binaryString.charAt(15);
-        CustomSP.putInt(context,KeyPolPotentiometerStatus,faultCondition.PolPotentiometerStatus);
+        setPolPotentiometerStatus(context,faultCondition.PolPotentiometerStatus);
 
         return faultCondition;
     }
 
-    public void setWifiCommunication(Context ctx, int wifiCommunication) {
-        CustomSP.putInt(ctx, KeyWifiCommunication, wifiCommunication);
-    }
-
-    public char getWifiCommunication(Context ctx) {
+    public static char getWifiCommunication(Context ctx) {
         return (char)CustomSP.getInt(ctx, KeyWifiCommunication,1);
     }
 
-    public char getAmplifierCommunication(Context context){
-        return (char)CustomSP.getInt(context,KeyAmplifierCommunication,0);
+    public static char
+    getAmplifierCommunication(Context context) {
+        return CustomSP.getChar(context, KeyAmplifierCommunication, 0);
     }
 
-    public char getAzimuthHolzerStatus(Context context) {
-        return (char)CustomSP.getInt(context,KeyAzimuthHolzerStatus,0);
+    public static char
+    getAzimuthHolzerStatus(Context context) {
+        return CustomSP.getChar(context, KeyAzimuthHolzerStatus, 0);
     }
 
-    public char getAzimuthMotorStatus(Context context){
+    public static char getAzimuthMotorStatus(Context context){
         return (char)CustomSP.getInt(context,KeyAzimuthMotorStatus,0);
     }
 
-    public char
+    public static char
     getHandsetCommunication(Context context) {
-        char defaultVal = 0;
-        HandsetCommunication = CustomSP.getChar(context, KeyHandsetCommunication, defaultVal);
-        return HandsetCommunication;
+        return CustomSP.getChar(context, KeyHandsetCommunication, 0);
     }
 
-    public char
+    public static char
     getBeaconCommunication(Context context) {
-        char defaultVal = 0;
-        BeaconCommunication = CustomSP.getChar(context, KeyBeaconCommunication, defaultVal);
-        return BeaconCommunication;
+        return CustomSP.getChar(context, KeyBeaconCommunication, 0);
     }
 
-    public char
+    private static void setReserveCommunication(Context context, char reserveCommunication) {
+        CustomSP.putChar(context, KeyReserveCommunication, reserveCommunication);
+    }
+
+    public static char
     getDipCommunication(Context context) {
-        char defaultVal = 0;
-        DipCommunication = CustomSP.getChar(context, KeyDipCommunication, defaultVal);
-        return DipCommunication;
+        return CustomSP.getChar(context, KeyDipCommunication, 0);
     }
 
-    public char
+    public static char
     getAzimuthLockHolzerStatus(Context context) {
-        char defaultVal = 0;
-        AzimuthLockHolzerStatus = CustomSP.getChar(context, KeyAzimuthLockHolzerStatus, defaultVal);
-        return AzimuthLockHolzerStatus;
+        return CustomSP.getChar(context, KeyAzimuthLockHolzerStatus, 0);
     }
 
-    public char
+    public static char
     getGNSSCommunication(Context context) {
-        char defaultVal = 0;
-        GNSSCommunication = CustomSP.getChar(context, KeyGNSSCommunication, defaultVal);
-        return GNSSCommunication;
+        return CustomSP.getChar(context, KeyGNSSCommunication, 0);
     }
 
-    public char
+    public static char
     getPitchHolzerStatus(Context context) {
-        char defaultVal = 0;
-        PitchHolzerStatus = CustomSP.getChar(context, KeyPitchHolzerStatus, defaultVal);
-        return PitchHolzerStatus;
+        return CustomSP.getChar(context, KeyPitchHolzerStatus, 0);
     }
 
-    public char
+    public static char
     getPitchLockHolzerStatus(Context context) {
-        char defaultVal = 0;
-        PitchLockHolzerStatus = CustomSP.getChar(context, KeyPitchLockHolzerStatus, defaultVal);
-        return PitchLockHolzerStatus;
+        return CustomSP.getChar(context, KeyPitchLockHolzerStatus, 0);
     }
 
-    public char
+    public static char
     getPitchMotorStatus(Context context) {
-        char defaultVal = 0;
-        PitchMotorStatus = CustomSP.getChar(context, KeyPitchMotorStatus, defaultVal);
-        return PitchMotorStatus;
+        return CustomSP.getChar(context, KeyPitchMotorStatus, 0);
     }
 
-    public char
+    public static char
     getPolMotorStatus(Context context) {
-        char defaultVal = 0;
-        PolMotorStatus = CustomSP.getChar(context, KeyPolMotorStatus, defaultVal);
-        return PolMotorStatus;
+        return CustomSP.getChar(context, KeyPolMotorStatus, 0);
     }
 
-    public char
+    public static char
     getPolPotentiometerStatus(Context context) {
-        char defaultVal = 0;
-        PolPotentiometerStatus = CustomSP.getChar(context, KeyPolPotentiometerStatus, defaultVal);
-        return PolPotentiometerStatus;
+        return CustomSP.getChar(context, KeyPolPotentiometerStatus, 0);
     }
 
-    public void setWifiCommunication(Context context, char wifiCommunication) {
+    private static void setWifiCommunication(Context context, char wifiCommunication) {
         CustomSP.putChar(context, KeyWifiCommunication, wifiCommunication);
-        WifiCommunication = wifiCommunication;
     }
 
-    public void setAmplifierCommunication(Context context, char amplifierCommunication) {
+    private static void setAmplifierCommunication(Context context, char amplifierCommunication) {
         CustomSP.putChar(context, KeyAmplifierCommunication, amplifierCommunication);
-        AmplifierCommunication = amplifierCommunication;
     }
 
-    public char
+    public static char
     getReserveCommunication(Context context) {
-        char defaultVal = 0;
-        ReserveCommunication = CustomSP.getChar(context, KeyReserveCommunication, defaultVal);
-        return ReserveCommunication;
+        return CustomSP.getChar(context, KeyReserveCommunication, 0);
     }
 
-    public char
+    public static char
     getReserve2Communication(Context context) {
-        char defaultVal = 0;
-        Reserve2Communication = CustomSP.getChar(context, KeyReserve2Communication, defaultVal);
-        return Reserve2Communication;
+        return CustomSP.getChar(context, KeyReserve2Communication, 0);
+    }
+
+    private static void setAzimuthHolzerStatus(Context context, char azimuthHolzerStatus) {
+        CustomSP.putChar(context, KeyAzimuthHolzerStatus, azimuthHolzerStatus);
+    }
+
+    private static void setAzimuthLockHolzerStatus(Context context, char azimuthLockHolzerStatus) {
+        CustomSP.putChar(context, KeyAzimuthLockHolzerStatus, azimuthLockHolzerStatus);
+    }
+
+    private static void setAzimuthMotorStatus(Context context, char azimuthMotorStatus) {
+        CustomSP.putChar(context, KeyAzimuthMotorStatus, azimuthMotorStatus);
+    }
+
+    private static void setBeaconCommunication(Context context, char beaconCommunication) {
+        CustomSP.putChar(context, KeyBeaconCommunication, beaconCommunication);
+    }
+
+    private static void setDipCommunication(Context context, char dipCommunication) {
+        CustomSP.putChar(context, KeyDipCommunication, dipCommunication);
+    }
+
+    private static void setGNSSCommunication(Context context, char GNSSCommunication) {
+        CustomSP.putChar(context, KeyGNSSCommunication, GNSSCommunication);
+    }
+
+    private static void setHandsetCommunication(Context context, char handsetCommunication) {
+        CustomSP.putChar(context, KeyHandsetCommunication, handsetCommunication);
+    }
+
+    private static void setPitchHolzerStatus(Context context, char pitchHolzerStatus) {
+        CustomSP.putChar(context, KeyPitchHolzerStatus, pitchHolzerStatus);
+    }
+
+    private static void setPitchLockHolzerStatus(Context context, char pitchLockHolzerStatus) {
+        CustomSP.putChar(context, KeyPitchLockHolzerStatus, pitchLockHolzerStatus);
+    }
+
+    private static void setPitchMotorStatus(Context context, char pitchMotorStatus) {
+        CustomSP.putChar(context, KeyPitchMotorStatus, pitchMotorStatus);
+    }
+
+    private static void setPolMotorStatus(Context context, char polMotorStatus) {
+        CustomSP.putChar(context, KeyPolMotorStatus, polMotorStatus);
+    }
+
+    private static void setPolPotentiometerStatus(Context context, char polPotentiometerStatus) {
+        CustomSP.putChar(context, KeyPolPotentiometerStatus, polPotentiometerStatus);
+    }
+
+    private static void setReserve2Communication(Context context, char reserve2Communication) {
+        CustomSP.putChar(context, KeyReserve2Communication, reserve2Communication);
     }
 }

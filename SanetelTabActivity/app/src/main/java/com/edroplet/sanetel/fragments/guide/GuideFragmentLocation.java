@@ -237,12 +237,7 @@ public class GuideFragmentLocation extends Fragment {
                     }
                     LocationInfo locationInfo = cities.getLocationInfoByProvinceCity(selectedProvince, selectedCity);
                     if (locationInfo != null) {
-                        newProvince.setText(locationInfo.getProvince());
-                        newCity.setText(locationInfo.getName());
-                        newLatitude.setText(locationInfo.getLatitude()+"");
-                        newLongitude.setText(locationInfo.getLongitude()+"");
-                        newLatitudeUnit.setSelection(locationInfo.getLatitudeUnitPosition());
-                        newLongitudeUnit.setSelection(locationInfo.getLongitudeUnitPosition());
+                        updateLocationUI(locationInfo);
                     }
                 }
 
@@ -273,12 +268,7 @@ public class GuideFragmentLocation extends Fragment {
                     if (!selectedCity.isEmpty()) {
                         LocationInfo locationInfo = cities.getLocationInfoByProvinceCity(selectedProvince, selectedCity);
                         if (locationInfo != null) {
-                            newProvince.setText(locationInfo.getProvince());
-                            newCity.setText(locationInfo.getName());
-                            newLatitude.setText(locationInfo.getLatitude()+"");
-                            newLongitude.setText(locationInfo.getLongitude()+"");
-                            newLatitudeUnit.setSelection(0);
-                            newLongitudeUnit.setSelection(0);
+                            updateLocationUI(locationInfo);
                         }
                     }
                 }
@@ -297,12 +287,7 @@ public class GuideFragmentLocation extends Fragment {
                 if (!selectedCity.isEmpty()) {
                     LocationInfo locationInfo = cities.getLocationInfoByProvinceCity(selectedProvince, selectedCity);
                     if (locationInfo != null) {
-                        newProvince.setText(locationInfo.getProvince());
-                        newCity.setText(locationInfo.getName());
-                        newLatitude.setText(locationInfo.getLatitude()+"");
-                        newLongitude.setText(locationInfo.getLongitude()+"");
-                        newLatitudeUnit.setSelection(0);
-                        newLongitudeUnit.setSelection(0);
+                        updateLocationUI(locationInfo);
                     }
                 }
             }
@@ -366,5 +351,14 @@ public class GuideFragmentLocation extends Fragment {
         args.putString(PopDialog.BUTTON_TEXT, settingString);
         args.putString(PopDialog.END, foreverString);
         return args;
+    }
+
+    void updateLocationUI(LocationInfo locationInfo){
+        newProvince.setText(locationInfo.getProvince());
+        newCity.setText(locationInfo.getName());
+        newLatitude.setText(String.valueOf(locationInfo.getLatitude()));
+        newLongitude.setText(String.valueOf(locationInfo.getLongitude()));
+        newLatitudeUnit.setSelection(locationInfo.getLatitudeUnitPosition());
+        newLongitudeUnit.setSelection(locationInfo.getLongitudeUnitPosition());
     }
 }

@@ -166,7 +166,7 @@ public class GuideFragmentLocation extends Fragment {
 
         newLongitude.setFocusable(focusable);
         newLongitude.setFocusableInTouchMode(focusable);
-        newLongitudeUnit.setEnabled(focusable);
+        newLongitude.setEnabled(focusable);
 
         newLatitudeUnit.setClickable(focusable);
         newLatitudeUnit.setEnabled(focusable);

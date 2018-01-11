@@ -85,6 +85,9 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
     @BindView(R.id.carrier_detail)
     CustomEditText satelliteCarrier;
 
+    @BindView(R.id.comment_detail)
+    CustomEditText satelliteComment;
+
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
 
@@ -96,6 +99,9 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
 
     @BindView(R.id.guide_destination_group)
     RadioGroup guideDestinationGroup;
+
+    @BindArray(R.array.satellites_polarization)
+    String[] satellitesPolarizationArray;
 
     SparseIntArray mapSelectDestinationArray = new SparseIntArray(2);
     int[] destinationSelectIds = {R.id.follow_me_destination_satellite_select,R.id.follow_me_destination_satellite_new};
@@ -194,8 +200,13 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
         satelliteBeacon.setFocusable(focusable);
         satelliteBeacon.setEnabled(focusable);
 
+        satelliteComment.setFocusableInTouchMode(focusable);
+        satelliteComment.setFocusable(focusable);
+        satelliteComment.setEnabled(focusable);
+
         satellitePolarization.setClickable(focusable);
         satellitePolarization.setEnabled(focusable);
+        satellitePolarization.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, satellitesPolarizationArray));
 
         satellitePolarizationSelect.setClickable(!focusable);
         satellitePolarizationSelect.setEnabled(!focusable);
@@ -247,7 +258,6 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
                 String[] polarizationArray = satellites.getSatellitePolarizationArray(name);
                 if (polarizationArray.length > 0) {
                     satellitePolarizationSelect.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, polarizationArray));
-                    satellitePolarization.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, polarizationArray));
                     // 读取配置中的值
                     polarization = CustomSP.getString(getContext(), KEY_DESTINATION_SATELLITE_POLARIZATION, polarizationArray[0]);
                     for(int i=0; i<polarizationArray.length; i++){
@@ -258,18 +268,7 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
                     }
                     SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(name, polarization);
                     if (satelliteInfo != null) {
-                        satelliteName.setText(satelliteInfo.name);
-                        for(int i=0; i<polarizationArray.length; i++){
-                            if(polarization.equals(polarizationArray[i])){
-                                satellitePolarization.setSelection(i,true);
-                                break;
-                            }
-                        }
-                        satelliteLongitude.setText(satelliteInfo.longitude);
-                        satelliteBeacon.setText(satelliteInfo.beacon);
-                        satelliteThreshold.setText(satelliteInfo.threshold);
-                        //  dvb数据
-                        satelliteDvb.setText(satelliteInfo.symbolRate);
+                        updateSattelitesUI(satelliteInfo);
                     }
                 }
 
@@ -299,19 +298,7 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
                     if (!polarization.isEmpty()) {
                         SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(name, polarization);
                         if (satelliteInfo != null) {
-                            satelliteName.setText(satelliteInfo.name);
-
-                            for(int i=0; i<polarizationArray.length; i++){
-                                if(polarization.equals(polarizationArray[i])){
-                                    satellitePolarization.setSelection(i,true);
-                                    break;
-                                }
-                            }
-                            satelliteLongitude.setText(satelliteInfo.longitude);
-                            satelliteBeacon.setText(satelliteInfo.beacon);
-                            satelliteThreshold.setText(satelliteInfo.threshold);
-                            // dvb数据
-                            satelliteDvb.setText(satelliteInfo.symbolRate);
+                            updateSattelitesUI(satelliteInfo);
                         }
                     }
                 }
@@ -330,20 +317,7 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
                 if (!polarization.isEmpty()) {
                     SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(name, polarization);
                     if (satelliteInfo != null) {
-                        satelliteName.setText(satelliteInfo.name);
-                        String[] polarizationArray = satellites.getSatellitePolarizationArray(name);
-                        for(int i=0; i<polarizationArray.length; i++){
-                            if(polarization.equals(polarizationArray[i])){
-                                satellitePolarization.setSelection(i,true);
-                                break;
-                            }
-                        }
-
-                        satelliteLongitude.setText(satelliteInfo.longitude);
-                        satelliteBeacon.setText(satelliteInfo.beacon);
-                        satelliteThreshold.setText(satelliteInfo.threshold);
-                        // dvb数据
-                        satelliteDvb.setText(satelliteInfo.symbolRate);
+                        updateSattelitesUI(satelliteInfo);
                     }
                 }
             }
@@ -370,7 +344,7 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
                                 satelliteBeacon.getText().toString(),
                                 satelliteThreshold.getText().toString(),
                                 satelliteDvb.getText().toString(),
-                                null,
+                                satelliteComment.getText().toString(),
                                 satelliteCarrier.getText().toString(),
                                 null), true);
                         try {
@@ -434,4 +408,25 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
         if (unbinder != null)  unbinder.unbind();
     }
 
+    // 更新界面
+    void updateSattelitesUI(SatelliteInfo satelliteInfo){
+
+        satelliteName.setText(satelliteInfo.name);
+        String[] polarizationArray = satellites.getSatellitePolarizationArray(name);
+        for(int i=0; i<polarizationArray.length; i++){
+            if(polarization.equals(polarizationArray[i])){
+                satellitePolarization.setSelection(i,true);
+                break;
+            }
+        }
+
+        satelliteLongitude.setText(satelliteInfo.longitude);
+        satelliteBeacon.setText(satelliteInfo.beacon);
+        satelliteThreshold.setText(satelliteInfo.threshold);
+        // dvb数据
+        satelliteDvb.setText(satelliteInfo.symbolRate);
+
+        satelliteCarrier.setText(satelliteInfo.carrier);
+        satelliteComment.setText(satelliteInfo.comment);
+    }
 }

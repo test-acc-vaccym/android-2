@@ -2,6 +2,7 @@ package com.edroplet.sanetel.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,9 +39,10 @@ public class SpinnerAdapter2 extends ArrayAdapter {
             convertView = inflater.inflate(resource,null);
         TextView text = (TextView) convertView
                 .findViewById(textViewResourceId);
-        if (target != null && target.length > 0)
+        if (target != null && target.length > 0) {
             text.setText(target[position]);
-        else
+            text.setGravity(Gravity.CENTER);
+        } else
             text.setText("");
         text.setBackgroundColor(Color.TRANSPARENT);
         text.setTextAppearance(context, android.R.style.TextAppearance_Medium);
@@ -61,9 +63,10 @@ public class SpinnerAdapter2 extends ArrayAdapter {
         TextView text = (TextView) convertView
                 .findViewById(android.R.id.text1);
 
-        if (target != null && target.length > 0)
+        if (target != null && target.length > 0) {
             text.setText(target[position]);
-        else
+            text.setGravity(Gravity.CENTER);
+        } else
             text.setText("");
         text.setBackgroundColor(Color.GREEN);
         text.setTextAppearance(context, android.R.style.TextAppearance_Medium);

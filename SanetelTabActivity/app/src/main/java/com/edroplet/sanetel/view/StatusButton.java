@@ -237,6 +237,7 @@ public class StatusButton extends CustomButton {
         // 设置字体大小
         setTextSize(getResources().getDimension(R.dimen.status_bar_text_size));
         // 设置文字
+        /*
         switch (getId()) {
             case R.id.status_bar_button_communication_state:
                 if (mButtonState == BUTTON_STATE_NORMAL) setText(R.string.communication_state_connected);
@@ -260,6 +261,8 @@ public class StatusButton extends CustomButton {
                 else setText(R.string.energy_state_charged);
                 break;
         }
+        */
+
         // 自适应尺寸
         if (left!=null){
             // http://blog.sina.com.cn/s/blog_5da93c8f01012pkj.html

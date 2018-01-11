@@ -287,9 +287,11 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
                                 citiesRecyclerViewAdapter.setmValues(cities.getLocationInfosByProvince(selectedProvince));
                                 citiesRecyclerViewAdapter.initMap();
                                 cityListSelectProvince.setSelection(0);
-                            }else{
+                            }else if (isClear && provinceArray.length == 0){
                                 citiesRecyclerViewAdapter.setmValues(null);
                                 Toast.makeText(CityLocationListActivity.this,"EMPTY!", Toast.LENGTH_LONG);
+                            }else {
+                                citiesRecyclerViewAdapter.setmValues(cities.getLocationInfosByProvince(selectedProvince));
                             }
                             citiesRecyclerViewAdapter.notifyDataSetChanged();
                             recyclerView.scrollToPosition(0);

@@ -168,24 +168,39 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
 
         satelliteName.setFocusableInTouchMode(focusable);
         satelliteName.setFocusable(focusable);
+        satelliteName.setEnabled(focusable);
 
         satelliteLongitude.setFocusableInTouchMode(focusable);
         satelliteLongitude.setFocusable(focusable);
+        satelliteLongitude.setEnabled(focusable);
 
         satellitePolarization.setFocusableInTouchMode(focusable);
         satellitePolarization.setFocusable(focusable);
+        satellitePolarization.setEnabled(focusable);
 
         satelliteDvb.setFocusableInTouchMode(focusable);
         satelliteDvb.setFocusable(focusable);
+        satelliteDvb.setEnabled(focusable);
 
         satelliteCarrier.setFocusableInTouchMode(focusable);
         satelliteCarrier.setFocusable(focusable);
+        satelliteCarrier.setEnabled(focusable);
 
         satelliteThreshold.setFocusableInTouchMode(focusable);
         satelliteThreshold.setFocusable(focusable);
+        satelliteThreshold.setEnabled(focusable);
 
         satelliteBeacon.setFocusableInTouchMode(focusable);
         satelliteBeacon.setFocusable(focusable);
+        satelliteBeacon.setEnabled(focusable);
+
+        satellitePolarization.setClickable(focusable);
+        satellitePolarization.setEnabled(focusable);
+
+        satellitePolarizationSelect.setClickable(!focusable);
+        satellitePolarizationSelect.setEnabled(!focusable);
+        satelliteSelect.setEnabled(!focusable);
+        satelliteSelect.setClickable(!focusable);
 
         if (focusable) {
             satelliteName.requestFocus();

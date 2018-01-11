@@ -154,20 +154,30 @@ public class GuideFragmentLocation extends Fragment {
 
         newCity.setFocusable(focusable);
         newCity.setFocusableInTouchMode(focusable);
+        newCity.setEnabled(focusable);
 
         newProvince.setFocusable(focusable);
         newProvince.setFocusableInTouchMode(focusable);
+        newProvince.setEnabled(focusable);
 
         newLatitude.setFocusable(focusable);
         newLatitude.setFocusableInTouchMode(focusable);
+        newLatitude.setEnabled(focusable);
 
         newLongitude.setFocusable(focusable);
         newLongitude.setFocusableInTouchMode(focusable);
+        newLongitudeUnit.setEnabled(focusable);
 
-        newLatitudeUnit.setFocusable(focusable);
-        newLatitudeUnit.setFocusableInTouchMode(focusable);
+        newLatitudeUnit.setClickable(focusable);
+        newLatitudeUnit.setEnabled(focusable);
 
         newLongitudeUnit.setClickable(focusable);
+        newLongitudeUnit.setEnabled(focusable);
+
+        spinnerLocationCity.setEnabled(!focusable);
+        spinnerLocationCity.setClickable(!focusable);
+        spinnerLocationProvince.setClickable(!focusable);
+        spinnerLocationProvince.setEnabled(!focusable);
 
         if (focusable) {
             newCity.requestFocus();

@@ -32,7 +32,9 @@ public class InputFilterFloat implements InputFilter {
 
     private double min, max;
     private int validBitNumber = 3;
-    private static int minLength = 0;
+    private int minLength = 0;
+    private boolean isNegtive = false;
+
 
     public InputFilterFloat(double min, double max) {
         this.min = min;
@@ -40,16 +42,26 @@ public class InputFilterFloat implements InputFilter {
         minLength = getIntegerStringLength(min);
     }
 
-    private int getIntegerStringLength(Double dv){
-        String s = String.valueOf(dv.intValue());
-        return s.length();
-    }
-    public InputFilterFloat(String min, String max) {
-        this.min = Double.parseDouble(min);
-        this.max = Double.parseDouble(max);
-        minLength = min.length();
+    private int getIntegerStringLength(String s){
+        int index = s.indexOf('.');
+        int len = s.length();
+        if (index < 0){
+            if (s.startsWith("-")) return len - 1;
+            return len;
+        }
+        s = s.substring(0,index);
+        if (s.startsWith("-")){
+            s = s.substring(1);
+            isNegtive = true;
+        }
+        len = s.length();
+        return len;
     }
 
+    private int getIntegerStringLength(Double dv){
+        String s = String.valueOf(dv);
+        return getIntegerStringLength(s);
+    }
 
     public InputFilterFloat(double min, double max, int validBits) {
         this.min = min;
@@ -58,12 +70,6 @@ public class InputFilterFloat implements InputFilter {
         minLength = getIntegerStringLength(min);
     }
 
-    public InputFilterFloat(String min, String max, int validBits) {
-        this.min = Double.parseDouble(min);
-        this.max = Double.parseDouble(max);
-        validBitNumber = validBits;
-        minLength = min.length();
-    }
 
     @Override
     public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
@@ -71,11 +77,12 @@ public class InputFilterFloat implements InputFilter {
             String doubleString = dest.toString() + source.toString();
 
             // 如果为负数，首位为"-"
-            if (doubleString.equals("-")){
+            if (doubleString.equals("-") && isNegtive){
                 return null;
             }
             // 判断有效数
             String[] numbers = doubleString.split("\\.");
+            String integerString = numbers[0];
             // 格式判断
             if (numbers.length > 2){
                 return "";
@@ -85,13 +92,16 @@ public class InputFilterFloat implements InputFilter {
                 // 只有返回空才不填入，否则会填入
                 return "";
             }else if (dest.toString().isEmpty() && numbers.length == 2 && numbers[1].length()> validBitNumber){
-                return numbers[0]+"."+numbers[1].substring(0,validBitNumber);
+                return integerString + "." + numbers[1].substring(0,validBitNumber);
             }
-            if (numbers[0].length() < minLength) return null;
+
+            if ((integerString.startsWith("-") && integerString.length() < minLength + 1) || (!integerString.startsWith("-") && integerString.length() < minLength)) return null;
             double input = Double.parseDouble(doubleString);
             if (isInRange(min, max, input))  return null;
-        } catch (NumberFormatException nfe) { return ""; }
-        return "";
+            return "";
+        } catch (NumberFormatException nfe) {
+            return "";
+        }
     }
 
     private boolean isInRange(double a, double b, double c) {

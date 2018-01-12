@@ -74,7 +74,7 @@
             <com.edroplet.sanetel.view.custom.CustomEditText
                 style="@style/radio_group_second_item_edit_horizontal_style"
                 android:id="@+id/longitude_detail"
-                android:inputType="numberDecimal|number"/>
+                android:inputType="numberDecimal|numberSigned"/>
         </LinearLayout>
         <!--门限-->
         <LinearLayout

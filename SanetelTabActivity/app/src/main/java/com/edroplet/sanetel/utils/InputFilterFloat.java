@@ -17,8 +17,8 @@ public class InputFilterFloat implements InputFilter {
     public static final float thresholdMax = 10.0f;
     public static final float longitudeMin = -180.0f;
     public static final float longitudeMax = 180.0f;
-    public static final float dvbMin = -180.0f;
-    public static final float dvbMax = 180.0f;
+    public static final float dvbMin = 6000f;
+    public static final float dvbMax = 30000f;
     public static final float latitudeMin = -90.0f;
     public static final float latitudeMax = 90.0f;
 
@@ -33,7 +33,7 @@ public class InputFilterFloat implements InputFilter {
     private double min, max;
     private int validBitNumber = 3;
     private int minLength = 0;
-    private boolean isNegtive = false;
+    private boolean isNegative = false;
 
 
     public InputFilterFloat(double min, double max) {
@@ -52,7 +52,7 @@ public class InputFilterFloat implements InputFilter {
         s = s.substring(0,index);
         if (s.startsWith("-")){
             s = s.substring(1);
-            isNegtive = true;
+            isNegative = true;
         }
         len = s.length();
         return len;
@@ -77,7 +77,7 @@ public class InputFilterFloat implements InputFilter {
             String doubleString = dest.toString() + source.toString();
 
             // 如果为负数，首位为"-"
-            if (doubleString.equals("-") && isNegtive){
+            if (doubleString.equals("-") && isNegative){
                 return null;
             }
             // 判断有效数

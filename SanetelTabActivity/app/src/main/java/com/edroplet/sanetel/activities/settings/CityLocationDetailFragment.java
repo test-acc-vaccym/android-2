@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Spinner;
 
 import com.edroplet.sanetel.R;
+import com.edroplet.sanetel.adapters.SpinnerAdapter2;
 import com.edroplet.sanetel.beans.Cities;
 import com.edroplet.sanetel.beans.LocationInfo;
 import com.edroplet.sanetel.utils.ConvertUtil;
@@ -19,8 +20,10 @@ import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomEditText;
 import com.edroplet.sanetel.view.custom.CustomTextView;
 
+import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * A fragment representing a single CityLocation detail screen.
@@ -133,13 +136,24 @@ public class CityLocationDetailFragment extends Fragment implements View.OnClick
         }
     }
 
+    Unbinder unbinder;
+    Context context;
+    @BindArray(R.array.longitude_unit)
+    String[] longitudeArray;
+    @BindArray(R.array.latitude_unit)
+    String[] latitudeArray;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_settings_city_detail, container, false);
-        ButterKnife.bind(this,rootView);
+        unbinder = ButterKnife.bind(this,rootView);
+        context = getContext();
 
         cityName.setFocusable(false);
+
+        longitudeUnit.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, longitudeArray));
+        latitudeUnit.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, latitudeArray));
 
         if (mItem != null) {
             cityId.setText(mItem.getmId());
@@ -158,5 +172,6 @@ public class CityLocationDetailFragment extends Fragment implements View.OnClick
     @Override
     public void onDestroy() {
         super.onDestroy();
+        unbinder.unbind();
     }
 }

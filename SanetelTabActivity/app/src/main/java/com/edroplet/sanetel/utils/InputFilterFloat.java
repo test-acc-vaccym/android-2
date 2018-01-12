@@ -19,6 +19,9 @@ public class InputFilterFloat implements InputFilter {
     public static final float longitudeMax = 180.0f;
     public static final float dvbMin = -180.0f;
     public static final float dvbMax = 180.0f;
+    public static final float latitudeMin = -90.0f;
+    public static final float latitudeMax = 90.0f;
+
 
     private double min, max;
     private int validBitNumber = 3;

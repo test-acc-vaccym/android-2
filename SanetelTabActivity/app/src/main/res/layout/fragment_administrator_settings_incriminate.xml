@@ -42,7 +42,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/main_control_speed_azimuth_hint"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:gravity="center"
+                android:inputType="numberSigned|numberDecimal"/>
 
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:layout_width="0dp"
@@ -50,6 +52,7 @@
                 android:layout_gravity="start"
                 android:layout_weight="0.2"
                 android:text="@string/angle_degree_unit"
+                android:gravity="center_vertical"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
 
@@ -73,7 +76,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/main_control_speed_pitch_hint"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:inputType="numberSigned|numberDecimal"
+                android:gravity="center" />
 
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:layout_width="0dp"
@@ -81,6 +86,7 @@
                 android:layout_gravity="start"
                 android:layout_weight="0.2"
                 android:text="@string/angle_degree_unit"
+                android:gravity="center_vertical"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
 
@@ -103,7 +109,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/main_control_speed_polarization_hint"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:gravity="center"
+                android:inputType="numberSigned|numberDecimal"/>
 
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:layout_width="0dp"
@@ -111,6 +119,7 @@
                 android:layout_gravity="start"
                 android:layout_weight="0.2"
                 android:text="@string/angle_degree_unit"
+                android:gravity="center_vertical"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
 

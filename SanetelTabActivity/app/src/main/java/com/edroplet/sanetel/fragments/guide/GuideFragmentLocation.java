@@ -208,8 +208,8 @@ public class GuideFragmentLocation extends Fragment {
         });
         // 初始化其他
 
-        newLongitude.setFilters(new InputFilter[]{ new InputFilterFloat("-180.0", "180.0")});
-        newLatitude.setFilters(new InputFilter[]{ new InputFilterFloat("-90.0", "90.0")});
+        newLongitude.setFilters(new InputFilter[]{ new InputFilterFloat(InputFilterFloat.longitudeMin, InputFilterFloat.longitudeMax)});
+        newLatitude.setFilters(new InputFilter[]{ new InputFilterFloat(InputFilterFloat.latitudeMin, InputFilterFloat.latitudeMax)});
 
         try {
             cities = new Cities(getContext());

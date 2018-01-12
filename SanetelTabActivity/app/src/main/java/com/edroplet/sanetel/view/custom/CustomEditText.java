@@ -45,7 +45,9 @@ public class CustomEditText extends AppCompatEditText {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus){
-                    Double d = Double.parseDouble(getText().toString());
+                    String s = getText().toString();
+                    if (s == null || s.length() == 0) return;
+                    Double d = Double.parseDouble(s);
                     if (d < min || d > max) {
                         setText("");
                     }

@@ -80,7 +80,7 @@ public class InputFilterFloat implements InputFilter {
             }else if (dest.toString().isEmpty() && numbers.length == 2 && numbers[1].length()> validBitNumber){
                 return numbers[0]+"."+numbers[1].substring(0,validBitNumber);
             }
-            if (doubleString.length() < minLength) return null;
+            if (numbers[0].length() < minLength) return null;
             double input = Double.parseDouble(doubleString);
             if (isInRange(min, max, input))  return null;
         } catch (NumberFormatException nfe) { return ""; }

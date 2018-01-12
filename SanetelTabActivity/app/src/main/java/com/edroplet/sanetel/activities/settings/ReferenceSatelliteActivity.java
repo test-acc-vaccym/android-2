@@ -34,6 +34,8 @@ import com.edroplet.sanetel.view.annotation.BindId;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomTextView;
 
+import java.util.Arrays;
+
 
 public class ReferenceSatelliteActivity extends AppCompatActivity {
     @BindId(R.id.settings_reference_toolbar)
@@ -101,35 +103,27 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
         referenceReceiver = new ReferenceReceiver();
         registerReceiver(referenceReceiver, filter);
 
-        dvbSymbolRate.setInputType(InputType.TYPE_CLASS_NUMBER);
-        dvbSymbolRate.setFilters(new InputFilter[]{new InputFilterFloat(0,30000)});
-        dvbSymbolRate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                TextView tv = (TextView)v;
-                if (!hasFocus){
-                    if (tv.length() > 0 &&  ConvertUtil.convertToFloat(tv.getText().toString(),0.0f)< 6000){
-                        tv.setText("");
-                        // tv.setError(getString(R.string.value_error));
-                    }
-                }
-            }
-        });
+        // 限制输入
+        tvCarrier.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.carrierMin,InputFilterFloat.carrierMax)});
+        longitude.setFilters(new InputFilter[]{ new InputFilterFloat(InputFilterFloat.longitudeMin, InputFilterFloat.longitudeMax)});
 
-        agThreshold.setFilters(new InputFilter[]{new InputFilterFloat(0, 10.0f)});
-        beacon.setFilters(new InputFilter[]{new InputFilterFloat(0, 40000)});
-        beacon.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                TextView tv = (TextView)v;
-                if (!hasFocus){
-                    if (tv.length() > 0 &&  ConvertUtil.convertToFloat(tv.getText().toString(),0.0f)< 10750){
-                        tv.setText("");
-                        // tv.setError(getString(R.string.value_error));
-                    }
-                }
-            }
-        });
+        dvbSymbolRate.setInputType(InputType.TYPE_CLASS_NUMBER);
+        dvbSymbolRate.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.dvbMin,InputFilterFloat.dvbMax)});
+//        dvbSymbolRate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                TextView tv = (TextView)v;
+//                if (!hasFocus){
+//                    if (tv.length() > 0 &&  ConvertUtil.convertToFloat(tv.getText().toString(),0.0f)< 6000){
+//                        tv.setText("");
+//                        // tv.setError(getString(R.string.value_error));
+//                    }
+//                }
+//            }
+//        });
+
+        agThreshold.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.thresholdMin, InputFilterFloat.thresholdMax)});
+        beacon.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.beaconMin,InputFilterFloat.beaconMax)});
 
         referenceToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -275,19 +269,7 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
                     }
                 }
                 SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(selectedSatellite, selectedPolarization);
-                if (satelliteInfo != null) {
-                    for(int i=0; i<polarizationArray.length; i++){
-                        if(selectedPolarization.equals(polarizationArray[i])){
-                            satellitesPolarizationSpinner.setSelection(i,true);
-                            break;
-                        }
-                    }
-                    longitude.setText(satelliteInfo.longitude);
-                    beacon.setText(satelliteInfo.beacon);
-                    agThreshold.setText(satelliteInfo.threshold);
-                    // todo dvb数据哪里来
-                    dvbSymbolRate.setText(satelliteInfo.symbolRate);
-                }
+                updateSatelliteUI(satelliteInfo, polarizationArray);
             }
 
         }catch (Exception e){
@@ -309,20 +291,7 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
 
                     if (!selectedPolarization.isEmpty()) {
                         SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(selectedSatellite, selectedPolarization);
-                        if (satelliteInfo != null) {
-
-                            for(int i=0; i<polarizationArray.length; i++){
-                                if(selectedPolarization.equals(polarizationArray[i])){
-                                    satellitesPolarizationSpinner.setSelection(i,true);
-                                    break;
-                                }
-                            }
-                            longitude.setText(satelliteInfo.longitude);
-                            beacon.setText(satelliteInfo.beacon);
-                            agThreshold.setText(satelliteInfo.threshold);
-                            // todo dvb数据哪里来
-                            dvbSymbolRate.setText(satelliteInfo.symbolRate);
-                        }
+                        updateSatelliteUI(satelliteInfo, polarizationArray);
                     }
                 }
             }
@@ -339,13 +308,7 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
                 selectedPolarization = (String)satellitesPolarizationSpinner.getItemAtPosition(position);
                 if (!selectedPolarization.isEmpty()) {
                     SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(selectedSatellite, selectedPolarization);
-                    if (satelliteInfo != null) {
-                        longitude.setText(satelliteInfo.longitude);
-                        beacon.setText(satelliteInfo.beacon);
-                        agThreshold.setText(satelliteInfo.threshold);
-                        // todo dvb数据哪里来
-                        dvbSymbolRate.setText(satelliteInfo.symbolRate);
-                    }
+                    updateSatelliteUI(satelliteInfo, null);
                 }
             }
             @Override
@@ -399,5 +362,18 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         if (referenceReceiver != null) unregisterReceiver(referenceReceiver);
+    }
+
+    void updateSatelliteUI(SatelliteInfo satelliteInfo, String[] polarizationArray){
+        if (satelliteInfo != null) {
+            if (polarizationArray != null) {
+                satellitesPolarizationSpinner.setSelection(Arrays.asList(polarizationArray).indexOf(selectedPolarization), true);
+            }
+            longitude.setText(satelliteInfo.longitude);
+            beacon.setText(satelliteInfo.beacon);
+            agThreshold.setText(satelliteInfo.threshold);
+            dvbSymbolRate.setText(satelliteInfo.symbolRate);
+            tvCarrier.setText(satelliteInfo.carrier);
+        }
     }
 }

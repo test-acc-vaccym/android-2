@@ -49,8 +49,8 @@ public class NewCityActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_city);
         // 初始化
         ViewInject.inject(this, this);
-        cityLongitudeView.setFilters(new InputFilter[]{ new InputFilterFloat("-180", "180")});
-        cityLatitudeView.setFilters(new InputFilter[]{ new InputFilterFloat("-90", "90")});
+        cityLongitudeView.setFilters(new InputFilter[]{ new InputFilterFloat(InputFilterFloat.longitudeMin, InputFilterFloat.longitudeMax)});
+        cityLatitudeView.setFilters(new InputFilter[]{ new InputFilterFloat(InputFilterFloat.latitudeMin, InputFilterFloat.latitudeMax)});
 
         findViewById(R.id.city_new_button_commit).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -243,6 +243,7 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
         // 限制输入
         satelliteLongitude.setFilters(new InputFilter[]{ new InputFilterFloat(InputFilterFloat.longitudeMin, InputFilterFloat.longitudeMax)});
         satelliteDvb.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.dvbMin,InputFilterFloat.dvbMax)});
+        satelliteDvb.setMinMax(InputFilterFloat.dvbMin,InputFilterFloat.dvbMax);
         satelliteThreshold.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.thresholdMin,InputFilterFloat.thresholdMax)});
         satelliteBeacon.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.beaconMin,InputFilterFloat.beaconMax)});
         satelliteBeacon.setMinMax(InputFilterFloat.beaconMin,InputFilterFloat.beaconMax);

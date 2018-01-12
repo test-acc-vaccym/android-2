@@ -61,8 +61,11 @@ public class NewSatelliteActivity extends AppCompatActivity {
         satelliteLongitudeView.setFilters(new InputFilter[]{ new InputFilterFloat(InputFilterFloat.longitudeMin, InputFilterFloat.longitudeMax)});
         satelliteThresholdView.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.thresholdMin, InputFilterFloat.thresholdMax)});
         satelliteSymbolRateView.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.dvbMin,InputFilterFloat.dvbMax)});
+        satelliteSymbolRateView.setMinMax(InputFilterFloat.dvbMin,InputFilterFloat.dvbMax);
         satelliteBeaconView.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.beaconMin,InputFilterFloat.beaconMax)});
+        satelliteBeaconView.setMinMax(InputFilterFloat.beaconMin,InputFilterFloat.beaconMax);
         satelliteCarrierView.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.carrierMin,InputFilterFloat.carrierMax)});
+        satelliteCarrierView.setMinMax(InputFilterFloat.carrierMin,InputFilterFloat.carrierMax);
 
         satelliteBeaconView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override

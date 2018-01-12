@@ -134,10 +134,13 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
         */
 
         satelliteDetailSymbolRate.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.dvbMin,InputFilterFloat.dvbMax)});
+        satelliteDetailSymbolRate.setMinMax(InputFilterFloat.dvbMin,InputFilterFloat.dvbMax);
         satelliteDetailLongitude.setFilters(new InputFilter[]{ new InputFilterFloat(InputFilterFloat.longitudeMin, InputFilterFloat.longitudeMax)});
         satelliteDetailThreshold.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.thresholdMin, InputFilterFloat.thresholdMax)});
         satelliteDetailBeacon.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.beaconMin,InputFilterFloat.beaconMax)});
+        satelliteDetailBeacon.setMinMax(InputFilterFloat.beaconMin,InputFilterFloat.beaconMax);
         satelliteDetailCarrier.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.carrierMin,InputFilterFloat.carrierMax)});
+        satelliteDetailCarrier.setMinMax(InputFilterFloat.carrierMin,InputFilterFloat.carrierMax);
         
         satelliteDetailComment = rootView.findViewById(R.id.comment_detail);
 

@@ -414,14 +414,10 @@
     <!--引导页展开-->
     <string name="follow_me_explode_exploding">展开中……</string>
     <string name="follow_me_explode_exploded">展开完成</string>
-    <string name="follow_me_antenna_state_folder">天线状态为收藏！</string>
-    <string name="follow_me_antenna_state_pause">天线状态为暂停！</string>
-    <string name="follow_me_antenna_state_explode">天线状态已为展开！</string>
+    <string name="follow_me_antenna_first_line">天线状态为 %1$s</string>
     <string name="follow_me_antenna_state_explode_second_line">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;天线面辅瓣放置在软包中,每个天线辅面配有图标；用户通过主瓣上标注的安装说明，可以轻而易举的完成天线面安装。</string>
     <string name="follow_me_antenna_state_explode_third_start">安装完成之后,可以点击下一步。</string>
     <string name="follow_me_message_click">请点击</string>
-    <string name="follow_me_antenna_state_searching">天线状态为寻星中…</string>
-    <string name="follow_me_antenna_state_saving">天线状态为节能模式…</string>
 
     <string name="follow_me_explode_help_title">检查设备说明</string>
     <string name="follow_me_explode_help_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;状态行，包含通信、天线、GNSS、锁紧、节能五个状态。其中：\n

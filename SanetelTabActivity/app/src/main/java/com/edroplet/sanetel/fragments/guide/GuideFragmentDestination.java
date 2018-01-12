@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.text.InputFilter;
-import android.util.SparseArray;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +23,7 @@ import com.edroplet.sanetel.beans.Satellites;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.GalleryOnTime;
 import com.edroplet.sanetel.utils.InputFilterFloat;
+import com.edroplet.sanetel.utils.InputFilterMinMax;
 import com.edroplet.sanetel.utils.PopDialog;
 import com.edroplet.sanetel.utils.sscanf.Sscanf;
 import com.edroplet.sanetel.view.BroadcastReceiverFragment;
@@ -240,7 +240,12 @@ public class GuideFragmentDestination extends BroadcastReceiverFragment {
                 changeFocusable(pos);
             }
         });
-        satelliteDvb.setFilters(new InputFilter[]{new InputFilterFloat(6000,30000)});
+        // 限制输入
+        satelliteLongitude.setFilters(new InputFilter[]{ new InputFilterFloat(InputFilterFloat.longitudeMin, InputFilterFloat.longitudeMax)});
+        satelliteDvb.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.dvbMin,InputFilterFloat.dvbMax)});
+        satelliteThreshold.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.thresholdMin,InputFilterFloat.thresholdMax)});
+        satelliteBeacon.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.beaconMin,InputFilterFloat.beaconMax)});
+        satelliteCarrier.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.carrierMin,InputFilterFloat.carrierMax)});
 
         try {
             satellites = new Satellites(context);

@@ -5,20 +5,39 @@ import android.text.Spanned;
 
 /**
  * Created by qxs on 2017/10/23.
+ * 过滤float
  */
 
 public class InputFilterFloat implements InputFilter {
+    public static final float beaconMin = 10750f;
+    public static final float beaconMax = 40000f;
+    public static final float carrierMin = 10750f;
+    public static final float carrierMax = 40000f;
+    public static final float thresholdMin = 0;
+    public static final float thresholdMax = 10.0f;
+    public static final float longitudeMin = -180.0f;
+    public static final float longitudeMax = 180.0f;
+    public static final float dvbMin = -180.0f;
+    public static final float dvbMax = 180.0f;
+
     private double min, max;
     private int validBitNumber = 3;
+    private static int minLength = 0;
 
     public InputFilterFloat(double min, double max) {
         this.min = min;
         this.max = max;
+        minLength = getIntegerStringLength(min);
     }
 
+    private int getIntegerStringLength(Double dv){
+        String s = String.valueOf(dv.intValue());
+        return s.length();
+    }
     public InputFilterFloat(String min, String max) {
         this.min = Double.parseDouble(min);
         this.max = Double.parseDouble(max);
+        minLength = min.length();
     }
 
 
@@ -26,12 +45,14 @@ public class InputFilterFloat implements InputFilter {
         this.min = min;
         this.max = max;
         validBitNumber = validBits;
+        minLength = getIntegerStringLength(min);
     }
 
     public InputFilterFloat(String min, String max, int validBits) {
         this.min = Double.parseDouble(min);
         this.max = Double.parseDouble(max);
         validBitNumber = validBits;
+        minLength = min.length();
     }
 
     @Override
@@ -56,10 +77,10 @@ public class InputFilterFloat implements InputFilter {
             }else if (dest.toString().isEmpty() && numbers.length == 2 && numbers[1].length()> validBitNumber){
                 return numbers[0]+"."+numbers[1].substring(0,validBitNumber);
             }
+            if (doubleString.length() < minLength) return null;
             double input = Double.parseDouble(doubleString);
-            if (isInRange(min, max, input))
-                return null;
-        } catch (NumberFormatException nfe) { }
+            if (isInRange(min, max, input))  return null;
+        } catch (NumberFormatException nfe) { return ""; }
         return "";
     }
 

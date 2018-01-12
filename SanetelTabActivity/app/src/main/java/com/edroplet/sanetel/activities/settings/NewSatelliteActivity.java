@@ -58,9 +58,12 @@ public class NewSatelliteActivity extends AppCompatActivity {
         ViewInject.inject(this, this);
         mContext = this;
 
-        satelliteLongitudeView.setFilters(new InputFilter[]{ new InputFilterFloat("-180.000", "180.000")});
-        satelliteThresholdView.setFilters(new InputFilter[]{new InputFilterFloat(0, 10.0f)});
-        satelliteBeaconView.setFilters(new InputFilter[]{new InputFilterFloat(0, 40000)});
+        satelliteLongitudeView.setFilters(new InputFilter[]{ new InputFilterFloat(InputFilterFloat.longitudeMin, InputFilterFloat.longitudeMax)});
+        satelliteThresholdView.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.thresholdMin, InputFilterFloat.thresholdMax)});
+        satelliteSymbolRateView.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.dvbMin,InputFilterFloat.dvbMax)});
+        satelliteBeaconView.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.beaconMin,InputFilterFloat.beaconMax)});
+        satelliteCarrierView.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.carrierMin,InputFilterFloat.carrierMax)});
+
         satelliteBeaconView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {

@@ -100,8 +100,8 @@ public class GuideFragmentExplode extends TimerFragment {
         if (antennaState < antennaStateArray.length){
             tvFirstLine.setText(String.format(getString(R.string.follow_me_antenna_first_line), antennaStateArray[antennaState]));
         }
-        tvSecondLine.setVisibility(View.INVISIBLE);
-        thirdLine.setVisibility(View.INVISIBLE);
+        tvSecondLine.setVisibility(View.GONE);
+        thirdLine.setVisibility(View.GONE);
         switch (antennaState){
             case AntennaInfo.AntennaSearchSatellitesStatus.EXPLODED:
                 tvFirstLine.setText(String.format(getString(R.string.follow_me_antenna_first_line), antennaStateArray[antennaState]));

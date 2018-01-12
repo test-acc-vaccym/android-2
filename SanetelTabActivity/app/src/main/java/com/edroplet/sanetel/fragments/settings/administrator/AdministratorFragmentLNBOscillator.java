@@ -26,6 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentBandSelect.BandTypeDefault;
 import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentBandSelect.BandTypeKey;
 
 /**
@@ -111,7 +112,7 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
         Object[] o = Sscanf.scan(rawData, Protocol.cmdGetLnbLfResult,lnbLf);
         lnbLf = (String)o[0];
         int lnb = Integer.parseInt(lnbLf);
-        int bandType = CustomSP.getInt(context, BandTypeKey , 0 );
+        int bandType = CustomSP.getInt(context, BandTypeKey , BandTypeDefault );
         if (bandType != kuPosition) {
             int pos = Arrays.asList(kaVals).indexOf(lnb);
             if (pos == -1){
@@ -155,7 +156,7 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
 
         context = getContext();
 
-        final int band = CustomSP.getInt(context, BandTypeKey, kuPosition);
+        final int band = CustomSP.getInt(context, BandTypeKey, BandTypeDefault);
         // 根据不同的波段显示不同的layout
         if (band == kuPosition){
             // 设置可见性

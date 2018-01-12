@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.utils.InputFilterFloat;
+import com.edroplet.sanetel.utils.InputFilterMinMax;
 import com.edroplet.sanetel.view.custom.CustomEditText;
 
 public class IPEditText extends LinearLayout {
@@ -45,10 +46,10 @@ public class IPEditText extends LinearLayout {
         thirdIPEdit = view.findViewById(R.id.thirdIPField);
         fourthIPEdit = view.findViewById(R.id.fourthIPField);
 
-        firstIPEdit.setFilters(new InputFilter[]{new InputFilterFloat(0,255)});
-        secondIPEdit.setFilters(new InputFilter[]{new InputFilterFloat(0,255)});
-        thirdIPEdit.setFilters(new InputFilter[]{new InputFilterFloat(0,255)});
-        fourthIPEdit.setFilters(new InputFilter[]{new InputFilterFloat(0,255)});
+        firstIPEdit.setFilters(new InputFilter[]{new InputFilterMinMax(InputFilterMinMax.ipMin,InputFilterMinMax.ipMax)});
+        secondIPEdit.setFilters(new InputFilter[]{new InputFilterMinMax(InputFilterMinMax.ipMin,InputFilterMinMax.ipMax)});
+        thirdIPEdit.setFilters(new InputFilter[]{new InputFilterMinMax(InputFilterMinMax.ipMin,InputFilterMinMax.ipMax)});
+        fourthIPEdit.setFilters(new InputFilter[]{new InputFilterMinMax(InputFilterMinMax.ipMin,InputFilterMinMax.ipMax)});
 
         setIPEditTextListener(context);
     }

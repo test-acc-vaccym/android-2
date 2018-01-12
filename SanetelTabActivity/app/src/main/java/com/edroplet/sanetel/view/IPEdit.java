@@ -279,9 +279,9 @@ public class IPEdit extends LinearLayout{
     private void addTextChangeListener()
     {
         mIpAddrEdt1.setFilters(new InputFilter[]{new InputFilterMinMax(InputFilterMinMax.ipMin,InputFilterMinMax.ipMax)});
-        mIpAddrEdt2.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterMinMax.ipMin,InputFilterMinMax.ipMax)});
-        mIpAddrEdt3.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterMinMax.ipMin,InputFilterMinMax.ipMax)});
-        mIpAddrEdt4.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterMinMax.ipMin,InputFilterMinMax.ipMax)});
+        mIpAddrEdt2.setFilters(new InputFilter[]{new InputFilterMinMax(InputFilterMinMax.ipMin,InputFilterMinMax.ipMax)});
+        mIpAddrEdt3.setFilters(new InputFilter[]{new InputFilterMinMax(InputFilterMinMax.ipMin,InputFilterMinMax.ipMax)});
+        mIpAddrEdt4.setFilters(new InputFilter[]{new InputFilterMinMax(InputFilterMinMax.ipMin,InputFilterMinMax.ipMax)});
         mIpAddrEdt1.addTextChangedListener(mTextWatcher);
         mIpAddrEdt2.addTextChangedListener(mTextWatcher);
         mIpAddrEdt3.addTextChangedListener(mTextWatcher);

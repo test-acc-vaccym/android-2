@@ -29,6 +29,7 @@ import butterknife.Unbinder;
 
 public class AdministratorFragmentBandSelect extends BroadcastReceiverFragment {
     public static final String BandTypeKey = "bandType";
+    public static final int BandTypeDefault = 1;
     public static final String BandTypeAction = "com.edroplet.sanetel.BandTypeAction";
     public static final String BandTypeData = "com.edroplet.sanetel.BandTypeData";
     private  final int[] icons = {R.drawable.antenna_exploded };
@@ -83,7 +84,7 @@ public class AdministratorFragmentBandSelect extends BroadcastReceiverFragment {
             bandTypes.put(i++,id);
         }
 
-        int type = CustomSP.getInt(getContext(),BandTypeKey,1);
+        int type = CustomSP.getInt(getContext(),BandTypeKey,BandTypeDefault);
         bandSelectGroup.check(bandTypes.get(type));
 
         thirdButton.setOnClickListener(new View.OnClickListener() {

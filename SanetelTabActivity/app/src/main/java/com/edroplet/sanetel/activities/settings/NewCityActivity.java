@@ -66,8 +66,8 @@ public class NewCityActivity extends AppCompatActivity {
                     cities.add(newLocation);
                     jl.saveCities(cities);
                     Bundle bundle = new Bundle();
-                    bundle.putParcelable("city",newLocation);
-                    bundle.putInt("position",cities.size() - 1);
+                    bundle.putParcelable(LocationInfo.objectKey,newLocation);
+                    bundle.putInt(LocationInfo.positionKey,cities.size() - 1);
                     Intent intent = new Intent();
                     intent.putExtras(bundle);
                     setResult(RESULT_OK, intent);

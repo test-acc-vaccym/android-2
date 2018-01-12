@@ -43,6 +43,7 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -130,18 +131,11 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
                     cityListSelectProvince.setAdapter(new SpinnerAdapter2(this,
                             android.R.layout.simple_list_item_1,
                             android.R.id.text1, cities.getProvinceArray()));
+                    cityListSelectProvince.setSelection(Arrays.asList(cities.getProvinceArray()).indexOf(selectedProvince));
                     citiesRecyclerViewAdapter.setmValues(cities.getLocationInfosByProvince(selectedProvince));
                     // citiesRecyclerViewAdapter.setmValues(citiesRecyclerViewAdapter.getValues());
-                    //RecyclerView列表进行UI数据更新
-                    if (locationInfo.getProvince().equals(selectedProvince)) {
-//                        citiesRecyclerViewAdapter.notifyItemInserted(position);
-//                        //如果在第一项添加模拟数据需要调用 scrollToPosition（0）把列表移动到顶端（可选）
-//                        recyclerView.scrollToPosition(position);
-//                        citiesRecyclerViewAdapter.notifyItemChanged(position);
-                        citiesRecyclerViewAdapter.notifyDataSetChanged();
-                    }else {
-                        citiesRecyclerViewAdapter.notifyDataSetChanged();
-                    }
+                    citiesRecyclerViewAdapter.notifyDataSetChanged();
+
                 }
                 // }
                 break;

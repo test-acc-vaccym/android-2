@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.utils.InputFilterFloat;
+import com.edroplet.sanetel.utils.InputFilterMinMax;
 import com.edroplet.sanetel.view.custom.CustomEditText;
 import com.edroplet.sanetel.view.custom.CustomTextView;
 
@@ -277,10 +278,10 @@ public class IPEdit extends LinearLayout{
 
     private void addTextChangeListener()
     {
-        mIpAddrEdt1.setFilters(new InputFilter[]{new InputFilterFloat(0,255)});
-        mIpAddrEdt2.setFilters(new InputFilter[]{new InputFilterFloat(0,255)});
-        mIpAddrEdt3.setFilters(new InputFilter[]{new InputFilterFloat(0,255)});
-        mIpAddrEdt4.setFilters(new InputFilter[]{new InputFilterFloat(0,255)});
+        mIpAddrEdt1.setFilters(new InputFilter[]{new InputFilterMinMax(InputFilterMinMax.ipMin,InputFilterMinMax.ipMax)});
+        mIpAddrEdt2.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterMinMax.ipMin,InputFilterMinMax.ipMax)});
+        mIpAddrEdt3.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterMinMax.ipMin,InputFilterMinMax.ipMax)});
+        mIpAddrEdt4.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterMinMax.ipMin,InputFilterMinMax.ipMax)});
         mIpAddrEdt1.addTextChangedListener(mTextWatcher);
         mIpAddrEdt2.addTextChangedListener(mTextWatcher);
         mIpAddrEdt3.addTextChangedListener(mTextWatcher);

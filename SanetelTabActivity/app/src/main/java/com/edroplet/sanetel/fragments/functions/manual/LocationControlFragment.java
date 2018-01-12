@@ -101,9 +101,9 @@ public class LocationControlFragment extends BroadcastReceiverFragment {
         unbinder = ButterKnife.bind(this,view);
         context = getContext();
 
-        etAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
-        etPitch.setFilters(new InputFilter[]{new InputFilterFloat(-10,90,3)});
-        etPolarization.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
+        etAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.azimuthMin,InputFilterFloat.azimuthMax,InputFilterFloat.angleValidBit)});
+        etPitch.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.pitchMin,InputFilterFloat.pitchMax,InputFilterFloat.angleValidBit)});
+        etPolarization.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.polarizationMin,InputFilterFloat.polarizationMax,InputFilterFloat.angleValidBit)});
 
         PresetAngleInfo presetAngleInfo = (PresetAngleInfo) getArguments().getSerializable(KEY_CALCULATED_PREPARE_ANGULAR_INFO);
         if (presetAngleInfo != null){

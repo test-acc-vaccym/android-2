@@ -26,8 +26,12 @@ import com.edroplet.sanetel.utils.InputFilterFloat;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomEditText;
 
+import java.util.Arrays;
+
+import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -82,6 +86,8 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
     @BindView(R.id.angle_calculate_operate_clear)
     CustomButton clear;
 
+    Unbinder unbinder;
+
     public static AngleCalculateFragment newInstance(AntennaInfo antennaInfo) {
         Bundle args = new Bundle();
         AngleCalculateFragment fragment = new AngleCalculateFragment();
@@ -97,12 +103,11 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
         if (view == null){
             return null;
         }
-        ButterKnife.bind(this,view);
-        AntennaInfo antennaInfo = getArguments().getParcelable("antennaInfo");
+        unbinder = ButterKnife.bind(this,view);
 
-        tvAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
-        tvPitch.setFilters(new InputFilter[]{new InputFilterFloat(-10,90,3)});
-        tvPolarization.setFilters(new InputFilter[]{new InputFilterFloat(0,360,3)});
+        tvAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.azimuthMin,InputFilterFloat.azimuthMax,InputFilterFloat.angleValidBit)});
+        tvPitch.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.pitchMin,InputFilterFloat.pitchMax,InputFilterFloat.angleValidBit)});
+        tvPolarization.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.polarizationMin,InputFilterFloat.polarizationMax,InputFilterFloat.angleValidBit)});
 
         localLongitude.setOnFocusChangeListener(onInpuFocusChangeListener);
         localLongitudeUnit.setOnFocusChangeListener(onInpuFocusChangeListener);
@@ -118,7 +123,7 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
         use.setOnClickListener(this);
 
         initSatelliteSelect(view);
-        initCitySelect(view);
+        initCitySelect();
         return view;
     }
     @BindView(R.id.city_select_choice)
@@ -193,11 +198,11 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
     }
 
     private float satelliteLongitude = 0.000f;
-    private float satelliteLatitude = 0.000f;
-    private float satelliteBeacon = 0.000f;
-    private float satelliteDvb = 0.000f;
-    private float satelliteThreshold = 0.000f;
-    private String satellitePolarization = "水平";
+    // 计算预置角 不需要这些参数
+    // private float satelliteBeacon = 0.000f;
+    // private float satelliteDvb = 0.000f;
+    // private float satelliteThreshold = 0.000f;
+    // private String satellitePolarization = "水平";
 
     private float cityLongitude = 0.000f;
     private float cityLatitude = 0.000f;
@@ -218,13 +223,7 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
                     selectedPolarization = polarizationArray[0];
 
                     SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(selectedName, selectedPolarization);
-                    if (satelliteInfo != null) {
-                        satellitePolarization = satelliteInfo.polarization;
-                        satelliteLongitude = ConvertUtil.convertToFloat(satelliteInfo.longitude, 0.000f);
-                        satelliteBeacon = ConvertUtil.convertToFloat(satelliteInfo.beacon, 0.000f);
-                        satelliteThreshold = ConvertUtil.convertToFloat(satelliteInfo.threshold, 0.000f);
-                        satelliteDvb = ConvertUtil.convertToFloat(satelliteInfo.symbolRate, 0.000f);
-                    }
+                    updateSatelliteData(satelliteInfo);
                 }
 
             }
@@ -244,13 +243,7 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
 
                     if (!selectedPolarization.isEmpty()) {
                         SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(selectedName, selectedPolarization);
-                        if (satelliteInfo != null) {
-                            satellitePolarization = satelliteInfo.polarization;
-                            satelliteLongitude = ConvertUtil.convertToFloat(satelliteInfo.longitude, 0.000f);
-                            satelliteBeacon = ConvertUtil.convertToFloat(satelliteInfo.beacon, 0.000f);
-                            satelliteThreshold = ConvertUtil.convertToFloat(satelliteInfo.threshold, 0.000f);
-                            satelliteDvb = ConvertUtil.convertToFloat(satelliteInfo.symbolRate, 0.000f);
-                        }
+                        updateSatelliteData(satelliteInfo);
                     }
                 }
             }
@@ -267,13 +260,7 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
                 selectedPolarization = (String)satellitePolarizationSelect.getItemAtPosition(position);
                 if (!selectedPolarization.isEmpty()) {
                     SatelliteInfo satelliteInfo = satellites.getSatelliteInfoBySatelliteNamePolarization(selectedName, selectedPolarization);
-                    if (satelliteInfo != null) {
-                        satellitePolarization = satelliteInfo.polarization;
-                        satelliteLongitude = ConvertUtil.convertToFloat(satelliteInfo.longitude, 0.000f);
-                        satelliteBeacon = ConvertUtil.convertToFloat(satelliteInfo.beacon, 0.000f);
-                        satelliteThreshold = ConvertUtil.convertToFloat(satelliteInfo.threshold, 0.000f);
-                        satelliteDvb = ConvertUtil.convertToFloat(satelliteInfo.symbolRate, 0.000f);
-                    }
+                    updateSatelliteData(satelliteInfo);
                 }
             }
             @Override
@@ -283,11 +270,10 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
 
     }
 
-    private void initCitySelect(View view){
+    private void initCitySelect(){
 
-
-        localLongitude.setFilters(new InputFilter[]{ new InputFilterFloat("-180", "180")});
-        localLatitude.setFilters(new InputFilter[]{ new InputFilterFloat("-90", "90")});
+        localLongitude.setFilters(new InputFilter[]{ new InputFilterFloat(InputFilterFloat.longitudeMin, InputFilterFloat.longitudeMax)});
+        localLatitude.setFilters(new InputFilter[]{ new InputFilterFloat(InputFilterFloat.latitudeMin, InputFilterFloat.latitudeMax)});
 
         localLatitudeUnit.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1,
                 android.R.id.text1, getContext().getResources().getStringArray(R.array.latitude_unit)));
@@ -319,16 +305,8 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
                         }
                     }
                     LocationInfo locationInfo = cities.getLocationInfoByProvinceCity(selectedProvince, selectedCity);
-                    if (locationInfo != null) {
-                        cityLongitude = locationInfo.getLongitude();
-                        cityLatitude = locationInfo.getLatitude();
-                        localLatitude.setText(locationInfo.getLatitude()+"");
-                        localLongitude.setText(locationInfo.getLongitude()+"");
-                        localLatitudeUnit.setSelection(0);
-                        localLongitudeUnit.setSelection(0);
-                    }
+                    updateLocationUI(locationInfo);
                 }
-
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -345,14 +323,7 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
 
                     if (!selectedCity.isEmpty()) {
                         LocationInfo locationInfo = cities.getLocationInfoByProvinceCity(selectedProvince, selectedCity);
-                        if (locationInfo != null) {
-                            cityLongitude = locationInfo.getLongitude();
-                            cityLatitude = locationInfo.getLatitude();
-                            localLatitude.setText(locationInfo.getLatitude()+"");
-                            localLongitude.setText(locationInfo.getLongitude()+"");
-                            localLatitudeUnit.setSelection(0);
-                            localLongitudeUnit.setSelection(0);
-                        }
+                        updateLocationUI(locationInfo);
                     }
                 }
             }
@@ -369,14 +340,7 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
                 selectedCity = (String)spinnerLocationCity.getItemAtPosition(position);
                 if (!selectedCity.isEmpty()) {
                     LocationInfo locationInfo = cities.getLocationInfoByProvinceCity(selectedProvince, selectedCity);
-                    if (locationInfo != null) {
-                        cityLongitude = locationInfo.getLongitude();
-                        cityLatitude = locationInfo.getLatitude();
-                        localLatitude.setText(locationInfo.getLatitude()+"");
-                        localLongitude.setText(locationInfo.getLongitude()+"");
-                        localLatitudeUnit.setSelection(0);
-                        localLongitudeUnit.setSelection(0);
-                    }
+                    updateLocationUI(locationInfo);
                 }
             }
             @Override
@@ -386,4 +350,30 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
 
     }
 
+    void updateLocationUI(LocationInfo locationInfo){
+        if (locationInfo != null) {
+            cityLongitude = locationInfo.getLongitude();
+            cityLatitude = locationInfo.getLatitude();
+            localLatitude.setText(String.valueOf(locationInfo.getLatitude()));
+            localLongitude.setText(String.valueOf(locationInfo.getLongitude()));
+            localLatitudeUnit.setSelection(locationInfo.getLatitudeUnitPosition());
+            localLongitudeUnit.setSelection(locationInfo.getLongitudeUnitPosition());
+        }
+    }
+
+    void updateSatelliteData(SatelliteInfo satelliteInfo){
+        if (satelliteInfo != null) {
+            // satellitePolarization = satelliteInfo.polarization;
+            satelliteLongitude = ConvertUtil.convertToFloat(satelliteInfo.longitude, 0.000f);
+            // satelliteBeacon = ConvertUtil.convertToFloat(satelliteInfo.beacon, 0.000f);
+            // satelliteThreshold = ConvertUtil.convertToFloat(satelliteInfo.threshold, 0.000f);
+            // satelliteDvb = ConvertUtil.convertToFloat(satelliteInfo.symbolRate, 0.000f);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
+    }
 }

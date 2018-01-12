@@ -327,11 +327,7 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
             if (ACTION_RECEIVE_REFERENCE_INFO.equals(intent.getAction())) {
                 String rawData =intent.getStringExtra(KEY_RECEIVE_REFERENCE_INFO_DATA);
                 SatelliteInfo si = parseReferenceInfo(rawData);
-                longitude.setText(si.longitude);
-                dvbSymbolRate.setText(si.symbolRate);
-                beacon.setText(si.beacon);
-                tvCarrier.setText(si.carrier);
-                agThreshold.setText(si.threshold);
+                updateSatelliteUI(si, null);
                 int mode = Integer.parseInt(si.mode);
                 if (mode == 0){
                     referenceSatelliteSelectGroup.check(mapReferenceSatellite.get(mode));

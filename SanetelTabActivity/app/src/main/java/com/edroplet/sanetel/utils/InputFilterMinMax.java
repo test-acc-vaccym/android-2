@@ -10,6 +10,9 @@ import android.text.Spanned;
 public class InputFilterMinMax implements InputFilter {
     private double min, max;
 
+    public static final int ipMin = 0;
+    public static final int ipMax = 255;
+
     public InputFilterMinMax(double min, double max) {
         this.min = min;
         this.max = max;

@@ -91,9 +91,9 @@ public class AdministratorFragmentAntennaIncriminate extends BroadcastReceiverFr
         context = getContext();
         unbinder = ButterKnife.bind(this, view);
 
-        antennaIncriminateAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(0.0, 360.0)});
-        antennaIncriminatePitch.setFilters(new InputFilter[]{new InputFilterFloat(-10.0, 90.0)});
-        antennaIncriminatePolarization.setFilters(new InputFilter[]{new InputFilterFloat(0.0, 360.0)});
+        antennaIncriminateAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.azimuthMin,InputFilterFloat.azimuthMax,InputFilterFloat.angleValidBit)});
+        antennaIncriminatePitch.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.pitchMin,InputFilterFloat.pitchMax,InputFilterFloat.angleValidBit)});
+        antennaIncriminatePolarization.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.polarizationMin,InputFilterFloat.polarizationMax,InputFilterFloat.angleValidBit)});
 
         String Azimuth = CustomSP.getString(context,AntennaIncriminateAzimuthKey, "");
         antennaIncriminateAzimuth.setText(Azimuth);

@@ -22,6 +22,13 @@ public class InputFilterFloat implements InputFilter {
     public static final float latitudeMin = -90.0f;
     public static final float latitudeMax = 90.0f;
 
+    public static final int   angleValidBit = 3;
+    public static final float azimuthMin = 0.0f;
+    public static final float azimuthMax = 360.0f;
+    public static final float pitchMin = -10.0f;
+    public static final float pitchMax = 90.0f;
+    public static final float polarizationMin = -10.0f;
+    public static final float polarizationMax = 90.0f;
 
     private double min, max;
     private int validBitNumber = 3;

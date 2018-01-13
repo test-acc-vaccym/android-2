@@ -43,6 +43,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/sub_layout_padding_top"
+                    android:paddingStart="@dimen/globalPageMediumLeft"
+                    android:paddingEnd="@dimen/globalPageMediumRight"
                     android:orientation="horizontal">
                     <LinearLayout
                         style="@style/layout_horizontal_style"
@@ -91,6 +93,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/globalPageMediumLeft"
+                    android:paddingEnd="@dimen/globalPageMediumRight"
                     android:padding="@dimen/no_padding"
                     android:orientation="horizontal">
                     <LinearLayout
@@ -137,6 +141,8 @@
                 </LinearLayout>
                 <!--倾角计-->
                 <LinearLayout
+                    android:paddingStart="@dimen/globalPageMediumLeft"
+                    android:paddingEnd="@dimen/globalPageMediumRight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -181,7 +187,10 @@
                             android:layout_height="wrap_content" />
                     </LinearLayout>
                 </LinearLayout>
+                <!--LNB-->
                 <LinearLayout
+                    android:paddingStart="@dimen/globalPageMediumLeft"
+                    android:paddingEnd="@dimen/globalPageMediumRight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/no_padding">

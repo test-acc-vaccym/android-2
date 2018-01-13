@@ -11,6 +11,9 @@
     <color name="operate_confirm_dialog_color">#BBEEDD</color>
     <color name="operate_disabled_color">#757575</color>
 
+    <color name="indigo">#0077D7</color>
+    <color name="pink">#F15A24</color>
+
     <!--e droplet dialog Builder-->
     <color name="defTextColor">#afbbeedd</color>
     <color name="defDividerColor">#11000000</color>

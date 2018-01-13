@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    style="@style/entire_page"
+    android:orientation="vertical"
     android:layout_marginTop="@dimen/layout_padding_top">
 
     <com.edroplet.sanetel.view.custom.CustomTextView
@@ -43,6 +43,7 @@
                     android:layout_weight="0.4"
                     android:gravity="center"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/text_11"
                     android:text="@string/latitude_degree_unit_east"/>
             </LinearLayout>
             <LinearLayout
@@ -70,6 +71,7 @@
                     android:layout_weight="0.4"
                     android:gravity="center"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/text_11"
                     android:text="@string/longitude_degree_unit_north"/>
             </LinearLayout>
         </LinearLayout>

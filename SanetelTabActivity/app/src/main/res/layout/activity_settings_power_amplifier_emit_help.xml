@@ -27,12 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <com.edroplet.sanetel.view.custom.CustomTextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
-            android:paddingStart="@dimen/marginLeft"
-            android:paddingEnd="@dimen/marginRight"
+            style="@style/entire_page"
             android:text="@string/settings_amplifier_emit_help_message"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
+            />
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

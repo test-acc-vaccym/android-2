@@ -44,10 +44,8 @@
         android:layout_marginBottom="8dp">
 
         <com.edroplet.sanetel.view.custom.CustomTextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
+            style="@style/entire_page"
             android:text="@string/functions_monitor_help_message"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
+            />
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

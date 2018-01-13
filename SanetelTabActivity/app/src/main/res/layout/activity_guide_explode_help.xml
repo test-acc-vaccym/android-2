@@ -31,10 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <com.edroplet.sanetel.view.custom.CustomTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
+            style="@style/entire_page"
             android:text="@string/follow_me_explode_help_message"/>
     </ScrollView>
 </LinearLayout>

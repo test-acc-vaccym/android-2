@@ -115,13 +115,14 @@
         <item name="android:paddingTop">@dimen/layout_padding_top</item>
         <item name="android:paddingBottom">@dimen/layout_padding_top</item>
     </style>
-
     <style name="linear_no_shadow_no_padding">
         <item name="android:shadowColor">#ff000000</item>
         <item name="android:shadowDx">0</item>
         <item name="android:shadowDy">2</item>
         <item name="android:shadowRadius">1</item>
         <item name="android:background">@drawable/item_background_color</item>
+        <item name="android:paddingTop">@dimen/spacing_medium</item>
+        <item name="android:paddingBottom">@dimen/spacing_medium</item>
     </style>
 
     <style name="settings_linear_shadow" parent="linear_shadow">
@@ -267,8 +268,8 @@
         <item name="android:ellipsize">end</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:maxLines">2</item>
-        <item name="android:paddingLeft">@dimen/guide_list_item_padding</item>
-        <item name="android:paddingRight">@dimen/guide_list_item_padding</item>
+        <item name="android:paddingTop">@dimen/guide_list_item_padding</item>
+        <item name="android:paddingBottom">@dimen/guide_list_item_padding</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
 
@@ -290,27 +291,40 @@
         <item name="android:gravity">center_vertical|end</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:padding">@dimen/list_detail_padding</item>
+        <item name="colorControlNormal">@color/indigo</item>
+        <item name="colorControlActivated">@color/pink</item>
+        <!--<item name="android:background">@null</item>-->
     </style>
     <style name="radio_group_custom_item_edit_horizontal_style">
         <item name="android:layout_width">0dp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1.3</item>
+        <!--<item name="android:background">@null</item>-->
+        <item name="colorControlNormal">@color/indigo</item>
+        <item name="colorControlActivated">@color/pink</item>
+        <item name="android:paddingTop">@dimen/list_detail_padding</item>
+        <item name="android:paddingBottom">@dimen/list_detail_padding</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
-        <item name="android:padding">@dimen/no_padding</item>
     </style>
     <style name="radio_group_custom_item_third_filed_horizontal_style">
         <item name="android:layout_width">0dp</item>
+        <!--<item name="android:background">@null</item>-->
+        <item name="colorControlNormal">@color/indigo</item>
+        <item name="colorControlActivated">@color/pink</item>
         <item name="android:gravity">start|center_vertical</item>
         <item name="android:layout_gravity">start|center_vertical</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:padding">@dimen/no_padding</item>
+        <item name="android:paddingTop">@dimen/list_detail_padding</item>
+        <item name="android:paddingBottom">@dimen/list_detail_padding</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
         <item name="android:layout_weight">0.7</item>
     </style>
 
     <style name="radio_group_second_item_edit_horizontal_style">
+        <!--<item name="android:background">@null</item>-->
+        <item name="colorControlNormal">@color/indigo</item>
+        <item name="colorControlActivated">@color/pink</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
@@ -353,4 +367,12 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <style name="entire_page">
+        <item name="android:lineSpacingMultiplier">@dimen/line_spacing_multiplier</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:paddingStart">@dimen/globalPageMarginLeft</item>
+        <item name="android:paddingEnd">@dimen/globalPageMarginRight</item>
+    </style>
 </resources>

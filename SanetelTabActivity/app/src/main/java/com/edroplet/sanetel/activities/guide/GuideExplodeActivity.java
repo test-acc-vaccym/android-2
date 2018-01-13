@@ -12,7 +12,7 @@ public class GuideExplodeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guide_explode);
+        setContentView(R.layout.activity_guide_explode_help);
         Toolbar toolbar = (Toolbar) findViewById(R.id.guide_explode_toolbar);
         toolbar.setTitle(R.string.follow_me_explode_help_title);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

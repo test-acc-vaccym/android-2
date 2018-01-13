@@ -1,5 +1,10 @@
 <resources>
+    <dimen name="globalPageMarginLeft">12dp</dimen>
+    <dimen name="globalPageMarginRight">12dp</dimen>
+    <dimen name="globalPageMediumLeft">5dp</dimen>
+    <dimen name="globalPageMediumRight">5dp</dimen>
     <dimen name="no_padding">0dp</dimen>
+
     <dimen name="pop_height">450dp</dimen>
     <dimen name="splash_version_font_size">16sp</dimen>
     <dimen name="spinner_custom_item_vertical_padding">5dp</dimen>

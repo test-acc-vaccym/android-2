@@ -12,7 +12,7 @@ public class GuideLocationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guide_location);
+        setContentView(R.layout.activity_guide_location_help);
         Toolbar toolbar =
         ((Toolbar) findViewById(R.id.guide_location_toolbar));
         toolbar.setTitle(R.string.follow_me_location_help_title);

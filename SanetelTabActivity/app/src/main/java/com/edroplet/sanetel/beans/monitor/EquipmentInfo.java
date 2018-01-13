@@ -1,12 +1,8 @@
 package com.edroplet.sanetel.beans.monitor;
 
 import android.content.Context;
-import android.content.Intent;
-
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.beans.Protocol;
-import com.edroplet.sanetel.services.CommunicateWithDeviceService;
-import com.edroplet.sanetel.services.communicate.CommunicateDataReceiver;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.sscanf.Sscanf;
 

@@ -1,10 +1,6 @@
 package com.edroplet.sanetel.beans;
 
 import android.content.Context;
-import android.content.Intent;
-
-import com.edroplet.sanetel.services.CommunicateWithDeviceService;
-import com.edroplet.sanetel.services.communicate.CommunicateDataReceiver;
 import com.edroplet.sanetel.utils.ConvertUtil;
 import com.edroplet.sanetel.utils.sscanf.Sscanf;
 
@@ -36,9 +32,7 @@ public class AmplifierInfo implements Serializable {
     static Context context;
     public static AmplifierInfo getInstance(Context ctx) {
         context = ctx;
-        Intent intent = new Intent(CommunicateDataReceiver.ACTION_RECEIVE_DATA);
-        intent.putExtra(CommunicateWithDeviceService.EXTRA_PARAM_SEND_CMD, Protocol.cmdGetBucInfo);
-        context.sendBroadcast(intent);
+        Protocol.sendMessage(context,Protocol.cmdGetBucInfo);
         return null;
     }
 

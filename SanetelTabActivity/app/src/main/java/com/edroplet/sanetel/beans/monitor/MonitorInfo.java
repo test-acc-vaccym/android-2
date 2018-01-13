@@ -1,17 +1,13 @@
 package com.edroplet.sanetel.beans.monitor;
 
 import android.content.Context;
-import android.content.Intent;
 
 import com.edroplet.sanetel.beans.AntennaInfo;
 import com.edroplet.sanetel.beans.LocationInfo;
-import com.edroplet.sanetel.beans.LockerInfo;
 import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.beans.SatelliteInfo;
 import com.edroplet.sanetel.beans.status.FaultCondition;
 import com.edroplet.sanetel.beans.status.RunningInfo;
-import com.edroplet.sanetel.services.CommunicateWithDeviceService;
-import com.edroplet.sanetel.services.communicate.CommunicateDataReceiver;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.sscanf.Sscanf;
 
@@ -84,9 +80,7 @@ public class MonitorInfo implements Serializable {
     private int flag; // 标志
 
     public static void getMonitorInfoFromServer(Context context){
-        Intent intent = new Intent(CommunicateDataReceiver.ACTION_RECEIVE_DATA);
-        intent.putExtra(CommunicateWithDeviceService.EXTRA_PARAM_SEND_CMD, Protocol.cmdGetSystemState);
-        context.sendBroadcast(intent);
+        Protocol.sendMessage(context,Protocol.cmdGetSystemState);
     }
 
     public static MonitorInfo parseMonitorInfo(Context context, String src){

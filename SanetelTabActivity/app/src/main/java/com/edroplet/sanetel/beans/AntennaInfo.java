@@ -1,13 +1,8 @@
 package com.edroplet.sanetel.beans;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import com.edroplet.sanetel.services.CommunicateWithDeviceService;
-import com.edroplet.sanetel.services.communicate.CommunicateDataReceiver;
 import com.edroplet.sanetel.utils.CustomSP;
 
 import static com.edroplet.sanetel.beans.AntennaInfo.AntennaSearchSatellitesStatus.INIT;

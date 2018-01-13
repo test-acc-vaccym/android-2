@@ -34,12 +34,11 @@ import java.util.TimerTask;
 
 import static com.edroplet.sanetel.activities.functions.FunctionsCollectHistoryFileListActivity.KEY_IS_SELECT;
 import static com.edroplet.sanetel.beans.CollectHistoryFileInfo.KEY_NEWEST_COLLECT_FILE;
-import static com.edroplet.sanetel.services.CommunicateWithDeviceService.EXTRA_PARAM_SEND_CMD;
-import static com.edroplet.sanetel.services.communicate.CommunicateDataReceiver.ACTION_RECEIVE_DATA;
 import static com.edroplet.sanetel.services.communicate.CommunicateDataReceiver.ACTION_STOP_SAVE;
 
 /**
  * Created by qxs on 2017/9/14.
+ * 日志UI
  */
 
 public class FunctionsFragmentCollect extends Fragment implements OnClickListener{
@@ -148,10 +147,7 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
                                 }
 
                                 // 发送监视信息命令
-                                Intent intentCollect = new Intent();
-                                intentCollect.setAction(ACTION_RECEIVE_DATA);
-                                intentCollect.putExtra(EXTRA_PARAM_SEND_CMD, Protocol.cmdGetSystemState);
-                                context.sendBroadcast(intentCollect);
+                                Protocol.sendMessage(context, Protocol.cmdGetSystemState);
 
                                 // 在广播中保存数据
                                 // FileUtils.saveFile(newestFile, DateTime.getCurrentDateTime() + SAMPLEDATA, true);

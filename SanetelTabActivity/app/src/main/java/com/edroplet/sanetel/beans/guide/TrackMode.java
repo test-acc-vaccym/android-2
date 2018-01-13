@@ -1,12 +1,10 @@
 package com.edroplet.sanetel.beans.guide;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IntDef;
 
-import com.edroplet.sanetel.services.CommunicateWithDeviceService;
-import com.edroplet.sanetel.services.communicate.CommunicateDataReceiver;
+import com.edroplet.sanetel.beans.Protocol;
 
 import java.io.Serializable;
 import java.lang.annotation.Retention;
@@ -39,8 +37,6 @@ public class TrackMode implements Serializable {
     }
 
     public void setTrackMode(@SearchingMode int trackMode) {
-        Intent intent = new Intent(CommunicateDataReceiver.ACTION_RECEIVE_DATA);
-        intent.putExtra(CommunicateWithDeviceService.EXTRA_PARAM_SEND_CMD, trackMode+"");
-        context.sendBroadcast(intent);
+        Protocol.sendMessage(context,String.format(Protocol.cmdSetTrackMode,trackMode));
     }
 }

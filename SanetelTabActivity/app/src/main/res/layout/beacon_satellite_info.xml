@@ -36,6 +36,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical|end"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/text_11"
                     android:hint="@string/main_monitor_satellite_name_hint"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
@@ -59,7 +60,8 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical|end"
                     android:layout_height="wrap_content"
-                    android:hint="@string/main_monitor_satellite_polarization_hint"/>
+                    android:hint="@string/main_monitor_satellite_polarization_hint"
+                    android:textColor="@color/text_11"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="0.4"
@@ -88,6 +90,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical|end"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/text_11"
                     android:hint="@string/main_monitor_satellite_longitude_hint"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
@@ -114,6 +117,7 @@
                     android:layout_weight="0.6"
                     android:gravity="center_vertical|end"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/text_11"
                     android:hint="@string/main_monitor_satellite_agc_hint"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
@@ -145,6 +149,7 @@
                     android:gravity="center_vertical|end"
                     android:paddingEnd="@dimen/drawable_center_spacing"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/text_11"
                     android:hint="@string/main_monitor_satellite_beacon_hint"/>
             </LinearLayout>
             <LinearLayout

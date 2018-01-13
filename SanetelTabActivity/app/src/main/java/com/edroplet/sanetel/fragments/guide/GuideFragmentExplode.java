@@ -140,9 +140,9 @@ public class GuideFragmentExplode extends TimerFragment {
         Bundle args = new Bundle();
         args.putBoolean(PopDialog.SHOW_FIRST,true);
         args.putString(PopDialog.FIRST, String.format(getString(R.string.follow_me_antenna_first_line), antennaStateArray[antennaState]));
-        args.putBoolean(PopDialog.SHOW_SECOND,true);
+        args.putBoolean(PopDialog.SHOW_SECOND,false);
         args.putString(PopDialog.SECOND, getString(R.string.follow_me_antenna_state_explode_second_line));
-        args.putBoolean(PopDialog.SHOW_THIRD,true);
+        args.putBoolean(PopDialog.SHOW_THIRD,false);
         args.putString(PopDialog.START, getString(R.string.follow_me_antenna_state_explode_third_start));
         args.putInt(PopDialog.ICON, -1);
         args.putString(PopDialog.BUTTON_TEXT, null);

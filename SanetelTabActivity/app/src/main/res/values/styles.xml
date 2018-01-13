@@ -330,7 +330,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">2</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
-        <item name="android:padding">@dimen/no_padding</item>
+        <item name="android:paddingTop">@dimen/list_detail_padding</item>
+        <item name="android:paddingBottom">@dimen/list_detail_padding</item>
     </style>
 
     <style name="weChat_radio_button_style">

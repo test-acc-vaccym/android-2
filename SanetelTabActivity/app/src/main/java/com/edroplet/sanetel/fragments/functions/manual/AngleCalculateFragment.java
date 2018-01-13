@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.InputFilter;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import com.edroplet.sanetel.R;
@@ -105,17 +107,22 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
         }
         unbinder = ButterKnife.bind(this,view);
 
+        int i = 0;
+        for (int id: citySelectIds){
+            mapcitySelect.put(i++, id);
+        }
+
         tvAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.azimuthMin,InputFilterFloat.azimuthMax,InputFilterFloat.angleValidBit)});
         tvPitch.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.pitchMin,InputFilterFloat.pitchMax,InputFilterFloat.angleValidBit)});
         tvPolarization.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.polarizationMin,InputFilterFloat.polarizationMax,InputFilterFloat.angleValidBit)});
 
-        localLongitude.setOnFocusChangeListener(onInpuFocusChangeListener);
-        localLongitudeUnit.setOnFocusChangeListener(onInpuFocusChangeListener);
-        localLatitude.setOnFocusChangeListener(onInpuFocusChangeListener);
-        localLatitudeUnit.setOnFocusChangeListener(onInpuFocusChangeListener);
-
-        spinnerLocationProvince.setOnFocusChangeListener(onSelectFocusChangeListener);
-        spinnerLocationCity.setOnFocusChangeListener(onSelectFocusChangeListener);
+//        localLongitude.setOnFocusChangeListener(onInputFocusChangeListener);
+//        localLongitudeUnit.setOnFocusChangeListener(onInputFocusChangeListener);
+//        localLatitude.setOnFocusChangeListener(onInputFocusChangeListener);
+//        localLatitudeUnit.setOnFocusChangeListener(onInputFocusChangeListener);
+//
+//        spinnerLocationProvince.setOnFocusChangeListener(onSelectFocusChangeListener);
+//        spinnerLocationCity.setOnFocusChangeListener(onSelectFocusChangeListener);
 
         // 按键
         calculate.setOnClickListener(this);
@@ -126,18 +133,33 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
         initCitySelect();
         return view;
     }
+
     @BindView(R.id.city_select_choice)
     RadioButton choiceSelect;
 
     @BindView(R.id.city_input_choice)
     RadioButton choiceInput;
 
-    private View.OnFocusChangeListener onInpuFocusChangeListener = new View.OnFocusChangeListener() {
+    @BindView(R.id.calculate_angle_city_group)
+    RadioGroup citySelectGroup;
+
+    int[] citySelectIds = {R.id.city_select_choice, R.id.city_input_choice};
+    SparseIntArray mapcitySelect = new SparseIntArray(2);
+/*
+    private View.OnFocusChangeListener onInputFocusChangeListener = new View.OnFocusChangeListener() {
         @Override
         public void onFocusChange(View v, boolean hasFocus) {
             if (hasFocus){
                 choiceInput.setChecked(true);
                 choiceSelect.setChecked(false);
+
+                localLatitude.setEnabled(true);
+                localLatitudeUnit.setEnabled(true);
+                localLongitude.setEnabled(true);
+                localLongitudeUnit.setEnabled(true);
+
+                spinnerLocationProvince.setEnabled(false);
+                spinnerLocationCity.setEnabled(false);
             }
         }
     };
@@ -147,11 +169,20 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
         public void onFocusChange(View v, boolean hasFocus) {
             if (hasFocus){
                 choiceInput.setChecked(false);
+
+                localLatitude.setEnabled(false);
+                localLatitudeUnit.setEnabled(false);
+                localLongitude.setEnabled(false);
+                localLongitudeUnit.setEnabled(false);
+
                 choiceSelect.setChecked(true);
+
+                spinnerLocationProvince.setEnabled(true);
+                spinnerLocationCity.setEnabled(true);
             }
         }
     };
-
+*/
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -192,7 +223,7 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
                 bundle.putFloat(ManualActivity.PRESET_POLARIZATION, polarization);
                 intent.putExtras(bundle);
                 getActivity().startActivity(intent);
-                // getActivity().finish();
+                getActivity().finish();
                 break;
         }
     }
@@ -280,6 +311,16 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
         localLongitudeUnit.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1,
                 android.R.id.text1, getContext().getResources().getStringArray(R.array.longitude_unit)));
 
+        int pos = 0;
+        citySelectGroup.check(mapcitySelect.get(pos));
+        updateLocationUI(pos);
+        citySelectGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int pos = mapcitySelect.indexOfValue(checkedId);
+                updateLocationUI(pos);
+            }
+        });
         try {
             cities = new Cities(getContext());
             String[] provincesArray = cities.getProvinceArray();
@@ -375,5 +416,20 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+    }
+
+    void  updateLocationUI(int pos){
+        boolean enable = true;
+        if (pos == 0){
+            enable = false;
+        }
+
+        localLatitude.setEnabled(enable);
+        localLatitudeUnit.setEnabled(enable);
+        localLongitude.setEnabled(enable);
+        localLongitudeUnit.setEnabled(enable);
+
+        spinnerLocationProvince.setEnabled(!enable);
+        spinnerLocationCity.setEnabled(!enable);
     }
 }

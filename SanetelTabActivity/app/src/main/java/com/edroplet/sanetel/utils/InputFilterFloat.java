@@ -14,21 +14,21 @@ public class InputFilterFloat implements InputFilter {
     public static final float carrierMin = 10750f;
     public static final float carrierMax = 40000f;
     public static final float thresholdMin = 0;
-    public static final float thresholdMax = 10.0f;
-    public static final float longitudeMin = -180.0f;
-    public static final float longitudeMax = 180.0f;
+    public static final float thresholdMax = 10f;
+    public static final float longitudeMin = -180f;
+    public static final float longitudeMax = 180f;
     public static final float dvbMin = 6000f;
     public static final float dvbMax = 30000f;
-    public static final float latitudeMin = -90.0f;
-    public static final float latitudeMax = 90.0f;
+    public static final float latitudeMin = -90f;
+    public static final float latitudeMax = 90f;
 
     public static final int   angleValidBit = 3;
-    public static final float azimuthMin = 0.0f;
-    public static final float azimuthMax = 360.0f;
-    public static final float pitchMin = -10.0f;
-    public static final float pitchMax = 90.0f;
-    public static final float polarizationMin = -10.0f;
-    public static final float polarizationMax = 90.0f;
+    public static final float azimuthMin = 0f;
+    public static final float azimuthMax = 360f;
+    public static final float pitchMin = -10f;
+    public static final float pitchMax = 90f;
+    public static final float polarizationMin = -90f;
+    public static final float polarizationMax = -90f;
 
     private double min, max;
     private int validBitNumber = 3;

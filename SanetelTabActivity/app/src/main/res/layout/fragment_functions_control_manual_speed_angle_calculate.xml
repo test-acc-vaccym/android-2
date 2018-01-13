@@ -75,7 +75,7 @@
             android:layout_height="wrap_content">
             <!--单选组-->
             <RadioGroup
-                android:id="@+id/city_group"
+                android:id="@+id/calculate_angle_city_group"
                 android:layout_width="@dimen/radio_group_width_small"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/no_padding">
@@ -84,7 +84,6 @@
                     android:id="@+id/city_select_choice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="@string/angle_calculate_select_city"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 

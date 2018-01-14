@@ -33,7 +33,7 @@
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_dvb_satellite_tv_name"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_weight="1.6"
                     android:gravity="center_vertical|end"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_11"
@@ -106,8 +106,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <com.edroplet.sanetel.view.custom.CustomTextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_agc"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
@@ -154,8 +153,9 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/no_padding">
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:gravity="center_vertical|start"
@@ -192,11 +192,12 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/no_padding">
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="match_parent"
-                    android:gravity="center|start"
+                    android:gravity="center_vertical|start"
                     android:textColor="@color/text_11"
                     android:layout_height="wrap_content"
                     android:text="@string/settings_reference_dvb_unit"/>

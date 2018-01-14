@@ -299,7 +299,7 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1.3</item>
+        <item name="android:layout_weight">1.2</item>
         <!--<item name="android:background">@null</item>-->
         <item name="colorControlNormal">@color/indigo</item>
         <item name="colorControlActivated">@color/pink</item>
@@ -318,7 +318,7 @@
         <item name="android:paddingTop">@dimen/list_detail_padding</item>
         <item name="android:paddingBottom">@dimen/list_detail_padding</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
-        <item name="android:layout_weight">0.7</item>
+        <item name="android:layout_weight">0.8</item>
     </style>
 
     <style name="radio_group_second_item_edit_horizontal_style">

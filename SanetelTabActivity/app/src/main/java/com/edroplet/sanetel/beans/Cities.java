@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.edroplet.sanetel.R;
+import com.edroplet.sanetel.utils.ConvertUtil;
 import com.edroplet.sanetel.utils.JsonLoad;
 
 import org.json.JSONException;
@@ -258,4 +259,12 @@ public class Cities {
         return builder.toString();
     }
 
+    public LocationInfo getInfoByLatitudeAndLongitude(String longitude, String latitude){
+        for (LocationInfo li: cities){
+            if (li.getLatitude() == ConvertUtil.convertToFloat(latitude,0.0f) && li.getLongitude() == ConvertUtil.convertToFloat(longitude,0.0f)){
+                return li;
+            }
+        }
+        return null;
+    }
 }

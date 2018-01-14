@@ -438,12 +438,44 @@ public class Protocol {
     public static final String cmdSetComUseridResultHead="$cmd,com userid set ";
     public static final String cmdSetComUseridResult=cmdSetComUseridResultHead+"ok*ff\r\n";
 
-    // 5.10	获取LNB状态
-    // 终端设备发送指令格式：$ cmd,get lnb state*ff\r\n
-    // 便携站返回数据：$cmd,lnb state,状态*ff\r\n
+    // 5.10	校验
+    // 5.10.1	读取
+    //    终端设备发送指令格式：$cmd,get check*ff<CR><LF>
+    //    便携站返回数据：$cmd,check data,串口1有无校验, 串口2有无校验, 串口3有无校验, 串口4有无校验,串口5有无校验, 串口6有无校验*ff<CR><LF>
+    public static final String cmdGetCheck="$cmd,get check*ff\r\n";
+    public static final String cmdGetCheckResultHead="$cmd,check data,";
+    public static final String cmdGetCheckResult=cmdGetCheckResultHead+"%s,%s,%s,%s,%s,%s*ff\r\n";
+
+    //5.10.2	设置
+    //    终端设备发送指令格式：$cmd,set check,串口,有无校验*ff<CR><LF>
+    //    便携站返回数据：$cmd,check set ok*ff<CR>
+    // 1: 串口1,1-6.  0: 无校验 1：有校验
+    public static final String cmdSetCheck="$cmd,set check,%s,%s*ff\r\n";
+    public static final String cmdSetCheckResultHead="$cmd,check set ok";
+    public static final String cmdSetCheckResult=cmdSetCheckResultHead+"*ff\r\n";
+
+    // 5.11	获取LNB状态
+    // 终端设备发送指令格式：$ cmd,get lnb state*ff<CR><LF>
+    // 便携站返回数据：$cmd,lnb state,状态*ff<CR><LF>
     public static final String cmdGetLnbState="$cmd,get lnb state*ff\r\n";
     public static final String cmdGetLnbStateResultHead="$cmd,lnb state,";
     public static final String cmdGetLnbStateResult=cmdGetLnbStateResultHead+"%s*ff\r\n";
+
+    // 5.12	倾角标定
+    // 5.12.1	读取
+    // 终端设备发送指令格式：$cmd,get calib inclino*ff<CR><LF>
+    // 便携站返回数据：$cmd,calib inclino data,俯仰,横滚 *ff<CR><LF>
+    public static final String cmdGetCalibInclInfo="$cmd,get calib inclino*ff\r\n";
+    public static final String cmdGetCalibInclInfoResultHead="cmd,calib inclino data,";
+    public static final String cmdGetCalibInclInfoResult=cmdGetCalibInclInfoResultHead+"%s,%s*ff\r\n";
+    // 5.12.2	设置
+    // 终端设备发送指令格式：$cmd,set calib inclino,俯仰,横滚*ff<CR><LF>
+    // 便携站返回数据：$cmd,start calib ant*ff<CR><LF>
+    public static final String cmdSetCalibInclInfo="$cmd,set calib inclino,%s,%s*ff\r\n";
+    public static final String cmdSetCalibInclInfoResultHead="cmd,start calib inclino,";
+    public static final String cmdSetCalibInclInfoResult=cmdSetCalibInclInfoResultHead+"*ff\r\n";
+
+
 
     /**
      * 获取控制状态

@@ -1,6 +1,7 @@
 package com.edroplet.sanetel.fragments.guide;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
@@ -21,16 +22,20 @@ import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.adapters.SpinnerAdapter2;
 import com.edroplet.sanetel.beans.Cities;
 import com.edroplet.sanetel.beans.LocationInfo;
+import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.utils.ConvertUtil;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.GalleryOnTime;
 import com.edroplet.sanetel.utils.InputFilterFloat;
 import com.edroplet.sanetel.utils.PopDialog;
+import com.edroplet.sanetel.utils.sscanf.Sscanf;
+import com.edroplet.sanetel.view.BroadcastReceiverFragment;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomEditText;
 import com.edroplet.sanetel.view.custom.CustomRadioButton;
 import com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton;
 
+import java.util.Arrays;
 import java.util.Timer;
 
 import butterknife.BindArray;
@@ -44,7 +49,9 @@ import butterknife.Unbinder;
  * 位置输入
  */
 
-public class GuideFragmentLocation extends Fragment {
+public class GuideFragmentLocation extends BroadcastReceiverFragment {
+    public static String LocationGetPositionAction = "com.edroplet.sanetel.GetPositionAction";
+    public static String LocationGetPositionData = "com.edroplet.sanetel.GetPositionData";
 
     private static int[] cityImages = {R.mipmap.city1, R.mipmap.city2, R.mipmap.city3};
 
@@ -110,6 +117,15 @@ public class GuideFragmentLocation extends Fragment {
     public static GuideFragmentLocation newInstance() {
         GuideFragmentLocation fragment = new GuideFragmentLocation();
         return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        String[] action = {LocationGetPositionAction};
+        setAction(action);
+        super.onCreate(savedInstanceState);
+        context= getContext();
+        Protocol.sendMessage(context, Protocol.cmdGetPosition);
     }
 
     @Nullable
@@ -189,6 +205,9 @@ public class GuideFragmentLocation extends Fragment {
     @BindArray(R.array.latitude_unit)
     String[] latitudeArray;
 
+    String[] citiesArray;
+    String[] provincesArray;
+
     private void initView(View view){
         newLongitudeUnit.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, longitudeArray));
         newLatitudeUnit.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, latitudeArray));
@@ -213,7 +232,7 @@ public class GuideFragmentLocation extends Fragment {
 
         try {
             cities = new Cities(getContext());
-            String[] provincesArray = cities.getProvinceArray();
+            provincesArray = cities.getProvinceArray();
             if (provincesArray.length > 0) {
                 spinnerLocationProvince.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, provincesArray));
                 // 读取配置中的值
@@ -224,7 +243,7 @@ public class GuideFragmentLocation extends Fragment {
                         break;
                     }
                 }
-                String[] citiesArray = cities.getCitiesArray(selectedProvince);
+                citiesArray = cities.getCitiesArray(selectedProvince);
                 if (citiesArray != null && citiesArray.length > 0) {
                     spinnerLocationCity.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, citiesArray));
                     // 读取配置中的值
@@ -301,15 +320,17 @@ public class GuideFragmentLocation extends Fragment {
             public void onClick(View v) {
                 @IdRes int checkedId = citySelectGroup.getCheckedRadioButtonId();
                 CustomSP.putInt(context,KeyCitySelect, mapCitySelectArray.indexOfValue(checkedId));
+                String la = newLatitude.getText().toString();
+                String lo = newLongitude.getText().toString();
                 switch (checkedId){
                     case R.id.follow_me_location_new_city:
                         selectedProvince = newProvince.getText().toString();
                         selectedCity = newCity.getText().toString();
                         // 添加新城市
                         cities.addItem(new LocationInfo(selectedProvince, selectedCity,
-                                ConvertUtil.convertToFloat(newLatitude.getText().toString(), 0.00f),
+                                ConvertUtil.convertToFloat(la, 0.00f),
                                 newLatitudeUnit.getSelectedItemPosition(),
-                                ConvertUtil.convertToFloat(newLongitude.getText().toString(), 0.00f),
+                                ConvertUtil.convertToFloat(lo, 0.00f),
                                 newLongitudeUnit.getSelectedItemPosition()), true);
                         try {
                             cities.save();
@@ -323,6 +344,8 @@ public class GuideFragmentLocation extends Fragment {
                 // 保存配置
                 LocationInfo.setProvince(context,selectedProvince);
                 LocationInfo.setName(context,selectedCity);
+                // 发送定位指令
+                Protocol.sendMessage(context, String.format(Protocol.cmdSetPosition, la, lo));
             }
         });
 
@@ -360,5 +383,40 @@ public class GuideFragmentLocation extends Fragment {
         newLongitude.setText(String.valueOf(locationInfo.getLongitude()));
         newLatitudeUnit.setSelection(locationInfo.getLatitudeUnitPosition());
         newLongitudeUnit.setSelection(locationInfo.getLongitudeUnitPosition());
+    }
+
+    @Override
+    public void processData(Intent intent) {
+        super.processData(intent);
+        String rawData = intent.getStringExtra(LocationGetPositionData);
+        String latitude = "0";
+        String longitude = "0";
+        Object[] objects = Sscanf.scan(rawData, Protocol.cmdGetPositionResult, longitude, latitude);
+        latitude = (String) objects[0];
+        longitude = (String) objects[1];
+        newLongitude.setText(longitude);
+        newLatitude.setText(latitude);
+        if (cities != null){
+          LocationInfo li =   cities.getInfoByLatitudeAndLongitude(longitude, latitude);
+          if (li != null){
+              selectedProvince = li.getProvince();
+              int proPos = Arrays.asList(provincesArray).indexOf(selectedProvince);
+              if (proPos < 0){
+                  proPos = 0;
+                  selectedProvince = provincesArray[proPos];
+              }
+              spinnerLocationProvince.setSelection(proPos);
+              String[] cityArray = cities.getCitiesArray(selectedProvince);
+              if (cityArray.length > 0) {
+                  selectedCity = li.getName();
+                  int cityPos = Arrays.asList(cityArray).indexOf(selectedCity);
+                  if (cityPos < 0) {
+                        cityPos = 0;
+                        selectedCity = cityArray[0];
+                  }
+                  spinnerLocationCity.setSelection(cityPos);
+              }
+          }
+        }
     }
 }

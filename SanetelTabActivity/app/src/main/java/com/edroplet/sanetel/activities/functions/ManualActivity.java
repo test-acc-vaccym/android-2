@@ -92,7 +92,6 @@ public class ManualActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
 
         StatusBarControl.setupToolbar(this, R.id.main_content_toolbar);
-        OperateBarControl.setupOperatorBar(this);
 
         viewPager = (ViewPager) findViewById(R.id.manual_viewpager);
         viewPager.addOnPageChangeListener(mOnPageChangeListener);
@@ -127,6 +126,12 @@ public class ManualActivity extends AppCompatActivity {
         }
 
         viewPager.setCurrentItem(position);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        OperateBarControl.setupOperatorBar(this);
     }
 
     private void setupViewPager(ViewPager viewPager) {

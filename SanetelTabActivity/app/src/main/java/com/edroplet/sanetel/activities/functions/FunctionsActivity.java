@@ -108,7 +108,6 @@ public class FunctionsActivity extends AppCompatActivity {
 
 
         setupViewPager(viewPager);
-        OperateBarControl.setupOperatorBar(this);
 
         cfab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +117,12 @@ public class FunctionsActivity extends AppCompatActivity {
             }
         });
         bottomNavigationView.setViewPager(viewPager);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        OperateBarControl.setupOperatorBar(this);
     }
 
     private void setupViewPager(ViewPager viewPager) {

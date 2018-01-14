@@ -13,6 +13,7 @@ import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.activities.guide.GuideActivity;
 import com.edroplet.sanetel.beans.AntennaInfo;
 import com.edroplet.sanetel.beans.LockerInfo;
+import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.beans.SavingInfo;
 import com.edroplet.sanetel.utils.RandomDialog;
 import com.edroplet.sanetel.view.StatusButton;
@@ -32,7 +33,6 @@ public class OperateBarControl {
     private static StatusButton lockerStateButton; // 锁紧
     private static StatusButton antennaStateButton; // 天线
 
-    private static Timer timer = new Timer();
     private static AppCompatActivity mActivity;
     public static void setupOperatorBar(final AppCompatActivity activity){
         if (null == activity)
@@ -289,13 +289,14 @@ public class OperateBarControl {
                         energyStateButton.setButtonState(StatusButton.BUTTON_STATE_ABNORMAL);
                         energyStateButton.setText(R.string.energy_state_charged);
                     }
-                    SavingInfo.setSavingState(context,SAVING_STATE_CLOSE);
-
-                    // TODO: 2017/11/5 发送退出节能的命令
+                    // 2017/11/5 发送退出节能的命令
+                    Protocol.sendMessage(context, String.format(Protocol.cmdSetEnergySave, SAVING_STATE_CLOSE));
                     randomDialog.getDialogBuilder().dismiss();
                 }
             }, buttonOkText);
             return false;
+        }else {
+
         }
 
         // 然后锁紧机构状态

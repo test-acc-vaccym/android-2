@@ -76,6 +76,7 @@
                 <com.edroplet.sanetel.view.custom.CustomEditText
                     android:id="@+id/main_me_error_report_email_send_address"
                     style="@style/text_horizontal_style"
+                    android:text="@string/main_me_advice_email_send_address"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
             </LinearLayout>
             <!--用户邮箱-->
@@ -92,7 +93,6 @@
                 <com.edroplet.sanetel.view.custom.CustomEditText
                     android:id="@+id/main_me_error_report_user_mail"
                     style="@style/text_horizontal_style"
-                    android:text="@string/main_me_advice_email_send_address"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
             </LinearLayout>
             <!--用户单位-->

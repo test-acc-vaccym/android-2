@@ -13,19 +13,21 @@ import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.utils.ConvertUtil;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.mail.MailUtil;
-import com.edroplet.sanetel.view.ViewInject;
-import com.edroplet.sanetel.view.annotation.BindId;
 import com.edroplet.sanetel.view.custom.CustomEditText;
 import com.edroplet.sanetel.view.custom.CustomTextView;
 import com.yongchun.library.view.ImageSelectorActivity;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by qxs on 2017/9/19.
+ * 建议UI
  */
 
 public class MainMeAdviceActivity extends AppCompatActivity implements View.OnClickListener{
@@ -38,32 +40,32 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
 //        return fragment;
 //    }
     ArrayList<String> images;
-    @BindId(R.id.main_me_advice_email_receive)
-    private static CustomTextView adviceEmailReceive;
+    @BindView(R.id.main_me_advice_email_receive)
+    CustomTextView adviceEmailReceive;
 
-    @BindId(R.id.main_me_advice_email_send_address)
-    private static CustomEditText adviceEmailSend;
+    @BindView(R.id.main_me_advice_email_send_address)
+    CustomEditText adviceEmailSend;
 
-    @BindId(R.id.main_me_advice_user_mail)
-    private static CustomEditText adviceUserEmail;
+    @BindView(R.id.main_me_advice_user_mail)
+    CustomEditText adviceUserEmail;
 
-    @BindId(R.id.main_me_advice_name)
-    private static CustomEditText adviceName;
+    @BindView(R.id.main_me_advice_name)
+    CustomEditText adviceName;
 
-    @BindId(R.id.main_me_advice_phone)
-    private static CustomEditText advicePhone;
+    @BindView(R.id.main_me_advice_phone)
+    CustomEditText advicePhone;
 
-    @BindId(R.id.main_me_advice_subject)
-    private static CustomEditText adviceSubject;
+    @BindView(R.id.main_me_advice_subject)
+    CustomEditText adviceSubject;
 
-    @BindId(R.id.main_me_advice_photo_list)
-    private static CustomTextView advicePhoto;
+    @BindView(R.id.main_me_advice_photo_list)
+    CustomTextView advicePhoto;
 
-    @BindId(R.id.main_me_advice_description)
-    private static CustomEditText adviceDescription;
+    @BindView(R.id.main_me_advice_description)
+    CustomEditText adviceDescription;
 
-    @BindId(R.id.main_me_advice_email_customer)
-    private static CustomEditText adviceCustomer;
+    @BindView(R.id.main_me_advice_email_customer)
+    CustomEditText adviceCustomer;
 
     private static final String KEY_ADVICE_EMAIL_RECEIVE = "KEY_ADVICE_EMAIL_RECEIVE";
     private static final String KEY_ADVICE_EMAIL_SEND = "KEY_ADVICE_EMAIL_SEND";
@@ -76,18 +78,20 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
     private static final String KEY_ADVICE_USER_MAIL= "KEY_ADVICE_USER_MAIL";
 
     private static int schedule;
-    private static Context context;
+    private Context context;
     private Timer timer = new Timer();
 
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_me_advice);
-        ViewInject.inject(this, this);
+
+        ButterKnife.bind(this);
+
         context = this;
         schedule = getResources().getInteger(R.integer.save_data_schedule_timer);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_me_advice_toolbar);
+        Toolbar toolbar = findViewById(R.id.main_me_advice_toolbar);
         toolbar.setTitle(R.string.main_me_advice_title);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +120,6 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void run() {
                 Message message = new Message();
-                Bundle bundle = new Bundle();
                 handler.sendMessage(message);
                 try {
                     Thread.sleep(schedule);
@@ -130,8 +133,6 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View view) {
-        Intent intent = null;
-        boolean noResult=true;
         switch(view.getId()){
             case R.id.main_me_advice_return:
                 // 返回
@@ -142,10 +143,9 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
                 onSave();
                 break;
             case R.id.main_me_advice_commit:
-                // todo 提交
-                ArrayList<String> al = new ArrayList<String>();
+                ArrayList<String> al = new ArrayList<>();
                 String photoList = advicePhoto.getText().toString();
-                if (advicePhoto != null && photoList.length() > 0) {
+                if (photoList.length() > 0) {
                     al.addAll(ConvertUtil.string2List(photoList,","));
                 }
 
@@ -156,7 +156,7 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
                 content = content + adviceDescription.getText().toString();
 
                 String subject = adviceSubject.getText().toString();
-                if (subject == null || subject.length() ==0){
+                if (subject.length() ==0){
                     subject = getString(R.string.main_me_error_report_title);
                 }
                 MailUtil.sendMailMultiAttach(this,
@@ -169,29 +169,25 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
 
                 break;
             case R.id.main_me_advice_photo:
-                // intent = new Intent(getContext(), Context.AUDIO_SERVICE);
-                noResult = false;
                 ImageSelectorActivity.start(MainMeAdviceActivity.this, 9, ImageSelectorActivity.MODE_MULTIPLE, true,true, false);
                 break;
             default:
                 break;
         }
-        if (noResult && intent != null) {
-            startActivity(intent);
-        }
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == RESULT_OK && requestCode == ImageSelectorActivity.REQUEST_IMAGE){
             images = (ArrayList<String>) data.getSerializableExtra(ImageSelectorActivity.REQUEST_OUTPUT);
-            // todo get images then do something
+            //get images then do something
             advicePhoto.setText(images.toString());
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private static void onSave(){
+    void onSave(){
         CustomSP.putString(context, KEY_ADVICE_PHOTO, advicePhoto.getText().toString());
         CustomSP.putString(context, KEY_ADVICE_PHONE, advicePhone.getText().toString());
         CustomSP.putString(context, KEY_ADVICE_NAME, adviceName.getText().toString());
@@ -203,11 +199,19 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
         CustomSP.putString(context, KEY_ADVICE_CUSTOMER,adviceCustomer.getText().toString());
     }
 
-    private final Handler handler = new ErrorReportHandler();
+    private final Handler handler = new ErrorReportHandler(this);
+
     private static class ErrorReportHandler extends Handler {
+        private final WeakReference<MainMeAdviceActivity> mTarget;
+        ErrorReportHandler(MainMeAdviceActivity target){
+            mTarget = new WeakReference<>(target);
+        }
         @Override
         public void handleMessage(Message msg) {
-            onSave();
+            MainMeAdviceActivity target = mTarget.get();
+            if (target != null) {
+              target.onSave();
+            }
         }
     }
 

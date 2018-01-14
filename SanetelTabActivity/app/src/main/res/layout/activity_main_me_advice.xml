@@ -71,14 +71,16 @@
                     android:text="@string/main_me_error_report_email_send"
                     style="@style/text_horizontal_style"
                     android:layout_weight="0.5"
+                    tools:layout_editor_absoluteY="16dp"
+                    tools:layout_editor_absoluteX="16dp"
                     android:padding="@dimen/appbar_padding_top"
-                    android:inputType="textEmailAddress"
                     android:gravity="start|left"/>
 
                 <com.edroplet.sanetel.view.custom.CustomEditText
-                    android:id="@+id/main_me_advice_email_send_address"
                     style="@style/text_horizontal_style"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
+                    app:titleTextAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/main_me_advice_email_send_address"
+                    android:text="@string/main_me_advice_email_send_address"/>
             </LinearLayout>
             <!--用户邮箱-->
             <LinearLayout
@@ -95,7 +97,6 @@
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_me_advice_user_mail"
                     style="@style/text_horizontal_style"
-                    android:text="@string/main_me_advice_email_send_address"
                     app:titleTextAppearance="?android:attr/textAppearanceMedium" />
             </LinearLayout>
             <!--用户单位-->

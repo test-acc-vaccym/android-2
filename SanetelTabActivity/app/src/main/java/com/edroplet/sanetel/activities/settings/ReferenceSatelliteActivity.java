@@ -10,13 +10,11 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.InputFilter;
 import android.text.InputType;
-import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.adapters.SpinnerAdapter2;
@@ -24,50 +22,50 @@ import com.edroplet.sanetel.beans.PolarizationMode;
 import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.beans.SatelliteInfo;
 import com.edroplet.sanetel.beans.Satellites;
-import com.edroplet.sanetel.utils.ConvertUtil;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.InputFilterFloat;
 import com.edroplet.sanetel.utils.PopDialog;
 import com.edroplet.sanetel.utils.sscanf.Sscanf;
-import com.edroplet.sanetel.view.ViewInject;
-import com.edroplet.sanetel.view.annotation.BindId;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomTextView;
 
 import java.util.Arrays;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class ReferenceSatelliteActivity extends AppCompatActivity {
-    @BindId(R.id.settings_reference_toolbar)
-    private Toolbar referenceToolbar;
+    @BindView(R.id.settings_reference_toolbar)
+    Toolbar referenceToolbar;
 
-    @BindId(R.id.pop_dialog_tv_second)
-    private CustomTextView secondLine;
+    @BindView(R.id.pop_dialog_tv_second)
+    CustomTextView secondLine;
 
-    @BindId(R.id.pop_dialog_tv_third_end)
-    private CustomTextView thirdEnd;
+    @BindView(R.id.pop_dialog_tv_third_end)
+    CustomTextView thirdEnd;
 
-    @BindId(R.id.reference_satellite_select_radio_group)
-    private RadioGroup referenceSatelliteSelectGroup;
+    @BindView(R.id.reference_satellite_select_radio_group)
+    RadioGroup referenceSatelliteSelectGroup;
 
-    @BindId(R.id.reference_satellite_select_satellites)
-    private Spinner satellitesSpinner;
+    @BindView(R.id.reference_satellite_select_satellites)
+    Spinner satellitesSpinner;
 
-    @BindId(R.id.reference_satellite_select_satellites_polarization)
-    private Spinner satellitesPolarizationSpinner;
+    @BindView(R.id.reference_satellite_select_satellites_polarization)
+    Spinner satellitesPolarizationSpinner;
 
-    @BindId(R.id.settings_reference_longitude)
-    private CustomTextView longitude;
-    @BindId(R.id.settings_reference_beacon)
-    private CustomTextView beacon;
-    @BindId(R.id.settings_reference_ag)
-    private CustomTextView agThreshold;
-    @BindId(R.id.settings_reference_dvb)
-    private CustomTextView dvbSymbolRate;
-    @BindId(R.id.settings_reference_carrier)
-    private CustomTextView tvCarrier;
-    @BindId(R.id.pop_dialog_third_button)
-    private CustomButton thirdButton;
+    @BindView(R.id.settings_reference_longitude)
+    CustomTextView longitude;
+    @BindView(R.id.settings_reference_beacon)
+    CustomTextView beacon;
+    @BindView(R.id.settings_reference_ag)
+    CustomTextView agThreshold;
+    @BindView(R.id.settings_reference_dvb)
+    CustomTextView dvbSymbolRate;
+    @BindView(R.id.settings_reference_carrier)
+    CustomTextView tvCarrier;
+    @BindView(R.id.pop_dialog_third_button)
+    CustomButton thirdButton;
 
     ReferenceReceiver referenceReceiver;
 
@@ -92,7 +90,8 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reference_satellite);
 
-        ViewInject.inject(this, this);
+        ButterKnife.bind(this);
+
         initReferenceSatellite();
         initView();
 
@@ -129,6 +128,19 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        referenceSatelliteSelectGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int searchMode = mapReferenceSatellite.indexOfValue(checkedId);
+                boolean selectable = false;
+                if (searchMode == 1){
+                    selectable = true;
+                }
+                satellitesSpinner.setEnabled(selectable);
+                satellitesPolarizationSpinner.setEnabled(selectable);
             }
         });
         thirdButton.setOnClickListener(new View.OnClickListener() {
@@ -180,11 +192,11 @@ public class ReferenceSatelliteActivity extends AppCompatActivity {
                 CustomSP.putString(ReferenceSatelliteActivity.this,
                         KEY_REFERENCE_SATELLITE_SEARCHING_CARRIER,
                         carrier);
-                // TODO: 2017/10/23 设置命令
+                // 2017/10/23 设置命令
                 // 卫星经度,极化方式,寻星门限,信标频率,载波频率,符号率,寻星方式
                 int polarizationMode = PolarizationMode.getMap(ReferenceSatelliteActivity.this).get(selectedPolarization);
                 String message = String.format(Protocol.cmdSetRefData, longitudeVal, polarizationMode, agThresholdVal, beaconVal, carrier, dvbVal, searchMode);
-                Log.e(ReferenceSatelliteActivity.class.getSimpleName(), message);
+                // Log.e(ReferenceSatelliteActivity.class.getSimpleName(), message);
                 Protocol.sendMessage(ReferenceSatelliteActivity.this, message);
             }
         });

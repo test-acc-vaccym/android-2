@@ -23,8 +23,10 @@ import com.edroplet.sanetel.view.custom.CustomTextView;
 
 import java.util.Map;
 
+import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * A fragment representing a single City detail screen.
@@ -68,6 +70,9 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
     @BindView(R.id.carrier_detail)
     CustomEditText satelliteDetailCarrier;
 
+    @BindArray(R.array.satellites_polarization) String[] polarizationArray;
+
+    Unbinder unbinder;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -123,7 +128,7 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_settings_satellite_detail, container, false);
 
-        ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
 
         /*
         satelliteDetailSave = rootView.findViewById(R.id.satellite_detail_save);
@@ -160,7 +165,7 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
 
             try {
                 satellites = new Satellites(getContext());
-                String[] polarizationArray = satellites.getSatellitePolarizationArray(mItem.name);
+                // String[] polarizationArray = satellites.getSatellitePolarizationArray(mItem.name);
                 satelliteDetailPolarization.setAdapter(new SpinnerAdapter2(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, polarizationArray));
 
                 for(int i=0; i<polarizationArray.length; i++){
@@ -180,6 +185,9 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (unbinder != null) {
+            unbinder.unbind();
+        }
     }
 
 

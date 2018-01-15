@@ -2,60 +2,59 @@ package com.edroplet.sanetel.activities.settings;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.edroplet.sanetel.R;
+import com.edroplet.sanetel.adapters.SpinnerAdapter2;
 import com.edroplet.sanetel.beans.SatelliteInfo;
 import com.edroplet.sanetel.utils.ConvertUtil;
 import com.edroplet.sanetel.utils.InputFilterFloat;
 import com.edroplet.sanetel.utils.JsonLoad;
-import com.edroplet.sanetel.utils.RandomDialog;
-import com.edroplet.sanetel.view.EDropletDialogBuilder;
-import com.edroplet.sanetel.view.ViewInject;
-import com.edroplet.sanetel.view.annotation.BindId;
 import com.edroplet.sanetel.view.custom.CustomEditText;
-import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
-import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
 import java.util.ArrayList;
-import java.util.StringTokenizer;
+
+import butterknife.BindArray;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class NewSatelliteActivity extends AppCompatActivity {
-    @BindId(R.id.name_detail)
-    private CustomEditText satelliteNameView;
-    @BindId(R.id.longitude_detail)
-    private CustomEditText satelliteLongitudeView;
-    @BindId(R.id.polarization_detail)
-    private Spinner satellitePolarizationView;
-    @BindId(R.id.beacon_detail)
-    private CustomEditText satelliteBeaconView;
-    @BindId(R.id.threshold_detail)
-    private CustomEditText satelliteThresholdView;
-    @BindId(R.id.symbol_rate_detail)
-    private CustomEditText satelliteSymbolRateView;
-    @BindId(R.id.comment_detail)
-    private CustomEditText satelliteCommentView;
-    @BindId(R.id.carrier_detail)
-    private CustomEditText satelliteCarrierView;
+    @BindView(R.id.name_detail)
+     CustomEditText satelliteNameView;
+    @BindView(R.id.longitude_detail)
+     CustomEditText satelliteLongitudeView;
+    @BindView(R.id.polarization_detail)
+     Spinner satellitePolarizationView;
+    @BindView(R.id.beacon_detail)
+     CustomEditText satelliteBeaconView;
+    @BindView(R.id.threshold_detail)
+     CustomEditText satelliteThresholdView;
+    @BindView(R.id.symbol_rate_detail)
+     CustomEditText satelliteSymbolRateView;
+    @BindView(R.id.comment_detail)
+     CustomEditText satelliteCommentView;
+    @BindView(R.id.carrier_detail)
+     CustomEditText satelliteCarrierView;
+
+    @BindArray(R.array.satellites_polarization)
+    String[] polarizationArray;
 
     private boolean inputError;
     private Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_satellite);
 
         // 初始化
-        ViewInject.inject(this, this);
+        ButterKnife.bind(this);
+
         mContext = this;
 
         satelliteLongitudeView.setFilters(new InputFilter[]{ new InputFilterFloat(InputFilterFloat.longitudeMin, InputFilterFloat.longitudeMax)});
@@ -112,6 +111,8 @@ public class NewSatelliteActivity extends AppCompatActivity {
                 finish();
             }
         });
+        // 设置极化方式可选值
+        satellitePolarizationView.setAdapter(new SpinnerAdapter2(mContext, android.R.layout.simple_list_item_1, android.R.id.text1, polarizationArray));
     }
 
     private boolean doCommit(){

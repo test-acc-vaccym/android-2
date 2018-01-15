@@ -57,7 +57,8 @@
                 android:text="@string/satellite_detail_polarization_key"/>
             <Spinner
                 style="@style/radio_group_second_item_edit_horizontal_style"
-                android:id="@+id/polarization_detail"/>
+                android:id="@+id/polarization_detail"
+                android:entries="@array/satellites_polarization"/>
         </LinearLayout>
         <!--经度-->
         <LinearLayout

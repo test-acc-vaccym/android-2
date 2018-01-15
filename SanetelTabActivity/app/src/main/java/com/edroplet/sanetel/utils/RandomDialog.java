@@ -20,10 +20,11 @@ import java.io.IOException;
 
 /**
  * Created by qxs on 2017/10/15.
+ * 对话框
  */
 
 public class RandomDialog {
-    private NiftyDialogBuilder dialogBuilder;
+    private static NiftyDialogBuilder dialogBuilder;
     private AlertDialog.Builder alertDialogBuilder;
     private Context context;
     public RandomDialog(Context context){

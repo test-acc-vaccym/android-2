@@ -295,6 +295,7 @@ public class OperateBarControl {
                     }
                     // 2017/11/5 发送退出节能的命令
                     Protocol.sendMessage(context, String.format(Protocol.cmdSetEnergySave, SAVING_STATE_CLOSE));
+                    if (randomDialog != null)
                     randomDialog.getDialogBuilder().dismiss();
                 }
             }, buttonOkText);

@@ -117,7 +117,8 @@ public class OperateBarControl {
                                     antennaStateButton.setButtonState(StatusButton.BUTTON_STATE_ABNORMAL);
                                     antennaStateButton.setText(R.string.antenna_state_exploding);
                                 }
-                                // TODO: 2017/11/13 发送展开命令
+                                // 2017/11/13 发送展开命令
+                                Protocol.sendMessage(activity, Protocol.cmdAntennaExplode);
                                 randomDialog.getDialogBuilder().dismiss();
                             }
                         }, buttonOkText);
@@ -150,7 +151,8 @@ public class OperateBarControl {
                                     antennaStateButton.setButtonState(StatusButton.BUTTON_STATE_SPECIAL);
                                     antennaStateButton.setText(R.string.antenna_state_folding);
                                 }
-                                // TODO: 2017/11/13 发送收藏命令
+                                //  2017/11/13 发送收藏命令
+                                Protocol.sendMessage(activity, Protocol.cmdAntennaFold);
                                 randomDialog.getDialogBuilder().dismiss();
                             }
                         }, buttonOkText);
@@ -175,7 +177,8 @@ public class OperateBarControl {
                             antennaStateButton.setButtonState(StatusButton.BUTTON_STATE_ABNORMAL);
                             antennaStateButton.setText(R.string.antenna_state_paused);
                         }
-                        // todo 发送停止命令
+                        // 发送停止命令
+                        Protocol.sendMessage(activity, Protocol.cmdStopSearch);
                     }
                 }
             });
@@ -199,7 +202,8 @@ public class OperateBarControl {
                                     antennaStateButton.setButtonState(StatusButton.BUTTON_STATE_SPECIAL);
                                     antennaStateButton.setText(R.string.antenna_state_reset);
                                 }
-                                // todo 发送复位命令
+                                // 发送复位命令
+                                Protocol.sendMessage(activity, Protocol.cmdAntennaReset);
                                 randomDialog.getDialogBuilder().dismiss();
                             }
                         }, buttonOkText);

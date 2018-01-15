@@ -16,6 +16,7 @@ import static com.edroplet.sanetel.services.communicate.CommunicateDataReceiver.
  * 值位39.253字符串里也是39.253 用sprintf格式化写入字符串的
  */
 
+@SuppressWarnings("neverused")
 public class Protocol {
     // 4.1	复位/展开
     public static final String cmdAntennaExplode="$cmd,develop ant*ff\r\n";
@@ -26,8 +27,6 @@ public class Protocol {
     public static final String cmdAntennaFold="$cmd,stow ant*ff\r\n";
     public static final String cmdAntennaFoldResult="$cmd,start stow*ff\r\n";
     // 4.3	停止、见停止寻星
-    public static final String cmdAntennaPause="$cmd,stow ant*ff\r\n";
-    public static final String cmdAntennaPauseResult="$cmd,start stow*ff\r\n";
 
     // 4.4	寻星、见自动寻星
 
@@ -35,18 +34,15 @@ public class Protocol {
     // 4.5	读取设备信息
     public static final String cmdGetEquipmentInfo="$cmd,get equip info*ff\r\n";
     //返回 设备名称，主控板版本, 软件版本, 软件发布时间
-    public static final String cmdGetEquipmentInfoResult="$cmd,equip info,%s,%s,%s,%s*ff\r\n";
-    // Scanner s = new Scanner("123 asdf sd 45 789 sdf asdfl,sdf.sdfl,asdf    ......asdfkl    las"); 
-    // s.useDelimiter(" |,|\\."); 
-    // while (s.hasNext()) { 
-    // System.out.println(s.next()); 
-    // } 
+    public static final String cmdGetEquipmentInfoResultHead="$cmd,equip info,";
+    public static final String cmdGetEquipmentInfoResult = cmdGetEquipmentInfoResultHead + "%s,%s,%s,%s*ff\r\n";
 
     // 4.6	跟踪模式选择
     // 4.6.1	读取
     public static final String cmdGetTrackMode="$cmd,get track mode*ff\r\n";
     // 返回<模式名称>(0: 信标机, 1: DVB)
-    public static final String cmdGetTrackModeResult="$cmd,track mode data,%d*ff\r\n";
+    public static final String cmdGetTrackModeResultHead="$cmd,track mode data,";
+    public static final String cmdGetTrackModeResult= cmdGetTrackModeResultHead + "%d*ff\r\n";
     // 4.6.2	设置 <模式名称>(0: 信标机, 1: DVB)
     public static final String cmdSetTrackMode="$cmd,set track mode,%d*ff\r\n";
     // 返回
@@ -123,7 +119,7 @@ public class Protocol {
      3-右旋圆极化；
      */
     public static final String cmdSetTargetState="$cmd,set target sat,%s,%s,%s,%s,%s,%s*ff\r\n";
-    public static final String cmdSetTargetStateResultHead="$cmd,target sat set ";
+    private static final String cmdSetTargetStateResultHead="$cmd,target sat set ";
     public static final String cmdSetTargetStateResult=cmdSetTargetStateResultHead + "ok*ff\r\n";
 
     // 4.11	参考星
@@ -135,7 +131,7 @@ public class Protocol {
     // 4.11.2	设置
     // $cmd,set ref sat,卫星经度,极化方式,寻星门限,信标频率,载波频率,符号率,寻星方式*ff\r\n
     public static final String cmdSetRefData="$cmd,set ref sat,%s,%s,%s,%s,%s,%s,%s*ff\r\n";
-    public static final String cmdSetRefDataResultHead = "$cmd,ref sat ";
+    private static final String cmdSetRefDataResultHead = "$cmd,ref sat ";
     public static final String cmdSetRefDataResult = cmdSetRefDataResultHead + "set ok*ff\r\n";
 
     // 4.12	经纬度指令
@@ -147,13 +143,13 @@ public class Protocol {
     // 4.12.2	设置
     // 发送指令格式：$cmd,set position,本地经度,本地纬度*ff\r\n
     public static final String cmdSetPosition="$cmd,set position,%s,%s*ff\r\n";
-    public static final String cmdSetPositionResultHead="$cmd,position ";
+    private static final String cmdSetPositionResultHead="$cmd,position ";
     public static final String cmdSetPositionResult=cmdSetPositionResultHead+"ok*ff\r\n";
 
     // 4.13	寻星指令
     // 4.13.1	自动寻星指令
     public static final String cmdSetAutoSearch="$cmd,auto search*ff\r\n";
-    public static final String cmdSetAutoSearchResultHead="$cmd,start auto search";
+    private static final String cmdSetAutoSearchResultHead="$cmd,start auto search";
     public static final String cmdSetAutoSearchResult=cmdSetAutoSearchResultHead+"*ff\r\n";
     // 4.13.2	手动速度控制指令
     // 发送指令格式：$cmd,manual search,调整方式,速度(范围：0.0～10.0度/秒)*ff\r\n
@@ -164,22 +160,22 @@ public class Protocol {
     // 7—接收极化增加；
     // 8—接收极化减小；
     public static final String cmdManualVel="$cmd,manual vel,%s,%s*ff\r\n";
-    public static final String cmdManualVelResultHead="$cmd,start manual vel";
+    private static final String cmdManualVelResultHead="$cmd,start manual vel";
     public static final String cmdManualVelResult=cmdManualVelResultHead+"*ff\r\n";
     // 4.13.3	单步位置控制指令
     // $cmd,step control,调整方式,调整角度*ff\r\n
     // 调整方式 同上，  调整角度(范围：0.0～10.0度/秒)
     public static final String cmdManualStep="$cmd,manual step,%s,%s*ff\r\n";
-    public static final String cmdManualStepResultHead="$cmd,start manual step";
+    private static final String cmdManualStepResultHead="$cmd,start manual step";
     public static final String cmdManualStepResult=cmdManualStepResultHead+"*ff\r\n";
     // 4.13.4	手动位置控制指令(已经修改)
     // $cmd,manual position,方位,俯仰,备用,极化角*ff<CR><LF>
     public static final String cmdManualPosition="$cmd,manual position,%s,%s,%s,%s*ff\r\n";
-    public static final String cmdManualPositionResultHead="$cmd,start manual position";
+    private static final String cmdManualPositionResultHead="$cmd,start manual position";
     public static final String cmdManualPositionResult=cmdManualPositionResultHead+"*ff\r\n";
     // 4.13.5	停止寻星指令
     public static final String cmdStopSearch="$cmd,stop search*ff\r\n";
-    public static final String cmdStopSearchResultHead="$cmd,search stop";
+    private static final String cmdStopSearchResultHead="$cmd,search stop";
     public static final String cmdStopSearchResult=cmdStopSearchResultHead+"*ff\r\n";
 
 
@@ -199,7 +195,7 @@ public class Protocol {
     // 4.14.2.2	设置
     // 发送指令格式： $cmd,set buc factory,功放厂家*ff\r\n
     public static final String cmdSetBucFactory="$cmd,set buc factory,%s*ff\r\n";
-    public static final String cmdSetBucFactoryResultHead="$cmd,buc factory set ";
+    private static final String cmdSetBucFactoryResultHead="$cmd,buc factory set ";
     public static final String cmdSetBucFactoryResult=cmdSetBucFactoryResultHead+"ok*ff\r\n";
 
     // 4.14.3	功放本振
@@ -214,7 +210,7 @@ public class Protocol {
     // 终端设备发送指令格式： $cmd,set buc lf ,本振值*ff\r\n	
     // 便携站返回数据：$cmd, buc lf set ok*ff。
     public static final String cmdSetBucLf="$cmd,set buc lf,%s*ff\r\n";
-    public static final String cmdSetBucLfResultHead="$cmd,buc lf set ";
+    private static final String cmdSetBucLfResultHead="$cmd,buc lf set ";
     public static final String cmdSetBucLfResult=cmdSetBucLfResultHead+"ok*ff\r\n";
 
 
@@ -223,14 +219,14 @@ public class Protocol {
     // 终端设备发送指令格式：$cmd,get buc att*ff\r\n
     // 便携站返回数据：$cmd,buc att data,衰减数据*ff\r\n
     public static final String cmdGetBucAtt="$cmd,get buc att*ff\r\n";
-    public static final String cmdGetBucAttResultHead="$cmd,buc att data,";
+    private static final String cmdGetBucAttResultHead="$cmd,buc att data,";
     public static final String cmdGetBucAttResult=cmdGetBucAttResultHead+"%s*ff\r\n";
 
     // 4.14.4.2	设置
     // 终端设备发送指令格式：$cmd,set buc att,衰减数据*ff\r\n
     // 便携站返回数据：$cmd,start buc att*ff\r\n
     public static final String cmdSetBucAtt="$cmd,set buc att,%s*ff\r\n";
-    public static final String cmdSetBucAttResultHead="$cmd,start buc att";
+    private static final String cmdSetBucAttResultHead="$cmd,start buc att";
     public static final String cmdSetBucAttResult=cmdSetBucAttResultHead+"*ff\r\n";
 
     // 4.14.5	邻星保护
@@ -244,7 +240,7 @@ public class Protocol {
     // 终端设备发送指令格式：$cmd, set protect，1*ff\r\n	
     // 便携站返回数据：$cmd, protect set ok*ff\r\n
     public static final String cmdSetProtectState="$cmd,set protect,%s*ff\r\n";
-    public static final String cmdSetProtectStateResultHead="$cmd,start protect set ";
+    private static final String cmdSetProtectStateResultHead="$cmd,start protect set ";
     public static final String cmdSetProtectStateResult=cmdSetProtectStateResultHead+"ok*ff\r\n";
 
 
@@ -253,13 +249,13 @@ public class Protocol {
     // 终端设备发送指令格式： $cmd,set buc on*ff\r\n	
     // 便携站返回数据：$cmd,start buc on*ff
     public static final String cmdSetBucOn="$cmd,set buc on*ff\r\n";
-    public static final String cmdSetBucOnResultHead="$cmd,start buc on";
+    private static final String cmdSetBucOnResultHead="$cmd,start buc on";
     public static final String cmdSetBucOnResult=cmdSetBucOnResultHead+"*ff\r\n";
     // 4.14.6.2	关闭
     // 终端设备发送指令格式： $cmd,set buc off*ff\r\n	
     // 便携站返回数据：$cmd, $cmd,start buc off*ff
     public static final String cmdSetBucOff="$cmd,set buc off*ff\r\n";
-    public static final String cmdSetBucOffResultHead="$cmd,start buc off";
+    private static final String cmdSetBucOffResultHead="$cmd,start buc off";
     public static final String cmdSetBucOffResult=cmdSetBucOffResultHead+"*ff\r\n";
 
     // 4.14.7	功放监视
@@ -273,7 +269,7 @@ public class Protocol {
     // 终端设备发送指令格式：$cmd,set bucinfo switch,功放监视*ff\r\n
     // 便携站返回数据：$cmd, bucinfo switch set ok*ff\r\n
     public static final String cmdSetBucInfoSwitch="$cmd,set bucinfo switch,%s*ff\r\n";
-    public static final String cmdSetBucInfoSwitchResultHead="$cmd,bucinfo switch set ";
+    private static final String cmdSetBucInfoSwitchResultHead="$cmd,bucinfo switch set ";
     public static final String cmdSetBucInfoSwitchResult=cmdSetBucInfoSwitchResultHead+"ok*ff\r\n";
 
     // 4.15	LNB本振
@@ -287,20 +283,20 @@ public class Protocol {
     // 终端设备发送指令格式： $cmd,set lnb lf ,本振值*ff\r\n	
     // 便携站返回数据：$cmd, lnb lf set ok*ff
     public static final String cmdSetLnbLf="$cmd,set lnb lf,%s*ff\r\n";
-    public static final String cmdSetLnbLfResultHead="$cmd,lnb lf set ";
+    private static final String cmdSetLnbLfResultHead="$cmd,lnb lf set ";
     public static final String cmdSetLnbLfResult=cmdSetLnbLfResultHead+"ok*ff\r\n";
     // 4.16	重启
     // 指令格式：$ cmd,reset system*ff\r\n
     // 天线返回数据：$cmd,start reset*ff\r\n
     public static final String cmdResetSystem="$cmd,reset system*ff\r\n";
-    public static final String cmdResetSystemResultHead="$cmd,start reset";
+    private static final String cmdResetSystemResultHead="$cmd,start reset";
     public static final String cmdResetSystemResult=cmdResetSystemResultHead+"*ff\r\n";
 
     // 4.17	寻零-备用
     // 终端设备发送指令格式：$cmd,research zero*ff\r\n
     // 便携站返回数据：$cmd,start research*ff\r\n
     public static final String cmdResearchZero="$cmd,research zero*ff\r\n";
-    public static final String cmdResearchZeroResultHead="$cmd,start research";
+    private static final String cmdResearchZeroResultHead="$cmd,start research";
     public static final String cmdResearchZeroResult=cmdResearchZeroResultHead+"*ff\r\n";
 
     // 5	管理员使用指令
@@ -309,7 +305,7 @@ public class Protocol {
     // 终端设备发送指令格式：$cmd,reset flash info*ff\r\n
     // 便携站返回数据：$cmd,flash reset ok*ff\r\n
     public static final String cmdResetFlashInfo="$cmd,reset flash info*ff\r\n";
-    public static final String cmdResetFlashInfoResultHead="$cmd,flash reset ";
+    private static final String cmdResetFlashInfoResultHead="$cmd,flash reset ";
     public static final String cmdResetFlashInfoResult=cmdResetFlashInfoResultHead+"ok*ff\r\n";
     // 5.2	天线标定
     // 5.2.1	读取
@@ -322,7 +318,7 @@ public class Protocol {
     // 终端设备发送指令格式：$cmd,set calib ant,方位,俯仰，备用，极化*ff\r\n
     // 便携站返回数据：$cmd,start calib ant*ff\r\n
     public static final String cmdSetCalibAnt="$cmd,set calib ant,%s,%s,%s,%s*ff\r\n";
-    public static final String cmdSetCalibAntResultHead="$cmd,start calib ant";
+    private static final String cmdSetCalibAntResultHead="$cmd,start calib ant";
     public static final String cmdSetCalibAntResult=cmdSetCalibAntResultHead+"*ff\r\n";
 
     // 5.3	展开位置角度
@@ -330,13 +326,13 @@ public class Protocol {
     // 终端设备发送指令格式：$cmd,get lift *ff\r\n
     // 便携站返回数据：$cmd,lift up data,俯仰角*ff\r\n
     public static final String cmdGetLift="$cmd,get lift*ff\r\n";
-    public static final String cmdGetLiftResultHead="$cmd,lift up data,";
+    private static final String cmdGetLiftResultHead="$cmd,lift up data,";
     public static final String cmdGetLiftResult=cmdGetLiftResultHead+"%s*ff\r\n";
     // 5.3.2	设置
     // 终端设备发送指令格式：$cmd,set lift,俯仰角*ff\r\n
     // 便携站返回数据：$cmd,lift ok*ff\r\n
     public static final String cmdSetLift="$cmd,set lift*ff\r\n";
-    public static final String cmdSetLiftResultHead="$cmd,lift";
+    private static final String cmdSetLiftResultHead="$cmd,lift";
     public static final String cmdSetLiftResult=cmdSetLiftResultHead+"ok*ff\r\n";
 
     // 5.4	寻星范围
@@ -350,7 +346,7 @@ public class Protocol {
     // 终端设备发送指令格式：$cmd,set search range, 方位范围,俯仰、备用、极化范围*ff\r\n
     // 便携站返回数据：$cmd, search range ok*ff\r\n
     public static final String cmdSetSearchRange="$cmd,set search range,%s,%s,%s,%s*ff\r\n";
-    public static final String cmdSetSearchRangeResultHead="$cmd,search range ";
+    private static final String cmdSetSearchRangeResultHead="$cmd,search range ";
     public static final String cmdSetSearchRangeResult=cmdSetSearchRangeResultHead+"ok*ff\r\n";
 
     // 5.5	频段切换指令
@@ -364,7 +360,7 @@ public class Protocol {
     // 终端设备发送指令格式：$cmd,set band,波段*ff\r\n
     // 便携站返回数据：$cmd,band set ok*ff\r\n
     public static final String cmdSetBand="$cmd,set band,%s*ff\r\n";
-    public static final String cmdSetBandResultHead="$cmd,band set ";
+    private static final String cmdSetBandResultHead="$cmd,band set ";
     public static final String cmdSetBandResult=cmdSetBandResultHead+"ok*ff\r\n";
 
     // 5.6	WIFI名称
@@ -378,7 +374,7 @@ public class Protocol {
     // 终端设备发送指令格式：$cmd,set wifi name*ff\r\n
     // 便携站返回数据：$cmd, wifi name set ok*ff\r\n
     public static final String cmdSetWifiName="$cmd,set wifi name,%s*ff\r\n";
-    public static final String cmdSetWifiNameResultHead="$cmd,wifi name set ";
+    private static final String cmdSetWifiNameResultHead="$cmd,wifi name set ";
     public static final String cmdSetWifiNameResult=cmdSetWifiNameResultHead+"ok*ff\r\n";
 
     // 5.7	网络参数指令
@@ -392,7 +388,7 @@ public class Protocol {
     // 终端设备发送指令格式：$cmd, set ip,网络IP，子网掩码，网关*ff\r\n
     // 便携站返回数据：$cmd, ip set ok*ff\r\n
     public static final String cmdSetIP="$cmd,set ip,%s,%s,%s*ff\r\n";
-    public static final String cmdSetIPResultHead="$cmd,ip set ";
+    private static final String cmdSetIPResultHead="$cmd,ip set ";
     public static final String cmdSetIPResult=cmdSetIPResultHead+"ok*ff\r\n";
 
     // 5.8	网口协议指令
@@ -414,7 +410,7 @@ public class Protocol {
     // 终端设备发送指令格式：$cmd, set net userid,端口号,协议*ff\r\n
     // 便携站返回数据： $cmd,net userid set ok*ff\r\n。
     public static final String cmdSetNetUserid="$cmd,set net userid,%s,%s*ff\r\n";
-    public static final String cmdSetNetUseridResultHead="$cmd,net userid set ";
+    private static final String cmdSetNetUseridResultHead="$cmd,net userid set ";
     public static final String cmdSetNetUseridResult=cmdSetNetUseridResultHead+"ok*ff\r\n";
 
     // 5.9	串口协议选择
@@ -435,7 +431,7 @@ public class Protocol {
     // 终端设备发送指令格式：$cmd,set com userid,模式*ff\r\n
     // 便携站返回数据：$cmd,com userid set ok*ff\r\n
     public static final String cmdSetComUserid="$cmd,set com userid,%s*ff\r\n";
-    public static final String cmdSetComUseridResultHead="$cmd,com userid set ";
+    private static final String cmdSetComUseridResultHead="$cmd,com userid set ";
     public static final String cmdSetComUseridResult=cmdSetComUseridResultHead+"ok*ff\r\n";
 
     // 5.10	校验
@@ -443,7 +439,7 @@ public class Protocol {
     //    终端设备发送指令格式：$cmd,get check*ff<CR><LF>
     //    便携站返回数据：$cmd,check data,串口1有无校验, 串口2有无校验, 串口3有无校验, 串口4有无校验,串口5有无校验, 串口6有无校验*ff<CR><LF>
     public static final String cmdGetCheck="$cmd,get check*ff\r\n";
-    public static final String cmdGetCheckResultHead="$cmd,check data,";
+    private static final String cmdGetCheckResultHead="$cmd,check data,";
     public static final String cmdGetCheckResult=cmdGetCheckResultHead+"%s,%s,%s,%s,%s,%s*ff\r\n";
 
     //5.10.2	设置
@@ -451,14 +447,14 @@ public class Protocol {
     //    便携站返回数据：$cmd,check set ok*ff<CR>
     // 1: 串口1,1-6.  0: 无校验 1：有校验
     public static final String cmdSetCheck="$cmd,set check,%s,%s*ff\r\n";
-    public static final String cmdSetCheckResultHead="$cmd,check set ok";
+    private static final String cmdSetCheckResultHead="$cmd,check set ok";
     public static final String cmdSetCheckResult=cmdSetCheckResultHead+"*ff\r\n";
 
     // 5.11	获取LNB状态
     // 终端设备发送指令格式：$ cmd,get lnb state*ff<CR><LF>
     // 便携站返回数据：$cmd,lnb state,状态*ff<CR><LF>
     public static final String cmdGetLnbState="$cmd,get lnb state*ff\r\n";
-    public static final String cmdGetLnbStateResultHead="$cmd,lnb state,";
+    private static final String cmdGetLnbStateResultHead="$cmd,lnb state,";
     public static final String cmdGetLnbStateResult=cmdGetLnbStateResultHead+"%s*ff\r\n";
 
     // 5.12	倾角标定
@@ -466,13 +462,13 @@ public class Protocol {
     // 终端设备发送指令格式：$cmd,get calib inclino*ff<CR><LF>
     // 便携站返回数据：$cmd,calib inclino data,俯仰,横滚 *ff<CR><LF>
     public static final String cmdGetCalibInclInfo="$cmd,get calib inclino*ff\r\n";
-    public static final String cmdGetCalibInclInfoResultHead="cmd,calib inclino data,";
+    private static final String cmdGetCalibInclInfoResultHead="cmd,calib inclino data,";
     public static final String cmdGetCalibInclInfoResult=cmdGetCalibInclInfoResultHead+"%s,%s*ff\r\n";
     // 5.12.2	设置
     // 终端设备发送指令格式：$cmd,set calib inclino,俯仰,横滚*ff<CR><LF>
     // 便携站返回数据：$cmd,start calib ant*ff<CR><LF>
     public static final String cmdSetCalibInclInfo="$cmd,set calib inclino,%s,%s*ff\r\n";
-    public static final String cmdSetCalibInclInfoResultHead="cmd,start calib inclino,";
+    private static final String cmdSetCalibInclInfoResultHead="cmd,start calib inclino,";
     public static final String cmdSetCalibInclInfoResult=cmdSetCalibInclInfoResultHead+"*ff\r\n";
 
 

@@ -37,8 +37,8 @@ import static com.edroplet.sanetel.fragments.settings.administrator.Administrato
 public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragment {
     private static final String LNBFrequency = "lnbFrequency";
     private static final String LNBFrequencyResourcePos = "LNBFrequencyResourcePos";
-    private static final String LNB_OSC_ACTION = "com.edroplet.sanetel.LNB_OSC_ACTION";
-    private static final String LNB_OSC_DATA = "com.edroplet.sanetel.LNB_OSC_DATA";
+    public static final String LNBOscAction= "com.edroplet.sanetel.LNBOscAction";
+    public static final String LNBOscData = "com.edroplet.sanetel.LNBOscData";
 
     @BindView(R.id.layout_lnb_ku)
     LinearLayout linearLayoutKu;
@@ -96,7 +96,7 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         context = getContext();
-        String []action = {LNB_OSC_ACTION};
+        String []action = {LNBOscAction};
         setAction(action);
         super.onCreate(savedInstanceState);
 
@@ -106,7 +106,7 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
     @Override
     public void processData(Intent intent) {
         super.processData(intent);
-        String rawData =intent.getStringExtra(LNB_OSC_DATA);
+        String rawData =intent.getStringExtra(LNBOscData);
         String lnbLf = "" ;
 
         Object[] o = Sscanf.scan(rawData, Protocol.cmdGetLnbLfResult,lnbLf);

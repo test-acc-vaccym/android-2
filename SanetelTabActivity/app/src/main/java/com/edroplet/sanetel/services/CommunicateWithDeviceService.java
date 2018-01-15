@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.edroplet.sanetel.beans.AmplifierInfo;
 import com.edroplet.sanetel.beans.Protocol;
+import com.edroplet.sanetel.beans.monitor.EquipmentInfo;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.SystemServices;
 
@@ -23,6 +24,42 @@ import com.edroplet.sanetel.beans.monitor.MonitorInfo;
 
 import static com.edroplet.sanetel.activities.settings.ReferenceSatelliteActivity.ACTION_RECEIVE_REFERENCE_INFO;
 import static com.edroplet.sanetel.activities.settings.ReferenceSatelliteActivity.KEY_RECEIVE_REFERENCE_INFO_DATA;
+import static com.edroplet.sanetel.beans.AmplifierInfo.AmplifierInfoAction;
+import static com.edroplet.sanetel.beans.AmplifierInfo.AmplifierInfoData;
+import static com.edroplet.sanetel.beans.monitor.EquipmentInfo.EquipmentInfoAction;
+import static com.edroplet.sanetel.beans.monitor.EquipmentInfo.EquipmentInfoData;
+import static com.edroplet.sanetel.beans.monitor.TemperatureInfo.TemperatureInfoAction;
+import static com.edroplet.sanetel.beans.monitor.TemperatureInfo.TemperatureInfoData;
+import static com.edroplet.sanetel.fragments.guide.GuideFragmentDestination.GuideDestinationAction;
+import static com.edroplet.sanetel.fragments.guide.GuideFragmentDestination.GuideDestinationData;
+import static com.edroplet.sanetel.fragments.guide.GuideFragmentLocation.LocationGetPositionAction;
+import static com.edroplet.sanetel.fragments.guide.GuideFragmentLocation.LocationGetPositionData;
+import static com.edroplet.sanetel.fragments.guide.GuideFragmentSearchModeSetting.SearchModeAction;
+import static com.edroplet.sanetel.fragments.guide.GuideFragmentSearchModeSetting.SearchModeData;
+import static com.edroplet.sanetel.fragments.settings.SettingsFragmentAmplifierInterfere.AmplifierInterfereAction;
+import static com.edroplet.sanetel.fragments.settings.SettingsFragmentAmplifierInterfere.AmplifierInterfereData;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentAmplifierManufacturer.AmplifierManufacturerAction;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentAmplifierManufacturer.AmplifierManufacturerData;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentAmplifierMonitor.AmplifierMonitorAction;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentAmplifierMonitor.AmplifierMonitorData;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentAmplifierOscillator.AmplifierOscillatorAction;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentAmplifierOscillator.AmplifierOscillatorData;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentAntennaIncriminate.AntennaIncriminateAction;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentAntennaIncriminate.AntennaIncriminateData;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentBandSelect.BandTypeAction;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentBandSelect.BandTypeData;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentIPSettings.IPSettingsAction;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentIPSettings.IPSettingsData;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentLNBOscillator.LNBOscAction;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentLNBOscillator.LNBOscData;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentNetworkProtocolSettings.NetworkProtocolSettingsAction;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentNetworkProtocolSettings.NetworkProtocolSettingsData;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentSearchingRange.SearchingRangeAction;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentSearchingRange.SearchingRangeData;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentSerialProtocolSettings.SerialProtocolAction;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentSerialProtocolSettings.SerialProtocolData;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentWifiSettings.WifiSettingsAction;
+import static com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentWifiSettings.WifiSettingsData;
 
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
@@ -266,13 +303,64 @@ public class CommunicateWithDeviceService extends IntentService {
         if (msg.startsWith(Protocol.cmdGetSystemStateResultHead)){
             intent.setAction(MonitorInfo.MonitorInfoAction);
             intent.putExtra(MonitorInfo.MonitorInfoData,msg);
-        }else if (msg.startsWith(Protocol.cmdGetBucInfoResultHead)) {
-            intent.setAction(AmplifierInfo.AmplifierInfoAction);
-            intent.putExtra(AmplifierInfo.AmplifierInfoData,msg);
-        }else if (msg.startsWith(Protocol.cmdGetRefDataResultHead)) {
+        } else if (msg.startsWith(Protocol.cmdGetBucInfoResultHead)) {
+            intent.setAction(AmplifierInfoAction);
+            intent.putExtra(AmplifierInfoData,msg);
+        } else if (msg.startsWith(Protocol.cmdGetRefDataResultHead)) {
             intent.setAction(ACTION_RECEIVE_REFERENCE_INFO);
             intent.putExtra(KEY_RECEIVE_REFERENCE_INFO_DATA,msg);
-        }else{
+        } else if (msg.startsWith(Protocol.cmdGetTemperatureResultHead)) {
+            intent.setAction(TemperatureInfoAction);
+            intent.putExtra(TemperatureInfoData,msg);
+        } else if (msg.startsWith(Protocol.cmdGetEquipmentInfoResultHead)) {
+            intent.setAction(EquipmentInfoAction);
+            intent.putExtra(EquipmentInfoData,msg);
+        } else if (msg.startsWith(Protocol.cmdGetTrackModeResultHead)) {
+            intent.setAction(SearchModeAction);
+            intent.putExtra(SearchModeData,msg);
+        } else if (msg.startsWith(Protocol.cmdGetTargetStateResultHead)) {
+            intent.setAction(GuideDestinationAction);
+            intent.putExtra(GuideDestinationData,msg);
+        } else if (msg.startsWith(Protocol.cmdGetPositionResultHead)) {
+            intent.setAction(LocationGetPositionAction);
+            intent.putExtra(LocationGetPositionData,msg);
+        } else if (msg.startsWith(Protocol.cmdGetBucFactoryResultHead)) {
+            intent.setAction(AmplifierManufacturerAction);
+            intent.putExtra(AmplifierManufacturerData,msg);
+        } else if (msg.startsWith(Protocol.cmdGetBucLfResultHead)) {
+            intent.setAction(AmplifierOscillatorAction);
+            intent.putExtra(AmplifierOscillatorData,msg);
+        } else if (msg.startsWith(Protocol.cmdGetProtectStateResultHead)) {
+            intent.setAction(AmplifierInterfereAction);
+            intent.putExtra(AmplifierInterfereData,msg);
+        } else if (msg.startsWith(Protocol.cmdGetBucInfoSwitchResultHead)) {
+            intent.setAction(AmplifierMonitorAction);
+            intent.putExtra(AmplifierMonitorData,msg);
+        } else if (msg.startsWith(Protocol.cmdGetLnbLfResultHead)) {
+            intent.setAction(LNBOscAction);
+            intent.putExtra(LNBOscData,msg);
+        } else if (msg.startsWith(Protocol.cmdGetCalibAntResultHead)) {
+            intent.setAction(AntennaIncriminateAction);
+            intent.putExtra(AntennaIncriminateData,msg);
+        } else if (msg.startsWith(Protocol.cmdGetSearchRangeResultHead)) {
+            intent.setAction(SearchingRangeAction);
+            intent.putExtra(SearchingRangeData,msg);
+        } else if (msg.startsWith(Protocol.cmdGetBandResultHead)) {
+            intent.setAction(BandTypeAction);
+            intent.putExtra(BandTypeData,msg);
+        } else if (msg.startsWith(Protocol.cmdGetWifiNameResultHead)) {
+            intent.setAction(WifiSettingsAction);
+            intent.putExtra(WifiSettingsData,msg);
+        } else if (msg.startsWith(Protocol.cmdGetIPResultHead)) {
+            intent.setAction(IPSettingsAction);
+            intent.putExtra(IPSettingsData,msg);
+        } else if (msg.startsWith(Protocol.cmdGetNetUseridResultHead)) {
+            intent.setAction(NetworkProtocolSettingsAction);
+            intent.putExtra(NetworkProtocolSettingsData,msg);
+        } else if (msg.startsWith(Protocol.cmdGetComUseridResultHead)) {
+            intent.setAction(SerialProtocolAction);
+            intent.putExtra(SerialProtocolData,msg);
+        } else {
                 // 解析message, 不能在服务中解析
                 //
                 // 指定广播目标的 action （注：指定了此 action 的 receiver 会接收此广播）

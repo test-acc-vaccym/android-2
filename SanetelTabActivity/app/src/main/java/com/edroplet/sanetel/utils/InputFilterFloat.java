@@ -28,7 +28,7 @@ public class InputFilterFloat implements InputFilter {
     public static final float pitchMin = -10f;
     public static final float pitchMax = 90f;
     public static final float polarizationMin = -90f;
-    public static final float polarizationMax = -90f;
+    public static final float polarizationMax = 90f;
 
     private double min, max;
     private int validBitNumber = 3;

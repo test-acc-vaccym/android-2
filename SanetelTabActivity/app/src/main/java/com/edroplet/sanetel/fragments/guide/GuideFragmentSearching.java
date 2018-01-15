@@ -231,10 +231,10 @@ public class GuideFragmentSearching extends TimerFragment {
         switch (state){
             case STATE_READY:
                 linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
-                firstLine.setText(getString(R.string.follow_me_searching_ing_first_line));
+                firstLine.setText(getString(R.string.follow_me_searching_first_line));
                 secondLine.setText(getString(R.string.follow_me_searching_second_line));
-                thirdStart.setText(getString(R.string.follow_me_searching_ing_third_start));
-                thirdButton.setText(searchingButtonTextArray[1]);
+                thirdStart.setText(getString(R.string.follow_me_searching_third_start));
+                thirdButton.setText(searchingButtonTextArray[0]);
                 break;
 
             case STATE_COMPLETE:
@@ -255,7 +255,7 @@ public class GuideFragmentSearching extends TimerFragment {
                 firstLine.setText(getString(R.string.follow_me_searching_ing_first_line));
                 secondLine.setText(String.format(getString(R.string.follow_me_searching_ing_second_line), startTime));
                 thirdStart.setText(getString(R.string.follow_me_searching_ing_third_start));
-                thirdButton.setText(searchingButtonTextArray[2]);
+                thirdButton.setText(searchingButtonTextArray[1]);
                 break;
 
             case STATE_TIMEOUT:

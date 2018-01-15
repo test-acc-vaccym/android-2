@@ -2,6 +2,7 @@ package com.edroplet.sanetel.utils;
 
 import android.text.InputFilter;
 import android.text.Spanned;
+import android.util.Log;
 
 /**
  * Created by qxs on 2017/10/23.
@@ -32,14 +33,14 @@ public class InputFilterFloat implements InputFilter {
 
     private double min, max;
     private int validBitNumber = 3;
-    private int minLength = 0;
+    private int maxLength = 0;
     private boolean isNegative = false;
 
 
     public InputFilterFloat(double min, double max) {
         this.min = min;
         this.max = max;
-        minLength = getIntegerStringLength(min);
+        maxLength = getIntegerStringLength(max);
     }
 
     private int getIntegerStringLength(String s){
@@ -67,7 +68,7 @@ public class InputFilterFloat implements InputFilter {
         this.min = min;
         this.max = max;
         validBitNumber = validBits;
-        minLength = getIntegerStringLength(min);
+        maxLength = getIntegerStringLength(max);
     }
 
 
@@ -95,16 +96,18 @@ public class InputFilterFloat implements InputFilter {
                 return integerString + "." + numbers[1].substring(0,validBitNumber);
             }
 
-            if ((integerString.startsWith("-") && integerString.length() < minLength + 1) || (!integerString.startsWith("-") && integerString.length() < minLength)) return null;
-            double input = Double.parseDouble(doubleString);
-            if (isInRange(min, max, input))  return null;
+            if ((integerString.startsWith("-") && integerString.length() < maxLength + 1) || (!integerString.startsWith("-") && integerString.length() < maxLength )) return null;
+            double inputNum = Double.parseDouble(doubleString);
+            if (isInRange(min, max, inputNum)){
+                return null;
+            }
             return "";
         } catch (NumberFormatException nfe) {
             return "";
         }
     }
 
-    private boolean isInRange(double a, double b, double c) {
+    public static boolean isInRange(double a, double b, double c) {
         return b > a ? c >= a && c <= b : c >= b && c <= a;
     }
 }

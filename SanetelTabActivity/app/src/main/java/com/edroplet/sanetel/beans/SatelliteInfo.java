@@ -185,6 +185,18 @@ public class SatelliteInfo implements Serializable {
         return json;
     }
 
+    /*
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof SatelliteInfo){
+            // 卫星名称和极化方式一致认为是同一个
+            if (this.getName().equals(((SatelliteInfo) obj).name) && this.getThreshold().equals(((SatelliteInfo) obj).polarization))
+                return true;
+        }
+        return false;
+    }
+    */
+
     public static String
     getName(Context context) {
         return CustomSP.getString(context, KeyName, "");

@@ -123,7 +123,7 @@
                 android:id="@+id/carrier_detail"
                 style="@style/radio_group_custom_item_edit_horizontal_style"
                 android:hint="@string/satellite_detail_carrier_hint"
-                android:inputType="number"/>
+                android:inputType="numberDecimal|number"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 style="@style/radio_group_custom_item_third_filed_horizontal_style"
                 android:text="@string/settings_reference_carrier_unit"/>

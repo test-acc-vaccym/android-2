@@ -127,6 +127,18 @@ public class GuideFragmentSearching extends TimerFragment {
     View view;
     static int startTime = 0;
 
+    CustomButton prevStep;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof GuideActivity){
+            GuideActivity activity = (GuideActivity)context;
+            prevStep = (CustomButton) activity.findViewById(R.id.city_detail_save);
+            assert prevStep != null;
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -166,12 +178,16 @@ public class GuideFragmentSearching extends TimerFragment {
                     Intent intent = new Intent(getActivity(), GuideActivity.class);
                     Bundle bundle = new Bundle();
                     // 点击▲ 跳回位置输入，重设参数
+                    prevStep.performClick();
+                    prevStep.performClick();
+                    /**
                     bundle.putInt(GuideActivity.POSITION, GuideActivity.GUIDE_PAGES_INDEX.INDEX_LOCATION.ordinal());
                     intent.putExtras(bundle);
                     context.startActivity(intent);
                     isSearching = false;
                     startTime = 0;
                     getActivity().finish();
+                     */
                 }
                 // 首先让天线信息可见
                 linearLayoutAntennaInfo.setVisibility(View.VISIBLE);

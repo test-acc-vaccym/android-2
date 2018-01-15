@@ -110,8 +110,9 @@ public class Cities {
     }
 
     public void update(String id, LocationInfo locationInfo){
+        int itemIndex = -1;
         if (locationInfo !=null) {
-            int itemIndex = cities.indexOf(locationInfo);
+            itemIndex = cities.indexOf(locationInfo);
             if (itemIndex == -1){
                 itemIndex = getIndex(id);
                 if (itemIndex == -1){
@@ -132,12 +133,16 @@ public class Cities {
             // 如果包含有该map数据
             if (arrayList != null){
                 // 获取position
+                int pos = 0;
                 for (LocationInfo locationInfo1: arrayList){
                     // 找到城市名
-                    if (locationInfo1.getName().equals(item.getName())){
+                    if ( locationInfo1.getProvince().equals(item.getProvince()) &&
+                            locationInfo1.getName().equals(item.getName())){
                         // 修改节点数据
-                        arrayList.set(arrayList.indexOf(locationInfo1), item);
+                        arrayList.set(pos, item);
+                        break;
                     }
+                    pos ++;
                 }
             }
         }

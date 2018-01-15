@@ -486,16 +486,21 @@
     <string name="follow_me_searching_ing_third_start">请点击</string>
     <string name="follow_me_searching_lock_first_line">锁定目标星！</string>
     <string name="follow_me_searching_lock_second_line">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;寻星时间：%1$d s</string>
-    <string name="follow_me_searching_lock_third_start">请点击下一步。</string>
+    <string name="follow_me_searching_lock_third_start">等待寻星完成。</string>
     <string name="follow_me_searching_timeout_first_line">寻星中…</string>
     <string name="follow_me_searching_timeout_second_line">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;寻星时间：%1$d s\n&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;寻星超时！</string>
     <string name="follow_me_searching_timeout_third_start">如果确认已设参数正确，请点击监视页面进设置页面，设置本振等参数。点击</string>
     <string name="follow_me_searching_timeout_third_end">位置输入，重设参数。</string>
     <string name="follow_me_searching_error_first_line">寻星中…</string>
     <string name="follow_me_searching_error_second_line">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;寻星时间：%1$d s</string>
-    <string name="follow_me_searching_error_third_start">电机故障，停止寻星。请故障解除后，寻星！</string>
+    <string name="follow_me_searching_error_third_start">电机故障，停止寻星。</string>
+    <string name="follow_me_searching_error_third_end">请故障解除后，寻星！</string>
     <string name="back_string_button">▲返回</string>
     <string name="return_string_button">▼跳回</string>
+
+    <string name="follow_me_searching_complete_first_line">寻星完成</string>
+    <string name="follow_me_searching_complete_second_line">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;寻星时间：%1$d s</string>
+    <string name="follow_me_searching_complete_third_start">请点击下一步。</string>
 
     <!--引导页 锁紧操作-->
     <string name="follow_me_locker_title">锁紧操作</string>

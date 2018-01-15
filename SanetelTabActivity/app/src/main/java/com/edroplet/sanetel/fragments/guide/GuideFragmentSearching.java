@@ -1,16 +1,19 @@
 package com.edroplet.sanetel.fragments.guide;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.edroplet.sanetel.R;
+import com.edroplet.sanetel.activities.guide.GuideActivity;
 import com.edroplet.sanetel.beans.AntennaInfo;
 import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.utils.CustomSP;
@@ -106,13 +109,16 @@ public class GuideFragmentSearching extends TimerFragment {
     private  static final int  STATE_TIMEOUT = 2;
     private  static final int  STATE_ERROR = 3;
     private  static final int  STATE_COMPLETE= 4;
+    private  static final int  STATE_LOCKED= 5;
+
+    SparseIntArray mapAntennaStateSearchingState = new SparseIntArray();
 
     //用 @IntDef "包住" 常量；
     // @Retention 定义策略
     // 声明构造器
-    @IntDef({STATE_READY, STATE_SEARCHING, STATE_TIMEOUT, STATE_ERROR, STATE_COMPLETE})
+    @IntDef({STATE_READY, STATE_SEARCHING, STATE_TIMEOUT, STATE_ERROR, STATE_COMPLETE, STATE_LOCKED})
     @Retention(RetentionPolicy.SOURCE)
-    public @interface SearchingState{}
+    private @interface SearchingState{}
 
     private @SearchingState int state = STATE_READY;
 
@@ -130,12 +136,43 @@ public class GuideFragmentSearching extends TimerFragment {
         }
         unbinder = ButterKnife.bind(this, view);
         context = getContext();
+        mapAntennaStateSearchingState.put(AntennaInfo.AntennaSearchSatellitesStatus.FOLDED, STATE_READY);
+        mapAntennaStateSearchingState.put(AntennaInfo.AntennaSearchSatellitesStatus.EXPLODING, STATE_SEARCHING);
+        mapAntennaStateSearchingState.put(AntennaInfo.AntennaSearchSatellitesStatus.EXPLODED, STATE_COMPLETE);
+        mapAntennaStateSearchingState.put(AntennaInfo.AntennaSearchSatellitesStatus.INIT, STATE_READY);
+        mapAntennaStateSearchingState.put(AntennaInfo.AntennaSearchSatellitesStatus.SEARCHING, STATE_SEARCHING);
+        mapAntennaStateSearchingState.put(AntennaInfo.AntennaSearchSatellitesStatus.MANUAL, STATE_SEARCHING);
+        mapAntennaStateSearchingState.put(AntennaInfo.AntennaSearchSatellitesStatus.LOCKED, STATE_LOCKED);
+        mapAntennaStateSearchingState.put(AntennaInfo.AntennaSearchSatellitesStatus.FOLDING, STATE_READY);
+        mapAntennaStateSearchingState.put(AntennaInfo.AntennaSearchSatellitesStatus.LOST, STATE_TIMEOUT);
+        mapAntennaStateSearchingState.put(AntennaInfo.AntennaSearchSatellitesStatus.ABNORMAL, STATE_ERROR);
+        mapAntennaStateSearchingState.put(AntennaInfo.AntennaSearchSatellitesStatus.PAUSE, STATE_READY);
+        mapAntennaStateSearchingState.put(AntennaInfo.AntennaSearchSatellitesStatus.RECYCLING, STATE_ERROR);
+        mapAntennaStateSearchingState.put(AntennaInfo.AntennaSearchSatellitesStatus.RECYCLED, STATE_ERROR);
 
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //  2017/11/11  发送命令开始寻星
-                Protocol.sendMessage(context, Protocol.cmdSetAutoSearch);
+                if (thirdButton.getText().toString().equals(getString(R.string.follow_me_searching_third_button_start))) {
+                    //  2017/11/11  发送命令开始寻星
+                    Protocol.sendMessage(context, Protocol.cmdSetAutoSearch);
+                    isSearching = true;
+                }else if (thirdButton.getText().toString().equals(getString(R.string.follow_me_searching_third_button_stop))){
+                    // 急停
+                    Protocol.sendMessage(context, Protocol.cmdStopSearch);
+                    isSearching = false;
+                }else if (thirdButton.getText().toString().equals(getString(R.string.return_string_button))){
+                    // 跳回
+                    Intent intent = new Intent(getActivity(), GuideActivity.class);
+                    Bundle bundle = new Bundle();
+                    // 点击▲ 跳回位置输入，重设参数
+                    bundle.putInt(GuideActivity.POSITION, GuideActivity.GUIDE_PAGES_INDEX.INDEX_LOCATION.ordinal());
+                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+                    isSearching = false;
+                    startTime = 0;
+                    getActivity().finish();
+                }
                 // 首先让天线信息可见
                 linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
                 // 更新信息
@@ -146,7 +183,7 @@ public class GuideFragmentSearching extends TimerFragment {
                 preparePolarization.setText(CustomSP.getString(context, KEY_PREPARE_POLARIZATION,defaultVal));
 
                 // 修改pop_dialog的提示信息
-                updatePopDialog(state);
+                updatePopDialog();
             }
         });
 
@@ -157,12 +194,14 @@ public class GuideFragmentSearching extends TimerFragment {
         return popDialog.show();
     }
 
+    boolean isSearching = false;
     @Override
     public void doTimer() {
         super.doTimer();
-        int antennaState = AntennaInfo.getAntennaState(context);
-        startTime += 1;
-        updatePopDialog(antennaState);
+        if (isSearching) {
+            startTime += 1;
+        }
+        updatePopDialog();
     }
 
     private void setPopupDialog(View view, Bundle bundle){
@@ -186,25 +225,26 @@ public class GuideFragmentSearching extends TimerFragment {
         }
     }
 
-    void updatePopDialog(int state){
-
+    void updatePopDialog(){
+        int antennaState = AntennaInfo.getAntennaState(context);
+        state = mapAntennaStateSearchingState.get(antennaState);
         switch (state){
             case STATE_READY:
                 linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
                 firstLine.setText(getString(R.string.follow_me_searching_ing_first_line));
-                secondLine.setText(String.format(getString(R.string.follow_me_searching_ing_second_line), startTime));
-                thirdButton.setText(searchingButtonTextArray[1]);
+                secondLine.setText(getString(R.string.follow_me_searching_second_line));
                 thirdStart.setText(getString(R.string.follow_me_searching_ing_third_start));
-                // state = STATE_SEARCHING;
+                thirdButton.setText(searchingButtonTextArray[1]);
+                break;
 
-                // TODO: 2017/11/12 天线通信，获取超时,失败的状态
             case STATE_COMPLETE:
                 // state = STATE_READY;
                 linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
-                firstLine.setText(getString(R.string.follow_me_searching_lock_first_line));
-                secondLine.setText(String.format(getString(R.string.follow_me_searching_ing_second_line), startTime));
+                firstLine.setText(getString(R.string.follow_me_searching_complete_first_line));
+                secondLine.setText(String.format(getString(R.string.follow_me_searching_complete_second_line), startTime));
+                thirdStart.setText(getString(R.string.follow_me_searching_complete_third_start));
                 thirdButton.setText("");
-                thirdStart.setText(getString(R.string.follow_me_searching_lock_third_start));
+                break;
 
             case STATE_SEARCHING:
                 // 2017/11/12  急停命令
@@ -214,26 +254,37 @@ public class GuideFragmentSearching extends TimerFragment {
                 linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
                 firstLine.setText(getString(R.string.follow_me_searching_ing_first_line));
                 secondLine.setText(String.format(getString(R.string.follow_me_searching_ing_second_line), startTime));
-                thirdButton.setText(searchingButtonTextArray[1]);
                 thirdStart.setText(getString(R.string.follow_me_searching_ing_third_start));
+                thirdButton.setText(searchingButtonTextArray[2]);
+                break;
 
             case STATE_TIMEOUT:
                 linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
                 firstLine.setText(getString(R.string.follow_me_searching_timeout_first_line));
                 secondLine.setText(String.format(getString(R.string.follow_me_searching_timeout_second_line), startTime));
-                thirdButton.setText(searchingButtonTextArray[2]);
                 thirdStart.setText(getString(R.string.follow_me_searching_timeout_third_start));
+                thirdButton.setText(searchingButtonTextArray[2]);
                 thirdEnd.setText(getString(R.string.follow_me_searching_timeout_third_end));
+                break;
 
             case STATE_ERROR:
-
                 linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
                 firstLine.setText(getString(R.string.follow_me_searching_error_first_line));
                 firstLine.setTextColor(Color.RED);
                 secondLine.setText(String.format(getString(R.string.follow_me_searching_error_second_line), startTime));
                 thirdButton.setText("");
                 thirdStart.setText(getString(R.string.follow_me_searching_error_third_start));
+                thirdEnd.setText(getString(R.string.follow_me_searching_error_third_end));
+                break;
+            case STATE_LOCKED:
+                linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
+                firstLine.setText(getString(R.string.follow_me_searching_lock_first_line));
+                firstLine.setTextColor(Color.RED);
+                secondLine.setText(String.format(getString(R.string.follow_me_searching_lock_second_line), startTime));
+                thirdButton.setText("");
+                thirdStart.setText(getString(R.string.follow_me_searching_lock_third_start));
                 thirdEnd.setText("");
+                break;
 
         }
 

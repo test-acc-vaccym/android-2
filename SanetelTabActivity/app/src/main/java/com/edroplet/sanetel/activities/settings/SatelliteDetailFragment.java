@@ -137,7 +137,6 @@ public class SatelliteDetailFragment extends Fragment implements View.OnClickLis
         satelliteDetailSave.setOnClickListener(this);
         satelliteDetailReturn.setOnClickListener(this);
         */
-
         satelliteDetailSymbolRate.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.dvbMin,InputFilterFloat.dvbMax)});
         satelliteDetailSymbolRate.setMinMax(InputFilterFloat.dvbMin,InputFilterFloat.dvbMax);
         satelliteDetailLongitude.setFilters(new InputFilter[]{ new InputFilterFloat(InputFilterFloat.longitudeMin, InputFilterFloat.longitudeMax)});

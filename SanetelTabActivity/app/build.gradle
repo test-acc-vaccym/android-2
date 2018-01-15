@@ -55,16 +55,24 @@ android {
 
     buildTypes {
         debug {
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
             // 为了不和 release 版本冲突
             applicationIdSuffix ".debug"
+            // 签名
+            signingConfig signingConfigs.debug
         }
         release {
             // 是否进行混淆
             minifyEnabled true
+            //Zipalign优化
+            zipAlignEnabled true
             //去除没有用到的资源文件，要求minifyEnabled为true才生效
             shrinkResources true
-            // 混淆文件的位置
+            // 签名
             signingConfig signingConfigs.debug
+            // 混淆文件的位置
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -185,21 +193,13 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-
     // compile project(':library')
-
     // 弹出对话框
-
     //  http://blog.csdn.net/u013299524/article/details/50722863
-
     // 图像选择
-
     // 数据库
-
     // https://github.com/jgilfelt/android-sqlite-asset-helper
-
     // https://github.com/amulyakhare/TextDrawable
-
     // compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
     compile 'com.android.support:recyclerview-v7:26.+'
     compile 'com.android.support:appcompat-v7:26.+'
@@ -207,7 +207,6 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
 
     // 对话框， 需求不能满足故而使用源码修改
-
     // compile 'com.github.sd6352051.niftydialogeffects:niftydialogeffects:1.0.0@aar'
     compile 'com.android.support:support-v4:26.+'
     compile 'com.android.support:support-vector-drawable:26.+'
@@ -223,35 +222,25 @@ dependencies {
 
     // 图片选择预览
     compile 'com.commit451:PhotoView:1.2.4'
-
     // compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 
     // 下载器 不要了
-
     // compile 'io.reactivex:rxjava:1.1.5'
-
     // compile 'io.reactivex:rxandroid:1.2.0'
-
     // compile 'com.squareup.okhttp3:okhttp:3.7.0'
-
     // compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.tamic.fastdownloader:Android-FastDownloader:1.0.3'
 
     // pdf阅读
-
     // 已经过时，但是这个可用
     compile 'com.joanzapata.pdfview:android-pdfview:1.0.4@aar'
 
     // 这个新的要崩溃
-
     // compile 'com.github.barteksc:android-pdf-viewer:2.8.0'
-
     // inject 已经有源码
-
     // compile 'com.github.rtyley:roboguice-sherlock:1.3'
 
     // 文件阅读
-
     //compile 'com.github.YuanWenHai:FileSearcher:1.3.3'
     compile 'com.android.support:cardview-v7:26+'
 
@@ -270,4 +259,22 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'com.google.code.gson:gson:2.8.2'
+    provided files(getLayoutLibPath())
+}
+
+def getLayoutLibPath() {
+    def rootDir = project.rootDir
+    def localProperties = new File(rootDir, "local.properties")
+    if (localProperties.exists()) {
+        Properties properties = new Properties()
+        localProperties.withInputStream {
+            instr -> properties.load(instr)
+        }
+        def sdkDir = properties.getProperty('sdk.dir')
+        def compileSdkVersion = android.compileSdkVersion
+        Console.println("app compileSdkVersion : " + compileSdkVersion)
+        def androidJarPath = sdkDir + "/platforms/" + compileSdkVersion + "/data/layoutlib.jar"
+        return androidJarPath
+    }
+    return rootDir
 }

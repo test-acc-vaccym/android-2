@@ -2,9 +2,9 @@ package com.edroplet.sanetel.view;
 
 /**
  * Created by qxs on 2017/10/29.
+ * ip address input
  */
 import android.content.Context;
-import android.support.annotation.IdRes;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextUtils;
@@ -13,12 +13,10 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.edroplet.sanetel.R;
-import com.edroplet.sanetel.utils.InputFilterFloat;
 import com.edroplet.sanetel.utils.InputFilterMinMax;
 import com.edroplet.sanetel.view.custom.CustomEditText;
 
@@ -38,7 +36,7 @@ public class IPEditText extends LinearLayout {
         super(context, attrs);
 
         mContext = context;
-        // TODO Auto-generated constructor stub
+
         View view = LayoutInflater.from(context).inflate(R.layout.ip_edit, this);
 
         firstIPEdit =  view.findViewById(R.id.firstIPField);
@@ -61,9 +59,8 @@ public class IPEditText extends LinearLayout {
         firstIPEdit.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // TODO Auto-generated method stub
                 Log.i("test",s.toString());
-                if(null!=s && s.length()>0){
+                if(s.length()>0){
                     if(s.length() > 2 || s.toString().trim().contains(".")){
                         if(s.toString().trim().contains(".")){
                             firstIP = s.toString().trim().substring(0,s.length()-1);
@@ -90,11 +87,9 @@ public class IPEditText extends LinearLayout {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count,
                                           int after) {
-                // TODO Auto-generated method stub
             }
             @Override
             public void afterTextChanged(Editable s) {
-                // TODO Auto-generated method stub
                 firstIPEdit.removeTextChangedListener(this);
                 firstIPEdit.setText(firstIP);
                 firstIPEdit.setSelection(firstIP.length());
@@ -105,7 +100,6 @@ public class IPEditText extends LinearLayout {
         secondIPEdit.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // TODO Auto-generated method stub
                 if(null!=s && s.length()>0){
                     if(s.length() > 2 || s.toString().trim().contains(".")){
                         if(s.toString().trim().contains(".")){
@@ -135,13 +129,10 @@ public class IPEditText extends LinearLayout {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count,
                                           int after) {
-                // TODO Auto-generated method stub
-
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                // TODO Auto-generated method stub
                 secondIPEdit.removeTextChangedListener(this);
                 secondIPEdit.setText(secondIP);
                 secondIPEdit.setSelection(secondIP.length());
@@ -153,8 +144,6 @@ public class IPEditText extends LinearLayout {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // TODO Auto-generated method stub
-
                 if(null!=s && s.length()>0){
                     if(s.length() > 2 || s.toString().trim().contains(".")){
                         if(s.toString().trim().contains(".")){
@@ -182,13 +171,10 @@ public class IPEditText extends LinearLayout {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count,
                                           int after) {
-                // TODO Auto-generated method stub
-
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                // TODO Auto-generated method stub
                 thirdIPEdit.removeTextChangedListener(this);
                 thirdIPEdit.setText(thirdIP);
                 thirdIPEdit.setSelection(thirdIP.length());
@@ -201,13 +187,11 @@ public class IPEditText extends LinearLayout {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // TODO Auto-generated method stub
                 if(null!=s && s.length()>0){
                     fourthIP = s.toString().trim();
                     if (Integer.parseInt(fourthIP) > 255) {
                         Toast.makeText(context, "请输入合法的ip地址", Toast.LENGTH_LONG)
                                 .show();
-                        return;
                     }
                 }
             }
@@ -215,14 +199,10 @@ public class IPEditText extends LinearLayout {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count,
                                           int after) {
-                // TODO Auto-generated method stub
-
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                // TODO Auto-generated method stub
-
             }
         });
     }

@@ -19,7 +19,7 @@
 
     <!-- If true, enable vibration (haptic feedback) for dialer key presses.
          The pattern is set on a per-platform basis using config_virtualKeyVibePattern.
-         TODO: If enough users are annoyed by this, we might eventually
+         If enough users are annoyed by this, we might eventually
          need to make it a user preference rather than a per-platform
           resource. -->
     <bool name="config_enable_dialer_key_vibration">true</bool>
@@ -32,7 +32,7 @@
 
     <!-- Regular expression for prohibiting certain phone numbers in dialpad.
          Ignored if empty. -->
-    <string name="config_prohibited_phone_number_regexp"></string>
+    <string name="config_prohibited_phone_number_regexp"> </string>
 
     <bool name="call_duration_enabled">true</bool>
 

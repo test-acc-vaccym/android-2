@@ -245,6 +245,7 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
                 CustomSP.putString(context, LocationControlFragment.KEY_PREPARE_AZIMUTH, String.valueOf(azimuth));
                 CustomSP.putString(context, LocationControlFragment.KEY_PREPARE_PITCH, String.valueOf(pitch));
                 CustomSP.putString(context, LocationControlFragment.KEY_PREPARE_POLARIZATION, String.valueOf(polarization));
+                getActivity().sendBroadcast(new Intent(LocationControlFragment.FreshUIAction));
 
                 vp.setCurrentItem(ManualActivity.locationIndex , true);
                 break;

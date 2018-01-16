@@ -17,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.beans.AppVersion;
@@ -297,6 +298,9 @@ public class MainMeAppActivity extends AppCompatActivity implements View.OnClick
                 if (appVersion.getVersionName().compareToIgnoreCase(currentVersion) < 0 ||
                         (appVersion.getVersionName().compareToIgnoreCase(currentVersion) == 0 &&
                          appVersion.getVerCode() <= getVersionCode())){
+                    // 最新版本修改weight
+                    appUpdateState.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 2));
+                    appUpdateState.setTextAppearance(getBaseContext(), android.R.style.TextAppearance_Small);
                     appUpdateState.setText(R.string.up_to_date);
                 } else {
                     // 动态注册广播接收器

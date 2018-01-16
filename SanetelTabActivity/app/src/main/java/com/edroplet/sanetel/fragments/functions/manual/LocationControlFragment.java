@@ -3,6 +3,8 @@ package com.edroplet.sanetel.fragments.functions.manual;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.InputFilter;
 import android.util.Log;
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.beans.PresetAngleInfo;
 import com.edroplet.sanetel.beans.Protocol;
+import com.edroplet.sanetel.beans.TimerName;
 import com.edroplet.sanetel.beans.monitor.MonitorInfo;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.InputFilterFloat;
@@ -20,6 +23,9 @@ import com.edroplet.sanetel.view.BroadcastReceiverFragment;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomEditText;
 import com.edroplet.sanetel.view.custom.CustomTextView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -75,10 +81,32 @@ public class LocationControlFragment extends BroadcastReceiverFragment {
     Context context;
     Unbinder unbinder;
     Boolean isRotate = false;
+
     String preAZ = "0.000";
     String preEL = "0.000";
     String prePOL = "0.000";
     String preRv = "0.000";
+
+    Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            if (msg.what == 1) {
+                Protocol.sendMessage(context, Protocol.cmdGetSystemState);
+            }
+            super.handleMessage(msg);
+        };
+    };
+
+    String timerName = TimerName.MonitorInfo;
+    Timer timer = new Timer(timerName, false);
+    TimerTask task = new TimerTask() {
+        @Override
+        public void run() {
+            // 需要做的事:发送消息
+            Message message = new Message();
+            message.what = 1;
+            handler.sendMessage(message);
+        }
+    };
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -86,23 +114,35 @@ public class LocationControlFragment extends BroadcastReceiverFragment {
         String[] action = {MonitorInfoAction, FreshUIAction};
         setAction(action);
         super.onCreate(savedInstanceState);
+        // 一秒钟一次获取系统信息
+        if (!TimerName.isTimerRun(context, timerName)) {
+            timer.schedule(task, 0, 1000);
+            TimerName.setTimer(context, timerName);
+        }
     }
 
     @Override
     public void processData(Intent intent) {
         super.processData(intent);
         String ac = intent.getAction();
-        if (ac != null && ac == FreshUIAction){
-
-        }else {
+        if (ac != null && ac.equals(MonitorInfoAction)){
             // 3)	一直从监视指令$cmd,sys state, ….*ff<CR><LF>中获取角度和AGC信息并显示。
             MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(context, intent.getStringExtra(MonitorInfoData));
-            preAZ = String.valueOf(monitorInfo.getAZ(context));
-            preEL = String.valueOf(monitorInfo.getEL(context));
-            prePOL = String.valueOf(monitorInfo.getPOL(context));
+
+            tvAzimuth.setText(String.valueOf(monitorInfo.getAZ(context)));
+            tvPitch.setText(String.valueOf(monitorInfo.getEL(context)));
+            tvPolarization.setText(String.valueOf(monitorInfo.getPOL(context)));
+
+            preAZ = String.valueOf(monitorInfo.getPrepareAZ(context));
+            preEL = String.valueOf(monitorInfo.getPrepareEL(context));
+            prePOL = String.valueOf(monitorInfo.getPreparePOL(context));
             preRv = String.valueOf(monitorInfo.getPrepareRV(context));
-            updateUI();
+
+            CustomSP.putString(context, KEY_PREPARE_AZIMUTH, preAZ);
+            CustomSP.putString(context, KEY_PREPARE_PITCH, preEL);
+            CustomSP.putString(context, KEY_PREPARE_POLARIZATION, prePOL);
         }
+        updatePreUI();
     }
 
     @Nullable
@@ -124,7 +164,11 @@ public class LocationControlFragment extends BroadcastReceiverFragment {
             preAZ = String.valueOf(presetAngleInfo.getAzimuth());
             preEL = String.valueOf(presetAngleInfo.getPitch());
             prePOL = String.valueOf(presetAngleInfo.getPolarization());
-            updateUI();
+            CustomSP.putString(context, KEY_PREPARE_AZIMUTH, preAZ);
+            CustomSP.putString(context, KEY_PREPARE_PITCH, preEL);
+            CustomSP.putString(context, KEY_PREPARE_POLARIZATION, prePOL);
+
+            updatePreUI();
         }
 
         // 自动聚焦
@@ -162,24 +206,17 @@ public class LocationControlFragment extends BroadcastReceiverFragment {
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
-        Log.e(TAG, "onStop: ");
-    }
-
-    @Override
     public void onResume() {
         Log.e(TAG, "onResume: ");
         super.onResume();
-
-        preAZ = CustomSP.getString(context, KEY_PREPARE_AZIMUTH, preAZ);
-        preEL = CustomSP.getString(context, KEY_PREPARE_PITCH, preEL);
-        prePOL = CustomSP.getString(context, KEY_PREPARE_POLARIZATION, prePOL);
-        updateUI();
+        updatePreUI();
         showRotate();
     }
 
-    void updateUI(){
+    void updatePreUI(){
+        preAZ = CustomSP.getString(context, KEY_PREPARE_AZIMUTH, preAZ);
+        preEL = CustomSP.getString(context, KEY_PREPARE_PITCH, preEL);
+        prePOL = CustomSP.getString(context, KEY_PREPARE_POLARIZATION, prePOL);
         etAzimuth.setText(preAZ);
         etPitch.setText(preEL);
         etPolarization.setText(prePOL);
@@ -200,6 +237,15 @@ public class LocationControlFragment extends BroadcastReceiverFragment {
         Log.i(TAG, "onDestroy: ");
         super.onDestroy();
         if (unbinder != null)  unbinder.unbind();
+        if (timer != null) {
+            timer.purge();
+            timer.cancel();
+            timer = null;
+        }
+        if (task != null){
+            task.cancel();
+            task = null;
+        }
     }
 
 }

@@ -29,12 +29,14 @@ def gitVersionTag() {
     def version = cmd.execute().text.trim()
     def pattern = "-(\\d+)-g"
     def matcher = version =~ pattern
-
+    // println('** gitVersionTag build versionName=' + version)
+    // println('** gitVersionTag build matcher=' + matcher)
     if (matcher) {
         version = version.substring(0, matcher.start()) + "." + matcher[0][1]
     } else {
         version = version + ".0"
     }
+    // println('** gitVersionTag build version=' + version)
     return version
 }
 
@@ -46,7 +48,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 26
         versionCode getVersionCode()
-        versionName "1.0.6.3"
+        versionName "1.0"
         vectorDrawables.useSupportLibrary = true
         // Error:All flavors must now belong to a named flavor dimension.
         // Learn more at https://d.android.com/r/tools/flavorDimensions-missing-error-message.html
@@ -61,7 +63,7 @@ android {
             // 为了不和 release 版本冲突
             applicationIdSuffix ".debug"
             // 签名
-            signingConfig signingConfigs.debug
+            // signingConfig signingConfigs.debug
         }
         release {
             // 是否进行混淆
@@ -88,27 +90,34 @@ android {
             keyAlias 'key_sanetel'
             keyPassword 'sanetel!@#'
             storeFile file('keystore/sanetel.key')
-            storePassword 'sanetel'
+            storePassword 'sanetel!@#'
         }
     }
 
     def archiveBuildTypes = ["release", "debug"];
     applicationVariants.all { variant ->
         // 替换版本号
-        if (variant.buildType.name.equals('release')) {
+        // println('** applicationVariants.all buildType.name=' + buildType.name)
+        if (variant.buildType.name == 'release') {
             variant.mergedFlavor.versionCode = gitVersionCode(true)
-            variant.mergedFlavor.versionName = gitVersionTag()
+        }else{
+            variant.mergedFlavor.versionCode = gitVersionCode(false)
         }
+        variant.mergedFlavor.versionName = gitVersionTag()
 
         def DIST_DIRECTORY = "$rootDir/${variant.buildType.name}"
+        // println('** applicationVariants.all DIST_DIRECTORY=' + DIST_DIRECTORY)
         variant.outputs.all  { output ->
 
+            // println('** applicationVariants.all archiveBuildTypes=' + archiveBuildTypes)
             if (variant.buildType.name in archiveBuildTypes) {
+                // println('** applicationVariants.all variant.versionName=' + variant.versionName)
                 // Update output filename
                 if (variant.versionName != null) {
                     //要被替换的源字符串
                     //def sourceFile = "${archivesBaseName}-${variant.flavorName}-${variant.buildType.name}"//替换的字符串
-                    outputFileName = "sanetel_V${variant.versionName}_${variant.flavorName}_${variant.buildType.name}_${variant.versionCode}.apk".toLowerCase()
+                    outputFileName = "sanetel_${variant.versionName}_${variant.flavorName}_${variant.buildType.name}_${variant.versionCode}.apk".toLowerCase()
+                    // println('** applicationVariants.all outputFileName=' + outputFileName)
                     //outputFileName  = output.outputFile.name.replace(sourceFile, replaceFile);
                     // outputFileName = new File( output.outputFile.parent, outputFileName.replace(".apk", "-${finalVersionCode}.apk"))
 
@@ -149,10 +158,10 @@ android {
 
         //过滤掉unaligned的包
         variant.assemble.doLast {
-            task makePretty(type: Delete) {
-                delete '${outputFileName}', '${buildDir}/output.json'
-                followSymlinks = true
-            }
+//            task makePretty(type: Delete) {
+//                delete '${outputFileName}', '${buildDir}/output.json'
+//                followSymlinks = true
+//            }
         }
 
     }
@@ -272,7 +281,7 @@ def getLayoutLibPath() {
         }
         def sdkDir = properties.getProperty('sdk.dir')
         def compileSdkVersion = android.compileSdkVersion
-        Console.println("app compileSdkVersion : " + compileSdkVersion)
+        // println("app compileSdkVersion : " + compileSdkVersion)
         def androidJarPath = sdkDir + "/platforms/" + compileSdkVersion + "/data/layoutlib.jar"
         return androidJarPath
     }

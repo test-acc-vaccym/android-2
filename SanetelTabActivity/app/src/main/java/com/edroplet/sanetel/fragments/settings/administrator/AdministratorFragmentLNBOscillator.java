@@ -57,6 +57,9 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
     @BindView(R.id.oscillator_custom_ku_val)
     CustomEditText tvCustomVal;
 
+    @BindView(R.id.oscillator_custom_ka_val)
+    CustomEditText tvKaCustomVal;
+
     Unbinder unbinder;
 
     Context context;
@@ -66,7 +69,8 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
     static final int kuPosition = 0;
     static final int [] kaVals = {17400, 19250};
     static final int [] kaValIds={R.id.id_administrator_settings_lnb_ka_value_1,
-            R.id.id_administrator_settings_lnb_ka_value_2};
+            R.id.id_administrator_settings_lnb_ka_value_2,
+            R.id.id_administrator_settings_lnb_ka_value_3};
 
     static final int [] kuVals = {5150, 9750, 10000, 10750, 11300, 10600};
     static final int [] kuValIds= {R.id.id_administrator_settings_lnb_ku_value_1,
@@ -116,10 +120,16 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
         if (bandType != kuPosition) {
             int pos = Arrays.asList(kaVals).indexOf(lnb);
             if (pos == -1){
-                pos = 0;
+                pos = kaVals.length;
             }
             oscillatorKaSelect.check(mapKaPosId.get(pos));
             CustomSP.putInt(context,LNBFrequencyResourcePos,pos);
+            // 自定义
+            if (pos == kaVals.length){
+                String val = String.valueOf(lnb);
+                tvKaCustomVal.setText(val);
+                CustomSP.putString(context, LNBFrequency, val);
+            }
         }else{
             int pos = Arrays.asList(kuVals).indexOf(lnb);
             if (pos == -1){
@@ -145,6 +155,7 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
         }
 
         unbinder = ButterKnife.bind(this, view);
+
         int i = 0;
         for (int id : kaValIds){
             mapKaPosId.put(i++, id);
@@ -157,6 +168,8 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
         context = getContext();
 
         final int band = CustomSP.getInt(context, BandTypeKey, BandTypeDefault);
+
+        String val = CustomSP.getString(context, LNBFrequency, "");
         // 根据不同的波段显示不同的layout
         if (band == kuPosition){
             // 设置可见性
@@ -169,7 +182,7 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
             // ((RadioButton) view.findViewById(id)).setChecked(true);
             oscillatorKuSelect.check(id);
             if (id == R.id.id_administrator_settings_lnb_ku_value_7){
-                tvCustomVal.setText("");
+                tvCustomVal.setText(val);
             }
         }else {
             // 设置可见性
@@ -179,7 +192,9 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
             int id = mapKaPosId.get( CustomSP.getInt(context,LNBFrequencyResourcePos, 0));
             // ((RadioButton) view.findViewById(id)).setChecked(true);
             oscillatorKaSelect.check(id);
-
+            if (id == R.id.id_administrator_settings_lnb_ka_value_3){
+                tvKaCustomVal.setText(val);
+            }
         }
 
         thirdButton.setOnClickListener(new View.OnClickListener() {
@@ -199,14 +214,20 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
                     }else {
                         val = String.valueOf(kuVals[pos]) ;
                     }
-                }else{
+                } else{
                     int id = oscillatorKaSelect.getCheckedRadioButtonId();
                     int pos = mapKuPosId.indexOfValue(id);
                     if (pos < 0){
-                        pos = 0;
+                        pos = kaVals.length;
                     }
                     CustomSP.putInt(context,LNBFrequencyResourcePos,pos);
-                    val = String.valueOf(kuVals[pos]) ;
+
+                    if (id == R.id.id_administrator_settings_lnb_ka_value_3){
+                        val = tvKaCustomVal.getText().toString();
+                        CustomSP.putString(context, LNBFrequency, val);
+                    }else {
+                        val = String.valueOf(kaVals[pos]) ;
+                    }
                 }
                 // 设置命令
                 Protocol.sendMessage(context,String.format(Protocol.cmdSetLnbLf, val));

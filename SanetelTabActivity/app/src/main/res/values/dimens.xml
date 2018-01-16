@@ -5,6 +5,9 @@
     <dimen name="globalPageMediumRight">5dp</dimen>
     <dimen name="no_padding">0dp</dimen>
 
+    <dimen name="lnb_select_width">200dp</dimen>
+    <dimen name="custom_edit_min_width">50dp</dimen>
+
     <dimen name="pop_height">450dp</dimen>
     <dimen name="splash_version_font_size">16sp</dimen>
     <dimen name="spinner_custom_item_vertical_padding">5dp</dimen>

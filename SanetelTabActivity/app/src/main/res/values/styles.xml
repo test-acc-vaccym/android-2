@@ -149,11 +149,13 @@
     <style name="focus_button_horizontal_style" parent="button_horizontal_style">
         <item name="android:focusableInTouchMode">true</item>
         <item name="android:defaultFocusHighlightEnabled">true</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
 
     <style name="focus_button_vertical_style" parent="button_vertical_style">
         <item name="android:focusableInTouchMode">true</item>
         <item name="android:defaultFocusHighlightEnabled">true</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
     
     <style name="text_horizontal_style" parent="Base.TextAppearance.AppCompat.Medium">
@@ -295,6 +297,7 @@
         <item name="colorControlActivated">@color/pink</item>
         <!--<item name="android:background">@null</item>-->
     </style>
+
     <style name="radio_group_custom_item_edit_horizontal_style">
         <item name="android:layout_width">0dp</item>
         <item name="android:gravity">center</item>
@@ -375,5 +378,17 @@
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
         <item name="android:paddingStart">@dimen/globalPageMarginLeft</item>
         <item name="android:paddingEnd">@dimen/globalPageMarginRight</item>
+    </style>
+    <style name="layout_manual_value_select">
+        <item name="android:layout_marginTop">@dimen/main_margin_top</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="layout_manual_operate">
+        <item name="android:layout_marginTop">@dimen/main_margin_top</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
     </style>
 </resources>

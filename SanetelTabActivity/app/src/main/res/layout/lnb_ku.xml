@@ -19,7 +19,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/lnb_select_width"
         android:layout_marginStart="@dimen/layout_padding_left"
         android:layout_marginLeft="@dimen/layout_padding_left">
 
@@ -78,8 +78,9 @@
                 android:layout_alignBottom="@id/id_administrator_settings_lnb_ku_value_7"
                 android:layout_toEndOf="@id/id_administrator_settings_lnb_ku_value_7"
                 android:layout_toRightOf="@id/id_administrator_settings_lnb_ku_value_7"
-                android:hint="@string/administrator_settings_lnb_ku_value_7"
                 android:inputType="numberSigned|numberDecimal"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:minWidth="@dimen/custom_edit_min_width"
                 android:padding="0dp"/>
         </RelativeLayout>
     </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>

@@ -58,7 +58,8 @@
             <Spinner
                 style="@style/radio_group_second_item_edit_horizontal_style"
                 android:id="@+id/polarization_detail"
-                android:entries="@array/satellites_polarization"/>
+                android:entries="@array/satellites_polarization"
+                android:textAlignment="center"/>
         </LinearLayout>
         <!--经度-->
         <LinearLayout
@@ -75,9 +76,12 @@
                 android:text="@string/satellite_detail_longitude_key"/>
 
             <com.edroplet.sanetel.view.custom.CustomEditText
-                style="@style/radio_group_second_item_edit_horizontal_style"
+                style="@style/radio_group_custom_item_edit_horizontal_style"
                 android:id="@+id/longitude_detail"
                 android:inputType="numberDecimal|numberSigned"/>
+            <com.edroplet.sanetel.view.custom.CustomTextView
+                style="@style/radio_group_custom_item_third_filed_horizontal_style"
+                android:text="@string/angle_degree_unit"/>
         </LinearLayout>
         <!--门限-->
         <LinearLayout
@@ -88,10 +92,13 @@
                 style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:text="@string/satellite_detail_threshold_key"/>
             <com.edroplet.sanetel.view.custom.CustomEditText
-                style="@style/radio_group_second_item_edit_horizontal_style"
+                style="@style/radio_group_custom_item_edit_horizontal_style"
                 android:id="@+id/threshold_detail"
                 android:hint="@string/satellite_detail_threshold_hint"
                 android:inputType="numberDecimal|number"/>
+            <com.edroplet.sanetel.view.custom.CustomTextView
+                style="@style/radio_group_custom_item_third_filed_horizontal_style"
+                android:text="@string/voltage_unit"/>
         </LinearLayout>
         <!--信标频率-->
         <LinearLayout

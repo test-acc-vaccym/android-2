@@ -52,12 +52,12 @@
                         android:id="@+id/id_administrator_settings_amplifier_oscillator_value_3"/>
                     <com.edroplet.sanetel.view.custom.CustomEditText
                         android:id="@+id/settings_amplifier_oscillator_custom_value"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
+                        android:minWidth="@dimen/custom_edit_min_width"
                         android:layout_height="@dimen/radio_group_item_height"
                         android:layout_toEndOf="@id/id_administrator_settings_amplifier_oscillator_value_3"
                         android:layout_toRightOf="@id/id_administrator_settings_amplifier_oscillator_value_3"
                         android:inputType="number|numberDecimal"
-                        android:hint="@string/administrator_settings_amplifier_oscillator_value_1"
                         android:textAppearance="?android:attr/textAppearanceMedium"/>
                 </RelativeLayout>
             </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>

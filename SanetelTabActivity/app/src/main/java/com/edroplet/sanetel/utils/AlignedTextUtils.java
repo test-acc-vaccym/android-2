@@ -59,7 +59,7 @@ public class AlignedTextUtils {
                 multiple = 4;
                 break;
             case 3:
-                multiple = 1.5;
+                multiple = 1.3;
                 break;
             case 4:
                 multiple =   0.66666666666666666666666666666666667;

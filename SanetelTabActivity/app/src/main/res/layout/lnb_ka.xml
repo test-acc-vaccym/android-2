@@ -17,7 +17,7 @@
     <com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton
         android:id="@+id/low_noise_block_oscillator_ka_radio_group"
         android:orientation="vertical"
-        android:layout_width="120dp"
+        android:layout_width="@dimen/lnb_select_width"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_marginStart="@dimen/layout_padding_left"
@@ -51,8 +51,9 @@
                 android:layout_alignBottom="@id/id_administrator_settings_lnb_ka_value_3"
                 android:layout_toEndOf="@id/id_administrator_settings_lnb_ka_value_3"
                 android:layout_toRightOf="@id/id_administrator_settings_lnb_ka_value_3"
-                android:hint="@string/administrator_settings_lnb_ka_value_1"
                 android:inputType="numberSigned|numberDecimal"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:minWidth="@dimen/custom_edit_min_width"
                 android:padding="0dp"/>
         </RelativeLayout>
     </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>

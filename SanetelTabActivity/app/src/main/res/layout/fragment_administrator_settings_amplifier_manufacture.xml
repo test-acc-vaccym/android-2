@@ -69,7 +69,8 @@
                         android:id="@+id/settings_amplifier_manufacture_7"/>
                     <com.edroplet.sanetel.view.custom.CustomEditText
                         android:id="@+id/settings_amplifier_manufacture_custom_value"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
+                        android:minWidth="@dimen/custom_edit_min_width"
                         android:layout_height="@dimen/radio_group_item_height"
                         android:layout_toEndOf="@id/settings_amplifier_manufacture_7"
                         android:layout_toRightOf="@id/settings_amplifier_manufacture_7"/>

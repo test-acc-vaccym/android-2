@@ -130,8 +130,8 @@
     <string name="city_detail_id_key">序号</string>
     <string name="city_detail_province">所属省份</string>
     <string name="city_detail_name_key">城市名称</string>
-    <string name="city_detail_longitude_key">经度°</string>
-    <string name="city_detail_latitude_key">纬度°</string>
+    <string name="city_detail_longitude_key">经度</string>
+    <string name="city_detail_latitude_key">纬度</string>
     <string name="key_province_all">所有省份</string>
 
     <!--底部按钮-->

@@ -12,23 +12,20 @@
             <!--运动方式&角速度-->
             <LinearLayout
                 android:id="@+id/top_movement"
-                android:layout_marginTop="@dimen/main_margin_top"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:orientation="vertical">
+                style="@style/layout_manual_value_select">
                 <!--运动方式-->
                 <!--角速度-->
                 <LinearLayout
                     android:layout_marginTop="@dimen/main_margin_top"
                     android:layout_width="match_parent"
-                    android:layout_height="110dp"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <com.edroplet.sanetel.view.custom.CustomTextView
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:text="@string/main_control_step_unit"
-                        android:textAppearance="?android:attr/textAppearanceLarge"/>
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
                     <com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton
                         android:id="@+id/step_angular_velocity_radio_group"
                         android:layout_height="0dp"
@@ -87,7 +84,6 @@
                                 android:layout_alignBottom="@id/step_angular_velocity_6"
                                 android:layout_toEndOf="@id/step_angular_velocity_6"
                                 android:layout_toRightOf="@id/step_angular_velocity_6"
-                                android:hint="@string/main_control_speed_palstance_hint"
                                 android:paddingTop="@dimen/no_padding"
                                 android:paddingBottom="3dp"
                                 android:gravity="bottom"
@@ -100,10 +96,7 @@
             </LinearLayout>
             <!--操作按键-->
             <LinearLayout
-                android:layout_marginTop="@dimen/main_margin_top"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/layout_manual_operate"
                 android:layout_below="@+id/top_movement">
                 <LinearLayout
                     android:layout_width="match_parent"

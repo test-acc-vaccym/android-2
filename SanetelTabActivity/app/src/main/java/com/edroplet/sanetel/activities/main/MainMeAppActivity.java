@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -51,6 +52,7 @@ import static com.edroplet.sanetel.activities.main.MainMeAboutBrowserActivity.Sa
 
 /**
  * Created by qxs on 2017/9/19.
+ * APP版本
  */
 
 public class MainMeAppActivity extends AppCompatActivity implements View.OnClickListener{
@@ -58,6 +60,7 @@ public class MainMeAppActivity extends AppCompatActivity implements View.OnClick
     public static final String DOWNLOAD_PROCESS_KEY = "DOWNLOAD_PROCESS_KEY";
     private MsgReceiver msgReceiver;
     AppVersion appVersion;
+    Context context;
     /**
      * 返回应用程序的版本号
      *
@@ -99,7 +102,7 @@ public class MainMeAppActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_me_app);
         ViewInject.inject(this,this);
-
+        context = this;
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_me_app_toolbar);
         toolbar.setTitle(R.string.main_me_app_title);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -299,9 +302,10 @@ public class MainMeAppActivity extends AppCompatActivity implements View.OnClick
                         (appVersion.getVersionName().compareToIgnoreCase(currentVersion) == 0 &&
                          appVersion.getVerCode() <= getVersionCode())){
                     // 最新版本修改weight
-                    appUpdateState.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 2));
-                    appUpdateState.setTextAppearance(getBaseContext(), android.R.style.TextAppearance_Small);
+                    appUpdateState.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1.5f));
+                    appUpdateState.setTextAppearance(context, android.R.style.TextAppearance_Small);
                     appUpdateState.setText(R.string.up_to_date);
+                    appUpdateState.setTextColor(ContextCompat.getColor(context,R.color.green_70));
                 } else {
                     // 动态注册广播接收器
                     msgReceiver = new MsgReceiver();

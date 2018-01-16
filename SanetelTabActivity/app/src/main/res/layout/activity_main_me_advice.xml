@@ -94,7 +94,7 @@
                     android:padding="@dimen/appbar_padding_top"
                     android:gravity="start|left"/>
 
-                <com.edroplet.sanetel.view.custom.CustomTextView
+                <com.edroplet.sanetel.view.custom.CustomEditText
                     android:id="@+id/main_me_advice_user_mail"
                     style="@style/text_horizontal_style"
                     app:titleTextAppearance="?android:attr/textAppearanceMedium" />

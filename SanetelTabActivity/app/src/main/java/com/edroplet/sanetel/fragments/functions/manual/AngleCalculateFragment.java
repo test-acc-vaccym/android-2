@@ -1,9 +1,11 @@
 package com.edroplet.sanetel.fragments.functions.manual;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.text.InputFilter;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
@@ -24,6 +26,7 @@ import com.edroplet.sanetel.beans.SatelliteInfo;
 import com.edroplet.sanetel.beans.Satellites;
 import com.edroplet.sanetel.utils.AngleCalculate;
 import com.edroplet.sanetel.utils.ConvertUtil;
+import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.InputFilterFloat;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomEditText;
@@ -89,6 +92,8 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
     CustomButton clear;
 
     Unbinder unbinder;
+    Context context;
+    ViewPager vp;
 
     public static AngleCalculateFragment newInstance(AntennaInfo antennaInfo) {
         Bundle args = new Bundle();
@@ -96,6 +101,12 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
         args.putParcelable("antennaInfo", antennaInfo);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        vp = getActivity().findViewById(R.id.manual_viewpager);
     }
 
     @Nullable
@@ -106,10 +117,10 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
             return null;
         }
         unbinder = ButterKnife.bind(this,view);
-
+        context = getContext();
         int i = 0;
         for (int id: citySelectIds){
-            mapcitySelect.put(i++, id);
+            mapCitySelect.put(i++, id);
         }
 
         tvAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.azimuthMin,InputFilterFloat.azimuthMax,InputFilterFloat.angleValidBit)});
@@ -144,7 +155,7 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
     RadioGroup citySelectGroup;
 
     int[] citySelectIds = {R.id.city_select_choice, R.id.city_input_choice};
-    SparseIntArray mapcitySelect = new SparseIntArray(2);
+    SparseIntArray mapCitySelect = new SparseIntArray(2);
 /*
     private View.OnFocusChangeListener onInputFocusChangeListener = new View.OnFocusChangeListener() {
         @Override
@@ -215,6 +226,7 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
                 fm.beginTransaction().replace(R.id.manual_viewpager, fragment).commit();
                 */
 
+                /*
                 Intent intent = new Intent(getContext(), ManualActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt(ManualActivity.POSITION, ManualActivity.locationIndex);
@@ -224,6 +236,17 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
                 intent.putExtras(bundle);
                 getActivity().startActivity(intent);
                 getActivity().finish();
+                */
+                CustomSP.putInt(context, ManualActivity.POSITION, ManualActivity.locationIndex);
+                CustomSP.putFloat(context, ManualActivity.PRESET_AZIMUTH, azimuth);
+                CustomSP.putFloat(context, ManualActivity.PRESET_PITCH, pitch);
+                CustomSP.putFloat(context, ManualActivity.PRESET_POLARIZATION, polarization);
+
+                CustomSP.putString(context, LocationControlFragment.KEY_PREPARE_AZIMUTH, String.valueOf(azimuth));
+                CustomSP.putString(context, LocationControlFragment.KEY_PREPARE_PITCH, String.valueOf(pitch));
+                CustomSP.putString(context, LocationControlFragment.KEY_PREPARE_POLARIZATION, String.valueOf(polarization));
+
+                vp.setCurrentItem(ManualActivity.locationIndex , true);
                 break;
         }
     }
@@ -312,12 +335,12 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
                 android.R.id.text1, getContext().getResources().getStringArray(R.array.longitude_unit)));
 
         int pos = 0;
-        citySelectGroup.check(mapcitySelect.get(pos));
+        citySelectGroup.check(mapCitySelect.get(pos));
         updateLocationUI(pos);
         citySelectGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                int pos = mapcitySelect.indexOfValue(checkedId);
+                int pos = mapCitySelect.indexOfValue(checkedId);
                 updateLocationUI(pos);
             }
         });

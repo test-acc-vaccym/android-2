@@ -1,5 +1,6 @@
 package com.edroplet.sanetel.activities.functions;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,6 +21,7 @@ import com.edroplet.sanetel.fragments.functions.manual.LocationControlFragment;
 import com.edroplet.sanetel.fragments.functions.manual.SpeedControlFragment;
 import com.edroplet.sanetel.fragments.functions.manual.StepControlFragment;
 import com.edroplet.sanetel.utils.BottomNavigationViewHelper;
+import com.edroplet.sanetel.utils.CustomSP;
 
 public class ManualActivity extends AppCompatActivity {
     public static final int stepIndex = 0;
@@ -31,6 +33,7 @@ public class ManualActivity extends AppCompatActivity {
     private MenuItem menuItem;
     private BottomNavigationView bottomNavigationView;
     private MainViewPagerAdapter adapter;
+    Context context;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -59,6 +62,11 @@ public class ManualActivity extends AppCompatActivity {
     private ViewPager.OnPageChangeListener mOnPageChangeListener = new ViewPager.OnPageChangeListener(){
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            if (position == locationIndex){
+                azimuth = CustomSP.getFloat(context, PRESET_AZIMUTH, azimuth);
+                pitch = CustomSP.getFloat(context, PRESET_PITCH, pitch);
+                polarization = CustomSP.getFloat(context, PRESET_POLARIZATION, polarization);
+            }
         }
 
         @Override
@@ -70,6 +78,11 @@ public class ManualActivity extends AppCompatActivity {
             }
             menuItem = bottomNavigationView.getMenu().getItem(position);
             menuItem.setChecked(true);
+            if (position == locationIndex){
+                azimuth = CustomSP.getFloat(context, PRESET_AZIMUTH, azimuth);
+                pitch = CustomSP.getFloat(context, PRESET_PITCH, pitch);
+                polarization = CustomSP.getFloat(context, PRESET_POLARIZATION, polarization);
+            }
         }
 
         @Override
@@ -88,6 +101,8 @@ public class ManualActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual);
+        context = this;
+
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
 

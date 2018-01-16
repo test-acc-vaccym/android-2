@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.InputFilter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,9 @@ import static com.edroplet.sanetel.beans.monitor.MonitorInfo.MonitorInfoData;
  */
 
 public class LocationControlFragment extends BroadcastReceiverFragment {
+    private static final String TAG = LocationControlFragment.class.getSimpleName();
+    public static final String FreshUIAction = "com.edroplet.sanetel.FreshUIAction";
+
     public static final String KEY_CALCULATED_PREPARE_ANGULAR_INFO="KEY_CALCULATED_PREPARE_ANGULAR_INFO";
     public static final String KEY_PREPARE_AZIMUTH="KEY_PREPARE_AZIMUTH";
     public static final String KEY_PREPARE_PITCH="KEY_PREPARE_PITCH";
@@ -71,24 +75,34 @@ public class LocationControlFragment extends BroadcastReceiverFragment {
     Context context;
     Unbinder unbinder;
     Boolean isRotate = false;
+    String preAZ = "0.000";
+    String preEL = "0.000";
+    String prePOL = "0.000";
+    String preRv = "0.000";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         context = getContext();
-        String[] action = {MonitorInfoAction};
+        String[] action = {MonitorInfoAction, FreshUIAction};
         setAction(action);
         super.onCreate(savedInstanceState);
     }
-    String preRv = "0.000";
+
     @Override
     public void processData(Intent intent) {
         super.processData(intent);
-        // 3)	一直从监视指令$cmd,sys state, ….*ff<CR><LF>中获取角度和AGC信息并显示。
-        MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(context, intent.getStringExtra(MonitorInfoData));
-        tvAzimuth.setText(String.valueOf(monitorInfo.getAZ(context)));
-        tvPitch.setText(String.valueOf(monitorInfo.getEL(context)));
-        tvPolarization.setText(String.valueOf(monitorInfo.getPOL(context)));
-        preRv = String.valueOf( monitorInfo.getPrepareRV(context) );
+        String ac = intent.getAction();
+        if (ac != null && ac == FreshUIAction){
+
+        }else {
+            // 3)	一直从监视指令$cmd,sys state, ….*ff<CR><LF>中获取角度和AGC信息并显示。
+            MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(context, intent.getStringExtra(MonitorInfoData));
+            preAZ = String.valueOf(monitorInfo.getAZ(context));
+            preEL = String.valueOf(monitorInfo.getEL(context));
+            prePOL = String.valueOf(monitorInfo.getPOL(context));
+            preRv = String.valueOf(monitorInfo.getPrepareRV(context));
+            updateUI();
+        }
     }
 
     @Nullable
@@ -107,21 +121,23 @@ public class LocationControlFragment extends BroadcastReceiverFragment {
 
         PresetAngleInfo presetAngleInfo = (PresetAngleInfo) getArguments().getSerializable(KEY_CALCULATED_PREPARE_ANGULAR_INFO);
         if (presetAngleInfo != null){
-            etAzimuth.setText(String.valueOf(presetAngleInfo.getAzimuth()));
-            etPitch.setText(String.valueOf(presetAngleInfo.getPitch()));
-            etPolarization.setText(String.valueOf(presetAngleInfo.getPolarization()));
+            preAZ = String.valueOf(presetAngleInfo.getAzimuth());
+            preEL = String.valueOf(presetAngleInfo.getPitch());
+            prePOL = String.valueOf(presetAngleInfo.getPolarization());
+            updateUI();
         }
 
         // 自动聚焦
-        rotate.requestFocus();
+        showRotate();
 
         rotate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!isRotate) {
-                    String preAZ = etAzimuth.getText().toString();
-                    String preEL = etPitch.getText().toString();
-                    String prePOL = etPolarization.getText().toString();
+                    preAZ = etAzimuth.getText().toString();
+                    preEL = etPitch.getText().toString();
+                    prePOL = etPolarization.getText().toString();
+
                     CustomSP.putString(context, KEY_PREPARE_AZIMUTH, preAZ);
                     CustomSP.putString(context, KEY_PREPARE_PITCH, preEL);
                     CustomSP.putString(context, KEY_PREPARE_POLARIZATION, prePOL);
@@ -146,20 +162,44 @@ public class LocationControlFragment extends BroadcastReceiverFragment {
     }
 
     @Override
+    public void onStop() {
+        super.onStop();
+        Log.e(TAG, "onStop: ");
+    }
+
+    @Override
     public void onResume() {
+        Log.e(TAG, "onResume: ");
         super.onResume();
+
+        preAZ = CustomSP.getString(context, KEY_PREPARE_AZIMUTH, preAZ);
+        preEL = CustomSP.getString(context, KEY_PREPARE_PITCH, preEL);
+        prePOL = CustomSP.getString(context, KEY_PREPARE_POLARIZATION, prePOL);
+        updateUI();
+        showRotate();
+    }
+
+    void updateUI(){
+        etAzimuth.setText(preAZ);
+        etPitch.setText(preEL);
+        etPolarization.setText(prePOL);
+    }
+
+    void showRotate(){
+        if (CustomSP.getBoolean(context,KEY_LocationControlRotate, false)){
+            rotate.setText(R.string.location_control_rotate_stop);
+        }else{
+            rotate.setText(R.string.location_control_rotate_start);
+        }
         // 每次都自动聚焦
         rotate.requestFocus();
-        if (CustomSP.getBoolean(context,KEY_LocationControlRotate, false)){
-            rotate.setText(R.string.location_control_rotate_start);
-        }else{
-            rotate.setText(R.string.location_control_rotate_stop);
-        }
     }
 
     @Override
     public void onDestroy() {
+        Log.i(TAG, "onDestroy: ");
         super.onDestroy();
         if (unbinder != null)  unbinder.unbind();
     }
+
 }

@@ -298,9 +298,9 @@ public class MainMeAppActivity extends AppCompatActivity implements View.OnClick
                 parser.parse(new ByteArrayInputStream(updateVersion.getBytes()) , appVersionHandler);
                 appVersion = appVersionHandler.getAppVersion().get(0);
                 String currentVersion = getVersion();
-                if (appVersion.getVersionName().compareToIgnoreCase(currentVersion) < 0 ||
-                        (appVersion.getVersionName().compareToIgnoreCase(currentVersion) == 0 &&
-                         appVersion.getVerCode() <= getVersionCode())){
+                if (AppVersion.compareVersion(appVersion.getVersionName(), currentVersion) > 0 ||
+                        (AppVersion.compareVersion(appVersion.getVersionName(), currentVersion) == 0 &&
+                         appVersion.getVerCode() >= getVersionCode())){
                     // 最新版本修改weight
                     appUpdateState.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1.5f));
                     appUpdateState.setTextAppearance(context, android.R.style.TextAppearance_Small);

@@ -133,5 +133,21 @@ public class AppVersion implements Serializable{
 			}
 		}
 	}
-
+	public static int compareVersion(String versionName1, String versionName2){
+		String[] v1 = versionName1.split("\\.");
+		String[] v2 = versionName2.split("\\.");
+		int v1Len = v1.length;
+		int v2Len = v2.length;
+		int	minLen = Math.min(v1Len, v2Len);
+		for (int i = 0; i < minLen; i++){
+			int i1 = Integer.parseInt(v1[i], 10);
+			int i2 = Integer.parseInt(v2[i], 10);
+			if ( i1 > i2) {
+				return 1;
+			} else if (i1 < i2) {
+				return -1;
+			}
+		}
+		return 0;
+	}
 }

@@ -30,6 +30,7 @@
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
+                android:id="@+id/id_tv_city_detail_province"
                 style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:text="@string/city_detail_province"/>
             <com.edroplet.sanetel.view.custom.CustomEditText
@@ -42,6 +43,7 @@
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
+                android:id="@+id/id_tv_city_detail_city"
                 style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:text="@string/city_detail_name_key"/>
             <com.edroplet.sanetel.view.custom.CustomEditText
@@ -54,6 +56,7 @@
             android:orientation="horizontal">
 
             <com.edroplet.sanetel.view.custom.JustifyTextView
+                android:id="@+id/id_tv_city_detail_latitude"
                 style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:text="@string/city_detail_latitude_key" />
 
@@ -71,6 +74,7 @@
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
+                android:id="@+id/id_tv_city_detail_longitude"
                 style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:text="@string/city_detail_longitude_key"/>
             <com.edroplet.sanetel.view.custom.CustomEditText

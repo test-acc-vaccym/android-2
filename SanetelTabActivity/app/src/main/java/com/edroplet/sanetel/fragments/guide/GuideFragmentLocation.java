@@ -34,6 +34,7 @@ import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomEditText;
 import com.edroplet.sanetel.view.custom.CustomRadioButton;
 import com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton;
+import com.edroplet.sanetel.view.custom.JustifyTextView;
 
 import java.util.Arrays;
 import java.util.Timer;
@@ -71,7 +72,15 @@ public class GuideFragmentLocation extends BroadcastReceiverFragment {
     @BindView(R.id.city_select_group)
     RadioGroup citySelectGroup;
 
-    @BindView()
+    @BindView(R.id.id_tv_city_detail_province)
+    JustifyTextView tvProvince;
+    @BindView(R.id.id_tv_city_detail_city)
+    JustifyTextView tvCity;
+    @BindView(R.id.id_tv_city_detail_latitude)
+    JustifyTextView tvLat;
+    @BindView(R.id.id_tv_city_detail_longitude)
+    JustifyTextView tvLon;
+
     @BindView(R.id.city_detail_province)
     CustomEditText newProvince;
     @BindView(R.id.city_detail_name)
@@ -210,6 +219,15 @@ public class GuideFragmentLocation extends BroadcastReceiverFragment {
     String[] provincesArray;
 
     private void initView(View view){
+        tvProvince.setTextAppearance(context, android.R.style.TextAppearance_Medium);
+        tvCity.setTextAppearance(context, android.R.style.TextAppearance_Medium);
+        tvLat.setTextAppearance(context, android.R.style.TextAppearance_Medium);
+        tvLon.setTextAppearance(context, android.R.style.TextAppearance_Medium);
+        newProvince.setTextAppearance(context, android.R.style.TextAppearance_Medium);
+        newCity.setTextAppearance(context, android.R.style.TextAppearance_Medium);
+        newLatitude.setTextAppearance(context, android.R.style.TextAppearance_Medium);
+        newLongitude.setTextAppearance(context, android.R.style.TextAppearance_Medium);
+
         newLongitudeUnit.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, longitudeArray));
         newLatitudeUnit.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, latitudeArray));
         // 初始化单选

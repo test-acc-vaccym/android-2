@@ -9,3 +9,5 @@
 build
 app/build
 app/*.log
+debug/
+

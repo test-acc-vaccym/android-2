@@ -28,7 +28,7 @@
                 android:fitsSystemWindows="true"
                 android:contentDescription="@string/detailed_incall_info_title"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/satellites"/>
+                android:src="@mipmap/satellite1"/>
             <Gallery android:layout_height="0dp"
                 android:layout_width="match_parent"
                 xmlns:android="http://schemas.android.com/apk/res/android"

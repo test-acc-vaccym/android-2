@@ -4,6 +4,8 @@
  */
 package com.edroplet.sanetel.beans;
 
+import com.sun.mail.iap.ByteArray;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -139,15 +141,31 @@ public class AppVersion implements Serializable{
 		int v1Len = v1.length;
 		int v2Len = v2.length;
 		int	minLen = Math.min(v1Len, v2Len);
-		for (int i = 0; i < minLen; i++){
-			int i1 = Integer.parseInt(v1[i], 10);
-			int i2 = Integer.parseInt(v2[i], 10);
-			if ( i1 > i2) {
+
+		for (int i = 0; i < minLen; i++) {
+			int i1 = Integer.parseInt(getNumber(v1[i]), 10);
+			int i2 = Integer.parseInt(getNumber(v2[i]), 10);
+			if (i1 > i2) {
 				return 1;
 			} else if (i1 < i2) {
 				return -1;
 			}
 		}
+
 		return 0;
+	}
+
+	static String getNumber(String s){
+		String sr = "";
+		int i = 0, j = 0;
+		for (char c: s.toCharArray()){
+			if (i - j <= 1 && c >= 0x30 && c<= 0x39){
+				j++;
+				i++;
+				sr = sr + String.valueOf(c);
+			}
+			if (i > 0) i++;
+		}
+		return sr;
 	}
 }

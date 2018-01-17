@@ -71,6 +71,7 @@ public class GuideFragmentLocation extends BroadcastReceiverFragment {
     @BindView(R.id.city_select_group)
     RadioGroup citySelectGroup;
 
+    @BindView()
     @BindView(R.id.city_detail_province)
     CustomEditText newProvince;
     @BindView(R.id.city_detail_name)

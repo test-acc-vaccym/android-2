@@ -7,6 +7,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Build;
@@ -36,7 +37,7 @@ public class CircleProgressbar extends AppCompatTextView
     private int progressLineColor = Color.BLUE;
 
     //进度条的宽度
-    private int progressLineWidth = 8;
+    private int progressLineWidth = 4;
 
     //画笔
     private Paint mPaint = new Paint();
@@ -51,7 +52,7 @@ public class CircleProgressbar extends AppCompatTextView
     private ProgressType mProgressType = ProgressType.COUNT_BACK;
 
     //进度倒计时时间
-    private long timeMillis = 3000;
+    private long timeMillis = 1000;
 
     //View的显示区域。
     final Rect bounds = new Rect();
@@ -241,9 +242,18 @@ public class CircleProgressbar extends AppCompatTextView
 
         //画进度条
         mPaint.setColor(progressLineColor);
+        // 设置画笔的样式，为FILL，FILL_OR_STROKE，或STROKE
         mPaint.setStyle(Paint.Style.STROKE);
+        // 当画笔样式为STROKE或FILL_OR_STROKE时，设置笔刷的粗细度
         mPaint.setStrokeWidth(progressLineWidth);
+        // 当画笔样式为STROKE或FILL_OR_STROKE时，设置笔刷的图形样式，如圆形样式
+        // Cap.ROUND,或方形样式Cap.SQUARE
         mPaint.setStrokeCap(Paint.Cap.ROUND);
+        // 在图形下面设置阴影层，产生阴影效果，radius为阴影的角度，dx和dy为阴影在x轴和y轴上的距离，color为阴影的颜色
+        mPaint.setShadowLayer(50,size + 3,size + 3,0xFFFF00FF);
+        // 设置图形重叠时的处理方式，如合并，取交集或并集，经常用来制作橡皮的擦除效果
+        // mPaint.setXfermode(PorterDuff.Mode.CLEAR.ordinal());
+
         int deleteWidth = progressLineWidth + outLineWidth;
         mArcRect.set(bounds.left + deleteWidth / 2, bounds.top + deleteWidth / 2, bounds.right - deleteWidth / 2, bounds.bottom - deleteWidth / 2);
 

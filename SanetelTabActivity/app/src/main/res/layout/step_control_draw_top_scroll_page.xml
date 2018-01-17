@@ -18,7 +18,7 @@
                 <LinearLayout
                     android:layout_marginTop="@dimen/main_margin_top"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="80dp"
                     android:orientation="vertical">
                     <com.edroplet.sanetel.view.custom.CustomTextView
                         android:layout_height="0dp"

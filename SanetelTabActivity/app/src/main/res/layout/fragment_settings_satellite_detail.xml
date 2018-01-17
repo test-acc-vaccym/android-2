@@ -41,6 +41,7 @@
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
+                android:id="@+id/id_tv_satellite_detail_name"
                 style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:text="@string/satellite_detail_name_key"/>
             <com.edroplet.sanetel.view.custom.CustomEditText
@@ -53,6 +54,7 @@
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
+                android:id="@+id/id_tv_satellite_detail_polar"
                 style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:text="@string/satellite_detail_polarization_key"/>
             <Spinner
@@ -67,6 +69,7 @@
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
+                android:id="@+id/id_tv_satellite_detail_longitude"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -89,6 +92,7 @@
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
+                android:id="@+id/id_tv_satellite_detail_threshold"
                 style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:text="@string/satellite_detail_threshold_key"/>
             <com.edroplet.sanetel.view.custom.CustomEditText
@@ -106,6 +110,7 @@
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
+                android:id="@+id/id_tv_satellite_detail_beacon"
                 style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:text="@string/satellite_detail_beacon_key"/>
 
@@ -124,6 +129,7 @@
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
+                android:id="@+id/id_tv_satellite_detail_carrier"
                 style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:text="@string/satellite_detail_carrier"/>
             <com.edroplet.sanetel.view.custom.CustomEditText
@@ -141,6 +147,7 @@
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
+                android:id="@+id/id_tv_satellite_detail_dvb"
                 style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:padding="@dimen/list_detail_padding"
                 android:text="@string/satellite_detail_symbol_rate_key" />
@@ -156,10 +163,12 @@
         </LinearLayout>
         <!--备注-->
         <LinearLayout
+            android:id="@+id/id_ll_satellite_detail_comment"
             android:layout_width="match_parent"
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
+                android:id="@+id/id_tv_satellite_detail_comment"
                 style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:text="@string/satellite_detail_comment_key" />
             <com.edroplet.sanetel.view.custom.CustomEditText

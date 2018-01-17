@@ -26,6 +26,7 @@
         </LinearLayout>
         <!--省份-->
         <LinearLayout
+            android:id="@+id/id_ll_city_detail_province"
             android:layout_width="match_parent"
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">
@@ -39,6 +40,7 @@
         </LinearLayout>
         <!--城市-->
         <LinearLayout
+            android:id="@+id/id_ll_city_detail_city"
             android:layout_width="match_parent"
             android:layout_height="@dimen/detail_activity_layout_height"
             android:orientation="horizontal">

@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
+    <RelativeLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="350dp"
         style="@style/manual_divider">
 
         <!--TextView
@@ -16,227 +16,137 @@
             android:text="@string/main_control_operate_location"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"/-->
-        <android.support.v4.widget.NestedScrollView
+        <LinearLayout
+            android:id="@+id/main_control_manual_location_value"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <LinearLayout
+                android:id="@+id/current_location_values"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:orientation="vertical">
-                <LinearLayout
-                    android:id="@+id/current_location_values"
+                <!--速度控制-->
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/location_control_current_info"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
-                    <!--速度控制-->
-                    <com.edroplet.sanetel.view.custom.CustomTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/location_control_current_info"
-                        android:textAppearance="?android:attr/textAppearanceLarge"/>
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <LinearLayout
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:layout_width="match_parent"
-                                android:orientation="horizontal">
-                                <com.edroplet.sanetel.view.custom.CustomTextView
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/location_control_current_azimuth"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    tools:ignore="NestedWeights" />
-                                <com.edroplet.sanetel.view.custom.CustomTextView
-                                    android:id="@+id/main_control_manual_location_tv_azimuth"
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="numberSigned|numberDecimal"
-                                    android:hint="@string/location_control_setting_hint_val"/>
-                                <com.edroplet.sanetel.view.custom.CustomTextView
-                                android:layout_width="0dp"
-                                android:layout_weight="0.2"
-                                android:layout_height="wrap_content"
-                                android:text="@string/angle_degree_unit"
-                                android:layout_gravity="start"
-                                android:textAppearance="?android:attr/textAppearanceLarge" />
-                        </LinearLayout>
-                        <LinearLayout
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:layout_width="match_parent"
-                                android:orientation="horizontal">
-                                <com.edroplet.sanetel.view.custom.CustomTextView
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/location_control_current_pitch"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    tools:ignore="NestedWeights" />
-                                <com.edroplet.sanetel.view.custom.CustomTextView
-                                    android:id="@+id/main_control_manual_location_tv_pitch"
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="numberSigned|numberDecimal"
-                                    android:hint="@string/location_control_setting_hint_val"/>
-                                <com.edroplet.sanetel.view.custom.CustomTextView
-                                android:layout_width="0dp"
-                                android:layout_weight="0.2"
-                                android:layout_height="wrap_content"
-                                android:text="@string/angle_degree_unit"
-                                android:layout_gravity="start"
-                                android:textAppearance="?android:attr/textAppearanceLarge" />
-                        </LinearLayout>
-                        <LinearLayout
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:layout_width="match_parent"
-                                android:orientation="horizontal">
-                                <com.edroplet.sanetel.view.custom.CustomTextView
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/location_control_current_polarization"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    tools:ignore="NestedWeights" />
-                                <com.edroplet.sanetel.view.custom.CustomTextView
-                                    android:id="@+id/main_control_manual_location_tv_polarization"
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="wrap_content"
-                                    android:hint="@string/location_control_setting_hint_val"/>
-                                <com.edroplet.sanetel.view.custom.CustomTextView
-                                android:layout_width="0dp"
-                                android:layout_weight="0.2"
-                                android:layout_height="wrap_content"
-                                android:text="@string/angle_degree_unit"
-                                android:layout_gravity="start"
-                                android:textAppearance="?android:attr/textAppearanceLarge" />
-                        </LinearLayout>
+                        style="@style/layout_three_parts_horizontal_layout">
+                            <com.edroplet.sanetel.view.custom.CustomTextView
+                                style="@style/layout_three_parts_horizontal_first"
+                                android:text="@string/location_control_current_azimuth"/>
+                            <com.edroplet.sanetel.view.custom.CustomTextView
+                                android:id="@+id/main_control_manual_location_tv_azimuth"
+                                style="@style/layout_three_parts_horizontal_second"
+                                android:hint="@string/location_control_setting_hint_val"/>
+                            <com.edroplet.sanetel.view.custom.CustomTextView
+                                style="@style/layout_three_parts_horizontal_third"
+                                android:text="@string/angle_degree_unit"/>
                     </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/prepare_location_values"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginTop="@dimen/layout_padding_top">
-                    <!--预置角度-->
-                    <com.edroplet.sanetel.view.custom.CustomTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/location_control_setting_info"
-                        android:textAppearance="?android:attr/textAppearanceLarge"/>
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <LinearLayout
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            android:orientation="horizontal">
+                        style="@style/layout_three_parts_horizontal_layout">
                             <com.edroplet.sanetel.view.custom.CustomTextView
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:text="@string/location_control_setting_azimuth"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                tools:ignore="NestedWeights" />
-                            <com.edroplet.sanetel.view.custom.CustomEditText
-                                android:id="@+id/main_control_manual_location_edit_setting_azimuth"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:maxLines="1"
-                                android:inputType="numberSigned|numberDecimal"
-                                android:paddingTop="@dimen/no_padding"
+                                style="@style/layout_three_parts_horizontal_first"
+                                android:text="@string/location_control_current_pitch"/>
+                            <com.edroplet.sanetel.view.custom.CustomTextView
+                                android:id="@+id/main_control_manual_location_tv_pitch"
+                                style="@style/layout_three_parts_horizontal_second"
                                 android:hint="@string/location_control_setting_hint_val"/>
                             <com.edroplet.sanetel.view.custom.CustomTextView
-                                android:layout_width="0dp"
-                                android:layout_weight="0.2"
-                                android:layout_height="wrap_content"
-                                android:text="@string/angle_degree_unit"
-                                android:layout_gravity="start"
-                                android:textAppearance="?android:attr/textAppearanceLarge" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            android:orientation="horizontal">
+                                style="@style/layout_three_parts_horizontal_third"
+                            android:text="@string/angle_degree_unit"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        style="@style/layout_three_parts_horizontal_layout">
                             <com.edroplet.sanetel.view.custom.CustomTextView
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:text="@string/location_control_setting_pitch"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                tools:ignore="NestedWeights" />
-                            <com.edroplet.sanetel.view.custom.CustomEditText
-                                android:id="@+id/main_control_manual_location_edit_setting_pitch"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:maxLines="1"
-                                android:inputType="numberSigned|numberDecimal"
-                                android:paddingTop="@dimen/no_padding"
+                                style="@style/layout_three_parts_horizontal_first"
+                                android:text="@string/location_control_current_polarization"/>
+                            <com.edroplet.sanetel.view.custom.CustomTextView
+                                android:id="@+id/main_control_manual_location_tv_polarization"
+                                style="@style/layout_three_parts_horizontal_second"
                                 android:hint="@string/location_control_setting_hint_val"/>
                             <com.edroplet.sanetel.view.custom.CustomTextView
-                                android:layout_width="0dp"
-                                android:layout_weight="0.2"
-                                android:layout_height="wrap_content"
-                                android:text="@string/angle_degree_unit"
-                                android:layout_gravity="start"
-                                android:textAppearance="?android:attr/textAppearanceLarge" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            android:orientation="horizontal">
-                            <com.edroplet.sanetel.view.custom.CustomTextView
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:text="@string/location_control_setting_polarization"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                tools:ignore="NestedWeights" />
-                            <com.edroplet.sanetel.view.custom.CustomEditText
-                                android:id="@+id/main_control_manual_location_edit_setting_polarization"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:maxLines="1"
-                                android:inputType="numberSigned|numberDecimal"
-                                android:paddingTop="@dimen/no_padding"
-                                android:hint="@string/location_control_setting_hint_val"/>
-                            <com.edroplet.sanetel.view.custom.CustomTextView
-                                android:layout_width="0dp"
-                                android:layout_weight="0.2"
-                                android:layout_height="wrap_content"
-                                android:text="@string/angle_degree_unit"
-                                android:layout_gravity="start"
-                                android:textAppearance="?android:attr/textAppearanceLarge" />
-                        </LinearLayout>
+                                style="@style/layout_three_parts_horizontal_third"
+                                android:text="@string/angle_degree_unit"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
+            <LinearLayout
+                android:id="@+id/prepare_location_values"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/layout_padding_top">
+                <!--预置角度-->
+                <com.edroplet.sanetel.view.custom.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/location_control_setting_info"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        style="@style/layout_three_parts_horizontal_layout">
+                        <com.edroplet.sanetel.view.custom.CustomTextView
+                            style="@style/layout_three_parts_horizontal_first"
+                            android:text="@string/location_control_setting_azimuth"/>
+                        <com.edroplet.sanetel.view.custom.CustomEditText
+                            android:id="@+id/main_control_manual_location_edit_setting_azimuth"
+                            style="@style/layout_three_parts_horizontal_second"
+                            android:maxLines="1"
+                            android:inputType="numberSigned|numberDecimal"
+                            android:hint="@string/location_control_setting_hint_val"/>
+                        <com.edroplet.sanetel.view.custom.CustomTextView
+                            style="@style/layout_three_parts_horizontal_third"
+                            android:text="@string/angle_degree_unit"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        style="@style/layout_three_parts_horizontal_layout">
+                        <com.edroplet.sanetel.view.custom.CustomTextView
+                            style="@style/layout_three_parts_horizontal_first"
+                            android:text="@string/location_control_setting_pitch"/>
+                        <com.edroplet.sanetel.view.custom.CustomEditText
+                            android:id="@+id/main_control_manual_location_edit_setting_pitch"
+                            style="@style/layout_three_parts_horizontal_second"
+                            android:maxLines="1"
+                            android:inputType="numberSigned|numberDecimal"
+                            android:hint="@string/location_control_setting_hint_val"/>
+                        <com.edroplet.sanetel.view.custom.CustomTextView
+                            style="@style/layout_three_parts_horizontal_third"
+                            android:text="@string/angle_degree_unit"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        style="@style/layout_three_parts_horizontal_layout">
+                        <com.edroplet.sanetel.view.custom.CustomTextView
+                            style="@style/layout_three_parts_horizontal_first"
+                            android:text="@string/location_control_setting_polarization"/>
+                        <com.edroplet.sanetel.view.custom.CustomEditText
+                            android:id="@+id/main_control_manual_location_edit_setting_polarization"
+                            style="@style/layout_three_parts_horizontal_second"
+                            android:inputType="numberSigned|numberDecimal"
+                            android:hint="@string/location_control_setting_hint_val"/>
+                        <com.edroplet.sanetel.view.custom.CustomTextView
+                            style="@style/layout_three_parts_horizontal_third"
+                            android:text="@string/angle_degree_unit"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginTop="@dimen/layout_padding_top">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_padding_top"
+            android:layout_alignParentBottom="true">
 
             <com.edroplet.sanetel.view.custom.CustomButton
                 android:id="@+id/location_control_rotate"
@@ -248,5 +158,5 @@
                 android:defaultFocusHighlightEnabled="true"
                 android:text="@string/location_control_rotate_start" />
         </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 </android.support.v4.widget.NestedScrollView>

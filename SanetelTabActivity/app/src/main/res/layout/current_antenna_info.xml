@@ -3,12 +3,12 @@
     style="@style/entire_page"
     android:orientation="vertical">
     <!--当前数值-->
-    <com.edroplet.sanetel.view.custom.CustomTextView
+    <!--com.edroplet.sanetel.view.custom.CustomTextView
         android:id="@+id/speed_info_now"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/main_control_speed_info"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:textAppearance="?android:attr/textAppearanceLarge"/-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -241,6 +241,7 @@ public class CommunicateWithDeviceService extends IntentService {
                     ip = CustomSP.getString(mContext, CustomSP.KeyIPSettingsAddress, CustomSP.DefaultIP);
                 }
                 sleepForConnect = false;
+
                 int port = CustomSP.getInt(mContext, CustomSP.KeyIPSettingsPort, CustomSP.DefaultPort);
                 while (!client.isConnected()) {
                     Log.w(TAG, "ConnectToServer, client is not open, open now");

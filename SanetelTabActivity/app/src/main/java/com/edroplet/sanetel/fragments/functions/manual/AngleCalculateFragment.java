@@ -30,10 +30,8 @@ import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.InputFilterFloat;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomEditText;
+import com.edroplet.sanetel.view.custom.CustomTextView;
 
-import java.util.Arrays;
-
-import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -77,11 +75,11 @@ public class AngleCalculateFragment extends Fragment implements View.OnClickList
 
     // 计算结果
     @BindView(R.id.main_control_manual_angle_calculate_tv_setting_azimuth)
-    CustomEditText tvAzimuth;
+    CustomTextView tvAzimuth;
     @BindView(R.id.main_control_manual_angle_calculate_tv_setting_pitch)
-    CustomEditText tvPitch;
+    CustomTextView tvPitch;
     @BindView(R.id.main_control_manual_angle_calculate_tv_setting_polarization)
-    CustomEditText tvPolarization;
+    CustomTextView tvPolarization;
 
     // 按键
     @BindView(R.id.angle_calculate_operate_calculate)

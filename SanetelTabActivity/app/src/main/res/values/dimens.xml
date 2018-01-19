@@ -4,6 +4,7 @@
     <dimen name="globalPageMediumLeft">5dp</dimen>
     <dimen name="globalPageMediumRight">5dp</dimen>
     <dimen name="no_padding">0dp</dimen>
+    <dimen name="small_padding">2dp</dimen>
 
     <dimen name="lnb_select_width">200dp</dimen>
     <dimen name="custom_edit_min_width">50dp</dimen>
@@ -17,7 +18,7 @@
     <dimen name="pop_hire_height">300dp</dimen>
     <dimen name="pop_item_margin_vertical">16dp</dimen>
     <dimen name="pop_margin_horizontal">20dp</dimen>
-    <dimen name="pop_margin_vertical">40dp</dimen>
+    <dimen name="pop_margin_vertical">30dp</dimen>
 
     <dimen name="bottom_nav_height">30dp</dimen>
 
@@ -131,4 +132,5 @@
     <dimen name="follow_me_navigation_height">43dp</dimen>
 
     <dimen name="spinner_lower_height">38dp</dimen>
+    <dimen name="select_input_layout_margin_top">20dp</dimen>
 </resources>

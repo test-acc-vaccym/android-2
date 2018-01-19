@@ -391,4 +391,34 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">vertical</item>
     </style>
+
+    <style name="layout_three_parts_horizontal_layout">
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:padding">@dimen/no_padding</item>
+    </style>
+    <style name="layout_three_parts_horizontal_first">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:padding">@dimen/small_padding</item>
+    </style>
+    <style name="layout_three_parts_horizontal_second">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:padding">@dimen/small_padding</item>
+    </style>
+    <style name="layout_three_parts_horizontal_third">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">0.5</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:padding">@dimen/small_padding</item>
+        <item name="android:gravity">center_vertical|start</item>
+    </style>
 </resources>

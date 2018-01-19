@@ -99,19 +99,19 @@
                         android:entries="@array/city" />
                 </LinearLayout>
                 <!--城市位置输入-->
-                    <include layout="@layout/fragment_settings_city_detail"
-                        android:layout_marginTop="@dimen/recycler_view_item_height"
-                        android:paddingLeft="@dimen/radio_group_city_padding"
-                        android:paddingStart="@dimen/radio_group_city_padding"
-                        android:paddingRight="@dimen/radio_group_city_padding"
-                        android:paddingEnd="@dimen/radio_group_city_padding"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignLeft="@id/city_select"
-                        android:layout_alignStart="@id/city_select"
-                        android:layout_below="@id/city_select"
-                        android:layout_alignEnd="@id/city_select"
-                        android:layout_alignRight="@id/city_select"/>
+                <include layout="@layout/fragment_settings_city_detail"
+                    android:layout_marginTop="@dimen/select_input_layout_margin_top"
+                    android:paddingLeft="@dimen/radio_group_city_padding"
+                    android:paddingStart="@dimen/radio_group_city_padding"
+                    android:paddingRight="@dimen/radio_group_city_padding"
+                    android:paddingEnd="@dimen/radio_group_city_padding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/city_select"
+                    android:layout_alignStart="@id/city_select"
+                    android:layout_below="@id/city_select"
+                    android:layout_alignEnd="@id/city_select"
+                    android:layout_alignRight="@id/city_select"/>
             </RelativeLayout>
         </LinearLayout>
         <include layout="@layout/pop_dialog_blue"

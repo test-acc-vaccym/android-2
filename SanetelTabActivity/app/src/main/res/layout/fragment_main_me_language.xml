@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         tools:ignore="UselessParent">
         <RadioButton
+            android:id="@+id/language_chinese"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
@@ -27,7 +28,7 @@
             android:layout_marginRight="@dimen/app_bar_height"/>
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/language_english"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start"

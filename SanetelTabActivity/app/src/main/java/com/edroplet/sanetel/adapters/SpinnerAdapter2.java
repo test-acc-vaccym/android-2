@@ -68,7 +68,7 @@ public class SpinnerAdapter2 extends ArrayAdapter {
             text.setGravity(Gravity.CENTER);
         } else
             text.setText("");
-        text.setBackgroundColor(Color.GREEN);
+        text.setBackgroundColor(Color.GRAY);
         text.setTextAppearance(context, android.R.style.TextAppearance_Small);
         return convertView;
     }

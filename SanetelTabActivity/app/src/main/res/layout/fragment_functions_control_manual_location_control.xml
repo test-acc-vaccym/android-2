@@ -61,7 +61,7 @@
                                 android:hint="@string/location_control_setting_hint_val"/>
                             <com.edroplet.sanetel.view.custom.CustomTextView
                                 style="@style/layout_three_parts_horizontal_third"
-                            android:text="@string/angle_degree_unit"/>
+                                android:text="@string/angle_degree_unit"/>
                     </LinearLayout>
                     <LinearLayout
                         style="@style/layout_three_parts_horizontal_layout">
@@ -106,9 +106,11 @@
                             android:maxLines="1"
                             android:inputType="numberSigned|numberDecimal"
                             android:hint="@string/location_control_setting_hint_val"/>
+
                         <com.edroplet.sanetel.view.custom.CustomTextView
                             style="@style/layout_three_parts_horizontal_third"
-                            android:text="@string/angle_degree_unit"/>
+                            android:layout_height="match_parent"
+                            android:text="@string/angle_degree_unit" />
                     </LinearLayout>
                     <LinearLayout
                         style="@style/layout_three_parts_horizontal_layout">

@@ -119,10 +119,10 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
      */
     public static class ReceiveNotifyService extends Service{
         Intent innerIntent;
-        String receiveCmd = null;
-        String receiveData = null;
-        String sendCmd = null;
-        String sendData = null;
+        static String receiveCmd = null;
+        static String receiveData = null;
+        static String sendCmd = null;
+        static String sendData = null;
 
         @Override
         public int onStartCommand(Intent intent, int flags, int startId) {
@@ -178,31 +178,33 @@ public class CommunicateDataReceiver extends BroadcastReceiver {
                     if (null == receiveData) {
                         receiveData = "";
                     }
+                    // 2017/11/17 保存文件
+                    // 每次操作都保存文件最好， 收和发的数据
+                    // if (receiveCmd.equals("") && saveFile){
+                    if (saveFile && mContext != null) {
+                        CollectHistoryFileInfo collectHistoryFileInfo = new CollectHistoryFileInfo(mContext);
+                        String newestFile = collectHistoryFileInfo.getNewestCollectFile();
+                        try {
+                            if (newestFile != null) {
+                                FileUtils.saveFile(newestFile, DateTime.getCurrentDateTime() + "\n"
+                                        + (null != receiveCmd && receiveCmd.isEmpty() ? "" : "receiveCmd:" + receiveCmd + "\n")
+                                        + (null != receiveData && receiveData.isEmpty() ? "" : "receiveData:" + receiveData + "\n")
+                                        + (null != sendCmd && sendCmd.isEmpty() ? "" : "sendCmd:" + sendCmd + "\n")
+                                        + (null != sendData && sendData.isEmpty() ? "" : "sendData:" + sendData + "\n"), true);
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
 
+                    /**
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            // TODO: 2017/11/17 保存文件
-                            // 每次操作都保存文件最好， 收和发的数据
-                            // if (receiveCmd.equals("") && saveFile){
-                            if (saveFile && mContext != null) {
-                                CollectHistoryFileInfo collectHistoryFileInfo = new CollectHistoryFileInfo(mContext);
-                                String newestFile = collectHistoryFileInfo.getNewestCollectFile();
-                                try {
-                                    if (newestFile != null) {
-                                        FileUtils.saveFile(newestFile, DateTime.getCurrentDateTime() + "\n"
-                                                + (null != receiveCmd && receiveCmd.isEmpty() ? "" : "receiveCmd:" + receiveCmd + "\n")
-                                                + (null != receiveData && receiveData.isEmpty() ? "" : "receiveData:" + receiveData + "\n")
-                                                + (null != sendCmd && sendCmd.isEmpty() ? "" : "sendCmd:" + sendCmd + "\n")
-                                                + (null != sendData && sendData.isEmpty() ? "" : "sendData:" + sendData + "\n"), true);
-                                    }
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                            // TODO: 2017/11/17 更新UI
+
                         }
                     }, "saveFile").start();
+                     */
                 }
             }
             return START_STICKY;

@@ -394,6 +394,7 @@
     <string name="main_collect_data_no_file_prompt">没有文件，请先新建文件</string>
     <string name="main_collect_data_file_not_exist_prompt">文件不存在，请新建文件</string>
     <string name="main_collect_data_file_full_prompt">文件已经超过10MB，请新建文件保存</string>
+    <string name="main_collect_data_file_exist_prompt">文件已经存在，将本文件置为当前文件</string>
 
     <!--管理员设置-->
     <string name="main_settings_administrator_password_title">管理员密码</string>

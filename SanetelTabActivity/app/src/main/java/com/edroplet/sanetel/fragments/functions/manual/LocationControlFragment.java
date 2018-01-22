@@ -13,12 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.sanetel.R;
+import com.edroplet.sanetel.beans.EdropletTimer;
 import com.edroplet.sanetel.beans.PresetAngleInfo;
 import com.edroplet.sanetel.beans.Protocol;
-import com.edroplet.sanetel.beans.TimerName;
 import com.edroplet.sanetel.beans.monitor.MonitorInfo;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.InputFilterFloat;
+import com.edroplet.sanetel.utils.TimerUtil;
 import com.edroplet.sanetel.view.BroadcastReceiverFragment;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomEditText;
@@ -90,34 +91,46 @@ public class LocationControlFragment extends BroadcastReceiverFragment {
     Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             if (msg.what == 1) {
-                Protocol.sendMessage(context, Protocol.cmdGetSystemState);
             }
             super.handleMessage(msg);
         };
     };
 
-    String timerName = TimerName.MonitorInfo;
-    Timer timer = new Timer(timerName, false);
+    String timerName = TimerUtil.SysState;
+    EdropletTimer edropletTimer;
+    Timer timer = TimerUtil.getTimer(timerName);
     TimerTask task = new TimerTask() {
         @Override
         public void run() {
             // 需要做的事:发送消息
             Message message = new Message();
             message.what = 1;
+            Protocol.sendMessage(context, Protocol.cmdGetSystemState);
             handler.sendMessage(message);
         }
     };
 
+    EdropletTimer restartTimer;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         context = getContext();
         String[] action = {MonitorInfoAction, FreshUIAction};
         setAction(action);
         super.onCreate(savedInstanceState);
+
         // 一秒钟一次获取系统信息
-        if (!TimerName.isTimerRun(context, timerName)) {
+        edropletTimer = TimerUtil.getEdropletTimer(timerName);
+        long period = TimerUtil.getPeriod(timerName);
+        // 如果定时器的任务间隔比这个大，需要重新启动定时器
+        if (period > 1000){
+            restartTimer = new EdropletTimer();
+            restartTimer.period = period;
+            restartTimer.isDaemon = TimerUtil.getDaemon(timerName);
+            TimerUtil.close(timerName);
+            TimerUtil.getTimer(timerName);
+        }
+        if (!TimerUtil.isRun(timerName)) {
             timer.schedule(task, 0, 1000);
-            TimerName.setTimer(context, timerName);
         }
     }
 
@@ -237,14 +250,15 @@ public class LocationControlFragment extends BroadcastReceiverFragment {
         Log.i(TAG, "onDestroy: ");
         super.onDestroy();
         if (unbinder != null)  unbinder.unbind();
-        if (timer != null) {
-            timer.purge();
-            timer.cancel();
-            timer = null;
-        }
-        if (task != null){
-            task.cancel();
-            task = null;
+        TimerUtil.close(timerName);
+        timer = null;
+        if (restartTimer != null) {
+            new TimerUtil(timerName,restartTimer.isDaemon).getTimer().schedule(task,0,edropletTimer.period);
+        } else{
+            if (task != null) {
+                task.cancel();
+                task = null;
+            }
         }
     }
 

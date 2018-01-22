@@ -25,6 +25,7 @@ import com.edroplet.sanetel.services.communicate.CommunicateService;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.DateTime;
 import com.edroplet.sanetel.utils.FileUtils;
+import com.edroplet.sanetel.utils.TimerUtil;
 import com.edroplet.sanetel.view.NDialog;
 
 import java.io.IOException;
@@ -82,8 +83,7 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
         }
         // 停止定时器
         if(timer!= null) {
-            timer.cancel();
-            timer.purge();
+            TimerUtil.close(TimerUtil.SysState);
             timer = null;
         }
     }
@@ -122,12 +122,11 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
                     break;
                 }
                 if (null == timer){
-                    timer = new Timer();
+                    timer = new TimerUtil(TimerUtil.SysState, true).getTimer();
                 }
                 timer.schedule(new TimerTask(){
                     @Override
                     public void run(){
-
                         Message message = new Message();
                         Bundle bundle = new Bundle();
                         bundle.putString("message",DateTime.getCurrentDateTime());
@@ -181,8 +180,7 @@ public class FunctionsFragmentCollect extends Fragment implements OnClickListene
                     context.sendBroadcast(intentStopSave);
                 }
                 if(timer!= null) {
-                    timer.cancel();
-                    timer.purge();
+                    TimerUtil.close(TimerUtil.SysState);
                     timer = null;
                 }
                 break;

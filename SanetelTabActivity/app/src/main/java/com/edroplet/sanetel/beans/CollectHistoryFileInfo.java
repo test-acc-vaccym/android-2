@@ -1,9 +1,9 @@
 package com.edroplet.sanetel.beans;
 
-import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.DateTime;
 import com.edroplet.sanetel.utils.FileUtils;
@@ -138,10 +138,10 @@ public class CollectHistoryFileInfo {
         }
     }
 
-    public static final String SAMPLEDATA=",0.00,45.94,171.86,171.86,161.94,45.95,171.83,171.90,1,173.76,1.90,-0.69,116.802383,39.168365,60.0,1,954.000,0.20,0.00,53,1,0,0,0,0,0,0,0.0,0,2017,07,27,13,06,05,199*ff\n";
+    public static final String SAMPLEDATA=", new file\r\n";
 
     public List<CollectHistoryFileInfo> getList(){
-        List<CollectHistoryFileInfo> collectHistoryFileInfos = new ArrayList<CollectHistoryFileInfo>();
+        List<CollectHistoryFileInfo> collectHistoryFileInfos = new ArrayList<>();
         try {
             JSONArray jsonArray = read();
             if (jsonArray != null){
@@ -159,19 +159,30 @@ public class CollectHistoryFileInfo {
     public void save() throws IOException{
 
         JSONArray array = new JSONArray();
-        array.put(toJson());
 
         List<CollectHistoryFileInfo> l = getList();
+        List<String> lNames = new ArrayList<>();
+        // 去重
         if (l != null && l.size() > 0) {
-            for (CollectHistoryFileInfo collectHistoryFileInfo : l)
-                array.put(collectHistoryFileInfo.toJson());
+            for (CollectHistoryFileInfo collectHistoryFileInfo : l) {
+                String nFile = collectHistoryFileInfo.getFileName();
+                if (lNames.indexOf(nFile) == -1) {
+                    lNames.add(nFile);
+                    array.put(collectHistoryFileInfo.toJson());
+                }
+            }
+        }
+        if (lNames.indexOf(getFileName()) == -1) {
+            array.put(toJson());
+            // 创建新文件
+            FileUtils.saveFile(fileName, DateTime.getCurrentDateTime() + SAMPLEDATA, false);
+        }else {
+            Toast.makeText(context, context.getString(R.string.main_collect_data_file_exist_prompt), Toast.LENGTH_SHORT);
         }
 
         // 保存列表文件
         FileUtils.savePrivateFile(context, historyJsonFileName, Context.MODE_PRIVATE, array.toString());
 
-        // 创建新文件
-        FileUtils.saveFile(fileName, DateTime.getCurrentDateTime() + SAMPLEDATA, false);
         setNewestCollectFile();
 
     }

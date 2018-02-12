@@ -115,7 +115,7 @@ public class ReaderTextActivity extends AppCompatActivity {
         }
     }
 
-    private AsyncTextLoadTask asyncTextLoadTask;
+        private AsyncTextLoadTask asyncTextLoadTask;
     @Override
     protected void onDestroy() {
         super.onDestroy();

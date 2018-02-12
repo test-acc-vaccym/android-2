@@ -84,7 +84,12 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_power_amplifier);
 
         ButterKnife.bind(this);
-
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         initView();
         if (savedInstanceState == null){
             startPosition = getIntent().getIntExtra(positionKey, 0);

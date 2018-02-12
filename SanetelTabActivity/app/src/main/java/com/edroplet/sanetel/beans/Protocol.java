@@ -57,31 +57,32 @@ public class Protocol {
     // 4.8	监视信息
     // 4.8.1	监视指令
     public static final String cmdGetSystemState="$cmd,get system state*ff\r\n";
-    // $cmd,sys state,预置方位角,预置俯仰角,预置发射极化角，预置接收极化角,当前方位角,当前俯仰角,当前发射极化角,当前接收极化角,寻星状态,本地经度,本地纬度,本地高度, GNSS状态,寻星方式,卫星经度,极化方式,寻星门限，AGC电平,信标频率,载波频率、符号率，故障状态,标志 *ff\r\n
+    // $cmd,sys state,预置方位角,预置俯仰角,预置发射极化角，预置接收极化角,当前方位角,当前俯仰角,当前发射极化角,当前接收极化角,寻星状态,本地经度,本地纬度,本地高度, GNSS状态,寻星方式,卫星经度,极化方式,寻星门限，AGC电平,信标频率,载波频率、符号率，故障状态,通信状态,标志 *ff\r\n
     public static final String cmdGetSystemStateResultHead="$cmd,sys state data,";
     public static final String cmdGetSystemStateResult= cmdGetSystemStateResultHead + "%f,%f,%f,%f," +
             "%f,%f,%f,%f," +
             "%d,%f,%f,%f," +
             "%d,%d,%f,%d," +
             "%f,%f,%f,%f," +
-            "%f,%d,%d*ff\r\n";
+            "%f,%d,%d,%d*ff\r\n";
 
     /** 故障状态
-     * 预留通信 D0  1故障 0 正常
-     * 手持机 D1  1故障 0正常
-     * GNSS  D2  1故障 0正常
-     * 信标机  D3  1故障 0正常
-     * 倾角  D4  1 故障 0 正常
-     * wifi    D5  1 故障 0 正常
-     * 功放   D6  1 故障 0 正常
-     * 预留通信    D7  1故障  0正常
-     * 方位电机  D8  1故障  0正常
-     * 俯仰电机    D9  1故障  0正常
-     * 方位霍尔   D10  1故障  0 正常
-     * 俯仰霍尔   D11  1故障  0 正常
-     * 横滚/极化霍尔 D12  1故障  0正常
-     * 极化收霍尔 D13  1故障  0正常
+     * 方位电机  D1  1故障  0正常
+     * 俯仰电机    D2  1故障  0正常
+     * 方位霍尔   D3  1故障  0 正常
+     * 俯仰霍尔   D4  1故障  0 正常
+     * 横滚/极化霍尔 D5 1故障  0正常
+     * 极化收霍尔 D6  1故障  0正常
      */
+    /**
+     * 手持机 D0D1  1故障 0正常
+     * GNSS  D2D3  1故障 0正常
+     * 信标机  D4D5  1故障 0正常
+     * 倾角  D6D7 1 故障 0 正常
+     * wifi    D8DD9  1 故障 0 正常
+     * 功放   D10D11  1 故障 0 正常
+     * 预留通信    D12~D31  1故障  0正常
+    */
     /**    标志
      *    D0:  0:不节能        1：节能
      D1：0:俯仰未锁紧1：俯仰锁紧

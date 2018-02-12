@@ -16,7 +16,7 @@
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:text="@string/main_control_speed_movement"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
             <com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton
                 android:id="@+id/main_control_speed_movement_group_top"
                 android:layout_width="0dp"
@@ -47,7 +47,7 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:text="@string/main_control_speed_palstance"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
             <com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton
                 android:id="@+id/top_angular_velocity_radio_group"
                 android:layout_height="0dp"
@@ -64,17 +64,20 @@
                         android:id="@+id/top_angular_velocity_1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="0.1"/>
+                        android:text="0.1"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/top_angular_velocity_2"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="0.5"/>
+                        android:text="0.5"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/top_angular_velocity_3"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="1.0"/>
+                        android:text="1.0"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                 </LinearLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -85,14 +88,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:checked="true"
-                        android:text="3.0"/>
+                        android:text="3.0"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/top_angular_velocity_5"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_toEndOf="@id/top_angular_velocity_4"
                         android:layout_toRightOf="@id/top_angular_velocity_4"
-                        android:text="5.0"/>
+                        android:text="5.0"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/top_angular_velocity_6"
                         android:layout_width="wrap_content"
@@ -110,7 +115,8 @@
                         android:paddingBottom="3dp"
                         android:gravity="bottom"
                         android:layout_gravity="bottom"
-                        android:inputType="number|numberDecimal"/>
+                        android:inputType="number|numberDecimal"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                 </RelativeLayout>
             </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
 

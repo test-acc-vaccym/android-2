@@ -39,38 +39,44 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
-                        android:checked="true"
-                        android:text="@string/administrator_setting_network_protocol_1"/>
+                        android:text="@string/administrator_setting_network_protocol_1"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_network_protocol_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/administrator_setting_network_protocol_2" />
+                        android:text="@string/administrator_setting_network_protocol_2"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_network_protocol_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/administrator_setting_network_protocol_3" />
+                        android:text="@string/administrator_setting_network_protocol_3"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_network_protocol_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/administrator_setting_network_protocol_4" />
+                        android:text="@string/administrator_setting_network_protocol_4"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_network_protocol_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/administrator_setting_network_protocol_5" />
+                        android:text="@string/administrator_setting_network_protocol_5"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_network_protocol_6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/administrator_setting_network_protocol_6" />
+                        android:text="@string/administrator_setting_network_protocol_6"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_network_protocol_7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/administrator_setting_network_protocol_7" />
+                        android:text="@string/administrator_setting_network_protocol_7"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
 
                 </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
             </LinearLayout>

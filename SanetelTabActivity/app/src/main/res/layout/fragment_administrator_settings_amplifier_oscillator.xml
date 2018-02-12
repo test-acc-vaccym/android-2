@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/settings_amplifier_oscillator_value"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
             <com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton
                 android:id="@+id/settings_amplifier_oscillator_group"
                 android:layout_width="@dimen/radio_group_width"
@@ -36,13 +36,13 @@
                     android:layout_height="@dimen/radio_group_item_height"
                     android:id="@+id/id_administrator_settings_amplifier_oscillator_value_1"
                     android:text="@string/administrator_settings_amplifier_oscillator_value_1"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomRadioButton
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/radio_group_item_height"
                     android:id="@+id/id_administrator_settings_amplifier_oscillator_value_2"
                     android:text="@string/administrator_settings_amplifier_oscillator_value_2"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/radio_group_item_height">
@@ -58,7 +58,7 @@
                         android:layout_toEndOf="@id/id_administrator_settings_amplifier_oscillator_value_3"
                         android:layout_toRightOf="@id/id_administrator_settings_amplifier_oscillator_value_3"
                         android:inputType="number|numberDecimal"
-                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                 </RelativeLayout>
             </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
         </LinearLayout>

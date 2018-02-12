@@ -6,6 +6,7 @@ import com.edroplet.sanetel.beans.AntennaInfo;
 import com.edroplet.sanetel.beans.LocationInfo;
 import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.beans.SatelliteInfo;
+import com.edroplet.sanetel.beans.status.CommunicationCondition;
 import com.edroplet.sanetel.beans.status.FaultCondition;
 import com.edroplet.sanetel.beans.status.RunningInfo;
 import com.edroplet.sanetel.utils.CustomSP;
@@ -77,6 +78,7 @@ public class MonitorInfo implements Serializable {
     private float dvb; // 符号率
 
     private int faultCondition; // 故障状态
+    private int communicateCondition; // 故障状态
     private int flag; // 标志
 
     public static void getMonitorInfoFromServer(Context context){
@@ -91,7 +93,7 @@ public class MonitorInfo implements Serializable {
                 monitorInfo.traceState,monitorInfo.latitude, monitorInfo.longitude, monitorInfo.height,
                 monitorInfo.gnssState,monitorInfo.traceMode, monitorInfo.satelliteLongitude,monitorInfo.plMode,
                 monitorInfo.threshold, monitorInfo.agc, monitorInfo.beacon,monitorInfo.carrier,
-                monitorInfo.dvb, monitorInfo.faultCondition, monitorInfo.flag);
+                monitorInfo.dvb, monitorInfo.faultCondition, monitorInfo.communicateCondition, monitorInfo.flag);
 
         monitorInfo.prepareAZ = (Float) o[0];
         CustomSP.putString(context,KeyPrepareAZ, String.valueOf(monitorInfo.prepareAZ));
@@ -155,7 +157,9 @@ public class MonitorInfo implements Serializable {
 
         monitorInfo.faultCondition = (Integer) o[21];
         FaultCondition.parseFaultCondition(context, String.valueOf(monitorInfo.faultCondition));
-        monitorInfo.flag = (Integer) o[22];
+        monitorInfo.communicateCondition = (Integer) o[22];
+        CommunicationCondition.parseCommunicationCondition(context, String.valueOf(monitorInfo.communicateCondition));
+        monitorInfo.flag = (Integer) o[23];
         RunningInfo.parseRunningInfo(context, String.valueOf(monitorInfo.flag));
 
         return monitorInfo;

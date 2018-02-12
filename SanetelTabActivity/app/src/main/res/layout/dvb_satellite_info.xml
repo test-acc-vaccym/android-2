@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/main_monitor_satellite_info"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_name"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_dvb_satellite_tv_name"
                     android:layout_width="0dp"
@@ -37,12 +37,14 @@
                     android:gravity="center_vertical|end"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_11"
-                    android:hint="@string/main_monitor_satellite_name_hint"/>
+                    android:hint="@string/main_monitor_satellite_name_hint"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="0.4"
                     android:gravity="center"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -53,7 +55,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_polarization"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_dvb_satellite_tv_polarization"
                     android:layout_width="0dp"
@@ -61,12 +63,14 @@
                     android:gravity="center_vertical|end"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_11"
-                    android:hint="@string/main_monitor_satellite_polarization_hint"/>
+                    android:hint="@string/main_monitor_satellite_polarization_hint"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="0.4"
                     android:gravity="center"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
         </LinearLayout>
         <!--经度AGC-->
@@ -83,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_longitude"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_dvb_satellite_tv_longitude"
                     android:layout_width="0dp"
@@ -91,14 +95,16 @@
                     android:gravity="center_vertical|end"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_11"
-                    android:hint="@string/main_monitor_satellite_longitude_hint"/>
+                    android:hint="@string/main_monitor_satellite_longitude_hint"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="0.4"
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_11"
-                    android:text="@string/latitude_degree_unit_east"/>
+                    android:text="@string/latitude_degree_unit_east"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -109,7 +115,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_agc"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_dvb_satellite_tv_agc"
                     android:layout_width="0dp"
@@ -117,14 +123,16 @@
                     android:gravity="center_vertical|end"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_11"
-                    android:hint="@string/main_monitor_satellite_agc_hint"/>
+                    android:hint="@string/main_monitor_satellite_agc_hint"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="0dp"
                     android:layout_weight="0.4"
                     android:gravity="center"
                     android:textColor="@color/text_11"
                     android:layout_height="wrap_content"
-                    android:text="@string/voltage_unit"/>
+                    android:text="@string/voltage_unit"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
         </LinearLayout>
         <!--载波频率-->
@@ -141,14 +149,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_carrier"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_dvb_satellite_tv_carrier"
                     android:layout_width="match_parent"
                     android:gravity="bottom|end"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_11"
-                    android:hint="@string/main_monitor_satellite_carrier_hint"/>
+                    android:hint="@string/main_monitor_satellite_carrier_hint"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -162,7 +171,8 @@
                     android:layout_height="match_parent"
                     android:textColor="@color/text_11"
                     android:paddingBottom="@dimen/no_padding"
-                    android:text="@string/frequency_unit"/>
+                    android:text="@string/frequency_unit"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
         </LinearLayout>
         <!--DVB符号率-->
@@ -179,7 +189,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/settings_reference_dvb"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_dvb_satellite_tv_dvb"
                     android:layout_width="0dp"
@@ -187,7 +197,8 @@
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_11"
-                    android:hint="@string/settings_reference_dvb_hint"/>
+                    android:hint="@string/settings_reference_dvb_hint"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -201,7 +212,8 @@
                     android:gravity="start|center_vertical"
                     android:textColor="@color/text_11"
                     android:paddingBottom="@dimen/no_padding"
-                    android:text="@string/settings_reference_dvb_unit"/>
+                    android:text="@string/settings_reference_dvb_unit"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

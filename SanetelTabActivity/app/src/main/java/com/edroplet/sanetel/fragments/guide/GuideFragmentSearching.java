@@ -98,6 +98,9 @@ public class GuideFragmentSearching extends TimerFragment {
     @BindView(R.id.antenna_info_tv_polarization)
     CustomTextView polarization;
 
+    @BindView(R.id.tv_antenna_info)
+    CustomTextView infoHead;
+
     @BindArray(R.array.guide_searching_state_button_array)
     String[] searchingButtonTextArray;
 
@@ -191,6 +194,7 @@ public class GuideFragmentSearching extends TimerFragment {
                 }
                 // 首先让天线信息可见
                 linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
+                infoHead.setVisibility(View.GONE);
                 // 更新信息
                 // 设置预置角度信息
                 String defaultVal="0.00";
@@ -246,7 +250,8 @@ public class GuideFragmentSearching extends TimerFragment {
         state = mapAntennaStateSearchingState.get(antennaState);
         switch (state){
             case STATE_READY:
-                linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
+                linearLayoutAntennaInfo.setVisibility(View.GONE);
+                infoHead.setVisibility(View.GONE);
                 firstLine.setText(getString(R.string.follow_me_searching_first_line));
                 secondLine.setText(getString(R.string.follow_me_searching_second_line));
                 thirdStart.setText(getString(R.string.follow_me_searching_third_start));
@@ -256,6 +261,7 @@ public class GuideFragmentSearching extends TimerFragment {
             case STATE_COMPLETE:
                 // state = STATE_READY;
                 linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
+                infoHead.setVisibility(View.GONE);
                 firstLine.setText(getString(R.string.follow_me_searching_complete_first_line));
                 secondLine.setText(String.format(getString(R.string.follow_me_searching_complete_second_line), startTime));
                 thirdStart.setText(getString(R.string.follow_me_searching_complete_third_start));
@@ -268,6 +274,7 @@ public class GuideFragmentSearching extends TimerFragment {
                 Protocol.sendMessage(context,Protocol.cmdStopSearch);
 
                 linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
+                infoHead.setVisibility(View.GONE);
                 firstLine.setText(getString(R.string.follow_me_searching_ing_first_line));
                 secondLine.setText(String.format(getString(R.string.follow_me_searching_ing_second_line), startTime));
                 thirdStart.setText(getString(R.string.follow_me_searching_ing_third_start));
@@ -276,6 +283,7 @@ public class GuideFragmentSearching extends TimerFragment {
 
             case STATE_TIMEOUT:
                 linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
+                infoHead.setVisibility(View.GONE);
                 firstLine.setText(getString(R.string.follow_me_searching_timeout_first_line));
                 secondLine.setText(String.format(getString(R.string.follow_me_searching_timeout_second_line), startTime));
                 thirdStart.setText(getString(R.string.follow_me_searching_timeout_third_start));
@@ -284,7 +292,8 @@ public class GuideFragmentSearching extends TimerFragment {
                 break;
 
             case STATE_ERROR:
-                linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
+                linearLayoutAntennaInfo.setVisibility(View.GONE);
+                infoHead.setVisibility(View.GONE);
                 firstLine.setText(getString(R.string.follow_me_searching_error_first_line));
                 firstLine.setTextColor(Color.RED);
                 secondLine.setText(String.format(getString(R.string.follow_me_searching_error_second_line), startTime));
@@ -294,6 +303,7 @@ public class GuideFragmentSearching extends TimerFragment {
                 break;
             case STATE_LOCKED:
                 linearLayoutAntennaInfo.setVisibility(View.VISIBLE);
+                infoHead.setVisibility(View.GONE);
                 firstLine.setText(getString(R.string.follow_me_searching_lock_first_line));
                 firstLine.setTextColor(Color.RED);
                 secondLine.setText(String.format(getString(R.string.follow_me_searching_lock_second_line), startTime));

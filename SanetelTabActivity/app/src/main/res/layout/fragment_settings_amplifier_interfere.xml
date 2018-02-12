@@ -32,21 +32,19 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/settings_amplifier_interfere_use"
                     android:text="@string/settings_amplifier_interfere_use"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomRadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/settings_amplifier_interfere_disuse"
                     android:text="@string/settings_amplifier_interfere_disuse"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </RadioGroup>
         </LinearLayout>
 
         <include layout="@layout/pop_dialog_blue"
             android:id="@+id/amplifier_interfere_pop"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:paddingBottom="@dimen/layout_padding_top"
-            android:paddingTop="@dimen/layout_padding_top"/>
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

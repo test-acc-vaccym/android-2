@@ -27,7 +27,7 @@
                     android:layout_height="match_parent"
                     android:text="@string/administrator_setting_ip_address"
                     android:gravity="center_vertical"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
                 <com.edroplet.sanetel.view.IPEdit
                     android:id="@+id/administrator_setting_ip_address"
                     android:layout_width="0dp"
@@ -51,7 +51,7 @@
                     android:layout_height="match_parent"
                     android:text="@string/administrator_setting_ip_mask"
                     android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
                 <com.edroplet.sanetel.view.IPEdit
                     android:id="@+id/administrator_setting_ip_mask"
                     android:layout_width="0dp"

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--toolbar status color 状态颜色-->
-    <color name="status_normal">#00FF00</color>
+    <!--<color name="status_normal">#00FF00</color>-->
+    <color name="status_normal">#000000</color>
     <color name="status_special">#aa66cc</color>
     <color name="status_abnormal">#FF0000</color>
     <color name="status_operate">#0000FF</color>

@@ -24,11 +24,11 @@
             android:paddingBottom="@dimen/layout_padding_top"
             android:orientation="vertical">
             <!--寻星模式-->
-            <com.edroplet.sanetel.view.custom.CustomTextView
+            <!--com.edroplet.sanetel.view.custom.CustomTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/follow_me_search_mode_title"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"/-->
             <!--单选框-->
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -47,14 +47,14 @@
                         android:id="@+id/follow_me_search_mode_beacon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/follow_me_search_mode_beacon"/>
 
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/follow_me_search_mode_dvb"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/follow_me_search_mode_dvb"/>
                 </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
             </RelativeLayout>

@@ -26,13 +26,14 @@
             android:id="@+id/id_administrator_settings_lnb_ka_value_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/administrator_settings_lnb_ka_value_1"/>
+            android:text="@string/administrator_settings_lnb_ka_value_1"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
         <com.edroplet.sanetel.view.custom.CustomRadioButton
             android:id="@+id/id_administrator_settings_lnb_ka_value_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/administrator_settings_lnb_ka_value_2" />
+            android:text="@string/administrator_settings_lnb_ka_value_2"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
         <!--自定义项-->
         <RelativeLayout
@@ -52,7 +53,7 @@
                 android:layout_toEndOf="@id/id_administrator_settings_lnb_ka_value_3"
                 android:layout_toRightOf="@id/id_administrator_settings_lnb_ka_value_3"
                 android:inputType="numberSigned|numberDecimal"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:minWidth="@dimen/custom_edit_min_width"
                 android:padding="0dp"/>
         </RelativeLayout>

@@ -6,13 +6,12 @@
     android:layout_height="wrap_content"
     style="@style/manual_divider">
 
-    <!--com.edroplet.sanetel.view.custom.CustomTextView
+    <com.edroplet.sanetel.view.custom.CustomTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/administrator_antenna_incriminate"
-        android:layout_marginBottom="@dimen/status_button_height"
-        android:textAppearance="?android:attr/textAppearanceLarge" /-->
+        android:text="@string/administrator_antenna_incriminate_headline"
+        android:layout_marginStart="@dimen/layout_padding_left"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,16 +32,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/main_control_speed_azimuth"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 tools:ignore="NestedWeights" />
 
             <com.edroplet.sanetel.view.custom.CustomEditText
                 android:id="@+id/administrator_antenna_incriminate_tv_azimuth"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:hint="@string/main_control_speed_azimuth_hint"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:gravity="center"
                 android:inputType="numberSigned|numberDecimal"/>
 
@@ -53,7 +52,7 @@
                 android:layout_weight="0.2"
                 android:text="@string/angle_degree_unit"
                 android:gravity="center_vertical"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
 
         <LinearLayout
@@ -67,16 +66,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/main_control_speed_pitch"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 tools:ignore="NestedWeights" />
 
             <com.edroplet.sanetel.view.custom.CustomEditText
                 android:id="@+id/administrator_antenna_incriminate_tv_pitch"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:hint="@string/main_control_speed_pitch_hint"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:inputType="numberSigned|numberDecimal"
                 android:gravity="center" />
 
@@ -87,7 +86,7 @@
                 android:layout_weight="0.2"
                 android:text="@string/angle_degree_unit"
                 android:gravity="center_vertical"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
 
         <LinearLayout
@@ -101,15 +100,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/main_control_speed_polarization"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
 
             <com.edroplet.sanetel.view.custom.CustomEditText
                 android:id="@+id/administrator_antenna_incriminate_polarization"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:hint="@string/main_control_speed_polarization_hint"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:gravity="center"
                 android:inputType="numberSigned|numberDecimal"/>
 
@@ -120,7 +119,7 @@
                 android:layout_weight="0.2"
                 android:text="@string/angle_degree_unit"
                 android:gravity="center_vertical"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
 
     </LinearLayout>

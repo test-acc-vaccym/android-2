@@ -17,6 +17,7 @@
         android:layout_gravity="start"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/drawable_center_spacing"
-        android:layout_marginStart="@dimen/drawable_center_spacing">
+        android:layout_marginStart="@dimen/drawable_center_spacing"
+        android:textAppearance="?android:attr/textAppearanceSmall">
     </com.edroplet.sanetel.view.custom.CustomTextView>
 </LinearLayout>

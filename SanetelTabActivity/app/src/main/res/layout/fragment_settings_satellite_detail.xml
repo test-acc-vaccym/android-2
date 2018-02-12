@@ -70,12 +70,7 @@
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
                 android:id="@+id/id_tv_satellite_detail_longitude"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:layout_height="match_parent"
-                android:padding="@dimen/list_detail_padding"
+                style="@style/radio_group_custom_item_first_filed_horizontal_style"
                 android:text="@string/satellite_detail_longitude_key"/>
 
             <com.edroplet.sanetel.view.custom.CustomEditText

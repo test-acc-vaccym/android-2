@@ -6,14 +6,15 @@
         android:id="@+id/img_tab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"        />
+        android:layout_gravity="center"/>
 
     <TextView
         android:id="@+id/tv_tab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="@drawable/tab_text_selector" />
+        android:textColor="@drawable/tab_text_selector"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 
 </LinearLayout>

@@ -89,14 +89,16 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:entries="@array/province" />
+                        android:entries="@array/province"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
 
                     <Spinner
                         android:id="@+id/follow_me_spinner_city"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:entries="@array/city" />
+                        android:entries="@array/city"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                 </LinearLayout>
                 <!--城市位置输入-->
                 <include layout="@layout/fragment_settings_city_detail"

@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/main_monitor_satellite_info"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_name"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_beacon_satellite_tv_name"
                     android:layout_width="0dp"
@@ -53,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_polarization"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_beacon_satellite_tv_polarization"
                     android:layout_width="0dp"
@@ -83,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_longitude"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_beacon_satellite_tv_longitude"
                     android:layout_width="0dp"
@@ -109,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_agc"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_beacon_satellite_tv_agc"
                     android:layout_width="wrap_content"
@@ -141,7 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_satellite_beacon"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_beacon_satellite_tv_beacon"
                     android:layout_width="wrap_content"

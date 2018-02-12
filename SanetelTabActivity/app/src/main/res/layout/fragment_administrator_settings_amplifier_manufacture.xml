@@ -23,8 +23,8 @@
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/main_settings_amplifier_factory"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
+                android:text="@string/settings_amplifier_manufacture_headline"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
             <com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton
                 android:id="@+id/settings_amplifier_manufacture_group"
                 android:layout_width="@dimen/radio_group_width_hdpi"
@@ -32,40 +32,46 @@
                 android:orientation="vertical">
                 <com.edroplet.sanetel.view.custom.CustomRadioButton
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/radio_group_item_height"
+                    android:layout_height="wrap_content"
                     android:id="@+id/settings_amplifier_manufacture_1"
-                    android:text="@string/settings_amplifier_manufacture_1"/>
+                    android:text="@string/settings_amplifier_manufacture_1"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomRadioButton
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/radio_group_item_height"
+                    android:layout_height="wrap_content"
                     android:id="@+id/settings_amplifier_manufacture_2"
-                    android:text="@string/settings_amplifier_manufacture_2"/>
+                    android:text="@string/settings_amplifier_manufacture_2"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomRadioButton
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/radio_group_item_height"
+                    android:layout_height="wrap_content"
                     android:id="@+id/settings_amplifier_manufacture_3"
-                    android:text="@string/settings_amplifier_manufacture_3"/>
+                    android:text="@string/settings_amplifier_manufacture_3"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomRadioButton
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/radio_group_item_height"
+                    android:layout_height="wrap_content"
                     android:id="@+id/settings_amplifier_manufacture_4"
-                    android:text="@string/settings_amplifier_manufacture_4"/>
+                    android:text="@string/settings_amplifier_manufacture_4"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomRadioButton
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/radio_group_item_height"
+                    android:layout_height="wrap_content"
                     android:id="@+id/settings_amplifier_manufacture_5"
-                    android:text="@string/settings_amplifier_manufacture_5"/>
+                    android:text="@string/settings_amplifier_manufacture_5"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomRadioButton
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/radio_group_item_height"
+                    android:layout_height="wrap_content"
                     android:id="@+id/settings_amplifier_manufacture_6"
-                    android:text="@string/settings_amplifier_manufacture_6"/>
+                    android:text="@string/settings_amplifier_manufacture_6"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/radio_group_item_height">
+                    android:layout_height="wrap_content">
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/radio_group_item_height"
+                        android:layout_height="wrap_content"
                         android:id="@+id/settings_amplifier_manufacture_7"/>
                     <com.edroplet.sanetel.view.custom.CustomEditText
                         android:id="@+id/settings_amplifier_manufacture_custom_value"
@@ -73,7 +79,8 @@
                         android:minWidth="@dimen/custom_edit_min_width"
                         android:layout_height="@dimen/radio_group_item_height"
                         android:layout_toEndOf="@id/settings_amplifier_manufacture_7"
-                        android:layout_toRightOf="@id/settings_amplifier_manufacture_7"/>
+                        android:layout_toRightOf="@id/settings_amplifier_manufacture_7"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                 </RelativeLayout>
             </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
         </LinearLayout>

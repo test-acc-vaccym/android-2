@@ -21,6 +21,7 @@ import com.edroplet.sanetel.beans.LockerInfo;
 import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.beans.SavingInfo;
 import com.edroplet.sanetel.beans.monitor.MonitorInfo;
+import com.edroplet.sanetel.beans.status.CommunicationCondition;
 import com.edroplet.sanetel.beans.status.FaultCondition;
 import com.edroplet.sanetel.beans.status.RunningInfo;
 import com.edroplet.sanetel.view.StatusButton;
@@ -284,7 +285,7 @@ public class StatusBarControl {
         // 获取状态，更新UI
         // 连接状态, 获取wifi连接状态？跟基站通信状态？
 
-        int communicateState = FaultCondition.getWifiCommunication(context);
+        int communicateState = CommunicationCondition.getWifiCommunication(context);
         updateCommunicateState(communicateState);
         // 天线状态
         int antennaState = AntennaInfo.getAntennaState(context);

@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/main_monitor_amplifier_info"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,14 +51,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_status_state"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_amplifier_status_tv_state"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:layout_height="wrap_content"
-                    android:hint="@string/main_monitor_amplifier_status_state_open"/>
+                    android:hint="@string/main_monitor_amplifier_status_state_open"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -69,7 +70,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_value_output"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_amplifier_tv_value_output"
                     android:layout_width="0dp"
@@ -78,7 +79,8 @@
                     android:layout_height="wrap_content"
                     android:paddingEnd="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"
-                    android:hint="@string/main_monitor_amplifier_value_output_hint"/>
+                    android:hint="@string/main_monitor_amplifier_value_output_hint"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
         </LinearLayout>
         <!--自动温控-->
@@ -97,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_status_temperature_state"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
 
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_amplifier_tv_temperature_state"
@@ -105,7 +107,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:hint="@string/main_monitor_amplifier_status_temperature_state_normal" />
+                    android:hint="@string/main_monitor_amplifier_status_temperature_state_normal"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -118,14 +121,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_value_temperature"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_amplifier_tv_temperature"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:layout_height="wrap_content"
-                    android:hint="@string/main_monitor_amplifier_value_temperature_hint"/>
+                    android:hint="@string/main_monitor_amplifier_value_temperature_hint"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
         </LinearLayout>
         <!--锁相环-->
@@ -146,14 +150,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_status_pll_state"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_amplifier_tv_status_pll"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:layout_height="wrap_content"
-                    android:hint="@string/main_monitor_amplifier_status_pll_state_normal"/>
+                    android:hint="@string/main_monitor_amplifier_status_pll_state_normal"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
             <!--邻星保护-->
             <LinearLayout
@@ -167,14 +172,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_amplifier_status_satellite_protect_state"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_amplifier_status_satellite_protect_state"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:layout_height="wrap_content"
-                    android:hint="@string/main_monitor_amplifier_status_satellite_protect_state_open"/>
+                    android:hint="@string/main_monitor_amplifier_status_satellite_protect_state_open"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

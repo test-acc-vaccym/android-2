@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/main_status_running_state"
         android:background="@color/yellow"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                 android:layout_weight="1"
                 android:gravity="start|center_vertical"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/main_status_running_energy_state"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/id_main_status_running_energy_state"
@@ -36,7 +36,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="@string/main_status_running_energy_normal"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
         </LinearLayout>
         <!--俯仰锁紧-->
         <LinearLayout
@@ -46,7 +47,7 @@
                 android:layout_weight="1"
                 android:gravity="start|center_vertical"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/main_status_running_pitch_lock_state"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/id_main_status_running_pitch_lock_state"
@@ -54,7 +55,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="@string/main_status_running_lock_normal"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
         </LinearLayout>
         <!--方位锁紧-->
         <LinearLayout
@@ -64,7 +66,7 @@
                 android:layout_weight="1"
                 android:gravity="start|center_vertical"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/main_status_running_azimuth_lock_state"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/id_main_status_running_azimuth_lock_state"
@@ -72,7 +74,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="@string/main_status_running_lock_abnormal"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
         </LinearLayout>
     </LinearLayout>
     <!--俯仰电气/俯仰软件限位-->
@@ -89,7 +92,7 @@
                 android:layout_weight="1"
                 android:gravity="start|center_vertical"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/main_status_running_pitch_electric_low_limit"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/id_main_status_running_pitch_electric_low_limit"
@@ -97,7 +100,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="@string/main_status_running_limit_normal"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
         </LinearLayout>
 
         <!--俯仰电气高限位-->
@@ -108,7 +112,7 @@
                 android:layout_weight="1"
                 android:gravity="start|center_vertical"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/main_status_running_pitch_electric_high_limit"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/id_main_status_running_pitch_electric_high_limit"
@@ -116,7 +120,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="@string/main_status_running_limit_abnormal"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
         </LinearLayout>
 
         <!--俯仰软件低限位-->
@@ -127,7 +132,7 @@
                 android:layout_weight="1"
                 android:gravity="start|center_vertical"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/main_status_running_pitch_soft_low_limit"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/id_main_status_running_pitch_soft_low_limit"
@@ -135,7 +140,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="@string/main_status_running_limit_normal"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
         </LinearLayout>
 
         <!--俯仰软件高限位-->
@@ -146,7 +152,7 @@
                 android:layout_weight="1"
                 android:gravity="start|center_vertical"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/main_status_running_pitch_soft_high_limit"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/id_main_status_running_pitch_soft_high_limit"
@@ -154,7 +160,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="@string/main_status_running_limit_normal"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -172,7 +179,7 @@
                 android:layout_weight="1"
                 android:gravity="start|center_vertical"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/main_status_running_azimuth_soft_low_limit"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/id_main_status_running_azimuth_soft_low_limit"
@@ -180,7 +187,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="@string/main_status_running_limit_normal"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
         </LinearLayout>
 
         <!--方位软件高限位-->
@@ -191,7 +199,7 @@
                 android:layout_weight="1"
                 android:gravity="start|center_vertical"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/main_status_running_azimuth_soft_high_limit"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/id_main_status_running_azimuth_soft_high_limit"
@@ -199,7 +207,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="@string/main_status_running_limit_normal"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
         </LinearLayout>
 
         <!--极化软件低限位-->
@@ -210,7 +219,7 @@
                 android:layout_weight="1"
                 android:gravity="start|center_vertical"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/main_status_running_polar_soft_low_limit"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/id_main_status_running_polar_soft_low_limit"
@@ -218,7 +227,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="@string/main_status_running_limit_normal"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
         </LinearLayout>
 
         <!--极化软件高限位-->
@@ -229,7 +239,7 @@
                 android:layout_weight="1"
                 android:gravity="start|center_vertical"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/main_status_running_polar_soft_high_limit"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/id_main_status_running_polar_soft_high_limit"
@@ -237,7 +247,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="@string/main_status_running_limit_normal"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

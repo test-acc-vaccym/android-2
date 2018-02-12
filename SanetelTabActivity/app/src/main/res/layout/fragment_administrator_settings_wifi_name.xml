@@ -31,7 +31,6 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:hint="@string/administrator_setting_wifi_name_hint"
-                    android:textColorHint="@color/mb_red"
                     android:lineSpacingMultiplier="1"
                     android:paddingTop="@dimen/no_padding"
                     android:maxLength="27"

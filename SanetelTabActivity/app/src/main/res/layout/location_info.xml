@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/main_monitor_location_info"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_location_longitude"
                     android:gravity="right|end|center_vertical"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_location_tv_longitude"
                     android:layout_width="0dp"
@@ -36,7 +36,8 @@
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal|number"
                     android:gravity="right|end|center_vertical"
-                    android:hint="@string/main_monitor_location_longitude_beijing"/>
+                    android:hint="@string/main_monitor_location_longitude_beijing"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_location_tv_longitude_unit"
                     android:layout_width="0dp"
@@ -44,7 +45,8 @@
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_11"
-                    android:text="@string/latitude_degree_unit_east"/>
+                    android:text="@string/latitude_degree_unit_east"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_height="match_parent"
@@ -56,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/main_monitor_location_latitude"
                     android:gravity="right|end|center_vertical"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_location_tv_latitude"
                     android:layout_width="0dp"
@@ -64,6 +66,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal|number"
                     android:gravity="right|end|center_vertical"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
                     android:hint="@string/main_monitor_location_latitude_beijing"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_monitor_location_tv_latitude_unit"
@@ -72,7 +75,8 @@
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_11"
-                    android:text="@string/longitude_degree_unit_north"/>
+                    android:text="@string/longitude_degree_unit_north"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

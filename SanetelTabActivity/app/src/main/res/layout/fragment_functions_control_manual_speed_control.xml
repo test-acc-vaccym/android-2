@@ -22,8 +22,6 @@
                 android:id="@+id/speed_info_ll_sc_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:paddingBottom="8dp"
                 android:orientation="vertical">
                 <include layout="@layout/speed_control_draw_top_scroll_page"/>
             </LinearLayout>

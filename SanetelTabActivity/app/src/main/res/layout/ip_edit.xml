@@ -15,12 +15,12 @@
         android:layout_weight="1"
         android:gravity="center"
         android:inputType="numberDecimal"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
     <com.edroplet.sanetel.view.custom.CustomTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ip_edit_dot"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
     <com.edroplet.sanetel.view.custom.CustomEditText
         android:id="@+id/secondIPField"
         android:layout_width="0dp"
@@ -28,12 +28,12 @@
         android:layout_weight="1"
         android:gravity="center"
         android:inputType="numberDecimal"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
     <com.edroplet.sanetel.view.custom.CustomTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ip_edit_dot"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
     <com.edroplet.sanetel.view.custom.CustomEditText
         android:id="@+id/thirdIPField"
         android:layout_width="0dp"
@@ -41,12 +41,12 @@
         android:layout_weight="1"
         android:gravity="center"
         android:inputType="numberDecimal"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
     <com.edroplet.sanetel.view.custom.CustomTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ip_edit_dot"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
     <com.edroplet.sanetel.view.custom.CustomEditText
         android:id="@+id/fourthIPField"
         android:layout_width="0dp"
@@ -54,6 +54,6 @@
         android:layout_weight="1"
         android:gravity="center"
         android:inputType="number"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </LinearLayout>

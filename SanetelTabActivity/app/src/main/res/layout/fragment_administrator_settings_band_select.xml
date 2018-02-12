@@ -41,13 +41,15 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:checked="true"
-                        android:text="@string/administrator_setting_band_ku"/>
+                        android:text="@string/administrator_setting_band_ku"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_band_ka"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/administrator_setting_antenna_type_two_two"
-                        android:text="@string/administrator_setting_band_ka" />
+                        android:text="@string/administrator_setting_band_ka"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                 </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
             </LinearLayout>
             <include layout="@layout/pop_dialog_blue"/>

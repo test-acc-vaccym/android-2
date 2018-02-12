@@ -109,14 +109,16 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:entries="@array/satellites"/>
+                android:entries="@array/satellites"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
             <Spinner
                 android:id="@+id/angle_calculate_spinner_satellites_local"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/no_padding"
-                android:entries="@array/satellites_polarization"/>
+                android:entries="@array/satellites_polarization"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
         </LinearLayout>
     </LinearLayout>
     <!--本地位置-->
@@ -146,7 +148,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/angle_calculate_select_city"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <RadioButton
                     android:id="@+id/city_input_choice"
@@ -154,7 +156,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spinner_lower_height"
                     android:text="@string/angle_calculate_input_location"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
             </RadioGroup>
             <!--城市选择-->
             <LinearLayout
@@ -174,7 +176,8 @@
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:entries="@array/province"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
 
                 <Spinner
                     android:id="@+id/angle_calculate_spinner_city"
@@ -182,7 +185,8 @@
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:entries="@array/city"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
             <!--城市位置输入-->
             <LinearLayout

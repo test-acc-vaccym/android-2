@@ -395,6 +395,7 @@
     <string name="main_collect_data_file_not_exist_prompt">文件不存在，请新建文件</string>
     <string name="main_collect_data_file_full_prompt">文件已经超过10MB，请新建文件保存</string>
     <string name="main_collect_data_file_exist_prompt">文件已经存在，将本文件置为当前文件</string>
+    <string name="main_collect_data_prompt">数据存放位置：可以根据数据量的大小，只保留最新几条</string>
 
     <!--管理员设置-->
     <string name="main_settings_administrator_password_title">管理员密码</string>
@@ -477,7 +478,7 @@
     <!--引导页寻星操作-->
     <string name="follow_me_searching_title">寻星操作</string>
     <string name="follow_me_searching_agc">AGC值</string>
-    <string name="follow_me_searching_first_line">恭喜您：</string>
+    <string name="follow_me_searching_first_line">天线状态：已展开！</string>
     <string name="follow_me_searching_second_line">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;可以开始寻星了！</string>
     <string name="follow_me_searching_third_start">点击</string>
     <string name="follow_me_searching_third_button_start">▲开始寻星</string>
@@ -646,6 +647,7 @@
 </string>
 
     <!--10.2.	功放-->
+    <string name="settings_amplifier_manufacture_headline">选择厂家：</string>
     <string name="settings_amplifier_manufacture_1">JRC</string>
     <string name="settings_amplifier_manufacture_2">WaveStream</string>
     <string name="settings_amplifier_manufacture_3">Mitech</string>
@@ -657,7 +659,7 @@
     <string name="administrator_settings_amplifier_oscillator_value_1">12800</string>
     <string name="administrator_settings_amplifier_oscillator_value_2">13050</string>
     <string name="oscillator_unit">MHz</string>
-    <string name="settings_amplifier_oscillator_value">本振值（MHz）</string>
+    <string name="settings_amplifier_oscillator_value">填选本振值（MHz）</string>
     <string name="settings_amplifier_oscillator_message_second">更换参数</string>
     <string name="settings_amplifier_oscillator_message_third_start">点击</string>
     <string name="settings_amplifier_interfere_use">启用</string>
@@ -702,7 +704,9 @@
     <string name="administrator_lnb_frequency_channel">LNB频段</string>
     <string name="administrator_searching_range">寻星范围</string>
     <string name="administrator_amplifier_monitor">功放监控</string>
+    <string name="administrator_amplifier_monitor_headline">监控方式</string>
     <!--天线标定-->
+    <string name="administrator_antenna_incriminate_headline">标定天线</string>
     <!--恢复出厂-->
     <string name="administrator_setting_recovery_factory_title">恢复出厂</string>
     <string name="administrator_setting_recovery_factory_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当希望掉电存储信息恢复到设备出厂前的状态，可以采用此功能。\n
@@ -737,7 +741,7 @@
 
     <!--10.5.9.	WIFI名称-->
     <string name="administrator_setting_wifi_name">名称</string>
-    <string name="administrator_setting_wifi_name_hint">XWWT-</string>
+    <string name="administrator_setting_wifi_name_hint">请以“XWWT-”开头</string>
     <string name="administrator_setting_wifi_name_second_line">请以“XWWT-”开头,否则无法输入.区分大小写，不能超过27个字符</string>
 
     <!--10.5.10.	IP设置-->

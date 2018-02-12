@@ -27,8 +27,7 @@
             style="@style/text_vertical_style"
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/pop_item_margin_vertical"
-            android:layout_gravity="left|start"
-            android:gravity="left|start"/>
+            android:gravity="left|start|center_vertical"/>
         <LinearLayout
             android:id="@+id/pop_dialog_third"
             style="@style/layout_vertical_style"
@@ -39,7 +38,6 @@
                 android:id="@+id/pop_dialog_tv_third_start"
                 style="@style/pop_text_horizontal_style"
                 android:padding="@dimen/no_padding"
-                android:layout_gravity="end|center_vertical"
                 android:gravity="end|center_vertical"/>
 
             <com.edroplet.sanetel.view.custom.CustomButton
@@ -51,14 +49,12 @@
                 android:drawableLeft="@drawable/antenna_exploded"
                 android:drawableStart="@drawable/antenna_exploded"
                 android:visibility="gone"
-                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="@dimen/no_padding"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/pop_dialog_tv_third_end"
                 style="@style/pop_text_horizontal_style"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/no_padding"
-                android:layout_gravity="start|center_vertical"
                 android:gravity="start|center_vertical"/>
         </LinearLayout>
     <com.edroplet.sanetel.view.custom.CustomTextView

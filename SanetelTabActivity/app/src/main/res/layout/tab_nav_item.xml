@@ -9,5 +9,6 @@
     <TextView
         android:id="@+id/tab_nav_text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
 </LinearLayout>

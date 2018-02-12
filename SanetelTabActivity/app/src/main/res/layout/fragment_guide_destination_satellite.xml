@@ -86,14 +86,16 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:entries="@array/satellites" />
+                        android:entries="@array/satellites"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
 
                     <Spinner
                         android:id="@+id/follow_me_destination_spinner_satellites_polarization_select"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:entries="@array/satellites_polarization" />
+                        android:entries="@array/satellites_polarization"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                 </LinearLayout>
                 <!--新卫星参数输入-->
                 <LinearLayout

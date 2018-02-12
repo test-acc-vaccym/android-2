@@ -15,6 +15,7 @@ import com.edroplet.sanetel.beans.SavingInfo;
 import com.edroplet.sanetel.beans.monitor.EquipmentInfo;
 import com.edroplet.sanetel.beans.monitor.MonitorInfo;
 import com.edroplet.sanetel.beans.monitor.TemperatureInfo;
+import com.edroplet.sanetel.beans.status.CommunicationCondition;
 import com.edroplet.sanetel.beans.status.FaultCondition;
 import com.edroplet.sanetel.beans.status.RunningInfo;
 import com.edroplet.sanetel.view.BroadcastReceiverFragment;
@@ -188,14 +189,15 @@ public class FunctionsFragmentStatus extends BroadcastReceiverFragment {
         String rawData = intent.getStringExtra(MonitorInfo.MonitorInfoData);
         MonitorInfo monitorInfo = MonitorInfo.parseMonitorInfo(context, rawData);
         FaultCondition faultCondition = new FaultCondition();
+        CommunicationCondition communicateCondition = new CommunicationCondition();
         // 通信状况
-        internetStatus.setText(communicateStatus[faultCondition.getWifiCommunication(context)]);
-        serialPortStatus.setText(communicateStatus[faultCondition.getHandsetCommunication(context)]);
-        bdCommunicateStatus.setText(communicateStatus[faultCondition.getGNSSCommunication(context)]);
-        beaconCommunicateStatus.setText(communicateStatus[faultCondition.getBeaconCommunication(context)]);
-        clinometerCommunicateStatus.setText(communicateStatus[faultCondition.getDipCommunication(context)]);
-        powerCommunicateStatus.setText(communicateStatus[faultCondition.getAmplifierCommunication(context)]);
-        lnbCommunicateStatus.setText(communicateStatus[faultCondition.getReserve2Communication(context)]);
+        internetStatus.setText(communicateStatus[communicateCondition.getWifiCommunication(context)]);
+        serialPortStatus.setText(communicateStatus[communicateCondition.getHandsetCommunication(context)]);
+        bdCommunicateStatus.setText(communicateStatus[communicateCondition.getGNSSCommunication(context)]);
+        beaconCommunicateStatus.setText(communicateStatus[communicateCondition.getBeaconCommunication(context)]);
+        clinometerCommunicateStatus.setText(communicateStatus[communicateCondition.getDipCommunication(context)]);
+        powerCommunicateStatus.setText(communicateStatus[communicateCondition.getAmplifierCommunication(context)]);
+
         // 设备状况
         motorEncoderStatus.setText(faultConditions[faultCondition.getAzimuthMotorStatus(context)]);
         azimuthHolzerSwitchStatus.setText(faultConditions[faultCondition.getAzimuthLockHolzerStatus(context)]);
@@ -220,7 +222,6 @@ public class FunctionsFragmentStatus extends BroadcastReceiverFragment {
         azimuthSoftHighLimit.setText(limitStates[runningInfo.getAzimuthSoftHighLimit(context)]);
         polarSoftLowLimit.setText(limitStates[runningInfo.getPolarSoftLowLimit(context)]);
         polarSoftHighLimit.setText(limitStates[runningInfo.getPolarSoftHighLimit(context)]);
-
     }
 
     void processTemperatureData(Intent intent){

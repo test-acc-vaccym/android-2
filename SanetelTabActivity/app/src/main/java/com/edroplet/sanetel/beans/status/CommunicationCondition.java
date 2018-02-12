@@ -25,15 +25,6 @@ public class CommunicationCondition {
     private static final String KeyAmplifierCommunication = "KeyAmplifierCommunication";
     //    D12~ D31:保留
 
-
-    public static int bytesToShort(byte[] src, int offset) {
-        int value;
-        value = (int) ((src[offset] & 0xFF)
-                | ((src[offset+1] & 0xFF)<<8));
-        return value;
-    }
-
-
     public static char getValue(String binaryString, int srcPos, int destPos){
         char dst = 0;
         for (int i = srcPos; i<= destPos; i++) {

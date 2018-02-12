@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 /**
  * Created by qxx on 2017/11/1.
+ * 下拉菜单样式
  */
 
 public class SpinnerAdapter2 extends ArrayAdapter {
@@ -45,7 +46,7 @@ public class SpinnerAdapter2 extends ArrayAdapter {
         } else
             text.setText("");
         text.setBackgroundColor(Color.TRANSPARENT);
-        text.setTextAppearance(context, android.R.style.TextAppearance_Medium);
+        text.setTextAppearance(context, android.R.style.TextAppearance_Small);
         return convertView;
     }
 
@@ -68,7 +69,7 @@ public class SpinnerAdapter2 extends ArrayAdapter {
             text.setGravity(Gravity.CENTER);
         } else
             text.setText("");
-        text.setBackgroundColor(Color.GRAY);
+        text.setBackgroundColor(Color.parseColor("#F0F0F0"));
         text.setTextAppearance(context, android.R.style.TextAppearance_Small);
         return convertView;
     }

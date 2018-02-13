@@ -2,9 +2,9 @@
 <resources>
     <!--toolbar status color 状态颜色-->
     <!--<color name="status_normal">#00FF00</color>-->
-    <color name="status_normal">#000000</color>
-    <color name="status_special">#aa66cc</color>
-    <color name="status_abnormal">#FF0000</color>
+    <color name="status_normal">#00FFA0</color>
+    <color name="status_special">#000000</color>
+    <color name="status_abnormal">#000000</color>
     <color name="status_operate">#0000FF</color>
     <color name="operate_confirm_title_color">#0000FF</color>
     <color name="operate_confirm_divider_color">#BBEEDD</color>

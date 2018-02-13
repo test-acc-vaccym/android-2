@@ -26,6 +26,7 @@
         <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/read_text_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
     </com.edroplet.sanetel.view.BorderScrollView>
 </LinearLayout>

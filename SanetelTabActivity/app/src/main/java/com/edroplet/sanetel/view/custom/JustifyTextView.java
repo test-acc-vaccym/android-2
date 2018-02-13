@@ -39,7 +39,7 @@ public class JustifyTextView extends AppCompatTextView {
             setTypeface(ChangeTypeFace.getSimHei(this.getContext()));
         }
         // 3dp or 1.5倍
-        setLineSpacing(3,1.3f);
+        setLineSpacing(3,1.2f);
     }
 
     @Override

@@ -5,14 +5,18 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.edroplet.sanetel.R;
-import com.edroplet.sanetel.services.AsyncTextLoadTask;
+//import com.edroplet.sanetel.services.AsyncTextLoadTask;
 import com.edroplet.sanetel.utils.FileUtils;
-import com.edroplet.sanetel.view.BorderScrollView;
-import com.edroplet.sanetel.view.custom.CustomTextView;
+//import com.edroplet.sanetel.view.BorderScrollView;
+//import com.edroplet.sanetel.view.custom.CustomTextView;
+import com.hw.txtreaderlib.bean.TxtMsg;
+import com.hw.txtreaderlib.interfaces.ILoadListener;
+import com.hw.txtreaderlib.main.TxtReaderView;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -26,11 +30,12 @@ import butterknife.ButterKnife;
 public class ReaderTextActivity extends AppCompatActivity {
     public static final String ReadTextFilename = "readTextFilename";
     @BindView(R.id.read_text_scroll)
-    BorderScrollView readTextScroll;
+    //    BorderScrollView readTextScroll;
+    TxtReaderView readTextScroll;
 
 
-    @BindView(R.id.read_text_content)
-    CustomTextView readerTextContent;
+//    @BindView(R.id.read_text_content)
+//    CustomTextView readerTextContent;
 
     @BindView(R.id.read_text_toolbar)
     Toolbar toolbar;
@@ -46,13 +51,17 @@ public class ReaderTextActivity extends AppCompatActivity {
         return isLoading;
     }
 
-    public BorderScrollView getReadTextScroll() {
+//    public BorderScrollView getReadTextScroll() {
+//        return readTextScroll;
+//    }
+
+    public TxtReaderView getReadTextScroll() {
         return readTextScroll;
     }
 
-    public CustomTextView getReaderTextContent() {
-        return readerTextContent;
-    }
+//    public CustomTextView getReaderTextContent() {
+//        return readerTextContent;
+//    }
 
     private BufferedReader br;
 
@@ -80,6 +89,27 @@ public class ReaderTextActivity extends AppCompatActivity {
         if (intent != null && intent.hasExtra(ReadTextFilename)) {
             fileName = intent.getStringExtra(ReadTextFilename);
         }
+        readTextScroll.loadTxtFile(fileName, new ILoadListener() {
+            @Override
+            public void onSuccess() {
+//                Toast.makeText(ReaderTextActivity.this, "加载成功", Toast.LENGTH_SHORT).show();
+                Log.e("READ TEXT", "onSuccess: " + "加载成功");
+            }
+
+            @Override
+            public void onFail(TxtMsg txtMsg) {
+//                Toast.makeText(ReaderTextActivity.this, txtMsg.toString(), Toast.LENGTH_SHORT).show();
+                Log.e("READ TEXT", "onFail: " + txtMsg.toString());
+            }
+
+            @Override
+            public void onMessage(String s) {
+//                Toast.makeText(ReaderTextActivity.this, "加载中……", Toast.LENGTH_SHORT).show();
+                Log.e("READ TEXT", "onMessage: " + "加载中……");
+            }
+        });
+
+        /**
         readTextScroll.setOnScrollChangedListener(new BorderScrollView.OnScrollChangedListener(){
             @Override
             public void onScrollBottom() {
@@ -87,7 +117,6 @@ public class ReaderTextActivity extends AppCompatActivity {
                     if(!isLoading){
                         isLoading = true;
                         new AsyncTextLoadTask(context, br, ++page).execute();
-                        page++;
                     }
                 }
             }
@@ -96,6 +125,10 @@ public class ReaderTextActivity extends AppCompatActivity {
 
             @Override
             public void onScrollTop() {
+            }
+
+            @Override
+            public void onLoadPrePage() {
                 // 往回滚
                 synchronized (ReaderTextActivity.class){
                     if(!isLoading && page > 0){
@@ -104,8 +137,8 @@ public class ReaderTextActivity extends AppCompatActivity {
                     }
                 }
             }
-
         });
+        */
 
         try{
             if (fileName != null && !fileName.isEmpty()) {
@@ -115,10 +148,10 @@ public class ReaderTextActivity extends AppCompatActivity {
                 // 从私有目录获取
                 // FileInputStream fis = context.openFileInput(fileName);
                 // 从绝对路径获取
-                FileInputStream fis = new FileInputStream(fileName);
-                br = new BufferedReader(new InputStreamReader(fis));
-                asyncTextLoadTask = new AsyncTextLoadTask(context, br, ++page);
-                asyncTextLoadTask.execute();
+//                FileInputStream fis = new FileInputStream(fileName);
+//                br = new BufferedReader(new InputStreamReader(fis));
+//                asyncTextLoadTask = new AsyncTextLoadTask(context, br, ++page);
+//                asyncTextLoadTask.execute();
             }
         }catch(Exception ex){
             ex.printStackTrace();
@@ -126,21 +159,21 @@ public class ReaderTextActivity extends AppCompatActivity {
         }
     }
 
-    private AsyncTextLoadTask asyncTextLoadTask;
+//    private AsyncTextLoadTask asyncTextLoadTask;
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(null != br){
-            try {
-                br.close();
-                if (asyncTextLoadTask != null){
-                    asyncTextLoadTask.cancel(true);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+//        if(null != br){
+//            try {
+//                br.close();
+//                if (asyncTextLoadTask != null){
+//                    asyncTextLoadTask.cancel(true);
+//                }
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 
 }

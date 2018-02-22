@@ -56,6 +56,9 @@ public class BorderScrollView extends ScrollView {
             onScrollChangedListener.onScrollTop(); // 通知监听者滚动到顶部
         }
 
+        if (l == 0 && t ==0 && oldl == 0 && oldt == 0){
+            onScrollChangedListener.onLoadPrePage();
+        }
 
     }
 
@@ -99,7 +102,10 @@ public class BorderScrollView extends ScrollView {
          * 监听滚动到底部
          */
         public void onScrollBottom();
-
+        /**
+         * 监听上一页
+         */
+        public void onLoadPrePage();
     }
 
     public class OnScrollChangedListenerSimple implements OnScrollChangedListener{
@@ -111,5 +117,8 @@ public class BorderScrollView extends ScrollView {
 
         @Override
         public void onScrollBottom() {}
+
+        @Override
+        public void onLoadPrePage() {}
     }
 }

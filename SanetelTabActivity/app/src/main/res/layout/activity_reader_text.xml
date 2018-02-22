@@ -19,14 +19,23 @@
         app:popupTheme="@style/AppTheme.PopupOverlay">
     </android.support.v7.widget.Toolbar>
 
-    <com.edroplet.sanetel.view.BorderScrollView
+    <!--com.edroplet.sanetel.view.BorderScrollView
         android:id="@+id/read_text_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/read_text_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"/>
-    </com.edroplet.sanetel.view.BorderScrollView>
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:maxLines="50"/>
+        </LinearLayout>
+    </com.edroplet.sanetel.view.BorderScrollView-->
+    <com.hw.txtreaderlib.main.TxtReaderView
+        android:id="@+id/read_text_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

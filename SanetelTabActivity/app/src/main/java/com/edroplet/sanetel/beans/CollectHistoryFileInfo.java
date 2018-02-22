@@ -25,16 +25,17 @@ import java.util.Scanner;
 
 /**
  * Created by qxs on 2017/10/21.
+ * 历史文件记录列表
  */
 
 public class CollectHistoryFileInfo {
-    private static String fileName;
+    private String fileName;
     private String dateTime;
     private Context context;
     private static final String historyJsonFileName = "historyFileInfo.json";
     public static final String KEY_NEWEST_COLLECT_FILE = "KEY_NEWEST_COLLECT_FILE";
 
-    private static String CollectFileFullPath;
+    private String CollectFileFullPath;
     public static final String CollectFilePath="/logs/sanetel/";
 
     public CollectHistoryFileInfo setDateTime(String dateTime) {
@@ -60,11 +61,11 @@ public class CollectHistoryFileInfo {
     }
 
     public String getDateTime() {
-        return dateTime;
+        return this.dateTime;
     }
 
     public String getFileName() {
-        return fileName;
+        return this.fileName;
     }
 
     public CollectHistoryFileInfo(Context context){
@@ -175,7 +176,7 @@ public class CollectHistoryFileInfo {
         if (lNames.indexOf(getFileName()) == -1) {
             array.put(toJson());
             // 创建新文件
-            FileUtils.saveFile(fileName, DateTime.getCurrentDateTime() + SAMPLEDATA, false);
+            FileUtils.saveFile(this.fileName, DateTime.getCurrentDateTime() + SAMPLEDATA, false);
         }else {
             Toast.makeText(context, context.getString(R.string.main_collect_data_file_exist_prompt), Toast.LENGTH_SHORT);
         }
@@ -188,7 +189,7 @@ public class CollectHistoryFileInfo {
     }
 
     private void setNewestCollectFile(){
-        CustomSP.putString(context, KEY_NEWEST_COLLECT_FILE, fileName);
+        CustomSP.putString(context, KEY_NEWEST_COLLECT_FILE, this.fileName);
     }
 
     public String getNewestCollectFile(){

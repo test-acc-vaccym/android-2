@@ -14,6 +14,7 @@ import java.io.*;
 
 /**
  * Created by qxx on 2017/11/2.
+ * 异步加载文件
  */
 
 public class AsyncTextLoadTask extends AsyncTask<Object, String, String> {
@@ -79,13 +80,13 @@ public class AsyncTextLoadTask extends AsyncTask<Object, String, String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         if (result.length() > 0) {
-            activity.getReaderTextContent().setText(result);
+//            activity.getReaderTextContent().setText(result);
         }
         new Handler().postDelayed(new Runnable() {
 
             @Override
             public void run() {
-                activity.getReadTextScroll().scrollTo(0, 0); // 记载完新数据后滚动到顶部
+                // activity.getReadTextScroll().scrollTo(0, 0); // 记载完新数据后滚动到顶部
             }
         }, 100);
         activity.setLoading(false);

@@ -271,6 +271,10 @@ dependencies {
 
     compile 'org.greenrobot:eventbus:3.0.0'
 
+    // 文本阅读
+    // https://github.com/bifan-wei/HwTxtReader
+    compile 'com.github.bifan-wei:HwTxtReader:v1.0'
+
     provided files(getLayoutLibPath())
 }
 

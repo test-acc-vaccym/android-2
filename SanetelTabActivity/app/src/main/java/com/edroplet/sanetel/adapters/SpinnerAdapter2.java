@@ -40,6 +40,7 @@ public class SpinnerAdapter2 extends ArrayAdapter {
             convertView = inflater.inflate(resource,null);
         TextView text = (TextView) convertView
                 .findViewById(textViewResourceId);
+        text.setPadding(1,1,1,1);
         if (target != null && target.length > 0) {
             text.setText(target[position]);
             text.setGravity(Gravity.CENTER);
@@ -64,6 +65,7 @@ public class SpinnerAdapter2 extends ArrayAdapter {
         TextView text = (TextView) convertView
                 .findViewById(android.R.id.text1);
 
+        text.setPadding(1,1,1,1);
         if (target != null && target.length > 0) {
             text.setText(target[position]);
             text.setGravity(Gravity.CENTER);

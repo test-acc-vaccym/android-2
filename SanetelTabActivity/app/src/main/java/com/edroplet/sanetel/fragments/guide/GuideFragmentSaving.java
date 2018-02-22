@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.beans.LockerInfo;
 import com.edroplet.sanetel.beans.Protocol;
+import com.edroplet.sanetel.beans.SavingInfo;
 import com.edroplet.sanetel.utils.PopDialog;
 import com.edroplet.sanetel.view.TimerFragment;
 import com.edroplet.sanetel.view.custom.CustomButton;
@@ -101,7 +102,7 @@ public class GuideFragmentSaving extends TimerFragment {
     @Override
     public void doTimer() {
         super.doTimer();
-        energyState = LockerInfo.getLockerState(context);
+        energyState = SavingInfo.getSavingState(context);
         tvFirst.setText(String.format(first, energyStateArray[energyState]));
         thirdButton.setText(energyButtonTextArray[energyState]);
     }

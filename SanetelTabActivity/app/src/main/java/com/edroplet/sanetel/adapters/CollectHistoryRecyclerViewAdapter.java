@@ -64,7 +64,8 @@ public class CollectHistoryRecyclerViewAdapter extends RecyclerView.Adapter<Coll
 
     @Override
     public void onBindViewHolder(final CollectHistoryViewHolder holder, final int position) {
-        ((SwipeMenuLayout) holder.itemView).setIos(false).setLeftSwipe(position % 2 == 0 ? true : false);//这句话关掉IOS阻塞式交互效果 并依次打开左滑右滑
+        // ((SwipeMenuLayout) holder.itemView).setIos(false).setLeftSwipe(position % 2 == 0 ? true : false);//这句话关掉IOS阻塞式交互效果 并依次打开左滑右滑
+        ((SwipeMenuLayout) holder.itemView).setIos(false).setLeftSwipe(true);
 
         holder.mNameView.setText(FileUtils.getBaseName(mValues.get(position).getFileName()));
         holder.mDateView.setText(mValues.get(position).getDateTime());

@@ -59,7 +59,7 @@ public class DownLoadService extends Service {
     private NotificationManager notificationManager;
 
     private String downloadUrl;
-    private  String baseUrl = "http://123.59.23.183/assets/2000004/"; // 4b6d9a8a-c32a-11e7-b07b-90e2ba73b3f0.zip
+    private  String baseUrl = "http://123.59.23.183/assets/000/"; // 4b6d9a8a-c32a-11e7-b07b-90e2ba73b3f0.zip
     String sha1 = "";
     String apkFileFullPath;
     boolean downloadPdf;

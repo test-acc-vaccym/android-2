@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_update_version_file_download_url">http://124.250.52.44/assets/2000001/version.xml</string>
+    <string name="app_update_version_file_download_url">http://123.59.23.183/assets/000/version.xml</string>
     <string name="app_name">星网卫通</string>
     <string name="action_settings">帮助</string>
     <string name="section_format">Hello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section:\nHello World from section: %1$d</string>

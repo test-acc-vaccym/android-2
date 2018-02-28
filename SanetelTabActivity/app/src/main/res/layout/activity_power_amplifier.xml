@@ -63,44 +63,4 @@
         android:layout_above="@id/settings_power_amplifier_bottom_navigation"
         android:background="@drawable/bottom_shadow" />
 
-    <!-- 搞不定 android.support.design.widget.TabLayout
-        android:id="@+id/power_amplifier_tabs"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
-        android:layout_below="@id/content_toolbar"
-        android:background="@color/bottom_tab_nav_background"
-        android:scrollbars="horizontal"
-        app:tabTextColor="@android:color/black"
-        app:tabSelectedTextColor="@color/tab_checked"
-        app:tabBackground="@android:color/white"
-        app:tabIndicatorColor="?attr/colorAccent"
-        app:tabPaddingStart="8dp"
-        app:tabPaddingEnd="8dp"
-        app:tabGravity="fill"
-        android:layout_gravity="bottom|end"/-->
-    <!--app:tabMode="scrollable"-->
-    <!--android.support.design.widget.FloatingActionButton
-        android:id="@+id/amplifier_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="@dimen/fab_margin_bottom"
-        android:src="@mipmap/help"
-        app:backgroundTint="@drawable/button_background"
-        android:visibility="invisible"/-->
-
-    <!--com.edroplet.sanetel.view.custom.CustomFAB
-        android:id="@+id/amplifier_fab"
-        android:layout_width="@dimen/fab_size"
-        android:layout_height="@dimen/fab_size"
-        android:src="@mipmap/help"
-        app:backgroundTint="@color/button_blink"
-        app:borderWidth="0dp"
-        app:elevation="6dp"
-        app:fabSize="normal"
-        app:layout_anchor="@id/amplifier_view_pager"
-        android:layout_gravity="bottom"
-        app:layout_anchorGravity="top|end"
-        app:pressedTranslationZ="12dp"
-        app:rippleColor="#a6a6a6" /-->
 </android.support.design.widget.CoordinatorLayout>

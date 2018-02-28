@@ -10,9 +10,7 @@ import android.view.ViewGroup;
 
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.activities.settings.AdministratorLoginActivity;
-import com.edroplet.sanetel.activities.settings.AntennaRestartActivity;
 import com.edroplet.sanetel.activities.settings.CityLocationListActivity;
-import com.edroplet.sanetel.activities.settings.LowNoiseBlockOscillatorActivity;
 import com.edroplet.sanetel.activities.settings.PowerAmplifierSettingsActivity;
 import com.edroplet.sanetel.activities.settings.ReferenceSatelliteActivity;
 import com.edroplet.sanetel.activities.settings.SatelliteListActivity;

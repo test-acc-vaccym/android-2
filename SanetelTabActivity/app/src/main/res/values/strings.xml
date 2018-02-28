@@ -597,7 +597,7 @@
     <string name="main_me_app_update">APP版本更新</string>
     <string name="main_me_app_update_state_checking">检查中……</string>
     <string name="main_me_app_update_state_downloading">下载中[ %1$d %%] %2$s</string>
-    <string name="main_me_app_update_state_download_failed">更新失败</string>
+    <string name="main_me_app_update_state_download_failed">下载失败</string>
     <string name="main_me_app_update_state_verify_failed">校验失败</string>
     <string name="main_me_app_update_state_install_failed">安装失败</string>
     <string name="main_me_app_update_state_complete">完成,并将自动安装</string>

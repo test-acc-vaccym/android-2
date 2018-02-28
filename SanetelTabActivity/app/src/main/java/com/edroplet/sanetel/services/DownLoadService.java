@@ -1,5 +1,6 @@
 package com.edroplet.sanetel.services;
 
+import android.app.DownloadManager;
 import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
@@ -11,6 +12,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.webkit.MimeTypeMap;
 
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.activities.main.MainMeAboutBrowserActivity;
@@ -67,22 +69,24 @@ public class DownLoadService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         mContext = this;
-        Bundle bundle = intent.getExtras();
-        if (bundle != null){
-            AppVersion appVersion = (AppVersion)bundle.getSerializable("appVersion");
-            if (appVersion != null) {
-                destFileName = appVersion.getApkName();
-                sha1 = appVersion.getSha1();
-                baseUrl = appVersion.getUrl();
-                downloadUrl = baseUrl+destFileName + "?hash=" + sha1+"&tag="+tagUuid;
+        if(intent != null) {
+            Bundle bundle = intent.getExtras();
+            if (bundle != null) {
+                AppVersion appVersion = (AppVersion) bundle.getSerializable("appVersion");
+                if (appVersion != null) {
+                    destFileName = appVersion.getApkName();
+                    sha1 = appVersion.getSha1();
+                    baseUrl = appVersion.getUrl();
+                    downloadUrl = baseUrl + destFileName + "?hash=" + sha1 + "&tag=" + tagUuid;
+                }
+                String pdfDownloadUrl = bundle.getString(KEY_DOWNLOAD_URL);
+                if (pdfDownloadUrl != null && !pdfDownloadUrl.isEmpty()) {
+                    downloadUrl = pdfDownloadUrl;
+                    downloadPdf = true;
+                }
             }
-            String pdfDownloadUrl = bundle.getString(KEY_DOWNLOAD_URL);
-            if (pdfDownloadUrl !=null && !pdfDownloadUrl.isEmpty()){
-                downloadUrl = pdfDownloadUrl;
-                downloadPdf = true;
-            }
+            init();
         }
-        init();
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -98,116 +102,156 @@ public class DownLoadService extends Service {
 
         apkFileFullPath = destFileDir+"/"+destFileName;
 
-        //设置点击栏目知想打开的页面
-        RxConstants.CLASSNAME = "MainMeAppActivity";
+        try {
+            // 系统下载管理器
+            // 创建下载任务,downloadUrl就是下载链接
+            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadUrl));
+            // 漫游网络是否可以下载
+            request.setAllowedOverRoaming(false);
+            //设置文件类型，可以在下载结束后自动打开该文件
+            MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+            String mimeString = mimeTypeMap.getMimeTypeFromExtension(MimeTypeMap.getFileExtensionFromUrl(downloadUrl));
+            request.setMimeType(mimeString);
 
-        final RxDownloadManager manager = RxDownloadManager.getInstance();
-        manager.init(mContext, new DownloadAdapter());
-        manager.setContext(mContext);
-        manager.setListener(new DLDownloadListener(mContext));
-        DLNormalCallback normalCallback = new DLNormalCallback(){
-            @Override
-            public void onDownloading(String key, long filelength, long downloaded, long speed, String filename, int downloadType) {
-                super.onDownloading(key, filelength, downloaded, speed, filename, downloadType);
-                // 只有本文件下载的时候才广播
-                if (key.contains(tagUuid)) {
-                    preProgress = (int) (downloaded * 100 / filelength);
-                    // 发送广播通知Activity
-                    Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
-                    sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, preProgress);
-                    getApplicationContext().sendBroadcast(sendIntent);
-                }
-                if (downloadPdf){
-                    preProgress = (int) (downloaded * 100 / filelength);
-                    // 发送广播通知Activity
-                    Intent sendIntent = new Intent(MainMeAboutBrowserActivity.SERVICE_PDF_DOWNLOAD_RECEIVER);
-                    sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, preProgress);
-                    getApplicationContext().sendBroadcast(sendIntent);
-                }
-            }
+            //在通知栏中显示，默认就是显示的
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+            request.setVisibleInDownloadsUi(true);
+            //指定下载路径和下载文件名
+            //sdcard的目录下的download文件夹，必须设置
+            request.setDestinationInExternalPublicDir("/download/", destFileName);
+            //request.setDestinationInExternalFilesDir(apkFileFullPath),也可以自己制定下载路径
 
-            @Override
-            public void onAppSuccess(String tag, long fileLength, long downloaded, String savePath, String filenNme, long aSpeed, String aAppiconName, int downloadType, int appType) {
-                super.onAppSuccess(tag, fileLength, downloaded, savePath, filenNme, aSpeed, aAppiconName, downloadType, appType);
-                if (!downloadPdf && tag != null && tag.contains(tagUuid)) {
-                    // 发送广播通知Activity
-                    Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
-                    if (FileUtils.getFileSHA1(apkFileFullPath).equals(sha1)) {
-                        sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, 100);
+            //获取下载管理器
+            DownloadManager downloadManager= (DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE);
+            //将下载任务加入下载队列，否则不会进行下载
+            long mTaskId  = downloadManager.enqueue(request);
+            // 发送广播通知Activity
+            Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
+            sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_TASK_ID_KEY, mTaskId);
+            getApplicationContext().sendBroadcast(sendIntent);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            //设置点击栏目知想打开的页面
+            RxConstants.CLASSNAME = "MainMeAppActivity";
+
+            final RxDownloadManager manager = RxDownloadManager.getInstance();
+            manager.init(mContext, new DownloadAdapter());
+            manager.setContext(mContext);
+            manager.setListener(new DLDownloadListener(mContext));
+            DLNormalCallback normalCallback = new DLNormalCallback() {
+                @Override
+                public void onDownloading(String key, long filelength, long downloaded, long speed, String filename, int downloadType) {
+                    super.onDownloading(key, filelength, downloaded, speed, filename, downloadType);
+                    // 只有本文件下载的时候才广播
+                    if (key.contains(tagUuid)) {
+                        preProgress = (int) (downloaded * 100 / filelength);
+                        // 发送广播通知Activity
+                        Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
+                        sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, preProgress);
                         getApplicationContext().sendBroadcast(sendIntent);
-                        File apkFile = new File(apkFileFullPath);
-                        installApk(mContext, apkFile);
-                    } else {
-                        sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, -3);
+                    }
+                    if (downloadPdf) {
+                        preProgress = (int) (downloaded * 100 / filelength);
+                        // 发送广播通知Activity
+                        Intent sendIntent = new Intent(MainMeAboutBrowserActivity.SERVICE_PDF_DOWNLOAD_RECEIVER);
+                        sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, preProgress);
                         getApplicationContext().sendBroadcast(sendIntent);
                     }
                 }
-            }
 
-            @Override
-            public void onFail(String tag, long downloaded, String aFilepath, String aFilename, String aErrinfo) {
-                super.onFail(tag, downloaded, aFilepath, aFilename, aErrinfo);
-                if (tag != null && tag.contains(tagUuid)) {
-                    // 发送广播通知Activity
-                    Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
-                    sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, -1);
-                    getApplicationContext().sendBroadcast(sendIntent);
-                }else if (downloadPdf){
-                    // 发送广播通知Activity
-                    Intent sendIntent = new Intent(MainMeAboutBrowserActivity.SERVICE_PDF_DOWNLOAD_RECEIVER);
-                    sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, -1);
-                    getApplicationContext().sendBroadcast(sendIntent);
+                @Override
+                public void onAppSuccess(String tag, long fileLength, long downloaded, String savePath, String filenNme, long aSpeed, String aAppiconName, int downloadType, int appType) {
+                    super.onAppSuccess(tag, fileLength, downloaded, savePath, filenNme, aSpeed, aAppiconName, downloadType, appType);
+                    if (!downloadPdf && tag != null && tag.contains(tagUuid)) {
+                        // 发送广播通知Activity
+                        Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
+                        if (FileUtils.getFileSHA1(apkFileFullPath).equals(sha1)) {
+                            sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, 100);
+                            getApplicationContext().sendBroadcast(sendIntent);
+                            File apkFile = new File(apkFileFullPath);
+                            installApk(mContext, apkFile);
+                        } else {
+                            sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, -3);
+                            getApplicationContext().sendBroadcast(sendIntent);
+                        }
+                    }
                 }
 
-            }
-
-            @Override
-            public void onSuccess(String tag, long fileLength, long downloaded, String savePath, String filenNme, long aSpeed, String aAppiconName) {
-                super.onSuccess(tag, fileLength, downloaded, savePath, filenNme, aSpeed, aAppiconName);
-                if (!downloadPdf && tag != null && tag.contains(tagUuid)) {
-                    // 发送广播通知Activity
-                    Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
-                    if (FileUtils.getFileSHA1(apkFileFullPath).equals(sha1)) {
-                        sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, 100);
+                @Override
+                public void onFail(String tag, long downloaded, String aFilepath, String aFilename, String aErrinfo) {
+                    super.onFail(tag, downloaded, aFilepath, aFilename, aErrinfo);
+                    if (tag != null && tag.contains(tagUuid)) {
+                        // 发送广播通知Activity
+                        Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
+                        sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, -1);
                         getApplicationContext().sendBroadcast(sendIntent);
-                        File apkFile = new File(apkFileFullPath);
-                        installApk(mContext, apkFile);
+                    } else if (downloadPdf) {
+                        // 发送广播通知Activity
+                        Intent sendIntent = new Intent(MainMeAboutBrowserActivity.SERVICE_PDF_DOWNLOAD_RECEIVER);
+                        sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, -1);
+                        getApplicationContext().sendBroadcast(sendIntent);
                     } else {
-                        sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, -3);
+                        try {
+                            // 发送广播通知Activity
+                            Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
+                            sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, -1);
+                            getApplicationContext().sendBroadcast(sendIntent);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                }
+
+                @Override
+                public void onSuccess(String tag, long fileLength, long downloaded, String savePath, String filenNme, long aSpeed, String aAppiconName) {
+                    super.onSuccess(tag, fileLength, downloaded, savePath, filenNme, aSpeed, aAppiconName);
+                    if (!downloadPdf && tag != null && tag.contains(tagUuid)) {
+                        // 发送广播通知Activity
+                        Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
+                        if (FileUtils.getFileSHA1(apkFileFullPath).equals(sha1)) {
+                            sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, 100);
+                            getApplicationContext().sendBroadcast(sendIntent);
+                            File apkFile = new File(apkFileFullPath);
+                            installApk(mContext, apkFile);
+                        } else {
+                            sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, -3);
+                            getApplicationContext().sendBroadcast(sendIntent);
+                        }
+                    } else if (downloadPdf) {
+                        // 发送广播通知Activity
+                        Intent sendIntent = new Intent(MainMeAboutBrowserActivity.SERVICE_PDF_DOWNLOAD_RECEIVER);
+                        sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, 100);
+                        sendIntent.putExtra(KEY_TARGET_DIR, destFileDir);
                         getApplicationContext().sendBroadcast(sendIntent);
                     }
-                }else if (downloadPdf){
-                    // 发送广播通知Activity
-                    Intent sendIntent = new Intent(MainMeAboutBrowserActivity.SERVICE_PDF_DOWNLOAD_RECEIVER);
-                    sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, 100);
-                    sendIntent.putExtra(KEY_TARGET_DIR, destFileDir);
-                    getApplicationContext().sendBroadcast(sendIntent);
                 }
+            };
+            if (manager.getClient() != null) {
+                manager.getClient().setCallback(normalCallback);
             }
-        };
-        if (manager.getClient() != null) {
-            manager.getClient().setCallback(normalCallback);
+            RxDownLoadCenter.getInstance(mContext).loadTask();
+
+            // 如果存在文件删除
+            FileUtils.deleteFile(apkFileFullPath);
+
+            /**
+             * 下载文件
+             */
+
+            new Download.Builder()
+                    .url(downloadUrl)
+                    .priority(Priority.HIGH)
+                    .savepath(destFileDir)
+                    .isImplicit(false) // 是否显示UI
+                    .channel(3000)
+                    .tag(tagUuid)
+                    .client(DLClientFactory.createClient(NORMAL, this))
+                    //  .setCallback(idlCallback)
+                    .build(this)
+                    .start();
         }
-        RxDownLoadCenter.getInstance(mContext).loadTask();
-
-        // 如果存在文件删除
-        FileUtils.deleteFile(apkFileFullPath);
-
-        /**
-         * 下载文件
-         */
-
-        new Download.Builder()
-                .url(downloadUrl)
-                .priority(Priority.HIGH)
-                .savepath(destFileDir)
-                .isImplicit(false) // 是否显示UI
-                .channel(3000)
-                .tag(tagUuid)
-                .client(DLClientFactory.createClient(NORMAL, this))
-                //  .setCallback(idlCallback)
-                .build(this)
-                .start();
     }
     /**
      * 安装软件

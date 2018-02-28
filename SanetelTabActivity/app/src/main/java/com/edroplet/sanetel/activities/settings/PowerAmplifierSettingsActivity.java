@@ -2,8 +2,6 @@ package com.edroplet.sanetel.activities.settings;
 
 import android.content.pm.ActivityInfo;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +23,6 @@ import com.edroplet.sanetel.fragments.settings.SettingsFragmentAmplifierInterfer
 import com.edroplet.sanetel.fragments.settings.SettingsFragmentAmplifierEmit;
 import com.edroplet.sanetel.utils.ImageUtil;
 import com.edroplet.sanetel.view.BottomNavigationViewEx;
-import com.edroplet.sanetel.view.custom.CustomFAB;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -97,7 +94,7 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
                 startPosition = COUNT - 1;
             }
         }
-        bottomNavigationView.setItemHeight(ImageUtil.dip2px(this, 40));
+        bottomNavigationView.setItemHeight(80);
         bottomNavigationView.enableAnimation(false);
         bottomNavigationView.enableItemShiftingMode(false);
         bottomNavigationView.enableShiftingMode(false);
@@ -105,7 +102,7 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
         bottomNavigationView.setIconSize(0,0);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                new BottomNavigationViewEx.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         // fab.setVisibility(View.INVISIBLE);
@@ -157,16 +154,6 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
         return this;
     }
 
-    public PowerAmplifierSettingsActivity setupFab(){
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(PowerAmplifierSettingsActivity.this, SettingsPowerAmplifierEmitHelpActivity.class));
-//            }
-//        });
-        return this;
-    }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -183,28 +170,6 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-
-    /**
-     * @description: 设置添加Tab
-     */
-    private void setTabs(TabLayout tabLayout, LayoutInflater inflater, int[] tabTitlees, int[] tabImgs){
-        int count = tabImgs.length;
-        if (count > tabTitlees.length){
-            count = tabTitlees.length;
-        }
-        for (int i = 0; i < count; i++) {
-            TabLayout.Tab tab = tabLayout.newTab();
-            View view = inflater.inflate(R.layout.settings_power_amplifier_tab_custom,null);
-            tab.setCustomView(view);
-
-            TextView tvTitle = view.findViewById(R.id.tv_tab);
-            tvTitle.setText(tabTitlees[i]);
-            ImageView imgTab = view.findViewById(R.id.img_tab);
-            imgTab.setImageResource(tabImgs[i]);
-            tabLayout.addTab(tab);
-        }
     }
 
     /**

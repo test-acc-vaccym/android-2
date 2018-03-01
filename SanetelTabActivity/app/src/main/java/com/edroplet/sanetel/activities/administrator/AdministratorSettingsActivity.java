@@ -81,7 +81,22 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
                 finish();
             }
         });
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                toolbar.setTitle(TITLE[position]);
+            }
 
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         //禁止ViewPager滑动
         viewPager.setScanScroll(false);
 

@@ -43,12 +43,11 @@ public class AdministratorFragmentNetworkProtocolSettings extends BroadcastRecei
     @BindView(R.id.administrator_setting_network_protocol_radio_group)
     CustomRadioGroupWithCustomRadioButton networkProtocolGroup;
 
-    SparseIntArray mapNetworkProtocol = new SparseIntArray(7);
+    SparseIntArray mapNetworkProtocol = new SparseIntArray(6);
     int [] networkProtocolIds = {R.id.administrator_setting_network_protocol_1,R.id.administrator_setting_network_protocol_2,
             R.id.administrator_setting_network_protocol_3,R.id.administrator_setting_network_protocol_4,
-            R.id.administrator_setting_network_protocol_5,R.id.administrator_setting_network_protocol_6,
-            R.id.administrator_setting_network_protocol_7};
-    String [] positionVal = {"40","49","41","42","43","44","45"};
+            R.id.administrator_setting_network_protocol_5,R.id.administrator_setting_network_protocol_6};
+    String [] positionVal = {"40","41","42","43","44","45"};
     public static AdministratorFragmentNetworkProtocolSettings newInstance(
             boolean showFirst, String firstLine, boolean showSecond,
             String secondLine, boolean showThird, String thirdLineStart,

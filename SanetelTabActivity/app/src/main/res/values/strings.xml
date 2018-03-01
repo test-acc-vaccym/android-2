@@ -754,12 +754,11 @@
     <string name="administrator_setting_network_protocol_title">网络设置</string>
     <string name="administrator_setting_network_protocol">应用协议</string>
     <string name="administrator_setting_network_protocol_1">运行模式</string>
-    <string name="administrator_setting_network_protocol_2">调试模式</string>
-    <string name="administrator_setting_network_protocol_3">转发GNSS报文</string>
-    <string name="administrator_setting_network_protocol_4">转发信标机报文</string>
-    <string name="administrator_setting_network_protocol_5">转发倾角计报文</string>
-    <string name="administrator_setting_network_protocol_6">转发功放报文</string>
-    <string name="administrator_setting_network_protocol_7">转发手持机报文</string>
+    <string name="administrator_setting_network_protocol_2">转发GNSS报文</string>
+    <string name="administrator_setting_network_protocol_3">转发信标机报文</string>
+    <string name="administrator_setting_network_protocol_4">转发倾角计报文</string>
+    <string name="administrator_setting_network_protocol_5">转发功放报文</string>
+    <string name="administrator_setting_network_protocol_6">转发手持机报文</string>
 
     <!--10.5.12.	串口设置-->
     <string name="administrator_setting_serial_protocol_title">串口设置</string>

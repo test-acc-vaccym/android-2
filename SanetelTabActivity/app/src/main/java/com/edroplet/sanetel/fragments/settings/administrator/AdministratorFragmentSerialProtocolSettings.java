@@ -45,6 +45,10 @@ public class AdministratorFragmentSerialProtocolSettings extends BroadcastReceiv
     SparseIntArray mapSerialProtocol = new SparseIntArray(7);
     Unbinder unbinder;
 
+    int [] serialProtocolIds = {R.id.administrator_setting_serial_protocol_1,R.id.administrator_setting_serial_protocol_2,
+            R.id.administrator_setting_serial_protocol_3,R.id.administrator_setting_serial_protocol_4,
+            R.id.administrator_setting_serial_protocol_5,R.id.administrator_setting_serial_protocol_6};
+
     public static AdministratorFragmentSerialProtocolSettings newInstance(
             boolean showFirst, String firstLine, boolean showSecond,
             String secondLine, boolean showThird, String thirdLineStart,
@@ -81,12 +85,10 @@ public class AdministratorFragmentSerialProtocolSettings extends BroadcastReceiv
         }
         unbinder = ButterKnife.bind(this,view);
 
-        mapSerialProtocol.put(0,R.id.administrator_setting_serial_protocol_1);
-        mapSerialProtocol.put(1,R.id.administrator_setting_serial_protocol_2);
-        mapSerialProtocol.put(2,R.id.administrator_setting_serial_protocol_3);
-        mapSerialProtocol.put(3,R.id.administrator_setting_serial_protocol_4);
-        mapSerialProtocol.put(4,R.id.administrator_setting_serial_protocol_5);
-        mapSerialProtocol.put(5,R.id.administrator_setting_serial_protocol_6);
+        int i = 0;
+        for (int id: serialProtocolIds){
+            mapSerialProtocol.put(i++, id);
+        }
 
         int type = CustomSP.getInt(getContext(),SerialProtocolKey,0);
         if (type >= mapSerialProtocol.size()){
@@ -100,14 +102,11 @@ public class AdministratorFragmentSerialProtocolSettings extends BroadcastReceiv
                 int pos = mapSerialProtocol.indexOfValue(serialProtocolGroup.getCheckedRadioButtonId());
                 // send command
                 // 5.9.2	设置 发送指令格式：$cmd,set com userid,模式*ff<CR><LF>
-                String val = String.valueOf(pos);
                 if (pos == -1){
                     pos = 0;
-                    val = "0";
                 }
                 CustomSP.putInt(getContext(), SerialProtocolKey, pos);
-
-                Protocol.sendMessage(getContext(),String.format(Protocol.cmdSetComUserid,val));
+                Protocol.sendMessage(getContext(),String.format(Protocol.cmdSetComUserid,String.valueOf(pos)));
                 getActivity().finish();
             }
         });

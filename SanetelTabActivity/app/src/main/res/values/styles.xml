@@ -167,6 +167,16 @@
         <item name="android:lineSpacingMultiplier">@dimen/line_spacing_multiplier</item>
     </style>
 
+    <style name="advice_horizontal_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:lineSpacingMultiplier">@dimen/line_spacing_multiplier</item>
+    </style>
+
     <style name="pop_text_horizontal_style" parent="Base.TextAppearance.AppCompat.Small">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>

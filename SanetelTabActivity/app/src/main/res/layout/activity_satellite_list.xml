@@ -111,7 +111,7 @@
                 android:padding="@dimen/no_padding"
                 android:text="@string/satellite_symbol_rate_key"
                 android:textSize="@dimen/list_item_text_size"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"/-->
 
             <com.edroplet.sanetel.view.custom.CustomButton
                 android:id="@+id/satellite_select_button"
@@ -124,7 +124,7 @@
                 android:visibility="gone"
                 android:padding="@dimen/no_padding"
                 android:textSize="@dimen/list_item_text_size"
-                android:textAppearance="?android:attr/textAppearanceMedium"/-->
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
         </LinearLayout>
         <!--/HorizontalScrollView-->
     </android.support.design.widget.AppBarLayout>

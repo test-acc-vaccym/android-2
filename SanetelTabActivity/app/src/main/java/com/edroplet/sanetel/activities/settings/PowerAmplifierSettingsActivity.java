@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.fragments.settings.SettingsFragmentAmplifierInterfere;
 import com.edroplet.sanetel.fragments.settings.SettingsFragmentAmplifierEmit;
+import com.edroplet.sanetel.utils.FileUtils;
+import com.edroplet.sanetel.utils.ImageUtil;
 import com.edroplet.sanetel.view.BottomNavigationViewEx;
 
 import butterknife.BindView;
@@ -91,7 +93,7 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
                 startPosition = COUNT - 1;
             }
         }
-        bottomNavigationView.setItemHeight(80);
+        bottomNavigationView.setItemHeight(ImageUtil.dip2px(PowerAmplifierSettingsActivity.this,40));
         bottomNavigationView.enableAnimation(false);
         bottomNavigationView.enableItemShiftingMode(false);
         bottomNavigationView.enableShiftingMode(false);

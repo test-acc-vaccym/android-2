@@ -45,6 +45,7 @@
 
         <com.edroplet.sanetel.view.custom.CustomTextView
             style="@style/entire_page"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/functions_monitor_help_message"
             />
     </android.support.v4.widget.NestedScrollView>

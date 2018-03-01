@@ -21,7 +21,7 @@
             app:titleTextColor="@color/black"
             app:titleTextAppearance="?android:attr/textAppearanceLarge"
             app:navigationIcon="@drawable/back"
-            app:title="@string/main_settings_antenna_restart">
+            app:title="@string/administrator_antenna_restart">
             <!--app:layout_scrollFlags="scroll|enterAlways"-->
         </android.support.v7.widget.Toolbar>
 

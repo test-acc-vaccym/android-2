@@ -125,7 +125,7 @@
         <item name="android:paddingBottom">@dimen/spacing_medium</item>
     </style>
 
-    <style name="settings_linear_shadow" parent="linear_shadow">
+    <style name="settings_linear_shadow">
         <item name="android:paddingLeft">@dimen/layout_padding_left</item>
         <item name="android:paddingStart">@dimen/layout_padding_left</item>
     </style>

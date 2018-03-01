@@ -309,8 +309,8 @@
     <string name="main_settings_database">数据库</string>
     <string name="main_settings_database_city">城市库&#160;&#160;&#160;&#160;</string>
     <string name="main_settings_database_satellites">卫星库</string>
-    <string name="main_settings_advance">高级设置</string>
-    <string name="main_settings_administrator">管理员设置</string>
+    <string name="main_settings_advance">管理员</string>
+    <string name="main_settings_administrator">&#160;&#160;&#160;&#160;管理员设置</string>
 
     <!--8.	状态页面-->
     <!--环境信息-->

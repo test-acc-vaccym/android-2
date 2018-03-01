@@ -34,8 +34,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/layout_padding_left"
-                    android:paddingStart="@dimen/layout_padding_left"
                     style="@style/linear_shadow">
 
                     <com.edroplet.sanetel.view.custom.CustomButton
@@ -134,8 +132,8 @@
                 android:id="@+id/main_settings_administrator"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <!--com.edroplet.sanetel.view.custom.CustomTextView
+                android:orientation="vertical">
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/main_settings_advance"
@@ -145,8 +143,15 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:focusable="true"
-                    android:focusedByDefault="true"
-                    android:clickable="true"-->
+                    android:clickable="true"
+                    style="@style/settings_linear_shadow">
+                    <!--com.edroplet.sanetel.view.custom.CustomButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/settings"
+                        android:text="@string/main_settings_administrator"
+                        android:textColor="@color/button_text"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
                     <com.edroplet.sanetel.view.StatusButton
                         android:layout_height="@dimen/app_bar_height"
                         android:layout_width="@dimen/app_bar_height"
@@ -164,7 +169,7 @@
                         app:drawable_width="@dimen/operate_button_height"
                         app:state_color="operate"
                         android:focusable="false"
-                        android:clickable="false"/>
+                        android:clickable="false"/-->
                     <com.edroplet.sanetel.view.custom.CustomTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -174,7 +179,7 @@
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:focusable="false"
                         android:clickable="false"/>
-                <!--/LinearLayout-->
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

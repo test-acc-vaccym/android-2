@@ -95,9 +95,9 @@ public class SatelliteItemRecyclerViewAdapter  extends RecyclerView.Adapter<Sate
         holder.mNameView.setText(holder.mItem.name);
         holder.mPolarizationView.setText(holder.mItem.polarization);
         holder.mLongitudeView.setText(holder.mItem.longitude);
-        holder.mBeaconView.setText(holder.mItem.beacon);
+//        holder.mBeaconView.setText(holder.mItem.beacon);
         holder.mThresholdView.setText(holder.mItem.threshold);
-        holder.mSymbolRateView.setText(holder.mItem.symbolRate);
+//        holder.mSymbolRateView.setText(holder.mItem.symbolRate);
         // holder.mComentView.setText(holder.mItem.comment);
 
         //长按显示/隐藏
@@ -196,9 +196,9 @@ public class SatelliteItemRecyclerViewAdapter  extends RecyclerView.Adapter<Sate
         private final CustomTextView mNameView;
         private final CustomTextView mPolarizationView;
         private final CustomTextView mLongitudeView;
-        private final CustomTextView mBeaconView;
+//        private final CustomTextView mBeaconView;
         private final CustomTextView mThresholdView;
-        private final CustomTextView mSymbolRateView;
+//        private final CustomTextView mSymbolRateView;
         private CheckBox mCheckbox;
 
         // public final TextView mComentView;
@@ -215,12 +215,12 @@ public class SatelliteItemRecyclerViewAdapter  extends RecyclerView.Adapter<Sate
             assert mPolarizationView == null;
             mLongitudeView = view.findViewById(R.id.longitude);
             assert mLongitudeView == null;
-            mBeaconView = view.findViewById(R.id.beacon);
-            assert mBeaconView != null;
+//            mBeaconView = view.findViewById(R.id.beacon);
+//            assert mBeaconView != null;
             mThresholdView = view.findViewById(R.id.threshold);
             assert mThresholdView != null;
-            mSymbolRateView = view.findViewById(R.id.symbolRate);
-            assert mSymbolRateView != null;
+//            mSymbolRateView = view.findViewById(R.id.symbolRate);
+//            assert mSymbolRateView != null;
             mCheckbox = view.findViewById(R.id.satellite_select_checkbox);
             assert mCheckbox != null;
 

@@ -6,6 +6,6 @@
         android:title="@string/main_settings_amplifier_interfere" />
     <item
         android:id="@+id/settings_power_amplifier_bottom_navigation_emit"
-        android:icon="@drawable/notebook_ice_blue"
+        android:icon="@null"
         android:title="@string/main_settings_amplifier_emit" />
 </menu>

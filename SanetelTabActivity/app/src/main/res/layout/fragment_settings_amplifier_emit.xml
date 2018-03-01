@@ -6,7 +6,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/linear_shadow"
+        style="@style/linear_no_shadow_no_padding"
         android:layout_marginBottom="@dimen/app_bar_height">
         <!---com.edroplet.sanetel.view.custom.CustomTextView
             android:layout_width="match_parent"

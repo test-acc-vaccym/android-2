@@ -132,18 +132,22 @@
                 android:id="@+id/main_settings_administrator"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:focusable="true"
+                android:clickable="true">
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/main_settings_advance"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:focusable="false"
+                    android:clickable="false"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:focusable="true"
-                    android:clickable="true"
+                    android:focusable="false"
+                    android:clickable="false"
                     style="@style/settings_linear_shadow">
                     <!--com.edroplet.sanetel.view.custom.CustomButton
                         android:layout_width="match_parent"

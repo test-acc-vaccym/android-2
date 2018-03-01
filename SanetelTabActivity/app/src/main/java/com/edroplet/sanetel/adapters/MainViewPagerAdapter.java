@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Created by qxs on 2017/9/14.
+ * viewpager list fragment适配器
  */
 
 public class MainViewPagerAdapter extends FragmentPagerAdapter {

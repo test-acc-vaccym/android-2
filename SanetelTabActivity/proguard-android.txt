@@ -39,6 +39,7 @@
 
 #保护注解
 -keepattributes *Annotation
+-keepattributes SourceFile,LineNumberTable
 
 # 保持哪些类不被混淆
 

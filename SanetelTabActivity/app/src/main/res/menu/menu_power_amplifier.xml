@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/settings_power_amplifier_bottom_navigation_interfere"
-        android:icon="@null"
+        android:icon="@drawable/satellite_locked"
         android:title="@string/main_settings_amplifier_interfere" />
     <item
         android:id="@+id/settings_power_amplifier_bottom_navigation_emit"
-        android:icon="@null"
+        android:icon="@drawable/notebook_ice_blue"
         android:title="@string/main_settings_amplifier_emit" />
 </menu>

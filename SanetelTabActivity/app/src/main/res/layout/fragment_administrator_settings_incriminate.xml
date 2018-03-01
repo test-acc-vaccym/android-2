@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    style="@style/manual_divider">
+    style="@style/linear_no_shadow_no_padding">
 
     <com.edroplet.sanetel.view.custom.CustomTextView
         android:layout_width="match_parent"

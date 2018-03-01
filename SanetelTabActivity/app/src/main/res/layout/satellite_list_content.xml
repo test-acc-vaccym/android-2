@@ -21,7 +21,7 @@
         <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/name"
             android:layout_width="0dp"
-            android:layout_weight="1.8"
+            android:layout_weight="1.5"
             android:layout_height="match_parent"
             android:textSize="@dimen/list_item_text_size"
             android:padding="@dimen/no_padding"
@@ -55,32 +55,32 @@
             android:padding="@dimen/no_padding"
             android:textAppearance="?attr/textAppearanceListItem" />
     <!--信标-->
-        <com.edroplet.sanetel.view.custom.CustomTextView
+        <!--com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/beacon"
             android:layout_width="0dp"
             android:layout_weight="1.7"
             android:layout_height="match_parent"
             android:textSize="@dimen/list_item_text_size"
             android:padding="@dimen/no_padding"
-            android:textAppearance="?attr/textAppearanceListItem" />
+            android:textAppearance="?attr/textAppearanceListItem" /-->
     <!--载波-->
-        <com.edroplet.sanetel.view.custom.CustomTextView
+        <!--com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/carrier"
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="match_parent"
             android:textSize="@dimen/list_item_text_size"
             android:padding="@dimen/no_padding"
-            android:textAppearance="?attr/textAppearanceListItem" />
+            android:textAppearance="?attr/textAppearanceListItem" /-->
     <!--符号率-->
-        <com.edroplet.sanetel.view.custom.CustomTextView
+        <!--com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/symbolRate"
             android:layout_width="0dp"
             android:layout_weight="1.5"
             android:layout_height="match_parent"
             android:textSize="@dimen/list_item_text_size"
             android:padding="@dimen/no_padding"
-            android:textAppearance="?attr/textAppearanceListItem" />
+            android:textAppearance="?attr/textAppearanceListItem" /-->
     <!--全选-->
         <CheckBox
             android:layout_gravity="center_vertical"

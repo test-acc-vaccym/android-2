@@ -1,5 +1,6 @@
 package com.edroplet.sanetel.activities.main;
 
+import android.Manifest;
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -22,6 +23,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.edroplet.sanetel.BaseActivity;
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.beans.AppVersion;
 import com.edroplet.sanetel.services.DownLoadService;
@@ -59,7 +61,7 @@ import static com.edroplet.sanetel.activities.main.MainMeAboutBrowserActivity.Sa
  * APP版本
  */
 
-public class MainMeAppActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainMeAppActivity extends BaseActivity implements View.OnClickListener{
     public static final String SERVICE_DOWNLOAD_RECEIVER = "com.edroplet.download.receiver";
     public static final String DOWNLOAD_PROCESS_KEY = "DOWNLOAD_PROCESS_KEY";
     public static final String DOWNLOAD_TASK_ID_KEY = "DOWNLOAD_TASK_ID_KEY";
@@ -111,6 +113,9 @@ public class MainMeAppActivity extends AppCompatActivity implements View.OnClick
         ViewInject.inject(this,this);
         context = this;
         mContext = this;
+
+        getPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_me_app_toolbar);
         toolbar.setTitle(R.string.main_me_app_title);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

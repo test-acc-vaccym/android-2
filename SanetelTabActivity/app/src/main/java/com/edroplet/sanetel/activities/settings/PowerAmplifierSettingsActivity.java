@@ -10,18 +10,14 @@ import android.support.v7.widget.Toolbar;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.fragments.settings.SettingsFragmentAmplifierInterfere;
 import com.edroplet.sanetel.fragments.settings.SettingsFragmentAmplifierEmit;
-import com.edroplet.sanetel.utils.ImageUtil;
 import com.edroplet.sanetel.view.BottomNavigationViewEx;
 
 import butterknife.BindView;
@@ -76,11 +72,11 @@ public class PowerAmplifierSettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
-
         //  始终保持竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_power_amplifier);
+
+        ButterKnife.bind(this);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

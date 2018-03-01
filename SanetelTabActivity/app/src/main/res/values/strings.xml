@@ -322,14 +322,14 @@
     <!--通信状况-->
     <string name="main_status_communicate">通信状况</string>
     <string name="main_status_communicate_status_opening">正在通信</string>
-    <string name="main_status_communicate_status_close">断&#160;&#160;&#160;&#160;开</string>
+    <string name="main_status_communicate_status_close">断&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;开</string>
     <string name="main_status_communicate_internet">网络通信</string>
     <string name="main_status_communicate_handset">手&#160;&#160;持&#160;&#160;机</string>
-    <string name="main_status_communicate_bd">GNSS</string>
-    <string name="main_status_communicate_beacon">信标机</string>
-    <string name="main_status_communicate_clinometer">倾角计</string>
-    <string name="main_status_communicate_power">功放</string>
-    <string name="main_status_communicate_lnb">LNB</string>
+    <string name="main_status_communicate_bd">G&#160;&#160;N&#160;&#160;S&#160;&#160;S</string>
+    <string name="main_status_communicate_beacon">信&#160;&#160;标&#160;&#160;机</string>
+    <string name="main_status_communicate_clinometer">倾&#160;&#160;角&#160;&#160;计</string>
+    <string name="main_status_communicate_power">功&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;放</string>
+    <string name="main_status_communicate_lnb">L&#160;&#160;&#160;N&#160;&#160;&#160;B</string>
 
     <!--设备状况-->
     <string name="main_status_device">设备状况</string>
@@ -357,10 +357,10 @@
     <string name="main_status_running_azimuth_soft_high_limit">方位软件高限位</string>
     <string name="main_status_running_polar_soft_low_limit">极化软件低限位</string>
     <string name="main_status_running_polar_soft_high_limit">极化软件高限位</string>
-    <string name="main_status_running_limit_abnormal">限位</string>
-    <string name="main_status_running_limit_normal">正常</string>
+    <string name="main_status_running_limit_abnormal">限&#160;&#160;&#160;&#160;位</string>
+    <string name="main_status_running_limit_normal">正&#160;&#160;&#160;&#160;常</string>
     <string name="main_status_running_lock_abnormal">未锁紧</string>
-    <string name="main_status_running_lock_normal">锁紧</string>
+    <string name="main_status_running_lock_normal">锁&#160;&#160;&#160;&#160;紧</string>
     <string name="main_status_running_energy_abnormal">未节能</string>
     <string name="main_status_running_energy_normal">已节能</string>
 

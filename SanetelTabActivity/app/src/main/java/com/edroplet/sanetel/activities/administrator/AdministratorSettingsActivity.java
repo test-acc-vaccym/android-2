@@ -16,6 +16,7 @@ import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragme
 import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentAntennaIncriminate;
 import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentAntennaType;
 import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentBandSelect;
+import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentFactoryIncriminate;
 import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentIPSettings;
 import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentLNBOscillator;
 import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentNetworkProtocolSettings;
@@ -42,6 +43,7 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
     public static final int amplifierMonitorPosition = 10;
     public static final int amplifierFactoryPosition = 11;
     public static final int amplifierOscillatorPosition = 12;
+    public static final int factoryIncriminatePosition = 13;
 
     private static final @IdRes int[] TITLE = {R.string.administrator_antenna_incriminate,
             R.string.administrator_recovery_factory,R.string.administrator_antenna_type,
@@ -49,7 +51,8 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
             R.string.administrator_network_protocol, R.string.administrator_serial_protocol,
             R.string.administrator_band_select, R.string.main_settings_lnb_oscillator,
             R.string.administrator_searching_range, R.string.administrator_amplifier_monitor,
-            R.string.main_settings_amplifier_factory,R.string.main_settings_amplifier_oscillator};
+            R.string.main_settings_amplifier_factory,R.string.main_settings_amplifier_oscillator,
+            R.string.administrator_factory_incriminate};
 
     @BindId(R.id.id_administrator_settings_viewpager)
     private CustomViewPager viewPager;
@@ -152,6 +155,9 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
         adapter.addFragment(AdministratorFragmentAmplifierManufacturer.newInstance());
         // 功放本振
         adapter.addFragment(AdministratorFragmentAmplifierOscillator.newInstance());
+        adapter.addFragment(AdministratorFragmentFactoryIncriminate.newInstance(false,null,
+                false, null, true, getString(R.string.follow_me_message_click),-1,
+                getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
 
         viewPager.setAdapter(adapter);
         COUNT = adapter.getCount();

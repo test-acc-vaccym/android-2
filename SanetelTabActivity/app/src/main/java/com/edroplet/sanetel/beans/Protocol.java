@@ -322,6 +322,20 @@ public class Protocol {
     private static final String cmdSetCalibAntResultHead="$cmd,start calib ant";
     public static final String cmdSetCalibAntResult=cmdSetCalibAntResultHead+"*ff\r\n";
 
+    // 5.3	出厂标定
+    // 5.3.1	读取
+    // 终端设备发送指令格式：$cmd,get calib ant*ff\r\n
+    //     便携站返回数据：$cmd,calib ant data,方位,俯仰,备用，极化, 俯仰偏移量*ff\r\n
+    public static final String cmdGetFactoryCalibAnt="$cmd,get factory calib ant*ff\r\n";
+    public static final String cmdGetFactoryCalibAntResultHead="$cmd,factory calib ant data,";
+    public static final String cmdGetFactoryCalibAntResult=cmdGetFactoryCalibAntResultHead+"%s,%s,%s,%s,%s*ff\r\n";
+    // 5.2.2	设置
+    // 终端设备发送指令格式：$cmd,set calib ant,方位,俯仰，备用，极化*ff\r\n
+    // 便携站返回数据：$cmd,start calib ant*ff\r\n
+    public static final String cmdSetFactoryCalibAnt="$cmd,set factory calib ant,%s,%s,%s,%s*ff\r\n";
+    private static final String cmdSetFactoryCalibAntResultHead="$cmd,start factory calib ant";
+    public static final String cmdSetFactoryCalibAntResult=cmdSetFactoryCalibAntResultHead+"*ff\r\n";
+
     // 5.3	展开位置角度
     // 5.3.1	读取
     // 终端设备发送指令格式：$cmd,get lift *ff\r\n

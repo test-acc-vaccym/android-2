@@ -136,6 +136,9 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
             case R.id.administrator_amplifier_monitor:
                 intent.putExtra(AdministratorSettingsPosition, AdministratorSettingsActivity.amplifierMonitorPosition);
                 break;
+            case R.id.administrator_factory_incriminate:
+                intent.putExtra(AdministratorSettingsPosition, AdministratorSettingsActivity.factoryIncriminatePosition);
+                break;
             default:
                 break;
         }

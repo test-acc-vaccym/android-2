@@ -306,7 +306,6 @@
     <string name="main_settings_lnb">LNB</string>
     <string name="main_settings_lnb_oscillator">LNB本振</string>
     <string name="main_settings_antenna">天线</string>
-    <string name="main_settings_antenna_restart">天线重启</string>
     <string name="main_settings_database">数据库</string>
     <string name="main_settings_database_city">城市库&#160;&#160;&#160;&#160;</string>
     <string name="main_settings_database_satellites">卫星库</string>
@@ -694,7 +693,9 @@
     <!--管理员选项-->
     <string name="administrator_selection">管理员选项</string>
     <string name="administrator_antenna_incriminate">天线标定</string>
+    <string name="administrator_factory_incriminate">出厂标定</string>
     <string name="administrator_recovery_factory">恢复出厂</string>
+    <string name="administrator_antenna_restart">天线重启</string>
     <string name="administrator_antenna_type">天线类型</string>
     <string name="administrator_wifi_name">WIFI名称</string>
     <string name="administrator_ip_settings">IP设置</string>
@@ -707,6 +708,7 @@
     <string name="administrator_amplifier_monitor_headline">监控方式</string>
     <!--天线标定-->
     <string name="administrator_antenna_incriminate_headline">标定天线</string>
+    <string name="administrator_factory_incriminate_headline">出厂标定值</string>
     <!--恢复出厂-->
     <string name="administrator_setting_recovery_factory_title">恢复出厂</string>
     <string name="administrator_setting_recovery_factory_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当希望掉电存储信息恢复到设备出厂前的状态，可以采用此功能。\n

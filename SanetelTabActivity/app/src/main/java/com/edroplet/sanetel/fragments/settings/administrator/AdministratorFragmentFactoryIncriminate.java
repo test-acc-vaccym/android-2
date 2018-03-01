@@ -40,11 +40,11 @@ public class AdministratorFragmentFactoryIncriminate extends BroadcastReceiverFr
     @BindView(R.id.pop_dialog_third_button)
     CustomButton thirdButton;
 
-    @BindView(R.id.administrator_antenna_incriminate_tv_azimuth)
+    @BindView(R.id.administrator_factory_incriminate_tv_azimuth)
     CustomEditText factoryIncriminateAzimuth;
-    @BindView(R.id.administrator_antenna_incriminate_tv_pitch)
+    @BindView(R.id.administrator_factory_incriminate_tv_pitch)
     CustomEditText factoryIncriminatePitch;
-    @BindView(R.id.administrator_antenna_incriminate_polarization)
+    @BindView(R.id.administrator_factory_incriminate_polarization)
     CustomEditText factoryIncriminatePolarization;
 
     Unbinder unbinder;

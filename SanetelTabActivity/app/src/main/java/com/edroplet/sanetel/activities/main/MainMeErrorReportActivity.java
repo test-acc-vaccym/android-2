@@ -1,5 +1,6 @@
 package com.edroplet.sanetel.activities.main;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.edroplet.sanetel.BaseActivity;
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.activities.functions.FunctionsCollectHistoryFileListActivity;
 import com.edroplet.sanetel.utils.ConvertUtil;
@@ -44,9 +46,10 @@ import static com.yongchun.library.view.ImageSelectorActivity.REQUEST_OUTPUT;
 
 /**
  * Created by qxs on 2017/9/19.
+ * 故障报告
  */
 
-public class MainMeErrorReportActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainMeErrorReportActivity extends BaseActivity implements View.OnClickListener{
     private int REQUESTFileChooserActivity = 1000;
     private int REQUEST_HISTORY_FILES = 1001;
     ArrayList<String> selectedImages;
@@ -135,6 +138,9 @@ public class MainMeErrorReportActivity extends AppCompatActivity implements View
         setContentView(R.layout.activity_main_me_error_report);
 
         ViewInject.inject(this, this);
+
+        getPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
+
         context = this;
         schedule = getResources().getInteger(R.integer.save_data_schedule_timer);
 

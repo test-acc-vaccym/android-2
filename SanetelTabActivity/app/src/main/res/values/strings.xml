@@ -763,13 +763,12 @@
 
     <!--10.5.12.	串口设置-->
     <string name="administrator_setting_serial_protocol_title">串口设置</string>
-    <string name="administrator_setting_serial_protocol_1">运行模式</string>
-    <string name="administrator_setting_serial_protocol_2">调试模式</string>
-    <string name="administrator_setting_serial_protocol_3">转发COM2 GNSS报文</string>
-    <string name="administrator_setting_serial_protocol_4">转发COM3 信标机报文</string>
-    <string name="administrator_setting_serial_protocol_5">转发COM4 倾角计报文</string>
-    <string name="administrator_setting_serial_protocol_6">转发COM5 网络报文</string>
-    <string name="administrator_setting_serial_protocol_7">转发COM6 功放监控报文</string>
+    <string name="administrator_setting_serial_protocol_1">手持机模式</string>
+    <string name="administrator_setting_serial_protocol_2">转发COM2 GNSS报文</string>
+    <string name="administrator_setting_serial_protocol_3">转发COM3 信标机报文</string>
+    <string name="administrator_setting_serial_protocol_4">转发COM4 倾角计报文</string>
+    <string name="administrator_setting_serial_protocol_5">转发COM5 网络报文</string>
+    <string name="administrator_setting_serial_protocol_6">转发COM6 功放监控报文</string>
     <string name="ip_edit_dot">.</string>
 
     <!--功放监控-->
@@ -817,5 +816,8 @@
     <string name="satellite_polarization_vertical">垂直</string>
     <string name="satellite_polarization_left_hand">左旋</string>
     <string name="satellite_polarization_right_hand">右旋</string>
+
+    <string name="permission_description_title">请求访问权限</string>
+    <string name="permission_description_reason">没有权限将影响故障报告和建议功能</string>
 
 </resources>

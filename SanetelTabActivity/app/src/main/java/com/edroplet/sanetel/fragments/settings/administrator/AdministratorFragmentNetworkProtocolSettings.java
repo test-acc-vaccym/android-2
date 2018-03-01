@@ -19,6 +19,8 @@ import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomRadioButton;
 import com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton;
 
+import java.util.Arrays;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -46,7 +48,7 @@ public class AdministratorFragmentNetworkProtocolSettings extends BroadcastRecei
             R.id.administrator_setting_network_protocol_3,R.id.administrator_setting_network_protocol_4,
             R.id.administrator_setting_network_protocol_5,R.id.administrator_setting_network_protocol_6,
             R.id.administrator_setting_network_protocol_7};
-
+    String [] positionVal = {"40","49","41","42","43","44","45"};
     public static AdministratorFragmentNetworkProtocolSettings newInstance(
             boolean showFirst, String firstLine, boolean showSecond,
             String secondLine, boolean showThird, String thirdLineStart,
@@ -98,7 +100,7 @@ public class AdministratorFragmentNetworkProtocolSettings extends BroadcastRecei
                 CustomSP.putInt(getContext(), NetworkProtocolKey, pos);
                 // send command
                 // cmd,set net userid,端口号,协议
-                Protocol.sendMessage(getContext(),String.format(Protocol.cmdSetNetUserid, port, String.valueOf(40+pos)));
+                Protocol.sendMessage(getContext(),String.format(Protocol.cmdSetNetUserid, port, positionVal[pos]));
                 getActivity().finish();
             }
         });
@@ -142,10 +144,7 @@ public class AdministratorFragmentNetworkProtocolSettings extends BroadcastRecei
             port = "0";
         }
         networkProtocol = (String)o[1];
-        int pos = Integer.parseInt(networkProtocol) - 40;
-        if (pos < 0){
-            pos = 0;
-        }
+        int pos = Arrays.asList(positionVal).indexOf(networkProtocol);
         CustomSP.putInt(getContext(), NetworkProtocolKey, pos);
         networkProtocolGroup.check(mapNetworkProtocol.get(pos));
     }

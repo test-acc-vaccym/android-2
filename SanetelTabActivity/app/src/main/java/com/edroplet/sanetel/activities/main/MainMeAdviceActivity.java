@@ -1,14 +1,15 @@
 package com.edroplet.sanetel.activities.main;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.edroplet.sanetel.BaseActivity;
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.utils.ConvertUtil;
 import com.edroplet.sanetel.utils.CustomSP;
@@ -30,7 +31,7 @@ import butterknife.ButterKnife;
  * 建议UI
  */
 
-public class MainMeAdviceActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainMeAdviceActivity extends BaseActivity implements View.OnClickListener{
 //
 //    public static MainMeAdviceActivity newInstance(String info) {
 //        Bundle args = new Bundle();
@@ -67,6 +68,9 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
     @BindView(R.id.main_me_advice_email_customer)
     CustomEditText adviceCustomer;
 
+    @BindView(R.id.main_me_advice_toolbar)
+    Toolbar toolbar;
+
     private static final String KEY_ADVICE_EMAIL_RECEIVE = "KEY_ADVICE_EMAIL_RECEIVE";
     private static final String KEY_ADVICE_EMAIL_SEND = "KEY_ADVICE_EMAIL_SEND";
     private static final String KEY_ADVICE_NAME= "KEY_ADVICE_NAME";
@@ -88,10 +92,10 @@ public class MainMeAdviceActivity extends AppCompatActivity implements View.OnCl
 
         ButterKnife.bind(this);
 
+        getPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
         context = this;
         schedule = getResources().getInteger(R.integer.save_data_schedule_timer);
 
-        Toolbar toolbar = findViewById(R.id.main_me_advice_toolbar);
         toolbar.setTitle(R.string.main_me_advice_title);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

@@ -87,7 +87,6 @@ public class AdministratorFragmentSerialProtocolSettings extends BroadcastReceiv
         mapSerialProtocol.put(3,R.id.administrator_setting_serial_protocol_4);
         mapSerialProtocol.put(4,R.id.administrator_setting_serial_protocol_5);
         mapSerialProtocol.put(5,R.id.administrator_setting_serial_protocol_6);
-        mapSerialProtocol.put(6,R.id.administrator_setting_serial_protocol_7);
 
         int type = CustomSP.getInt(getContext(),SerialProtocolKey,0);
         if (type >= mapSerialProtocol.size()){
@@ -99,15 +98,12 @@ public class AdministratorFragmentSerialProtocolSettings extends BroadcastReceiv
             @Override
             public void onClick(View v) {
                 int pos = mapSerialProtocol.indexOfValue(serialProtocolGroup.getCheckedRadioButtonId());
-
                 // send command
                 // 5.9.2	设置 发送指令格式：$cmd,set com userid,模式*ff<CR><LF>
                 String val = String.valueOf(pos);
                 if (pos == -1){
                     pos = 0;
                     val = "0";
-                } if (pos == mapSerialProtocol.size() - 1){
-                    val = "9";
                 }
                 CustomSP.putInt(getContext(), SerialProtocolKey, pos);
 

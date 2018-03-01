@@ -26,7 +26,7 @@
                     android:paddingStart="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"
                     android:paddingEnd="@dimen/activity_horizontal_margin"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
             </LinearLayout>
             <include layout="@layout/pop_dialog_blue"
                 android:layout_width="match_parent"

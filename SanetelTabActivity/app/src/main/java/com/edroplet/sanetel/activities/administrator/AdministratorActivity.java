@@ -65,7 +65,7 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
 
         ViewInject.inject(this,this);
 
-        findViewById(R.id.administrator_antenna_restart).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.main_settings_antenna_restart).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(AdministratorActivity.this, AntennaRestartActivity.class));

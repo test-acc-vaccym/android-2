@@ -1,8 +1,6 @@
 package com.edroplet.sanetel.adapters.recycler;
 
 import android.app.Activity;
-import android.app.SearchableInfo;
-import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +8,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.edroplet.sanetel.R;
@@ -18,11 +15,9 @@ import com.edroplet.sanetel.beans.SatelliteInfo;
 import com.edroplet.sanetel.view.custom.CustomTextView;
 import com.edroplet.sanetel.view.custom.list.ListHScrollView;
 
-import java.util.List;
-
 /**
  * Created by qxs on 2017/11/9.
- * 通用子条目hodler
+ * 通用子条目holder
  */
 
 public class ItemViewHolder  extends BaseHolder<SatelliteInfo>  {
@@ -30,9 +25,9 @@ public class ItemViewHolder  extends BaseHolder<SatelliteInfo>  {
     private final CustomTextView mNameView;
     private final CustomTextView mPolarizationView;
     private final CustomTextView mLongitudeView;
-    private final CustomTextView mBeaconView;
+//    private final CustomTextView mBeaconView;
     private final CustomTextView mThresholdView;
-    private final CustomTextView mSymbolRateView;
+//    private final CustomTextView mSymbolRateView;
     private CheckBox mCheckbox;
 
     // public final TextView mComentView;
@@ -66,12 +61,12 @@ public class ItemViewHolder  extends BaseHolder<SatelliteInfo>  {
         assert mPolarizationView == null;
         mLongitudeView = itemView.findViewById(R.id.longitude);
         assert mLongitudeView == null;
-        mBeaconView = itemView.findViewById(R.id.beacon);
-        assert mBeaconView != null;
+//        mBeaconView = itemView.findViewById(R.id.beacon);
+//        assert mBeaconView != null;
         mThresholdView = itemView.findViewById(R.id.threshold);
         assert mThresholdView != null;
-        mSymbolRateView = itemView.findViewById(R.id.symbolRate);
-        assert mSymbolRateView != null;
+//        mSymbolRateView = itemView.findViewById(R.id.symbolRate);
+//        assert mSymbolRateView != null;
         mCheckbox = itemView.findViewById(R.id.satellite_select_checkbox);
         assert mCheckbox != null;
         // scrollView = itemView.findViewById(R.id.satelliteListHorizontalScrollView);
@@ -107,9 +102,9 @@ public class ItemViewHolder  extends BaseHolder<SatelliteInfo>  {
         mNameView.setText(mItem.name);
         mPolarizationView.setText(mItem.polarization);
         mLongitudeView.setText(mItem.longitude);
-        mBeaconView.setText(mItem.beacon);
+//        mBeaconView.setText(mItem.beacon);
         mThresholdView.setText(mItem.threshold);
-        mSymbolRateView.setText(mItem.symbolRate);
+//        mSymbolRateView.setText(mItem.symbolRate);
         // mComentView.setText(mItem.comment);
 
         //长按显示/隐藏

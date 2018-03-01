@@ -17,7 +17,7 @@
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/administrator_serial_protocol"
+                    android:text="@string/administrator_setting_serial_protocol_headline"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingStart="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"

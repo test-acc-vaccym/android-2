@@ -764,6 +764,7 @@
 
     <!--10.5.12.	串口设置-->
     <string name="administrator_setting_serial_protocol_title">串口设置</string>
+    <string name="administrator_setting_serial_protocol_headline">应用协议</string>
     <string name="administrator_setting_serial_protocol_1">手持机模式</string>
     <string name="administrator_setting_serial_protocol_2">转发COM2 GNSS报文</string>
     <string name="administrator_setting_serial_protocol_3">转发COM3 信标机报文</string>

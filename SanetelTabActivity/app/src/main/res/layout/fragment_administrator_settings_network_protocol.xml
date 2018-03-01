@@ -42,6 +42,12 @@
                         android:text="@string/administrator_setting_network_protocol_1"
                         android:textAppearance="?android:attr/textAppearanceSmall"/>
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
+                        android:id="@+id/administrator_setting_network_protocol_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/administrator_setting_network_protocol_2"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
+                    <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:id="@+id/administrator_setting_network_protocol_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

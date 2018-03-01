@@ -24,9 +24,11 @@ import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragme
 import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentSearchingRange;
 import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentSerialProtocolSettings;
 import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentWifiSettings;
-import com.edroplet.sanetel.view.ViewInject;
-import com.edroplet.sanetel.view.annotation.BindId;
+
 import com.edroplet.sanetel.view.custom.CustomViewPager;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class AdministratorSettingsActivity extends AppCompatActivity {
     public static final String AdministratorSettingsPosition = "position";
@@ -54,17 +56,15 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
             R.string.main_settings_amplifier_factory,R.string.main_settings_amplifier_oscillator,
             R.string.administrator_factory_incriminate};
 
-    @BindId(R.id.id_administrator_settings_viewpager)
-    private CustomViewPager viewPager;
+    @BindView(R.id.id_administrator_settings_viewpager)
+    CustomViewPager viewPager;
 
     private MenuItem menuItem;
 
-    @BindId(R.id.id_administrator_settings_toolbar)
-    private Toolbar toolbar;
-
+    @BindView(R.id.id_administrator_settings_toolbar)
+    Toolbar toolbar;
 
     private int startPosition;
-
 
     private int COUNT = 0;
 
@@ -73,7 +73,7 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administrator_settings);
 
-        ViewInject.inject(this, this);
+        ButterKnife.bind(this);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,26 +81,11 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
                 finish();
             }
         });
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                toolbar.setTitle(TITLE[position]);
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        });
-
 
         //禁止ViewPager滑动
         viewPager.setScanScroll(false);
 
-        setupViewPager(viewPager);
+        viewPager.setAdapter(setupAdapter());
 
         if(savedInstanceState == null){
 
@@ -114,53 +99,64 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
         viewPager.setCurrentItem(startPosition);
     }
 
-    private void setupViewPager(ViewPager viewPager) {
+    private MainViewPagerAdapter setupAdapter() {
         MainViewPagerAdapter adapter = new MainViewPagerAdapter(getSupportFragmentManager());
-        // 天线标定
+        // 0 天线标定
         adapter.addFragment(AdministratorFragmentAntennaIncriminate.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
+        // 1 恢复出厂
         adapter.addFragment(AdministratorFragmentRecoveryFactory.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.administrator_setting_recovery_factory_third_button), getString(R.string.settings_to_be_working)));
+        // 2 天线类型
         adapter.addFragment(AdministratorFragmentAntennaType.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
+        // 3 WiFi设置
         adapter.addFragment(AdministratorFragmentWifiSettings.newInstance(false,null,
                 true, getString(R.string.administrator_setting_wifi_name_second_line),
                 true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
+        // 4 ip设置
         adapter.addFragment(AdministratorFragmentIPSettings.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
+        // 5 网口协议
         adapter.addFragment(AdministratorFragmentNetworkProtocolSettings.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
+        // 6 串口协议
         adapter.addFragment(AdministratorFragmentSerialProtocolSettings.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
+        // 7 波段选择
         adapter.addFragment(AdministratorFragmentBandSelect.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
+        // 8 LNB本振
         adapter.addFragment(AdministratorFragmentLNBOscillator.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
+        // 9 巡行范围
         adapter.addFragment(AdministratorFragmentSearchingRange.newInstance(false,null,
                 true, getString(R.string.administrator_setting_searching_range_second_line), true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
+        // 10 功放监控
         adapter.addFragment(AdministratorFragmentAmplifierMonitor.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
-        // 功放厂家
+        // 11 功放厂家
         adapter.addFragment(AdministratorFragmentAmplifierManufacturer.newInstance());
-        // 功放本振
+        // 12 功放本振
         adapter.addFragment(AdministratorFragmentAmplifierOscillator.newInstance());
+        // 13 厂家标定
         adapter.addFragment(AdministratorFragmentFactoryIncriminate.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
 
-        viewPager.setAdapter(adapter);
         COUNT = adapter.getCount();
+        return adapter;
     }
 
 }

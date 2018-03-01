@@ -38,7 +38,7 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
     private CustomButton administratorSerialProtocol;
 
     @BindId(R.id.administrator_searching_range)
-    private CustomButton administratorSearhingRange;
+    private CustomButton administratorSearchingRange;
 
     @BindId(R.id.administrator_recovery_factory)
     private CustomButton administratorRecoveryFactory;
@@ -47,6 +47,9 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
     private CustomButton administratorWifiName;
 
     @BindId(R.id.administrator_amplifier_monitor)
+    private CustomButton administratorFactoryIncriminateButton;
+
+    @BindId(R.id.administrator_factory_incriminate)
     private CustomButton administratorAmplifierMonitor;
 
     @BindId(R.id.administrator_toolbar)
@@ -87,10 +90,11 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
         administratorSerialProtocol.setOnClickListener(this);
         administratorBandSelect.setOnClickListener(this);
         administratorLnbFrequencyChannel.setOnClickListener(this);
-        administratorSearhingRange.setOnClickListener(this);
+        administratorSearchingRange.setOnClickListener(this);
         administratorAmplifierMonitor.setOnClickListener(this);
         administratorAmplifierFactory.setOnClickListener(this);
         administratorAmplifierOscillator.setOnClickListener(this);
+        administratorFactoryIncriminateButton.setOnClickListener(this);
     }
 
     @Override

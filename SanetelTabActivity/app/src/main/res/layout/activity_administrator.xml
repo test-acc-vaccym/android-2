@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/app_bar_height"
             android:orientation="vertical">
-            <!--天线标定	恢复出厂	天线类型	天线重启-->
+            <!--天线标定	出厂标定	恢复出厂	天线重启-->
             <LinearLayout
                 style="@style/layout_vertical_style"
                 android:layout_height="@dimen/app_bar_height">
@@ -115,7 +115,7 @@
 
                 <com.edroplet.sanetel.view.custom.CustomButton  style="@style/button_horizontal_style"/>
             </LinearLayout>
-            <!--功放厂家	功放本振	功放监控-->
+            <!--功放厂家	功放本振	功放监控  天线类型	-->
             <LinearLayout
                 style="@style/layout_vertical_style"
                 android:layout_height="@dimen/app_bar_height">

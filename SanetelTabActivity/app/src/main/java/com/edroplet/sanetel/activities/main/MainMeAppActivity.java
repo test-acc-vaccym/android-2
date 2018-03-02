@@ -493,15 +493,26 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
 
     private int installStatus = 0;
     //下载到本地后执行安装
-    protected void installAPK(File file) {
+    protected void installAPK(File apkFile) {
         if (installStatus == 1) return;
-        if (!file.exists()) return;
+        if (!apkFile.exists()) return;
+		
         installStatus = 1;
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        Uri uri = Uri.parse("file://" + file.toString());
-        intent.setDataAndType(uri, "application/vnd.android.package-archive");
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		//判断是否是AndroidN以及更高的版本
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+			intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+			Uri contentUri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileProvider", apkFile);
+			intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
+		} else {
+			intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		}
+		startActivity(intent);
+        // Uri uri = Uri.parse("file://" + file.toString());
+        // intent.setDataAndType(uri, "application/vnd.android.package-archive");
         //在服务中开启activity必须设置flag,后面解释
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        mContext.startActivity(intent);
+        // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        // mContext.startActivity(intent);
     }
 }

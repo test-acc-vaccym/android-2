@@ -280,9 +280,10 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
         public void onReceive(Context context, Intent intent) {
             /*处理接收到的广播内容*/
             if (intent != null){
-                updateProgress = intent.getIntExtra(DOWNLOAD_PROCESS_KEY,0);
+                if (intent.hasExtra(DOWNLOAD_PROCESS_KEY))
+                    updateProgress = intent.getIntExtra(DOWNLOAD_PROCESS_KEY,0);
                 if (mTaskId <= 0) {
-                    if (intent.hasExtra(DOWNLOAD_SAVE_PATH_KEY)) {
+                    if (intent.hasExtra(DOWNLOAD_TASK_ID_KEY)) {
                         mTaskId = intent.getLongExtra(DOWNLOAD_TASK_ID_KEY, 0);
                         if (mTaskId > 0) {
                             query = new DownloadManager.Query();

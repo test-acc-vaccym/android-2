@@ -60,7 +60,7 @@
                     android:text="@string/main_me_error_report_email_receive_address"
                     android:paddingTop="@dimen/no_padding"
                     android:paddingBottom="@dimen/no_padding"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
             </LinearLayout>
             <!--发送邮箱-->
             <LinearLayout
@@ -77,7 +77,7 @@
                     android:id="@+id/main_me_error_report_email_send_address"
                     style="@style/advice_horizontal_style"
                     android:text="@string/main_me_advice_email_send_address"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
             <!--用户邮箱-->
             <LinearLayout
@@ -93,7 +93,7 @@
                 <com.edroplet.sanetel.view.custom.CustomEditText
                     android:id="@+id/main_me_error_report_user_mail"
                     style="@style/advice_horizontal_style"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
             <!--用户单位-->
             <LinearLayout
@@ -108,7 +108,7 @@
                 <com.edroplet.sanetel.view.custom.CustomEditText
                     android:id="@+id/main_me_error_report_email_customer"
                     style="@style/advice_horizontal_style"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
             <!--姓    名-->
             <LinearLayout
@@ -123,7 +123,7 @@
                 <com.edroplet.sanetel.view.custom.CustomEditText
                     android:id="@+id/main_me_error_report_name"
                     style="@style/advice_horizontal_style"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
             <!--用户电话-->
             <LinearLayout
@@ -140,7 +140,7 @@
                     style="@style/advice_horizontal_style"
                     android:inputType="number"
                     android:maxLength="12"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
             <!--产品序列号-->
             <LinearLayout
@@ -160,7 +160,7 @@
                     android:hint="@string/main_me_error_report_serial_number_hint"
                     android:focusable="false"
                     android:clickable="false"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
             </LinearLayout>
             <!--文件名称-->
             <LinearLayout
@@ -174,7 +174,7 @@
                     android:id="@+id/main_me_error_report_subject"
                     style="@style/advice_horizontal_style"
                     android:inputType="textEmailSubject"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
             <!--添加附件-->
             <LinearLayout
@@ -191,7 +191,7 @@
                     android:gravity="start|left|center_vertical"
                     android:padding="@dimen/no_padding"
                     android:text="@string/main_me_error_report_attach"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_me_error_report_attach_files"
                     style="@style/text_vertical_style"
@@ -213,7 +213,7 @@
                     android:gravity="start|left"
                     android:padding="@dimen/no_padding"
                     android:text="@string/main_me_error_report_history"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_me_error_report_history_files"
                     style="@style/text_vertical_style"
@@ -232,7 +232,7 @@
                     android:text="@string/main_me_error_report_photo"
                     style="@style/button_vertical_style"
                     android:layout_width="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
                     android:gravity="start|left"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_me_error_report_photo_files"
@@ -246,7 +246,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/main_me_error_report_description"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:paddingStart="@dimen/layout_padding_left"
                 android:paddingLeft="@dimen/layout_padding_left"
                 android:lines="5"
@@ -273,7 +273,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/mb_red"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:visibility="gone"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

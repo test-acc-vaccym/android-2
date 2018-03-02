@@ -115,7 +115,7 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
         mContext = this;
 
         getPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_me_app_toolbar);
         toolbar.setTitle(R.string.main_me_app_title);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

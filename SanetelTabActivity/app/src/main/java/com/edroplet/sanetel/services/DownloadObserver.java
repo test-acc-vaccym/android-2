@@ -20,6 +20,7 @@ public class DownloadObserver extends ContentObserver {
     private DownloadManager mDownloadManager;
     private DownloadManager.Query query;
     private Cursor cursor;
+
     @SuppressLint("NewApi")
     public DownloadObserver(Handler handler, Context context, long downId) {
         super(handler);
@@ -35,18 +36,20 @@ public class DownloadObserver extends ContentObserver {
         super.onChange(selfChange);
         //
         boolean downloading = true;
+        cursor  = mDownloadManager.query(query);
         while (downloading) {
-            cursor  = mDownloadManager.query(query);
-            cursor.moveToFirst();
-            int bytes_downloaded = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR));
-            int bytes_total = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES));
-            progress = (int) ((bytes_downloaded * 100) / bytes_total);
-            cursor.close();
-            mHandler.sendEmptyMessageDelayed(progress, 100);
-            if (cursor.getInt(
-                    cursor.getColumnIndex(DownloadManager.COLUMN_STATUS)) == DownloadManager.STATUS_SUCCESSFUL) {
-                downloading = false;
+            if (cursor != null) {
+                cursor.moveToFirst();
+                int bytes_downloaded = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR));
+                int bytes_total = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES));
+                progress = (int) ((bytes_downloaded * 100) / bytes_total);
+                mHandler.sendEmptyMessageDelayed(progress, 100);
+                if (cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS)) == DownloadManager.STATUS_SUCCESSFUL) {
+                    downloading = false;
+                }
             }
         }
+        if (cursor != null)
+            cursor.close();
     }
 }

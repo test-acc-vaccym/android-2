@@ -12,10 +12,13 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.BuildConfig;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -502,7 +505,7 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
 		//判断是否是AndroidN以及更高的版本
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 			intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-			Uri contentUri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileProvider", apkFile);
+			Uri contentUri = FileProvider.getUriForFile(mContext, BuildConfig.APPLICATION_ID + ".fileProvider", apkFile);
 			intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
 		} else {
 			intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");

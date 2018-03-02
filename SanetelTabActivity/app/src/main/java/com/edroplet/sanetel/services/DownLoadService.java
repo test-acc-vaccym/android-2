@@ -103,6 +103,10 @@ public class DownLoadService extends Service {
         apkFileFullPath = destFileDir+"/"+destFileName;
 
         try {
+            // 发送广播通知Activity下载路径
+            Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
+            sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_SAVE_PATH_KEY, apkFileFullPath);
+            getApplicationContext().sendBroadcast(sendIntent);
             // 系统下载管理器
             // 创建下载任务,downloadUrl就是下载链接
             DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadUrl));
@@ -126,7 +130,7 @@ public class DownLoadService extends Service {
             //将下载任务加入下载队列，否则不会进行下载
             long mTaskId  = downloadManager.enqueue(request);
             // 发送广播通知Activity
-            Intent sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
+            sendIntent = new Intent(MainMeAppActivity.SERVICE_DOWNLOAD_RECEIVER);
             sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_TASK_ID_KEY, mTaskId);
             getApplicationContext().sendBroadcast(sendIntent);
 

@@ -27,7 +27,6 @@ import com.edroplet.sanetel.BaseActivity;
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.beans.AppVersion;
 import com.edroplet.sanetel.services.DownLoadService;
-import com.edroplet.sanetel.services.DownloadObserver;
 import com.edroplet.sanetel.utils.FileUtils;
 import com.edroplet.sanetel.utils.MLog;
 import com.edroplet.sanetel.utils.SystemServices;
@@ -63,13 +62,18 @@ import static com.edroplet.sanetel.activities.main.MainMeAboutBrowserActivity.Sa
 
 public class MainMeAppActivity extends BaseActivity implements View.OnClickListener{
     public static final String SERVICE_DOWNLOAD_RECEIVER = "com.edroplet.download.receiver";
-    public static final String DOWNLOAD_PROCESS_KEY = "DOWNLOAD_PROCESS_KEY";
-    public static final String DOWNLOAD_TASK_ID_KEY = "DOWNLOAD_TASK_ID_KEY";
+    public static final String DOWNLOAD_PROCESS_KEY = "com.edroplet.download.process";
+    public static final String DOWNLOAD_TASK_ID_KEY = "com.edroplet.download.taskId";
+    public static final String DOWNLOAD_SAVE_PATH_KEY = "com.edroplet.download.save.path";
+    public static final String KEY_UPDATE_STATE = "KEY_UPDATE_STATE";
+
     private MsgReceiver msgReceiver;
-    private DownloadObserver mDownloadObserver;
     private static AppVersion appVersion;
-    Context context;
-    private static Context mContext;
+    private Context mContext;
+    // 下载相关
+    DownloadManager downloadManager;
+    DownloadManager.Query query;
+
     /**
      * 返回应用程序的版本号
      *
@@ -111,7 +115,6 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_me_app);
         ViewInject.inject(this,this);
-        context = this;
         mContext = this;
 
         getPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -142,15 +145,13 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
     @BindId(R.id.main_me_app_update_state)
     private CustomTextView appUpdateState;
 
+    private String dots = ".";
 
-    public static final String KEY_UPDATE_STATE = "KEY_UPDATE_STATE";
-
-    private static class updateHandler extends Handler{
+    private class updateHandler extends Handler{
         private final WeakReference<MainMeAppActivity> mActivity;
         updateHandler(MainMeAppActivity activity){
             mActivity = new WeakReference<MainMeAppActivity>(activity);
         }
-        private static String dots = ".";
         @Override
         public void handleMessage(Message msg) {
             MainMeAppActivity activity = mActivity.get();
@@ -162,7 +163,7 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
             }
 
             if (mTaskId > 0) {
-                checkDownloadStatus(activity, msg.what);//检查下载状态
+                checkDownloadStatus();//检查下载状态
             }else if (activity != null){
                 if (updateProgress == -3){
                     // 校验失败
@@ -201,6 +202,7 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
     private  final updateHandler handler = new updateHandler(this);
 
     private static long mTaskId = -1;
+    private String apkFileFullPath;
 
     private Timer mTimer;
     private int updateProgress;
@@ -211,7 +213,6 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
         mTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                // TODO: 2017/11/10 获取下载进度
                 // 通过广播获取进度
                 Message message = new Message();
                 message.what = updateProgress;
@@ -232,7 +233,6 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
                 gotoURL(this, BrowseUrl);
                 break;
             case R.id.main_me_app_download:
-
                 // http://www.sanetel.com/Content.aspx?PartNodeId=24
                 intent = new Intent(MainMeAppActivity.this, MainMeAboutBrowserActivity.class);
                 intent.putExtra(KEY_PDF_NAME,  P120PdfName);
@@ -243,7 +243,6 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
                 break;
             case R.id.main_me_app_update:
                 skip = true;
-                // todo 升级
                 appUpdateState.setVisibility(View.VISIBLE);
                 // 判断版本号
                 getRemoteVersion();
@@ -283,60 +282,66 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
             if (intent != null){
                 updateProgress = intent.getIntExtra(DOWNLOAD_PROCESS_KEY,0);
                 if (mTaskId <= 0) {
-                    mTaskId = intent.getLongExtra(DOWNLOAD_TASK_ID_KEY, 0);
-
-                    mDownloadObserver = new DownloadObserver(handler,MainMeAppActivity.this, mTaskId);
-                    getContentResolver().registerContentObserver(Uri.parse("content://downloads/"),
-                            true,
-                            mDownloadObserver);
+                    if (intent.hasExtra(DOWNLOAD_SAVE_PATH_KEY)) {
+                        mTaskId = intent.getLongExtra(DOWNLOAD_TASK_ID_KEY, 0);
+                        if (mTaskId > 0) {
+                            query = new DownloadManager.Query();
+                            query.setFilterById(mTaskId); //筛选下载任务，传入任务ID，可变参数
+                            downloadManager = (DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE);
+                        }
+                    }
+                }
+                if (intent.hasExtra(DOWNLOAD_SAVE_PATH_KEY)){
+                    apkFileFullPath = intent.getStringExtra(DOWNLOAD_SAVE_PATH_KEY);
                 }
             }
         }
     }
     //检查下载状态
-    private static void checkDownloadStatus(MainMeAppActivity activity, int updateProgress) {
-        DownloadManager.Query query = new DownloadManager.Query();
-        query.setFilterById(mTaskId); //筛选下载任务，传入任务ID，可变参数
-        DownloadManager downloadManager= (DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE);
+    private void checkDownloadStatus() {
+        // 以下才是每次都需要做的
         Cursor c = downloadManager.query(query);
         if (c.moveToFirst()) {
             int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
             switch (status) {
                 case DownloadManager.STATUS_PAUSED:
                     MLog.i("下载暂停");
-                    activity.appUpdateState.setText("下载暂停");
+                    appUpdateState.setText("下载暂停");
                 case DownloadManager.STATUS_PENDING:
                     MLog.i("下载延迟");
-                    activity.appUpdateState.setText("下载延迟");
+                    appUpdateState.setText("下载延迟");
                 case DownloadManager.STATUS_RUNNING:
                     MLog.i("正在下载");
-                    activity.appUpdateState.setText("正在下载:" + updateProgress);
+                    int bytes_downloaded = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR));
+                    int bytes_total = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES));
+                    int progress = (bytes_downloaded * 100) / bytes_total;
+                    if (bytes_downloaded >= bytes_total || progress < 0) progress = 100;
+                    appUpdateState.setText("正在下载: " + progress );
                     break;
                 case DownloadManager.STATUS_SUCCESSFUL:
                     MLog.i("下载完成");
-                    activity.appUpdateState.setText("下载完成");
+                    appUpdateState.setText("下载完成");
                     //下载完成安装APK
                     //downloadPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + versionName;
-                    installAPK(new File(appVersion.getApkName()));
+                    if (apkFileFullPath != null) {
+                        installAPK(new File(apkFileFullPath));
+                    }
+                    // 关闭定时器
+                    if (mTimer != null) {
+                        mTimer.purge();
+                        mTimer.cancel();
+                        mTimer = null;
+                    }
                     break;
                 case DownloadManager.STATUS_FAILED:
                     MLog.i("下载失败");
-                    activity.appUpdateState.setText("下载失败");
+                    appUpdateState.setText("下载失败");
+                    break;
+                default:
                     break;
             }
         }
     }
-    //下载到本地后执行安装
-    protected static void installAPK(File file) {
-        if (!file.exists()) return;
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        Uri uri = Uri.parse("file://" + file.toString());
-        intent.setDataAndType(uri, "application/vnd.android.package-archive");
-        //在服务中开启activity必须设置flag,后面解释
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        mContext.startActivity(intent);
-    }
-
     public class HttpDownloaderTask extends AsyncTask<Object, String, String> {
         private URL url = null;
         private final String TAG = "TAG";
@@ -371,9 +376,9 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
                          appVersion.getVerCode() <= getVersionCode())){
                     // 最新版本修改weight
                     appUpdateState.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1.5f));
-                    appUpdateState.setTextAppearance(context, android.R.style.TextAppearance_Small);
+                    appUpdateState.setTextAppearance(mContext, android.R.style.TextAppearance_Small);
                     appUpdateState.setText(R.string.up_to_date);
-                    appUpdateState.setTextColor(ContextCompat.getColor(context,R.color.green_70));
+                    appUpdateState.setTextColor(ContextCompat.getColor(mContext,R.color.green_70));
                 } else {
                     // 动态注册广播接收器
                     msgReceiver = new MsgReceiver();
@@ -485,4 +490,17 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
         }
     }
 
+    private int installStatus = 0;
+    //下载到本地后执行安装
+    protected void installAPK(File file) {
+        if (installStatus == 1) return;
+        if (!file.exists()) return;
+        installStatus = 1;
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        Uri uri = Uri.parse("file://" + file.toString());
+        intent.setDataAndType(uri, "application/vnd.android.package-archive");
+        //在服务中开启activity必须设置flag,后面解释
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        mContext.startActivity(intent);
+    }
 }

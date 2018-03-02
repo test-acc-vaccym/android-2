@@ -173,14 +173,14 @@
                     android:text="@string/main_me_advice_photo"
                     style="@style/button_vertical_style"
                     android:layout_weight="1"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_gravity="start|left|center_vertical"
                     android:gravity="start|left|center_vertical"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_me_advice_photo_list"
                     style="@style/text_vertical_style"
                     android:layout_weight="2"
-                    app:titleTextAppearance="?android:attr/textAppearanceMedium"
+                    app:titleTextAppearance="?android:attr/textAppearanceSmall"
                     android:gravity="start|left|center_vertical"
                     android:lines="2"
                     android:inputType="textMultiLine"/>
@@ -191,7 +191,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/main_me_advice_description"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:paddingStart="@dimen/layout_padding_left"
                 android:paddingLeft="@dimen/layout_padding_left"
                 android:lines="5"
@@ -204,7 +204,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/mb_red"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:visibility="gone"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

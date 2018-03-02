@@ -221,8 +221,8 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
         }, 1000, 1000/* 表示1000毫秒之後，每隔1000毫秒執行一次 */);
     }
 
-
     Intent downloadIntent;
+
     @Override
     public void onClick(View view) {
         Intent intent = null;

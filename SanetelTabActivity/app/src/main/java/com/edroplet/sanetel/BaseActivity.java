@@ -17,10 +17,6 @@ import android.util.DisplayMetrics;
 import com.edroplet.sanetel.activities.main.MainMeLanguageActivity;
 import com.edroplet.sanetel.fragments.HintDialogFragment;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
 import java.util.Locale;
 
 /**
@@ -55,10 +51,11 @@ public class BaseActivity extends AppCompatActivity implements HintDialogFragmen
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EventBus.getDefault().register(this);
+        // EventBus.getDefault().register(this);
         changeAppLanguage();
     }
 
+    /*
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(String str) {
         switch (str) {
@@ -68,6 +65,7 @@ public class BaseActivity extends AppCompatActivity implements HintDialogFragmen
                 break;
         }
     }
+    */
 
 
     public void changeAppLanguage() {
@@ -87,7 +85,7 @@ public class BaseActivity extends AppCompatActivity implements HintDialogFragmen
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
+        // EventBus.getDefault().unregister(this);
     }
 
     @Override

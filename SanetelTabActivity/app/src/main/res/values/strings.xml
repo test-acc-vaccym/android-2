@@ -723,6 +723,7 @@
     <string name="administrator_setting_antenna_type_three_zero"> 三轴零极化</string>
 
     <!--10.5.6.	波段选择-->
+    <string name="administrator_band_select_title">选择波段</string>
     <string name="administrator_setting_band_ku"> ku波段</string>
     <string name="administrator_setting_band_ka"> ka波段</string>
 

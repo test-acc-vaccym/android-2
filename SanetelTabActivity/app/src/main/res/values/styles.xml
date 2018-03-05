@@ -131,9 +131,9 @@
     </style>
 
     <style name="manual_divider">
-        <item name="android:divider">@drawable/spacer_medium</item>
-        <item name="android:padding">@dimen/spacing_medium</item>
-        <item name="android:showDividers">middle</item>
+        <!--<item name="android:divider">@drawable/spacer_medium</item>-->
+        <!--<item name="android:padding">@dimen/spacing_medium</item>-->
+        <!--<item name="android:showDividers">middle</item>-->
     </style>
 
     <style name="button_horizontal_style" parent="Base.Widget.AppCompat.Button.Borderless">

@@ -34,7 +34,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/linear_shadow">
+                    style="@style/linear_no_shadow_no_padding">
 
                     <com.edroplet.sanetel.view.custom.CustomButton
                         android:id="@+id/main_settings_reference"

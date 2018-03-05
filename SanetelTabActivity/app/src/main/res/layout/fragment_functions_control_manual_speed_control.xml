@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     style="@style/manual_divider">
         <!--com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/functions_view_pager_title"
@@ -17,7 +17,8 @@
             android:id="@+id/speed_info_scroll"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="@color/gray_bg">
             <LinearLayout
                 android:id="@+id/speed_info_ll_sc_content"
                 android:layout_width="match_parent"

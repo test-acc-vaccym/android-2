@@ -13,7 +13,7 @@
         android:paddingTop="2dp"
         android:paddingBottom="8dp"
         android:orientation="vertical"
-        style="@style/linear_shadow">
+        style="@style/manual_divider">
         <!--<com.edroplet.sanetel.view.custom.CustomTextView-->
             <!--android:id="@+id/functions_view_pager_title"-->
             <!--android:layout_width="match_parent"-->

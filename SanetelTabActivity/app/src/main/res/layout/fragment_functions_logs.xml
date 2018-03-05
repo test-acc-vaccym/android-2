@@ -81,7 +81,7 @@
             android:padding="@dimen/no_padding"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/main_collect_data_clear"
-            android:background="@color/bottom_tab_nav_background"/>
+            android:background="@color/gray_bg"/>
         <com.edroplet.sanetel.view.custom.CustomButton
             style="@style/button_horizontal_style"
             android:id="@+id/main_collect_data_start"
@@ -89,7 +89,7 @@
             android:padding="@dimen/no_padding"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/main_collect_data_start"
-            android:background="@color/bottom_tab_nav_background"/>
+            android:background="@color/gray_bg"/>
         <com.edroplet.sanetel.view.custom.CustomButton
             style="@style/button_horizontal_style"
             android:id="@+id/main_collect_data_stop"
@@ -97,7 +97,7 @@
             android:padding="@dimen/no_padding"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/main_collect_data_stop"
-            android:background="@color/bottom_tab_nav_background"/>
+            android:background="@color/gray_bg"/>
         <com.edroplet.sanetel.view.custom.CustomButton
             style="@style/button_horizontal_style"
             android:id="@+id/main_collect_data_save"
@@ -105,6 +105,6 @@
             android:padding="@dimen/no_padding"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/main_collect_data_save"
-            android:background="@color/bottom_tab_nav_background"/>
+            android:background="@color/gray_bg"/>
     </LinearLayout>
 </LinearLayout>

@@ -30,7 +30,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:hint="@string/main_control_speed_azimuth"/>
+                android:hint="@string/location_control_setting_hint_val"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:layout_width="0dp"
                 android:layout_weight="0.2"
@@ -56,7 +56,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:hint="@string/main_control_speed_pitch"/>
+                android:hint="@string/location_control_setting_hint_val"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:layout_width="0dp"
                 android:layout_weight="0.2"
@@ -82,7 +82,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:hint="@string/main_control_speed_polarization"/>
+                android:hint="@string/location_control_setting_hint_val"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:layout_width="0dp"
                 android:layout_weight="0.2"
@@ -108,7 +108,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:hint="@string/main_control_speed_agc"/>
+                android:hint="@string/location_control_setting_hint_val"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:layout_width="0dp"
                 android:layout_weight="0.2"

@@ -77,185 +77,191 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <!--输入数据-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/gray_bg">
         <!--输入数据-->
-        <!--com.edroplet.sanetel.view.custom.CustomTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/angle_calculate_input_data"
-            android:textAppearance="?android:attr/textAppearanceLarge"/-->
-
-        <com.edroplet.sanetel.view.custom.CustomTextView
-            android:layout_width="@dimen/radio_group_width_small"
-            android:layout_height="wrap_content"
-            android:text="@string/angle_calculate_satellite_select"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/blacklisted_call" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:layout_marginTop="2dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
+            <!--输入数据-->
+            <!--com.edroplet.sanetel.view.custom.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/angle_calculate_input_data"
+                android:textAppearance="?android:attr/textAppearanceLarge"/-->
 
-            <Spinner
-                android:id="@+id/angle_calculate_spinner_satellites"
-                android:padding="@dimen/no_padding"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:entries="@array/satellites"
-                android:textAppearance="?android:attr/textAppearanceSmall"/>
-            <Spinner
-                android:id="@+id/angle_calculate_spinner_satellites_local"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/no_padding"
-                android:entries="@array/satellites_polarization"
-                android:textAppearance="?android:attr/textAppearanceSmall"/>
-        </LinearLayout>
-    </LinearLayout>
-    <!--本地位置-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <!--本地位置-->
-        <com.edroplet.sanetel.view.custom.CustomTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/angle_calculate_local_location"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
-        <!--单选框-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <!--单选组-->
-            <RadioGroup
-                android:id="@+id/calculate_angle_city_group"
+            <com.edroplet.sanetel.view.custom.CustomTextView
                 android:layout_width="@dimen/radio_group_width_small"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/no_padding">
+                android:text="@string/angle_calculate_satellite_select"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/blacklisted_call" />
 
-                <RadioButton
-                    android:id="@+id/city_select_choice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/angle_calculate_select_city"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-
-                <RadioButton
-                    android:id="@+id/city_input_choice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spinner_lower_height"
-                    android:text="@string/angle_calculate_input_location"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-            </RadioGroup>
-            <!--城市选择-->
-            <LinearLayout
-                android:id="@+id/city_select"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spinner_lower_height"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="@dimen/marginRight">
-
-                <!--android:layout_toEndOf="@+id/city_select_group"-->
-                <!--android:layout_toRightOf="@+id/city_select_group"-->
-
-                <Spinner
-                    android:id="@+id/angle_calculate_spinner_province"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:entries="@array/province"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceSmall"/>
-
-                <Spinner
-                    android:id="@+id/angle_calculate_spinner_city"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:entries="@array/city"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceSmall"/>
-            </LinearLayout>
-            <!--城市位置输入-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/calculate_angle_city_group"
-                android:orientation="vertical">
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    style="@style/layout_three_parts_horizontal_layout">
-
-                    <com.edroplet.sanetel.view.custom.CustomTextView
-                        style="@style/layout_three_parts_horizontal_first"
-                        android:text="@string/angle_calculate_local_longitude" />
-
-                    <com.edroplet.sanetel.view.custom.CustomEditText
-                        android:id="@+id/angle_calculate_local_longitude"
-                        style="@style/layout_three_parts_horizontal_second"
-                        android:inputType="numberSigned|numberDecimal"/>
-
-                    <Spinner
-                        android:id="@+id/angle_calculate_local_longitude_unit"
-                        style="@style/layout_three_parts_horizontal_third"
-                        android:entries="@array/longitude_unit" />
-                </LinearLayout>
-
-                <LinearLayout
-                    style="@style/layout_three_parts_horizontal_layout">
-
-                    <com.edroplet.sanetel.view.custom.CustomTextView
-                        style="@style/layout_three_parts_horizontal_first"
-                        android:text="@string/angle_calculate_local_latitude" />
-
-                    <com.edroplet.sanetel.view.custom.CustomEditText
-                        android:id="@+id/angle_calculate_local_latitude"
-                        style="@style/layout_three_parts_horizontal_second"
-                        android:inputType="numberSigned|numberDecimal" />
-
-                    <Spinner
-                        android:id="@+id/angle_calculate_local_latitude_unit"
-                        style="@style/layout_three_parts_horizontal_third"
-                        android:entries="@array/latitude_unit" />
-                </LinearLayout>
+                <Spinner
+                    android:id="@+id/angle_calculate_spinner_satellites"
+                    android:padding="@dimen/no_padding"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/satellites"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+                <Spinner
+                    android:id="@+id/angle_calculate_spinner_satellites_local"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/no_padding"
+                    android:entries="@array/satellites_polarization"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
             </LinearLayout>
-        </RelativeLayout>
-    </LinearLayout>
-    <!--按键区-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="@dimen/pop_margin"
-        android:orientation="horizontal">
-        <com.edroplet.sanetel.view.custom.CustomButton
-            android:id="@+id/angle_calculate_operate_calculate"
-            style="@style/button_horizontal_style"
-            android:layout_gravity="center_vertical"
-            android:text="@string/angle_calculate_operate_calculate"/>
-        <!--android:background="@color/bottom_tab_nav_background"-->
-        <com.edroplet.sanetel.view.custom.CustomButton
-            android:id="@+id/angle_calculate_operate_clear"
-            style="@style/button_horizontal_style"
-            android:layout_gravity="center_vertical"
-            android:text="@string/angle_calculate_operate_clear"/>
-        <com.edroplet.sanetel.view.custom.CustomButton
-            android:id="@+id/angle_calculate_operate_use"
-            style="@style/button_horizontal_style"
-            android:layout_gravity="center_vertical"
-            android:text="@string/angle_calculate_operate_use"/>
+        </LinearLayout>
+        <!--本地位置-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <!--本地位置-->
+            <com.edroplet.sanetel.view.custom.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/angle_calculate_local_location"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+            <!--单选框-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!--单选组-->
+                <RadioGroup
+                    android:id="@+id/calculate_angle_city_group"
+                    android:layout_width="@dimen/radio_group_width_small"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/no_padding">
+
+                    <RadioButton
+                        android:id="@+id/city_select_choice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/angle_calculate_select_city"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <RadioButton
+                        android:id="@+id/city_input_choice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spinner_lower_height"
+                        android:text="@string/angle_calculate_input_location"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+                </RadioGroup>
+                <!--城市选择-->
+                <LinearLayout
+                    android:id="@+id/city_select"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spinner_lower_height"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="@dimen/marginRight">
+
+                    <!--android:layout_toEndOf="@+id/city_select_group"-->
+                    <!--android:layout_toRightOf="@+id/city_select_group"-->
+
+                    <Spinner
+                        android:id="@+id/angle_calculate_spinner_province"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:entries="@array/province"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+                    <Spinner
+                        android:id="@+id/angle_calculate_spinner_city"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:entries="@array/city"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
+                </LinearLayout>
+                <!--城市位置输入-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/calculate_angle_city_group"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        style="@style/layout_three_parts_horizontal_layout">
+
+                        <com.edroplet.sanetel.view.custom.CustomTextView
+                            style="@style/layout_three_parts_horizontal_first"
+                            android:text="@string/angle_calculate_local_longitude" />
+
+                        <com.edroplet.sanetel.view.custom.CustomEditText
+                            android:id="@+id/angle_calculate_local_longitude"
+                            style="@style/layout_three_parts_horizontal_second"
+                            android:inputType="numberSigned|numberDecimal"/>
+
+                        <Spinner
+                            android:id="@+id/angle_calculate_local_longitude_unit"
+                            style="@style/layout_three_parts_horizontal_third"
+                            android:entries="@array/longitude_unit" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/layout_three_parts_horizontal_layout">
+
+                        <com.edroplet.sanetel.view.custom.CustomTextView
+                            style="@style/layout_three_parts_horizontal_first"
+                            android:text="@string/angle_calculate_local_latitude" />
+
+                        <com.edroplet.sanetel.view.custom.CustomEditText
+                            android:id="@+id/angle_calculate_local_latitude"
+                            style="@style/layout_three_parts_horizontal_second"
+                            android:inputType="numberSigned|numberDecimal" />
+
+                        <Spinner
+                            android:id="@+id/angle_calculate_local_latitude_unit"
+                            style="@style/layout_three_parts_horizontal_third"
+                            android:entries="@array/latitude_unit" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+        <!--按键区-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/layout_padding_top"
+            android:orientation="horizontal">
+            <com.edroplet.sanetel.view.custom.CustomButton
+                android:id="@+id/angle_calculate_operate_calculate"
+                style="@style/button_horizontal_style"
+                android:layout_gravity="center_vertical"
+                android:text="@string/angle_calculate_operate_calculate"/>
+            <!--android:background="@color/bottom_tab_nav_background"-->
+            <com.edroplet.sanetel.view.custom.CustomButton
+                android:id="@+id/angle_calculate_operate_clear"
+                style="@style/button_horizontal_style"
+                android:layout_gravity="center_vertical"
+                android:text="@string/angle_calculate_operate_clear"/>
+            <com.edroplet.sanetel.view.custom.CustomButton
+                android:id="@+id/angle_calculate_operate_use"
+                style="@style/button_horizontal_style"
+                android:layout_gravity="center_vertical"
+                android:text="@string/angle_calculate_operate_use"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

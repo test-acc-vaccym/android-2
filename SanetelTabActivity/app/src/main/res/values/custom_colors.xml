@@ -49,7 +49,7 @@
     <color name="line">#dddddd</color>
     <color name="text_10">#333333</color>
     <color name="text_11">#999999</color>
-    <color name="gray_bg">#f8f8f8</color>
+    <color name="gray_bg">#e8e8e8</color>
 
     <!-- Color of the text describing an unconsumed voicemail. -->
     <color name="call_log_voicemail_highlight_color">#33b5e5</color>

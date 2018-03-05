@@ -6,7 +6,7 @@
     <RelativeLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="match_parent"
         style="@style/manual_divider">
 
         <!--TextView
@@ -18,7 +18,7 @@
         <LinearLayout
             android:id="@+id/main_control_manual_location_value"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
             <LinearLayout
                 android:id="@+id/current_location_values"
@@ -26,7 +26,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
-                <!--速度控制-->
+                <!--当前角度-->
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
                     <LinearLayout
                         style="@style/layout_three_parts_horizontal_layout">
@@ -80,10 +80,10 @@
             <LinearLayout
                 android:id="@+id/prepare_location_values"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginTop="@dimen/layout_padding_top">
+                android:layout_marginTop="@dimen/layout_padding_top"
+                android:background="@color/gray_bg">
                 <!--预置角度-->
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="match_parent"
@@ -146,8 +146,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/layout_padding_top"
-            android:layout_alignParentBottom="true">
+            android:paddingTop="@dimen/layout_padding_top"
+            android:layout_below="@id/main_control_manual_location_value"
+            android:background="@color/gray_bg">
 
             <com.edroplet.sanetel.view.custom.CustomButton
                 android:id="@+id/location_control_rotate"

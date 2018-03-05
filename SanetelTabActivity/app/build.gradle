@@ -44,7 +44,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
     defaultConfig {
-        applicationId "com.edroplet.sanetel"
+        applicationId "com.sanetel.p120"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode getVersionCode()
@@ -180,7 +180,7 @@ android {
     productFlavors {
         wandoujia {
             minSdkVersion 19
-            applicationId 'com.sanetel.p120'
+            applicationId 'wandoujia.sanetel.p120'
             proguardFile '$rootDir/proguard-android.txt'
             signingConfig signingConfigs.debug
             targetSdkVersion 26
@@ -189,7 +189,7 @@ android {
         }
         qihoo {
             minSdkVersion 19
-            applicationId 'com.sanetel.qihoo'
+            applicationId 'qihoo.sanetel.p120'
             signingConfig signingConfigs.debug
             targetSdkVersion 26
         }

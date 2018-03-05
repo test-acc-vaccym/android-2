@@ -13,6 +13,8 @@ import android.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.edroplet.sanetel.activities.main.MainMeLanguageActivity;
 import com.edroplet.sanetel.fragments.HintDialogFragment;
@@ -52,6 +54,16 @@ public class BaseActivity extends AppCompatActivity implements HintDialogFragmen
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // EventBus.getDefault().register(this);
+
+        //透明状态栏
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window window = getWindow();
+            // Translucent status bar
+            // 透明状态栏
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            // 透明导航栏
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
         changeAppLanguage();
     }
 

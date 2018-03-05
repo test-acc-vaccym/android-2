@@ -24,6 +24,7 @@ import com.edroplet.sanetel.services.down.DLDownloadListener;
 import com.edroplet.sanetel.services.down.DLNormalCallback;
 import com.edroplet.sanetel.services.down.DownloadInit;
 import com.edroplet.sanetel.utils.FileUtils;
+import com.edroplet.sanetel.utils.SystemServices;
 import com.tamic.rx.fastdown.RxConstants;
 import com.tamic.rx.fastdown.client.DLClientFactory;
 import com.tamic.rx.fastdown.core.Download;
@@ -174,7 +175,7 @@ public class DownLoadService extends Service {
                             sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, 100);
                             getApplicationContext().sendBroadcast(sendIntent);
                             File apkFile = new File(apkFileFullPath);
-                            installApk(mContext, apkFile);
+                            SystemServices.installApk(mContext, apkFile);
                         } else {
                             sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, -3);
                             getApplicationContext().sendBroadcast(sendIntent);
@@ -218,7 +219,7 @@ public class DownLoadService extends Service {
                             sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, 100);
                             getApplicationContext().sendBroadcast(sendIntent);
                             File apkFile = new File(apkFileFullPath);
-                            installApk(mContext, apkFile);
+                            SystemServices.installApk(mContext, apkFile);
                         } else {
                             sendIntent.putExtra(MainMeAppActivity.DOWNLOAD_PROCESS_KEY, -3);
                             getApplicationContext().sendBroadcast(sendIntent);
@@ -256,19 +257,6 @@ public class DownLoadService extends Service {
                     .build(this)
                     .start();
         }
-    }
-    /**
-     * 安装软件
-     *
-     * @param file
-     */
-    public static void installApk(Context context, File file) {
-        Uri uri = Uri.fromFile(file);
-        Intent install = new Intent(Intent.ACTION_VIEW);
-        install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        install.setDataAndType(uri, "application/vnd.android.package-archive");
-        // 执行意图进行安装
-        context.startActivity(install);
     }
 
     /**

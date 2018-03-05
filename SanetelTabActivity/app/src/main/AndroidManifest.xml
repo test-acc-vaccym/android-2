@@ -18,6 +18,11 @@
     <!-- 发送邮件 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.BIND_SCREENING_SERVICE"/>
+    <!--InstallStart:Requesting uid 10201 needs to declare permission android.permission.REQUEST_INSTALL_PACKAGES-->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+
     <!-- wifi -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 获取WIFI信息状态的权限 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 获取网络状态改变的权限 -->
@@ -76,7 +81,7 @@
             android:name=".activities.guide.GuideEntryActivity"
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/guide_main_enter"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.functions.FunctionsActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -91,7 +96,6 @@
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/main_settings_amplifier"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.settings.SatelliteDetailActivity"
@@ -120,22 +124,18 @@
         <activity
             android:name=".activities.main.MainMeAboutActivity"
             android:label="@string/main_me_about_title"
-            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.main.MainMeAdviceActivity"
             android:label="@string/main_me_advice_title"
-            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.main.MainMeAppActivity"
             android:label="@string/main_me_app_title"
-            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.main.MainMeErrorReportActivity"
-            android:label="@string/main_me_error_report_title"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/main_me_error_report_title"/>
         <!-- 图片选择 -->
         <activity
             android:name="com.yongchun.library.view.ImageSelectorActivity"
@@ -177,7 +177,7 @@
         </provider>
 		<provider
 			android:name="android.support.v4.content.FileProvider"
-			android:authorities="com.sanetel.p120.fileProvider"
+			android:authorities="${applicationId}.fileProvider"
 			android:grantUriPermissions="true"
 			android:exported="false">
 			<meta-data
@@ -276,13 +276,11 @@
                 <action android:name="com.edroplet.sanetel.data.SEND_DATA"/>
             </intent-filter>
         </receiver>
-        <service
-            android:name=".services.CommunicateWithDeviceService"
+        <service  android:name=".services.CommunicateWithDeviceService"
             android:enabled="true"
             android:exported="false"/>
         <!--android:process=":communicate"-->
-        <service
-            android:name=".services.communicate.CommunicateService"
+        <service android:name=".services.communicate.CommunicateService"
             android:exported="false"/>
         <service android:name=".services.communicate.CommunicateService$CommunicateInnerService"
             android:enabled="true"
@@ -294,6 +292,4 @@
             android:enabled="true"
             android:exported="false"/>
     </application>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.BIND_SCREENING_SERVICE"/>
 </manifest>

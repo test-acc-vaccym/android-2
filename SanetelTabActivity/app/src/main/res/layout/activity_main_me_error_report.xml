@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:fitsSystemWindows="true"
     tools:context="com.edroplet.sanetel.activities.main.MainActivity"
     android:divider="@drawable/divider"
     style="@style/linear_no_shadow_no_padding">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/main_me_error_report_appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/appbar_padding_top"
         android:theme="@style/AppTheme.AppBarOverlay">
         <android.support.v7.widget.Toolbar
             android:id="@+id/main_me_error_report_toolbar"
@@ -34,9 +34,10 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/main_me_error_report_scroll"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:layout_below="@id/main_me_error_report_appbar">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -253,21 +254,6 @@
                 android:inputType="textMultiLine"
                 android:gravity="start|left"
                 android:layout_weight="5"/>
-            <LinearLayout
-                style="@style/layout_vertical_style">
-                <com.edroplet.sanetel.view.custom.CustomButton
-                    android:id="@+id/main_me_error_report_commit"
-                    style="@style/button_horizontal_style"
-                    android:text="@string/main_me_error_report_commit"/>
-                <com.edroplet.sanetel.view.custom.CustomButton
-                    android:id="@+id/main_me_error_report_save"
-                    style="@style/button_horizontal_style"
-                    android:text="@string/main_me_error_report_save"/>
-                <com.edroplet.sanetel.view.custom.CustomButton
-                    android:id="@+id/main_me_error_report_return"
-                    style="@style/button_horizontal_style"
-                    android:text="@string/main_me_error_report_return"/>
-            </LinearLayout>
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/submit_result"
                 android:layout_width="match_parent"
@@ -277,4 +263,23 @@
                 android:visibility="gone"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
-</LinearLayout>
+
+    <!--底部栏-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:layout_alignParentBottom="true">
+        <com.edroplet.sanetel.view.custom.CustomButton
+            android:id="@+id/main_me_error_report_commit"
+            style="@style/button_horizontal_style"
+            android:text="@string/main_me_error_report_commit"/>
+        <com.edroplet.sanetel.view.custom.CustomButton
+            android:id="@+id/main_me_error_report_save"
+            style="@style/button_horizontal_style"
+            android:text="@string/main_me_error_report_save"/>
+        <com.edroplet.sanetel.view.custom.CustomButton
+            android:id="@+id/main_me_error_report_return"
+            style="@style/button_horizontal_style"
+            android:text="@string/main_me_error_report_return"/>
+    </LinearLayout>
+</RelativeLayout>

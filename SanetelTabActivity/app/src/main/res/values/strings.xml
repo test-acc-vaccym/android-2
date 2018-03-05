@@ -738,7 +738,7 @@
     <string name="administrator_setting_searching_range_2">±25°</string>
     <string name="administrator_setting_searching_range_3">±30°</string>
     <string name="administrator_setting_searching_range_4">±35°</string>
-    <string name="administrator_setting_searching_range_5">±40°</string>
+    <string name="administrator_setting_searching_range_5">±45°</string>
     <string name="administrator_setting_searching_range_second_line">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;由于天线摆放是否正南、天线放置水平程度、方位零点误差、传动机构误差等多方面原因，寻星必须要在理论目标角度值附近扫描。寻星范围小，寻星速度快。</string>
 
     <!--10.5.9.	WIFI名称-->

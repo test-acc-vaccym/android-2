@@ -74,8 +74,8 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
     private static AppVersion appVersion;
     private Context mContext;
     // 下载相关
-    DownloadManager downloadManager;
-    DownloadManager.Query query;
+    static DownloadManager downloadManager;
+    static DownloadManager.Query query;
 
     /**
      * 返回应用程序的版本号
@@ -121,9 +121,11 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
         mContext = this;
 
         getPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        getPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
+        // InstallStart:Requesting uid 10201 needs to declare permission android.permission.REQUEST_INSTALL_PACKAGES
+        // getPermission(Manifest.permission.REQUEST_INSTALL_PACKAGES);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_me_app_toolbar);
-        toolbar.setTitle(R.string.main_me_app_title);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -304,6 +306,10 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
     //检查下载状态
     private void checkDownloadStatus() {
         // 以下才是每次都需要做的
+        if (query == null){
+            query = new DownloadManager.Query();
+            query.setFilterById(mTaskId);
+        }
         Cursor c = downloadManager.query(query);
         if (c.moveToFirst()) {
             int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
@@ -328,7 +334,7 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
                     //下载完成安装APK
                     //downloadPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + versionName;
                     if (apkFileFullPath != null) {
-                        installAPK(new File(apkFileFullPath));
+                        install(new File(apkFileFullPath));
                     }
                     // 关闭定时器
                     if (mTimer != null) {
@@ -336,6 +342,7 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
                         mTimer.cancel();
                         mTimer = null;
                     }
+                    finish();
                     break;
                 case DownloadManager.STATUS_FAILED:
                     MLog.i("下载失败");
@@ -496,26 +503,10 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
 
     private int installStatus = 0;
     //下载到本地后执行安装
-    protected void installAPK(File apkFile) {
+    protected void install(File apkFile) {
         if (installStatus == 1) return;
         if (!apkFile.exists()) return;
-		
         installStatus = 1;
-		Intent intent = new Intent(Intent.ACTION_VIEW);
-		//判断是否是AndroidN以及更高的版本
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-			intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-			Uri contentUri = FileProvider.getUriForFile(mContext, BuildConfig.APPLICATION_ID + ".fileProvider", apkFile);
-			intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
-		} else {
-			intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
-			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		}
-		startActivity(intent);
-        // Uri uri = Uri.parse("file://" + file.toString());
-        // intent.setDataAndType(uri, "application/vnd.android.package-archive");
-        //在服务中开启activity必须设置flag,后面解释
-        // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        // mContext.startActivity(intent);
+        SystemServices.installApk(getApplicationContext(), apkFile);
     }
 }

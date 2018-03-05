@@ -28,8 +28,8 @@
                 android:centerColor="@color/guide_item_background_center"
                 android:endColor="@color/guide_item_background_end"
                 android:type="linear"
-                android:centerX="0.5"
-                android:centerY="0.5"
+                android:centerX="0.2"
+                android:centerY="0.2"
                 android:angle="90"/>
             <!--android:type="sweep"-->
             <corners android:radius="10dp" />

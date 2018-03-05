@@ -96,7 +96,6 @@ public class MainMeAdviceActivity extends BaseActivity implements View.OnClickLi
         context = this;
         schedule = getResources().getInteger(R.integer.save_data_schedule_timer);
 
-        toolbar.setTitle(R.string.main_me_advice_title);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

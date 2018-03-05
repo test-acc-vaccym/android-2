@@ -53,7 +53,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
@@ -118,10 +118,10 @@
     <style name="linear_no_shadow_no_padding">
         <item name="android:shadowColor">#ff000000</item>
         <item name="android:shadowDx">0</item>
-        <item name="android:shadowDy">2</item>
-        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowDy">0</item>
+        <item name="android:shadowRadius">0</item>
         <item name="android:background">@drawable/item_background_color</item>
-        <item name="android:paddingTop">@dimen/spacing_medium</item>
+        <!--<item name="android:paddingTop">@dimen/spacing_medium</item>-->
         <item name="android:paddingBottom">@dimen/spacing_medium</item>
     </style>
 

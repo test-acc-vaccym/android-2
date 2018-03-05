@@ -7,10 +7,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Handler;
 import android.provider.Settings;
+import android.support.v4.BuildConfig;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 
 import java.io.File;
@@ -93,6 +97,33 @@ public class SystemServices {
             }
         }
         return false;
+    }
+
+    /**
+     * 安装软件
+     *
+     * @param context  上下文
+     * @param apkFile 文件
+     */
+    public static void installApk(Context context, File apkFile) {
+        Uri uri = Uri.fromFile(apkFile);
+        Intent install = new Intent(Intent.ACTION_VIEW);
+
+        //判断是否是AndroidN以及更高的版本
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            // 在服务中开启activity必须设置flag,后面解释
+            install.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            String applicationId = context.getApplicationInfo().packageName;
+            // Log.e("XXXXXXXXXXXXXXXX", "installApk: BuildConfig.APPLICATION_ID: " + applicationId );
+            Uri contentUri = FileProvider.getUriForFile(context, applicationId + ".fileProvider", apkFile);
+            install.setDataAndType(contentUri, "application/vnd.android.package-archive");
+        } else {
+            install.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
+            // 在服务中开启activity必须设置flag,后面解释
+            install.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
+
+        context.startActivity(install);
     }
 
     public static class WifiAdmin {

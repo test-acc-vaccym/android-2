@@ -48,13 +48,11 @@
                 android:id="@+id/reference_satellite_select_mode_direct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/settings_reference_mode_direct"/>
             <RadioButton
                 android:id="@+id/reference_satellite_select_mode_reference"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/settings_reference_mode_reference" />
         </RadioGroup>
         <!--卫星名-->

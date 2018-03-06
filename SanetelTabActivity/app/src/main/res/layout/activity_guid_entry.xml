@@ -24,7 +24,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left|start"
             android:text="@string/follow_me_bottom_nav_main"
-            android:textColor="@color/title_text"
             android:textStyle="bold"
             android:textAppearance="?attr/textAppearanceSearchResultTitle"
             tools:ignore="RtlHardcoded" />

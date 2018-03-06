@@ -545,8 +545,8 @@
     <string name="main_me_error_report_email_receive">接收邮箱</string>
     <string name="main_me_error_report_email_receive_address">support@sanetel.com</string>
     <string name="main_me_error_report_email_send">发送邮箱</string>
-    <string name="main_me_error_report_name">姓名</string>
-    <string name="main_me_error_report_phone">用户电话</string>
+    <string name="main_me_error_report_name">联系人</string>
+    <string name="main_me_error_report_phone">联系电话</string>
     <string name="main_me_error_report_serial_number">产品序列号</string>
     <string name="main_me_error_report_serial_number_hint">XWWT&#8211;P120&#8211;201708001</string>
     <string name="main_me_error_report_subject">邮件主题</string>
@@ -564,10 +564,10 @@
     <string name="main_me_advice_email_receive_address">support@sanetel.com</string>
     <string name="main_me_advice_email_send">发送邮箱</string>
     <string name="main_me_advice_email_send_address">user@sanetel.com</string>
-    <string name="main_me_error_report_user_mail">用户邮箱</string>
-    <string name="main_me_email_customer">用户单位</string>
-    <string name="main_me_advice_name">姓名</string>
-    <string name="main_me_advice_phone">电话</string>
+    <string name="main_me_error_report_user_mail">联系邮箱</string>
+    <string name="main_me_email_customer">联系单位</string>
+    <string name="main_me_advice_name">联系人</string>
+    <string name="main_me_advice_phone">联系电话</string>
     <string name="main_me_advice_subject">邮件主题</string>
     <string name="main_me_advice_photo">添加照片</string>
     <string name="main_me_advice_description">意见输入区</string>

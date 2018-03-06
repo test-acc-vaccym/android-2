@@ -212,7 +212,8 @@ public class MainMeErrorReportActivity extends BaseActivity implements View.OnCl
                 noResult = false;
 //                intent = new Intent(MainMeErrorReportActivity.this, FileChooserActivity.class);
 //                startActivityForResult(intent, REQUESTFileChooserActivity);
-                FileUtils2.mFileFileterBySuffixs.acceptSuffixs("log|txt|amr|mp3");//过江哪些格式的文件，用“|”分隔（英文），如果不加这句代码，默认显示所有文件。
+                // 过滤哪些格式的文件，用“|”分隔（英文），如果不加这句代码，默认显示所有文件。
+                FileUtils2.mFileFileterBySuffixs.acceptSuffixs("log|txt|amr|mp3");
                 intent = new Intent(this, FileChooserActivity2.class);
                 startActivityForResult(intent, REQUESTFileChooserActivity);
                 break;

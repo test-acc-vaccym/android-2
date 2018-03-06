@@ -40,14 +40,7 @@ import butterknife.ButterKnife;
  */
 
 public class MainMeAdviceActivity extends BaseActivity implements View.OnClickListener{
-//
-//    public static MainMeAdviceActivity newInstance(String info) {
-//        Bundle args = new Bundle();
-//        MainMeAdviceActivity fragment = new MainMeAdviceActivity();
-//        args.putString("info", info);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
+
     private static final int REQUESTFileChooserActivity = 0xE0;
     ArrayList<File> files;
     Uri attache;
@@ -182,10 +175,9 @@ public class MainMeAdviceActivity extends BaseActivity implements View.OnClickLi
             case R.id.main_me_advice_photo:
                 ImageSelectorActivity.start(MainMeAdviceActivity.this, 9, ImageSelectorActivity.MODE_MULTIPLE, true,true, false);
                 break;
-            case R.id.main_me_error_report_attach:
-//                intent = new Intent(MainMeAdviceActivity.this, FileChooserActivity.class);
-//                startActivityForResult(intent, REQUESTFileChooserActivity);
-                FileUtils2.mFileFileterBySuffixs.acceptSuffixs("log|txt|amr|mp3");//过江哪些格式的文件，用“|”分隔（英文），如果不加这句代码，默认显示所有文件。
+            case R.id.main_me_advice_attach:
+                // 过滤哪些格式的文件，用“|”分隔（英文），如果不加这句代码，默认显示所有文件。
+                FileUtils2.mFileFileterBySuffixs.acceptSuffixs("log|txt|amr|mp3");
                 intent = new Intent(this, FileChooserActivity2.class);
                 startActivityForResult(intent, REQUESTFileChooserActivity);
                 break;

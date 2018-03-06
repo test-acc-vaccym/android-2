@@ -13,7 +13,7 @@
     <dimen name="splash_version_font_size">16sp</dimen>
     <dimen name="spinner_custom_item_vertical_padding">5dp</dimen>
 
-    <dimen name="line_spacing_multiplier">1.2</dimen>
+    <dimen name="line_spacing_multiplier">1.5</dimen>
 
     <dimen name="pop_hire_height">300dp</dimen>
     <dimen name="pop_item_margin_vertical">16dp</dimen>

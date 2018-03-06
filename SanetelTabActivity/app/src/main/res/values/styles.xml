@@ -224,6 +224,7 @@
         <item name="android:background">@drawable/button_background</item>
         <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
         <item name="android:gravity">start|center_vertical</item>
+        <item name="android:layout_gravity">start|left|center_vertical</item>
         <item name="android:layout_marginLeft">@dimen/guide_list_padding_left</item>
         <item name="android:layout_marginStart">@dimen/guide_list_padding_left</item>
     </style>

@@ -139,7 +139,8 @@ public class MainMeErrorReportActivity extends BaseActivity implements View.OnCl
         schedule = getResources().getInteger(R.integer.save_data_schedule_timer);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_me_error_report_toolbar);
-        toolbar.setTitle(R.string.main_me_error_report_title);toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();

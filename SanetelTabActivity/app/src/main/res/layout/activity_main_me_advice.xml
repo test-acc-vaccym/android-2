@@ -165,9 +165,7 @@
                 <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/main_me_advice_attach"
                     android:text="@string/main_me_error_report_attach"
-                    style="@style/main_me_attach_button_vertical_style"
-                    android:layout_gravity="start|center_vertical"
-                    android:gravity="start|center_vertical"/>
+                    style="@style/main_me_attach_button_vertical_style"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_me_advice_attach_files"
                     style="@style/text_vertical_style"
@@ -189,9 +187,7 @@
                 <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/main_me_advice_photo"
                     android:text="@string/main_me_advice_photo"
-                    style="@style/main_me_attach_button_vertical_style"
-                    android:layout_gravity="start|center_vertical"
-                    android:gravity="start|center_vertical"/>
+                    style="@style/main_me_attach_button_vertical_style"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_me_advice_photo_list"
                     style="@style/text_vertical_style"

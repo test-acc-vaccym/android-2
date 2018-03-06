@@ -148,6 +148,7 @@
                     android:orientation="horizontal"
                     android:focusable="false"
                     android:clickable="false"
+                    android:layout_marginTop="@dimen/main_margin_top"
                     style="@style/settings_linear_shadow">
                     <!--com.edroplet.sanetel.view.custom.CustomButton
                         android:layout_width="match_parent"

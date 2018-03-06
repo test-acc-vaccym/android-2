@@ -51,7 +51,7 @@ public class AdministratorFragmentAntennaIncriminate extends BroadcastReceiverFr
 
     Unbinder unbinder;
 
-    String azimuth="", pitch="", reserve="", polarization="", pitchOffset="";
+    String azimuth="0.000", pitch="0.000", reserve="0.000", polarization="0.000", pitchOffset="0.000";
     Context context;
 
     public static AdministratorFragmentAntennaIncriminate newInstance(boolean showFirst, String firstLine, boolean showSecond,

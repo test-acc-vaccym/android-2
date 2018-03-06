@@ -73,18 +73,20 @@
                             <com.edroplet.sanetel.view.custom.CustomEditText
                                 android:id="@+id/top_angular_velocity_custom_val"
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_alignBottom="@id/top_angular_velocity_6"
+                                android:layout_height="wrap_content"
                                 android:layout_toEndOf="@id/top_angular_velocity_6"
-                                android:paddingTop="@dimen/no_padding"
-                                android:paddingBottom="1dp"
-                                android:paddingStart="@dimen/no_padding"
-                                android:paddingEnd="@dimen/no_padding"
-                                android:gravity="bottom"
+                                android:layout_alignTop="@id/top_angular_velocity_6"
+                                android:layout_alignBottom="@id/top_angular_velocity_6"
                                 android:maxLength="10"
                                 android:layout_gravity="bottom"
                                 android:inputType="number|numberDecimal"
-                                android:textAppearance="?android:attr/textAppearanceSmall"/>
+                                android:padding="@dimen/no_padding"
+                                android:minWidth="@dimen/custom_edit_min_width"
+                                android:theme="@style/CustomEditTextStyle"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/button_text"
+                                android:hint="@string/custom_value_hint"
+                                android:background="@null"/>
                         </RelativeLayout>
                     </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
                 </LinearLayout>

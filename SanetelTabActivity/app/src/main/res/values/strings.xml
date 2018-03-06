@@ -823,5 +823,5 @@
 
     <string name="permission_description_title">请求访问权限</string>
     <string name="permission_description_reason">没有权限将影响故障报告和建议功能</string>
-
+    <string name="custom_value_hint">自定义角度</string>
 </resources>

@@ -71,16 +71,19 @@
                     android:layout_height="wrap_content">
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:id="@+id/settings_amplifier_manufacture_7"/>
                     <com.edroplet.sanetel.view.custom.CustomEditText
                         android:id="@+id/settings_amplifier_manufacture_custom_value"
                         android:layout_width="wrap_content"
                         android:minWidth="@dimen/custom_edit_min_width"
-                        android:layout_height="@dimen/radio_group_item_height"
+                        android:layout_height="match_parent"
                         android:layout_toEndOf="@id/settings_amplifier_manufacture_7"
-                        android:layout_toRightOf="@id/settings_amplifier_manufacture_7"
-                        android:textAppearance="?android:attr/textAppearanceSmall"/>
+                        android:layout_alignBottom="@id/settings_amplifier_manufacture_7"
+                        android:layout_alignTop="@id/settings_amplifier_manufacture_7"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:theme="@style/CustomEditTextStyle"
+                        android:textColor="@color/button_text"/>
                 </RelativeLayout>
             </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
         </LinearLayout>

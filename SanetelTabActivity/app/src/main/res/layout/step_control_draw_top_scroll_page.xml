@@ -58,7 +58,7 @@
                                 android:text="1.0"/>
                         </LinearLayout>
 
-                        <RelativeLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
@@ -72,31 +72,36 @@
                             <com.edroplet.sanetel.view.custom.CustomRadioButton
                                 android:id="@+id/step_angular_velocity_5"
                                 style="@style/CustomRadioButtonHorizontalStyle"
-                                android:layout_toEndOf="@id/step_angular_velocity_4"
                                 android:text="10.0"/>
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <com.edroplet.sanetel.view.custom.CustomRadioButton
+                                    android:id="@+id/step_angular_velocity_6"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
 
-                            <com.edroplet.sanetel.view.custom.CustomRadioButton
-                                style="@style/CustomRadioButtonHorizontalStyle"
-                                android:layout_width="wrap_content"
-                                android:id="@+id/step_angular_velocity_6"
-                                android:layout_toEndOf="@id/step_angular_velocity_5"/>
-
-                            <com.edroplet.sanetel.view.custom.CustomEditText
-                                android:id="@+id/step_angular_velocity_custom_val"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_alignBottom="@id/step_angular_velocity_6"
-                                android:layout_gravity="bottom"
-                                android:layout_toEndOf="@id/step_angular_velocity_6"
-                                android:gravity="bottom"
-                                android:inputType="number|numberDecimal"
-                                android:paddingBottom="3dp"
-                                android:paddingTop="@dimen/no_padding"
-                                android:paddingStart="@dimen/no_padding"
-                                android:paddingEnd="@dimen/no_padding"
-                                android:maxLength="10"
-                                android:textAppearance="?android:attr/textAppearanceSmall" />
-                        </RelativeLayout>
+                                <com.edroplet.sanetel.view.custom.CustomEditText
+                                    android:id="@+id/step_angular_velocity_custom_val"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignBottom="@id/step_angular_velocity_6"
+                                    android:layout_toEndOf="@id/step_angular_velocity_6"
+                                    android:layout_alignTop="@id/step_angular_velocity_6"
+                                    android:gravity="bottom"
+                                    android:layout_gravity="bottom"
+                                    android:inputType="number|numberDecimal"
+                                    android:maxLength="10"
+                                    android:padding="@dimen/no_padding"
+                                    android:background="@null"
+                                    android:hint="@string/custom_value_hint"
+                                    android:theme="@style/CustomEditTextStyle"
+                                    android:textColor="@color/button_text"
+                                    android:minWidth="@dimen/custom_edit_min_width"
+                                    android:textAppearance="?android:attr/textAppearanceSmall" />
+                            </RelativeLayout>
+                        </LinearLayout>
                     </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
 
                 </LinearLayout>

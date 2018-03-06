@@ -51,11 +51,12 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@id/id_administrator_settings_lnb_ka_value_3"
                 android:layout_toEndOf="@id/id_administrator_settings_lnb_ka_value_3"
-                android:layout_toRightOf="@id/id_administrator_settings_lnb_ka_value_3"
+                android:layout_alignTop="@id/id_administrator_settings_lnb_ka_value_3"
                 android:inputType="numberSigned|numberDecimal"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:minWidth="@dimen/custom_edit_min_width"
-                android:padding="0dp"/>
+                android:padding="@dimen/no_padding"
+                android:textColor="@color/button_text"/>
         </RelativeLayout>
     </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
 </LinearLayout>

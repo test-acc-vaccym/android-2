@@ -464,4 +464,9 @@
         <item name="android:gravity">center_vertical|start</item>
         <item name="android:textColor">@color/text_11</item>
     </style>
+
+    <style name="CustomEditTextStyle">
+        <item name="colorControlNormal">@color/indigo</item>
+        <item name="colorControlActivated">@color/pink</item>
+    </style>
 </resources>

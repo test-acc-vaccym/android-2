@@ -58,7 +58,8 @@
                         android:layout_toEndOf="@id/id_administrator_settings_amplifier_oscillator_value_3"
                         android:layout_toRightOf="@id/id_administrator_settings_amplifier_oscillator_value_3"
                         android:inputType="number|numberDecimal"
-                        android:textAppearance="?android:attr/textAppearanceSmall"/>
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/button_text"/>
                 </RelativeLayout>
             </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
         </LinearLayout>

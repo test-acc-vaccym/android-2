@@ -141,13 +141,8 @@ public class MainMeAdviceActivity extends BaseActivity implements View.OnClickLi
             public void run() {
                 Message message = new Message();
                 handler.sendMessage(message);
-                try {
-                    Thread.sleep(schedule);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
-        }, schedule);
+        }, 0, schedule);
 
     }
 
@@ -221,11 +216,11 @@ public class MainMeAdviceActivity extends BaseActivity implements View.OnClickLi
         CustomSP.putString(context, KEY_ADVICE_ATTACH_FILES, adviceAttach.getText().toString());
     }
 
-    private final Handler handler = new ErrorReportHandler(this);
+    private final Handler handler = new AdviceHandler(this);
 
-    private static class ErrorReportHandler extends Handler {
+    private static class AdviceHandler extends Handler {
         private final WeakReference<MainMeAdviceActivity> mTarget;
-        ErrorReportHandler(MainMeAdviceActivity target){
+        AdviceHandler(MainMeAdviceActivity target){
             mTarget = new WeakReference<>(target);
         }
         @Override

@@ -29,6 +29,7 @@ import android.net.Uri;
 import android.widget.Toast;
 
 import java.io.File;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -173,15 +174,9 @@ public class MainMeErrorReportActivity extends BaseActivity implements View.OnCl
             @Override
             public void run() {
                 Message message = new Message();
-                Bundle bundle = new Bundle();
                 handler.sendMessage(message);
-                try {
-                    Thread.sleep(schedule);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
-        }, schedule);
+        }, 0, schedule);
     }
 
     @Override
@@ -281,12 +276,19 @@ public class MainMeErrorReportActivity extends BaseActivity implements View.OnCl
         CustomSP.putString(context, KEY_ERROR_REPORT_CUSTOMER,errorReportCustomer.getText().toString());
     }
 
-    private final Handler handler = new ErrorReportHandler();
+    private final Handler handler = new ErrorReportHandler(this);
 
-    private class ErrorReportHandler extends Handler {
+    private static class ErrorReportHandler extends Handler {
+        private final WeakReference<MainMeErrorReportActivity> mTarget;
+        ErrorReportHandler(MainMeErrorReportActivity target){
+            mTarget = new WeakReference<>(target);
+        }
         @Override
         public void handleMessage(Message msg) {
-            onSave();
+            MainMeErrorReportActivity target = mTarget.get();
+            if (target != null) {
+                target.onSave();
+            }
         }
     }
 

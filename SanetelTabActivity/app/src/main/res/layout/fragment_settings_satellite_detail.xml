@@ -17,10 +17,10 @@
             android:orientation="horizontal"
             android:visibility="gone">
             <com.edroplet.sanetel.view.custom.JustifyTextView
-                style="@style/radio_group_custom_item_first_filed_horizontal_style"
+                style="@style/fragment_detail_first_item_edit_horizontal_style"
                 android:text="@string/satellite_detail_uuid_key"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
-                style="@style/radio_group_second_item_edit_horizontal_style"
+                style="@style/fragment_detail_second_item_edit_horizontal_style"
                 android:id="@+id/satellite_detail_uuid"/>
         </LinearLayout>
         <LinearLayout
@@ -29,10 +29,10 @@
             android:orientation="horizontal"
             android:visibility="invisible">
         <com.edroplet.sanetel.view.custom.JustifyTextView
-            style="@style/radio_group_custom_item_first_filed_horizontal_style"
+            style="@style/fragment_detail_first_item_edit_horizontal_style"
             android:text="@string/satellite_detail_id_key"/>
         <com.edroplet.sanetel.view.custom.CustomTextView
-            style="@style/radio_group_second_item_edit_horizontal_style"
+            style="@style/fragment_detail_second_item_edit_horizontal_style"
             android:id="@+id/id_detail"/>
         </LinearLayout>
         <!--卫星名-->
@@ -42,10 +42,10 @@
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
                 android:id="@+id/id_tv_satellite_detail_name"
-                style="@style/radio_group_custom_item_first_filed_horizontal_style"
+                style="@style/fragment_detail_first_item_edit_horizontal_style"
                 android:text="@string/satellite_detail_name_key"/>
             <com.edroplet.sanetel.view.custom.CustomEditText
-                style="@style/radio_group_second_item_edit_horizontal_style"
+                style="@style/fragment_detail_second_item_edit_horizontal_style"
                 android:id="@+id/name_detail"/>
         </LinearLayout>
         <!--极化方式-->
@@ -55,10 +55,10 @@
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
                 android:id="@+id/id_tv_satellite_detail_polar"
-                style="@style/radio_group_custom_item_first_filed_horizontal_style"
+                style="@style/fragment_detail_first_item_edit_horizontal_style"
                 android:text="@string/satellite_detail_polarization_key"/>
             <Spinner
-                style="@style/radio_group_second_item_edit_horizontal_style"
+                style="@style/fragment_detail_second_item_edit_horizontal_style"
                 android:id="@+id/polarization_detail"
                 android:entries="@array/satellites_polarization"
                 android:textAlignment="center"/>
@@ -70,15 +70,15 @@
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
                 android:id="@+id/id_tv_satellite_detail_longitude"
-                style="@style/radio_group_custom_item_first_filed_horizontal_style"
+                style="@style/fragment_detail_first_item_edit_horizontal_style"
                 android:text="@string/satellite_detail_longitude_key"/>
 
             <com.edroplet.sanetel.view.custom.CustomEditText
-                style="@style/radio_group_custom_item_edit_horizontal_style"
+                style="@style/fragment_detail_custom_item_edit_horizontal_style"
                 android:id="@+id/longitude_detail"
                 android:inputType="numberDecimal|numberSigned"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
-                style="@style/radio_group_custom_item_third_filed_horizontal_style"
+                style="@style/fragment_detail_custom_item_third_filed_horizontal_style"
                 android:text="@string/angle_degree_unit"/>
         </LinearLayout>
         <!--门限-->
@@ -88,15 +88,15 @@
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
                 android:id="@+id/id_tv_satellite_detail_threshold"
-                style="@style/radio_group_custom_item_first_filed_horizontal_style"
+                style="@style/fragment_detail_first_item_edit_horizontal_style"
                 android:text="@string/satellite_detail_threshold_key"/>
             <com.edroplet.sanetel.view.custom.CustomEditText
-                style="@style/radio_group_custom_item_edit_horizontal_style"
+                style="@style/fragment_detail_custom_item_edit_horizontal_style"
                 android:id="@+id/threshold_detail"
                 android:hint="@string/satellite_detail_threshold_hint"
                 android:inputType="numberDecimal|number"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
-                style="@style/radio_group_custom_item_third_filed_horizontal_style"
+                style="@style/fragment_detail_custom_item_third_filed_horizontal_style"
                 android:text="@string/voltage_unit"/>
         </LinearLayout>
         <!--信标频率-->
@@ -106,16 +106,16 @@
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
                 android:id="@+id/id_tv_satellite_detail_beacon"
-                style="@style/radio_group_custom_item_first_filed_horizontal_style"
+                style="@style/fragment_detail_first_item_edit_horizontal_style"
                 android:text="@string/satellite_detail_beacon_key"/>
 
             <com.edroplet.sanetel.view.custom.CustomEditText
                 android:id="@+id/beacon_detail"
-                style="@style/radio_group_custom_item_edit_horizontal_style"
+                style="@style/fragment_detail_custom_item_edit_horizontal_style"
                 android:hint="@string/satellite_detail_beacon_hint"
                 android:inputType="numberDecimal|number"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
-                style="@style/radio_group_custom_item_third_filed_horizontal_style"
+                style="@style/fragment_detail_custom_item_third_filed_horizontal_style"
                 android:text="@string/frequency_unit"/>
         </LinearLayout>
         <!--载波-->
@@ -125,15 +125,15 @@
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
                 android:id="@+id/id_tv_satellite_detail_carrier"
-                style="@style/radio_group_custom_item_first_filed_horizontal_style"
+                style="@style/fragment_detail_first_item_edit_horizontal_style"
                 android:text="@string/satellite_detail_carrier"/>
             <com.edroplet.sanetel.view.custom.CustomEditText
                 android:id="@+id/carrier_detail"
-                style="@style/radio_group_custom_item_edit_horizontal_style"
+                style="@style/fragment_detail_custom_item_edit_horizontal_style"
                 android:hint="@string/satellite_detail_carrier_hint"
                 android:inputType="numberDecimal|number"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
-                style="@style/radio_group_custom_item_third_filed_horizontal_style"
+                style="@style/fragment_detail_custom_item_third_filed_horizontal_style"
                 android:text="@string/settings_reference_carrier_unit"/>
         </LinearLayout>
         <!--符号率-->
@@ -143,17 +143,17 @@
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
                 android:id="@+id/id_tv_satellite_detail_dvb"
-                style="@style/radio_group_custom_item_first_filed_horizontal_style"
+                style="@style/fragment_detail_first_item_edit_horizontal_style"
                 android:padding="@dimen/list_detail_padding"
                 android:text="@string/satellite_detail_symbol_rate_key" />
 
             <com.edroplet.sanetel.view.custom.CustomEditText
                 android:id="@+id/symbol_rate_detail"
-                style="@style/radio_group_custom_item_edit_horizontal_style"
+                style="@style/fragment_detail_custom_item_edit_horizontal_style"
                 android:hint="@string/satellite_detail_symbol_rate_hint"
                 android:inputType="number"/>
             <com.edroplet.sanetel.view.custom.CustomTextView
-                style="@style/radio_group_custom_item_third_filed_horizontal_style"
+                style="@style/fragment_detail_custom_item_third_filed_horizontal_style"
                 android:text="@string/settings_reference_dvb_unit"/>
         </LinearLayout>
         <!--备注-->
@@ -164,10 +164,10 @@
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
                 android:id="@+id/id_tv_satellite_detail_comment"
-                style="@style/radio_group_custom_item_first_filed_horizontal_style"
+                style="@style/fragment_detail_first_item_edit_horizontal_style"
                 android:text="@string/satellite_detail_comment_key" />
             <com.edroplet.sanetel.view.custom.CustomEditText
-                style="@style/radio_group_second_item_edit_horizontal_style"
+                style="@style/fragment_detail_second_item_edit_horizontal_style"
                 android:id="@+id/comment_detail"/>
         </LinearLayout>
 

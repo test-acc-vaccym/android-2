@@ -45,7 +45,8 @@
             android:layout_marginLeft="@dimen/guide_list_padding_left">
             <!--接收邮箱：support@sanetel.com-->
             <LinearLayout
-                style="@style/layout_vertical_style">
+                style="@style/layout_vertical_style"
+                android:layout_height="@dimen/main_me_single_item_layout_height">
                 <com.edroplet.sanetel.view.custom.JustifyTextView
                     android:text="@string/main_me_error_report_email_receive"
                     style="@style/advice_horizontal_style"
@@ -62,6 +63,7 @@
             <!--发送邮箱-->
             <LinearLayout
                 style="@style/layout_vertical_style"
+                android:layout_height="@dimen/main_me_single_item_layout_height"
                 android:visibility="gone">
                 <com.edroplet.sanetel.view.custom.JustifyTextView
                     android:text="@string/main_me_error_report_email_send"
@@ -77,7 +79,8 @@
             </LinearLayout>
             <!--用户邮箱-->
             <LinearLayout
-                style="@style/layout_vertical_style">
+                style="@style/layout_vertical_style"
+                android:layout_height="@dimen/main_me_single_item_layout_height">
                 <com.edroplet.sanetel.view.custom.JustifyTextView
                     android:text="@string/main_me_error_report_user_mail"
                     style="@style/advice_horizontal_style"
@@ -92,7 +95,8 @@
             </LinearLayout>
             <!--用户单位-->
             <LinearLayout
-                style="@style/layout_vertical_style">
+                style="@style/layout_vertical_style"
+                android:layout_height="@dimen/main_me_single_item_layout_height">
                 <com.edroplet.sanetel.view.custom.JustifyTextView
                     android:text="@string/main_me_email_customer"
                     style="@style/advice_horizontal_style"
@@ -105,7 +109,8 @@
             </LinearLayout>
             <!--姓    名-->
             <LinearLayout
-                style="@style/layout_vertical_style">
+                style="@style/layout_vertical_style"
+                android:layout_height="@dimen/main_me_single_item_layout_height">
                 <com.edroplet.sanetel.view.custom.JustifyTextView
                     android:text="@string/main_me_advice_name"
                     style="@style/advice_horizontal_style"
@@ -120,7 +125,8 @@
             </LinearLayout>
             <!--电    话-->
             <LinearLayout
-                style="@style/layout_vertical_style">
+                style="@style/layout_vertical_style"
+                android:layout_height="@dimen/main_me_single_item_layout_height">
                 <com.edroplet.sanetel.view.custom.JustifyTextView
                     android:text="@string/main_me_advice_phone"
                     style="@style/advice_horizontal_style"
@@ -134,9 +140,10 @@
                     android:maxLength="12"
                     app:titleTextAppearance="?android:attr/textAppearanceMedium"/>
             </LinearLayout>
-            <!--文件名称-->
+            <!--主题-->
             <LinearLayout
-                style="@style/layout_vertical_style">
+                style="@style/layout_vertical_style"
+                android:layout_height="@dimen/main_me_single_item_layout_height">
                 <com.edroplet.sanetel.view.custom.JustifyTextView
                     android:text="@string/main_me_advice_subject"
                     style="@style/advice_horizontal_style"
@@ -152,25 +159,21 @@
             <!--添加附件-->
             <LinearLayout
                 style="@style/layout_vertical_style"
-                android:layout_weight="3"
-                android:layout_gravity="start|left"
-                android:gravity="start|left"
-                android:paddingLeft="@dimen/no_padding"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/no_padding"
+                android:layout_height="@dimen/main_me_attach_item_layout_height">
                 <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/main_me_advice_attach"
                     android:text="@string/main_me_error_report_attach"
-                    style="@style/button_vertical_style"
-                    android:layout_weight="1"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:layout_gravity="start|left|center_vertical"
-                    android:gravity="start|left|center_vertical"/>
+                    style="@style/main_me_attach_button_vertical_style"
+                    android:layout_gravity="start|center_vertical"
+                    android:gravity="start|center_vertical"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_me_advice_attach_files"
                     style="@style/text_vertical_style"
                     android:layout_weight="2"
                     app:titleTextAppearance="?android:attr/textAppearanceSmall"
-                    android:gravity="start|left|center_vertical"
+                    android:gravity="start|center_vertical"
                     android:lines="2"
                     android:inputType="textMultiLine"
                     android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"/>
@@ -178,19 +181,17 @@
             <!--添加照片-->
             <LinearLayout
                 style="@style/layout_vertical_style"
-                android:layout_weight="3"
-                android:layout_gravity="start|left"
-                android:gravity="start|left"
+                android:layout_height="@dimen/main_me_attach_item_layout_height"
+                android:layout_gravity="start"
+                android:gravity="start"
                 android:padding="@dimen/no_padding"
                 android:orientation="vertical">
                 <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/main_me_advice_photo"
                     android:text="@string/main_me_advice_photo"
-                    style="@style/button_vertical_style"
-                    android:layout_weight="1"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:layout_gravity="start|left|center_vertical"
-                    android:gravity="start|left|center_vertical"/>
+                    style="@style/main_me_attach_button_vertical_style"
+                    android:layout_gravity="start|center_vertical"
+                    android:gravity="start|center_vertical"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_me_advice_photo_list"
                     style="@style/text_vertical_style"

@@ -173,7 +173,7 @@ public class MainMeAdviceActivity extends BaseActivity implements View.OnClickLi
             case R.id.main_me_advice_commit:
                 // 提交
                 try {
-                    sendMailTask = new MainMeErrorReportActivity.SendMailTask();
+                    sendMailTask = new MainMeAdviceActivity.SendMailTask();
                     sendMailTask.execute(view);
                 } catch (Exception e){
                     e.printStackTrace();

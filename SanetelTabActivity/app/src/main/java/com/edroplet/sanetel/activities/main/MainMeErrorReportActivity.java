@@ -133,7 +133,6 @@ public class MainMeErrorReportActivity extends BaseActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_me_error_report);
         ButterKnife.bind(this);
-
         getPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
 
         context = this;
@@ -263,7 +262,7 @@ public class MainMeErrorReportActivity extends BaseActivity implements View.OnCl
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private static void onSave(){
+    private void onSave(){
 
         // 保存到本地缓存
         CustomSP.putString(context, KEY_ERROR_REPORT_PHOTO, errorReportPhoto.getText().toString());
@@ -282,7 +281,7 @@ public class MainMeErrorReportActivity extends BaseActivity implements View.OnCl
 
     private final Handler handler = new ErrorReportHandler();
 
-    private static class ErrorReportHandler extends Handler {
+    private class ErrorReportHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
             onSave();

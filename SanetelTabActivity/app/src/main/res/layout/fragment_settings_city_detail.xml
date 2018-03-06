@@ -18,10 +18,10 @@
             android:orientation="horizontal"
             android:visibility="invisible">
         <com.edroplet.sanetel.view.custom.JustifyTextView
-            style="@style/radio_group_custom_item_first_filed_horizontal_style"
+            style="@style/fragment_detail_first_item_edit_horizontal_style"
             android:text="@string/satellite_detail_id_key"/>
         <com.edroplet.sanetel.view.custom.CustomTextView
-            style="@style/radio_group_second_item_edit_horizontal_style"
+            style="@style/fragment_detail_second_item_edit_horizontal_style"
             android:id="@+id/city_detail_id"/>
         </LinearLayout>
         <!--省份-->
@@ -32,10 +32,10 @@
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
                 android:id="@+id/id_tv_city_detail_province"
-                style="@style/radio_group_custom_item_first_filed_horizontal_style"
+                style="@style/fragment_detail_first_item_edit_horizontal_style"
                 android:text="@string/city_detail_province"/>
             <com.edroplet.sanetel.view.custom.CustomEditText
-                style="@style/radio_group_second_item_edit_horizontal_style"
+                style="@style/fragment_detail_second_item_edit_horizontal_style"
                 android:id="@+id/city_detail_province"/>
         </LinearLayout>
         <!--城市-->
@@ -46,10 +46,10 @@
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
                 android:id="@+id/id_tv_city_detail_city"
-                style="@style/radio_group_custom_item_first_filed_horizontal_style"
+                style="@style/fragment_detail_first_item_edit_horizontal_style"
                 android:text="@string/city_detail_name_key"/>
             <com.edroplet.sanetel.view.custom.CustomEditText
-                style="@style/radio_group_second_item_edit_horizontal_style"
+                style="@style/fragment_detail_second_item_edit_horizontal_style"
                 android:id="@+id/city_detail_name"/>
         </LinearLayout>
         <LinearLayout
@@ -59,15 +59,15 @@
 
             <com.edroplet.sanetel.view.custom.JustifyTextView
                 android:id="@+id/id_tv_city_detail_latitude"
-                style="@style/radio_group_custom_item_first_filed_horizontal_style"
+                style="@style/fragment_detail_first_item_edit_horizontal_style"
                 android:text="@string/city_detail_latitude_key" />
 
             <com.edroplet.sanetel.view.custom.CustomEditText
-                style="@style/radio_group_custom_item_edit_horizontal_style"
+                style="@style/fragment_detail_custom_item_edit_horizontal_style"
                 android:id="@+id/city_detail_latitude"
                 android:inputType="numberSigned|numberDecimal"/>
             <Spinner
-                style="@style/radio_group_custom_item_third_filed_horizontal_style"
+                style="@style/fragment_detail_custom_item_third_filed_horizontal_style"
                 android:id="@+id/latitude_unit"
                 android:entries="@array/latitude_unit"/>
         </LinearLayout>
@@ -77,14 +77,14 @@
             android:orientation="horizontal">
             <com.edroplet.sanetel.view.custom.JustifyTextView
                 android:id="@+id/id_tv_city_detail_longitude"
-                style="@style/radio_group_custom_item_first_filed_horizontal_style"
+                style="@style/fragment_detail_first_item_edit_horizontal_style"
                 android:text="@string/city_detail_longitude_key"/>
             <com.edroplet.sanetel.view.custom.CustomEditText
-                style="@style/radio_group_custom_item_edit_horizontal_style"
+                style="@style/fragment_detail_custom_item_edit_horizontal_style"
                 android:id="@+id/city_detail_longitude"
                 android:inputType="numberSigned|numberDecimal"/>
             <Spinner
-                style="@style/radio_group_custom_item_third_filed_horizontal_style"
+                style="@style/fragment_detail_custom_item_third_filed_horizontal_style"
                 android:id="@+id/longitude_unit"
                 android:entries="@array/longitude_unit"/>
         </LinearLayout>

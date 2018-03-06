@@ -212,7 +212,20 @@
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
         <item name="android:layout_marginLeft">@dimen/guide_list_padding_left</item>
         <item name="android:layout_marginStart">@dimen/guide_list_padding_left</item>
-        <item name="android:gravity">left|start</item>
+        <item name="android:gravity">start|center_vertical</item>
+    </style>
+
+    <style name="main_me_attach_button_vertical_style" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:layout_marginLeft">@dimen/guide_list_padding_left</item>
+        <item name="android:layout_marginStart">@dimen/guide_list_padding_left</item>
     </style>
 
     <style name="follow_me_navigation_bar" parent="Base.Widget.AppCompat.Button.Borderless">
@@ -305,10 +318,11 @@
     </style>
 
     <!--自定义单选框的style-->
-    <style name="radio_group_custom_item_first_filed_horizontal_style">
+    <style name="fragment_detail_first_item_edit_horizontal_style">
         <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:gravity">center_vertical|end</item>
+        <item name="android:layout_gravity">center_vertical|end</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
         <item name="colorControlNormal">@color/indigo</item>
@@ -316,7 +330,7 @@
         <!--<item name="android:background">@null</item>-->
     </style>
 
-    <style name="radio_group_custom_item_edit_horizontal_style">
+    <style name="fragment_detail_custom_item_edit_horizontal_style">
         <item name="android:layout_width">0dp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
@@ -328,30 +342,32 @@
         <item name="android:paddingBottom">@dimen/list_detail_padding</item>
         <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
     </style>
-    <style name="radio_group_custom_item_third_filed_horizontal_style">
+
+    <style name="fragment_detail_custom_item_third_filed_horizontal_style">
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">0.8</item>
         <item name="colorControlNormal">@color/indigo</item>
         <item name="colorControlActivated">@color/pink</item>
-        <item name="android:gravity">start|center_vertical</item>
-        <item name="android:layout_gravity">start|center_vertical</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
         <item name="android:paddingTop">@dimen/list_detail_padding</item>
         <item name="android:paddingBottom">@dimen/list_detail_padding</item>
         <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
-        <item name="android:layout_weight">0.8</item>
     </style>
 
-    <style name="radio_group_second_item_edit_horizontal_style">
+    <style name="fragment_detail_second_item_edit_horizontal_style">
         <!--<item name="android:background">@null</item>-->
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">2</item>
         <item name="colorControlNormal">@color/indigo</item>
         <item name="colorControlActivated">@color/pink</item>
-        <item name="android:layout_width">0dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">2</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:layout_gravity">center</item>
         <item name="android:paddingTop">@dimen/list_detail_padding</item>
         <item name="android:paddingBottom">@dimen/list_detail_padding</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
     </style>
 
     <style name="weChat_radio_button_style">

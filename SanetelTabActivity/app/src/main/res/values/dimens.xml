@@ -132,4 +132,8 @@
 
     <dimen name="spinner_lower_height">38dp</dimen>
     <dimen name="select_input_layout_margin_top">20dp</dimen>
+
+
+    <dimen name="main_me_single_item_layout_height">30dp</dimen>
+    <dimen name="main_me_attach_item_layout_height">50dp</dimen>
 </resources>

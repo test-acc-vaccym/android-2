@@ -8,7 +8,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
@@ -19,8 +18,6 @@ import com.edroplet.sanetel.utils.ConvertUtil;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.mail.MailUtil;
 import com.edroplet.sanetel.utils.mail.Send2EmailUtil;
-import com.edroplet.sanetel.view.ViewInject;
-import com.edroplet.sanetel.view.annotation.BindId;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomEditText;
 import com.edroplet.sanetel.view.custom.CustomTextView;
@@ -32,13 +29,12 @@ import android.net.Uri;
 import android.widget.Toast;
 
 import java.io.File;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.edroplet.sanetel.activities.functions.FunctionsCollectHistoryFileListActivity.KEY_IS_SELECT;
 import static com.edroplet.sanetel.utils.CustomSP.WifiSettingsNameKey;
@@ -58,62 +54,62 @@ public class MainMeErrorReportActivity extends BaseActivity implements View.OnCl
 
     Timer timer = new Timer();
 
-    @BindId(R.id.main_me_error_report_email_receive)
-    private static CustomTextView errorReportEmailReceive;
+    @BindView(R.id.main_me_error_report_email_receive)
+    CustomTextView errorReportEmailReceive;
 
-    @BindId(R.id.main_me_error_report_email_send_address)
-    private static CustomEditText errorReportEmailSend;
+    @BindView(R.id.main_me_error_report_email_send_address)
+    CustomEditText errorReportEmailSend;
 
-    @BindId(R.id.main_me_error_report_user_mail)
-    private static CustomEditText errorReportUserEmail;
+    @BindView(R.id.main_me_error_report_user_mail)
+    CustomEditText errorReportUserEmail;
 
-    @BindId(R.id.main_me_error_report_name)
-    private static CustomEditText errorReportName;
+    @BindView(R.id.main_me_error_report_name)
+    CustomEditText errorReportName;
 
-    @BindId(R.id.main_me_error_report_phone)
-    private static CustomEditText errorReportPhone;
+    @BindView(R.id.main_me_error_report_phone)
+    CustomEditText errorReportPhone;
 
-    @BindId(R.id.main_me_error_report_serial_number)
-    private static CustomEditText errorReportSerialNumber;
+    @BindView(R.id.main_me_error_report_serial_number)
+    CustomEditText errorReportSerialNumber;
 
-    @BindId(R.id.main_me_error_report_subject)
-    private static CustomEditText errorReportFileName;
+    @BindView(R.id.main_me_error_report_subject)
+    CustomEditText errorReportFileName;
 
-    @BindId(R.id.main_me_error_report_attach_files)
-    private static CustomTextView errorReportAttach;
+    @BindView(R.id.main_me_error_report_attach_files)
+    CustomTextView errorReportAttach;
 
-    @BindId(R.id.main_me_error_report_history_files)
-    private static CustomTextView errorReportHistoryFiles;
+    @BindView(R.id.main_me_error_report_history_files)
+    CustomTextView errorReportHistoryFiles;
 
-    @BindId(R.id.main_me_error_report_photo_files)
-    private static CustomTextView errorReportPhoto;
+    @BindView(R.id.main_me_error_report_photo_files)
+    CustomTextView errorReportPhoto;
 
-    @BindId(R.id.main_me_error_report_description)
-    private static CustomEditText errorReportDescription;
+    @BindView(R.id.main_me_error_report_description)
+    CustomEditText errorReportDescription;
 
-    @BindId(R.id.main_me_error_report_email_customer)
-    private static CustomEditText errorReportCustomer;
+    @BindView(R.id.main_me_error_report_email_customer)
+    CustomEditText errorReportCustomer;
 
     // 按键区
-    @BindId(R.id.main_me_error_report_attach)
+    @BindView(R.id.main_me_error_report_attach)
     CustomButton errorReportAttachButton;
 
-    @BindId(R.id.main_me_error_report_photo)
+    @BindView(R.id.main_me_error_report_photo)
     CustomButton errorReportPhotoButton;
 
-    @BindId(R.id.main_me_error_report_history)
+    @BindView(R.id.main_me_error_report_history)
     CustomButton errorReportHistoryhButton;
 
-    @BindId(R.id.main_me_error_report_return)
+    @BindView(R.id.main_me_error_report_return)
     CustomButton errorReportReturnButton;
 
-    @BindId(R.id.main_me_error_report_save)
+    @BindView(R.id.main_me_error_report_save)
     CustomButton errorReportSaveButton;
 
-    @BindId(R.id.main_me_error_report_commit)
+    @BindView(R.id.main_me_error_report_commit)
     CustomButton errorReportCommitButton;
 
-    @BindId(R.id.submit_result)
+    @BindView(R.id.submit_result)
     CustomTextView submitResult;
 
     private static final String KEY_ERROR_REPORT_EMAIL_RECEIVE = "KEY_ERROR_REPORT_EMAIL_RECEIVE";
@@ -136,8 +132,7 @@ public class MainMeErrorReportActivity extends BaseActivity implements View.OnCl
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_me_error_report);
-
-        ViewInject.inject(this, this);
+        ButterKnife.bind(this);
 
         getPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
 

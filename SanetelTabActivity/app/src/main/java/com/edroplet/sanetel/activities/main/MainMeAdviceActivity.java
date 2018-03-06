@@ -3,21 +3,29 @@ package com.edroplet.sanetel.activities.main;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.edroplet.sanetel.BaseActivity;
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.utils.ConvertUtil;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.mail.MailUtil;
+import com.edroplet.sanetel.utils.mail.Send2EmailUtil;
+import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomEditText;
 import com.edroplet.sanetel.view.custom.CustomTextView;
+import com.ssa.afilechooser.FileChooserActivity2;
+import com.ssa.afilechooser.utils.FileUtils2;
 import com.yongchun.library.view.ImageSelectorActivity;
 
+import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -40,6 +48,10 @@ public class MainMeAdviceActivity extends BaseActivity implements View.OnClickLi
 //        fragment.setArguments(args);
 //        return fragment;
 //    }
+    private static final int REQUESTFileChooserActivity = 0xE0;
+    ArrayList<File> files;
+    Uri attache;
+
     ArrayList<String> images;
     @BindView(R.id.main_me_advice_email_receive)
     CustomTextView adviceEmailReceive;
@@ -71,6 +83,15 @@ public class MainMeAdviceActivity extends BaseActivity implements View.OnClickLi
     @BindView(R.id.main_me_advice_toolbar)
     Toolbar toolbar;
 
+    @BindView(R.id.submit_result)
+    CustomTextView submitResult;
+
+    @BindView(R.id.main_me_advice_attach_files)
+    CustomTextView adviceAttach;
+
+    @BindView(R.id.main_me_advice_attach)
+    CustomButton adviceAttachButton;
+
     private static final String KEY_ADVICE_EMAIL_RECEIVE = "KEY_ADVICE_EMAIL_RECEIVE";
     private static final String KEY_ADVICE_EMAIL_SEND = "KEY_ADVICE_EMAIL_SEND";
     private static final String KEY_ADVICE_NAME= "KEY_ADVICE_NAME";
@@ -80,6 +101,7 @@ public class MainMeAdviceActivity extends BaseActivity implements View.OnClickLi
     private static final String KEY_ADVICE_DESCRIPTION= "KEY_ADVICE_DESCRIPTION";
     private static final String KEY_ADVICE_CUSTOMER= "KEY_ADVICE_CUSTOMER";
     private static final String KEY_ADVICE_USER_MAIL= "KEY_ADVICE_USER_MAIL";
+    private static final String KEY_ADVICE_ATTACH_FILES= "KEY_ADVICE_ATTACH_FILES";
 
     private static int schedule;
     private Context context;
@@ -108,6 +130,7 @@ public class MainMeAdviceActivity extends BaseActivity implements View.OnClickLi
         adviceEmailReceive.setText(CustomSP.getString(this, KEY_ADVICE_EMAIL_RECEIVE,getString(R.string.main_me_advice_email_receive_address)));
         adviceEmailSend.setText(CustomSP.getString(this, KEY_ADVICE_EMAIL_SEND,getString(R.string.main_me_advice_email_send_address)));
         adviceUserEmail.setText(CustomSP.getString(this, KEY_ADVICE_USER_MAIL,""));
+        adviceAttach.setText(CustomSP.getString(this, KEY_ADVICE_ATTACH_FILES,""));
         adviceSubject.setText(CustomSP.getString(this, KEY_ADVICE_FILENAME,""));
         adviceName.setText(CustomSP.getString(this, KEY_ADVICE_NAME,""));
         advicePhone.setText(CustomSP.getString(this, KEY_ADVICE_PHONE,""));
@@ -118,6 +141,7 @@ public class MainMeAdviceActivity extends BaseActivity implements View.OnClickLi
         findViewById(R.id.main_me_advice_save).setOnClickListener(this);
         findViewById(R.id.main_me_advice_commit).setOnClickListener(this);
         findViewById(R.id.main_me_advice_photo).setOnClickListener(this);
+        adviceAttachButton.setOnClickListener(this);
 
         timer.schedule(new TimerTask(){
             @Override
@@ -136,6 +160,7 @@ public class MainMeAdviceActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
+        Intent intent = null;
         switch(view.getId()){
             case R.id.main_me_advice_return:
                 // 返回
@@ -146,33 +171,23 @@ public class MainMeAdviceActivity extends BaseActivity implements View.OnClickLi
                 onSave();
                 break;
             case R.id.main_me_advice_commit:
-                ArrayList<String> al = new ArrayList<>();
-                String photoList = advicePhoto.getText().toString();
-                if (photoList.length() > 0) {
-                    al.addAll(ConvertUtil.string2List(photoList,","));
+                // 提交
+                try {
+                    sendMailTask = new MainMeErrorReportActivity.SendMailTask();
+                    sendMailTask.execute(view);
+                } catch (Exception e){
+                    e.printStackTrace();
                 }
-
-                String content = getString(R.string.main_me_advice_name) + ": " + adviceName.getText().toString() + "\n"; // 姓名
-                content = content + getString(R.string.main_me_error_report_user_mail) + ": " + adviceUserEmail.getText().toString() + "\n"; // 用户邮箱
-                content = content + getString(R.string.main_me_email_customer) + ": " + adviceCustomer.getText().toString() + "\n"; // 用户单位
-                content = content + getString(R.string.main_me_advice_phone) + ": " + advicePhoto.getText().toString() + "\n"; // 用户电话
-                content = content + adviceDescription.getText().toString();
-
-                String subject = adviceSubject.getText().toString();
-                if (subject.length() ==0){
-                    subject = getString(R.string.main_me_error_report_title);
-                }
-                MailUtil.sendMailMultiAttach(this,
-                        adviceEmailReceive.getText().toString().split(";"),
-                        null, // 抄送
-                        null, // 密送
-                        subject, // 主题
-                        content, // 内容
-                        al); // 附件
-
                 break;
             case R.id.main_me_advice_photo:
                 ImageSelectorActivity.start(MainMeAdviceActivity.this, 9, ImageSelectorActivity.MODE_MULTIPLE, true,true, false);
+                break;
+            case R.id.main_me_error_report_attach:
+//                intent = new Intent(MainMeAdviceActivity.this, FileChooserActivity.class);
+//                startActivityForResult(intent, REQUESTFileChooserActivity);
+                FileUtils2.mFileFileterBySuffixs.acceptSuffixs("log|txt|amr|mp3");//过江哪些格式的文件，用“|”分隔（英文），如果不加这句代码，默认显示所有文件。
+                intent = new Intent(this, FileChooserActivity2.class);
+                startActivityForResult(intent, REQUESTFileChooserActivity);
                 break;
             default:
                 break;
@@ -186,6 +201,17 @@ public class MainMeAdviceActivity extends BaseActivity implements View.OnClickLi
             images = (ArrayList<String>) data.getSerializableExtra(ImageSelectorActivity.REQUEST_OUTPUT);
             //get images then do something
             advicePhoto.setText(images.toString());
+        }else if(resultCode == RESULT_OK && requestCode == REQUESTFileChooserActivity){
+            if (null != data) {
+                // @SuppressWarnings("unchecked")
+                try {
+                    files = (ArrayList<File>) data.getSerializableExtra(FileChooserActivity2.PATHS);//返回的一个ArrayList<File>
+                    adviceAttach.setText(files.toString());
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            attache = data.getData();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -200,6 +226,7 @@ public class MainMeAdviceActivity extends BaseActivity implements View.OnClickLi
         CustomSP.putString(context, KEY_ADVICE_EMAIL_RECEIVE, adviceEmailReceive.getText().toString());
         CustomSP.putString(context, KEY_ADVICE_DESCRIPTION, adviceDescription.getText().toString());
         CustomSP.putString(context, KEY_ADVICE_CUSTOMER,adviceCustomer.getText().toString());
+        CustomSP.putString(context, KEY_ADVICE_ATTACH_FILES, adviceAttach.getText().toString());
     }
 
     private final Handler handler = new ErrorReportHandler(this);
@@ -226,5 +253,84 @@ public class MainMeAdviceActivity extends BaseActivity implements View.OnClickLi
             timer = null;
         }
         super.onDestroy();
+    }
+
+
+    private SendMailTask sendMailTask;
+
+    private class SendMailTask extends AsyncTask<Object, String, String> {
+
+        @Override
+        protected String doInBackground(Object... objects) {
+
+            ArrayList<String> al = new ArrayList<String>();
+            // 文件
+            String attach = adviceAttach.getText().toString();
+            if (attach != null && attach.length() > 0) {
+                al.addAll(ConvertUtil.string2List(attach,","));
+            }
+            // 照片
+            String photo = advicePhoto.getText().toString();
+            if (photo != null && photo.length() > 0) {
+                al.addAll(ConvertUtil.string2List(photo,","));
+            }
+            // 姓名
+            String content = getString(R.string.main_me_error_report_name) + ": " + adviceName.getText().toString() + "\n";
+            // 用户邮箱
+            content = content + getString(R.string.main_me_error_report_user_mail) + ": " + adviceUserEmail.getText().toString() + "\n";
+            // 用户单位
+            content = content + getString(R.string.main_me_email_customer) + ": " + adviceCustomer.getText().toString() + "\n";
+            // 电话
+            content = content + getString(R.string.main_me_error_report_phone) + ": " + advicePhone.getText().toString() + "\n";
+            content = content + adviceDescription.getText().toString();
+
+            String subject = adviceSubject.getText().toString();
+            if (subject == null || subject.length() ==0){
+                subject = getString(R.string.main_me_error_report_title);
+            }
+
+            try {
+                if (false) {
+                    String[] to = new String[]{"3328018955@qq.com","sanetel_user@126.com"};
+                    boolean sucess =  Send2EmailUtil.getInstance().sendMail("sanetel_user@126.com", to, null, subject, content, al);
+                    if (sucess){
+                        Toast.makeText(MainMeAdviceActivity.this,"发送成功",Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(MainMeAdviceActivity.this,"发送失败",Toast.LENGTH_SHORT).show();
+                    }
+                    /*
+                    Send2EmailUtil.getInstance().send_email(content);
+                    */
+                }else {
+                    if (true) {
+                        MailUtil.sendMailMultiAttach(MainMeAdviceActivity.this,
+                                adviceEmailReceive.getText().toString().split(";"),
+                                null, // 抄送
+                                null, // 密送
+                                subject, // 主题
+                                content, // 内容
+                                al); // 附件
+                    }else {
+                        String[] array = (String[])al.toArray(new String[al.size()]);
+                        boolean result = MailUtil.sendMail(getBaseContext(), "sanetel_user@126.com",
+                                "sanetel_!@#","smtp.126.com", "sanetel_user@126.com",
+                                "3328018955@qq.com", null, "故障报告", content, subject, array);
+                        if (result){
+                            submitResult.setVisibility(View.VISIBLE);
+                            submitResult.setText("发送成功");
+                            return "发送成功";
+                        }else {
+                            submitResult.setVisibility(View.VISIBLE);
+                            submitResult.setText("发送失败");
+                            return "发送失败";
+                        }
+                    }
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+                return e.toString();
+            }
+            return null;
+        }
     }
 }

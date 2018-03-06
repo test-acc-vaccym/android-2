@@ -74,6 +74,10 @@
 #保持 Serializable 不被混淆
 -keepnames class * implements java.io.Serializable
 
+#You also need to update proguard configuration file (e.g. proguard-rules.pro), code above uses reflection and won't work if proguard obfuscate the mShiftingMode field.
+-keepclassmembers class android.support.design.internal.BottomNavigationMenuView {
+    boolean mShiftingMode;
+}
 
 #不混淆资源类
 -keepclassmembers class **.R$* {

@@ -565,7 +565,7 @@
     <string name="main_me_advice_email_send">发送邮箱</string>
     <string name="main_me_advice_email_send_address">user@sanetel.com</string>
     <string name="main_me_error_report_user_mail">联系邮箱</string>
-    <string name="main_me_email_customer">联系单位</string>
+    <string name="main_me_email_customer">用户单位</string>
     <string name="main_me_advice_name">联系人</string>
     <string name="main_me_advice_phone">联系电话</string>
     <string name="main_me_advice_subject">邮件主题</string>
@@ -591,16 +591,16 @@
     <string name="main_me_switch_device_confirm">确定要连接其他天线或其他类型设备吗？</string>
 
     <!--关于-->
-    <string name="main_me_app_title">关于</string>
+    <string name="main_me_app_title">APP版本</string>
     <string name="main_me_app_version">%1$s</string>
-    <string name="main_me_app_update">APP版本更新</string>
+    <string name="main_me_app_update">版本更新</string>
     <string name="main_me_app_update_state_checking">检查中……</string>
     <string name="main_me_app_update_state_downloading">下载中[ %1$d %%] %2$s</string>
     <string name="main_me_app_update_state_download_failed">下载失败</string>
     <string name="main_me_app_update_state_verify_failed">校验失败</string>
     <string name="main_me_app_update_state_install_failed">安装失败</string>
     <string name="main_me_app_update_state_complete">完成,并将自动安装</string>
-    <string name="main_me_app_recovery">APP恢复出厂</string>
+    <string name="main_me_app_recovery">恢复出厂</string>
     <string name="main_me_app_browse">产品相关资料在线浏览</string>
     <string name="main_me_app_download">产品使用说明书</string>
 
@@ -661,19 +661,20 @@
     <string name="settings_amplifier_oscillator_value">填选本振值（MHz）</string>
     <string name="settings_amplifier_oscillator_message_second">更换参数</string>
     <string name="settings_amplifier_oscillator_message_third_start">点击</string>
+    <string name="settings_amplifier_interfere_title">邻星干扰保护</string>
     <string name="settings_amplifier_interfere_use">启用</string>
     <string name="settings_amplifier_interfere_disuse">不启用</string>
-    <string name="settings_amplifier_interfere_second">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当天线由于某种原因偏离锁星位置，成为失锁状态，此时功放再发射功率已经没有意义，反而会干扰其他卫星。这就要求当天线失锁时自动关闭功放；锁星后再打开功放。这样的功能叫邻星保护。</string>
+    <string name="settings_amplifier_interfere_second">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当天线由于某种原因偏离锁星位置，成为失锁状态，此时功放再发射功率已经没有意义，反而会干扰其他卫星。这就要求当天线失锁时自动关闭功放；锁星后再打开功放。这样的功能叫邻星干扰保护。</string>
     <string name="settings_amplifier_emit_title">开关发射</string>
-    <string name="settings_amplifier_emit_select">开关选择</string>
+    <string name="settings_amplifier_emit_select">选择开关</string>
     <string name="settings_amplifier_emit_open">发射打开</string>
     <string name="settings_amplifier_emit_close">发射关闭</string>
-    <string name="settings_amplifier_emit_pop_second">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;选择开关后点击设置，邻星保护将关闭；功放发射进入手动开关模式。退出“发射手动”功能后，恢复邻星保护功能。</string>
+    <string name="settings_amplifier_emit_pop_second">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;选择开关后点击设置，邻星保护将关闭；功放发射进入手动开关模式。退出“发射手动”功能后，恢复邻星干扰保护功能。</string>
     <string name="settings_amplifier_emit_help_title">发射手动说明</string>
-    <string name="settings_amplifier_emit_help_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当天线由于某种原因偏离锁星位置，成为失锁状态，此时功放再发射功率已经没有意义，反而会干扰其他卫星。这就要求当天线失锁时自动关闭功放；锁星后再打开功放。这样的功能叫邻星保护。\n
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;选择开关后点击设置，邻星保护将关闭；功放发射进入手动开关模式。退出“发射手动”功能后，恢复邻星保护功能。
+    <string name="settings_amplifier_emit_help_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当天线由于某种原因偏离锁星位置，成为失锁状态，此时功放再发射功率已经没有意义，反而会干扰其他卫星。这就要求当天线失锁时自动关闭功放；锁星后再打开功放。这样的功能叫邻星干扰保护。\n
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;选择开关后点击设置，邻星干扰保护将关闭；功放发射进入手动开关模式。退出“发射手动”功能后，恢复邻星干扰保护功能。
 </string>
-    <string name="settings_lnb_value">本振值(MHz)</string>
+    <string name="settings_lnb_value">填选本振值(MHz)</string>
     <string name="administrator_settings_lnb_ka_value_1">17400</string>
     <string name="administrator_settings_lnb_ka_value_2">19250</string>
     <string name="administrator_settings_lnb_ku_value_1">05150</string>
@@ -707,7 +708,7 @@
     <string name="administrator_amplifier_monitor">功放监控</string>
     <string name="administrator_amplifier_monitor_headline">监控方式</string>
     <!--天线标定-->
-    <string name="administrator_antenna_incriminate_headline">标定天线</string>
+    <string name="administrator_antenna_incriminate_headline">标定天线值</string>
     <string name="administrator_factory_incriminate_headline">出厂标定值</string>
     <!--恢复出厂-->
     <string name="administrator_setting_recovery_factory_title">恢复出厂</string>
@@ -744,7 +745,7 @@
 
     <!--10.5.9.	WIFI名称-->
     <string name="administrator_setting_wifi_name">名称</string>
-    <string name="administrator_setting_wifi_name_hint">请以“XWWT-”开头</string>
+    <string name="administrator_setting_wifi_name_hint">XWWT-P120-201708001</string>
     <string name="administrator_setting_wifi_name_second_line">请以“XWWT-”开头,否则无法输入.区分大小写，不能超过27个字符</string>
 
     <!--10.5.10.	IP设置-->

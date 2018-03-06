@@ -50,8 +50,6 @@
                     android:text="@string/main_me_error_report_email_receive"
                     style="@style/advice_horizontal_style"
                     android:layout_weight="0.5"
-                    tools:layout_editor_absoluteY="16dp"
-                    tools:layout_editor_absoluteX="16dp"
                     android:padding="@dimen/appbar_padding_top"
                     android:gravity="start|left"/>
 
@@ -69,11 +67,8 @@
                     android:text="@string/main_me_error_report_email_send"
                     style="@style/advice_horizontal_style"
                     android:layout_weight="0.5"
-                    tools:layout_editor_absoluteY="16dp"
-                    tools:layout_editor_absoluteX="16dp"
                     android:padding="@dimen/appbar_padding_top"
                     android:gravity="start|left"/>
-
                 <com.edroplet.sanetel.view.custom.CustomEditText
                     style="@style/advice_horizontal_style"
                     app:titleTextAppearance="?android:attr/textAppearanceMedium"
@@ -87,8 +82,6 @@
                     android:text="@string/main_me_error_report_user_mail"
                     style="@style/advice_horizontal_style"
                     android:layout_weight="0.5"
-                    tools:layout_editor_absoluteY="16dp"
-                    tools:layout_editor_absoluteX="16dp"
                     android:padding="@dimen/appbar_padding_top"
                     android:gravity="start|left"/>
 
@@ -104,8 +97,6 @@
                     android:text="@string/main_me_email_customer"
                     style="@style/advice_horizontal_style"
                     android:layout_weight="0.5"
-                    tools:layout_editor_absoluteY="16dp"
-                    tools:layout_editor_absoluteX="16dp"
                     android:padding="@dimen/appbar_padding_top"
                     android:gravity="start|left"/>
                 <com.edroplet.sanetel.view.custom.CustomEditText
@@ -161,23 +152,28 @@
             <!--添加附件-->
             <LinearLayout
                 style="@style/layout_vertical_style"
-                android:layout_weight="2"
-                android:gravity="start"
+                android:layout_weight="3"
+                android:layout_gravity="start|left"
+                android:gravity="start|left"
+                android:paddingLeft="@dimen/no_padding"
                 android:orientation="vertical">
-
                 <com.edroplet.sanetel.view.custom.CustomButton
                     android:id="@+id/main_me_advice_attach"
-                    style="@style/button_vertical_style"
-                    android:layout_width="wrap_content"
-                    android:gravity="start|center_vertical"
-                    android:padding="@dimen/no_padding"
                     android:text="@string/main_me_error_report_attach"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
+                    style="@style/button_vertical_style"
+                    android:layout_weight="1"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_gravity="start|left|center_vertical"
+                    android:gravity="start|left|center_vertical"/>
                 <com.edroplet.sanetel.view.custom.CustomTextView
                     android:id="@+id/main_me_advice_attach_files"
                     style="@style/text_vertical_style"
+                    android:layout_weight="2"
+                    app:titleTextAppearance="?android:attr/textAppearanceSmall"
+                    android:gravity="start|left|center_vertical"
                     android:lines="2"
-                    android:inputType="textMultiLine"/>
+                    android:inputType="textMultiLine"
+                    android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"/>
             </LinearLayout>
             <!--添加照片-->
             <LinearLayout
@@ -202,7 +198,8 @@
                     app:titleTextAppearance="?android:attr/textAppearanceSmall"
                     android:gravity="start|left|center_vertical"
                     android:lines="2"
-                    android:inputType="textMultiLine"/>
+                    android:inputType="textMultiLine"
+                    android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"/>
         </LinearLayout>
             <!--故障描述-->
             <com.edroplet.sanetel.view.custom.CustomEditText
@@ -216,7 +213,8 @@
                 android:lines="5"
                 android:gravity="start|left"
                 android:inputType="textMultiLine"
-                android:layout_weight="5"/>
+                android:layout_weight="5"
+                android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"/>
 
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/submit_result"

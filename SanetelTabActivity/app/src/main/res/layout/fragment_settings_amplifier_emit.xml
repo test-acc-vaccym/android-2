@@ -20,36 +20,43 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/layout_padding_top"
-            android:orientation="vertical">
-            <com.edroplet.sanetel.view.custom.CustomTextView
+            android:orientation="vertical"
+            android:background="@color/gray_bg">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/settings_amplifier_emit_select"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
-            <RadioGroup
-                android:id="@+id/settings_amplifier_emit_radio_group"
-                android:layout_width="@dimen/radio_group_width"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
-                <RadioButton
+                <com.edroplet.sanetel.view.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:id="@+id/settings_amplifier_emit_open"
-                    android:text="@string/settings_amplifier_emit_open"
-                    android:textAppearance="?android:attr/textAppearanceSmall"/>
-                <RadioButton
-                    android:layout_width="match_parent"
+                    android:paddingStart="@dimen/layout_padding_left"
+                    android:text="@string/settings_amplifier_emit_select"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                <RadioGroup
+                    android:id="@+id/settings_amplifier_emit_radio_group"
+                    android:layout_width="@dimen/radio_group_width"
                     android:layout_height="wrap_content"
-                    android:id="@+id/settings_amplifier_emit_close"
-                    android:text="@string/settings_amplifier_emit_close"
-                    android:textAppearance="?android:attr/textAppearanceSmall"/>
-            </RadioGroup>
+                    android:orientation="vertical">
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:id="@+id/settings_amplifier_emit_open"
+                        android:text="@string/settings_amplifier_emit_open"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/settings_amplifier_emit_close"
+                        android:text="@string/settings_amplifier_emit_close"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
+                </RadioGroup>
+            </LinearLayout>
+            <include layout="@layout/pop_dialog_blue"
+                android:id="@+id/amplifier_emit_pop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
-        <include layout="@layout/pop_dialog_blue"
-            android:id="@+id/amplifier_emit_pop"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

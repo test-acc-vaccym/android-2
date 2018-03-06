@@ -89,6 +89,8 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/no_padding"
+                        android:paddingBottom="@dimen/no_padding"
                         android:entries="@array/province"
                         android:textAppearance="?android:attr/textAppearanceSmall"/>
 
@@ -109,11 +111,9 @@
                     android:paddingEnd="@dimen/radio_group_city_padding"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/city_select"
                     android:layout_alignStart="@id/city_select"
                     android:layout_below="@id/city_select"
-                    android:layout_alignEnd="@id/city_select"
-                    android:layout_alignRight="@id/city_select"/>
+                    android:layout_alignEnd="@id/city_select"/>
             </RelativeLayout>
         </LinearLayout>
         <include layout="@layout/pop_dialog_blue"

@@ -2,100 +2,100 @@
 <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/gray_bg">
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <!--运动方式&角速度-->
+            <!--步进方式-->
             <LinearLayout
                 android:id="@+id/top_movement"
-                style="@style/layout_manual_value_select">
-                <!--运动方式-->
-                <!--角速度-->
+                style="@style/layout_manual_value_select"
+                android:layout_height="120dp">
+                <!--步进方式-->
                 <LinearLayout
-                    android:layout_marginTop="@dimen/main_margin_top"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="@dimen/main_margin_top"
                     android:orientation="vertical">
+
                     <com.edroplet.sanetel.view.custom.CustomTextView
+                        android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:layout_width="match_parent"
                         android:text="@string/main_control_step_unit"
-                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
                     <com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton
                         android:id="@+id/step_angular_velocity_radio_group"
+                        android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1.5"
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
+                        android:layout_weight="2"
                         android:layout_marginStart="@dimen/layout_padding_left"
-                        android:layout_marginLeft="@dimen/layout_padding_left">
+                        android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1">
+
                             <com.edroplet.sanetel.view.custom.CustomRadioButton
+                                style="@style/CustomRadioButtonHorizontalStyle"
                                 android:id="@+id/step_angular_velocity_1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:text="0.1"
-                                android:textAppearance="?android:attr/textAppearanceSmall"/>
+                                android:text="0.1"/>
+
                             <com.edroplet.sanetel.view.custom.CustomRadioButton
+                                style="@style/CustomRadioButtonHorizontalStyle"
                                 android:id="@+id/step_angular_velocity_2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:text="0.5"
-                                android:textAppearance="?android:attr/textAppearanceSmall"/>
+                                android:text="0.5"/>
+
                             <com.edroplet.sanetel.view.custom.CustomRadioButton
                                 android:id="@+id/step_angular_velocity_3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:text="1.0"
-                                android:textAppearance="?android:attr/textAppearanceSmall"/>
+                                style="@style/CustomRadioButtonHorizontalStyle"
+                                android:text="1.0"/>
                         </LinearLayout>
+
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:paddingTop="@dimen/layout_padding_top">
+
                             <com.edroplet.sanetel.view.custom.CustomRadioButton
                                 android:id="@+id/step_angular_velocity_4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:checked="true"
-                                android:text="5.0"
-                                android:textAppearance="?android:attr/textAppearanceSmall"/>
+                                style="@style/CustomRadioButtonHorizontalStyle"
+                                android:text="5.0"/>
+
                             <com.edroplet.sanetel.view.custom.CustomRadioButton
                                 android:id="@+id/step_angular_velocity_5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
+                                style="@style/CustomRadioButtonHorizontalStyle"
                                 android:layout_toEndOf="@id/step_angular_velocity_4"
-                                android:layout_toRightOf="@id/step_angular_velocity_4"
-                                android:text="10.0"
-                                android:textAppearance="?android:attr/textAppearanceSmall"/>
+                                android:text="10.0"/>
+
                             <com.edroplet.sanetel.view.custom.CustomRadioButton
-                                android:id="@+id/step_angular_velocity_6"
+                                style="@style/CustomRadioButtonHorizontalStyle"
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_toEndOf="@id/step_angular_velocity_5"
-                                android:layout_toRightOf="@id/step_angular_velocity_5"
-                                android:textAppearance="?android:attr/textAppearanceSmall"/>
+                                android:id="@+id/step_angular_velocity_6"
+                                android:layout_toEndOf="@id/step_angular_velocity_5"/>
+
                             <com.edroplet.sanetel.view.custom.CustomEditText
                                 android:id="@+id/step_angular_velocity_custom_val"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_alignBottom="@id/step_angular_velocity_6"
-                                android:layout_toEndOf="@id/step_angular_velocity_6"
-                                android:layout_toRightOf="@id/step_angular_velocity_6"
-                                android:paddingTop="@dimen/no_padding"
-                                android:paddingBottom="3dp"
-                                android:gravity="bottom"
                                 android:layout_gravity="bottom"
+                                android:layout_toEndOf="@id/step_angular_velocity_6"
+                                android:gravity="bottom"
                                 android:inputType="number|numberDecimal"
-                                android:textAppearance="?android:attr/textAppearanceSmall"/>
+                                android:paddingBottom="3dp"
+                                android:paddingTop="@dimen/no_padding"
+                                android:paddingStart="@dimen/no_padding"
+                                android:paddingEnd="@dimen/no_padding"
+                                android:maxLength="10"
+                                android:textAppearance="?android:attr/textAppearanceSmall" />
                         </RelativeLayout>
                     </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
 

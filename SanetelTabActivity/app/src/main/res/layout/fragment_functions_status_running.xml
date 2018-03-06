@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/main_status_running_state"
-        android:background="@color/yellow"
         android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <LinearLayout

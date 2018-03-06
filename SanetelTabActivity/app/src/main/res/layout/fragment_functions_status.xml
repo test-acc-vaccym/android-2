@@ -36,7 +36,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/main_status_communicate"
-                    android:background="@color/yellow"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <!--网络通信-->
                 <LinearLayout
@@ -253,7 +252,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/main_status_device"
-                    android:background="@color/yellow"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
 
                 <LinearLayout
@@ -443,7 +441,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/main_status_environment"
-                    android:background="@color/yellow"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -521,7 +518,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/main_status_version"
-                    android:background="@color/yellow"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
                 <!--软件版本-->
                 <LinearLayout

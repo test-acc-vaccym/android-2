@@ -219,14 +219,17 @@ public class GuideFragmentLocation extends BroadcastReceiverFragment {
     String[] provincesArray;
 
     private void initView(View view){
-        tvProvince.setTextAppearance(context, android.R.style.TextAppearance_Medium);
-        tvCity.setTextAppearance(context, android.R.style.TextAppearance_Medium);
-        tvLat.setTextAppearance(context, android.R.style.TextAppearance_Medium);
-        tvLon.setTextAppearance(context, android.R.style.TextAppearance_Medium);
-        newProvince.setTextAppearance(context, android.R.style.TextAppearance_Medium);
-        newCity.setTextAppearance(context, android.R.style.TextAppearance_Medium);
-        newLatitude.setTextAppearance(context, android.R.style.TextAppearance_Medium);
-        newLongitude.setTextAppearance(context, android.R.style.TextAppearance_Medium);
+
+        /*
+        tvProvince.setTextAppearance(context, android.R.style.TextAppearance_Small);
+        tvCity.setTextAppearance(context, android.R.style.TextAppearance_Small);
+        tvLat.setTextAppearance(context, android.R.style.TextAppearance_Small);
+        tvLon.setTextAppearance(context, android.R.style.TextAppearance_Small);
+        newProvince.setTextAppearance(context, android.R.style.TextAppearance_Small);
+        newCity.setTextAppearance(context, android.R.style.TextAppearance_Small);
+        newLatitude.setTextAppearance(context, android.R.style.TextAppearance_Small);
+        newLongitude.setTextAppearance(context, android.R.style.TextAppearance_Small);
+        */
 
         newLongitudeUnit.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, longitudeArray));
         newLatitudeUnit.setAdapter(new SpinnerAdapter2(context, android.R.layout.simple_list_item_1, android.R.id.text1, latitudeArray));

@@ -62,8 +62,8 @@
                     style="@style/status_bar_button_style"
                     android:id="@+id/status_bar_button_power_state"
                     android:text="@string/energy_state_saved"
-                    android:drawableStart="@drawable/saving"
-                    android:drawableLeft="@drawable/saving"
+                    android:drawableStart="@drawable/guide_saving"
+                    android:drawableLeft="@drawable/guide_saving"
                     app:drawable_height="@dimen/status_button_height"
                     app:drawable_width="@dimen/status_button_height"
                     app:state_color="special"/>

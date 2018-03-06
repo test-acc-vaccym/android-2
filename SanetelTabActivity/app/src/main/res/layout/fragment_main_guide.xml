@@ -25,8 +25,8 @@
                     <com.edroplet.sanetel.view.custom.CustomButton
                         style="@style/guide_item_flow_style"/>
                     <com.edroplet.sanetel.view.custom.CustomButton
-                        android:drawableLeft="@drawable/satellite_vista"
-                        android:drawableStart="@drawable/satellite_vista"
+                        android:drawableLeft="@drawable/guide_satellite_vista"
+                        android:drawableStart="@drawable/guide_satellite_vista"
                         android:clickable="false"
                         android:text="@string/guide_main__exploded"
                         style="@style/guide_item_style"/>
@@ -37,8 +37,8 @@
                     <com.edroplet.sanetel.view.custom.CustomButton
                         style="@style/guide_item_flow_style"/>
                     <com.edroplet.sanetel.view.custom.CustomButton
-                        android:drawableLeft="@drawable/input"
-                        android:drawableStart="@drawable/input"
+                        android:drawableLeft="@drawable/guide_input"
+                        android:drawableStart="@drawable/guide_input"
                         android:text="@string/guide_main_location"
                         style="@style/guide_item_style"/>
                 </LinearLayout>
@@ -48,8 +48,8 @@
                     <com.edroplet.sanetel.view.custom.CustomButton
                         style="@style/guide_item_flow_style"/>
                     <com.edroplet.sanetel.view.custom.CustomButton
-                        android:drawableLeft="@drawable/satellites"
-                        android:drawableStart="@drawable/satellites"
+                        android:drawableLeft="@drawable/guide_satellites"
+                        android:drawableStart="@drawable/guide_satellites"
                         android:text="@string/guide_main_destination_satellite"
                         style="@style/guide_item_style"/>
                 </LinearLayout>
@@ -59,8 +59,8 @@
                     <com.edroplet.sanetel.view.custom.CustomButton
                         style="@style/guide_item_flow_style"/>
                     <com.edroplet.sanetel.view.custom.CustomButton
-                        android:drawableLeft="@drawable/searching_mode"
-                        android:drawableStart="@drawable/searching_mode"
+                        android:drawableLeft="@drawable/guide_searching_mode"
+                        android:drawableStart="@drawable/guide_searching_mode"
                         android:text="@string/guide_main_searching_mode"
                         style="@style/guide_item_style"/>
                 </LinearLayout>
@@ -82,8 +82,8 @@
                     <com.edroplet.sanetel.view.custom.CustomButton
                         style="@style/guide_item_flow_style"/>
                     <com.edroplet.sanetel.view.custom.CustomButton
-                        android:drawableLeft="@drawable/locked"
-                        android:drawableStart="@drawable/locked"
+                        android:drawableLeft="@drawable/guide_locked"
+                        android:drawableStart="@drawable/guide_locked"
                         android:text="@string/guide_main_lock"
                         style="@style/guide_item_style"/>
                 </LinearLayout>
@@ -93,8 +93,8 @@
                     <com.edroplet.sanetel.view.custom.CustomButton
                         style="@style/guide_item_flow_style"/>
                     <com.edroplet.sanetel.view.custom.CustomButton
-                        android:drawableLeft="@drawable/saving"
-                        android:drawableStart="@drawable/saving"
+                        android:drawableLeft="@drawable/guide_saving"
+                        android:drawableStart="@drawable/guide_saving"
                         android:text="@string/guide_main_save"
                         style="@style/guide_item_style"/>
                 </LinearLayout>

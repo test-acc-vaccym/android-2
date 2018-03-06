@@ -158,6 +158,27 @@
                     style="@style/advice_horizontal_style"
                     app:titleTextAppearance="?android:attr/textAppearanceMedium"/>
             </LinearLayout>
+            <!--添加附件-->
+            <LinearLayout
+                style="@style/layout_vertical_style"
+                android:layout_weight="2"
+                android:gravity="start"
+                android:orientation="vertical">
+
+                <com.edroplet.sanetel.view.custom.CustomButton
+                    android:id="@+id/main_me_advice_attach"
+                    style="@style/button_vertical_style"
+                    android:layout_width="wrap_content"
+                    android:gravity="start|center_vertical"
+                    android:padding="@dimen/no_padding"
+                    android:text="@string/main_me_error_report_attach"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+                <com.edroplet.sanetel.view.custom.CustomTextView
+                    android:id="@+id/main_me_advice_attach_files"
+                    style="@style/text_vertical_style"
+                    android:lines="2"
+                    android:inputType="textMultiLine"/>
+            </LinearLayout>
             <!--添加照片-->
             <LinearLayout
                 style="@style/layout_vertical_style"

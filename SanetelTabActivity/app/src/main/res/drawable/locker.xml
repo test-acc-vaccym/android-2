@@ -7,8 +7,8 @@
         android:drawable="@drawable/unlock"/>
     <item
         statusbutton:state_color_abnormal = "true"
-        android:drawable="@drawable/locked"/>
+        android:drawable="@drawable/guide_locked"/>
     <item
         statusbutton:state_color_special = "true"
-        android:drawable="@drawable/locked"/>
+        android:drawable="@drawable/guide_locked"/>
 </selector>

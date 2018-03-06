@@ -355,7 +355,7 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
     }
     public class HttpDownloaderTask extends AsyncTask<Object, String, String> {
         private URL url = null;
-        private final String TAG = "TAG";
+        private final String TAG = "HttpDownloaderTask";
         private String urlString;
 
         public HttpDownloaderTask(String urlString){
@@ -385,6 +385,7 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
                 if (AppVersion.compareVersion(appVersion.getVersionName(), currentVersion) < 0 ||
                         (AppVersion.compareVersion(appVersion.getVersionName(), currentVersion) == 0 &&
                          appVersion.getVerCode() <= getVersionCode())){
+                    Log.i(TAG, "onPostExecute: VersionName=" +  appVersion.getVersionName() + ", VerCode =" + appVersion.getVerCode());
                     // 最新版本修改weight
                     appUpdateState.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1.5f));
                     appUpdateState.setTextAppearance(mContext, android.R.style.TextAppearance_Small);

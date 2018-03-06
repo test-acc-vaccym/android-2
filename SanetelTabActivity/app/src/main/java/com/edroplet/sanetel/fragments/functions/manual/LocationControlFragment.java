@@ -198,21 +198,23 @@ public class LocationControlFragment extends BroadcastReceiverFragment {
                     CustomSP.putString(context, KEY_PREPARE_AZIMUTH, preAZ);
                     CustomSP.putString(context, KEY_PREPARE_PITCH, preEL);
                     CustomSP.putString(context, KEY_PREPARE_POLARIZATION, prePOL);
-
-                    rotate.setText(R.string.location_control_rotate_stop);
+                    isRotate = true;
+                } else {
+                    isRotate = false;
+                }
+                CustomSP.putBoolean(context,KEY_LocationControlRotate,isRotate);
+                // 自动聚焦
+                showRotate();
+                if(isRotate){
                     // 2018/1/3 发送开始旋转指令
                     // 1)	点击开始旋转发送$$cmd,manual position,方位,俯仰,备用,极化角*ff<CR><LF>手动控制指令
                     // 把设置框值发送到便携站；
                     // 设置前，请检查数据的完整性。如果用户没有点击设置，无指令下发。
                     Protocol.sendMessage(context, String.format(Protocol.cmdManualPosition, preAZ, preEL,preRv, prePOL));
-                    isRotate = true;
-                } else {
-                    rotate.setText(R.string.location_control_rotate_start);
+                }else {
                     // 2)	旋转过程中点停止发送$cmd,stop search *ff<CR><LF>停止寻星指令；
                     Protocol.sendMessage(context, Protocol.cmdStopSearch);
-                    isRotate = false;
                 }
-                CustomSP.putBoolean(context,KEY_LocationControlRotate,isRotate);
             }
         });
         return view;
@@ -237,9 +239,9 @@ public class LocationControlFragment extends BroadcastReceiverFragment {
 
     void showRotate(){
         if (CustomSP.getBoolean(context,KEY_LocationControlRotate, false)){
-            rotate.setText(R.string.location_control_rotate_stop);
-        }else{
             rotate.setText(R.string.location_control_rotate_start);
+        }else{
+            rotate.setText(R.string.location_control_rotate_stop);
         }
         // 每次都自动聚焦
         rotate.requestFocus();

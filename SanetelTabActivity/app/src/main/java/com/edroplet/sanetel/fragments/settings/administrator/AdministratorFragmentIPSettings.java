@@ -14,6 +14,7 @@ import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.IpUtils;
 import com.edroplet.sanetel.utils.PopDialog;
+import com.edroplet.sanetel.utils.SystemServices;
 import com.edroplet.sanetel.utils.sscanf.Sscanf;
 import com.edroplet.sanetel.view.BroadcastReceiverFragment;
 import com.edroplet.sanetel.view.IPEdit;
@@ -85,11 +86,13 @@ public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
 
         context = getContext();
         unbinder =  ButterKnife.bind(this, view);
-
-        String address = CustomSP.getString(context,CustomSP.KeyIPSettingsAddress, "");
+        SystemServices.networkInfo networkInfo = SystemServices.getIPAddress(context);
+        String ipWIfi = networkInfo.getGateway();
+        String address = CustomSP.getString(context,CustomSP.KeyIPSettingsAddress, ipWIfi);
         ipAddress.setText(address);
 
-        String mask = CustomSP.getString(context,CustomSP.KeyIPSettingsMask, "");
+        String maskWIfi = networkInfo.getIp();
+        String mask = CustomSP.getString(context,CustomSP.KeyIPSettingsMask, maskWIfi);
         ipMask.setText(mask);
 
         thirdButton.setOnClickListener(new View.OnClickListener() {

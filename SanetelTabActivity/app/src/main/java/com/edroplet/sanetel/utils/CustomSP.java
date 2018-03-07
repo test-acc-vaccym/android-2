@@ -27,7 +27,7 @@ public class CustomSP {
     public static final String KeyIPSettingsAddress = "ipAddress";
     public static final String KeyIPSettingsPort = "ipPort";
     public static final String KeyIPSettingsMask = "ipMask";
-    public static final int DefaultPort = 8080;
+    public static final int DefaultPort = 8081;
     public static final String DefaultIP = "127.0.0.1";
 
     public  static boolean getBoolean(final Context context, String key, boolean defaultVal){

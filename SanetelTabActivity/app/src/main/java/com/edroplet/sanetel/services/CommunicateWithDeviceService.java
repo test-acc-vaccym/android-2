@@ -228,26 +228,35 @@ public class CommunicateWithDeviceService extends IntentService {
     boolean sleepForConnect = false;
     private void  ConnectToServer(){
         try {
+
+            String ipWIfi = SystemServices.getIPAddress(this).getIp();
+
             Log.d(TAG, "ConnectToServer, cmd client :" + (client==null? "" : client.toString()));
             if (null == client || !client.isOpen() || !client.isConnected()) {
                 client = SocketChannel.open();
-                String ip = CustomSP.getString(mContext, CustomSP.KeyIPSettingsAddress, CustomSP.DefaultIP);
+                String ip = CustomSP.getString(mContext, CustomSP.KeyIPSettingsAddress, ipWIfi);
                 // 判断是否设置过IP
-                while (ip.equals(CustomSP.DefaultIP)){
-                    Log.d(TAG, "ConnectToServer, ip is:" + CustomSP.DefaultIP );
+                while (ip.equals(ipWIfi)){
+                    Log.d(TAG, "ConnectToServer, ip is:" + ipWIfi );
                     // 2017/11/25 ip不设置正确，一直等待
                     sleepForConnect = true;
                     Thread.sleep(1000);
-                    ip = CustomSP.getString(mContext, CustomSP.KeyIPSettingsAddress, CustomSP.DefaultIP);
+
+                    ipWIfi = SystemServices.getIPAddress(this).getIp();
+
+                    ip = CustomSP.getString(mContext, CustomSP.KeyIPSettingsAddress, ipWIfi);
                 }
                 sleepForConnect = false;
 
                 int port = CustomSP.getInt(mContext, CustomSP.KeyIPSettingsPort, CustomSP.DefaultPort);
                 while (!client.isConnected()) {
                     Log.w(TAG, "ConnectToServer, client is not open, open now");
-                    // TODO: 2017/11/25 client没有open，一直等待
+                    // 2017/11/25 client没有open，一直等待
                     Thread.sleep(1000);
-                    ip = CustomSP.getString(mContext, CustomSP.KeyIPSettingsAddress, CustomSP.DefaultIP);
+
+                    ipWIfi = SystemServices.getIPAddress(this).getIp();
+
+                    ip = CustomSP.getString(mContext, CustomSP.KeyIPSettingsAddress, ipWIfi);
                     try {
                         isa = new InetSocketAddress(ip, port);
                         client.connect(isa);

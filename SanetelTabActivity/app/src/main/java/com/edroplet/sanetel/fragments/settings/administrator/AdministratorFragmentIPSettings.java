@@ -87,7 +87,7 @@ public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
         context = getContext();
         unbinder =  ButterKnife.bind(this, view);
         NetworkUtils.networkInfo networkInfo = NetworkUtils.getIPAddress(context);
-        String ipWIfi = networkInfo.getGateway();
+        final String ipWIfi = networkInfo.getGateway();
 //        String address = CustomSP.getString(context,CustomSP.KeyIPSettingsAddress, ipWIfi);
         ipAddress.setText(ipWIfi);
 
@@ -105,7 +105,7 @@ public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
 //                CustomSP.putString(context,CustomSP.KeyIPSettingsMask, mask);
                 String commandSets[] = {Protocol.UdpEnable, String.format(Protocol.UdpRLANIp, ip),String.format(Protocol.UdpLANIpMask, mask), Protocol.UdpSave, Protocol.UdpApply};
                 String expectedSets[] = {Protocol.UdpEnableResponse,String.format(Protocol.UdpRLANIpResponse, ip),String.format(Protocol.UdpLANIpMaskResponse, mask), Protocol.UdpSaveResponse, Protocol.UdpApplyResponse};
-                UdpSendReceive.server("0.0.0.0",2000, ip,998,commandSets, expectedSets);
+                 new UdpSendReceive("0.0.0.0",2000, ip,998,commandSets, expectedSets).start();
                 // send command
                 // cmd,set ip,网络IP,子网掩码,网关*ff<CR><LF>
                 // Protocol.sendMessage(context, String.format(Protocol.cmdSetIP,ip, mask,gateWay));

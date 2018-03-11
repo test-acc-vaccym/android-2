@@ -16,9 +16,24 @@ import java.net.UnknownHostException;
  * Udp 接送
  */
 
-public class UdpSendReceive {
+public class UdpSendReceive extends Thread {
     private static final String TAG = "UdpSendReceive";
-    public static void server(String listenIP, int listenPort, String  destIP, int destPort, String[] sendMessage, String expected[]) {
+    private String listenIP;
+    private int listenPort;
+    private String  destIP;
+    private int destPort;
+    private String[] sendMessage;
+    private String expected[];
+
+    public UdpSendReceive(String listenIP, int listenPort, String  destIP, int destPort, String[] sendMessage, String expected[]){
+        this.listenIP = listenIP;
+        this.listenPort = listenPort;
+        this.destIP = destIP;
+        this.destPort = destPort;
+        this.sendMessage = sendMessage;
+        this.expected = expected;
+    }
+    private void server() {
         DatagramSocket socket = null;
         DatagramPacket dataPacket = null;
         InetSocketAddress address = null;
@@ -48,7 +63,7 @@ public class UdpSendReceive {
                     String response = new String(buf).trim();
                     System.out.println("客户端发送的数据: " + response + "\r\n");
                     System.out.println("数据来源 " + addr + ":" + port + "\r\n");
-                    String iNeed = sendMessage[i].trim();
+                    String iNeed = expected[i].trim();
                     if (response.compareToIgnoreCase(iNeed) == 0) {
                         System.out.println(" " + addr + ":" + port + "\r\n");
                         break;
@@ -76,6 +91,11 @@ public class UdpSendReceive {
         }
     }
 
+    @Override
+    public void run() {
+        super.run();
+        server();
+    }
 
     private void send(byte[] data, String ip, int listenPort, int port) throws Exception{
         DatagramSocket s = new DatagramSocket(null);

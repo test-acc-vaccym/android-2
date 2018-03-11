@@ -6,11 +6,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.edroplet.sanetel.beans.AmplifierInfo;
 import com.edroplet.sanetel.beans.Protocol;
-import com.edroplet.sanetel.beans.monitor.EquipmentInfo;
 import com.edroplet.sanetel.utils.CustomSP;
-import com.edroplet.sanetel.utils.SystemServices;
+import com.edroplet.sanetel.services.network.SystemServices;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -21,6 +19,7 @@ import java.nio.charset.CharacterCodingException;
 import java.nio.charset.Charset; 
 import java.nio.charset.CharsetDecoder;
 import com.edroplet.sanetel.beans.monitor.MonitorInfo;
+import com.edroplet.sanetel.utils.NetworkUtils;
 
 import static com.edroplet.sanetel.activities.settings.ReferenceSatelliteActivity.ACTION_RECEIVE_REFERENCE_INFO;
 import static com.edroplet.sanetel.activities.settings.ReferenceSatelliteActivity.KEY_RECEIVE_REFERENCE_INFO_DATA;
@@ -229,7 +228,7 @@ public class CommunicateWithDeviceService extends IntentService {
     private void  ConnectToServer(){
         try {
 
-            String ipWIfi = SystemServices.getIPAddress(this).getIp();
+            String ipWIfi = NetworkUtils.getIPAddress(this).getIp();
 
             Log.d(TAG, "ConnectToServer, cmd client :" + (client==null? "" : client.toString()));
             if (null == client || !client.isOpen() || !client.isConnected()) {
@@ -242,7 +241,7 @@ public class CommunicateWithDeviceService extends IntentService {
                     sleepForConnect = true;
                     Thread.sleep(1000);
 
-                    ipWIfi = SystemServices.getIPAddress(this).getIp();
+                    ipWIfi = NetworkUtils.getIPAddress(this).getIp();
 
                     ip = CustomSP.getString(mContext, CustomSP.KeyIPSettingsAddress, ipWIfi);
                 }
@@ -254,7 +253,7 @@ public class CommunicateWithDeviceService extends IntentService {
                     // 2017/11/25 client没有open，一直等待
                     Thread.sleep(1000);
 
-                    ipWIfi = SystemServices.getIPAddress(this).getIp();
+                    ipWIfi = NetworkUtils.getIPAddress(this).getIp();
 
                     ip = CustomSP.getString(mContext, CustomSP.KeyIPSettingsAddress, ipWIfi);
                     try {

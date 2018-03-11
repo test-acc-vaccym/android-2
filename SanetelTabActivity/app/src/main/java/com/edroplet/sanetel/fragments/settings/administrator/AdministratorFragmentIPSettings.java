@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.beans.Protocol;
-import com.edroplet.sanetel.utils.CustomSP;
-import com.edroplet.sanetel.utils.IpUtils;
+import com.edroplet.sanetel.services.network.UdpSendReceive;
+//import com.edroplet.sanetel.utils.CustomSP;
+import com.edroplet.sanetel.utils.NetworkUtils;
 import com.edroplet.sanetel.utils.PopDialog;
-import com.edroplet.sanetel.utils.SystemServices;
 import com.edroplet.sanetel.utils.sscanf.Sscanf;
 import com.edroplet.sanetel.view.BroadcastReceiverFragment;
 import com.edroplet.sanetel.view.IPEdit;
@@ -86,26 +86,29 @@ public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
 
         context = getContext();
         unbinder =  ButterKnife.bind(this, view);
-        SystemServices.networkInfo networkInfo = SystemServices.getIPAddress(context);
+        NetworkUtils.networkInfo networkInfo = NetworkUtils.getIPAddress(context);
         String ipWIfi = networkInfo.getGateway();
-        String address = CustomSP.getString(context,CustomSP.KeyIPSettingsAddress, ipWIfi);
-        ipAddress.setText(address);
+//        String address = CustomSP.getString(context,CustomSP.KeyIPSettingsAddress, ipWIfi);
+        ipAddress.setText(ipWIfi);
 
-        String maskWIfi = networkInfo.getIp();
-        String mask = CustomSP.getString(context,CustomSP.KeyIPSettingsMask, maskWIfi);
-        ipMask.setText(mask);
+        String maskWIfi = networkInfo.getNetMask();
+//        String mask = CustomSP.getString(context,CustomSP.KeyIPSettingsMask, maskWIfi);
+        ipMask.setText(maskWIfi);
 
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String ip = ipAddress.getText();
                 String mask = ipMask.getText();
-                String gateWay = IpUtils.getLowAddr(ip,mask);
-                CustomSP.putString(context,CustomSP.KeyIPSettingsAddress, ip);
-                CustomSP.putString(context,CustomSP.KeyIPSettingsMask, mask);
+                String gateWay = NetworkUtils.getLowAddr(ip,mask);
+//                CustomSP.putString(context,CustomSP.KeyIPSettingsAddress, ip);
+//                CustomSP.putString(context,CustomSP.KeyIPSettingsMask, mask);
+                String commandSets[] = {Protocol.UdpEnable, String.format(Protocol.UdpRLANIp, ip),String.format(Protocol.UdpLANIpMask, mask), Protocol.UdpSave, Protocol.UdpApply};
+                String expectedSets[] = {Protocol.UdpEnableResponse,String.format(Protocol.UdpRLANIpResponse, ip),String.format(Protocol.UdpLANIpMaskResponse, mask), Protocol.UdpSaveResponse, Protocol.UdpApplyResponse};
+                UdpSendReceive.server("0.0.0.0",2000, ip,998,commandSets, expectedSets);
                 // send command
                 // cmd,set ip,网络IP,子网掩码,网关*ff<CR><LF>
-                Protocol.sendMessage(context, String.format(Protocol.cmdSetIP,ip, mask,gateWay));
+                // Protocol.sendMessage(context, String.format(Protocol.cmdSetIP,ip, mask,gateWay));
                 getActivity().finish();
             }
         });
@@ -135,11 +138,11 @@ public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
         mask = (String) o[1];
         if (ip != null && ip.length() > 0) {
             ipAddress.setText(ip);
-            CustomSP.putString(context,CustomSP.KeyIPSettingsAddress, ip);
+//            CustomSP.putString(context,CustomSP.KeyIPSettingsAddress, ip);
         }
         if (mask != null && mask.length() > 0) {
             ipMask.setText(mask);
-            CustomSP.putString(context, CustomSP.KeyIPSettingsMask, mask);
+//            CustomSP.putString(context, CustomSP.KeyIPSettingsMask, mask);
         }
     }
 

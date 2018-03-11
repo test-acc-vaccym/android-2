@@ -1,4 +1,4 @@
-package com.edroplet.sanetel.utils;
+package com.edroplet.sanetel.services.network;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -6,17 +6,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.net.DhcpInfo;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
-import android.os.Handler;
 import android.provider.Settings;
-import android.support.v4.BuildConfig;
 import android.support.v4.content.FileProvider;
-import android.text.format.Formatter;
 import android.util.Log;
 
 import java.io.File;
@@ -25,9 +21,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
-import java.math.BigInteger;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -36,15 +29,14 @@ import java.util.TimerTask;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager.WifiLock;
-import android.view.View;
 import android.widget.Toast;
 
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.activities.main.MainWifiSettingHelpActivity;
-import com.edroplet.sanetel.beans.AntennaInfo;
-import com.edroplet.sanetel.beans.LocationInfo;
-import com.edroplet.sanetel.beans.LockerInfo;
-import com.edroplet.sanetel.beans.SavingInfo;
+import com.edroplet.sanetel.utils.CustomSP;
+import com.edroplet.sanetel.utils.FileUtils;
+import com.edroplet.sanetel.utils.NetworkUtils;
+import com.edroplet.sanetel.utils.RandomDialog;
 
 import static android.content.Context.WIFI_SERVICE;
 
@@ -59,18 +51,6 @@ public class SystemServices {
     public static final int REQUEST_WIFI_CONNECT_MANAGER_DIRECT_IN = 10002;
     public static final String XWWT_PREFIX = "XWWT-";
 
-    public static String getConnectWifiSsid(Context context){
-        try {
-            WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(WIFI_SERVICE);
-            WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-            // Log.d("wifiInfo", wifiInfo.toString());
-            Log.d("SSID",wifiInfo.getSSID());
-            return wifiInfo.getSSID();
-        }catch (NullPointerException npe){
-            npe.printStackTrace();
-            return "";
-        }
-    }
     public static void startWifiManager(Activity activity, int requestId){
         // context.startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));//进入无线网络配置界面
         Intent intent= new Intent(Settings.ACTION_WIFI_SETTINGS);//进入无线网络配置界面
@@ -81,7 +61,7 @@ public class SystemServices {
     public static void checkConnectedSsid(final Context context, String ssid, final Activity activity,
                                           DialogInterface.OnClickListener onCancelClickListener,
                                           final int requestId){
-        String currentSSID = getConnectWifiSsid(context);
+        String currentSSID = NetworkUtils.getConnectWifiSsid(context);
         if (!currentSSID.startsWith(XWWT_PREFIX)) {
             final RandomDialog randomDialog = new RandomDialog(context);
             randomDialog.onConfirmEDropletDialogBuilder(context.getString(R.string.not_connected_wifi_prompt) + ssid, "?",
@@ -109,63 +89,7 @@ public class SystemServices {
         }
         return false;
     }
-    public static class networkInfo {
-        String ip;
-        String gateway;
-        String mask;
-        networkInfo(String ip, String gateway,String mask){
-            this.ip = ip;
-            this.gateway = gateway;
-            this.mask = mask;
-        }
 
-        networkInfo(){
-            ip = CustomSP.DefaultIP;
-            gateway = CustomSP.DefaultIP;
-            mask = "255.255.255.0";
-        }
-
-        public String getGateway() {
-            return gateway;
-        }
-
-        public String getIp() {
-            return ip;
-        }
-
-        public String getNetMask() {
-            return mask;
-        }
-    }
-
-    public static networkInfo getIPAddress(Context ctx){
-        try {
-            WifiManager wifi_service = (WifiManager) ctx.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-            DhcpInfo dhcpInfo = new DhcpInfo();
-            if (wifi_service != null)
-                dhcpInfo = wifi_service.getDhcpInfo();
-            //        WifiInfo wifiinfo = wifi_service.getConnectionInfo();
-            //        System.out.println("Wifi info----->"+wifiinfo.getIpAddress());
-            //        System.out.println("DHCP info gateway----->"+ Formatter.formatIpAddress(dhcpInfo.gateway));
-            //        System.out.println("DHCP info netmask----->"+Formatter.formatIpAddress(dhcpInfo.netmask));
-            //DhcpInfo中的ipAddress是一个int型的变量，通过Formatter将其转化为字符串IP地址
-            return new networkInfo(ip2string(dhcpInfo.ipAddress),ip2string(dhcpInfo.gateway),ip2string(dhcpInfo.netmask));
-        } catch (Exception npe){
-            npe.printStackTrace();
-            return new networkInfo();
-        }
-    }
-
-    private static String ip2string(long address){
-        try {
-            byte[] ipAddress = BigInteger.valueOf(address).toByteArray();
-            InetAddress myAddr = InetAddress.getByAddress(ipAddress);
-            return myAddr.getHostAddress();
-        }catch (UnknownHostException uhe){
-            uhe.printStackTrace();
-        }
-        return "";
-    }
     /**
      * 安装软件
      *

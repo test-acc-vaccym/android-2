@@ -17,7 +17,8 @@ import com.edroplet.sanetel.adapters.MainViewPagerAdapter;
 import com.edroplet.sanetel.fragments.main.MainFragmentGuide;
 import com.edroplet.sanetel.fragments.main.MainFragmentMe;
 import com.edroplet.sanetel.utils.CustomSP;
-import com.edroplet.sanetel.utils.SystemServices;
+import com.edroplet.sanetel.services.network.SystemServices;
+import com.edroplet.sanetel.utils.NetworkUtils;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomTextView;
 import com.edroplet.sanetel.view.custom.WeChatRadioGroup;
@@ -129,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case SystemServices.REQUEST_WIFI_CONNECT_MANAGER_DIRECT_IN:
                     Log.e("XXXXSystemServices", "onActivityResult: " + resultCode);
-                    String ssid = SystemServices.getConnectWifiSsid(this);
+                    String ssid = NetworkUtils.getConnectWifiSsid(this);
                     if (ssid.toUpperCase().startsWith(SystemServices.XWWT_PREFIX)) {
                         Toast.makeText(this, getString(R.string.main_connected_ssid_prompt) + ssid, Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(MainActivity.this, FunctionsActivity.class));

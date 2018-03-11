@@ -3,8 +3,6 @@ package com.edroplet.sanetel.utils;
 import android.text.InputFilter;
 import android.text.Spanned;
 
-import static com.edroplet.sanetel.utils.SystemServices.XWWT_PREFIX;
-
 /**
  * Created by qxs on 2017/10/23.
  */

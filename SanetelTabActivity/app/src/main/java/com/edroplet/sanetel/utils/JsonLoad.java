@@ -5,6 +5,7 @@ import android.content.res.AssetManager;
 
 import com.edroplet.sanetel.beans.LocationInfo;
 import com.edroplet.sanetel.beans.SatelliteInfo;
+import com.edroplet.sanetel.services.network.SystemServices;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -45,7 +45,8 @@
     <color name="tab_unchecked">#757575</color>
     <color name="title_text">#0000B5</color>
     <color name="state_bar_background">#BBEEDD</color>
-    <color name="operate_bar_background">#6B8E23</color>
+    <!--<color name="operate_bar_background">#FDF5E6</color>-->
+    <color name="operate_bar_background">#99CCFF</color>
     <color name="title_background">#ffbbeedd</color>
     <color name="subtitle_Honeydew">#F0FFF0</color>
     <color name="button_blink">#00FFFFFF</color>

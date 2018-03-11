@@ -9,11 +9,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.activities.functions.FunctionsActivity;
-import com.edroplet.sanetel.utils.SystemServices;
 
 /**
  * Created by qxs on 2017/9/19.

@@ -1,6 +1,5 @@
 package com.edroplet.sanetel.fragments.functions;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -16,13 +15,11 @@ import android.widget.LinearLayout;
 
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.beans.AmplifierInfo;
-import com.edroplet.sanetel.beans.LocationInfo;
 import com.edroplet.sanetel.beans.SatelliteInfo;
 import com.edroplet.sanetel.beans.monitor.MonitorInfo;
 import com.edroplet.sanetel.services.communicate.CommunicateService;
 import com.edroplet.sanetel.utils.CustomSP;
-import com.edroplet.sanetel.utils.SystemServices;
-import com.edroplet.sanetel.view.StatusButton;
+import com.edroplet.sanetel.services.network.SystemServices;
 import com.edroplet.sanetel.view.custom.CustomTextView;
 
 import java.util.Timer;

@@ -18,11 +18,12 @@ import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.activities.functions.FunctionsActivity;
 import com.edroplet.sanetel.activities.guide.GuideActivity;
 import com.edroplet.sanetel.utils.CustomSP;
-import com.edroplet.sanetel.utils.SystemServices;
+import com.edroplet.sanetel.services.network.SystemServices;
+import com.edroplet.sanetel.utils.NetworkUtils;
 
 import static com.edroplet.sanetel.activities.main.MainActivity.defaultDeviceName;
 import static com.edroplet.sanetel.utils.CustomSP.WifiSettingsNameKey;
-import static com.edroplet.sanetel.utils.SystemServices.REQUEST_WIFI_CONNECT_MANAGER;
+import static com.edroplet.sanetel.services.network.SystemServices.REQUEST_WIFI_CONNECT_MANAGER;
 
 /**
  * Created by qxs on 2017/9/19.
@@ -69,7 +70,6 @@ public class MainFragmentGuide extends Fragment implements View.OnClickListener{
                 @Override
                 public void onClick(DialogInterface arg0, int arg1) {
                     Toast.makeText(getContext(), getString(R.string.cancel_button_prompt), Toast.LENGTH_SHORT).show();
-                    // TODO: 2017/11/5 取消选择后的处理
                     jumpToFollowMe();
                 }
             };
@@ -108,7 +108,7 @@ public class MainFragmentGuide extends Fragment implements View.OnClickListener{
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_WIFI_CONNECT_MANAGER){
-            String ssid = SystemServices.getConnectWifiSsid(getContext());
+            String ssid = NetworkUtils.getConnectWifiSsid(getContext());
             if (ssid.toUpperCase().startsWith(SystemServices.XWWT_PREFIX)){
                 Toast.makeText(getContext(), getString(R.string.main_connected_ssid_prompt) + ssid, Toast.LENGTH_SHORT).show();
                 jumpToFollowMe();

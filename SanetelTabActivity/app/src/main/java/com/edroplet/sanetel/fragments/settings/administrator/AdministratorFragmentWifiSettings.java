@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 import static com.edroplet.sanetel.utils.CustomSP.WifiSettingsNameKey;
-import static com.edroplet.sanetel.utils.SystemServices.XWWT_PREFIX;
+import static com.edroplet.sanetel.services.network.SystemServices.XWWT_PREFIX;
 
 /**
  * Created by qxs on 2017/9/19.

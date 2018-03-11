@@ -11,17 +11,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edroplet.sanetel.R;
@@ -32,19 +25,15 @@ import com.edroplet.sanetel.beans.LocationInfo;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.JsonLoad;
 import com.edroplet.sanetel.utils.RandomDialog;
-import com.edroplet.sanetel.utils.SystemServices;
 import com.edroplet.sanetel.view.ViewInject;
 import com.edroplet.sanetel.view.annotation.BindId;
 import com.edroplet.sanetel.view.custom.CustomButton;
-import com.edroplet.sanetel.view.custom.CustomTextView;
-import com.edroplet.sanetel.view.custom.SmoothCheckBox;
 
 import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

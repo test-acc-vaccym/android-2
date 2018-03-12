@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="beijing">北京</string>
+    <string name="shanghai">上海</string>
+    <string name="tianjin">天津</string>
+    <string name="chongqing">重庆</string>
+</resources>

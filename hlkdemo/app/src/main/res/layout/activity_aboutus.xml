@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+    
+    <RelativeLayout android:id="@+id/rlTitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#3C90FE">
+        
+        <!-- 搜索 -->
+        <TextView
+            android:id="@+id/tvDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/img_left"
+            android:textColor="#fff"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"/>
+
+        <TextView android:id="@+id/tvTitleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关于我们"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"/>
+        
+
+    </RelativeLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_below="@+id/rlTitle"
+        android:layout_marginTop="50dp">
+        
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_about_logo"/>
+        
+        <TextView android:id="@+id/tvVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HLK-M30 Android版  V2.01"
+            android:textColor="#00AEEF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"/>
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UDP / TCP Demo"
+            android:textColor="#00AEEF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"/>
+        
+        <Button android:id="@+id/btnCallPhone"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:background="@drawable/item_group_bg_blue"
+            android:text="联系我们"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginTop="20dp"/>
+        
+        <Button android:id="@+id/btnCallGicisky"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:background="@drawable/item_group_bg_blue"
+            android:text="访问极思灵创"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"/>
+        
+        
+        
+        
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="深圳市极思灵创科技有限公司"
+            android:textColor="#196DCB"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            android:layout_margin="3dp"/>
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shenzhen Gicisky Electronic Co.,Ltd"
+            android:textColor="#196DCB"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_margin="3dp"/>
+        
+	        <LinearLayout 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical">
+	            
+	            <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_vertical"
+	            android:drawableLeft="@drawable/img_intent"
+	            android:text="http://www.gicisky.com"
+	            android:textColor="#0E6EAB"
+	            android:textSize="12sp"
+	            android:layout_gravity="left"/>
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_vertical"
+	            android:drawableLeft="@drawable/img_dizhi"
+	            android:text="深圳市深圳北站留仙大道彩悦大厦西门3楼"
+	            android:textColor="#196DCB"
+	            android:textSize="14sp"
+	            android:layout_marginTop="5dp"/>
+            
+        </LinearLayout>
+        
+        
+        
+	    <TextView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Copyringht © 2016 www.gicisky.com All Rights Reserved"
+	        android:textColor="#196DCB"
+	        android:textSize="12sp"
+	        android:layout_marginTop="10dp"
+	        android:layout_marginBottom="10dp"/>
+        
+    </LinearLayout>
+
+</RelativeLayout>

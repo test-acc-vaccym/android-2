@@ -17,7 +17,7 @@
         app:title="@null"
         app:titleTextColor="@color/white"
         app:titleTextAppearance="?android:attr/textAppearanceLarge"
-        android:background="@color/black"
+        android:background="@color/colorPrimaryDark"
         android:fitsSystemWindows="true">
         <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/guide_toolbar_title"
@@ -26,14 +26,15 @@
             android:layout_gravity="left|start"
             android:text="@string/follow_me_bottom_nav_main"
             android:textStyle="bold"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/white"/>
         <com.edroplet.sanetel.view.custom.CustomButton
             android:id="@+id/guide_enter_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/guide_main_enter"
             android:textStyle="bold"
-            android:textColor="@color/button_text"
+            android:textColor="@color/blue"
             android:drawableEnd="@drawable/next"
             android:drawableRight="@drawable/next"
             android:background="@drawable/button_background"

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/listitem_bg"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants">
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+        <TextView android:id="@+id/tvDeviceName"
+		     android:layout_width="wrap_content"
+		     android:layout_height="wrap_content"
+		     android:text="HLK-M30"
+		     android:textSize="18sp"
+		     android:textColor="#000"
+		     android:layout_alignParentLeft="true"
+		     android:layout_centerVertical="true"/>
+        
+        <TextView android:id="@+id/tvDeviceIp"
+		     android:layout_width="wrap_content"
+		     android:layout_height="wrap_content"
+		     android:text="ip：192.168.1.1"
+		     android:textSize="16sp"
+		     android:textColor="#000"
+		     android:layout_centerVertical="true"
+		     android:layout_alignParentRight="true"/>
+        
+    </RelativeLayout>
+        
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop = "2dp">
+        
+        <TextView android:id="@+id/tvDeviceMac"
+		     android:layout_width="wrap_content"
+		     android:layout_height="wrap_content"
+		     android:text="mac:(8c:88:2b:00:24:15)"
+		     android:textSize="16sp"
+		     android:textColor="#000"
+		     android:layout_alignParentLeft="true"
+		     android:layout_centerVertical="true"/>
+        
+        <ProgressBar 
+			android:id="@+id/progressBar1" 
+			android:layout_height="40dp"
+			android:layout_width="40dp"
+			android:layout_centerVertical="true"
+			android:layout_alignParentRight="true"
+			android:paddingRight="5dp"
+            android:paddingLeft="10dp"
+            android:visibility="gone"/>
+    
+        
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop = "2dp">
+        
+        <TextView android:id="@+id/tvVer"
+		     android:layout_width="wrap_content"
+		     android:layout_height="wrap_content"
+		     android:text="版本号：V1.09 Sep 28 2017 19:11:45 "
+		     android:textSize="16sp"
+		     android:textColor="#000"
+		     android:layout_alignParentLeft="true"
+		     android:layout_centerVertical="true"/>
+        
+    </RelativeLayout>
+    
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop = "2dp">
+        
+        <TextView android:id="@+id/tvInfo"
+		     android:layout_width="wrap_content"
+		     android:layout_height="wrap_content"
+		     android:text="版本描述：airkiss云智易,非定制版"
+		     android:textSize="16sp"
+		     android:textColor="#000"
+		     android:layout_alignParentLeft="true"
+		     android:layout_centerVertical="true"/>
+        
+    </RelativeLayout>
+    
+    
+     <Button android:id="@+id/btnSet"
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:text="参数设置"
+	     android:textSize="18sp"
+	     android:textColor="#000"
+	     android:layout_marginTop = "10dp"
+	     android:visibility="gone"/>
+        
+        
+    
+    
+    
+    
+</LinearLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#a0000000">
+    
+    <View android:id="@+id/vTop"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"/>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.5"
+        android:orientation="horizontal">
+        
+        <View android:id="@+id/vLeft"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
+        
+        <LinearLayout 
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/finddevice_border">
+            
+            <TextView android:id="@+id/tvSmartConfig"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textColor="#000"
+                android:text="Elian"
+                android:textSize="18sp"
+                android:gravity="center"/>
+            
+            <View 
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#ccc"/>
+            
+            <TextView android:id="@+id/tvSmartLink"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textColor="#000"
+                android:text="AirKiss"
+                android:textSize="18sp"
+                android:gravity="center"/>
+            
+        </LinearLayout>
+        
+        <View android:id="@+id/vRight"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
+        
+    </LinearLayout>
+    
+    <View android:id="@+id/vBottom"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"/>
+    
+
+</LinearLayout>

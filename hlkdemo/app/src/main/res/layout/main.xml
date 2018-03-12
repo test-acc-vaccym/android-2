@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#fff"
+    android:id="@+id/rlParent"
+    >
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_above="@+id/tvAboutUs">
+        
+        <RelativeLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="50dp"
+	        android:background="#3C90FE">
+	        
+	
+	        <TextView android:id="@+id/tvTitleName"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="设备列表"
+	            android:textColor="#fff"
+	            android:textSize="18sp"
+	            android:textStyle="bold" 
+	            android:layout_centerInParent="true"/>
+	        
+	        <RelativeLayout 
+	            android:layout_width="wrap_content"
+	            android:layout_height="match_parent"
+	            android:layout_alignParentRight="true">
+	            
+	            <TextView android:id="@+id/tvFindDevice"
+		            android:layout_width="wrap_content"
+		            android:layout_height="match_parent"
+		            android:text="本地搜索"
+		            android:textColor="#fff"
+		            android:gravity="center"
+		            android:paddingRight="5dp"
+		            android:paddingLeft="10dp"/>
+	            
+	            <ProgressBar 
+					android:id="@+id/progressBar1" 
+					android:layout_height="40dp"
+					android:layout_width="40dp"
+					android:layout_centerVertical="true"
+					android:visibility="invisible"
+					android:paddingRight="5dp"
+		            android:paddingLeft="10dp"/>
+	            
+	        </RelativeLayout>
+	
+	    </RelativeLayout>
+		
+		<ListView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:padding="5dip"
+			android:id="@+id/listView"
+			android:fadingEdge="none" >
+		    
+		</ListView>
+        
+    </LinearLayout>
+    
+    <TextView android:id="@+id/tvAboutUs"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="关于我们"
+        android:visibility="visible"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:background="#3C90FE"
+        android:layout_alignParentBottom="true"/>
+    
+</RelativeLayout>

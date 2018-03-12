@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#3C90FE">
+        
+        <TextView
+            android:id="@+id/tvDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="返回"
+            android:drawableLeft="@drawable/img_left"
+            android:textColor="#fff"
+            android:gravity="center_vertical"/>
+
+        <TextView android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="指令编辑"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:textStyle="bold" 
+            android:layout_centerInParent="true"/>
+        
+        <TextView android:id="@+id/title_save"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="7dp"
+            android:text="保存"
+            android:textSize="17dp"
+            android:textColor="#fff"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="5dp"
+        android:paddingTop="20dp" >
+
+        <ScrollView
+            android:id="@+id/cmd_scroll"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/cmd_textview"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:editable="true"
+                android:textColor="#000000"
+                android:textIsSelectable="true"
+                android:textSize="20sp" />
+        </ScrollView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dp"
+        android:layout_weight="1" >
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:id="@+id/num_layout1"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/num_0"
+                    style="@style/num_style"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/num_1"
+                    style="@style/num_style"
+                    android:text="1" />
+
+                <Button
+                    android:id="@+id/num_2"
+                    style="@style/num_style"
+                    android:text="2" />
+
+                <Button
+                    android:id="@+id/num_3"
+                    style="@style/num_style"
+                    android:text="3" />
+
+                <LinearLayout
+                    android:id="@+id/num_del"
+                    android:layout_width="0.0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="1dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/num_selector"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:drawableLeft="@drawable/icon_del"
+                        android:drawablePadding="8dp"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:text="Del"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/num_layout2"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/num_layout1"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/num_4"
+                    style="@style/num_style"
+                    android:text="4" />
+
+                <Button
+                    android:id="@+id/num_5"
+                    style="@style/num_style"
+                    android:text="5" />
+
+                <Button
+                    android:id="@+id/num_6"
+                    style="@style/num_style"
+                    android:text="6" />
+
+                <Button
+                    android:id="@+id/num_7"
+                    style="@style/num_style"
+                    android:text="7" />
+
+                <Button
+                    android:id="@+id/num_8"
+                    style="@style/num_style"
+                    android:text="8" />
+
+                <Button
+                    android:id="@+id/num_9"
+                    style="@style/num_style"
+                    android:text="9" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/num_layout2"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/num_a"
+                    style="@style/num_style"
+                    android:text="A" />
+
+                <Button
+                    android:id="@+id/num_b"
+                    style="@style/num_style"
+                    android:text="B" />
+
+                <Button
+                    android:id="@+id/num_c"
+                    style="@style/num_style"
+                    android:text="C" />
+
+                <Button
+                    android:id="@+id/num_d"
+                    style="@style/num_style"
+                    android:text="D" />
+
+                <Button
+                    android:id="@+id/num_e"
+                    style="@style/num_style"
+                    android:text="E" />
+
+                <Button
+                    android:id="@+id/num_f"
+                    style="@style/num_style"
+                    android:text="F" />
+            </LinearLayout>
+            
+            <Button android:id="@+id/btnSend"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#3C90FE"
+                android:layout_marginTop="5dp"
+                android:text="立即发送"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:gravity="center"/>
+            
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

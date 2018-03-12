@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:id="@+id/llParent">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#3C90FE">
+        
+        <TextView
+            android:id="@+id/tvDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="返回"
+            android:drawableLeft="@drawable/img_left"
+            android:textColor="#fff"
+            android:gravity="center_vertical"/>
+
+        <TextView android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设备名"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:textStyle="bold" 
+            android:layout_centerInParent="true"
+            android:visibility="visible"/>
+        
+        <TextView android:id="@+id/tvLight"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="微信灯控>>"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:textStyle="bold" 
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+        
+        <TextView android:id="@+id/tvState"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="7dp"
+            android:text="在线"
+            android:textSize="17dp"
+            android:textColor="#fff"
+            android:gravity="center"
+            android:visibility="gone"/>
+        
+        <TextView android:id="@+id/tvClear"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="7dp"
+            android:text="清空"
+            android:textSize="17dp"
+            android:textColor="#fff"
+            android:gravity="center"
+            />
+
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        
+        <RelativeLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="0.0dp"
+	        android:layout_weight="1.5" >
+	
+	        <ScrollView
+	            android:id="@+id/main_scroll"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:padding="10dp" >
+	            <TextView
+	                android:id="@+id/tvInfo"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:gravity="top"
+	                android:scrollbars="vertical"
+	                android:singleLine="false"
+	                android:textColor="#000000"
+	                android:textSize="14sp"
+	                android:paddingBottom="10dp"/>
+	        </ScrollView>
+	    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dp"
+        android:layout_weight="1" >
+	        
+        <LinearLayout android:id="@+id/rlCmd"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="0.5dp"
+            android:orientation="horizontal">
+	            
+	        
+	        <TextView android:id="@+id/btn_cmd"
+	            android:layout_width="0dp"
+	            android:layout_weight="1"
+	            android:layout_height="match_parent"
+	            android:text="指令设定"
+	            android:textColor="@color/white"
+	            android:textSize="16sp"
+	            android:gravity="center"
+	            android:background="#3C90FE"
+	            android:layout_centerInParent="true"/>
+	        
+	        <Button
+	            android:id="@+id/btnAutoReturn"
+	            android:layout_width="0dp"
+	            android:layout_weight="1"
+	            android:layout_height="match_parent"
+	            android:background="#3C90FE"
+	            android:textSize="16sp"
+	            android:text="自动回复：已关闭"
+	            android:textColor="@color/white"
+	            android:layout_marginLeft="1dp"/>
+            
+        </LinearLayout>
+        
+        <TextView android:id="@+id/tvYuYin"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="语音控制"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:background="@drawable/item_add_method"
+            android:layout_above="@+id/rlCmd"
+            android:layout_marginBottom="0.5dp"
+            android:visibility="gone"/>
+	        
+        <ListView
+            android:id="@+id/cmd_list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tvYuYin"
+            android:divider="@null"
+            android:fadingEdge="none" >
+        </ListView>
+    </RelativeLayout>
+        
+        
+    </LinearLayout>
+    
+
+</LinearLayout>

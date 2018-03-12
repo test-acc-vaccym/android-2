@@ -83,7 +83,9 @@
                         android:layout_alignTop="@id/settings_amplifier_manufacture_7"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:theme="@style/CustomEditTextStyle"
-                        android:textColor="@color/button_text"/>
+                        android:textColor="@color/button_text"
+                        android:hint="@string/custom_manufacture_hint"
+                        android:background="@null"/>
                 </RelativeLayout>
             </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
         </LinearLayout>

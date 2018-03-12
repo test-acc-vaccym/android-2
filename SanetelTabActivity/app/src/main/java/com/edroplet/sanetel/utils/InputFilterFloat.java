@@ -36,6 +36,13 @@ public class InputFilterFloat implements InputFilter {
     private int maxLength = 0;
     private boolean isNegative = false;
 
+    // LNB 本振
+    public static final float lnbMin = 0f;
+    public static final float lnbMax = 90000f;
+
+    // 功放本振
+    public static final float ampMin = 0f;
+    public static final float ampMax = 90000f;
 
     public InputFilterFloat(double min, double max) {
         this.min = min;

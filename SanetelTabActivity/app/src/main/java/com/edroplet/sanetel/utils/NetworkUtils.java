@@ -6,6 +6,8 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.util.Log;
 
+import com.edroplet.sanetel.beans.HLKProtocol;
+
 import org.apache.http.conn.util.InetAddressUtils;
 
 import java.math.BigInteger;
@@ -172,12 +174,14 @@ public class NetworkUtils {
 
         networkInfo(){
             ip = CustomSP.DefaultIP;
-            gateway = CustomSP.DefaultIP;
+            gateway = HLKProtocol.Host;
             mask = "255.255.255.0";
         }
 
         public String getGateway() {
-            return gateway;
+            return HLKProtocol.Host;
+            // return "172.28.210.50";
+            // return gateway;
         }
 
         public String getIp() {

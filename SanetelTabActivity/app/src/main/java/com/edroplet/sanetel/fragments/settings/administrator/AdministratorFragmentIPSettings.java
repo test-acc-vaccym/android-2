@@ -4,13 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.sanetel.R;
-import com.edroplet.sanetel.beans.Protocol;
+import com.edroplet.sanetel.beans.HLKProtocol;
 import com.edroplet.sanetel.services.network.UdpSendReceive;
 //import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.NetworkUtils;
@@ -30,7 +31,7 @@ import butterknife.Unbinder;
  * IP 设置
  */
 
-public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
+public class AdministratorFragmentIPSettings extends Fragment {
     public static final String IPSettingsAction = "com.edroplet.sanetel.IPSettingsAction";
     public static final String IPSettingsData = "com.edroplet.sanetel.IPSettingsData";
 
@@ -48,6 +49,7 @@ public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
     String ip;
     String mask;
     Context context;
+    String ipWIfi;
 
     public static AdministratorFragmentIPSettings newInstance(boolean showFirst, String firstLine, boolean showSecond,
                                                               String secondLine, boolean showThird, String thirdLineStart,
@@ -67,15 +69,6 @@ public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
         return fragment;
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        String[] action = {IPSettingsAction};
-        setAction(action);
-        super.onCreate(savedInstanceState);
-        context = getContext();
-        Protocol.sendMessage(context, Protocol.cmdGetIP);
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -87,7 +80,7 @@ public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
         context = getContext();
         unbinder =  ButterKnife.bind(this, view);
         NetworkUtils.networkInfo networkInfo = NetworkUtils.getIPAddress(context);
-        final String ipWIfi = networkInfo.getGateway();
+        ipWIfi = networkInfo.getGateway();
 //        String address = CustomSP.getString(context,CustomSP.KeyIPSettingsAddress, ipWIfi);
         ipAddress.setText(ipWIfi);
 
@@ -100,15 +93,15 @@ public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
             public void onClick(View v) {
                 String ip = ipAddress.getText();
                 String mask = ipMask.getText();
-                String gateWay = NetworkUtils.getLowAddr(ip,mask);
-//                CustomSP.putString(context,CustomSP.KeyIPSettingsAddress, ip);
-//                CustomSP.putString(context,CustomSP.KeyIPSettingsMask, mask);
-                String commandSets[] = {Protocol.UdpEnable, String.format(Protocol.UdpRLANIp, ip),String.format(Protocol.UdpLANIpMask, mask), Protocol.UdpSave, Protocol.UdpApply};
-                String expectedSets[] = {Protocol.UdpEnableResponse,String.format(Protocol.UdpRLANIpResponse, ip),String.format(Protocol.UdpLANIpMaskResponse, mask), Protocol.UdpSaveResponse, Protocol.UdpApplyResponse};
-                 new UdpSendReceive("0.0.0.0",2000, ip,998,commandSets, expectedSets).start();
+                // String gateWay = NetworkUtils.getLowAddr(ip,mask);
+                //  CustomSP.putString(context,CustomSP.KeyIPSettingsAddress, ip);
+                //  CustomSP.putString(context,CustomSP.KeyIPSettingsMask, mask);
+                String commandSets[] = {HLKProtocol.UdpEnable, String.format(HLKProtocol.UdpRLANIp, ip),String.format(HLKProtocol.UdpLANIpMask, mask), HLKProtocol.UdpSave, HLKProtocol.UdpApply};
+                String expectedSets[] = {HLKProtocol.UdpEnableResponse,String.format(HLKProtocol.UdpRLANIpResponse, ip),String.format(HLKProtocol.UdpLANIpMaskResponse, mask), HLKProtocol.UdpSaveResponse, HLKProtocol.UdpApplyResponse};
+
                 // send command
                 // cmd,set ip,网络IP,子网掩码,网关*ff<CR><LF>
-                // Protocol.sendMessage(context, String.format(Protocol.cmdSetIP,ip, mask,gateWay));
+                HLKProtocol.sendUdpMessage(context, HLKProtocol.LocalHost,HLKProtocol.LocalPort, ipWIfi,HLKProtocol.Port,commandSets, expectedSets);
                 getActivity().finish();
             }
         });
@@ -127,23 +120,6 @@ public class AdministratorFragmentIPSettings extends BroadcastReceiverFragment {
             }
         }
         return popDialog.show();
-    }
-
-    @Override
-    public void processData(Intent intent) {
-        super.processData(intent);
-        String rawData = intent.getStringExtra(IPSettingsData);
-        Object[] o = Sscanf.scan(rawData, Protocol.cmdGetIPResult,ip, mask);
-        ip = (String) o[0];
-        mask = (String) o[1];
-        if (ip != null && ip.length() > 0) {
-            ipAddress.setText(ip);
-//            CustomSP.putString(context,CustomSP.KeyIPSettingsAddress, ip);
-        }
-        if (mask != null && mask.length() > 0) {
-            ipMask.setText(mask);
-//            CustomSP.putString(context, CustomSP.KeyIPSettingsMask, mask);
-        }
     }
 
     @Override

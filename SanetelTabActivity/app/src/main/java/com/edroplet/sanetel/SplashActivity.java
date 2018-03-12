@@ -6,6 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.edroplet.sanetel.view.CircleProgressbar;
 
 /**
  * Created by qxs on 2017/8/15.
+ * flash 页面， 展示图片
  */
 
 public class SplashActivity extends Activity {
@@ -36,10 +38,11 @@ public class SplashActivity extends Activity {
         tv_splash_version = (com.edroplet.sanetel.view.custom.CustomTextView) findViewById(R.id.tv_splash_version);
         //设置版本号
         String input = getResources().getString(R.string.welcome_version);
-        String ouput = String.format(input, String.format("%6s", getVersion()));
-        tv_splash_version.setText(ouput);
+        String output = String.format(input, String.format("%6s", getVersion()));
+        tv_splash_version.setText(output);
         tv_splash_version.setTypeface(ChangeTypeFace.getSimHei(this));
         // 进度条
+        /**
         mCircleProgressbar = (CircleProgressbar) findViewById(R.id.tv_red_skip);
         mCircleProgressbar.setOutLineColor(Color.TRANSPARENT);
         mCircleProgressbar.setInCircleColor(Color.parseColor("#505559"));
@@ -63,18 +66,18 @@ public class SplashActivity extends Activity {
 
             }
         });
+        */
 
-        /*
         //延迟2S跳转
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this, WelcomeActivity.class);
+                Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
                 startActivity(intent);
                 finish();
             }
-        }, 2000);
-        */
+        }, 1000);
+
 
     }
 

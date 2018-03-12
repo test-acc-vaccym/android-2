@@ -37,6 +37,7 @@ import static com.tamic.rx.fastdown.client.Type.NORMAL;
 
 /**
  * Created by zs on 2016/7/8.
+ * 下载服务
  */
 public class DownLoadService extends Service {
 

@@ -15,18 +15,18 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/appbar_padding_top"
         android:layout_alignParentTop="true"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:layout_gravity="start|left">
         <android.support.v7.widget.Toolbar
             android:id="@+id/follow_me_content_toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/status_bar_height"
             android:background="@color/state_bar_background"
-            android:minHeight="96dp"
-            app:navigationIcon="@drawable/back"
+            android:minHeight="48dp"
             app:titleTextColor="@color/black"
-            app:titleTextAppearance="?android:attr/textAppearanceLarge">
+            app:titleTextAppearance="?android:attr/textAppearanceSmall"
+            android:layout_gravity="start|left"/>
             <!--app:layout_scrollFlags="scroll|enterAlways"-->
-        </android.support.v7.widget.Toolbar>
         <!--分割线-->
         <View
             android:layout_width="match_parent"

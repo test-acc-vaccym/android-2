@@ -97,6 +97,14 @@ public class AdministratorFragmentAmplifierManufacturer extends BroadcastReceive
 
         unbinder = ButterKnife.bind(this, view);
 
+        // 监听焦点获取到后，选择该选项
+        manufactureCustomValue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                manufactureGroup.check(R.id.settings_amplifier_manufacture_7);
+            }
+        });
+
         context = getContext();
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override

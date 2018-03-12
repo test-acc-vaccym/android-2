@@ -82,7 +82,9 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:minWidth="@dimen/custom_edit_min_width"
                 android:padding="@dimen/no_padding"
-                android:textColor="@color/button_text"/>
+                android:textColor="@color/button_text"
+                android:hint="@string/custom_frequency_hint"
+                android:background="@null"/>
         </RelativeLayout>
     </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
 </LinearLayout>

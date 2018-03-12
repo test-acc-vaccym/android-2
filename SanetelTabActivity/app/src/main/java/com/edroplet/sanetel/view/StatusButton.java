@@ -56,7 +56,7 @@ public class StatusButton extends CustomButton {
     private static int []ext_attr_disable = { R.attr.state_color_disable };
 
     private float mDrawableWidth;
-    private float mDrawableHight;
+    private float mDrawableHeight;
     private float mDrawableSpace;
     private Bitmap mBitmap;
     private float mTxtSize;
@@ -108,7 +108,7 @@ public class StatusButton extends CustomButton {
         float dimenHeight = context.getResources().getDimension(R.dimen.status_button_height);
         float dimenSpace = context.getResources().getDimension(R.dimen.status_button_space);
         mDrawableSpace = typedArray.getDimension( R.styleable.StatusButton_drawable_space, dimenSpace);
-        mDrawableHight = typedArray.getDimension( R.styleable.StatusButton_drawable_height, dimenHeight);
+        mDrawableHeight = typedArray.getDimension( R.styleable.StatusButton_drawable_height, dimenHeight);
         mDrawableWidth = typedArray.getDimension( R.styleable.StatusButton_drawable_width, dimenHeight);
         // 获取button状态
         int buttonState = typedArray.getInt(R.styleable.StatusButton_state_color, BUTTON_STATE_UNKNOWN);
@@ -152,7 +152,7 @@ public class StatusButton extends CustomButton {
 
         // 下面两行可以考虑删除，然后手动设置android:layout_height
         // 重新定义View的高度,图片高度+3倍的文本高度，这样设置个人感觉很不错，mDrawableSpace是额外指定的高度
-        // this.setHeight((int) (mTxtSize * 3 + mDrawableSpace * 2 + mDrawableHight));
+        // this.setHeight((int) (mTxtSize * 3 + mDrawableSpace * 2 + mDrawableHeight));
         // 虽然知道这个时候getMeasuredWidth()的值是0，还是设置一下
         this.setWidth(getMeasuredWidth());
         // 释放资源
@@ -202,7 +202,7 @@ public class StatusButton extends CustomButton {
     public void setCompoundDrawablesWithIntrinsicBounds(@Nullable Drawable left, @Nullable Drawable top, @Nullable Drawable right, @Nullable Drawable bottom) {
         super.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom);
         int boundRight = (int)mDrawableWidth;
-        int boundBottom = (int) mDrawableHight;
+        int boundBottom = (int) mDrawableHeight;
 
         int []s = getDrawableState();
         int color = Color.BLUE;

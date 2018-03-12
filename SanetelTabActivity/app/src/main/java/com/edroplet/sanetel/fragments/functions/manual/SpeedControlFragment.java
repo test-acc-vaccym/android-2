@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.InputFilter;
+import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import com.edroplet.sanetel.beans.AntennaInfo;
 import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.beans.monitor.MonitorInfo;
 import com.edroplet.sanetel.utils.ConvertUtil;
+import com.edroplet.sanetel.utils.InputFilterFloat;
 import com.edroplet.sanetel.view.BroadcastReceiverFragment;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomEditText;
@@ -80,7 +83,7 @@ public class SpeedControlFragment extends BroadcastReceiverFragment implements V
     SparseIntArray mapAngularVelocity = new SparseIntArray(6);
     SparseIntArray mapOperate = new SparseIntArray(6);
 
-    View view;
+    static View view;
     Context context;
     Unbinder unbinder;
 
@@ -110,6 +113,16 @@ public class SpeedControlFragment extends BroadcastReceiverFragment implements V
 
         unbinder = ButterKnife.bind(this, view);
 
+        angularVelocityCustomValue.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.azimuthMin,InputFilterFloat.azimuthMax,InputFilterFloat.angleValidBit)});
+
+        // 监听焦点获取到后，选择该选项
+        angularVelocityCustomValue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            angularVelocityGroup.check(R.id.top_angular_velocity_6);
+            }
+        });
+
         int i = 0;
         for (int id: angularVelocityIds){
             mapAngularVelocity.put(i++, id);
@@ -124,6 +137,7 @@ public class SpeedControlFragment extends BroadcastReceiverFragment implements V
     }
 
 
+    static float angularVelocity = 0.0f;
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -134,13 +148,16 @@ public class SpeedControlFragment extends BroadcastReceiverFragment implements V
             case R.id.manual_step_polarization_up:
             case R.id.manual_step_polarization_down:
             case R.id.manual_step_pause:
-                float angularVelocity;
                 int id = angularVelocityGroup.getCheckedRadioButtonId();
                 int pos = mapAngularVelocity.indexOfValue(id);
                 int maxPos = mapAngularVelocity.size() - 1;
-                if (pos == maxPos) {
-                    String angularVelocityString = ((CustomRadioButton) view.findViewById(id)).getText().toString();
-                    angularVelocity = ConvertUtil.convertToFloat(angularVelocityString, 0.0f);
+                if (pos != maxPos) {
+                    Log.e("CustomRadioButton", "id is: " + id );
+					CustomRadioButton crb = (CustomRadioButton) v.findViewById(id);
+					if (crb != null){
+						String angularVelocityString = crb.getText().toString();
+						angularVelocity = ConvertUtil.convertToFloat(angularVelocityString, 0.0f);
+					}
                 } else {
                     angularVelocity = ConvertUtil.convertToFloat(angularVelocityCustomValue.getText().toString(), 0.0f);
                 }

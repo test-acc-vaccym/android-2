@@ -168,6 +168,9 @@ public class LocationControlFragment extends BroadcastReceiverFragment {
         unbinder = ButterKnife.bind(this,view);
         context = getContext();
 
+        // 初始化页面的时候默认为false
+        CustomSP.putBoolean(context,KEY_LocationControlRotate,false);
+
         etAzimuth.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.azimuthMin,InputFilterFloat.azimuthMax,InputFilterFloat.angleValidBit)});
         etPitch.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.pitchMin,InputFilterFloat.pitchMax,InputFilterFloat.angleValidBit)});
         etPolarization.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.polarizationMin,InputFilterFloat.polarizationMax,InputFilterFloat.angleValidBit)});
@@ -239,9 +242,9 @@ public class LocationControlFragment extends BroadcastReceiverFragment {
 
     void showRotate(){
         if (CustomSP.getBoolean(context,KEY_LocationControlRotate, false)){
-            rotate.setText(R.string.location_control_rotate_start);
-        }else{
             rotate.setText(R.string.location_control_rotate_stop);
+        }else{
+            rotate.setText(R.string.location_control_rotate_start);
         }
         // 每次都自动聚焦
         rotate.requestFocus();

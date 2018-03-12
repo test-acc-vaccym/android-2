@@ -244,13 +244,14 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:gravity">start</item>
-        <item name="android:layout_marginLeft">@dimen/status_button_margin_left</item>
-        <item name="android:layout_marginStart">@dimen/status_button_margin_left</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:layout_gravity">start|center_vertical</item>
+        <item name="android:paddingLeft">@dimen/no_padding</item>
+        <item name="android:paddingStart">@dimen/no_padding</item>
         <item name="android:textColor">@color/status_normal</item>
         <item name="android:background">@color/button_blink</item>
         <!--<item name="android:textStyle">bold</item>-->
-        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:textSize">8sp</item>
     </style>
     <!--快捷栏目-->
     <style name="operate_bar_button_style" parent="Base.Widget.AppCompat.Button.Borderless">
@@ -262,7 +263,7 @@
         <item name="android:layout_marginLeft">@dimen/status_button_margin_left</item>
         <item name="android:layout_marginStart">@dimen/status_button_margin_left</item>
         <item name="android:textColor">@color/button_text</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:textSize">8sp</item>
         <!--<item name="android:textStyle">bold</item>-->
     </style>
 

@@ -150,7 +150,9 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/layout_padding_top"
             android:layout_below="@id/main_control_manual_location_value"
-            android:background="@color/gray_bg">
+            android:background="@color/gray_bg"
+            android:focusable="false"
+            android:clickable="false">
 
             <com.edroplet.sanetel.view.custom.CustomButton
                 android:id="@+id/location_control_rotate"

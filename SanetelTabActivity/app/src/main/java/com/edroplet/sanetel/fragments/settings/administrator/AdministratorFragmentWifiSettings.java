@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.text.InputFilter;
 import android.view.LayoutInflater;
@@ -11,12 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.sanetel.R;
+import com.edroplet.sanetel.beans.HLKProtocol;
 import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.utils.CustomSP;
 import com.edroplet.sanetel.utils.InputFilterStartsWith;
+import com.edroplet.sanetel.utils.NetworkUtils;
 import com.edroplet.sanetel.utils.PopDialog;
 import com.edroplet.sanetel.utils.sscanf.Sscanf;
-import com.edroplet.sanetel.view.BroadcastReceiverFragment;
 import com.edroplet.sanetel.view.custom.CustomButton;
 import com.edroplet.sanetel.view.custom.CustomEditText;
 
@@ -32,7 +34,7 @@ import static com.edroplet.sanetel.services.network.SystemServices.XWWT_PREFIX;
  * Wifi设置
  */
 
-public class AdministratorFragmentWifiSettings extends BroadcastReceiverFragment {
+public class AdministratorFragmentWifiSettings extends Fragment {
     public static final String WifiSettingsAction = "com.edroplet.sanetel.WifiSettingsAction";
     public static final String WifiSettingsData = "com.edroplet.sanetel.WifiSettingsData";
 
@@ -47,6 +49,7 @@ public class AdministratorFragmentWifiSettings extends BroadcastReceiverFragment
     private Unbinder unbinder;
     Context context;
     String wifiName;
+    String ipWIfi;
 
     public static AdministratorFragmentWifiSettings newInstance(
             boolean showFirst, String firstLine, boolean showSecond,
@@ -69,11 +72,12 @@ public class AdministratorFragmentWifiSettings extends BroadcastReceiverFragment
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        context = getContext();
-        String[] action = {WifiSettingsAction};
-        setAction(action);
         super.onCreate(savedInstanceState);
-        Protocol.sendMessage(context, Protocol.cmdGetWifiName);
+        // get wifi ssid;
+//        String commandSets[] = {HLKProtocol.UdpEnable, String.format(HLKProtocol.UdpAPSsid, wifiSSID),HLKProtocol.UdpNPackLen1, HLKProtocol.UdpSave, HLKProtocol.UdpApply};
+//        String expectedSets[] = {HLKProtocol.UdpEnableResponse,String.format(HLKProtocol.UdpAPSsidResponse, wifiSSID),HLKProtocol.UdpNPackLen1Response, HLKProtocol.UdpSaveResponse, HLKProtocol.UdpApplyResponse};
+//
+//        HLKProtocol.sendUdpMessage(context, HLKProtocol.LocalHost,HLKProtocol.LocalPort, ipWIfi,HLKProtocol.Port,commandSets, expectedSets);
     }
 
     @Nullable
@@ -87,7 +91,8 @@ public class AdministratorFragmentWifiSettings extends BroadcastReceiverFragment
         unbinder = ButterKnife.bind(this, view);
 
         context = getContext();
-
+        NetworkUtils.networkInfo networkInfo = NetworkUtils.getIPAddress(context);
+        ipWIfi = networkInfo.getGateway();
         etWifiName.setFilters(new InputFilter[]{new InputFilterStartsWith(XWWT_PREFIX)});
 
         String deviceName = CustomSP.getString(context,WifiSettingsNameKey, "");
@@ -103,7 +108,12 @@ public class AdministratorFragmentWifiSettings extends BroadcastReceiverFragment
                 CustomSP.putString(context,WifiSettingsNameKey,wifiSSID);
                 // send command
                 // 5.6	WIFI名称 发送指令格式：$cmd,set wifi name*ff<CR><LF>
-                Protocol.sendMessage(context,String.format(Protocol.cmdSetWifiName, wifiSSID));
+                // Protocol.sendMessage(context,String.format(Protocol.cmdSetWifiName, wifiSSID));
+                String commandSets[] = {HLKProtocol.UdpEnable, String.format(HLKProtocol.UdpAPSsid, wifiSSID),HLKProtocol.UdpNPackLen1, HLKProtocol.UdpSave, HLKProtocol.UdpApply};
+                String expectedSets[] = {HLKProtocol.UdpEnableResponse,String.format(HLKProtocol.UdpAPSsidResponse, wifiSSID),HLKProtocol.UdpNPackLen1Response, HLKProtocol.UdpSaveResponse, HLKProtocol.UdpApplyResponse};
+
+                HLKProtocol.sendUdpMessage(context, HLKProtocol.LocalHost,HLKProtocol.LocalPort, ipWIfi,HLKProtocol.Port,commandSets, expectedSets);
+
                 getActivity().finish();
             }
         });
@@ -122,18 +132,6 @@ public class AdministratorFragmentWifiSettings extends BroadcastReceiverFragment
             }
         }
         return popDialog.show();
-    }
-
-    @Override
-    public void processData(Intent intent) {
-        super.processData(intent);
-        String rawData = intent.getStringExtra(WifiSettingsData);
-        Object[] objects = Sscanf.scan(rawData,Protocol.cmdGetWifiNameResult, wifiName);
-        wifiName = (String) objects[0];
-        if (wifiName != null && wifiName.length() > 0 && wifiName.startsWith(XWWT_PREFIX)){
-            etWifiName.setText(wifiName);
-            CustomSP.putString(context,WifiSettingsNameKey,wifiName);
-        }
     }
 
     @Override

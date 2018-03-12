@@ -66,7 +66,7 @@ public class UDPReceiveAndUDPSend extends Thread {
                     if ((!host_ip.equals("")) && host_ip.equals(quest_ip.substring(1))) {
                         continue;
                     }
-                    if(mIpAddress.equals("0.0.0.0")){
+                    if(mIpAddress.equals(HLKProtocol.LocalHost)){
                         mUDPResponseCallback.onResponse(null,false);
                     }
                     sb=new StringBuffer();

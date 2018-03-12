@@ -41,9 +41,12 @@
     <string name="communication_state_connected">连接</string>
     <string name="communication_state_disconnected">断开</string>
     <!--天线状态-->
-    <string name="antenna_state_folded">收藏</string>
+    <string name="antenna_operate_explode">展开</string>
+    <string name="antenna_operate_reset">复位</string>
+    <string name="antenna_operate_fold">收藏</string>
+    <string name="antenna_state_folded">已收藏</string>
     <string name="antenna_state_exploding">展开中</string>
-    <string name="antenna_state_exploded">展开</string>
+    <string name="antenna_state_exploded">已展开</string>
     <string name="antenna_state_init">寻零</string>
     <string name="antenna_state_searching">寻星</string>
     <string name="antenna_state_manual">手动</string>
@@ -53,7 +56,7 @@
     <string name="antenna_state_abnormal">异常</string>
     <string name="antenna_state_paused">停止</string>
     <string name="antenna_state_resetting">复位中</string>
-    <string name="antenna_state_reset">复位</string>
+    <string name="antenna_state_reset">已复位</string>
     <string name="antenna_state_lock">锁星</string>
     <string name="explode_confirm">你确定要展开吗？</string>
     <string name="fold_confirm">你确定要收藏吗？</string>
@@ -80,8 +83,8 @@
     <string name="energy_state_saved">开启</string>
 
     <!--GNSS状态-->
-    <string name="gnss_state_enabled">定位</string>
-    <string name="gnss_state_disabled">未定</string>
+    <string name="gnss_state_enabled">已定位</string>
+    <string name="gnss_state_disabled">未定位</string>
     <!--确认对话框-->
     <string name="operate_confirm_title">提示</string>
     <string name="operate_confirm_ok">确定</string>
@@ -823,5 +826,8 @@
 
     <string name="permission_description_title">请求访问权限</string>
     <string name="permission_description_reason">没有权限将影响故障报告和建议功能</string>
-    <string name="custom_value_hint">自定义角度</string>
+    <string name="custom_angle_hint">自定义角度</string>
+    <string name="custom_frequency_hint">自定义频率</string>
+    <string name="custom_manufacture_hint">自定义厂家</string>
+    <string name="custom_value_hint">自定义值</string>
 </resources>

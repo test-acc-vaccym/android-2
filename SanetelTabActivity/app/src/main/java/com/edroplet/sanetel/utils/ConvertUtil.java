@@ -217,7 +217,7 @@ public class ConvertUtil {
         String[] res = str.split(sep);
         ArrayList<String> result = new ArrayList<>();
         for (String s: res){
-            result.add(s);
+            result.add(s.trim());
         }
         return result;
     }

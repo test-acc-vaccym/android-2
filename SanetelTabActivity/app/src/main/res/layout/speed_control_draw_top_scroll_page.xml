@@ -85,7 +85,7 @@
                                 android:theme="@style/CustomEditTextStyle"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                 android:textColor="@color/button_text"
-                                android:hint="@string/custom_value_hint"
+                                android:hint="@string/custom_angle_hint"
                                 android:background="@null"/>
                         </RelativeLayout>
                     </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>

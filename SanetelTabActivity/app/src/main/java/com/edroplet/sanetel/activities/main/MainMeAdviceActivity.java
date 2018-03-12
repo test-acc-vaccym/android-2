@@ -279,8 +279,8 @@ public class MainMeAdviceActivity extends BaseActivity implements View.OnClickLi
             try {
                 if (false) {
                     String[] to = new String[]{"3328018955@qq.com","sanetel_user@126.com"};
-                    boolean sucess =  Send2EmailUtil.getInstance().sendMail("sanetel_user@126.com", to, null, subject, content, al);
-                    if (sucess){
+                    boolean success =  Send2EmailUtil.getInstance().sendMail("sanetel_user@126.com", to, null, subject, content, al);
+                    if (success){
                         Toast.makeText(MainMeAdviceActivity.this,"发送成功",Toast.LENGTH_SHORT).show();
                     }else {
                         Toast.makeText(MainMeAdviceActivity.this,"发送失败",Toast.LENGTH_SHORT).show();

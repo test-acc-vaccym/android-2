@@ -62,13 +62,13 @@ public class StatusBarControl {
             // 返回箭头（默认不显示）
             actionBar.setDisplayHomeAsUpEnabled(false);
             // 左侧图标点击事件使能
-            actionBar.setHomeButtonEnabled(true);
+            actionBar.setHomeButtonEnabled(false);
             // 使左上角图标(系统)是否显示
             actionBar.setDisplayShowHomeEnabled(false);
             // 修改图标
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){
-                actionBar.setHomeAsUpIndicator(R.drawable.back);
-            }
+            // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){
+            //    actionBar.setHomeAsUpIndicator(R.drawable.back);
+            // }
             // 显示标题
             actionBar.setDisplayShowTitleEnabled(false);
 

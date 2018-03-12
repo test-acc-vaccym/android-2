@@ -18,16 +18,6 @@ import static com.edroplet.sanetel.services.communicate.CommunicateDataReceiver.
 
 @SuppressWarnings("neverused")
 public class Protocol {
-    public static final String UdpEnable = "hlkATat+UdpAtEn=1\r\n";
-    public static final String UdpEnableResponse = "at+RUdpAtEn=1\r\n";
-    public static final String UdpRLANIp = "hlkATat+LANIp=%s\r\n";
-    public static final String UdpRLANIpResponse = "at+RLANIp=%s\r\n";
-    public static final String UdpLANIpMask = "hlkATat+LANIpMask=%s\r\n";
-    public static final String UdpLANIpMaskResponse = "at+LANIpMask=%s\r\n";
-    public static final String UdpSave = "hlkATat+Save=1\r\n";
-    public static final String UdpSaveResponse = "at+Save=1\r\n";
-    public static final String UdpApply = "hlkATat+Apply=1\r\n";
-    public static final String UdpApplyResponse = "at+Apply=1\r\n";
     // 4.1	复位/展开
     public static final String cmdAntennaExplode="$cmd,develop ant*ff\r\n";
     public static final String cmdAntennaReset="$cmd,develop ant*ff\r\n";

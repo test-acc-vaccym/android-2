@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.InputFilter;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.utils.CustomSP;
+import com.edroplet.sanetel.utils.InputFilterFloat;
 import com.edroplet.sanetel.utils.PopDialog;
 import com.edroplet.sanetel.utils.sscanf.Sscanf;
 import com.edroplet.sanetel.view.BroadcastReceiverFragment;
@@ -90,6 +92,7 @@ public class AdministratorFragmentAmplifierOscillator extends BroadcastReceiverF
 
         unbinder = ButterKnife.bind(this, view);
 
+        oscillatorCustomValue.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.ampMin,InputFilterFloat.ampMax,InputFilterFloat.angleValidBit)});
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,6 +120,13 @@ public class AdministratorFragmentAmplifierOscillator extends BroadcastReceiverF
             oscillatorCustomValue.setText(CustomSP.getString(context, Key_amplifier_oscillator_value, ""));
         }
 
+        // 监听焦点获取到后，选择该选项
+        oscillatorCustomValue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                oscillatorGroup.check(R.id.id_administrator_settings_amplifier_oscillator_value_3);
+            }
+        });
         // 设置自定义框内容
         PopDialog popDialog = new PopDialog();
         popDialog.setView(view);

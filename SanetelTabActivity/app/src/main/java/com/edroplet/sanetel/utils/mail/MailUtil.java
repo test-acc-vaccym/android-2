@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.Nullable;
+import android.support.v4.content.FileProvider;
 import android.widget.Toast;
 
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.utils.FileUtils;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -77,10 +80,20 @@ public class MailUtil {
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
         ArrayList<Uri> fileUris = new ArrayList<Uri>();
         for (String file: filePath) {
-            if (!file.startsWith("file://")){
-                file = "file://" + file;
+            Uri contentUri;
+            // 去掉空格
+            file = file.trim();
+            //判断是否是AndroidN以及更高的版本
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                String applicationId = activity.getApplicationInfo().packageName;
+                contentUri = FileProvider.getUriForFile(activity.getApplicationContext(), applicationId + ".fileProvider", new File(file));
+            }else{
+                if (!file.startsWith("file://")){
+                    file = "file://" + file;
+                }
+                contentUri = Uri.parse(file);
             }
-            fileUris.add(Uri.parse(file));
+            fileUris.add(contentUri);
         }
         intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, fileUris);
         intent.setType("*");

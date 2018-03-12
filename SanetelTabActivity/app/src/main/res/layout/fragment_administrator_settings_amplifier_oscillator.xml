@@ -45,11 +45,14 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/radio_group_item_height">
+                    android:layout_height="@dimen/radio_group_item_height"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
                     <com.edroplet.sanetel.view.custom.CustomRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/radio_group_item_height"
-                        android:id="@+id/id_administrator_settings_amplifier_oscillator_value_3"/>
+                        android:id="@+id/id_administrator_settings_amplifier_oscillator_value_3"
+                        android:focusable="true"/>
                     <com.edroplet.sanetel.view.custom.CustomEditText
                         android:id="@+id/settings_amplifier_oscillator_custom_value"
                         android:layout_width="wrap_content"
@@ -59,7 +62,10 @@
                         android:layout_toRightOf="@id/id_administrator_settings_amplifier_oscillator_value_3"
                         android:inputType="number|numberDecimal"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/button_text"/>
+                        android:textColor="@color/button_text"
+                        android:hint="@string/custom_frequency_hint"
+                        android:background="@null"
+                        android:focusable="true"/>
                 </RelativeLayout>
             </com.edroplet.sanetel.view.custom.CustomRadioGroupWithCustomRadioButton>
         </LinearLayout>

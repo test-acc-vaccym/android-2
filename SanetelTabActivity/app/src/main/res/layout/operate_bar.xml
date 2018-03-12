@@ -11,7 +11,7 @@
         style="@style/operate_bar_button_style"
         android:drawableStart="@drawable/antenna_exploded"
         android:drawableLeft="@drawable/antenna_exploded"
-        android:text="@string/antenna_state_exploded"
+        android:text="@string/antenna_operate_explode"
         app:drawable_height="@dimen/operate_button_height"
         app:drawable_width="@dimen/operate_button_height"
         app:state_color="operate"/>
@@ -38,7 +38,7 @@
         style="@style/operate_bar_button_style"
         android:drawableStart="@drawable/recycle"
         android:drawableLeft="@drawable/recycle"
-        android:text="@string/antenna_state_reset"
+        android:text="@string/antenna_operate_reset"
         app:drawable_height="@dimen/operate_button_height"
         app:drawable_width="@dimen/operate_button_height"
         app:state_color="operate"/>
@@ -47,7 +47,7 @@
         style="@style/operate_bar_button_style"
         android:drawableStart="@drawable/folder"
         android:drawableLeft="@drawable/folder"
-        android:text="@string/antenna_state_folded"
+        android:text="@string/antenna_operate_fold"
         app:drawable_height="@dimen/operate_button_height"
         app:drawable_width="@dimen/operate_button_height"
         app:state_color="operate"/>

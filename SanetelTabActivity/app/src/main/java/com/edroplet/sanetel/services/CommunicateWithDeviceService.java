@@ -228,7 +228,8 @@ public class CommunicateWithDeviceService extends IntentService {
     private void  ConnectToServer(){
         try {
 
-            String ipWIfi = NetworkUtils.getIPAddress(this).getIp();
+            // 用网关进行通信啊啊啊
+            String ipWIfi = NetworkUtils.getIPAddress(this).getGateway();
 
             Log.d(TAG, "ConnectToServer, cmd client :" + (client==null? "" : client.toString()));
             if (null == client || !client.isOpen() || !client.isConnected()) {
@@ -241,7 +242,7 @@ public class CommunicateWithDeviceService extends IntentService {
                     sleepForConnect = true;
                     Thread.sleep(1000);
 
-                    ipWIfi = NetworkUtils.getIPAddress(this).getIp();
+                    ipWIfi = NetworkUtils.getIPAddress(this).getGateway();
 
                     ip = CustomSP.getString(mContext, CustomSP.KeyIPSettingsAddress, ipWIfi);
                 }
@@ -253,7 +254,7 @@ public class CommunicateWithDeviceService extends IntentService {
                     // 2017/11/25 client没有open，一直等待
                     Thread.sleep(1000);
 
-                    ipWIfi = NetworkUtils.getIPAddress(this).getIp();
+                    ipWIfi = NetworkUtils.getIPAddress(this).getGateway();
 
                     ip = CustomSP.getString(mContext, CustomSP.KeyIPSettingsAddress, ipWIfi);
                     try {

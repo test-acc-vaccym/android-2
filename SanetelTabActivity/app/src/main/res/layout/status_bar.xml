@@ -31,7 +31,7 @@
                 <com.edroplet.sanetel.view.StatusButton
                     style="@style/status_bar_button_style"
                     android:id="@+id/status_bar_button_antenna_state"
-                    android:text="@string/antenna_state_init"
+                    android:text="@string/antenna_state_folded"
                     android:drawableStart="@drawable/explode"
                     android:drawableLeft="@drawable/explode"
                     app:drawable_height="@dimen/status_button_height"

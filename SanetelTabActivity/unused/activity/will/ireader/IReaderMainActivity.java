@@ -92,7 +92,7 @@ public class IReaderMainActivity extends BaseActivity {
                  break;
             case R.id.main_menu_feedback:
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-                emailIntent.setData(Uri.parse("mailto:a2265839@gmail.com"));
+                emailIntent.setData(Uri.parse("mailto:edroplet@sina.com"));
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT,"阅读器建议/问题反馈");
                 startActivity(emailIntent);
                 break;

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.InputFilter;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.LinearLayout;
 import com.edroplet.sanetel.R;
 import com.edroplet.sanetel.beans.Protocol;
 import com.edroplet.sanetel.utils.CustomSP;
+import com.edroplet.sanetel.utils.InputFilterFloat;
 import com.edroplet.sanetel.utils.PopDialog;
 import com.edroplet.sanetel.utils.sscanf.Sscanf;
 import com.edroplet.sanetel.view.BroadcastReceiverFragment;
@@ -156,6 +158,24 @@ public class AdministratorFragmentLNBOscillator extends BroadcastReceiverFragmen
 
         unbinder = ButterKnife.bind(this, view);
 
+        // 监听焦点获取到后，选择该选项
+        tvCustomVal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                oscillatorKuSelect.check(R.id.id_administrator_settings_lnb_ku_value_7);
+            }
+        });
+
+        // 监听焦点获取到后，选择该选项
+        tvKaCustomVal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                oscillatorKaSelect.check(R.id.id_administrator_settings_lnb_ka_value_3);
+            }
+        });
+
+        tvCustomVal.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.lnbMin,InputFilterFloat.lnbMax,InputFilterFloat.angleValidBit)});
+        tvKaCustomVal.setFilters(new InputFilter[]{new InputFilterFloat(InputFilterFloat.lnbMin,InputFilterFloat.lnbMax,InputFilterFloat.angleValidBit)});
         int i = 0;
         for (int id : kaValIds){
             mapKaPosId.put(i++, id);

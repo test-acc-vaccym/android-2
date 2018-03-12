@@ -248,7 +248,8 @@
         <!-- 服务 -->
         <!-- 下载服务 -->
         <service android:name=".services.DownLoadService" />
-
+        <!--通信服务-->
+        <service android:name=".services.network.UdpSendReceive"/>
         <!--
         activity android:name="com.will.ireader.IReaderMainActivity">
             <intent-filter>

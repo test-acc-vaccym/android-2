@@ -378,8 +378,9 @@
         <item name="android:layout_height">match_parent</item>
         <!--<item name="android:checked">true</item>-->
         <item name="android:gravity">center</item>
-        <item name="android:background">@color/bottom_tab_nav_background</item>
+        <!--<item name="android:background">@color/bottom_tab_nav_background</item>-->
         <item name="android:textColor">@color/button_text</item>
+        <item name="android:background">@drawable/button_border_1</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
 

@@ -17,7 +17,7 @@
         app:title="@null"
         app:titleTextColor="@color/white"
         app:titleTextAppearance="?android:attr/textAppearanceLarge"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/black"
         android:fitsSystemWindows="true">
         <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/guide_toolbar_title"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:text="@string/guide_main_enter"
             android:textStyle="bold"
-            android:textColor="@color/blue"
+            android:textColor="@color/orange"
             android:drawableEnd="@drawable/next"
             android:drawableRight="@drawable/next"
             android:background="@drawable/button_background"

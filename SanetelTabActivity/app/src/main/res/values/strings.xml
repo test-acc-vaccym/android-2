@@ -70,7 +70,7 @@
     <string name="reset_confirm">你确定要复位吗？</string>
     <string name="searching_confirm">开始寻星？</string>
     <string name="switch_destination">切换目标星</string>
-    <string name="not_connected_wifi_prompt">没有连接设备\n请连接设备</string>
+    <string name="not_connected_wifi_prompt">你连接的WIFI是%1$s\n请连接设备</string>
 
     <string name="antenna_init_bind_confirm">初始化中,不能操作</string>
     <string name="antenna_exploding_bind_confirm">当天线正在展开中,不能操作</string>

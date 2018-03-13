@@ -64,7 +64,7 @@ public class SystemServices {
         String currentSSID = NetworkUtils.getConnectWifiSsid(context);
         if (!currentSSID.startsWith(XWWT_PREFIX)) {
             final RandomDialog randomDialog = new RandomDialog(context);
-            randomDialog.onConfirmEDropletDialogBuilder(context.getString(R.string.not_connected_wifi_prompt) + ssid, "?",
+            randomDialog.onConfirmEDropletDialogBuilder(String.format(context.getString(R.string.not_connected_wifi_prompt) + ssid, currentSSID) , "?",
                     new DialogInterface.OnClickListener(){
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {

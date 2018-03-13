@@ -54,7 +54,8 @@ public class AdministratorFragmentWifiSettings extends Fragment {
     public static AdministratorFragmentWifiSettings newInstance(
             boolean showFirst, String firstLine, boolean showSecond,
             String secondLine, boolean showThird, String thirdLineStart,
-            int icon, String buttonText, String thirdLineEnd) {
+            int icon, String buttonText, String thirdLineEnd,
+            boolean showForth, String forthLine) {
         Bundle args = new Bundle();
         AdministratorFragmentWifiSettings fragment = new AdministratorFragmentWifiSettings();
         args.putBoolean(PopDialog.SHOW_FIRST,showFirst);
@@ -66,6 +67,8 @@ public class AdministratorFragmentWifiSettings extends Fragment {
         args.putInt(PopDialog.ICON, icon);
         args.putString(PopDialog.BUTTON_TEXT, buttonText);
         args.putString(PopDialog.END, thirdLineEnd);
+        args.putBoolean(PopDialog.SHOW_FORTH,showForth);
+        args.putString(PopDialog.FORTH, forthLine);
         fragment.setArguments(args);
         return fragment;
     }

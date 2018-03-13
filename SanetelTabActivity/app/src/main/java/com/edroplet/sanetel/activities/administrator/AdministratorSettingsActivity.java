@@ -134,11 +134,11 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
         adapter.addFragment(AdministratorFragmentWifiSettings.newInstance(false,null,
                 true, getString(R.string.administrator_setting_wifi_name_second_line),
                 true, getString(R.string.follow_me_message_click),-1,
-                getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
+                getString(R.string.setting_button_text), getString(R.string.settings_to_be_working), true, getString(R.string.administrator_setting_app_device_restart_prompt)));
         // 4 ip设置
         adapter.addFragment(AdministratorFragmentIPSettings.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
-                getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
+                getString(R.string.setting_button_text), getString(R.string.settings_to_be_working), true, getString(R.string.administrator_setting_app_device_restart_prompt)));
         // 5 网口协议
         adapter.addFragment(AdministratorFragmentNetworkProtocolSettings.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
@@ -149,7 +149,7 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
         // 7 波段选择
         adapter.addFragment(AdministratorFragmentBandSelect.newInstance(false,null,
-                true, getString(R.string.administrator_setting_antenna_type_second_line), true, getString(R.string.follow_me_message_click),-1,
+                true, getString(R.string.administrator_band_select_second_line), true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
         // 8 LNB本振
         adapter.addFragment(AdministratorFragmentLNBOscillator.newInstance(false,null,

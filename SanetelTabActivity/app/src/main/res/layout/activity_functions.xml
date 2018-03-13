@@ -49,6 +49,7 @@
         app:itemBackground="@color/bottom_tab_nav_background"
         app:itemTextColor="@color/tab_unchecked"/-->
 
+
     <com.edroplet.sanetel.view.custom.WeChatRadioGroup
         android:id="@+id/functions_navigation"
         android:layout_width="match_parent"
@@ -112,6 +113,12 @@
     </com.edroplet.sanetel.view.custom.WeChatRadioGroup>
         <!--app:itemIconTint="@color/yellow"-->
         <!--android:background="?android:attr/windowBackground"-->
+    <!--底部阴影-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        app:layout_anchor="@id/functions_navigation"
+        android:background="@drawable/bottom_shadow" />
     <com.edroplet.sanetel.view.custom.CustomFAB
         android:id="@+id/activity_functions_fab"
         android:layout_width="@dimen/fab_size"

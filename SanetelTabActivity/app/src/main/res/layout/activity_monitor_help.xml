@@ -22,7 +22,7 @@
             android:layout_weight="1"
             android:background="@color/toolbar_background"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:navigationIcon="@drawable/back"
+            app:navigationIcon="@drawable/ic_navigate_before_white"
             app:title="@string/functions_monitor_help_title"
             app:titleTextColor="@color/toolbar_text_color"
             app:titleTextAppearance="?android:attr/textAppearanceLarge"/>

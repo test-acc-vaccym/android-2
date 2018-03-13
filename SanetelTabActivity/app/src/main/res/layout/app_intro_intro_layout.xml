@@ -49,7 +49,7 @@
                 android:layout_marginStart="8dp"
                 android:minWidth="100dp"
                 android:text="@string/app_intro_skip_button"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/black" />
 
             <ImageButton
                 android:id="@+id/back"
@@ -86,7 +86,7 @@
                 android:layout_marginRight="8dp"
                 android:minWidth="100dp"
                 android:text="@string/app_intro_done_button"
-                android:textColor="@android:color/white"
+                android:textColor="@color/button_text"
                 android:visibility="gone" />
         </FrameLayout>
     </LinearLayout>

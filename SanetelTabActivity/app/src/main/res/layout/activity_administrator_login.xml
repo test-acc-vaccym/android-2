@@ -24,7 +24,7 @@
             app:titleTextColor="@color/toolbar_text_color"
             app:titleTextAppearance="?android:attr/textAppearanceLarge"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:navigationIcon="@drawable/back">
+            app:navigationIcon="@drawable/ic_navigate_before_white">
         </android.support.v7.widget.Toolbar>
         <!--分割线-->
         <View

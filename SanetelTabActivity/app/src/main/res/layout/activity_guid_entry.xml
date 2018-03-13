@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        app:navigationIcon="@drawable/back"
+        app:navigationIcon="@drawable/ic_navigate_before_white"
         app:title="@null"
         android:background="@color/toolbar_background"
         app:titleTextColor="@color/toolbar_text_color"

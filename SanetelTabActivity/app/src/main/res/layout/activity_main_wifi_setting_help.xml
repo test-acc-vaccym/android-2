@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/status_bar_height"
             app:title="@string/main_wifi_setting_help_title"
-            app:navigationIcon="@drawable/back"
+            app:navigationIcon="@drawable/ic_navigate_before_white"
             android:background="@color/toolbar_background"
             app:titleTextColor="@color/toolbar_text_color"
             app:titleTextAppearance="?android:attr/textAppearanceLarge"

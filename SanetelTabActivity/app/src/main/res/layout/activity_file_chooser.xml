@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        app:navigationIcon="@drawable/back"
+        app:navigationIcon="@drawable/ic_navigate_before_white"
         app:title="@null"
         app:titleTextColor="@color/toolbar_text_color"
         app:titleTextAppearance="?android:attr/textAppearanceLarge"
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left|start"
             android:text="@string/select_files"
-            android:textColor="@color/black"
+            android:textColor="@color/toolbar_text_color"
             android:textStyle="bold"
             android:textAppearance="?android:attr/textAppearanceMedium" />
         <com.edroplet.sanetel.view.custom.CustomButton
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="@string/finish"
             android:textStyle="bold"
-            android:textColor="@color/white"
+            android:textColor="@color/toolbar_text_color"
             android:background="@drawable/top_right_button"
             android:layout_gravity="end"
             android:textAppearance="?android:attr/textAppearanceMedium"

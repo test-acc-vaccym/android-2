@@ -10,7 +10,7 @@
         android:id="@+id/chapter_item_text"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:textColor="@color/black"
+        android:textColor="@color/toolbar_text_color"
         android:textSize="16sp"
         android:gravity="center_vertical"
         android:maxLines="1"

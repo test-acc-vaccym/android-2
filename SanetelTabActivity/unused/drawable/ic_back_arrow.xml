@@ -17,5 +17,5 @@
         android:autoMirrored="true"
   -->
 <bitmap xmlns:android="http://schemas.android.com/apk/res/android"
-        android:src="@drawable/back"
+        android:src="@drawable/ic_navigate_before_white"
         android:tint="@color/white" />

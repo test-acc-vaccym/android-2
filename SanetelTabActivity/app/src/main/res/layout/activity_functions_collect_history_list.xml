@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/main_collect_data_history_list_title"
-                android:textColor="@color/title_text"
+                android:textColor="@color/toolbar_text_color"
                 android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
 

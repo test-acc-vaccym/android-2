@@ -18,6 +18,8 @@ import android.view.WindowManager;
 
 import com.edroplet.sanetel.activities.main.MainMeLanguageActivity;
 import com.edroplet.sanetel.fragments.HintDialogFragment;
+import com.forlong401.log.transaction.log.manager.LogManager;
+import com.forlong401.log.transaction.utils.LogUtils;
 
 import java.util.Locale;
 
@@ -28,7 +30,7 @@ import java.util.Locale;
  */
 
 public class BaseActivity extends AppCompatActivity implements HintDialogFragment.DialogFragmentCallback {
-
+    private static final String TAG = BaseActivity.class.getSimpleName();
     public static final int REQUEST_PERMISSION = 0xF0;
     public static final int HINT_DIALOG_EXPLAIN_CALENDAR_PERMISSION_REQUEST_CODE = 0xF1;
     private String permission;
@@ -54,7 +56,11 @@ public class BaseActivity extends AppCompatActivity implements HintDialogFragmen
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // EventBus.getDefault().register(this);
-
+        LogManager.getManager(getApplicationContext()).registerActivity(this);
+        LogManager.getManager(getApplicationContext()).log(TAG, "onCreate",
+                LogUtils.LOG_TYPE_2_FILE_AND_LOGCAT);
+        String crashNullException = null;
+        crashNullException.charAt(1);
         //透明状态栏
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window window = getWindow();
@@ -97,6 +103,7 @@ public class BaseActivity extends AppCompatActivity implements HintDialogFragmen
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        LogManager.getManager(getApplicationContext()).unregisterActivity(this);
         // EventBus.getDefault().unregister(this);
     }
 

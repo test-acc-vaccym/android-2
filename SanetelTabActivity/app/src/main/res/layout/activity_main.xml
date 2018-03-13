@@ -58,6 +58,11 @@
         android:background="?android:attr/windowBackground"
         app:itemTextColor="@color/button_text"
         app:menu="@menu/main_navigation" /-->
+    <!--底部阴影-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/bottom_shadow" />
     <com.edroplet.sanetel.view.custom.WeChatRadioGroup
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/main_navigation"
@@ -96,9 +101,4 @@
             app:icon_width="@dimen/weChat_icon_width"
             app:icon_height="@dimen/weChat_icon_height"/>
     </com.edroplet.sanetel.view.custom.WeChatRadioGroup>
-    <!--底部阴影-->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@drawable/bottom_shadow" />
 </LinearLayout>

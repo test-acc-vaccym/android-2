@@ -695,7 +695,7 @@
     <string name="administrator_settings_lnb_ku_value_5">11300</string>
     <string name="administrator_settings_lnb_ku_value_6">10600</string>
     <string name="administrator_settings_lnb_ku_value_7">11300</string>
-    <string name="settings_lnb_message_first_line">根据实际LNB选择。</string>
+    <string name="settings_lnb_message_first_line">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;根据实际LNB选择。</string>
     <string name="settings_antenna_restart_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;此功能能够在系统不断电的情况下通过软件实现天线重新启动。在一些不希望天线断电的场合可以用到此功能。\n
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;按重启2秒后，天线自己重新启动。</string>
 

@@ -30,8 +30,6 @@ import com.edroplet.sanetel.services.DownLoadService;
 import com.edroplet.sanetel.utils.FileUtils;
 import com.edroplet.sanetel.utils.MLog;
 import com.edroplet.sanetel.services.network.SystemServices;
-import com.edroplet.sanetel.view.ViewInject;
-import com.edroplet.sanetel.view.annotation.BindId;
 import com.edroplet.sanetel.view.custom.CustomTextView;
 
 import java.io.BufferedReader;
@@ -48,6 +46,9 @@ import java.util.TimerTask;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.edroplet.sanetel.activities.main.MainMeAboutBrowserActivity.BrowseUrl;
 import static com.edroplet.sanetel.activities.main.MainMeAboutBrowserActivity.KEY_DOWNLOAD_URL;
@@ -114,7 +115,7 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_me_app);
-        ViewInject.inject(this,this);
+        ButterKnife.bind(this);
         mContext = this;
 
         getPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -144,8 +145,8 @@ public class MainMeAppActivity extends BaseActivity implements View.OnClickListe
         activity.startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
 
-    @BindId(R.id.main_me_app_update_state)
-    private CustomTextView appUpdateState;
+    @BindView(R.id.main_me_app_update_state)
+    CustomTextView appUpdateState;
 
     private String dots = ".";
 

@@ -50,7 +50,6 @@
 
     <color name="tab_checked">#3F51B5</color>
     <color name="tab_unchecked">#757575</color>
-    <color name="title_text">#0000B5</color>
     <!--<color name="state_bar_background">#BBEEDD</color>-->
     <color name="state_bar_background">@color/toolbar_background</color>
     <!--<color name="operate_bar_background">#FDF5E6</color>-->

@@ -62,7 +62,8 @@ public class SystemServices {
                                           DialogInterface.OnClickListener onCancelClickListener,
                                           final int requestId){
         String currentSSID = NetworkUtils.getConnectWifiSsid(context);
-        if (!currentSSID.startsWith(XWWT_PREFIX)) {
+        if (!currentSSID.substring(0,5).equalsIgnoreCase(XWWT_PREFIX)){
+        // if (!currentSSID.startsWith(XWWT_PREFIX)) {
             final RandomDialog randomDialog = new RandomDialog(context);
             randomDialog.onConfirmEDropletDialogBuilder(String.format(context.getString(R.string.not_connected_wifi_prompt) + ssid, currentSSID) , "?",
                     new DialogInterface.OnClickListener(){
@@ -190,7 +191,7 @@ public class SystemServices {
         }
 
         // 创建一个WifiLock
-        public void creatWifiLock() {
+        public void createWifiLock() {
             mWifiLock = mWifiManager.createWifiLock("Test");
         }
 
@@ -317,7 +318,7 @@ public class SystemServices {
             config.allowedProtocols.clear();
             config.SSID = "\"" + SSID + "\"";
 
-            WifiConfiguration tempConfig = this.IsExsits(SSID);
+            WifiConfiguration tempConfig = this.IsExists(SSID);
             if(tempConfig != null) {
                 mWifiManager.removeNetwork(tempConfig.networkId);
             }
@@ -356,7 +357,7 @@ public class SystemServices {
             return config;
         }
 
-        private WifiConfiguration IsExsits(String SSID)
+        private WifiConfiguration IsExists(String SSID)
         {
             List<WifiConfiguration> existingConfigs = mWifiManager.getConfiguredNetworks();
             for (WifiConfiguration existingConfig : existingConfigs)

@@ -6,6 +6,8 @@
     <!--7.0后静态注册广播需要权限了-->
     <permission android:name="com.edroplet.sanetel.services.communicate.CommunicateDataReceiver"
         android:protectionLevel="normal"/>
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="com.edroplet.sanetel.services.communicate.CommunicateDataReceiver"/>
     <!-- 震动 -->
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -53,12 +55,11 @@
             android:name=".IntroActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name" />
-        <activity
+        <!--activity
             android:name=".activities.guide.WelcomeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_welcome_activity"
-            android:theme="@style/FullscreenTheme" />
-
+            android:theme="@style/FullscreenTheme" /-->
         <!-- android:theme="@style/ThemeSplash" -->
         <activity
             android:name=".SplashActivity"
@@ -67,7 +68,6 @@
             android:theme="@style/AppStartTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -86,7 +86,8 @@
             android:name=".activities.functions.FunctionsActivity"
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/title_activity_application"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".activities.settings.SatelliteListActivity"
             android:label="@string/satellite_toolbar_title"
@@ -96,7 +97,8 @@
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/main_settings_amplifier"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".activities.settings.SatelliteDetailActivity"
             android:label="@string/title_satellite_detail"
@@ -111,11 +113,13 @@
             android:name=".activities.guide.GuideActivity"
             android:label="@string/title_activity_follow_me"
             android:parentActivityName=".activities.guide.GuideEntryActivity"
+            android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.main.MainActivity"
             android:label="@string/title_activity_main"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".activities.main.MainMeLanguageActivity"
             android:label="@string/title_activity_main_me_language"
@@ -124,18 +128,23 @@
         <activity
             android:name=".activities.main.MainMeAboutActivity"
             android:label="@string/main_me_about_title"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.main.MainMeAdviceActivity"
             android:label="@string/main_me_advice_title"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.main.MainMeAppActivity"
             android:label="@string/main_me_app_title"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.main.MainMeErrorReportActivity"
-            android:label="@string/main_me_error_report_title"/>
+            android:label="@string/main_me_error_report_title"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden"/>
         <!-- 图片选择 -->
         <activity
             android:name="com.yongchun.library.view.ImageSelectorActivity"
@@ -155,10 +164,8 @@
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.GET_CONTENT" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.OPENABLE" />
-
                 <data android:mimeType="*/*" />
             </intent-filter>
         </activity>
@@ -245,11 +252,6 @@
             android:name=".activities.main.MainMeAboutBrowserActivity"
             android:windowSoftInputMode="stateHidden" />
 
-        <!-- 服务 -->
-        <!-- 下载服务 -->
-        <service android:name=".services.DownLoadService" />
-        <!--通信服务-->
-        <service android:name=".services.network.UdpSendReceive"/>
         <!--
         activity android:name="com.will.ireader.IReaderMainActivity">
             <intent-filter>
@@ -277,6 +279,13 @@
                 <action android:name="com.edroplet.sanetel.data.SEND_DATA"/>
             </intent-filter>
         </receiver>
+        <!-- 服务 -->
+        <!-- 下载服务 -->
+        <service android:name=".services.DownLoadService" />
+        <!--通信服务-->
+        <service android:name=".services.network.UdpSendReceive"/>
+
+        <service android:name=".services.LogService" />
         <service  android:name=".services.CommunicateWithDeviceService"
             android:enabled="true"
             android:exported="false"/>
@@ -292,5 +301,6 @@
         <service android:name=".services.communicate.CommunicateDataReceiver$ReceiveNotifyService"
             android:enabled="true"
             android:exported="false"/>
+
     </application>
 </manifest>

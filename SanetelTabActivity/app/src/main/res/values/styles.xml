@@ -117,7 +117,7 @@
     <style name="linear_shadow">
         <item name="android:shadowColor">#ff000000</item>
         <item name="android:shadowDx">0</item>
-        <item name="android:shadowDy">2</item>
+        <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1</item>
         <item name="android:background">@drawable/guide_main_item_background_color</item>
         <item name="android:divider">@drawable/spacer_medium</item>
@@ -131,7 +131,7 @@
         <item name="android:shadowDx">0</item>
         <item name="android:shadowDy">0</item>
         <item name="android:shadowRadius">0</item>
-        <item name="android:background">@drawable/item_background_color</item>
+        <!--<item name="android:background">@drawable/item_background_color</item>-->
         <!--<item name="android:paddingTop">@dimen/spacing_medium</item>-->
         <item name="android:paddingBottom">@dimen/spacing_medium</item>
     </style>

@@ -27,6 +27,7 @@ import static com.edroplet.sanetel.services.network.SystemServices.REQUEST_WIFI_
 
 /**
  * Created by qxs on 2017/9/19.
+ * 主页面 点击
  */
 
 public class MainFragmentGuide extends Fragment implements View.OnClickListener{
@@ -109,8 +110,8 @@ public class MainFragmentGuide extends Fragment implements View.OnClickListener{
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_WIFI_CONNECT_MANAGER){
             String ssid = NetworkUtils.getConnectWifiSsid(getContext());
+            Toast.makeText(getContext().getApplicationContext(), getString(R.string.main_connected_ssid_prompt) + ssid, Toast.LENGTH_SHORT).show();
             if (ssid.toUpperCase().startsWith(SystemServices.XWWT_PREFIX)){
-                Toast.makeText(getContext(), getString(R.string.main_connected_ssid_prompt) + ssid, Toast.LENGTH_SHORT).show();
                 jumpToFollowMe();
             }else {
                 SystemServices.checkConnectedSsid(getContext(),

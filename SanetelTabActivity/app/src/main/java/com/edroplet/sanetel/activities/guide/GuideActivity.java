@@ -219,7 +219,7 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
                     true, getString(R.string.follow_me_message_click), 0, null, getString(R.string.follow_me_forever)));
 
             // 4.3.5.	寻星模式
-            mSectionsPagerAdapter.addFragment(GuideFragmentSearchModeSetting.newInstance(true, getString(R.string.follow_me_search_mode_second), false, null,
+            mSectionsPagerAdapter.addFragment(GuideFragmentSearchModeSetting.newInstance(true, getString(R.string.follow_me_search_mode_first_line), true, getString(R.string.follow_me_search_mode_second_line),
                     true, getString(R.string.follow_me_search_mode_third_start),
                     0, null, getString(R.string.follow_me_search_mode_third_end)));
             // 4.3.6.	寻星操作

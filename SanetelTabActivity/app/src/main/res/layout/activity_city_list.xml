@@ -24,12 +24,13 @@
             app:titleTextAppearance="?android:attr/textAppearanceLarge"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
+            <!--android:layout_gravity="center"-->
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/title_city_list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:text="@string/title_city_list"
+                android:textColor="@color/toolbar_text_color"
                 android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
         </android.support.v7.widget.Toolbar>

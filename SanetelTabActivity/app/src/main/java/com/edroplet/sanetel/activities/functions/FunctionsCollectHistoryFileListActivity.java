@@ -120,7 +120,7 @@ public class FunctionsCollectHistoryFileListActivity extends AppCompatActivity i
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
-            ab.setHomeAsUpIndicator(R.drawable.back);
+            ab.setHomeAsUpIndicator(R.drawable.ic_navigate_before_white);
             // 设置居中的时候不能含有原标题
             ab.setDisplayShowTitleEnabled(false);
         }

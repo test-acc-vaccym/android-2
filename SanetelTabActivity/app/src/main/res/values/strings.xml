@@ -480,9 +480,10 @@
     <string name="follow_me_search_mode_title">寻星模式</string>
     <string name="follow_me_search_mode_beacon">信标模式</string>
     <string name="follow_me_search_mode_dvb">DVB模式</string>
-    <string name="follow_me_search_mode_third_start">变更后系统部分页面随之变化，选择后点击</string>
+    <string name="follow_me_search_mode_second_line">变更后系统部分页面随之变化</string>
+    <string name="follow_me_search_mode_third_start">选择后点击</string>
     <string name="follow_me_search_mode_third_end">永久生效</string>
-    <string name="follow_me_search_mode_second">不是所有星都支持两种模式</string>
+    <string name="follow_me_search_mode_first_line">不是所有星都支持两种模式</string>
 
     <!--引导页寻星操作-->
     <string name="follow_me_searching_title">寻星操作</string>

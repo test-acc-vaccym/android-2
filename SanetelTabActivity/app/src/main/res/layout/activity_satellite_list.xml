@@ -24,13 +24,13 @@
             app:titleTextColor="@color/toolbar_text_color"
             app:titleTextAppearance="?android:attr/textAppearanceLarge">
 
+            <!--android:layout_gravity="center"-->
             <com.edroplet.sanetel.view.custom.CustomTextView
                 android:id="@+id/satellite_list_toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:text="@string/satellite_toolbar_title"
-                android:textColor="@color/title_text"
+                android:textColor="@color/toolbar_text_color"
                 android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
 

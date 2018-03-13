@@ -2,13 +2,13 @@
 <resources>
     <!--toolbar status color 状态颜色-->
     <!--<color name="status_normal">#00FF00</color>-->
-    <color name="status_normal">#00FFA0</color>
-    <color name="status_special">#000000</color>
-    <color name="status_abnormal">#000000</color>
-    <color name="status_operate">#0000FF</color>
-    <color name="operate_confirm_title_color">#0000FF</color>
+    <color name="status_normal">@color/toolbar_text_color</color>
+    <color name="status_special">#00FFA0</color>
+    <color name="status_abnormal">@color/button_text</color>
+    <color name="status_operate">@color/button_text</color>
+    <color name="operate_confirm_title_color">@color/button_text</color>
     <!--<color name="operate_confirm_divider_color">#BBEEDD</color>-->
-    <color name="operate_confirm_divider_color">@color/toolbar_background</color>
+    <color name="operate_confirm_divider_color">@color/toolbar_text_color</color>
     <color name="operate_confirm_message_color">#FF0000</color>
     <!--<color name="operate_confirm_dialog_color">#BBEEDD</color>-->
     <color name="operate_confirm_dialog_color">@color/toolbar_background</color>

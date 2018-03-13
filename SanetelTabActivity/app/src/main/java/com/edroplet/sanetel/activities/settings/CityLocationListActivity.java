@@ -161,7 +161,7 @@ public class CityLocationListActivity extends AppCompatActivity /*implements Vie
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
-            ab.setHomeAsUpIndicator(R.drawable.back);
+            ab.setHomeAsUpIndicator(R.drawable.ic_navigate_before_white);
             // ab.setTitle(R.string.satellite_toolbar_title);
             // 设置居中的时候不能含有原标题
             ab.setDisplayShowTitleEnabled(false);

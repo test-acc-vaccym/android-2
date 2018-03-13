@@ -54,7 +54,7 @@ public class StatusBarControl {
         activity.setSupportActionBar(toolbar);
         mActivity = activity;
 
-        toolbar.setBackgroundColor(ResourcesCompat.getColor(activity.getResources(), R.color.title_background, null));
+        toolbar.setBackgroundColor(ResourcesCompat.getColor(activity.getResources(), R.color.toolbar_background, null));
         //actionBar的设置(使用自定义的设置)
         actionBar = activity.getSupportActionBar();
         if (actionBar != null) {

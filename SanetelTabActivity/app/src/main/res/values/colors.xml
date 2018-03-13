@@ -3,7 +3,7 @@
     <!--toolbar status color 状态颜色-->
     <!--<color name="status_normal">#00FF00</color>-->
     <color name="status_normal">@color/toolbar_text_color</color>
-    <color name="status_special">#00FFA0</color>
+    <color name="status_special">@color/button_text</color>
     <color name="status_abnormal">@color/button_text</color>
     <color name="status_operate">@color/button_text</color>
     <color name="operate_confirm_title_color">@color/button_text</color>
@@ -99,7 +99,7 @@
     <color name="weChat_radio_button_deFocus_color">#757575</color>
     <color name="weChat_button_focus_color">#50ba26</color>
 
-    <color name="intro_dot_black">#000000</color>
+    <color name="intro_dot_black">@color/orange</color>
     <color name="intro_dot_grey">#cccccc</color>
     <color name="intro_next_color">@color/orange</color>
 </resources>

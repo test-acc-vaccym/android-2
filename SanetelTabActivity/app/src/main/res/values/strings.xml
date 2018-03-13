@@ -180,7 +180,7 @@
     <string name="main_control_operate_speed">速度控制</string>
     <string name="main_control_operate_location">位置控制</string>
     <string name="main_control_operate_calculate">对星计算</string>
-    <string name="main_control_speed_info">当前数值</string>
+    <string name="main_control_speed_info_headline">当前数值</string>
     <string name="main_control_speed_azimuth">方位角</string>
     <string name="main_control_speed_azimuth_hint">0.00</string>
     <string name="main_control_speed_pitch">俯仰角</string>

@@ -43,7 +43,8 @@ class DefaultIndicatorController implements com.edroplet.sanetel.view.appintro.I
 
         for (int i = 0; i < slideCount; i++) {
             ImageView dot = new ImageView(mContext);
-            dot.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.indicator_dot_grey));
+            // todo 修改 indicator
+            dot.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.indicator_dot_white));
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,

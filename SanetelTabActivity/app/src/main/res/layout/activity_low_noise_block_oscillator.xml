@@ -13,10 +13,10 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/app_bar_height"
             app:title="@string/main_settings_lnb_oscillator"
-            android:background="@color/state_bar_background"
+            android:background="@color/toolbar_background_color"
             app:layout_scrollFlags="scroll|enterAlways"
             app:navigationIcon="@drawable/back"
-            app:titleTextColor="@color/black"
+            app:titleTextColor="@color/toolbar_text_color"
             app:titleTextAppearance="?android:attr/textAppearanceLarge"/>
     </android.support.design.widget.AppBarLayout-->
     <android.support.v4.widget.NestedScrollView

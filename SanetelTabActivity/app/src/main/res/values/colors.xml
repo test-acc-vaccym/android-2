@@ -7,19 +7,25 @@
     <color name="status_abnormal">#000000</color>
     <color name="status_operate">#0000FF</color>
     <color name="operate_confirm_title_color">#0000FF</color>
-    <color name="operate_confirm_divider_color">#BBEEDD</color>
+    <!--<color name="operate_confirm_divider_color">#BBEEDD</color>-->
+    <color name="operate_confirm_divider_color">@color/toolbar_background</color>
     <color name="operate_confirm_message_color">#FF0000</color>
-    <color name="operate_confirm_dialog_color">#BBEEDD</color>
+    <!--<color name="operate_confirm_dialog_color">#BBEEDD</color>-->
+    <color name="operate_confirm_dialog_color">@color/toolbar_background</color>
     <color name="operate_disabled_color">#757575</color>
 
     <color name="indigo">#0077D7</color>
     <color name="pink">#F15A24</color>
 
     <!--e droplet dialog Builder-->
-    <color name="defTextColor">#afbbeedd</color>
+    <!--<color name="defTextColor">#afbbeedd</color>-->
+    <color name="defTextColor">#f9fcf9</color>
     <color name="defDividerColor">#11000000</color>
     <color name="defMsgColor">#FFFFFFFF</color>
     <color name="defDialogColor">#FFE74C3C</color>
+
+    <color name="toolbar_background">@color/black</color>
+    <color name="toolbar_text_color">@color/white</color>
 
     <color name="satellite_list_header_background">@color/operate_bar_background</color>
 
@@ -30,7 +36,8 @@
     <color name="guide_item_background_center">#FEFFFF</color>
     <color name="guide_item_background_end">#FDFFFF</color>
 
-    <color name="bottom_tab_nav_background">#afbbeedd</color>
+    <!--<color name="bottom_tab_nav_background">#afbbeedd</color>-->
+    <color name="bottom_tab_nav_background">#f9fcf9</color>
     <color name="toolbar_color_14b8f4">#14b8f4</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
@@ -44,10 +51,12 @@
     <color name="tab_checked">#3F51B5</color>
     <color name="tab_unchecked">#757575</color>
     <color name="title_text">#0000B5</color>
-    <color name="state_bar_background">#BBEEDD</color>
+    <!--<color name="state_bar_background">#BBEEDD</color>-->
+    <color name="state_bar_background">@color/toolbar_background</color>
     <!--<color name="operate_bar_background">#FDF5E6</color>-->
     <color name="operate_bar_background">#99CCFF</color>
-    <color name="title_background">#ffbbeedd</color>
+    <!--<color name="title_background">#ffbbeedd</color>-->
+    <color name="title_background">@color/toolbar_background</color>
     <color name="subtitle_Honeydew">#F0FFF0</color>
     <color name="button_blink">#00FFFFFF</color>
     <color name="DeepSkyBlue">#00BFFF</color>

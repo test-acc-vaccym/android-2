@@ -15,9 +15,9 @@
         android:layout_gravity="end"
         app:navigationIcon="@drawable/back"
         app:title="@null"
-        app:titleTextColor="@color/white"
+        app:titleTextColor="@color/toolbar_text_color"
         app:titleTextAppearance="?android:attr/textAppearanceLarge"
-        android:background="@color/black"
+        android:background="@color/toolbar_background"
         android:fitsSystemWindows="true">
         <com.edroplet.sanetel.view.custom.CustomTextView
             android:id="@+id/guide_toolbar_title"

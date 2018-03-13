@@ -81,7 +81,8 @@
     <color name="background_dialer_details_list_items">@color/background_dialer_results</color>
 
     <!-- Color of the 1dp divider that separates favorites -->
-    <color name="favorite_contacts_separator_color">#d0d0d0</color>
+    <!--<color name="favorite_contacts_separator_color">#d0d0d0</color>-->
+    <color name="favorite_contacts_separator_color">#101010</color>
 
     <color name="searchbox_icon_tint">#a4a4a4</color>
 

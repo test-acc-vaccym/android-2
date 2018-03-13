@@ -24,6 +24,7 @@ import java.util.Random;
 
 /**
  * Created by qxs on 2017/9/21.
+ * 引导页
  */
 
 public class IntroActivity extends AppIntro {

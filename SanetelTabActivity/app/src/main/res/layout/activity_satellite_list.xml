@@ -19,9 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/back"
-            android:background="@color/state_bar_background"
+            android:background="@color/toolbar_background"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:titleTextColor="@color/black"
+            app:titleTextColor="@color/toolbar_text_color"
             app:titleTextAppearance="?android:attr/textAppearanceLarge">
 
             <com.edroplet.sanetel.view.custom.CustomTextView

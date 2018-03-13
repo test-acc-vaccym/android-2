@@ -11,6 +11,7 @@ import com.edroplet.sanetel.R;
 
 /**
  * Created by qxs on 2017/9/21.
+ * 线缆安装
  */
 
 public class WelcomeInstallWire extends Fragment {

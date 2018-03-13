@@ -18,10 +18,10 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/main_me_advice_toolbar"
             android:layout_width="match_parent"
-            app:titleTextColor="@color/black"
+            app:titleTextColor="@color/toolbar_text_color"
             app:titleTextAppearance="?android:attr/textAppearanceLarge"
             android:layout_height="@dimen/status_bar_height"
-            android:background="@color/state_bar_background"
+            android:background="@color/toolbar_background"
             app:layout_scrollFlags="scroll|enterAlways"
             app:navigationIcon="@drawable/back"
             app:title="@string/main_me_advice_title">

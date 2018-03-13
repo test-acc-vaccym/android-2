@@ -67,11 +67,11 @@
     <color name="green">#00FF00</color>
     <color name="yellow">#ffff00</color>
 
-    <color name="button_text">#0000ff</color>
+    <!--<color name="button_text">#0000ff</color>-->
+    <color name="button_text">@color/orange</color>
     <color name="content_text">#000000</color>
 
     <color name="input_under_line">#c1c1c1</color>
-
 
     <color name="gray">#ffdedede</color>
     <color name="blue">#ff0099cc</color>
@@ -98,4 +98,8 @@
 
     <color name="weChat_radio_button_deFocus_color">#757575</color>
     <color name="weChat_button_focus_color">#50ba26</color>
+
+    <color name="intro_dot_black">#000000</color>
+    <color name="intro_dot_grey">#cccccc</color>
+    <color name="intro_next_color">@color/orange</color>
 </resources>

@@ -10,6 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
         android:text="@string/welcome_check_device"
+        android:textColor="@color/toolbar_text_color"
+        android:background="@color/toolbar_background"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 

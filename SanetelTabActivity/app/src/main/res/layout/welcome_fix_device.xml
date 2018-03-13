@@ -11,6 +11,8 @@
         android:layout_height="@dimen/app_bar_height"
         android:gravity="center"
         android:text="@string/welcome_fix_device"
+        android:textColor="@color/toolbar_text_color"
+        android:background="@color/toolbar_background"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <android.support.v4.widget.NestedScrollView

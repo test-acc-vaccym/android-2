@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/WhiteSmoke"
+    android:layout_marginBottom="@dimen/app_bar_height">
+    <com.edroplet.sanetel.view.custom.CustomTextView
+        android:id="@+id/welcome_fix_device_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:gravity="center"
+        android:text="@string/welcome_one_key"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/welcome_fix_device_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="@dimen/appIntroBottomBarHeight"
+        style="@style/linear_no_shadow_no_padding">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.edroplet.sanetel.view.custom.CustomTextView
+                android:padding="@dimen/layout_padding_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome_one_key_detail"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

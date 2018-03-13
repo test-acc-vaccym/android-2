@@ -16,6 +16,7 @@ import com.edroplet.sanetel.activities.main.MainActivity;
 import com.edroplet.sanetel.fragments.welcome.WelcomeCheckDevice;
 import com.edroplet.sanetel.fragments.welcome.WelcomeFixDevice;
 import com.edroplet.sanetel.fragments.welcome.WelcomeInstallWire;
+import com.edroplet.sanetel.fragments.welcome.WelcomeOneKey;
 import com.edroplet.sanetel.view.appintro.AppIntro;
 
 import java.util.Date;
@@ -43,6 +44,8 @@ public class IntroActivity extends AppIntro {
         addSlide(WelcomeFixDevice.newInstance());
         // 安装线缆
         addSlide(WelcomeInstallWire.newInstance());
+        // 一键通功能
+        addSlide(WelcomeOneKey.newInstance());
 
 
         // OPTIONAL METHODS

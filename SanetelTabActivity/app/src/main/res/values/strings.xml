@@ -16,22 +16,29 @@
     <string name="title_activity_welcome_activity">欢迎</string>
     <string name="welcome_skip">跳过</string>
     <string name="welcome_install_line">安装线缆</string>
-    <string name="welcome_install_line_detail">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;便携站与调制解调器一起组成卫通系统。便携站的用户接口都来自电控箱面板。\n
+    <string name="welcome_install_line_detail">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;便携站与调制解调器一起组成卫通系统。便携站的用户接口都来自电控箱面板。\n
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;本产品提供了多种方式实现对便携站监控。用户还可以通过网线和串口两种有线方式监控便携站。\n
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;APP控制方式采用无线WI-FI为信号传输介质。当采用APP控制方式时，不用的用户面板接口需加装防尘盖。\n
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;安装控制线缆时，线缆航插头红点朝向正上方轻轻插入即可，无须使足劲以免损坏插头。\n
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;安装射频线缆时，线缆射频头？？朝向正上方插入，再逆时针旋拧，直至听到脆响。\n
         &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;为防止设备漏电，导致触电，请安装接地线。设备接地后会大幅度提高电磁兼容能力。\n
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;线缆连接之后，可以给设备上电了！上电之后，延时1分钟后，点击进入引导主页。
 </string>
     <string name="welcome_fix_device">固定设备</string>
-    <string name="welcome_fix_device_detail">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;通过安装在电控箱上盖前端的水平仪和指南针将天线本体保持正南并水平放置。保证方位偏置不要大于10°。\n
+    <string name="welcome_fix_device_detail">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;通过安装在电控箱上盖前端的水平仪和指南针将天线本体保持正南并水平放置。保证方位偏置不要大于10°。\n
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;在4级最大风速以下：只需支臂展开就能够实现正常寻星锁星。（风速：≤28km/h）\n
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;在5~6级风速以下：由于天线较轻，需支臂配置。能够正常寻星锁星；通信性能不受影响。（风速：≤50km/h）\n
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;在7、8级风速：需锁紧机构和配重。此时不能完成寻星。但已经锁星的前提下，可以继续工作，通信性能降低，天线轻微颤动。（风速：≤65km/h）\n
 </string>
     <string name="welcome_check_device">检查设备</string>
-    <string name="welcome_check_device_detail">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;便携站由天线主体和辅瓣及其配件3部分构成。配件包含：电源线、网线（监视）、发射线缆、接收线缆、GNSS天线。如果选配手持机，还应当包括手持机和手持机线缆。此外，还包含《产品使用说明书》、合格证和入网许可证附件各一份。\n
+    <string name="welcome_check_device_detail">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;便携站由天线主体和辅瓣及其配件3部分构成。配件包含：电源线、网线（监视）、发射线缆、接收线缆、GNSS天线。如果选配手持机，还应当包括手持机和手持机线缆。此外，还包含《产品使用说明书》、合格证和入网许可证附件各一份。\n
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;用户使用前需检查物品是否齐全，包装是否完好。
 </string>
+    <string name="welcome_one_key">一键通功能</string>
+    <string name="welcome_one_key_detail">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;如果无需更换目标星或修改其他设置选项，天线对星完全可以脱离控制终端，只通过天线本体上的一键通就可以实现通信。\n
+    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;上电后，直接点击一键通，天线展开至安装天线面位置，再点击一键通，天线开始自动寻星，直至锁星。\n
+    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;通过长按一键通大于3秒，天线就开始收藏，直至收藏完成，就可以切断电源了。\n
+    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;如需APP控制天线，上电之后延时1分钟用于网络建立连接。之后点击进入引导主页。\n</string>
 
     <!--引导页面-->
     <string name="guide_done">进入引导主页</string>
@@ -473,7 +480,7 @@
     <string name="follow_me_search_mode_title">寻星模式</string>
     <string name="follow_me_search_mode_beacon">信标模式</string>
     <string name="follow_me_search_mode_dvb">DVB模式</string>
-    <string name="follow_me_search_mode_third_start">选择后点击</string>
+    <string name="follow_me_search_mode_third_start">变更后系统部分页面随之变化，选择后点击</string>
     <string name="follow_me_search_mode_third_end">永久生效</string>
     <string name="follow_me_search_mode_second">不是所有星都支持两种模式</string>
 
@@ -701,7 +708,7 @@
     <string name="administrator_communicate_related">通信相关</string>
     <string name="administrator_antenna_incriminate">天线标定</string>
     <string name="administrator_factory_incriminate">出厂标定</string>
-    <string name="administrator_location_incriminate">位置标定</string>
+    <string name="administrator_position_incriminate">位置标定</string>
     <string name="administrator_recovery_factory">恢复出厂</string>
     <string name="administrator_antenna_restart">天线重启</string>
     <string name="administrator_antenna_type">天线类型</string>
@@ -717,6 +724,9 @@
     <!--天线标定-->
     <string name="administrator_antenna_incriminate_headline">标定天线值</string>
     <string name="administrator_factory_incriminate_headline">出厂标定值</string>
+    <string name="administrator_position_incriminate_subtitle">标定位置</string>
+    <string name="administrator_position_incriminate_fold">收藏位置</string>
+    <string name="administrator_position_incriminate_explode">展开位置</string>
     <!--恢复出厂-->
     <string name="administrator_setting_recovery_factory_title">恢复出厂</string>
     <string name="administrator_setting_recovery_factory_message">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;当希望掉电存储信息恢复到设备出厂前的状态，可以采用此功能。\n
@@ -729,11 +739,13 @@
     <string name="administrator_setting_antenna_type_two_zero"> 两轴零极化</string>
     <string name="administrator_setting_antenna_type_three_one"> 三轴一极化</string>
     <string name="administrator_setting_antenna_type_three_zero"> 三轴零极化</string>
+    <string name="administrator_setting_antenna_type_second_line"> 变更类型后，系统部分页面也随之变化。</string>
 
     <!--10.5.6.	波段选择-->
     <string name="administrator_band_select_title">选择波段</string>
     <string name="administrator_setting_band_ku"> ku波段</string>
     <string name="administrator_setting_band_ka"> ka波段</string>
+    <string name="administrator_band_select_title">选择波段</string>
 
     <!--10.5.7.	LNB频段-->
     <string name="administrator_setting_lnb_frequency_channel_1"> 13V</string>
@@ -753,7 +765,8 @@
     <!--10.5.9.	WIFI名称-->
     <string name="administrator_setting_wifi_name">名称</string>
     <string name="administrator_setting_wifi_name_hint">XWWT-P120-201708001</string>
-    <string name="administrator_setting_wifi_name_second_line">请以“XWWT-”开头,否则无法输入.区分大小写，不能超过27个字符</string>
+    <string name="administrator_setting_wifi_name_second_line">请以“XWWT-”开头,否则无法输入.区分大小写，不能超过27个字符。</string>
+    <string name="administrator_setting_app_device_restart_prompt">设置完毕APP会重启，WIFI设备会重启，需要手动重新连接天线</string>
 
     <!--10.5.10.	IP设置-->
     <string name="administrator_setting_ip_address">IP地址</string>
@@ -787,6 +800,7 @@
     <string name="administrator_amplifier_monitor_rs422">RS422监控</string>
     <string name="administrator_amplifier_monitor_rs485">RS485监控</string>
     <string name="administrator_amplifier_monitor_none">无监控</string>
+    <string name="administrator_amplifier_monitor_second_line">如果设置了监控，功放的相关信息，表现于监视页面。</string>
 
     <string name="app_intro_done_button">完成</string>
     <string name="app_intro_skip_button">跳过</string>

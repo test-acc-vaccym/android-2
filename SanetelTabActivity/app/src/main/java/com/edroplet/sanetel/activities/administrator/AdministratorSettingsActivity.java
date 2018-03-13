@@ -20,6 +20,7 @@ import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragme
 import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentIPSettings;
 import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentLNBOscillator;
 import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentNetworkProtocolSettings;
+import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentPositionIncriminate;
 import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentRecoveryFactory;
 import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentSearchingRange;
 import com.edroplet.sanetel.fragments.settings.administrator.AdministratorFragmentSerialProtocolSettings;
@@ -46,6 +47,7 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
     public static final int amplifierFactoryPosition = 11;
     public static final int amplifierOscillatorPosition = 12;
     public static final int factoryIncriminatePosition = 13;
+    public static final int positionIncriminatePosition = 14;
 
     private static final @IdRes int[] TITLE = {R.string.administrator_antenna_incriminate,
             R.string.administrator_recovery_factory,R.string.administrator_antenna_type,
@@ -54,7 +56,7 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
             R.string.administrator_band_select, R.string.main_settings_lnb_oscillator,
             R.string.administrator_searching_range, R.string.administrator_amplifier_monitor,
             R.string.main_settings_amplifier_factory,R.string.main_settings_amplifier_oscillator,
-            R.string.administrator_factory_incriminate};
+            R.string.administrator_factory_incriminate, R.string.administrator_position_incriminate};
 
     @BindView(R.id.id_administrator_settings_viewpager)
     CustomViewPager viewPager;
@@ -126,7 +128,7 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
                 getString(R.string.administrator_setting_recovery_factory_third_button), getString(R.string.settings_to_be_working)));
         // 2 天线类型
         adapter.addFragment(AdministratorFragmentAntennaType.newInstance(false,null,
-                false, null, true, getString(R.string.follow_me_message_click),-1,
+                true, getString(R.string.administrator_setting_antenna_type_second_line), true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
         // 3 WiFi设置
         adapter.addFragment(AdministratorFragmentWifiSettings.newInstance(false,null,
@@ -147,7 +149,7 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
         // 7 波段选择
         adapter.addFragment(AdministratorFragmentBandSelect.newInstance(false,null,
-                false, null, true, getString(R.string.follow_me_message_click),-1,
+                true, getString(R.string.administrator_setting_antenna_type_second_line), true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
         // 8 LNB本振
         adapter.addFragment(AdministratorFragmentLNBOscillator.newInstance(false,null,
@@ -159,7 +161,7 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
         // 10 功放监控
         adapter.addFragment(AdministratorFragmentAmplifierMonitor.newInstance(false,null,
-                false, null, true, getString(R.string.follow_me_message_click),-1,
+                true, getString(R.string.administrator_amplifier_monitor_second_line), true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
         // 11 功放厂家
         adapter.addFragment(AdministratorFragmentAmplifierManufacturer.newInstance());
@@ -167,6 +169,10 @@ public class AdministratorSettingsActivity extends AppCompatActivity {
         adapter.addFragment(AdministratorFragmentAmplifierOscillator.newInstance());
         // 13 厂家标定
         adapter.addFragment(AdministratorFragmentFactoryIncriminate.newInstance(false,null,
+                false, null, true, getString(R.string.follow_me_message_click),-1,
+                getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
+        // 14 厂家标定
+        adapter.addFragment(AdministratorFragmentPositionIncriminate.newInstance(false,null,
                 false, null, true, getString(R.string.follow_me_message_click),-1,
                 getString(R.string.setting_button_text), getString(R.string.settings_to_be_working)));
 

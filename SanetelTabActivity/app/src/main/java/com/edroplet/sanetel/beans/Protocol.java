@@ -18,6 +18,7 @@ import static com.edroplet.sanetel.services.communicate.CommunicateDataReceiver.
 
 @SuppressWarnings("neverused")
 public class Protocol {
+
     // 4.1	复位/展开
     public static final String cmdAntennaExplode="$cmd,develop ant*ff\r\n";
     public static final String cmdAntennaReset="$cmd,develop ant*ff\r\n";
@@ -336,6 +337,8 @@ public class Protocol {
     private static final String cmdSetFactoryCalibAntResultHead="$cmd,start factory calib ant";
     public static final String cmdSetFactoryCalibAntResult=cmdSetFactoryCalibAntResultHead+"*ff\r\n";
 
+    /*
+
     // 5.3	展开位置角度
     // 5.3.1	读取
     // 终端设备发送指令格式：$cmd,get lift *ff\r\n
@@ -349,7 +352,7 @@ public class Protocol {
     public static final String cmdSetLift="$cmd,set lift*ff\r\n";
     private static final String cmdSetLiftResultHead="$cmd,lift";
     public static final String cmdSetLiftResult=cmdSetLiftResultHead+"ok*ff\r\n";
-
+    */
     // 5.4	寻星范围
     // 5.4.1	读取
     // 终端设备发送指令格式：$cmd,get search range *ff\r\n
@@ -377,6 +380,21 @@ public class Protocol {
     public static final String cmdSetBand="$cmd,set band,%s*ff\r\n";
     private static final String cmdSetBandResultHead="$cmd,band set ";
     public static final String cmdSetBandResult=cmdSetBandResultHead+"ok*ff\r\n";
+
+    // 5.6	位置标定
+    //5.6.1	读取
+    //终端设备发送指令格式：$cmd,get lift *ff<CR><LF>
+    //便携站返回数据：$cmd,lift up data,收藏位置,展开位置*ff<CR><LF>
+    public static final String cmdGetLift="$cmd,get lift*ff\r\n";
+    private static final String cmdGetLiftResultHead="$cmd,lift up data,%s,%s";
+    public static final String cmdGetLiftResult=cmdGetLiftResultHead+"*ff\r\n";
+
+    //5.6.2	设置
+    //    终端设备发送指令格式：$cmd,set lift, 收藏位置,展开位置*ff<CR><LF>
+    //    便携站返回数据：$cmd,lift ok*ff<CR><LF>
+    public static final String cmdSetLift="$cmd,set lift,%s,%s*ff\r\n";
+    private static final String cmdSetLiftResultHead="$cmd,lift ";
+    public static final String cmdSetLiftResult=cmdSetLiftResultHead+"ok*ff\r\n";
 
     // 5.6	WIFI名称
     // 5.6.1	读取

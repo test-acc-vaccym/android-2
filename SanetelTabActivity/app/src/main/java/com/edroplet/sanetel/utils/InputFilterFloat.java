@@ -30,6 +30,7 @@ public class InputFilterFloat implements InputFilter {
     public static final float pitchMax = 90f;
     public static final float polarizationMin = -90f;
     public static final float polarizationMax = 90f;
+    public static final int   incriminateValidBit = 1;
 
     private double min, max;
     private int validBitNumber = 3;

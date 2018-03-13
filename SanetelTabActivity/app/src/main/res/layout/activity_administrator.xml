@@ -119,11 +119,11 @@
                             android:textAppearance="?android:attr/textAppearanceMedium" />
                         <!--位置标定-->
                         <com.edroplet.sanetel.view.custom.CustomButton
-                            android:id="@+id/id_administrator_location_incriminate"
+                            android:id="@+id/id_administrator_position_incriminate"
                             style="@style/button_horizontal_style"
                             android:background="@drawable/button_background"
                             android:padding="@dimen/no_padding"
-                            android:text="@string/administrator_location_incriminate"
+                            android:text="@string/administrator_position_incriminate"
                             android:textAppearance="?android:attr/textAppearanceMedium" />
                         <com.edroplet.sanetel.view.custom.CustomButton
                             style="@style/button_horizontal_style"/>

@@ -47,10 +47,13 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
     private CustomButton administratorWifiName;
 
     @BindId(R.id.administrator_amplifier_monitor)
-    private CustomButton administratorFactoryIncriminateButton;
+    private CustomButton administratorAmplifierMonitor;
 
     @BindId(R.id.administrator_factory_incriminate)
-    private CustomButton administratorAmplifierMonitor;
+    private CustomButton administratorFactoryIncriminateButton;
+
+    @BindId(R.id.id_administrator_position_incriminate)
+    private CustomButton administratorPositionIncriminateButton;
 
     @BindId(R.id.administrator_toolbar)
     private Toolbar administratorToolbar;
@@ -95,6 +98,7 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
         administratorAmplifierFactory.setOnClickListener(this);
         administratorAmplifierOscillator.setOnClickListener(this);
         administratorFactoryIncriminateButton.setOnClickListener(this);
+        administratorPositionIncriminateButton.setOnClickListener(this);
     }
 
     @Override
@@ -142,6 +146,9 @@ public class AdministratorActivity extends AppCompatActivity implements View.OnC
                 break;
             case R.id.administrator_factory_incriminate:
                 intent.putExtra(AdministratorSettingsPosition, AdministratorSettingsActivity.factoryIncriminatePosition);
+                break;
+            case R.id.id_administrator_position_incriminate:
+                intent.putExtra(AdministratorSettingsPosition, AdministratorSettingsActivity.positionIncriminatePosition);
                 break;
             default:
                 break;

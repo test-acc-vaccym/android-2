@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.edroplet.sanetel.R;
+import com.edroplet.sanetel.activities.administrator.AdministratorActivity;
 import com.edroplet.sanetel.activities.settings.AdministratorLoginActivity;
 import com.edroplet.sanetel.activities.settings.CityLocationListActivity;
 import com.edroplet.sanetel.activities.settings.PowerAmplifierSettingsActivity;
@@ -85,7 +86,8 @@ public class FunctionsFragmentSettings extends Fragment {
         view.findViewById(R.id.main_settings_administrator).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AdministratorLoginActivity.class);
+                // Intent intent = new Intent(getActivity(), AdministratorLoginActivity.class);
+                Intent intent = new Intent(getActivity(), AdministratorActivity.class);
                 startActivity(intent);
             }
         });
